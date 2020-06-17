@@ -1,0 +1,69 @@
+.command-system .core-warp
+{
+	padding: 0 1.58rem;
+	padding-top: 0.84rem;
+}
+.command-system .core-warp .core-title
+{
+	text-align: center;
+	position: relative;
+}
+.command-system .core-warp .core-title .title-bg
+{
+	width: 100%;
+	background-image: linear-gradient(243deg, rgba(41,107,180,0.00) 7%, #12397D 53%, rgba(41,107,180,0.00) 100%);
+	height: 1rem;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+}
+.command-system .core-warp .core-title h3
+{
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	font-size: 1.26rem;
+	color: #94C5FF;
+	line-height: 2rem;
+	letter-spacing: 3px;
+}
+.command-system .core-warp .core-box
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+}
+.command-system .core-warp .core-box .lead-box
+{
+	width: 8.1rem;
+	height: 8.1rem;
+	margin: 0 auto;
+	position: relative;
+}
+.command-system .core-warp .core-box .lead-box .arrow-box
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.command-system .core-warp .core-box .lead-box .arrow-box .arrow
+{
+	position: absolute;
+	border: 0.5rem solid transparent;
+	width: 1px;
+	height: 1px;
+}
+.command-system .core-warp .core-box .lead-box .arrow-box .arrow:nth-child(1)
+{
+	border-top-color: #6AE5FF;
+	left: 0;
+	right: 0;
+	top: 0;
+	margin: 0 auto;
+
+}

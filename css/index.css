@@ -34,8 +34,9 @@ html
 .header .main-box
 {
 	position: absolute;
-	width: 40%;
-	bottom: 0;
+	width: 39%;
+	bottom: 24%;
+	height: 50%;
 }
 .header .left-box
 {
@@ -140,4 +141,12 @@ html
 	margin-top: 1.1rem;
 	border: 3px solid #164695;
 	height: calc(100% - 1rem - 6px);
+}
+.main-warp .main-box .content-box
+{
+	height: calc(100% - 3rem);
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
 }

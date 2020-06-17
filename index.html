@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/pubilic.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			setFont()
+		</script>
+	</head>
+	<body>
+		<div class="header">
+			<img src="images/head.png"/>
+			<div class="main-box left-box"></div>
+			<div class="main-box rigt-box"></div>
+		</div>
+		<div class="main-warp">
+			<div class="main-box main-box-min">
+				<div class="main-title">
+					<div class="title-bg title-bg1"></div>
+					<div class="title-bg title-bg2"></div>
+					<div class="title-bg title-bg3"></div>
+					<div class="title-border"></div>
+					<h3>指挥体系</h3>
+				</div>
+				<div class="content-bg"></div>
+			</div>
+			<div class="main-box main-box-big">
+				<div class="main-title">
+					<div class="title-bg title-bg1"></div>
+					<div class="title-bg title-bg2"></div>
+					<div class="title-bg title-bg3"></div>
+					<div class="title-border"></div>
+					<h3>城市运行生命体征</h3>
+				</div>
+				<div class="content-bg"></div>
+			</div>
+			<div class="main-box main-box-big">
+				<div class="map-box">
+					
+				</div>
+			</div>
+			<div class="main-box main-box-min">
+				<div class="video-box">
+					<div class="main-title">
+						<div class="title-bg title-bg1"></div>
+						<div class="title-bg title-bg2"></div>
+						<div class="title-bg title-bg3"></div>
+						<div class="title-border"></div>
+						<h3>视频轮询</h3>
+					</div>
+					<div class="content-bg"></div>
+				</div>
+				<div class="special-box">
+					<div class="main-title">
+						<div class="title-bg title-bg1"></div>
+						<div class="title-bg title-bg2"></div>
+						<div class="title-bg title-bg3"></div>
+						<div class="title-border"></div>
+						<h3>专项管理</h3>
+					</div>
+					<div class="content-bg"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			$('.main-warp').height($('html').height()-$('.header').height())
+	    	$(window).resize(function(){
+				setFont()
+				$('.main-warp').height($('html').height()-$('.header').height())
+	    	})
+
+		})
+	</script>
+</html>

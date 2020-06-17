@@ -1,0 +1,139 @@
+@font-face 
+{
+    font-family: 'SFUDinEngschrift'; 
+    src: url('../fonts/SFUDinEngschrift.TTF'); 
+}
+@font-face 
+{
+    font-family: 'SourceHanSansCN'; 
+    src: url('../fonts/SourceHanSansCN-Medium.ttf'); 
+}
+html
+{
+	overflow: hidden;
+	background-color: #00184f;
+	font-family: 'SourceHanSansCN';
+}
+.num-font
+{
+	font-family: 'SFUDinEngschrift';
+}
+.header
+{
+	position: relative;
+}
+.header img
+{
+	width: 100%;
+	display: block;
+}
+.header .main-box
+{
+	position: absolute;
+	width: 40%;
+	bottom: 0;
+}
+.header .left-box
+{
+	left: 0;
+}
+.header .right-box
+{
+	right: 0;
+}
+.main-warp .main-box
+{
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	height: 98%;
+	margin-left: 0.7%;
+}
+.main-warp .main-box-big
+{
+	width: 32.3%;
+}
+.main-warp .main-box-min
+{
+	width: 15.6%;
+}
+.main-title
+{
+	width: 100%;
+	padding-bottom: 0.2rem;
+	position: relative;
+}
+.title-border
+{
+	height: 1rem;
+	border-left: 3px solid #00D9FF;
+	border-right: 3px solid #00D9FF;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+.main-title .title-bg
+{
+	height: 1rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: #226CD2;
+	opacity: 0.28;
+}
+.main-title .title-bg1,.main-title .title-bg2
+{
+	width: 100%;
+}
+.main-title .title-bg2
+{
+	width: 81.7%%;
+}
+.main-title .title-bg3
+{
+	width: 63.4%;
+	opacity: 0.41;
+}
+.main-title h3
+{
+	font-size: 1.68rem;
+	line-height: 3rem;
+	color: #fff;
+	position: relative;
+	z-index: 2;
+	text-align: center;
+	letter-spacing: 5px;
+}
+.main-warp .main-box .content-bg
+{
+	height: calc(100% - 2rem);
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	opacity: 0.2;
+	background-image: linear-gradient(180deg, #3E76CC 0%, #1D419D 100%);
+	box-shadow: 5px 5px 4px 0 rgba(0,0,0,0.50);
+}
+.main-warp .main-box .video-box
+{
+	height: 63.5%;
+	position: relative;
+}
+.main-warp .main-box .special-box
+{
+	height: 36.5%;
+	position: relative;
+}
+.main-warp .main-box .map-box
+{
+	margin-top: 1.1rem;
+	border: 3px solid #164695;
+	height: calc(100% - 1rem - 6px);
+}

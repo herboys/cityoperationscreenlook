@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/pubilic.css"/>
+		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<iframe src="index.html" frameborder="0"></iframe>
+	</body>
+	<script type="text/javascript">
+	    $(function () {
+	    	var resizeNum=0;
+	    	windowW();
+	    	$(window).resize(function(){
+	    		windowW();
+	    	})
+	    	function windowW()
+	    	{
+	        	var mainWarpH=$('body').height();
+		        $("iframe").width(mainWarpH/9*32);
+		        $("iframe").height(mainWarpH);
+		        if(resizeNum==0)
+		        {
+		        	resizeNum++;
+		        	windowW();
+		        }
+	    	}
+	    })
+	</script>
+</html>

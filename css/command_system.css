@@ -1,7 +1,6 @@
 .command-system .core-warp
 {
 	padding: 0 1.58rem;
-	padding-top: 0.84rem;
 }
 .command-system .core-warp .core-title
 {
@@ -34,12 +33,12 @@
 {
 	display: inline-block;
 	vertical-align: top;
-	width: 50%;
+	width: 49%;
 }
 .command-system .core-warp .core-box .lead-box
 {
-	width: 8.1rem;
-	height: 8.1rem;
+	width: 9rem;
+	height: 9rem;
 	margin: 0 auto;
 	position: relative;
 }
@@ -50,20 +49,284 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
+    animation: anm1 5s linear 0s infinite;
 }
 .command-system .core-warp .core-box .lead-box .arrow-box .arrow
 {
 	position: absolute;
-	border: 0.5rem solid transparent;
 	width: 1px;
 	height: 1px;
 }
 .command-system .core-warp .core-box .lead-box .arrow-box .arrow:nth-child(1)
 {
+	border-top: 0.4rem solid transparent;
+	border-bottom: 0.4rem solid transparent;
+	border-left: 0.26rem solid transparent;
+	border-right: 0.26rem solid transparent;
 	border-top-color: #6AE5FF;
 	left: 0;
 	right: 0;
 	top: 0;
+	margin:auto;
+}
+.command-system .core-warp .core-box .lead-box .arrow-box .arrow:nth-child(2)
+{
+	border-top: 0.26rem solid transparent;
+	border-bottom: 0.26rem solid transparent;
+	border-left: 0.4rem solid transparent;
+	border-right: 0.4rem solid transparent;
+	border-right-color: #6AE5FF;
+	bottom: 0;
+	right: 0;
+	top: 0;
+	margin:auto;
+}
+.command-system .core-warp .core-box .lead-box .arrow-box .arrow:nth-child(3)
+{
+	border-top: 0.4rem solid transparent;
+	border-bottom: 0.4rem solid transparent;
+	border-left: 0.26rem solid transparent;
+	border-right: 0.26rem solid transparent;
+	border-bottom-color: #6AE5FF;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin:auto;
+}
+.command-system .core-warp .core-box .lead-box .arrow-box .arrow:nth-child(4)
+{
+	border-top: 0.26rem solid transparent;
+	border-bottom: 0.26rem solid transparent;
+	border-left: 0.4rem solid transparent;
+	border-right: 0.4rem solid transparent;
+	border-left-color: #6AE5FF;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	margin:auto;
+}
+.command-system .core-warp .core-box .lead-box .arc-warp
+{
+	width: 85%;
+	height: 85%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+    animation: anm2 5s linear 0s infinite;
+	
+}
+.command-system .lead-box .arc-warp .arc-box
+{
+	width: 100%;
+	height: 44%;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
 	margin: 0 auto;
-
+}
+.command-system .lead-box .arc-warp .arc-box .arc
+{
+	width: calc(7.6rem - 4px);
+	height: calc(7.6rem - 4px);
+	border-radius: 50%;
+	border: 2px solid #6AE5FF;
+}
+.command-system .lead-box .arc-warp .arc-box:nth-child(1)
+{
+	top: 0;
+}
+.command-system .lead-box .arc-warp .arc-box:nth-child(2)
+{
+	bottom: 0;
+}
+.command-system .lead-box .arc-warp .arc-box:nth-child(2) .arc
+{
+	border: 2px solid #1492E4;
+	position: absolute;
+	bottom: 0;
+}
+.command-system .lead-box .bg-box
+{
+	width: 70%;
+	height: 70%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	border-radius: 50%;
+	opacity: 0.15;
+	background: #67DFFA;
+}
+.command-system .lead-box .bg-ac
+{
+	width: 55%;
+	height: 55%;
+}
+.command-system .core-left .text-box
+{
+	position: relative;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	letter-spacing: 2px;
+	flex-direction: column;
+}
+.command-system .core-left .text-box p
+{
+	font-size: 1.2rem;
+	color: #fff;
+}
+.command-system .core-left .text-box h3
+{
+	font-size: 1.6rem;
+	color: #F5A623;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+}
+.command-system .core-warp .core-right .lead-box
+{
+	width: 100%;
+}
+.command-system .core-right .lead-box .text-box
+{
+	flex-direction: column;
+	width: 50%;
+	height: 50%;
+}
+.command-system .core-right .lead-box .text-box p
+{
+	font-size: 1rem;
+	color: #D8D8D8;
+}
+.command-system .core-right .lead-box .text-box h3
+{
+	font-size: 1.2rem;
+	color: #F5A623;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+}
+.command-system .core-right .lead-box .text-box .num-font
+{
+	font-size: 1.6rem;
+}
+.command-system .core-box .working-places
+{
+	width: 100%;
+	position: relative;
+	line-height: 2rem;
+}
+.command-system .core-box .working-places .bg
+{
+	width: 100%;
+	height: 1rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	background-image: linear-gradient(270deg, rgba(41,107,180,0.00) 1%, #12397D 100%);
+}
+.command-system .core-box .working-places .num-font
+{
+	font-size: 1.6rem;
+	color: #F5A623;
+	letter-spacing: 2px;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+	margin-right: 2rem;
+	position: relative;
+	z-index: 1;
+}
+.command-system .core-box .working-places h3
+{
+	position: relative;
+	z-index: 1;
+	color: #94C5FF;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+	padding-left: 0.4rem;
+}
+.command-system .table-box
+{
+	width: calc(100% - 3.16rem);
+	margin: 0 auto;
+	margin-top: 0.8rem;
+}
+.command-system .table-box .list-box
+{
+	height: calc(6px + 18rem);
+	overflow: hidden;
+}
+.command-system .table-box .table-list
+{
+	padding: 0 1rem;
+	border-bottom: 1px dashed #2B52C9;
+	line-height: 1.5rem;
+	font-size: 0.8rem;
+	color: #D8D8D8;
+}
+.command-system .table-box .list-box .table-list
+{
+    animation: anm3 1s ease-out;
+    animation-fill-mode: backwards;
+}
+.command-system .table-box .table-list p
+{
+	display: inline-block;
+	width: 17%;
+	text-align: center;
+}
+.command-system .table-box .table-list p:nth-child(1)
+{
+	width: 27%;
+	text-align: left;
+}
+.command-system .table-box .table-title
+{
+	background-color: rgba(6,221,250,0.17);
+	line-height: 2rem;
+	font-size: 0.9rem;
+}
+.command-system .table-box:nth-child(3) .table-title
+{
+	background: rgba(6,250,130,0.19);
+}
+/*顺时针旋转*/
+@keyframes anm1{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(360deg);
+	}
+}
+/*逆时针旋转*/
+@keyframes anm2{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(-360deg);
+	}
+}
+@keyframes anm3 {
+    0%
+    {
+        opacity: 0;
+        transform: translateX(100%);
+        /*transform:rotateX(-90deg);*/
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translateX(0%);
+        /*transform:rotateX(0deg);*/
+    }
 }

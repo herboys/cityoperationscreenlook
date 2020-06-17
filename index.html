@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/command_system.css"/>
 		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/command_system.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			setFont()
 		</script>
@@ -15,8 +16,20 @@
 	<body>
 		<div class="header">
 			<img src="images/head.png"/>
-			<div class="main-box left-box"></div>
-			<div class="main-box right-box"></div>
+			<div class="main-box left-box">
+				<div class="weather-icon left"></div>
+				<div class="weather-text left">大到暴雨</div>
+				<div class="temperature-text num-font left">30</div>
+				<div class="early-warning-icon left"></div>
+				<div class="early-warning-text left">12时02分 雷电黄色预警</div>
+			</div>
+			<div class="main-box right-box">
+				<div class="right date-box">
+					<p>星期二</p>
+					<p class="num-font">2020-06-16</p>
+				</div>
+				<div class="right time-box num-font">18:21:59</div>
+			</div>
 		</div>
 		<div class="main-warp">
 			<div class="main-box main-box-min">
@@ -46,21 +59,64 @@
 									<div class="arc-box"><div class="arc"></div></div>
 									<div class="arc-box"><div class="arc"></div></div>
 								</div>
+								<div class="bg-box"></div>
+								<div class="bg-box bg-ac"></div>
+								<div class="text-box text-centered">
+									<p>带班区领导</p>
+									<h3>李峰</h3>
+								</div>
 							</div>
 							<div class="working-places">
 								<div class="bg"></div>
+								<div class="num-font right">12</div>
 								<h3>街镇城运分中心</h3>
-								<div class="num-font">12</div>
 							</div>
 						</div>
 						<div class="core-box core-right">
-							<div class="lead-box"></div>
+							<div class="lead-box">
+								<div class="text-box text-centered left">
+									<p>代班主任</p>
+									<h3>赵国镇</h3>
+								</div>
+								<div class="text-box text-centered left">
+									<p>指挥长</p>
+									<h3>刘强</h3>
+								</div>
+								<div class="text-box text-centered left">
+									<p>值班长</p>
+									<h3 class="num-font">12</h3>
+								</div>
+								<div class="text-box text-centered left">
+									<p>值班人员</p>
+									<h3 class="num-font">8</h3>
+								</div>
+							</div>
 							<div class="working-places">
 								<div class="bg"></div>
+								<div class="num-font right">12</div>
 								<h3>街镇城运分中心</h3>
-								<div class="num-font">12</div>
 							</div>
 						</div>
+					</div>
+					<div class="table-box core-table">
+						<div class="table-list table-title">
+							<p>分中心</p>
+							<p>指挥长</p>
+							<p>值班长</p>
+							<p>值班人员</p>
+							<p>值班电话</p>
+						</div>
+						<div class="list-box"></div>
+					</div>
+					<div class="table-box linkage-table">
+						<div class="table-list table-title">
+							<p>区级联动部门</p>
+							<p>指挥长</p>
+							<p>值班长</p>
+							<p>值班人员</p>
+							<p>值班电话</p>
+						</div>
+						<div class="list-box"></div>
 					</div>
 				</div>
 			</div>
@@ -108,7 +164,130 @@
 	</body>
 	<script type="text/javascript">
 		$(function(){
-			$('.main-warp').height($('html').height()-$('.header').height())
+			$('.main-warp').height($('html').height()-$('.header').height());
+			var coreArr=[
+				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				},
+				{
+					address:'许行镇',
+					name:'王某',
+					name1:'张某',
+					num:'12',
+					phone:'66742920',
+				},
+				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				},
+				{
+					address:'许行镇',
+					name:'王某',
+					name1:'张某',
+					num:'12',
+					phone:'66742920',
+				},
+				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				},
+				{
+					address:'许行镇',
+					name:'王某',
+					name1:'张某',
+					num:'12',
+					phone:'66742920',
+				},
+				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				},
+				{
+					address:'许行镇',
+					name:'王某',
+					name1:'张某',
+					num:'12',
+					phone:'66742920',
+				},
+				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				},
+				{
+					address:'许行镇',
+					name:'王某',
+					name1:'张某',
+					num:'12',
+					phone:'66742920',
+				},
+				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				},
+				{
+					address:'许行镇',
+					name:'王某',
+					name1:'张某',
+					num:'12',
+					phone:'66742920',
+				},
+			]
+			addTableList('.core-table',coreArr);
+			var linkageArr=[
+				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				},
+				{
+					address:'许行镇',
+					name:'王某',
+					name1:'张某',
+					num:'12',
+					phone:'66742920',
+				},				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				},
+				{
+					address:'许行镇',
+					name:'王某',
+					name1:'张某',
+					num:'12',
+					phone:'66742920',
+				},				{
+					address:'嘉定新城(马陆镇)',
+					name:'李某某',
+					name1:'张某',
+					num:'6',
+					phone:'66742920',
+				}
+			]
+			addTableList('.linkage-table',linkageArr)
 	    	$(window).resize(function(){
 				setFont()
 				$('.main-warp').height($('html').height()-$('.header').height())

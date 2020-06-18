@@ -213,3 +213,11 @@ html
 	left: 0;
 	bottom: 0;
 }
+
+/*隐藏地图loge*/
+.amap-logo{
+	opacity:0;
+}
+.amap-copyright{
+	opacity:0;
+}

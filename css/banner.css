@@ -1,0 +1,133 @@
+.banners
+{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	/*background-color: rgba(200,200,200,0.5);*/
+}
+
+.banners:hover .click_left
+{
+	display: block;
+}
+
+.banners:hover .click_right
+{
+	display: block;
+}
+
+.click_left
+{
+	width: 3vw;
+	position: absolute;
+	z-index: 10;
+	left: 2vw;
+	display: none;
+}
+
+.click_right
+{
+	width: 3vw;
+	position: absolute;
+	z-index: 10;
+	right: 2vw;
+	display: none;
+}
+
+.click_left img,.click_right img
+{
+	width: 100%;
+	height: 100%;
+}
+
+.number
+{
+	width: 100%;
+	height: 1vw;
+	line-height: 1vw;
+	position: absolute;
+	z-index: 10;
+	text-align: center;
+	bottom: 0.3vw;
+}
+
+.numbers
+{
+	display: inline-block;
+}
+
+/*.numbers span
+{
+	color: white;
+	font-size: 0.7vw;
+	display: block;
+	float: left;
+	width: 1vw;
+	height: 1vw;
+	line-height: 1vw;
+	text-align: center;
+	border-radius: 100vw;
+	margin: 0 0.5vw;
+	padding: 0.1vw;
+	border: 0.1vw solid white;
+}*/
+.numbers span
+{
+	color: white;
+	font-size: 0.7vw;
+	display: block;
+	float: left;
+	width: 0.1vw;
+	height: 0.1vw;
+	line-height: 1vw;
+	text-align: center;
+	border-radius: 100vw;
+	margin: 0 0.5vw;
+	border: 0.1vw solid #213598;
+}
+
+.numbers span:hover
+{
+	cursor: pointer;
+}
+
+.banner_img
+{
+	width: 100%;
+	height: 100%;
+}
+
+.banner_img img
+{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	break-inside: 1;
+}
+
+.banner_img  li{
+	width: 100%;
+	height: 70%;
+	position: absolute;
+	padding-left:0.7rem;
+	padding-right:0.7rem;
+	padding-top: 0.8rem;
+}
+
+.csyytz_txt{
+	width: 6.4rem;
+	height: 1.58rem;
+	float: left;
+	margin-left: 0.88rem;
+	/*margin-top: 25px;*/
+	margin-bottom: 1.32rem;
+	background: rgba(33,53,152,0.20);
+	background-color: #213598;
+	font-family: SourceHanSansCN-Normal;
+	font-size: 0.95rem;
+	text-align: center;
+	color: #A8DAFF;
+	letter-spacing: 0;
+}

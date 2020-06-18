@@ -24,10 +24,13 @@ $(function () {
 
     function showWarning(name, color, time){
         let img = "images/warning/" + name + "_" + color + ".jpg";
-
         $(".early-warning-icon").html("<img style='border-radius:3px; overflow:hidden' src='"+img+"'>");
         $(".early-warning-icon").css({"margin-top":'0.4rem'});
         $(".early-warning-text").html(time +" "+ name + color + "色预警");
+    }
+    function clearWarning(){
+        $(".early-warning-icon").html('');
+        $(".early-warning-text").html('');
     }
 
     showWeather("中雨", '20');
@@ -54,6 +57,10 @@ $(function () {
         let hour = now.getHours() +1;
         let min = now.getMinutes();
         showWarning(y,z,hour + "时"+min+"分")
+
+        if(random % 4 == 0){
+            clearWarning();
+        }
     }
 
     setInterval(changeWeather,3000);   

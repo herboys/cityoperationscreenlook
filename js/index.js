@@ -21,12 +21,18 @@ function getZxgl(){
 	var str = "";
 	for (var i = 0; i < 16; i++){
 		str += '<div class="csyytz_txt text-centered">'
-			+ resultInfo[i] + '</div>'
+		+'<div class="arrowBar-box">'
+		+'<div class="arrowBar"></div>'
+		+'</div>'		
+		+ resultInfo[i] + '</div>'
 	}
 	$('#zxgl_detail').html(str);
 	var str1 = "";
 	for (var i = 16; i < tableLen; i++) {
 		str1 += '<div class="csyytz_txt text-centered">'
+		+'<div class="arrowBar-box">'
+		+'<div class="arrowBar"></div>'
+		+'</div>'	
 			+ resultInfo[i] + '</div>'
 	}
 	$('#zxgl_detail1').html(str1);

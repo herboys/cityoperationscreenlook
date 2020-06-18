@@ -49,7 +49,7 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
-    animation: anm1 5s linear 0s infinite;
+    animation: anm1 10s linear 0s infinite;
 }
 .command-system .core-warp .core-box .lead-box .arrow-box .arrow
 {
@@ -115,7 +115,7 @@
 	top: 0;
 	bottom: 0;
 	margin: auto;
-    animation: anm2 5s linear 0s infinite;
+    animation: anm2 10s linear 0s infinite;
 	
 }
 .command-system .lead-box .arc-warp .arc-box

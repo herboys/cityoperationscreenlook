@@ -124,10 +124,38 @@
 	/*margin-top: 25px;*/
 	margin-bottom: 1.32rem;
 	background: rgba(33,53,152,0.20);
-	background-color: #213598;
+	background-color: /* #213598; */rgba(33,53,152,0.2);
 	font-family: SourceHanSansCN-Normal;
 	font-size: 0.95rem;
 	text-align: center;
 	color: #A8DAFF;
 	letter-spacing: 0;
+}
+
+.arrowBar-box
+{
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 1rem;
+	height: 1rem;
+   /* animation: anm1 5s linear 0s infinite;*/
+}
+
+.arrowBar
+{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	border-top: 0.06rem solid transparent;
+	border-bottom: 0.26rem solid transparent;
+	border-left: 0.4rem solid transparent;
+	border-right: 0.4rem solid transparent;
+	border-left-color: #6AE5FF;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	margin:auto;
+	transform: 90;
+	margin-top: 0;
 }

@@ -72,7 +72,8 @@
 	top: 3%;
     overflow: hidden;
     margin-top: 1.2rem;
-    margin-bottom: 1.37rem
+    margin-bottom: 1.47rem;
+    opacity: 1;
 }
 
 #slider1
@@ -80,7 +81,8 @@
     width: 90rem;
     height:29.2rem;
 	position: absolute;
-	top: 0;
+    top: 0;
+    opacity: 1;
 }
 #slider1 .slide1
 {
@@ -89,7 +91,8 @@
 }
 #slider1 .slide1 video
 {
-	width: 100%;
+    width: 100%;
+    opacity: 1;
 }
 
 .jrwlzsjTxt1{

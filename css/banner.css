@@ -124,7 +124,7 @@
 	/*margin-top: 25px;*/
 	margin-bottom: 1.32rem;
 	background: rgba(33,53,152,0.20);
-	background-color: #213598;
+	background-color: /* #213598; */rgba(33,53,152,0.2);
 	font-family: SourceHanSansCN-Normal;
 	font-size: 0.95rem;
 	text-align: center;

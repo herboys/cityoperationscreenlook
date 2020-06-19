@@ -204,12 +204,12 @@ function linkageInt(){
 	var moveT=$('.linkage-table').find('.table-list').eq(0).height()-8;
 	linkageTime=setInterval(() => {
 		linkageNum++;
-		$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum},900,function(){
+		$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum},1000,function(){
 			if(linkageNum==linkageMax)
 			{
 				linkageNum=0;
 				 $('.linkage-table .list-box').css({top:-moveT*linkageNum});
 			}
 		})
-	}, 1000);
+	}, 3000);
 }

@@ -172,11 +172,8 @@ function intVideoOne(){
 		{
 			videoNumOne=0;
 		}
-<<<<<<< Updated upstream
 		$('#slider1').animate({'left':-590},1000,function(){
-=======
-		$('#slider1').animate({'left':-555},1000,function(){
->>>>>>> Stashed changes
+
 			$('#slider1').children().eq(0).remove();
 			$('#slider1').css({'left':0})
 			var str='';

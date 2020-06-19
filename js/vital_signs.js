@@ -145,15 +145,17 @@ function addCard(arr,classStr)
 		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>今日<span class="num-font">'+arr[i].today+'</span>万/立方米</p><p>本周<span class="num-font">'+arr[i].week+'</span>万/立方米</p><p>当日<span class="num-font">'+arr[i].month+'</span>万/立方米</p></div></div>')
 	}
 	var cardTime='';
+	var cardTime1='';
 	timeInt();
 	$(classStr).mouseenter(function(){
+		clearInterval(cardTime1);
 		clearInterval(cardTime);
 	})
 	$(classStr).mouseleave(function(){
 		$(classStr).find('.card-box').removeClass('card-box-ac')
-		setTimeout(function(){
+		cardTime1=setTimeout(function(){
 			timeInt();
-		},500)
+		},1000)
 	})
 	$(classStr).on('click','.card-box',function(){
 		opacityNum=$(classStr).find('.card-box').index($(this));

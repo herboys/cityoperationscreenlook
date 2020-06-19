@@ -222,3 +222,10 @@ html
 	width: 100%;
 	z-index: -1;	
 }
+/*隐藏地图loge*/
+.amap-logo{
+	opacity:0;
+}
+.amap-copyright{
+	opacity:0;
+}

@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/video.css">
 		<link rel="stylesheet" type="text/css" href="css/command_system.css"/>
 		<link rel="stylesheet" type="text/css" href="css/vital_signs.css"/>
+		<link rel="stylesheet" type="text/css" href="css/weather.css"/>
 		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/command_system.js" type="text/javascript" charset="utf-8"></script>
@@ -17,6 +18,13 @@
 		<script src="js/video.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/time.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
+
+		<!--地图-->
+		<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2"></script>
+		<!-- <script src="https://webapi.amap.com/maps?v=1.4.15&key=33c02230e724e2bc7edce69756a28beb"></script> -->
+		<script src="js/map.js" type="text/javascript" charset="utf-8"></script>
+
 
 		<link rel="stylesheet" type="text/css" href="./css/banner.css">
 		<!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
@@ -28,13 +36,13 @@
 	</head>
 	<body>
 		<div class="header">
-			<img src="images/head.png"/>
+			<img src="images/head2.png"/>
 			<div class="main-box left-box">
-				<div class="weather-icon left"></div>
-				<div class="weather-text left">大到暴雨</div>
-				<div class="temperature-text num-font left">30</div>
+				<div class="weather-icon left"><div></div></div>
+				<div class="weather-text left"></div>
+				<div class="temperature-text num-font left"></div>
 				<div class="early-warning-icon left"></div>
-				<div class="early-warning-text left">12时02分 雷电黄色预警</div>
+				<div class="early-warning-text left"></div>
 			</div>
 			<div class="main-box right-box">
 				<div class="right date-box">
@@ -88,7 +96,7 @@
 						<div class="core-box core-right">
 							<div class="lead-box">
 								<div class="text-box text-centered left">
-									<p>代班主任</p>
+									<p>带班主任</p>
 									<h3>赵国镇</h3>
 								</div>
 								<div class="text-box text-centered left">
@@ -114,6 +122,7 @@
 					<div class="table-box core-table">
 						<div class="table-list table-title">
 							<p>分中心</p>
+							<p>带班领导</p>
 							<p>指挥长</p>
 							<p>值班长</p>
 							<p>值班人员</p>
@@ -124,6 +133,7 @@
 					<div class="table-box linkage-table">
 						<div class="table-list table-title">
 							<p>区级联动部门</p>
+							<p>带班领导</p>
 							<p>指挥长</p>
 							<p>值班长</p>
 							<p>值班人员</p>
@@ -409,8 +419,8 @@
 				</div>
 			</div>
 			<div class="main-box main-box-big">
-				<div class="map-box">
-					
+				<div class="map-box" id="mapContainer">
+
 				</div>
 			</div>
 			<div class="main-box main-box-min">
@@ -492,5 +502,6 @@
 		})
 		createVideoSlideOne();
 		createVideoSlide();
+
 	</script>
 </html>

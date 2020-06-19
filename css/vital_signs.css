@@ -241,7 +241,8 @@
 }
 .vital-signs .card-warp .list-box .card-box-ac
 {
-	transform: translateY(-100%);	
+	transform: translateY(-100%);
+	opacity: 1 !important;	
 }
 .vital-signs .card-warp .list-box .card-box>div
 {

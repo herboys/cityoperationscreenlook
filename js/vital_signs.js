@@ -156,6 +156,7 @@ function addCard(arr,classStr)
 		},500)
 	})
 	$(classStr).on('click','.card-box',function(){
+		opacityNum=$(classStr).find('.card-box').index($(this));
 		$(classStr).find('.card-box').removeClass('card-box-ac')
 		$(this).addClass('card-box-ac');
 	})

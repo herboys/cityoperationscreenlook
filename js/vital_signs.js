@@ -339,7 +339,6 @@ function addHjbz(arr)
 					{
 						let num=i;
 						$('.hjbz-warp .text-list').eq(num).animate({top:-distance,opacity:0},300,function(){
-							console.log(123)
 							$(this).remove();
 						})
 					}

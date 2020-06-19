@@ -254,6 +254,7 @@
 	width: calc(100% - 3.16rem);
 	margin: 0 auto;
 	margin-top: 0.8rem;
+	overflow: hidden;
 }
 .command-system .table-box .list-box
 {
@@ -262,7 +263,7 @@
 }
 .command-system .table-box .table-list
 {
-	padding: 0 1rem;
+	padding: 0 0.5rem;
 	border-bottom: 1px dashed #2B52C9;
 	line-height: 1.5rem;
 	font-size: 0.8rem;
@@ -270,19 +271,29 @@
 }
 .command-system .table-box .list-box .table-list
 {
+	width: 102%;
     animation: anm3 1s ease-out;
     animation-fill-mode: backwards;
 }
 .command-system .table-box .table-list p
 {
 	display: inline-block;
-	width: 17%;
+	width: 14%;
 	text-align: center;
+}
+.command-system .table-box .table-list .num
+{
+	color: #53A2FF;
+	width: 15%;
 }
 .command-system .table-box .table-list p:nth-child(1)
 {
-	width: 27%;
+	width: 25%;
 	text-align: left;
+}
+.command-system .table-box .list-box .table-list p:nth-child(1)
+{
+	width: 24%;
 }
 .command-system .table-box .table-title
 {

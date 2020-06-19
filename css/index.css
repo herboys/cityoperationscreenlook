@@ -130,6 +130,7 @@ html
 	width: 100%;
 	padding-bottom: 0.2rem;
 	position: relative;
+	z-index: 10;
 }
 .title-border
 {
@@ -213,7 +214,14 @@ html
 	left: 0;
 	bottom: 0;
 }
-
+.footer
+{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: -1;	
+}
 /*隐藏地图loge*/
 .amap-logo{
 	opacity:0;

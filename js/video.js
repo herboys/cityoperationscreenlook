@@ -172,7 +172,7 @@ function intVideoOne(){
 		{
 			videoNumOne=0;
 		}
-		$('#slider1').animate({'left':-520},1000,function(){
+		$('#slider1').animate({'left':-590},1000,function(){
 			$('#slider1').children().eq(0).remove();
 			$('#slider1').css({'left':0})
 			var str='';

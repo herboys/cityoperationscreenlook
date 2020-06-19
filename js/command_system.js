@@ -1,7 +1,6 @@
 function addTableList(name,arr)
 {
 	$(name).find('.list-box').html('');
-	console.log($(name));
 	for(let i=0;i<arr.length;i++)
 	{
 		setTimeout(function(){
@@ -141,28 +140,76 @@ $(function(){
 			name1:'杨振东',
 			num:'12',
 			phone:'66742920',
-		},				{
+		},				
+		{
 			address:'江桥镇',
 			leader:'马维康',
 			name:'李琳琳',
 			name1:'张玉华',
 			num:'6',
 			phone:'66742920',
-		}
+		},
+		{
+			address:'安亭镇',
+			leader:'马鹏远',
+			name:'李欣然',
+			name1:'张丽丽',
+			num:'6',
+			phone:'66742920',
+		},
+		{
+			address:'江桥镇',
+			leader:'马维康',
+			name:'李琳琳',
+			name1:'张玉华',
+			num:'6',
+			phone:'66742920',
+		},
 	]
 	addTableList1('.linkage-table',linkageArr)
 
 })
+var linkageTime='';
+var linkageNum=0;
+var linkageMax='';
 
 function addTableList1(name,arr)
 {
 	$(name).find('.list-box').html('');
-	console.log($(name));
 	for(let i=0;i<arr.length;i++)
 	{
 		setTimeout(function(){
 			$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leader+'</p><p>'+arr[i].name+'</p><p>'+arr[i].name1+'</p><p class="num">'+arr[i].num+'</p><p>'+arr[i].phone+'</p></div>')
 		},200*i)
-
+		if(name=='.linkage-table'&&i==arr.length-1&&arr.length>5)
+		{
+			linkageMax=arr.length;
+			linkageNum=0;
+			setTimeout(function(){
+				var html=$(name).find('.list-box').html();
+				$(name).find('.list-box').append(html);
+			 	linkageInt();
+				 $(name).mouseenter(function(){
+				 	clearInterval(linkageTime)
+				 })
+				 $(name).mouseleave(function(){
+			 		linkageInt();
+				 })
+			},200*i+200)
+	
+		}
 	}
+}
+function linkageInt(){
+	var moveT=$('.linkage-table').find('.table-list').eq(0).height()-8;
+	linkageTime=setInterval(() => {
+		linkageNum++;
+		$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum},900,function(){
+			if(linkageNum==linkageMax)
+			{
+				linkageNum=0;
+				 $('.linkage-table .list-box').css({top:-moveT*linkageNum});
+			}
+		})
+	}, 1000);
 }

@@ -305,6 +305,20 @@
 {
 	background: rgba(6,250,130,0.19);
 }
+.command-system .linkage-table .list-warp
+{
+	height: calc(2px + 7.5rem);
+	position: relative;
+	overflow: hidden;
+}
+.command-system .linkage-table .list-box
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+}
 /*顺时针旋转*/
 @keyframes anm1{
 	0%

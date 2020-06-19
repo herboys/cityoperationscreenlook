@@ -159,32 +159,32 @@ $(function(){
 		{
 			title:'生活垃圾处理',
 			num:28940,
-			unit:'吨',
+			unit:'吨/日',
 		},
 		{
 			title:'污水处理量',
 			num:3415567,
-			unit:'吨',
+			unit:'吨/日',
 		},
 		{
 			title:'生活垃圾处理',
 			num:28940,
-			unit:'吨',
+			unit:'吨/周',
 		},
 		{
 			title:'污水处理量',
 			num:3415567,
-			unit:'吨',
+			unit:'吨/周',
 		},
 		{
 			title:'生活垃圾处理',
 			num:28940,
-			unit:'吨',
+			unit:'吨/月',
 		},
 		{
 			title:'污水处理量',
 			num:3415567,
-			unit:'吨',
+			unit:'吨/月',
 		},
 	]
 	addHjbz(hjbzArr)
@@ -216,7 +216,7 @@ function addCard(arr,classStr)
 	boxObj.html('');
 	for(let i=0;i<arr.length;i++)
 	{
-		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>今日<span class="num-font">'+arr[i].today+'</span>'+arr[i].unit+'</p><p>本周<span class="num-font">'+arr[i].week+'</span>'+arr[i].unit+'</p><p>当日<span class="num-font">'+arr[i].month+'</span>'+arr[i].unit+'</p></div></div>')
+		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>今日<span class="num-font">'+arr[i].today+'</span>'+arr[i].unit+'</p><p>本周<span class="num-font">'+arr[i].week+'</span>'+arr[i].unit+'</p><p>当月<span class="num-font">'+arr[i].month+'</span>'+arr[i].unit+'</p></div></div>')
 	}
 	var cardTime='';
 	var cardTime1='';
@@ -256,7 +256,7 @@ function addCard(arr,classStr)
 					}
 				}
 				arr.unshift(arr.splice(arr.length-1 , 1)[0]);
-				boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left:0px;top:0px"><div class="card-title"><div class="text-centered">'+arr[0].title+'</div></div><div class="card-text"><p>今日<span class="num-font">'+arr[0].today+'</span>万/立方米</p><p>本周<span class="num-font">'+arr[0].week+'</span>万/立方米</p><p>当日<span class="num-font">'+arr[0].month+'</span>万/立方米</p></div></div>')
+				boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left:0px;top:0px"><div class="card-title"><div class="text-centered">'+arr[0].title+'</div></div><div class="card-text"><p>今日<span class="num-font">'+arr[0].today+'</span>'+arr[0].unit+'</p><p>本周<span class="num-font">'+arr[0].week+'</span>'+arr[0].unit+'</p><p>当月<span class="num-font">'+arr[0].month+'</span>'+arr[0].unit+'</p></div></div>')
 			}
 			else
 			{

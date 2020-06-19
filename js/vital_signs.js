@@ -6,6 +6,11 @@ $(function(){
 			unit:'万'
 		},
 		{
+			title:'户籍人口',
+			num:'68.28',
+			unit:'万'
+		},
+		{
 			title:'面积',
 			num:'464.2',
 			unit:'平方公里'
@@ -24,11 +29,6 @@ $(function(){
 			title:'人均',
 			num:'7350',
 			unit:'元/月 '
-		},
-		{
-			title:'户籍人口',
-			num:'68.28',
-			unit:'万'
 		},
 	];
 	addjbgk(jbqkArr);

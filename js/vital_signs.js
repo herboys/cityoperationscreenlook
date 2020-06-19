@@ -91,28 +91,28 @@ $(function(){
 			today:35,
 			week:253,
 			month:1534,
-			unit:'度',
+			unit:'人次',
 		},
 		{
 			title:'交通客运量',
 			today:42,
 			week:198,
 			month:1345,
-			unit:'度',
+			unit:'人次',
 		},
 		{
 			title:'交通流量',
 			today:20,
 			week:189,
 			month:1234,
-			unit:'度',
+			unit:'人次',
 		},
 		{
 			title:'景区景点人流',
 			today:61,
 			week:248,
 			month:1453,
-			unit:'度',
+			unit:'人次',
 		},
 	];
 
@@ -164,7 +164,7 @@ $(function(){
 		},
 		{
 			title:'污水处理量',
-			num:3415567,
+			num:341556,
 			unit:'吨/日',
 		},
 		{
@@ -174,7 +174,7 @@ $(function(){
 		},
 		{
 			title:'污水处理量',
-			num:3415567,
+			num:341556,
 			unit:'吨/周',
 		},
 		{
@@ -184,7 +184,7 @@ $(function(){
 		},
 		{
 			title:'污水处理量',
-			num:3415567,
+			num:341556,
 			unit:'吨/月',
 		},
 	]

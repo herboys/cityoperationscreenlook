@@ -3,21 +3,6 @@ $(document).ready(function(){
 })
 
 var map;
-function  initMap() {
-    console.log("initmap");
-    map = new AMap.Map('mapContainer', {
-        center:[121.238825,31.364284],
-        zoom:12,
-        zooms:[11,18],  //设置地图缩放级别
-    });
-    // map.setMapStyle("amap://styles/1f0788ce26d145073e84bc6e896b8f51");
-    setMapStyle();
-    setMapFeatures();
-    addJiadingBoundary();
-    addTraffic();
-    addPoiMarker();
-}
-/*设置地图风格*/
 var mapStyle = ["normal",       //0-标准
                 "dark",         //1-幻影黑
                 "light",        //2-月光银
@@ -30,6 +15,44 @@ var mapStyle = ["normal",       //0-标准
                 "darkblue",     //9-极夜蓝
                 "wine",         //10-酱籽
         ];
+var district;
+var polygons=[];
+var shanghai_district =[{adcode:"310151",name:"崇明区"}, 
+                        {adcode:"310115", name:"浦东新区"}, 
+                        {adcode:"310120", name:"奉贤区"},
+                        {adcode:"310116", name:"金山区"},
+                        {adcode:"310113", name:"宝山区"}, 
+                        {adcode:"310107", name:"普陀区"}, 
+                        {adcode:"310101", name:"黄浦区"}, 
+                        {adcode:"310114", name:"嘉定区"}, 
+                        {adcode:"310110", name:"杨浦区"},
+                        {adcode:"310117", name:"松江区"}, 
+                        {adcode:"310109", name:"虹口区"}, 
+                        {adcode:"310106", name:"静安区"},
+                        {adcode:"310105", name:"长宁区"}, 
+                        {adcode:"310104", name:"徐汇区"}, 
+                        {adcode:"310112", name:"闵行区"}, 
+                        {adcode:"310118", name:"青浦区"}];
+var other_district=[{adcode:"320583", name:"昆山"},
+                    {adcode:"320585", name:"太仓"}]
+
+
+
+function  initMap() {
+    console.log("initmap");
+    map = new AMap.Map('mapContainer', {
+        center:[121.238825,31.364284],
+        zoom:12,
+        zooms:[11,18],  //设置地图缩放级别
+    });
+    setMapStyle();
+    setMapFeatures();
+    drawJiadingBounds();
+    addJiadingBoundary();
+    addTraffic();
+    addPoiMarker();
+}
+/*设置地图风格*/
 function setMapStyle() {
     var styleName = "amap://styles/"+mapStyle[9];
     var myStyle = "amap://styles/5078b8edf11b4b3f9ab4b0e45c45e8fe";
@@ -45,30 +68,113 @@ function setMapFeatures() {
     var features = [mapFeatures[0],mapFeatures[1],mapFeatures[2]];
     map.setFeatures(features);
 }
+function drawJiadingBounds() {
+    //加载行政区划插件
+    if(!district){
+        //实例化DistrictSearch
+        var opts = {
+            subdistrict: 1,   //获取边界不需要返回下级行政区
+            extensions: 'all',  //返回行政区边界坐标组等具体信息
+            level: 'district'  //查询行政级别为 市
+        };
+        district = new AMap.DistrictSearch(opts);
+    }
+    //行政区查询
+    district.setLevel("district")
+    
+    console.log("======="+shanghai_district.length)
+    var that = this;
+    for(var i = 0 ; i < shanghai_district.length ; i++){
+        district.search(shanghai_district[i].adcode,  function(status, result) {
+            polygons = [];
+            var bounds = result.districtList[0].boundaries;
+            if (bounds) {
+                if(result.districtList[0].adcode == "310114"){
+                    for (var l = 0; l < bounds.length; l++) {
+                        //生成行政区划polygon
+                        var polygon = new AMap.Polygon({
+                            path: bounds[l],
+                            strokeWeight: 2,
+                            strokeColor: '#9CA09D',
+                            fillOpacity: 0.0,
+                            fillColor: '#80d8ff',
+                            
+                        });
+                        polygons.push(polygon);
+                    }
+                }
+                else{
+                    for (var l = 0; l < bounds.length; l++) {
+                        //生成行政区划polygon
+                        var polygon = new AMap.Polygon({
+                            path: bounds[l],
+                            strokeWeight: 0,
+                            strokeColor: '#0091ea',
+                            strokeOpacity:0,
+                            fillOpacity: 0.2,
+                            fillColor: '#80d8ff',
+                            
+                        });
+                        polygons.push(polygon);
+                    } 
+                }
+                
+            }
+            map.add(polygons)
+        });    
+    }
+    // map.add(polygons)
+    
+    for(var i = 0 ; i < other_district.length ; i++){
+        district.search(other_district[i].adcode,  function(status, result) {
+            polygons = [];
+            var bounds = result.districtList[0].boundaries;
+            if (bounds) {
+                for (var l = 0; l < bounds.length; l++) {
+                    //生成行政区划polygon
+                    var polygon = new AMap.Polygon({
+                        path: bounds[l],
+                        strokeWeight: 0,
+                        strokeColor: '#0091ea',
+                        strokeOpacity:0,
+                        fillOpacity: 0.4,
+                        fillColor: '#80d8ff',
+                        
+                    });
+                    polygons.push(polygon);
+                } 
+                
+            }
+            map.add(polygons)
+        });  
+    }
+    
+    map.setFitView(polygons);//视口自适应
+
+}
 /*添加嘉定区和街道边界*/
 function  addJiadingBoundary() {
     console.log("addJiadingBoundary");
-    var url = "./map/jiading_json.json";
-    var configure_json = $.ajax({url: url,async: false}).responseText;
-    var geoJSON = $.parseJSON(configure_json);
-    var geojson = new AMap.GeoJSON({
-        geoJSON: geoJSON,
-        // 还可以自定义getMarker和getPolyline
-        getPolygon: function(geojson, lnglats) {
-            // var coord = convertCoordinate(lnglats);
-            return new AMap.Polygon({
-                path: lnglats,
-                strokeStyle:"solid",//"dashed",
-                strokeColor: "#9CA09D",//'#C0C0C0',
-                strokeWeight:2,     //嘉定边界 线宽
-                fillOpacity: 0,     //填充
-                fillColor: '#033447'
-            });
-        }
-    });
-    geojson.setMap(map);
+    // var url = "./map/jiading_json.json";
+    // var configure_json = $.ajax({url: url,async: false}).responseText;
+    // var geoJSON = $.parseJSON(configure_json);
+    // var geojson = new AMap.GeoJSON({
+    //     geoJSON: geoJSON,
+    //     // 还可以自定义getMarker和getPolyline
+    //     getPolygon: function(geojson, lnglats) {
+    //         return new AMap.Polygon({
+    //             path: lnglats,
+    //             strokeStyle:"solid",//"dashed",
+    //             strokeColor: "#9CA09D",//'#C0C0C0',
+    //             strokeWeight:2,     //嘉定边界 线宽
+    //             fillOpacity: 0,     //填充
+    //             fillColor: '#033447'
+    //         });
+    //     }
+    // });
+    // geojson.setMap(map);
 
-    var url0 = "./map/jiadingshequ_line.json";
+    var url0 = "./map/jiadingzhen_line.json";
     var configure_json0 = $.ajax({url: url0,async: false}).responseText;
     var geoJSON0 = $.parseJSON(configure_json0);
     var geojson1 = new AMap.GeoJSON({
@@ -128,33 +234,4 @@ function addPoiMarker(){
         });
         map.add(marker);
     }
-}
-
-
-function convertCoordinate(lnglats){
-//     var gps = [116.3, 39.9];
-// AMap.convertFrom(gps, 'gps', function (status, result) {
-//   if (result.info === 'ok') {
-//     var lnglats = result.locations; // Array.<LngLat>
-//     console.log("result.locations = "+JSON.stringify(result.locations));
-//   }
-// });
-
-    // console.log("convertCoordinate lnglats = "+JSON.stringify(lnglats));
-    var coord = [];
-    for(var i = 0 ; i < lnglats.length ; i++){
-        var pts = [];
-        for(var j = 0 ; j < lnglats[i].length ; j++){
-            console.log("lnglats[i][j] = "+JSON.stringify(lnglats[i][j]));
-            AMap.convertFrom(lnglats[i][j], 'gps', function (status, result) {
-                if (result.info === 'ok') {
-                    console.log("result.locations = "+JSON.stringify(result.locations));
-                    pts.push([result.locations.lng,result.locations.lat]); // Array.<LngLat>
-                    console.log("pts = "+pts.length);
-                }
-            });
-        }
-        // coord.push(pts);
-    }
-    console.log("convertCoordinate coord = "+JSON.stringify(coord));
 }

@@ -271,7 +271,7 @@
 	height: 6.8rem;
 	background: rgba(3,32,49,0.90);
 	color: #fff;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	margin-left: -3px;
 	overflow: hidden;
 }
@@ -403,7 +403,7 @@
 }
 .vital-signs .hjbz-warp .list-box .line-box .dividing-line
 {
-	width: 76%;
+	width: 86%;
 }
 .vital-signs .hjbz-warp .list-box .line-box
 {
@@ -423,7 +423,7 @@
 .vital-signs .hjbz-warp .list-box .text-list
 {
 	height: 50%;
-	width: 68%;
+	width: 80%;
 }
 @keyframes anm4 {
     0%

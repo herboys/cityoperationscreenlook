@@ -30,6 +30,7 @@ $(function(){
 			num:'7350',
 			unit:'元/月 '
 		},
+
 	];
 	addjbgk(jbqkArr);
 	var asjczArr=[

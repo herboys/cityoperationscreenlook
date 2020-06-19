@@ -121,8 +121,8 @@
 	height: 1.58rem;
 	float: left;
 	margin-left: 0.88rem;
-	/*margin-top: 25px;*/
-	margin-bottom: 1.32rem;
+	/*margin-bottom: 1.32rem;*/
+	margin-bottom: 1rem;
 	background: rgba(33,53,152,0.20);
 	background-color: /* #213598; */rgba(33,53,152,0.2);
 	font-family: SourceHanSansCN-Normal;

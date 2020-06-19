@@ -80,8 +80,36 @@ $(function(){
 			month:1234,
 		},
 	];
+
+	var jtzkArr=[
+		{
+			title:'城市道路网密度',
+			today:35,
+			week:253,
+			month:1534,
+		},
+		{
+			title:'交通客运量',
+			today:42,
+			week:198,
+			month:1345,
+		},
+		{
+			title:'交通流量',
+			today:20,
+			week:189,
+			month:1234,
+		},
+		{
+			title:'景区景点人流',
+			today:61,
+			week:248,
+			month:1453,
+		},
+	];
+
 	addCard(zygyArr,'.zygy-warp')
-	addCard(zygyArr,'.jtqk-warp')
+	addCard(jtzkArr,'.jtqk-warp')
 	var shbzArr=[
 		{
 			title:'城镇登记失业率',

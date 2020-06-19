@@ -71,9 +71,8 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	border: 0.2rem solid transparent;
-	border-top-color: #54FEFA;
-	border-left-color:#54FEFA;
+	border-top:0.5rem solid #54FEFA;
+	border-right:0.5rem solid transparent;
 	color: #54FEFA;
 
 }

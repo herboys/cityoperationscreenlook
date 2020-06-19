@@ -1,0 +1,436 @@
+.vital-signs .title-border-box,.vital-signs .title-box h3
+{
+	display: inline-block;
+	vertical-align: top;
+}
+.vital-signs .title-border-box .border-box
+{
+	height: 1rem;
+	width: 2px;
+	background-color: #31FFFE;
+}
+.vital-signs .title-border-box .top-border
+{
+	height: 0.4rem;
+	transform: rotate(45deg);
+	transform-origin:100% 100%;
+	position: relative;
+	bottom: -1px;
+}
+.vital-signs .title-border-box .bottom-border
+{
+	height: 0.4rem;
+	transform: rotate(-45deg);
+	transform-origin:100% 0%;
+	position: relative;
+	top: -2px;
+}
+.vital-signs .title-border-right
+{
+	transform: rotateY(180deg);
+}
+.vital-signs .title-box
+{
+	margin-bottom: 1rem;
+}
+.vital-signs .title-box h3
+{
+	font-size: 1rem;
+	color: #fff;
+	letter-spacing: 5px;
+	line-height: 1.8rem;
+	margin: 0 1rem;
+}
+.vital-signs ul
+{
+	text-align: center;
+}
+.vital-signs ul li
+{
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	padding-right: 0.3rem;
+	padding-bottom: 0.3rem;
+	margin: 0 0.9rem;
+}
+.vital-signs ul li .text-centered
+{
+	padding: 0.6rem;
+	background: rgba(80,227,194,0.2);
+	border: 1px solid #50BAE3;
+	flex-direction: column;
+	color: #fff;
+	position: relative;
+}
+.vital-signs ul li .text-centered::after
+{
+	content: '.';
+	font-size: 0;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 0.2rem solid transparent;
+	border-top-color: #54FEFA;
+	border-left-color:#54FEFA;
+	color: #54FEFA;
+
+}
+.vital-signs ul li .bottom-text>*
+{
+	display: inline-block;
+}
+.vital-signs ul li .text-centered>p
+{
+	width: 100%;
+}
+.vital-signs ul li .text-centered p
+{
+	font-size: 1rem;
+	text-align: left;
+	line-height: 1rem;
+}
+.vital-signs ul li .text-centered .num-font
+{
+	font-size: 2rem;
+	color: #00FFF6;
+}
+.vital-signs ul li .border-box
+{
+	position: absolute;
+	bottom: 0;
+	background-color: #50BAE3;
+	right: 0;
+}
+.vital-signs ul li .border-right
+{
+	width: 2px;
+	height: calc(100% - 0.6rem);
+}
+.vital-signs ul li .border-bottom
+{
+	width: calc(100% - 0.6rem);
+	height: 2px;
+}
+.vital-signs .top-box .title-box,.vital-signs .bottom-box .title-box
+{
+	padding-left: 2rem;
+}
+.main-warp .main-box .vital-signs-bg
+{
+	height: calc(100% - 1.1rem);
+	background-image: url(../images/life_bg.png);
+	background-size:101% 101%;
+	opacity: 1;
+	background-color: transparent;
+}
+.vital-signs .bottom-box
+{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.vital-signs .dividing-line
+{
+	display: inline-block;
+	vertical-align: middle;
+	height: 1px;
+	width: 82%;
+	position: relative;
+	background-color: #31FFFE;
+	margin-left: -5px;
+}
+.vital-signs .dividing-line .dividing-box
+{
+	height: 3px;
+	width: 10%;
+	position: absolute;
+	bottom: 1px;
+	right: 0px;
+	overflow: hidden;
+}
+.vital-signs .dividing-line .dividing-box::after
+{
+	content: '.';
+	display: block;
+	width: 100%;
+	height: 100%;
+	transform: skewX(-45deg);
+	background-color: #31FFFE;
+	margin-left: 2px;
+}
+.vital-signs .bottom-box .bottom-main
+{
+	width: calc(100% - 2rem);
+	margin: 0 auto;
+	display: flex;
+	margin-bottom: 1rem;
+}
+.vital-signs .bottom-box .bottom-main .main-list
+{
+	flex: 1;
+}
+.vital-signs .bottom-box .bottom-main .main-list>div
+{
+	display: inline-block;
+	vertical-align: top;
+}
+.vital-signs .bottom-box .bottom-main .main-list .main-left
+{
+	width: 5rem;
+	position: relative;
+}
+.vital-signs .bottom-box .bottom-main .main-list .main-left .text-centered
+{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-size: 1.2rem;
+	color: #fff;
+	flex-direction: column;
+}
+.vital-signs .bottom-box .bottom-main .main-list .main-right p
+{
+	line-height: 1.5rem;
+	font-size: 1rem;
+	color: #fff;
+}
+.vital-signs .bottom-box .bottom-main .main-list .main-right p .num-font
+{
+	display: inline-block;
+	font-size: 1.5rem;
+	color: #F5A623;
+	text-align: right;
+	width: 2.8rem;
+	margin-right: 10px;
+}
+.vital-signs .card-warp
+{
+	position: absolute;
+	left: 2rem;
+	width: 19.5rem;
+}
+.vital-signs .zygy-warp
+{
+	top: 20%;
+}
+.vital-signs .jtqk-warp
+{
+	top: 50%;
+}
+.vital-signs .card-warp .list-box
+{
+	width: 100%;
+	height: 10rem;
+	position: relative;
+}
+.vital-signs .card-warp .list-box .card-box
+{
+	width: 15rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+    animation: anm4 1s ease-out;
+	animation-fill-mode: backwards;
+	transition: transform 0.3s ease-out;
+	transform: translateY(0);
+}
+.vital-signs .card-warp .list-box .card-box-ac
+{
+	transform: translateY(-100%);	
+}
+.vital-signs .card-warp .list-box .card-box>div
+{
+	display: inline-block;
+	vertical-align: top;
+}
+.vital-signs .card-warp .list-box .card-box .card-title
+{
+	width: 1rem;
+	align-items: center;
+	font-size: 1rem;
+	padding: 0rem 1rem;
+	color: #fff;
+	background-color: rgba(67,113,255,0.7);
+	height: 6.8rem;
+	line-height: 1rem;
+}
+.vital-signs .card-warp .list-box .card-box .card-title .text-centered
+{
+	width: 100%;
+	height: 100%;
+}
+.vital-signs .card-warp .list-box .card-box .card-text
+{
+	width: calc(100% - 3.2rem);
+	height: 6.8rem;
+	background: rgba(3,32,49,0.90);
+	color: #fff;
+	font-size: 1rem;
+	margin-left: -3px;
+	overflow: hidden;
+}
+.vital-signs .card-warp .list-box .card-box .card-text p
+{
+	padding-left: 1rem;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.vital-signs .card-warp .list-box .card-box .card-text .num-font
+{
+	display: inline-block;
+	font-size: 1.5rem;
+	color: #F5A623;
+	text-align: right;
+	width: 2.5rem;
+	margin-right: 10px;
+}
+.vital-signs .jtqk-warp .list-box .card-box .card-text
+{
+	background: rgba(37,0,47,0.87);;
+}
+.vital-signs .shbz-warp
+{
+	position: absolute;
+	right: 0;
+	top: 19%;
+	width: 24rem;
+}
+.vital-signs .shbz-warp .list-box
+{
+	width: 100%;
+	height: 11rem;
+	position: relative;
+}
+.vital-signs .shbz-warp .list-box .list-bg,.vital-signs .hjbz-warp .list-box .list-bg,.vital-signs .shbz-warp .list-box .text-box
+{
+	width: 94%;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1;
+}
+.vital-signs .shbz-warp .list-box .line-box
+{
+	height: 20%;
+	position: relative;
+}
+.vital-signs .shbz-warp .list-box .line-box .dividing-line,.vital-signs .hjbz-warp .list-box .line-box .dividing-line
+{
+	width: 55%;
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	margin: 0;
+}
+.vital-signs .shbz-warp .list-box .slant,.vital-signs .hjbz-warp .list-box .slant
+{
+	position: absolute;
+	left: 0;
+	top: calc(20% - 2px);
+	width: 1px;
+	height: 113%;
+	transform: rotate(-45deg);
+	transform-origin: 0% 0%;
+	background-color: #31FFFE
+}
+.vital-signs .shbz-warp .list-box .line-box:nth-child(1),.vital-signs .hjbz-warp .list-box .line-box:nth-child(1)
+{
+	border-left: 1px solid #31FFFE;
+}
+.vital-signs .shbz-warp .list-box .line-box:nth-child(2)
+{
+	left: calc(10% - 1px);
+}
+.vital-signs .shbz-warp .list-box .line-box:nth-child(3)
+{
+	left: calc(20% - 1px);
+}
+.vital-signs .shbz-warp .list-box .line-box:nth-child(4)
+{
+	left: calc(30% - 1px);
+}
+.vital-signs .shbz-warp .list-box .line-box:nth-child(5)
+{
+	left: calc(40% - 5px);
+}
+.vital-signs .list-box .text-list
+{
+	width: 55%;
+	position: absolute;
+	height: 20%;
+}
+.vital-signs .list-box .text-list p
+{
+	font-size: 1.2rem;
+	color: #fff;
+	line-height: 2rem;
+}
+.vital-signs .list-box .text-list p:nth-child(2)
+{
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	font-size: 1rem;
+}
+.vital-signs .list-box .text-list p .num-font
+{
+	font-size: 1.6rem;
+	color: #F5A623;
+	letter-spacing: 2px;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+}
+.vital-signs .hjbz-warp
+{
+	position: absolute;
+	right: 0;
+	top: 55%;
+	width: 18rem;
+}
+.vital-signs .hjbz-warp .list-box
+{
+	width: 100%;
+	height: 4.2rem;
+	position: relative;
+}
+.vital-signs .hjbz-warp .list-box .line-box .dividing-line
+{
+	width: 76%;
+}
+.vital-signs .hjbz-warp .list-box .line-box
+{
+	height: 50%;
+	position: relative;
+}
+.vital-signs .hjbz-warp .list-box .slant
+{
+	top: 50%;
+	transform: rotate(42deg);
+	height: 64%;
+}
+.vital-signs .hjbz-warp .list-box .line-box:nth-child(2)
+{
+	left: -10%;
+}
+.vital-signs .hjbz-warp .list-box .text-list
+{
+	height: 50%;
+	width: 68%;
+}
+@keyframes anm4 {
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 0.6;
+    }
+}

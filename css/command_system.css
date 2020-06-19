@@ -270,6 +270,7 @@
 }
 .command-system .table-box .list-box .table-list
 {
+	width: 97%;
     animation: anm3 1s ease-out;
     animation-fill-mode: backwards;
 }

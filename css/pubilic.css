@@ -2,7 +2,6 @@
 {
 	padding: 0;
 	margin: 0;
-	font-family: 'pingfang';
 }
 html,body
 {
@@ -49,6 +48,7 @@ i
 img
 {
     width: 100%;
+    display: block;
 }
 /*修改 滚动条 下面 的 宽度*/
 *::-webkit-scrollbar {

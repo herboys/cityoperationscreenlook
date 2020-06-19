@@ -10,3 +10,129 @@ function addTableList(name,arr)
 
 	}
 }
+$(function(){
+	var coreArr=[
+	{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	},
+	{
+		address:'许行镇',
+		name:'王某',
+		name1:'张某',
+		num:'12',
+		phone:'66742920',
+	},
+	{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	},
+	{
+		address:'许行镇',
+		name:'王某',
+		name1:'张某',
+		num:'12',
+		phone:'66742920',
+	},
+	{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	},
+	{
+		address:'许行镇',
+		name:'王某',
+		name1:'张某',
+		num:'12',
+		phone:'66742920',
+	},
+	{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	},
+	{
+		address:'许行镇',
+		name:'王某',
+		name1:'张某',
+		num:'12',
+		phone:'66742920',
+	},
+	{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	},
+	{
+		address:'许行镇',
+		name:'王某',
+		name1:'张某',
+		num:'12',
+		phone:'66742920',
+	},
+	{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	},
+	{
+		address:'许行镇',
+		name:'王某',
+		name1:'张某',
+		num:'12',
+		phone:'66742920',
+	},
+]
+addTableList('.core-table',coreArr);
+var linkageArr=[
+	{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	},
+	{
+		address:'许行镇',
+		name:'王某',
+		name1:'张某',
+		num:'12',
+		phone:'66742920',
+	},				{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	},
+	{
+		address:'许行镇',
+		name:'王某',
+		name1:'张某',
+		num:'12',
+		phone:'66742920',
+	},				{
+		address:'嘉定新城(马陆镇)',
+		name:'李某某',
+		name1:'张某',
+		num:'6',
+		phone:'66742920',
+	}
+]
+addTableList('.linkage-table',linkageArr)
+
+})

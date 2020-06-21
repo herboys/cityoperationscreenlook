@@ -116,8 +116,8 @@ $(function(){
 		},
 	];
 
-	addCard(zygyArr,'.zygy-warp')
-	addCard(jtzkArr,'.jtqk-warp')
+	addCard(zygyArr,'.zygy-warp') //资源供应
+	addCard(jtzkArr,'.jtqk-warp') //交通情况
 	var shbzArr=[
 		{
 			title:'城镇登记失业率',
@@ -188,9 +188,9 @@ $(function(){
 			unit:'吨/月',
 		},
 	]
-	addHjbz(hjbzArr)
+	addHjbz(hjbzArr) //环境保障
 })
-function addjbgk(arr){
+function addjbgk(arr){ //基本概况
 	$('.vital-signs .top-box ul').html('')
 	for(let i=0;i<arr.length;i++)
 	{

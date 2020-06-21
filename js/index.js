@@ -1,5 +1,7 @@
+var STATIC_URL="http://localhost:8085";
 $(document).ready(function(){
 	getZxgl();
+	getName();
 })
 
 function setFont(){
@@ -11,7 +13,7 @@ function setFont(){
 	$('html').css({'font-size':size+'px'})
 }
 
-function getZxgl(){
+/*function getZxgl(){
 	var resultInfo=[];
 	var i=0;
 	resultInfo[i++]='城运平台';resultInfo[i++]='网络化管理';resultInfo[i++]='智慧交通';resultInfo[i++]='智慧电梯';
@@ -29,7 +31,7 @@ function getZxgl(){
 		+'</div>'		
 		+ resultInfo[i] + '</div>'
 	}
-	$('#zxgl_detail').html(str);
+	$('#zxgl_detail').html(str);*/
 	/*var str1 = "";
 	for (var i = 16; i < tableLen; i++) {
 		str1 += '<div class="csyytz_txt text-centered">'
@@ -38,6 +40,57 @@ function getZxgl(){
 		+'</div>'	
 			+ resultInfo[i] + '</div>'
 	}
-	$('#zxgl_detail1').html(str1);*/
+	$('#zxgl_detail1').html(str1);
 
+}*/
+
+
+function getZxgl(){
+	//var STATIC_URL="http://localhost:8085";
+
+	$.ajax({
+		url : STATIC_URL+'/specialmanagement/findAll',
+		dataType : 'json',
+		//contentType: 'application/json',
+		type : 'get',
+		//dataType:'JSONP',
+		//async : true,
+		success : function(data) {
+			var tableLen =data.length;
+			var str = "";
+			for (var i = 0; i < tableLen; i++){
+				str += '<div class="csyytz_txt text-centered">'
+					+'<div class="arrowBar-box">'
+					+'<div class="arrowBar"></div>'
+					+'</div>'
+					+ data[i].managementName+ '</div>'
+			}
+			$('#zxgl_detail').html(str);
+			/*var str1 = "";
+            for (var i = 16; i < tableLen; i++) {
+                str1 += '<div class="csyytz_txt text-centered">'
+                +'<div class="arrowBar-box">'
+                +'<div class="arrowBar"></div>'
+                +'</div>'
+                    + resultInfo[i] + '</div>'
+            }
+            $('#zxgl_detail1').html(str1);*/
+		}
+	})
 }
+
+function getName(){
+	$.ajax({
+		url : STATIC_URL+'/zonecenter/findAll',
+		dataType : 'json',
+		type : 'get',
+		success : function(data) {
+			$('#name').html(data[0].leaderName);
+			$('#name1').html(data[0].directorName);
+			$('#name2').html(data[0].commanderName);
+			$('#name3').html(data[0].foremanName);
+			$('#name4').html(data[0].dutyName);
+		}
+	})
+}
+

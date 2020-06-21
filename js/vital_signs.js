@@ -2,38 +2,52 @@ $(function(){
 	var jbqkArr=[
 		{
 			title:'常住人口',
-			num:'215.53',
+			//num:'215.53',
 			unit:'万'
 		},
 		{
 			title:'户籍人口',
-			num:'68.28',
+			//num:'68.28',
 			unit:'万'
 		},
 		{
 			title:'面积',
-			num:'464.2',
+			//num:'464.2',
 			unit:'平方公里'
 		},
 		{
 			title:'人口密度',
-			num:'2801',
+			//num:'2801',
 			unit:'人/平方公里'
 		},
 		{
 			title:'GDP',
-			num:'2362.7',
+			//num:'2362.7',
 			unit:'亿元/季'
 		},
 		{
 			title:'人均',
-			num:'7350',
+			//num:'7350',
 			unit:'元/月 '
 		},
 
 	];
+	$.ajax({
+		url : STATIC_URL+'/overview/findAll',
+		dataType : 'json',
+		type : 'get',
+		async : false,
+		success : function(data) {
+			jbqkArr[0].num=data[0].popu;
+			jbqkArr[1].num=data[0].popuSum;
+			jbqkArr[2].num=data[0].area;
+			jbqkArr[3].num=data[0].popuDesity;
+			jbqkArr[4].num=data[0].gdp;
+			jbqkArr[5].num=data[0].incomePer;
+		}
+	})
 	addjbgk(jbqkArr);
-	var asjczArr=[
+/*	var asjczArr=[
 		{
 			today:20,
 			week:189,
@@ -59,28 +73,44 @@ $(function(){
 			week:189,
 			month:1234,
 		},
-	]
+	]*/
+	var asjczArr=[];
+	$.ajax({
+		url : STATIC_URL+'/eventhandle/findAll',
+		dataType : 'json',
+		type : 'get',
+		async : false,
+		success : function(data) {
+			for(var i=0;i<data.length;i++){
+				var obj=new Object()
+				obj.today=data[i].timeDay;
+				obj.week=data[i].timeWeek;
+				obj.month=data[i].timeMonth;
+				asjczArr[i]=obj
+		}
+		}
+	})
 	addAsjcz(asjczArr);
 	var zygyArr=[
 		{
 			title:'用电总量',
-			today:20,
-			week:189,
-			month:1234,
+			//today:20,
+			//week:189,
+			//month:1234,
 			unit:'度',
 		},
 		{
 			title:'用水总量',
-			today:20,
-			week:189,
-			month:1234,
+			//today:20,
+			//week:189,
+			//month:1234,
 			unit:'度',
 		},
 		{
 			title:'供气总量',
-			today:20,
-			week:189,
-			month:1234,
+			//today:20,
+			//week:189,
+			//month:1234,
 			unit:'度',
 		},
 	];
@@ -88,106 +118,158 @@ $(function(){
 	var jtzkArr=[
 		{
 			title:'城市道路网密度',
-			today:35,
-			week:253,
-			month:1534,
+			//today:35,
+			//week:253,
+			//month:1534,
 			unit:'人次',
 		},
 		{
 			title:'交通客运量',
-			today:42,
-			week:198,
-			month:1345,
+			//today:42,
+			//week:198,
+			//month:1345,
 			unit:'人次',
 		},
 		{
 			title:'交通流量',
-			today:20,
-			week:189,
-			month:1234,
+			//today:20,
+			//week:189,
+			//month:1234,
 			unit:'人次',
 		},
 		{
 			title:'景区景点人流',
-			today:61,
-			week:248,
-			month:1453,
+			//today:61,
+			//week:248,
+			//month:1453,
 			unit:'人次',
 		},
 	];
-
+//var zygyArr=[];var jtzkArr=[];
+	$.ajax({
+		url : STATIC_URL+'/resource/findAll',
+		dataType : 'json',
+		type : 'get',
+		async : false,
+		success : function(data) {
+			var j=0;
+			for(var i=0;i<3;i++){
+				zygyArr[j].today=data[i].timeDay;
+				zygyArr[j].week=data[i].timeWeek;
+				zygyArr[j].month=data[i].timeMonth;
+				j++
+			}
+			var j=0;
+			for(var i=3;i<data.length;i++){
+				jtzkArr[j].today=data[i].timeDay;
+				jtzkArr[j].week=data[i].timeWeek;
+				jtzkArr[j].month=data[i].timeMonth;
+				j++
+			}
+		}
+	})
 	addCard(zygyArr,'.zygy-warp') //资源供应
 	addCard(jtzkArr,'.jtqk-warp') //交通情况
 	var shbzArr=[
 		{
 			title:'城镇登记失业率',
-			num:0.3,
+			//num:0.3,
 			unit:'%',
 		},
 		{
 			title:'社保综合参保率',
-			num:0.3,
+			//num:0.3,
 			unit:'%',
 		},
 		{
 			title:'最低工资标准',
-			num:0.3,
+			//num:0.3,
 			unit:'%',
 		},
 		{
 			title:'每千人医疗床位',
-			num:0.3,
+			//num:0.3,
 			unit:'%',
 		},
 		{
 			title:'门诊就诊量',
-			num:0.3,
+			//num:0.3,
 			unit:'%',
 		},
 		{
 			title:'城镇登记失业率',
-			num:0.3,
+			//num:0.3,
 			unit:'%',
 		},
 		{
 			title:'社保综合参保率',
-			num:0.3,
+			//num:0.3,
 			unit:'%',
 		},
 	]
+	$.ajax({
+		url : STATIC_URL+'/insurance/findAll',
+		dataType : 'json',
+		type : 'get',
+		async : false,
+		success : function(data) {
+			shbzArr[0].num=data[0].unemployRate;
+			shbzArr[1].num=data[0].insurRate;
+			shbzArr[2].num=data[0].wageMinimum;
+			shbzArr[3].num=data[0].medicalBedThou;
+			shbzArr[4].num=data[0].outpatientVisit;
+			shbzArr[5].num=data[0].unemployRate;
+			shbzArr[6].num=data[0].insurRate;
+		}
+	})
+
 	addShbz(shbzArr)
 	var hjbzArr=[
 		{
 			title:'生活垃圾处理',
-			num:28940,
+			//num:28940,
 			unit:'吨/日',
 		},
 		{
 			title:'污水处理量',
-			num:341556,
+			//num:341556,
 			unit:'吨/日',
 		},
 		{
 			title:'生活垃圾处理',
-			num:28940,
+			//num:28940,
 			unit:'吨/周',
 		},
 		{
 			title:'污水处理量',
-			num:341556,
+			//num:341556,
 			unit:'吨/周',
 		},
 		{
 			title:'生活垃圾处理',
-			num:28940,
+			//num:28940,
 			unit:'吨/月',
 		},
 		{
 			title:'污水处理量',
-			num:341556,
+			//num:341556,
 			unit:'吨/月',
 		},
 	]
+	$.ajax({
+		url : STATIC_URL+'/allowance/findAll',
+		dataType : 'json',
+		type : 'get',
+		async : false,
+		success : function(data) {
+			hjbzArr[0].num=data[0].wasteDisSum;
+			hjbzArr[1].num=data[0].sewageTreatSum;
+			hjbzArr[2].num=data[0].wasteDisSum;
+			hjbzArr[3].num=data[0].sewageTreatSum;
+			hjbzArr[4].num=data[0].wasteDisSum;
+			hjbzArr[5].num=data[0].sewageTreatSum;
+		}
+	})
 	addHjbz(hjbzArr) //环境保障
 })
 function addjbgk(arr){ //基本概况

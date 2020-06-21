@@ -28,6 +28,7 @@
 	color: #94C5FF;
 	line-height: 2rem;
 	letter-spacing: 3px;
+	font-size: 1.47rem;
 }
 .command-system .core-warp .core-box
 {
@@ -307,7 +308,7 @@
 }
 .command-system .linkage-table .list-warp
 {
-	height: calc(2px + 7.5rem);
+	height: calc(2px + 8.5rem);
 	position: relative;
 	overflow: hidden;
 }

@@ -27,7 +27,7 @@ function getjrwlzsj(){
 
 					if(i==0||i==1||i==2)
 					{
-						str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="http://vali-g1.cp31.ott.cibntv.net/youku/69752e30609387173282e501c/03000801005ED0E635F6204003E880EAF120E3-FC36-4F82-A448-5E34401D7A65.mp4?sid=159212567300010004125_00_B54712ec8006757e140762bf6c08f5dd7&amp;sign=beefe9d075ef0e2d21a32f31bedc26f6&amp;ctype=50&amp;si=183&amp;psid=713850910b6824a787ce59f500f54be24d045">'
+						str	+='<video controls="" autoplay preload muted name="media" class="video-list"  src="http://vali-g1.cp31.ott.cibntv.net/youku/69752e30609387173282e501c/03000801005ED0E635F6204003E880EAF120E3-FC36-4F82-A448-5E34401D7A65.mp4?sid=159212567300010004125_00_B54712ec8006757e140762bf6c08f5dd7&amp;sign=beefe9d075ef0e2d21a32f31bedc26f6&amp;ctype=50&amp;si=183&amp;psid=713850910b6824a787ce59f500f54be24d045">'
 					}
 					
 					str	+= '  </video>'
@@ -102,7 +102,7 @@ function intVideoTwo(){
 		{
 			videoNum=0;
 		}
-		$('#slider2').animate({'left':-262},500,function(){
+		$('#slider2').animate({'left':-282},500,function(){
 			$('#slider2').children().eq(0).remove();
 			$('#slider2').css({'left':0})
 			var str='';
@@ -172,7 +172,7 @@ function intVideoOne(){
 		{
 			videoNumOne=0;
 		}
-		$('#slider1').animate({'left':-590},1000,function(){
+		$('#slider1').animate({'left':-600},1000,function(){
 
 			$('#slider1').children().eq(0).remove();
 			$('#slider1').css({'left':0})
@@ -187,5 +187,5 @@ function intVideoOne(){
 				+'</div>'
 			$('#slider1').append(str);
 		})
-	},50000)
+	},5000)
 }

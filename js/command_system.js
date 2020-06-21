@@ -181,7 +181,7 @@ function addTableList1(name,arr)
 		setTimeout(function(){
 			$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leader+'</p><p>'+arr[i].name+'</p><p>'+arr[i].name1+'</p><p class="num">'+arr[i].num+'</p><p>'+arr[i].phone+'</p></div>')
 		},200*i)
-		if(name=='.linkage-table'&&i==arr.length-1&&arr.length>5)
+		if(name=='.linkage-table'&&i==arr.length-1&&arr.length>6)
 		{
 			linkageMax=arr.length;
 			linkageNum=0;
@@ -202,14 +202,24 @@ function addTableList1(name,arr)
 }
 function linkageInt(){
 	var moveT=$('.linkage-table').find('.table-list').eq(0).height()-8;
+	//alert(moveT)
 	linkageTime=setInterval(() => {
-		linkageNum++;
-		$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum},1000,function(){
-			if(linkageNum==linkageMax)
+			if(linkageNum>=linkageMax/6)
 			{
-				linkageNum=0;
-				 $('.linkage-table .list-box').css({top:-moveT*linkageNum});
+				linkageNum=-1;
+				$('.linkage-table .list-box').css({top:-moveT*linkageNum});
 			}
-		})
-	}, 3000);
+			linkageNum++;
+		
+	
+			$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum*6},1000,function(){
+				//if(linkageNum>=linkageMax/6)
+				//{
+				//	linkageNum=0;
+				//	$('.linkage-table .list-box').css({top:-moveT*linkageNum});
+				//	$('.linkage-table .list-box').css({top:-0});
+				//}
+			})
+		}
+		, 5000);
 }

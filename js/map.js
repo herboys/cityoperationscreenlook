@@ -261,7 +261,7 @@ function playVideo(e) {
     //console.log("播放视频"+e.target.Ce.markId)
     var stationId=e.target.Ce.markId;
     $.ajax({
-        url:'/sh/SocialGoverance/getVideoUrl'+stationId,
+        url:'/videoStream/getVideoSource/'+stationId,
         type:'get',
         dataType: "json",
         success:function (data) {

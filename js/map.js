@@ -209,7 +209,15 @@ function addPoiMarker(){
     var p1 = {name:"嘉定区政府" , lng:121.2653 ,lat:31.375602, type:"gov"};
     var p2 = {name:"南翔老街" , lng:121.308554 ,lat:31.292458, type:"scene"};
     var p3 = {name:"安亭汽车城" , lng:121.16929 ,lat:31.281836, type:"car"};
-    var mapMarker = [p1,p2,p3];
+    var p4={name:"G15朱桥" , lng:121.188198,lat:31.405467, type:"qiakou"};
+    //var p5={name:"G2京沪" , lng:121.267748,lat:31.253163, type:"qiakou"};
+    var p6={name:"安亭站" , lng:121.161985,lat:31.28849, type:"qiakou"};
+    var p7={name:"华亭站" , lng:121.242686,lat:31.468279, type:"qiakou"};
+    var p8={name:"外冈站（水路）" , lng:121.171181,lat:31.360180, type:"qiakou"};
+    var p9={name:"南翔北站" , lng:121.30875,lat:31.281473, type:"qiakou"};
+    var p10={name:"陆渡站" , lng:121.194994,lat:31.467135, type:"qiakou"};
+    var p11={name:"安亭北站" , lng:121.164746,lat:31.320193, type:"qiakou"};
+    var mapMarker = [p1,p2,p3,p4,p6,p7,p8,p9,p10,p11];
     console.log(mapMarker.length);
     for(var i = 0 ; i < mapMarker.length ; i++){
         console.log(JSON.stringify(mapMarker[i]));

@@ -65,6 +65,11 @@ function getZxgl(){
 					+'</div>'
 					+ data[i].managementName+ '</div>'
 			}
+			str += '<div class="csyytz_txt text-centered">'
+					+'<div class="arrowBar-box">'
+					+'<div class="arrowBar"></div>'
+					+'</div>'
+					+ '更多......</div>'
 			$('#zxgl_detail').html(str);
 			/*var str1 = "";
             for (var i = 16; i < tableLen; i++) {

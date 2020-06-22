@@ -217,14 +217,14 @@ function addPoiMarker() {
     var p2 = {pointId: -2, name: "南翔老街", lng: 121.308554, lat: 31.292458, type: "scene"};
     var p3 = {pointId: -3, name: "安亭汽车城", lng: 121.16929, lat: 31.281836, type: "car"};
     var p4 = {pointId: 1, name: "G15朱桥", lng: 121.188198, lat: 31.405467, type: "qiakou"};
-    //var p5={name:"G2京沪" , lng:121.267748,lat:31.253163, type:"qiakou"};
+    var p5 = {pointId:2,name:"G2京沪" , lng:121.267748,lat:31.253163, type:"qiakou"};
     var p6 = {pointId: 4, name: "安亭站", lng: 121.161985, lat: 31.28849, type: "qiakou"};
     var p7 = {pointId: 7, name: "华亭站", lng: 121.242686, lat: 31.468279, type: "qiakou"};
     var p8 = {pointId: 12, name: "外冈站（水路）", lng: 121.171181, lat: 31.360180, type: "qiakou"};
     var p9 = {pointId: 91, name: "南翔北站", lng: 121.30875, lat: 31.281473, type: "qiakou"};
     var p10 = {pointId: 6, name: "陆渡站", lng: 121.194994, lat: 31.467135, type: "qiakou"};
     var p11 = {pointId: 90, name: "安亭北站", lng: 121.164746, lat: 31.320193, type: "qiakou"};
-    var mapMarker = [p1, p2, p3, p4, p6, p7, p8, p9, p10, p11];
+    var mapMarker = [p1, p2, p3, p4, p6, p7, p8, p9, p10, p11,p5];
 
     console.log(mapMarker.length);
     for (var i = 0; i < mapMarker.length; i++) {
@@ -257,17 +257,39 @@ function addPoiMarker() {
 }
 
 function playVideo(e) {
-    alert("播放视频"+e.target.Ce.markId);
+    //alert("播放视频"+e.target.Ce.markId);
     //console.log("播放视频"+e.target.Ce.markId)
     var stationId=e.target.Ce.markId;
     $.ajax({
-        url:'/videoStream/getVideoSource/'+stationId,
+        url:'http://localhost:8085/videoStream/getVideoSource/'+stationId,
         type:'get',
         dataType: "json",
         success:function (data) {
-            var src=data.data;
+            var resData=data.data;
+           // alert("播放视频"+e.target.Ce.markId);
             //播放视频函数
+           /* "monitorPoint": "630013108嘉定G2京沪一级出沪车检 东HG",
+                "url": "http://10.237.221.178:8050/cam/realmonitor/31011401001320205008?subtype=0&streamType=0&token=1592793106_0d12f011d9ba7ee06dd327f764a41f46dfabbf96&mediatype=HLS.m3u8"
+*/
+           console.log(1)
 
+           console.log(resData)
+            var urlList=[]
+            var index=0;
+            for(var i=0;i<resData.length;i++){
+                if(resData[i].url!=null && resData[i].url!=''){
+                    urlList[index++]=resData[i].url
+                }
+            }
+            alert(urlList.length)
+            if(urlList.length>0)
+                openVideo(urlList)
+            else
+                alert('该点位无可用视频')
+        },
+        error:function (data) {
+            console.log(data)
+            alert('失败')
         }
 
     })

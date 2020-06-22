@@ -61,31 +61,93 @@ function getjrwlzsj(){
 
 var videoFlagTwo=0;
 function createVideoSlide(){
-    for(var i=0;i<10;i++){
+
+	var G215List=[]
+	var index=0;
+	$.ajax({
+		url:'http://localhost:8085/videoStream/getVideoSource/2',
+		type:'get',
+		dataType: "json",
+		async:false,
+		success:function (data) {
+			var resData=data.data;
+			console.log(resData)
+
+			for(var i=0;i<resData.length;i++){
+				if(resData[i].url!=null && resData[i].url!=''){
+					//alert(resData[i].url)
+					G215List[index++]=resData[i].url
+				}
+			}
+		},
+		error:function (data) {
+			console.log(data)
+			alert('失败')
+		}
+
+	})
+
+	$.ajax({
+		url:'http://localhost:8085/videoStream/getVideoSource/1',
+		type:'get',
+		dataType: "json",
+		async:false,
+		success:function (data) {
+			var resData=data.data;
+
+			for(var i=0;i<resData.length;i++){
+				if(resData[i].url!=null && resData[i].url!=''){
+					G215List[index++]=resData[i].url
+				}
+			}
+		},
+		error:function (data) {
+			console.log(data)
+			alert('失败')
+		}
+
+	})
+
+
+	console.log(123)
+	console.log(G215List)
+
+    for(var i=0;i<G215List.length;i++){
         var videoObj=new Object();
         videoObj.name="摄像头"+i
-        videoObj.src="http://vali-g1.cp31.ott.cibntv.net/youku/69752e30609387173282e501c/03000801005ED0E635F6204003E880EAF120E3-FC36-4F82-A448-5E34401D7A65.mp4?sid=159212567300010004125_00_B54712ec8006757e140762bf6c08f5dd7&amp;sign=beefe9d075ef0e2d21a32f31bedc26f6&amp;ctype=50&amp;si=183&amp;psid=713850910b6824a787ce59f500f54be24d045"
+        videoObj.src=G215List[i]
         jrwlzsjList[i]=videoObj;
     }
 
     var str=""
+	$('#slider2').html('');
     for (var i = 0; i < 3; i++) {
+    	str=''
         str += '<div class="slide">'
                 +'<div class="jrwlzsjTxt">'
-    
+
         str +='<div class="jrwlzsjCont">'
 
-        if(i==0||i==1||i==2)
-        {
-            str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[i].src+'">'
-        }
-        
+		// str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[i].src+'">'
+		str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
+
         str	+= '  </video>'
             +'</div>'
             +'</div>'
             +'</div>'
+
+		$('#slider2').append(str);
+
+		var hls = new Hls();
+		var video = $("#slider2 video")[i];
+		hls.loadSource(jrwlzsjList[i].src);
+		hls.attachMedia(video);
+		hls.on(Hls.Events.MANIFEST_PARSED, function () {
+			video.play();
+		})
+
     }
-    $('#slider2').html(str);
+    //$('#slider2').html(str);
     if(i >2 ){
         $(document).ready(function() {
             intVideoTwo();
@@ -120,44 +182,109 @@ function intVideoTwo(){
 					+'<div class="jrwlzsjTxt">'
 			}
 			str +='<div class="jrwlzsjCont">'
-			str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[videoNum].src+'">'
+			//str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[videoNum].src+'">'
+			str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
 				+'</div>'
 				+'</div>'
 				+'</div>'
 			$('#slider2').append(str);
+
+			var hls = new Hls();
+			var video = $("#slider2 video")[2];
+			hls.loadSource(jrwlzsjList[videoNum].src);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED, function () {
+				video.play();
+			})
+
 		})
-	},5000)
+	},15000)
 }
 
 var videoFlagOne=0;
 
 function createVideoSlideOne(){
-    for(var i=0;i<10;i++){
+
+	var G215List=[]
+	var index=0;
+	$.ajax({
+		url:'http://localhost:8085/videoStream/getVideoSource/2',
+		type:'get',
+		dataType: "json",
+		async:false,
+		success:function (data) {
+			var resData=data.data;
+			console.log(resData)
+
+			for(var i=0;i<resData.length;i++){
+				if(resData[i].url!=null && resData[i].url!=''){
+					//alert(resData[i].url)
+					G215List[index++]=resData[i].url
+				}
+			}
+		},
+		error:function (data) {
+			console.log(data)
+			alert('失败')
+		}
+
+	})
+
+	$.ajax({
+		url:'http://localhost:8085/videoStream/getVideoSource/1',
+		type:'get',
+		dataType: "json",
+		async:false,
+		success:function (data) {
+			var resData=data.data;
+
+			for(var i=0;i<resData.length;i++){
+				if(resData[i].url!=null && resData[i].url!=''){
+					G215List[index++]=resData[i].url
+				}
+			}
+		},
+		error:function (data) {
+			console.log(data)
+			alert('失败')
+		}
+
+	})
+
+
+	for(var i=0;i<10;i++){
         var videoObj=new Object();
         videoObj.name="摄像头"+i
-        videoObj.src="http://vali-g1.cp31.ott.cibntv.net/youku/69752e30609387173282e501c/03000801005ED0E635F6204003E880EAF120E3-FC36-4F82-A448-5E34401D7A65.mp4?sid=159212567300010004125_00_B54712ec8006757e140762bf6c08f5dd7&amp;sign=beefe9d075ef0e2d21a32f31bedc26f6&amp;ctype=50&amp;si=183&amp;psid=713850910b6824a787ce59f500f54be24d045"
+        videoObj.src= G215List[i]
         jrwlzsjListOne[i]=videoObj;
     }
 
     var str=""
+	$('#slider1').html('');
     for (var i = 0; i < 2; i++) {
+    	str=''
         str += '<div class="slide1">'
                 +'<div class="jrwlzsjTxt1">'
     
         str +='<div class="jrwlzsjCont1">'
 
-        if(i==0||i==1)
-        {
-            str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="http://vali-g1.cp31.ott.cibntv.net/youku/69752e30609387173282e501c/03000801005ED0E635F6204003E880EAF120E3-FC36-4F82-A448-5E34401D7A65.mp4?sid=159212567300010004125_00_B54712ec8006757e140762bf6c08f5dd7&amp;sign=beefe9d075ef0e2d21a32f31bedc26f6&amp;ctype=50&amp;si=183&amp;psid=713850910b6824a787ce59f500f54be24d045">'
-        }
+		str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
         
         str	+= '  </video>'
             +'</div>'
             +'</div>'
             +'</div>'
+		$('#slider1').append(str);
+		var hls = new Hls();
+		var video = $("#slider1 video")[i];
+		hls.loadSource(jrwlzsjListOne[i].src);
+		hls.attachMedia(video);
+		hls.on(Hls.Events.MANIFEST_PARSED, function () {
+			video.play();
+		})
     }
-    $('#slider1').html(str);
+   // $('#slider1').html(str);
     if(i >1 ){
         $(document).ready(function() {
             intVideoOne();
@@ -189,23 +316,34 @@ function intVideoOne(){
 			str += '<div class="slide1">'
 					+'<div class="jrwlzsjTxt1">'
 			str +='<div class="jrwlzsjCont1">'
-			str	+='<video autoplay preload muted controls="" name="media" class="video-list" src="http://vali-g1.cp31.ott.cibntv.net/youku/69752e30609387173282e501c/03000801005ED0E635F6204003E880EAF120E3-FC36-4F82-A448-5E34401D7A65.mp4?sid=159212567300010004125_00_B54712ec8006757e140762bf6c08f5dd7&amp;sign=beefe9d075ef0e2d21a32f31bedc26f6&amp;ctype=50&amp;si=183&amp;psid=713850910b6824a787ce59f500f54be24d045">'
+			str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
 				+'</div>'
 				+'</div>'
 				+'</div>'
 			$('#slider1').append(str);
+
+			$('#slider1').append(str);
+			var hls = new Hls();
+			var video = $("#slider1 video")[1];
+			hls.loadSource(jrwlzsjListOne[videoNumOne].src);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED, function () {
+				video.play();
+			})
+
 		})
-	},5000)
+	},15000)
 }
 
 var videoList=[];
-function openVideo(){
+function openVideo(urlList){
 	
-	for(var i=0;i<3;i++){
+	/*for(var i=0;i<3;i++){
 		videoList[i]='http://vali-g1.cp31.ott.cibntv.net/youku/69752e30609387173282e501c/03000801005ED0E635F6204003E880EAF120E3-FC36-4F82-A448-5E34401D7A65.mp4?sid=159212567300010004125_00_B54712ec8006757e140762bf6c08f5dd7&amp;sign=beefe9d075ef0e2d21a32f31bedc26f6&amp;ctype=50&amp;si=183&amp;psid=713850910b6824a787ce59f500f54be24d045'
 	}
-
+*/
+	videoList=urlList
 	if(videoList.length==0){
 		alert("该点位无视频数据")
 		return
@@ -233,7 +371,8 @@ function insertOneVideo(){
 		str += '<div class="slide1">'
 				+'<div class="jrwlzsjTxt1"><span style="right:40px;top:0px;font-size:25px;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
 		str +='<div class="jrwlzsjCont1">'
-		str	+='<video autoplay preload muted controls="" name="media" class="video-list" src="'+videoList[0]+'">'
+		//str	+='<video autoplay preload muted controls="" name="media" class="video-list" src="'+videoList[0]+'">'
+		str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
 		str	+= '  </video>'
 			+'</div>'
 			+'</div>'
@@ -242,7 +381,16 @@ function insertOneVideo(){
 
 	$('#slider1').children().eq(0)[0].innerHTML=str	
 	//console.log($('#slider1').children().eq(0));
-	$("#slider1 video")[0].play()
+	//$("#slider1 video")[0].play()
+
+
+	var hls = new Hls();
+	var video = $("#slider1 video")[0];
+	hls.loadSource(videoList[0]);
+	hls.attachMedia(video);
+	hls.on(Hls.Events.MANIFEST_PARSED, function () {
+		video.play();
+	})
 
 	videoFlagOne=1;
 }
@@ -256,7 +404,8 @@ function insertTwoVideo(first,second){
 			+'<div class="jrwlzsjTxt"><span style="right:0px;top:0px;font-size:18px;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(0)>关闭</span>'
 	
 		str +='<div class="jrwlzsjCont">'
-		str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+videoList[first]+'">'
+			//str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted" src="'+videoList[first]+'">'
+	str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted" >'
 		str	+= '  </video>'
 			+'</div>'
 			+'</div>'
@@ -264,14 +413,23 @@ function insertTwoVideo(first,second){
 
 		$('#slider2').children().eq(0)[0].innerHTML=str	
 			//console.log($('#slider1').children().eq(0));
-		$("#slider2 video")[0].play()
+	//	$("#slider2 video")[0].play()
+
+	var hls = new Hls();
+	var video = $("#slider2 video")[0];
+	hls.loadSource(videoList[first]);
+	hls.attachMedia(video);
+	hls.on(Hls.Events.MANIFEST_PARSED, function () {
+		video.play();
+	})
 
 		str=''
 		str += '<div class="slide">'
 				+'<div class="jrwlzsjTxt"><span style="right:0px;top:0px;font-size:18px;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(1)>关闭</span>'
 		
 		str +='<div class="jrwlzsjCont">'
-		str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+videoList[second]+'">'
+		//str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted" src="'+videoList[second]+'">'
+		str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted" >'
 		str	+= '  </video>'
 				+'</div>'
 				+'</div>'
@@ -280,7 +438,14 @@ function insertTwoVideo(first,second){
 				console.log(123)
 		$('#slider2').children().eq(1)[0].innerHTML=str	
 		console.log($('#slider2').children().eq(1));
-		$("#slider2 video")[1].play()
+		//$("#slider2 video")[1].play()
+	var hls = new Hls();
+	var video = $("#slider2 video")[1];
+	hls.loadSource(videoList[first]);
+	hls.attachMedia(video);
+	hls.on(Hls.Events.MANIFEST_PARSED, function () {
+		video.play();
+	})
 }
 
 function closeVideoOne(){

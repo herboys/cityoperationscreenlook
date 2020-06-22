@@ -104,14 +104,14 @@ $(function(){
 			//today:20,
 			//week:189,
 			//month:1234,
-			unit:'度',
+			unit:'立方',
 		},
 		{
 			title:'供气总量',
 			//today:20,
 			//week:189,
 			//month:1234,
-			unit:'度',
+			unit:'立方',
 		},
 	];
 

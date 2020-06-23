@@ -217,7 +217,7 @@ function addPoiMarker() {
     var p2 = {pointId: -2, name: "南翔老街", lng: 121.308554, lat: 31.292458, type: "scene"};
     var p3 = {pointId: -3, name: "安亭汽车城", lng: 121.16929, lat: 31.281836, type: "car"};
     var p4 = {pointId: 1, name: "G15朱桥", lng: 121.188198, lat: 31.405467, type: "qiakou"};
-    var p5 = {pointId:2,name:"G2京沪" , lng:121.267748,lat:31.253163, type:"qiakou"};
+    var p5 = {pointId:2,name:"G2京沪" , lng:121.145693,lat:31.284744, type:"qiakou"};
     var p6 = {pointId: 4, name: "安亭站", lng: 121.161985, lat: 31.28849, type: "qiakou"};
     var p7 = {pointId: 7, name: "华亭站", lng: 121.242686, lat: 31.468279, type: "qiakou"};
     var p8 = {pointId: 12, name: "外冈站（水路）", lng: 121.171181, lat: 31.360180, type: "qiakou"};

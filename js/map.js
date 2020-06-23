@@ -305,7 +305,7 @@ function playVideo(e) {
     //console.log("播放视频"+e.target.Ce.markId)
     var stationId=e.target.Ce.markId;
     $.ajax({
-        url:'http://localhost:8085/videoStream/getVideoSource/'+stationId,
+        url:STATIC_URL+'/videoStream/getVideoSource/'+stationId,
         type:'get',
         dataType: "json",
         success:function (data) {
@@ -319,15 +319,17 @@ function playVideo(e) {
 
            console.log(resData)
             var urlList=[]
+            var urlName=[]
             var index=0;
             for(var i=0;i<resData.length;i++){
                 if(resData[i].url!=null && resData[i].url!=''){
-                    urlList[index++]=resData[i].url
+                    urlList[index]=resData[i].url
+                    urlName[index++]=resData[i].monitorPoint.substr(9)
                 }
             }
-            alert(urlList.length)
+           // alert(JSON.stringify(urlName))
             if(urlList.length>0)
-                openVideo(urlList)
+                openVideo(urlList,urlName)
             else
                 alert('该点位无可用视频')
         },

@@ -1,5 +1,4 @@
-//var STATIC_URL="http://192.168.10.32:9090/citysituation";
-var STATIC_URL="http://180.167.35.167:9090/citysituation";
+
 $(document).ready(function(){
 	getZxgl();
 	getName();

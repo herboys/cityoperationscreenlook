@@ -63,9 +63,10 @@ var videoFlagTwo=0;
 function createVideoSlide(){
 
 	var G215List=[]
+	var G215Name=[]
 	var index=0;
 	$.ajax({
-		url:'http://localhost:8085/videoStream/getVideoSource/2',
+		url:STATIC_URL+'/videoStream/getVideoSource/2',
 		type:'get',
 		dataType: "json",
 		async:false,
@@ -76,7 +77,8 @@ function createVideoSlide(){
 			for(var i=0;i<resData.length;i++){
 				if(resData[i].url!=null && resData[i].url!=''){
 					//alert(resData[i].url)
-					G215List[index++]=resData[i].url
+					G215List[index]=resData[i].url
+					G215Name[index++]=resData[i].monitorPoint.substr(9)
 				}
 			}
 		},
@@ -88,7 +90,7 @@ function createVideoSlide(){
 	})
 
 	$.ajax({
-		url:'http://localhost:8085/videoStream/getVideoSource/1',
+		url:STATIC_URL+'/videoStream/getVideoSource/1',
 		type:'get',
 		dataType: "json",
 		async:false,
@@ -97,7 +99,8 @@ function createVideoSlide(){
 
 			for(var i=0;i<resData.length;i++){
 				if(resData[i].url!=null && resData[i].url!=''){
-					G215List[index++]=resData[i].url
+					G215List[index]=resData[i].url
+					G215Name[index++]=resData[i].monitorPoint.substr(9)
 				}
 			}
 		},
@@ -114,7 +117,7 @@ function createVideoSlide(){
 
     for(var i=0;i<G215List.length;i++){
         var videoObj=new Object();
-        videoObj.name="摄像头"+i
+        videoObj.name=G215Name[i]
         videoObj.src=G215List[i]
         jrwlzsjList[i]=videoObj;
     }
@@ -124,7 +127,7 @@ function createVideoSlide(){
     for (var i = 0; i < 3; i++) {
     	str=''
         str += '<div class="slide">'
-                +'<div class="jrwlzsjTxt">'
+                +'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[i].name+'</span>'
 
         str +='<div class="jrwlzsjCont">'
 
@@ -174,13 +177,9 @@ function intVideoTwo(){
 			$('#slider2').children().eq(0).remove();
 			$('#slider2').css({'left':0})
 			var str='';
-			if(videoNum%2==0){
-				str += '<div class="slide">'
-					+'<div class="jrwlzsjTxt">'
-			}else{
-				str += '<div class="slide">'
-					+'<div class="jrwlzsjTxt">'
-			}
+			str += '<div class="slide">'
+				+'<div class="jrwlzsjTxt">' +
+				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
 			str +='<div class="jrwlzsjCont">'
 			//str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[videoNum].src+'">'
 			str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
@@ -207,9 +206,10 @@ var videoFlagOne=0;
 function createVideoSlideOne(){
 
 	var G215List=[]
+	var G215Name=[]
 	var index=0;
 	$.ajax({
-		url:'http://localhost:8085/videoStream/getVideoSource/2',
+		url:STATIC_URL+'/videoStream/getVideoSource/2',
 		type:'get',
 		dataType: "json",
 		async:false,
@@ -220,7 +220,8 @@ function createVideoSlideOne(){
 			for(var i=0;i<resData.length;i++){
 				if(resData[i].url!=null && resData[i].url!=''){
 					//alert(resData[i].url)
-					G215List[index++]=resData[i].url
+					G215List[index]=resData[i].url
+					G215Name[index++]=resData[i].monitorPoint.substr(9)
 				}
 			}
 		},
@@ -232,7 +233,7 @@ function createVideoSlideOne(){
 	})
 
 	$.ajax({
-		url:'http://localhost:8085/videoStream/getVideoSource/1',
+		url:STATIC_URL+'/videoStream/getVideoSource/1',
 		type:'get',
 		dataType: "json",
 		async:false,
@@ -241,7 +242,8 @@ function createVideoSlideOne(){
 
 			for(var i=0;i<resData.length;i++){
 				if(resData[i].url!=null && resData[i].url!=''){
-					G215List[index++]=resData[i].url
+					G215List[index]=resData[i].url
+					G215Name[index++]=resData[i].monitorPoint.substr(9)
 				}
 			}
 		},
@@ -255,7 +257,7 @@ function createVideoSlideOne(){
 
 	for(var i=0;i<10;i++){
         var videoObj=new Object();
-        videoObj.name="摄像头"+i
+        videoObj.name=G215Name[i]
         videoObj.src= G215List[i]
         jrwlzsjListOne[i]=videoObj;
     }
@@ -265,7 +267,7 @@ function createVideoSlideOne(){
     for (var i = 0; i < 2; i++) {
     	str=''
         str += '<div class="slide1">'
-                +'<div class="jrwlzsjTxt1">'
+                +'<div class="jrwlzsjTxt1"><span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#000;z-index:999">'+jrwlzsjListOne[i].name+'</span>'
     
         str +='<div class="jrwlzsjCont1">'
 
@@ -315,13 +317,13 @@ function intVideoOne(){
 			var str='';
 			str += '<div class="slide1">'
 					+'<div class="jrwlzsjTxt1">'
+				+'<span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#000;z-index:999">'+jrwlzsjListOne[videoNumOne].name+'</span>'
 			str +='<div class="jrwlzsjCont1">'
 			str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
 				+'</div>'
 				+'</div>'
 				+'</div>'
-			$('#slider1').append(str);
 
 			$('#slider1').append(str);
 			var hls = new Hls();
@@ -337,13 +339,16 @@ function intVideoOne(){
 }
 
 var videoList=[];
-function openVideo(urlList){
+var videoName=[]
+function openVideo(urlList,urlName){
 	
 	/*for(var i=0;i<3;i++){
 		videoList[i]='http://vali-g1.cp31.ott.cibntv.net/youku/69752e30609387173282e501c/03000801005ED0E635F6204003E880EAF120E3-FC36-4F82-A448-5E34401D7A65.mp4?sid=159212567300010004125_00_B54712ec8006757e140762bf6c08f5dd7&amp;sign=beefe9d075ef0e2d21a32f31bedc26f6&amp;ctype=50&amp;si=183&amp;psid=713850910b6824a787ce59f500f54be24d045'
 	}
 */
 	videoList=urlList
+	videoName=urlName
+	alert(JSON.stringify(videoName))
 	if(videoList.length==0){
 		alert("该点位无视频数据")
 		return
@@ -369,7 +374,8 @@ function insertOneVideo(){
 	console.log($('#slider1').children().eq(0));
 	var str='';
 		str += '<div class="slide1">'
-				+'<div class="jrwlzsjTxt1"><span style="right:40px;top:0px;font-size:25px;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
+				+'<div class="jrwlzsjTxt1"><span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#000;z-index:999">'+videoName[0]+'</span>' +
+			'<span style="right:40px;top:0px;font-size:1.2rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
 		str +='<div class="jrwlzsjCont1">'
 		//str	+='<video autoplay preload muted controls="" name="media" class="video-list" src="'+videoList[0]+'">'
 		str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
@@ -401,7 +407,8 @@ function insertTwoVideo(first,second){
 		videoFlagTwo=2;
 		var str=''
 		str += '<div class="slide">'
-			+'<div class="jrwlzsjTxt"><span style="right:0px;top:0px;font-size:18px;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(0)>关闭</span>'
+			+'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+videoName[first]+'</span>' +
+			'<span style="right:0px;top:0px;font-size:0.98rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(0)>关闭</span>'
 	
 		str +='<div class="jrwlzsjCont">'
 			//str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted" src="'+videoList[first]+'">'
@@ -425,7 +432,8 @@ function insertTwoVideo(first,second){
 
 		str=''
 		str += '<div class="slide">'
-				+'<div class="jrwlzsjTxt"><span style="right:0px;top:0px;font-size:18px;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(1)>关闭</span>'
+				+'<div class="jrwlzsjTxt"> <span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+videoName[second]+'</span>' +
+			'<span style="right:0px;top:0px;font-size:0.98rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(1)>关闭</span>'
 		
 		str +='<div class="jrwlzsjCont">'
 		//str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted" src="'+videoList[second]+'">'
@@ -460,7 +468,8 @@ function closeVideoOne(){
 		$('#slider1').css({'left':0})
 		var str='';
 		str += '<div class="slide1">'
-				+'<div class="jrwlzsjTxt1">'
+				+'<div class="jrwlzsjTxt1">' +
+			'<span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#000;z-index:999">'+jrwlzsjListOne[videoNumOne].name+'</span>'
 		str +='<div class="jrwlzsjCont1">'
 		str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
 		str	+= '  </video>'
@@ -476,7 +485,7 @@ function closeVideoOne(){
 				video.play();
 			})
 	})
-	clearInterval(videoTimeOne)
+	//clearInterval(videoTimeOne)
 	//intVideoOne();
 	videoFlagOne=0;
 }
@@ -492,13 +501,10 @@ function closeVideoTwo(closeIndex){
 			$('#slider2').children().eq(0).remove();
 			$('#slider2').css({'left':0})
 			var str='';
-			if(videoNum%2==0){
-				str += '<div class="slide">'
-					+'<div class="jrwlzsjTxt">'
-			}else{
-				str += '<div class="slide">'
-					+'<div class="jrwlzsjTxt">'
-			}
+			str += '<div class="slide">'
+				+'<div class="jrwlzsjTxt">' +
+				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
+
 			str +='<div class="jrwlzsjCont">'
 			str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
@@ -506,7 +512,7 @@ function closeVideoTwo(closeIndex){
 				+'</div>'
 				+'</div>'
 			$('#slider2').append(str);
-
+		//	alert($("#slider2 video").length)
 			var hls = new Hls();
 			var video = $("#slider2 video")[2];
 			hls.loadSource(jrwlzsjList[videoNum].src);
@@ -527,13 +533,11 @@ function closeVideoTwo(closeIndex){
 			$('#slider2').children().eq(0).remove();
 			$('#slider2').css({'left':0})
 			var str='';
-			if(videoNum%2==0){
-				str += '<div class="slide">'
-					+'<div class="jrwlzsjTxt">'
-			}else{
-				str += '<div class="slide">'
-					+'<div class="jrwlzsjTxt">'
-			}
+			str += '<div class="slide">'
+				+'<div class="jrwlzsjTxt">' +
+				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
+
+
 			str +='<div class="jrwlzsjCont">'
 			str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
@@ -542,6 +546,7 @@ function closeVideoTwo(closeIndex){
 				+'</div>'
 			$('#slider2').append(str);
 
+			alert($("#slider2 video").length)
 			var hls = new Hls();
 			var video = $("#slider2 video")[2];
 			hls.loadSource(jrwlzsjList[videoNum].src);
@@ -560,7 +565,7 @@ function closeVideoTwo(closeIndex){
 
 		var str=''
 		str += '<div class="slide">'
-				+'<div class="jrwlzsjTxt">'
+				+'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[videoNum].name+'</span>\''
 		
 		str +='<div class="jrwlzsjCont">'
 		str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'

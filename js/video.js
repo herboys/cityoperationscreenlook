@@ -462,12 +462,19 @@ function closeVideoOne(){
 		str += '<div class="slide1">'
 				+'<div class="jrwlzsjTxt1">'
 		str +='<div class="jrwlzsjCont1">'
-		str	+='<video autoplay preload muted controls="" name="media" class="video-list" src="'+jrwlzsjList[videoNumOne].src+'">'
+		str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
 		str	+= '  </video>'
 			+'</div>'
 			+'</div>'
 			+'</div>'
 		$('#slider1').append(str);
+		var hls = new Hls();
+			var video = $("#slider1 video")[1];
+			hls.loadSource(jrwlzsjList[videoNumOne].src);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED, function () {
+				video.play();
+			})
 	})
 	clearInterval(videoTimeOne)
 	//intVideoOne();
@@ -493,12 +500,21 @@ function closeVideoTwo(closeIndex){
 					+'<div class="jrwlzsjTxt">'
 			}
 			str +='<div class="jrwlzsjCont">'
-			str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[videoNum].src+'">'
+			str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
 				+'</div>'
 				+'</div>'
 				+'</div>'
 			$('#slider2').append(str);
+
+			var hls = new Hls();
+			var video = $("#slider2 video")[2];
+			hls.loadSource(jrwlzsjList[videoNum].src);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED, function () {
+				video.play();
+			})
+
 		})
 
 	}else if(closeIndex==1&&videoFlagTwo==1){
@@ -519,12 +535,21 @@ function closeVideoTwo(closeIndex){
 					+'<div class="jrwlzsjTxt">'
 			}
 			str +='<div class="jrwlzsjCont">'
-			str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[videoNum].src+'">'
+			str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
 				+'</div>'
 				+'</div>'
 				+'</div>'
 			$('#slider2').append(str);
+
+			var hls = new Hls();
+			var video = $("#slider2 video")[2];
+			hls.loadSource(jrwlzsjList[videoNum].src);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED, function () {
+				video.play();
+			})
+
 		})
 	}else{
 		videoNum++;
@@ -538,15 +563,23 @@ function closeVideoTwo(closeIndex){
 				+'<div class="jrwlzsjTxt">'
 		
 		str +='<div class="jrwlzsjCont">'
-		str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[videoNum].src+'">'
+		str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
 		str	+= '  </video>'
 				+'</div>'
 				+'</div>'
 				+'</div>'
 	
 		$('#slider2').children().eq(1)[0].innerHTML=str	
-		console.log($('#slider2').children().eq(1));
-		$("#slider2 video")[1].play()
+		//console.log($('#slider2').children().eq(1));
+		//$("#slider2 video")[1].play()
+		var hls = new Hls();
+		var video = $("#slider2 video")[1];
+		hls.loadSource(jrwlzsjList[videoNum].src);
+		hls.attachMedia(video);
+		hls.on(Hls.Events.MANIFEST_PARSED, function () {
+			video.play();
+		})
+
 	}
 
 	clearInterval(videoTime)

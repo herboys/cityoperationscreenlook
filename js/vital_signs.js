@@ -23,12 +23,12 @@ $(function(){
 		{
 			title:'GDP',
 			//num:'2362.7',
-			unit:'亿元/季'
+			unit:'亿元/年'
 		},
 		{
 			title:'人均',
 			//num:'7350',
-			unit:'元/月 '
+			unit:'元/年'
 		},
 
 	];

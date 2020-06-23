@@ -34,8 +34,20 @@ var shanghai_district =[{adcode:"310151",name:"崇明区"},
                         {adcode:"310112", name:"闵行区"}, 
                         {adcode:"310118", name:"青浦区"}];
 var other_district=[{adcode:"320583", name:"昆山"},
-                    {adcode:"320585", name:"太仓"}]
+                    {adcode:"320585", name:"太仓"}];
 
+var jiading_district = [{name:"安亭镇",lon:121.2047 ,lat:31.2987},
+                        {name:"华亭镇",lon:121.26710 ,lat:31.47022},
+                        {name:"嘉定工业区",lon:121.2024 ,lat:31.4245},
+                        {name:"嘉定镇街道",lon:121.2490,lat:31.3839},
+                        {name:"江桥镇",lon:121.3075,lat:31.2611},
+                        {name:"菊园街道",lon:121.2223,lat:31.3819},
+                        {name:"马陆镇",lon:121.2942,lat:31.3566},
+                        {name:"南翔镇",lon:121.3052,lat:31.3057},
+                        {name:"外冈镇",lon:121.1568,lat:31.3622},
+                        {name:"新城路街道",lon:121.2655,lat:31.3906}, //lon:121.2691,lat:31.3859
+                        {name:"徐行镇",lon:121.28994,lat:31.42887},
+                        {name:"真新街道",lon: 121.35715,lat:31.25199}];
 
 
 function  initMap() {
@@ -49,6 +61,7 @@ function  initMap() {
     setMapFeatures();
     drawJiadingBounds();
     addJiadingBoundary();
+    addJiadingZhenText();
     addTraffic();
     addPoiMarker();
 }
@@ -191,6 +204,39 @@ function  addJiadingBoundary() {
         }
     });
     geojson1.setMap(map);
+}
+function addJiadingZhenText(){
+    console.log("addJiadingZhenText");
+    var icon = new AMap.Icon({
+        // 图标尺寸
+        size: new AMap.Size(0, 0),
+        // 图标的取图地址
+        image: './images/map/icon_car.png',
+        // 图标所用图片大小
+        imageSize: new AMap.Size(22, 32),
+        // 图标取图偏移量
+        // imageOffset: new AMap.Pixel(-9, -3)
+    });
+    for(var i = 0 ; i < jiading_district.length ; i++){
+        console.log("addJiadingZhenText i = "+i);
+        var marker = new AMap.Marker({
+            position: new AMap.LngLat(jiading_district[i].lon,jiading_district[i].lat),
+            icon: icon,
+            offset: new AMap.Pixel(0, 0)
+        });
+        marker.setMap(map);
+
+        // // 设置鼠标划过点标记显示的文字提示
+        // marker.setTitle('我是marker的title');
+
+        // 设置label标签
+        // label默认蓝框白底左上角显示，样式className为：amap-marker-label
+        marker.setLabel({
+            offset: new AMap.Pixel(0, 0),  //设置文本标注偏移量
+            content: "<div class='info'>" + jiading_district[i].name + "</div>", //设置文本标注内容
+            direction: 'center' //设置文本标注方位
+        });
+    }
 }
 /*添加路况*/
 function addTraffic(){

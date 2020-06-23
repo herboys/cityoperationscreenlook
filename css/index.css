@@ -229,3 +229,15 @@ html
 .amap-copyright{
 	opacity:0;
 }
+.amap-marker-label{
+	border: 0;
+	background-color: transparent;
+	color: #9CA09D;
+	font-size: large;
+}
+.info{
+	position: relative;
+	top: 0;
+	right: 0;
+	min-width: 0;
+}

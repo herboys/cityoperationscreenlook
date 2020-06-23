@@ -227,9 +227,8 @@ function createVideoSlideOne(){
 		},
 		error:function (data) {
 			console.log(data)
-			alert('失败')
+			alert('暂时无法视频')
 		}
-
 	})
 
 	$.ajax({
@@ -255,7 +254,7 @@ function createVideoSlideOne(){
 	})
 
 
-	for(var i=0;i<10;i++){
+	for(var i=0;i<G215List.length;i++){
         var videoObj=new Object();
         videoObj.name=G215Name[i]
         videoObj.src= G215List[i]
@@ -317,7 +316,7 @@ function intVideoOne(){
 			var str='';
 			str += '<div class="slide1">'
 					+'<div class="jrwlzsjTxt1">'
-				+'<span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[videoNumOne].name+'</span>'
+				+'<span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[videoNumOne].name+videoNumOne+'</span>'
 			str +='<div class="jrwlzsjCont1">'
 			str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
@@ -335,7 +334,7 @@ function intVideoOne(){
 			})
 
 		})
-	},25000)
+	},10000)
 }
 
 var videoList=[];
@@ -546,7 +545,6 @@ function closeVideoTwo(closeIndex){
 				+'</div>'
 			$('#slider2').append(str);
 
-			alert($("#slider2 video").length)
 			var hls = new Hls();
 			var video = $("#slider2 video")[2];
 			hls.loadSource(jrwlzsjList[videoNum].src);

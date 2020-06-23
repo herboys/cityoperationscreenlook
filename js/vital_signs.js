@@ -291,7 +291,8 @@ function addCard(arr,classStr)
 {
 	var boxObj=$(classStr).find('.list-box');
 	var ListObj=$(classStr).find('.card-box');
-	var distanceH=boxObj.height()-ListObj.height();
+	//var distanceH=boxObj.height()-ListObj.height();
+	var distanceH=50;
 	var distanceW=boxObj.width()-ListObj.width();
 	var apartH=Math.floor(distanceH/(arr.length-1));
 	var apartW=Math.floor(distanceW/(arr.length-1));

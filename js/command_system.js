@@ -9,7 +9,7 @@ function addTableList(name,arr)
 
 	}
 }
-$(function(){
+/*$(function(){
 	var coreArr=[
 		{
 			address:'安亭镇',
@@ -168,7 +168,36 @@ $(function(){
 	]
 	addTableList1('.linkage-table',linkageArr)
 
+})*/
+$(function(){
+	//var STATIC_URL="http://localhost:8085";
+	var coreArr=[];var linkageArr=[];
+	$.ajax({
+		url : STATIC_URL+'/dutyinfo/findAll',
+		dataType : 'json',
+		type : 'get',
+		async : false,
+		success : function(data) {
+			var tableLen =data.length;
+			var j=0,k=0;
+			for (var i = 0; i < tableLen; i++){
+			if((data[i].qjName==""||data[i].qjName == null)&&data[i].fzxName!="" &&data[i].fzxName!=null) {
+				data[i].address=data[i].fzxName;
+				coreArr[j++]=(data[i]);
+			}
+			if((data[i].fzxName==""||data[i].fzxName == null)&&data[i].qjName!="" &&data[i].qjName!=null) {
+				data[i].address=data[i].qjName;
+				linkageArr[k++]=(data[i]);
+			}
+			}
+		}
+	})
+	//alert(JSON.stringify(coreArr))
+	//alert(JSON.stringify(linkageArr))
+	addTableList1('.core-table',coreArr);
+	addTableList1('.linkage-table',linkageArr)
 })
+
 var linkageTime='';
 var linkageNum=0;
 var linkageMax='';
@@ -179,9 +208,12 @@ function addTableList1(name,arr)
 	for(let i=0;i<arr.length;i++)
 	{
 		setTimeout(function(){
-			$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leader+'</p><p>'+arr[i].name+'</p><p>'+arr[i].name1+'</p><p class="num">'+arr[i].num+'</p><p>'+arr[i].phone+'</p></div>')
+			$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
+				//'<p class="num">'
+				'<p>'
+				+arr[i].dutyName+'</p><p>'+arr[i].dutyPhone+'</p></div>')
 		},200*i)
-		if(name=='.linkage-table'&&i==arr.length-1&&arr.length>5)
+		if(name=='.linkage-table'&&i==arr.length-1&&arr.length>6)
 		{
 			linkageMax=arr.length;
 			linkageNum=0;
@@ -202,14 +234,24 @@ function addTableList1(name,arr)
 }
 function linkageInt(){
 	var moveT=$('.linkage-table').find('.table-list').eq(0).height()-8;
+	//alert(moveT)
 	linkageTime=setInterval(() => {
-		linkageNum++;
-		$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum},1000,function(){
-			if(linkageNum==linkageMax)
+			if(linkageNum>=linkageMax/6)
 			{
-				linkageNum=0;
-				 $('.linkage-table .list-box').css({top:-moveT*linkageNum});
+				linkageNum=-1;
+				$('.linkage-table .list-box').css({top:-moveT*linkageNum});
 			}
-		})
-	}, 3000);
+			linkageNum++;
+		
+	
+			$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum*6},1000,function(){
+				//if(linkageNum>=linkageMax/6)
+				//{
+				//	linkageNum=0;
+				//	$('.linkage-table .list-box').css({top:-moveT*linkageNum});
+				//	$('.linkage-table .list-box').css({top:-0});
+				//}
+			})
+		}
+		, 5000);
 }

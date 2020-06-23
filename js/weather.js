@@ -63,6 +63,6 @@ $(function () {
         }
     }
 
-    setInterval(changeWeather,3000);   
+    setInterval(changeWeather,300000);   
 
 })

@@ -2,7 +2,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 		<title></title>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
 		<link rel="stylesheet" type="text/css" href="css/pubilic.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<link rel="stylesheet" type="text/css" href="css/video.css">
@@ -19,6 +23,8 @@
 		<script src="js/time.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
 
 		<!--地图-->
 		<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch"></script>
@@ -51,8 +57,8 @@
 				<div class="right time-box num-font"></div>
 			</div>
 		</div>
-		<div class="main-warp" style="margin-top: -0.4%;">
-			<div class="main-box main-box-min">
+		<div class="main-warp" style="margin-top: -1%;height: 994px;">
+			<div class="main-box main-box-min" style="margin-left: 0.9%;">
 				<div class="main-title">
 					<div class="title-bg title-bg1"></div>
 					<div class="title-bg title-bg2"></div>
@@ -83,7 +89,7 @@
 								<div class="bg-box bg-ac"></div>
 								<div class="text-box text-centered">
 									<p>带班区领导</p>
-									<h3>李峰</h3>
+									<h3 id="name" ></h3>
 								</div>
 							</div>
 							<div class="working-places">
@@ -96,24 +102,24 @@
 							<div class="lead-box">
 								<div class="text-box text-centered left">
 									<p>带班主任</p>
-									<h3>赵国震</h3>
+									<h3 id="name1"></h3>
 								</div>
 								<div class="text-box text-centered left">
 									<p>指挥长</p>
-									<h3>刘强</h3>
+									<h3 id="name2"></h3>
 								</div>
 								<div class="text-box text-centered left">
 									<p>值班长</p>
-									<h3 class="num-font">12</h3>
+									<h3  id="name3"></h3>
 								</div>
 								<div class="text-box text-centered left">
 									<p>值班人员</p>
-									<h3 class="num-font">8</h3>
+									<h3 id="name4"></h3>
 								</div>
 							</div>
 							<div class="working-places">
 								<div class="bg"></div>
-								<div class="num-font right">12</div>
+								<div class="num-font right">355</div>
 								<h3>城运工作站</h3>
 							</div>
 						</div>
@@ -266,23 +272,23 @@
 							<div class="text-box">
 								<div class="line-box text-list">
 									<p>城镇登记失业率</p>
-									<p><span class="num-font">0.3</span>%</p>
+									<p><span class="num-font"></span>%</p>
 								</div>
 								<div class="line-box text-list">
 									<p>社保综合参保率</p>
-									<p><span class="num-font">0.3</span>%</p>
+									<p><span class="num-font"></span>%</p>
 								</div>
 								<div class="line-box text-list">
 									<p>最低工资标准</p>
-									<p><span class="num-font">0.3</span>%</p>
+									<p><span class="num-font"></span>%</p>
 								</div>
 								<div class="line-box text-list">
 									<p>每千人医疗床位</p>
-									<p><span class="num-font">0.3</span>%</p>
+									<p><span class="num-font"></span>%</p>
 								</div>
 								<div class="line-box text-list">
 									<p>门诊就诊量</p>
-									<p><span class="num-font">0.3</span>%</p>
+									<p><span class="num-font"></span>%</p>
 								</div>
 							</div>
 						</div>
@@ -318,11 +324,11 @@
 							<div class="text-box">
 								<div class="text-list" style="left: 10%;top: 0%;">
 									<p>城镇登记失业率</p>
-									<p><span class="num-font">0.3</span>%</p>
+									<p><span class="num-font"></span>%</p>
 								</div>
 								<div class="text-list" style="left: 5%;top: 50%;">
 									<p>社保综合参保率</p>
-									<p><span class="num-font">0.3</span>%</p>
+									<p><span class="num-font"></span>%</p>
 								</div>
 							</div>
 						</div>
@@ -433,21 +439,18 @@
 						<div class="title-border"></div>
 						<h3>视频轮询</h3>
 					</div>
-					<div class="content-bg">
-						<!---<div style="width: 29.2rem;height: 14.6rem;margin-top: 3rem;margin-bottom: 1.37rem;margin-left: 1.6rem;background-color: aliceblue;">
-						</div> -->
-
-						
+					<div class="content-bg">						
 					</div>
 					<div class="content-box">
 						<div class="jrwlzsj_box1">
 							<div class="slider1" id="slider1">	
 							</div>
 						</div>
-						<hr style="width: 29.3rem;margin-left: 0.8rem;margin-top: 0.5rem; border:0.5 px dashed #fff" />
+						<hr style="width: 30.3rem;margin-left: 0.6rem;margin-top: 0.5rem;border:1px dashed #aaa"/>
+
 						<div class="jrwlzsj_box">
 							<div class="slider2" id="slider2">
-								<!-- <div style="width: 13.8rem;height:7.9rem;margin-top: 1.37rem;;margin-left: 1.6rem;background-color: aliceblue; float: left;">
+								<!--<div style="width: 13.8rem;height:7.9rem;margin-top: 1.37rem;;margin-left: 1.6rem;background-color: aliceblue; float: left;">
 								</div>
 								<div style="width: 13.8rem;height:7.9rem;margin-top: 1.37rem;margin-left: 1.16rem;background-color: aliceblue; float: left;">
 								</div> -->
@@ -468,8 +471,7 @@
 					<div class="content-bg"></div>
 					<div class="content-box">
 					<div class="banners">
-						<!--div class="click_left"><img class="get_height" onclick="banner_left_right('left')" src="./images/banner_left.png"></--div>
-						<div class="click_right"><img onclick="banner_left_right('right')" src="./images/banner_right.png"></div-->
+						<!--div class="click_left"><img class="get_height" onclick="banner_left_right('left')" src="./images/banner_left.png"></div-->
 						<div class="number">
 							<div class="numbers"></div>
 							<div style="clear: both;"></div>
@@ -504,6 +506,6 @@
 		})
 		createVideoSlideOne();
 		createVideoSlide();
-
+		//openVideo();
 	</script>
 </html>

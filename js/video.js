@@ -127,7 +127,7 @@ function createVideoSlide(){
     for (var i = 0; i < 3; i++) {
     	str=''
         str += '<div class="slide">'
-                +'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[i].name+'</span>'
+                +'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjList[i].name+'</span>'
 
         str +='<div class="jrwlzsjCont">'
 
@@ -179,7 +179,7 @@ function intVideoTwo(){
 			var str='';
 			str += '<div class="slide">'
 				+'<div class="jrwlzsjTxt">' +
-				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
+				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
 			str +='<div class="jrwlzsjCont">'
 			//str	+='<video controls="" autoplay preload muted name="media" class="video-list" src="'+jrwlzsjList[videoNum].src+'">'
 			str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
@@ -198,7 +198,7 @@ function intVideoTwo(){
 			})
 
 		})
-	},15000)
+	},25000)
 }
 
 var videoFlagOne=0;
@@ -267,7 +267,7 @@ function createVideoSlideOne(){
     for (var i = 0; i < 2; i++) {
     	str=''
         str += '<div class="slide1">'
-                +'<div class="jrwlzsjTxt1"><span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#000;z-index:999">'+jrwlzsjListOne[i].name+'</span>'
+                +'<div class="jrwlzsjTxt1"><span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[i].name+'</span>'
     
         str +='<div class="jrwlzsjCont1">'
 
@@ -317,7 +317,7 @@ function intVideoOne(){
 			var str='';
 			str += '<div class="slide1">'
 					+'<div class="jrwlzsjTxt1">'
-				+'<span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#000;z-index:999">'+jrwlzsjListOne[videoNumOne].name+'</span>'
+				+'<span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[videoNumOne].name+'</span>'
 			str +='<div class="jrwlzsjCont1">'
 			str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
 			str	+= '  </video>'
@@ -335,7 +335,7 @@ function intVideoOne(){
 			})
 
 		})
-	},15000)
+	},25000)
 }
 
 var videoList=[];
@@ -348,7 +348,7 @@ function openVideo(urlList,urlName){
 */
 	videoList=urlList
 	videoName=urlName
-	alert(JSON.stringify(videoName))
+	//alert(JSON.stringify(videoName))
 	if(videoList.length==0){
 		alert("该点位无视频数据")
 		return
@@ -374,7 +374,7 @@ function insertOneVideo(){
 	console.log($('#slider1').children().eq(0));
 	var str='';
 		str += '<div class="slide1">'
-				+'<div class="jrwlzsjTxt1"><span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#000;z-index:999">'+videoName[0]+'</span>' +
+				+'<div class="jrwlzsjTxt1"><span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[0]+'</span>' +
 			'<span style="right:40px;top:0px;font-size:1.2rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
 		str +='<div class="jrwlzsjCont1">'
 		//str	+='<video autoplay preload muted controls="" name="media" class="video-list" src="'+videoList[0]+'">'
@@ -407,7 +407,7 @@ function insertTwoVideo(first,second){
 		videoFlagTwo=2;
 		var str=''
 		str += '<div class="slide">'
-			+'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+videoName[first]+'</span>' +
+			+'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#00fff6;z-index:999">'+videoName[first]+'</span>' +
 			'<span style="right:0px;top:0px;font-size:0.98rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(0)>关闭</span>'
 	
 		str +='<div class="jrwlzsjCont">'
@@ -432,7 +432,7 @@ function insertTwoVideo(first,second){
 
 		str=''
 		str += '<div class="slide">'
-				+'<div class="jrwlzsjTxt"> <span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+videoName[second]+'</span>' +
+				+'<div class="jrwlzsjTxt"> <span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#00fff6;z-index:999">'+videoName[second]+'</span>' +
 			'<span style="right:0px;top:0px;font-size:0.98rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(1)>关闭</span>'
 		
 		str +='<div class="jrwlzsjCont">'
@@ -469,7 +469,7 @@ function closeVideoOne(){
 		var str='';
 		str += '<div class="slide1">'
 				+'<div class="jrwlzsjTxt1">' +
-			'<span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#000;z-index:999">'+jrwlzsjListOne[videoNumOne].name+'</span>'
+			'<span style="left:0px;top:15px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[videoNumOne].name+'</span>'
 		str +='<div class="jrwlzsjCont1">'
 		str	+='<video autoplay preload muted controls="" name="media" class="video-list" muted="muted">'
 		str	+= '  </video>'
@@ -503,7 +503,7 @@ function closeVideoTwo(closeIndex){
 			var str='';
 			str += '<div class="slide">'
 				+'<div class="jrwlzsjTxt">' +
-				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
+				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
 
 			str +='<div class="jrwlzsjCont">'
 			str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'
@@ -535,7 +535,7 @@ function closeVideoTwo(closeIndex){
 			var str='';
 			str += '<div class="slide">'
 				+'<div class="jrwlzsjTxt">' +
-				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
+				'<span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjList[videoNum].name+'</span>'
 
 
 			str +='<div class="jrwlzsjCont">'
@@ -565,7 +565,7 @@ function closeVideoTwo(closeIndex){
 
 		var str=''
 		str += '<div class="slide">'
-				+'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#000;z-index:999">'+jrwlzsjList[videoNum].name+'</span>\''
+				+'<div class="jrwlzsjTxt"><span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjList[videoNum].name+'</span>\''
 		
 		str +='<div class="jrwlzsjCont">'
 		str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted">'

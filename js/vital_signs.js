@@ -97,21 +97,21 @@ $(function(){
 			//today:20,
 			//week:189,
 			//month:1234,
-			unit:'度',
+			unit:'万千瓦时',
 		},
 		{
 			title:'用水总量',
 			//today:20,
 			//week:189,
 			//month:1234,
-			unit:'立方',
+			unit:'万吨',
 		},
 		{
 			title:'供气总量',
 			//today:20,
 			//week:189,
 			//month:1234,
-			unit:'立方',
+			unit:'万立方米',
 		},
 	];
 
@@ -227,33 +227,33 @@ $(function(){
 	var hjbzArr=[
 		{
 			title:'生活垃圾处理',
-			//num:28940,
-			unit:'吨/日',
+			num:2064,
+			unit:'吨',
 		},
 		{
 			title:'污水处理量',
-			//num:341556,
-			unit:'吨/日',
+			num:49.73,
+			unit:'万吨',
 		},
 		{
 			title:'生活垃圾处理',
-			//num:28940,
-			unit:'吨/周',
+			num:8256,
+			unit:'吨',
 		},
 		{
 			title:'污水处理量',
-			//num:341556,
-			unit:'吨/周',
+			num:348.14,
+			unit:'万吨',
 		},
 		{
 			title:'生活垃圾处理',
-			//num:28940,
-			unit:'吨/月',
+			num:51600,
+			unit:'吨',
 		},
 		{
 			title:'污水处理量',
-			//num:341556,
-			unit:'吨/月',
+			num:1497,
+			unit:'万吨',
 		},
 	]
 	$.ajax({
@@ -262,12 +262,20 @@ $(function(){
 		type : 'get',
 		async : false,
 		success : function(data) {
-			hjbzArr[0].num=data[0].wasteDisSum;
-			hjbzArr[1].num=data[0].sewageTreatSum;
-			hjbzArr[2].num=data[0].wasteDisSum;
-			hjbzArr[3].num=data[0].sewageTreatSum;
-			hjbzArr[4].num=data[0].wasteDisSum;
-			hjbzArr[5].num=data[0].sewageTreatSum;
+			for(var i=0;i<data.length;i++){
+				var index=data[i].id
+				if(index==="1"){
+					hjbzArr[0].num=data[0].wasteDisSum;
+					hjbzArr[1].num=data[0].sewageTreatSum;
+				}else if(index==="2"){
+					hjbzArr[2].num=data[0].wasteDisSum;
+					hjbzArr[3].num=data[0].sewageTreatSum;
+				}else if(index==="3"){
+					hjbzArr[4].num=data[0].wasteDisSum;
+					hjbzArr[5].num=data[0].sewageTreatSum;
+				}
+			}
+			
 		}
 	})
 	addHjbz(hjbzArr) //环境保障

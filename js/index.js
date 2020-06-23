@@ -56,11 +56,11 @@ function getZxgl(){
 		type : 'get',
 		//dataType:'JSONP',
 		//async : true,
-		success : function(res) {
+		success : function(data) {
 			//alert(123)
-			var data=res.data
-			alert(JSON.stringify(data))
-			var tableLen =res.data.length;
+			//var data=res.data
+			//alert(JSON.stringify(data))
+			var tableLen =data.length;
 			var str = "";
 			for (var i = 0; i < tableLen; i++){
 				str += '<div class="csyytz_txt text-centered">'

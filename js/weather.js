@@ -33,7 +33,7 @@ $(function () {
         $(".early-warning-text").html('');
     }
 
-    showWeather("中雨", '20');
+    showWeather("小雨", '26');
     showWarning("大风","橙","14时02分");
 
 
@@ -63,6 +63,6 @@ $(function () {
         }
     }
 
-    setInterval(changeWeather,300000);   
+   // setInterval(changeWeather,300000);   
 
 })

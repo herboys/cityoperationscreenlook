@@ -117,33 +117,26 @@ $(function(){
 
 	var jtzkArr=[
 		{
-			title:'城市道路网密度',
+			title:'出租车客运量',
 			//today:35,
 			//week:253,
 			//month:1534,
-			unit:'人次',
+			unit:'万人次',
 		},
 		{
 			title:'交通客运量',
 			//today:42,
 			//week:198,
 			//month:1345,
-			unit:'人次',
+			unit:'万人次',
 		},
 		{
 			title:'交通流量',
 			//today:20,
 			//week:189,
 			//month:1234,
-			unit:'人次',
-		},
-		{
-			title:'景区景点人流',
-			//today:61,
-			//week:248,
-			//month:1453,
-			unit:'人次',
-		},
+			unit:'车次',
+		}
 	];
 //var zygyArr=[];var jtzkArr=[];
 	$.ajax({
@@ -172,19 +165,19 @@ $(function(){
 	addCard(jtzkArr,'.jtqk-warp') //交通情况
 	var shbzArr=[
 		{
-			title:'城镇登记失业率',
+			title:'城镇登记失业人数',
 			//num:0.3,
-			unit:'%',
+			unit:'人',
 		},
 		{
-			title:'社保综合参保率',
+			title:'民政救助',
 			//num:0.3,
-			unit:'%',
+			unit:'人',
 		},
 		{
 			title:'最低工资标准',
 			//num:0.3,
-			unit:'元',
+			unit:'元/月',
 		},
 		{
 			title:'每千人医疗床位',
@@ -194,17 +187,17 @@ $(function(){
 		{
 			title:'门诊就诊量',
 			//num:0.3,
-			unit:'人次',
+			unit:'万人次',
 		},
 		{
-			title:'城镇登记失业率',
+			title:'城镇登记失业人数',
 			//num:0.3,
-			unit:'%',
+			unit:'人',
 		},
 		{
-			title:'社保综合参保率',
+			title:'民政救助',
 			//num:0.3,
-			unit:'%',
+			unit:'人',
 		},
 	]
 	$.ajax({
@@ -379,17 +372,17 @@ function addShbz(arr)
 				{
 					if(i==0)
 					{
-						$('.shbz-warp .text-list').eq(i).animate({top:-distance,opacity:0},700,function(){
+						$('.shbz-warp .text-list').eq(i).animate({top:-distance,opacity:0},1000,function(){
 							$('.shbz-warp .text-list').eq(i).remove();
 						})
 					}
 					else if(i==$('.shbz-warp .text-list').length-1)
 					{
-						$('.shbz-warp .text-list').eq(i).animate({top:(i-1)*20+'%',opacity:1},600)
+						$('.shbz-warp .text-list').eq(i).animate({top:(i-1)*20+'%',opacity:1},900)
 					}
 					else
 					{
-						$('.shbz-warp .text-list').eq(i).animate({left:(i-1)*10+'%',top:(i-1)*20+'%'},600)
+						$('.shbz-warp .text-list').eq(i).animate({left:(i-1)*10+'%',top:(i-1)*20+'%'},900)
 					}
 				}
 				startNum++;
@@ -403,7 +396,7 @@ function addShbz(arr)
 				window.location.reload()
 			}
 
-		},3000)
+		},5000)
 	}
 }
 function addHjbz(arr)
@@ -462,7 +455,7 @@ function addHjbz(arr)
 				window.location.reload()
 			}
 
-		},3000)
+		},5000)
 		
 	}
 }

@@ -62,12 +62,11 @@ function getZxgl(){
 			var tableLen =data.length;
 			var str = "";str1 = [];
 			for (var i = 0; i < tableLen; i++){
-				str += '<a  class="clear" href= '+data[i].managementUrl+' target="_blank">'
-					+ '<div class="csyytz_txt text-centered">'
+				str += '<a  class="csyytz_txt text-centered" href= '+data[i].managementUrl+' target="_blank">'
 					+'<div class="arrowBar-box">'
 					+'<div class="arrowBar"></div>'
 					+'</div>'
-					+ data[i].managementName+ '</div></a>';
+					+ data[i].managementName+ '</a>';
 				//str1[i]='<div style="width: 90%;height:50%;top: 0.1vw;left:5%">'+data[i].management_url+'</div>';
 			}
 			str += '<div class="csyytz_txt text-centered">'

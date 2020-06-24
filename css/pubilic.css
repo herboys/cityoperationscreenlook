@@ -75,4 +75,7 @@ img
 }
 .clear{
     float: left;
+    width:5.6rem;
+    height:2.1rem;
+    margin-left: 2rem;
 }

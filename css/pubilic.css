@@ -65,3 +65,14 @@ img
   	background-color: #071037;
   	border-radius: 7px;
 }
+
+.clear::after{
+    content: ".";
+    display: block;
+    font-size: 0;
+    height:0;
+    clear:both;
+}
+.clear{
+    float: left;
+}

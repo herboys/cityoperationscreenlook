@@ -62,7 +62,7 @@ function getZxgl(){
 			var tableLen =data.length;
 			var str = "";str1 = [];
 			for (var i = 0; i < tableLen; i++){
-				str += '<a href= '+data[i].managementUrl+' target="_blank">'
+				str += '<a  class="clear" href= '+data[i].managementUrl+' target="_blank">'
 					+ '<div class="csyytz_txt text-centered">'
 					+'<div class="arrowBar-box">'
 					+'<div class="arrowBar"></div>'

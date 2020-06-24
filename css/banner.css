@@ -97,15 +97,16 @@
 {
 	width: 100%;
 	height: 100%;
+	padding-left: 0.8rem;
 }
 
-.banner_img img
+/*.banner_img img
 {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	break-inside: 1;
-}
+}*/
 
 .banner_img  li{
 	width: 100%;

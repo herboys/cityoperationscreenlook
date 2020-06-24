@@ -184,17 +184,17 @@ $(function(){
 		{
 			title:'最低工资标准',
 			//num:0.3,
-			unit:'%',
+			unit:'元',
 		},
 		{
 			title:'每千人医疗床位',
 			//num:0.3,
-			unit:'%',
+			unit:'个',
 		},
 		{
 			title:'门诊就诊量',
 			//num:0.3,
-			unit:'%',
+			unit:'人次',
 		},
 		{
 			title:'城镇登记失业率',
@@ -228,32 +228,32 @@ $(function(){
 		{
 			title:'生活垃圾处理',
 			num:2064,
-			unit:'吨',
+			unit:'吨/日',
 		},
 		{
 			title:'污水处理量',
 			num:49.73,
-			unit:'万吨',
+			unit:'万吨/日',
 		},
 		{
 			title:'生活垃圾处理',
 			num:8256,
-			unit:'吨',
+			unit:'吨/周',
 		},
 		{
 			title:'污水处理量',
 			num:348.14,
-			unit:'万吨',
+			unit:'万吨/周',
 		},
 		{
 			title:'生活垃圾处理',
 			num:51600,
-			unit:'吨',
+			unit:'吨/月',
 		},
 		{
 			title:'污水处理量',
 			num:1497,
-			unit:'万吨',
+			unit:'万吨/月',
 		},
 	]
 	$.ajax({

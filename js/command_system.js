@@ -208,7 +208,8 @@ function addTableList1(name,arr)
 	for(let i=0;i<arr.length;i++)
 	{
 		setTimeout(function(){
-			$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
+			$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].foremanName+'</p>' +
+				//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
 				//'<p class="num">'
 				'<p>'
 				+arr[i].dutyName+'</p><p>'+arr[i].dutyPhone+'</p></div>')

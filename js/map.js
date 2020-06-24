@@ -16,38 +16,38 @@ var mapStyle = ["normal",       //0-标准
     "wine",         //10-酱籽
 ];
 var district;
-var polygons=[];
-var shanghai_district =[{adcode:"310151",name:"崇明区"}, 
-                        {adcode:"310115", name:"浦东新区"}, 
-                        {adcode:"310120", name:"奉贤区"},
-                        {adcode:"310116", name:"金山区"},
-                        {adcode:"310113", name:"宝山区"}, 
-                        {adcode:"310107", name:"普陀区"}, 
-                        {adcode:"310101", name:"黄浦区"}, 
-                        {adcode:"310114", name:"嘉定区"}, 
-                        {adcode:"310110", name:"杨浦区"},
-                        {adcode:"310117", name:"松江区"}, 
-                        {adcode:"310109", name:"虹口区"}, 
-                        {adcode:"310106", name:"静安区"},
-                        {adcode:"310105", name:"长宁区"}, 
-                        {adcode:"310104", name:"徐汇区"}, 
-                        {adcode:"310112", name:"闵行区"}, 
-                        {adcode:"310118", name:"青浦区"}];
-var other_district=[{adcode:"320583", name:"昆山"},
-                    {adcode:"320585", name:"太仓"}];
+var polygons = [];
+var shanghai_district = [{ adcode: "310151", name: "崇明区" },
+{ adcode: "310115", name: "浦东新区" },
+{ adcode: "310120", name: "奉贤区" },
+{ adcode: "310116", name: "金山区" },
+{ adcode: "310113", name: "宝山区" },
+{ adcode: "310107", name: "普陀区" },
+{ adcode: "310101", name: "黄浦区" },
+{ adcode: "310114", name: "嘉定区" },
+{ adcode: "310110", name: "杨浦区" },
+{ adcode: "310117", name: "松江区" },
+{ adcode: "310109", name: "虹口区" },
+{ adcode: "310106", name: "静安区" },
+{ adcode: "310105", name: "长宁区" },
+{ adcode: "310104", name: "徐汇区" },
+{ adcode: "310112", name: "闵行区" },
+{ adcode: "310118", name: "青浦区" }];
+var other_district = [{ adcode: "320583", name: "昆山" },
+{ adcode: "320585", name: "太仓" }];
 
-var jiading_district = [{name:"安亭镇",lon:121.2047 ,lat:31.2987},
-                        {name:"华亭镇",lon:121.26710 ,lat:31.47022},
-                        {name:"嘉定工业区",lon:121.2024 ,lat:31.4245},
-                        {name:"嘉定镇街道",lon:121.2490,lat:31.3839},
-                        {name:"江桥镇",lon:121.3075,lat:31.2611},
-                        {name:"菊园街道",lon:121.2223,lat:31.3819},
-                        {name:"马陆镇",lon:121.2942,lat:31.3566},
-                        {name:"南翔镇",lon:121.3052,lat:31.3057},
-                        {name:"外冈镇",lon:121.1568,lat:31.3622},
-                        {name:"新城路街道",lon:121.2655,lat:31.3906}, //lon:121.2691,lat:31.3859
-                        {name:"徐行镇",lon:121.28994,lat:31.42887},
-                        {name:"真新街道",lon: 121.35715,lat:31.25199}];
+var jiading_district = [{ name: "安亭镇", lon: 121.2047, lat: 31.2987 },
+{ name: "华亭镇", lon: 121.26710, lat: 31.47022 },
+{ name: "嘉定工业区", lon: 121.2024, lat: 31.4245 },
+{ name: "嘉定镇街道", lon: 121.2490, lat: 31.3839 },
+{ name: "江桥镇", lon: 121.3075, lat: 31.2611 },
+{ name: "菊园街道", lon: 121.2142, lat: 31.3755 },//lon:121.2223,lat:31.3819
+{ name: "马陆镇", lon: 121.2787, lat: 31.3518 },//lon:121.2942,lat:31.3566
+{ name: "南翔镇", lon: 121.3052, lat: 31.3057 },
+{ name: "外冈镇", lon: 121.1568, lat: 31.3622 },
+{ name: "新城路街道", lon: 121.2655, lat: 31.3906 }, //lon:121.2691,lat:31.3859
+{ name: "徐行镇", lon: 121.28994, lat: 31.42887 },
+{ name: "真新街道", lon: 121.35715, lat: 31.25199 }];
 
 
 function initMap() {
@@ -192,7 +192,7 @@ function addJiadingBoundary() {
     // geojson.setMap(map);
 
     var url0 = "./map/jiadingzhen_line.json";
-    var configure_json0 = $.ajax({url: url0, async: false}).responseText;
+    var configure_json0 = $.ajax({ url: url0, async: false }).responseText;
     var geoJSON0 = $.parseJSON(configure_json0);
     var geojson1 = new AMap.GeoJSON({
         geoJSON: geoJSON0,
@@ -209,7 +209,7 @@ function addJiadingBoundary() {
     });
     geojson1.setMap(map);
 }
-function addJiadingZhenText(){
+function addJiadingZhenText() {
     console.log("addJiadingZhenText");
     var icon = new AMap.Icon({
         // 图标尺寸
@@ -221,18 +221,13 @@ function addJiadingZhenText(){
         // 图标取图偏移量
         // imageOffset: new AMap.Pixel(-9, -3)
     });
-    for(var i = 0 ; i < jiading_district.length ; i++){
-        console.log("addJiadingZhenText i = "+i);
+    for (var i = 0; i < jiading_district.length; i++) {
+        console.log("addJiadingZhenText i = " + i);
         var marker = new AMap.Marker({
-            position: new AMap.LngLat(jiading_district[i].lon,jiading_district[i].lat),
+            position: new AMap.LngLat(jiading_district[i].lon, jiading_district[i].lat),
             icon: icon,
             offset: new AMap.Pixel(0, 0)
         });
-        marker.setMap(map);
-
-        // // 设置鼠标划过点标记显示的文字提示
-        // marker.setTitle('我是marker的title');
-
         // 设置label标签
         // label默认蓝框白底左上角显示，样式className为：amap-marker-label
         marker.setLabel({
@@ -240,6 +235,12 @@ function addJiadingZhenText(){
             content: "<div class='info'>" + jiading_district[i].name + "</div>", //设置文本标注内容
             direction: 'center' //设置文本标注方位
         });
+        // //菊园设置角度
+        // if(i == 5){
+        //     marker.setAngle(-35);
+        // }
+
+        marker.setMap(map);
     }
 }
 /*添加路况*/
@@ -257,18 +258,18 @@ function addPoiMarker() {
     //嘉定区政府 121.2653,31.375602
     //南翔老街 121.308554,31.292458
     //安亭汽车城 121.16929,31.281836
-    var p1 = {pointId: -1, name: "嘉定区政府", lng: 121.2653, lat: 31.375602, type: "gov"};
-    var p2 = {pointId: -2, name: "南翔老街", lng: 121.308554, lat: 31.292458, type: "scene"};
-    var p3 = {pointId: -3, name: "安亭汽车城", lng: 121.16929, lat: 31.281836, type: "car"};
-    var p4 = {pointId: 1, name: "G15朱桥", lng: 121.188198, lat: 31.405467, type: "qiakou"};
-    var p5 = {pointId:2,name:"G2京沪" , lng:121.145693,lat:31.284744, type:"qiakou"};
-    var p6 = {pointId: 4, name: "安亭站", lng: 121.161985, lat: 31.28849, type: "qiakou"};
-    var p7 = {pointId: 7, name: "华亭站", lng: 121.242686, lat: 31.468279, type: "qiakou"};
-    var p8 = {pointId: 12, name: "外冈站（水路）", lng: 121.171181, lat: 31.360180, type: "qiakou"};
-    var p9 = {pointId: 91, name: "南翔北站", lng: 121.30875, lat: 31.281473, type: "qiakou"};
-    var p10 = {pointId: 6, name: "陆渡站", lng: 121.194994, lat: 31.467135, type: "qiakou"};
-    var p11 = {pointId: 90, name: "安亭北站", lng: 121.164746, lat: 31.320193, type: "qiakou"};
-    var mapMarker = [p1, p2, p3, p4, p6, p7, p8, p9, p10, p11,p5];
+    var p1 = { pointId: -1, name: "嘉定区政府", lng: 121.2653, lat: 31.375602, type: "gov" };
+    var p2 = { pointId: -2, name: "南翔老街", lng: 121.308554, lat: 31.292458, type: "scene" };
+    var p3 = { pointId: -3, name: "安亭汽车城", lng: 121.16929, lat: 31.281836, type: "car" };
+    var p4 = { pointId: 1, name: "G15朱桥", lng: 121.188198, lat: 31.405467, type: "qiakou" };
+    var p5 = { pointId: 2, name: "G2京沪", lng: 121.145693, lat: 31.284744, type: "qiakou" };
+    var p6 = { pointId: 4, name: "安亭站", lng: 121.161985, lat: 31.28849, type: "qiakou" };
+    var p7 = { pointId: 7, name: "华亭站", lng: 121.242686, lat: 31.468279, type: "qiakou" };
+    var p8 = { pointId: 12, name: "外冈站（水路）", lng: 121.171181, lat: 31.360180, type: "qiakou" };
+    var p9 = { pointId: 91, name: "南翔北站", lng: 121.30875, lat: 31.281473, type: "qiakou" };
+    var p10 = { pointId: 6, name: "陆渡站", lng: 121.194994, lat: 31.467135, type: "qiakou" };
+    var p11 = { pointId: 90, name: "安亭北站", lng: 121.158416, lat: 31.314374, type: "qiakou" };//lng: 121.164746, lat: 31.320193
+    var mapMarker = [p1, p2, p3, p4, p6, p7, p8, p9, p10, p11, p5];
 
     console.log(mapMarker.length);
     for (var i = 0; i < mapMarker.length; i++) {
@@ -293,8 +294,8 @@ function addPoiMarker() {
             title: mapMarker[i].name,
             markId: mapMarker[i].pointId
         });
-        if(mapMarker[i].pointId>0){
-            marker.on('click',playVideo)
+        if (mapMarker[i].pointId > 0) {
+            marker.on('click', playVideo)
         }
         map.add(marker);
     }
@@ -303,37 +304,37 @@ function addPoiMarker() {
 function playVideo(e) {
     //alert("播放视频"+e.target.Ce.markId);
     //console.log("播放视频"+e.target.Ce.markId)
-    var stationId=e.target.Ce.markId;
+    var stationId = e.target.Ce.markId;
     $.ajax({
-        url:STATIC_URL+'/videoStream/getVideoSource/'+stationId,
-        type:'get',
+        url: STATIC_URL + '/videoStream/getVideoSource/' + stationId,
+        type: 'get',
         dataType: "json",
-        success:function (data) {
-            var resData=data.data;
-           // alert("播放视频"+e.target.Ce.markId);
+        success: function (data) {
+            var resData = data.data;
+            // alert("播放视频"+e.target.Ce.markId);
             //播放视频函数
-           /* "monitorPoint": "630013108嘉定G2京沪一级出沪车检 东HG",
-                "url": "http://10.237.221.178:8050/cam/realmonitor/31011401001320205008?subtype=0&streamType=0&token=1592793106_0d12f011d9ba7ee06dd327f764a41f46dfabbf96&mediatype=HLS.m3u8"
-*/
-           console.log(1)
+            /* "monitorPoint": "630013108嘉定G2京沪一级出沪车检 东HG",
+                 "url": "http://10.237.221.178:8050/cam/realmonitor/31011401001320205008?subtype=0&streamType=0&token=1592793106_0d12f011d9ba7ee06dd327f764a41f46dfabbf96&mediatype=HLS.m3u8"
+ */
+            console.log(1)
 
-           console.log(resData)
-            var urlList=[]
-            var urlName=[]
-            var index=0;
-            for(var i=0;i<resData.length;i++){
-                if(resData[i].url!=null && resData[i].url!=''){
-                    urlList[index]=resData[i].url
-                    urlName[index++]=resData[i].monitorPoint.substr(9)
+            console.log(resData)
+            var urlList = []
+            var urlName = []
+            var index = 0;
+            for (var i = 0; i < resData.length; i++) {
+                if (resData[i].url != null && resData[i].url != '') {
+                    urlList[index] = resData[i].url
+                    urlName[index++] = resData[i].monitorPoint.substr(9)
                 }
             }
-           // alert(JSON.stringify(urlName))
-            if(urlList.length>0)
-                openVideo(urlList,urlName)
+            // alert(JSON.stringify(urlName))
+            if (urlList.length > 0)
+                openVideo(urlList, urlName)
             else
                 alert('该点位无可用视频')
         },
-        error:function (data) {
+        error: function (data) {
             console.log(data)
             alert('失败')
         }
@@ -342,3 +343,4 @@ function playVideo(e) {
 
 
 }
+

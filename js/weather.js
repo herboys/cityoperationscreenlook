@@ -69,6 +69,7 @@ $(function () {
 
     changeWeather()
     function changeWeather(){
+       // alert("weather")
         var tem; var w,wth;var ty,tz;
         let now = new Date();
         let hour = now.getHours() +1;
@@ -155,6 +156,6 @@ $(function () {
     }
 
     //setInterval(changeWeather,300000);
-   // setInterval(changeWeather,30000);
+    setInterval(changeWeather,60000*15);
 
 })

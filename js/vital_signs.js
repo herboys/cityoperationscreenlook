@@ -308,7 +308,7 @@ function addCard(arr,classStr)
 	boxObj.html('');
 	for(let i=0;i<arr.length;i++)
 	{
-		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>今日<span class="num-font">'+arr[i].today+'</span>'+arr[i].unit+'</p><p>本周<span class="num-font">'+arr[i].week+'</span>'+arr[i].unit+'</p><p>当月<span class="num-font">'+arr[i].month+'</span>'+arr[i].unit+'</p></div></div>')
+		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[i].today+'</span>'+arr[i].unit+'</p><p>本周<span class="num-font">'+arr[i].week+'</span>'+arr[i].unit+'</p><p>当月<span class="num-font">'+arr[i].month+'</span>'+arr[i].unit+'</p></div></div>')
 	}
 	var cardTime='';
 	var cardTime1='';
@@ -348,7 +348,7 @@ function addCard(arr,classStr)
 					}
 				}
 				arr.unshift(arr.splice(arr.length-1 , 1)[0]);
-				boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left:0px;top:0px"><div class="card-title"><div class="text-centered">'+arr[0].title+'</div></div><div class="card-text"><p>今日<span class="num-font">'+arr[0].today+'</span>'+arr[0].unit+'</p><p>本周<span class="num-font">'+arr[0].week+'</span>'+arr[0].unit+'</p><p>当月<span class="num-font">'+arr[0].month+'</span>'+arr[0].unit+'</p></div></div>')
+				boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left:0px;top:0px"><div class="card-title"><div class="text-centered">'+arr[0].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[0].today+'</span>'+arr[0].unit+'</p><p>本周<span class="num-font">'+arr[0].week+'</span>'+arr[0].unit+'</p><p>当月<span class="num-font">'+arr[0].month+'</span>'+arr[0].unit+'</p></div></div>')
 			}
 			else
 			{

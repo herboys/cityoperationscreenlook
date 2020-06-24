@@ -325,7 +325,7 @@ function createVideoSlideOne(){
 		},
 		error:function (data) {
 			console.log(data)
-			alert('失败')
+			//alert('失败')
 		}
 
 	})

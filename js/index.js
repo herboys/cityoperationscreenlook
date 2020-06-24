@@ -133,3 +133,5 @@ function getName(){
 	})
 }
 
+//alert("nian"+data.data[i].date.substring(0,4)+"yue"+parseInt(data.data[i].date.substring(5,7))+"ri"+data.data[i].date.substring(8,10));
+// alert("nian"+parseInt(now.getFullYear())+"yue"+(parseInt(now.getMonth())+1)+"ri"+parseInt(now.getDate()));

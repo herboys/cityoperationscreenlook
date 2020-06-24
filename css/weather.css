@@ -78,3 +78,7 @@
 .weather-icon > .d02 {
     background-position: -3.9rem 0;
 }
+
+.leftTxt{
+    margin-left:2rem;
+}

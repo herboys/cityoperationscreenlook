@@ -169,34 +169,44 @@ function addTableList(name,arr)
 	addTableList1('.linkage-table',linkageArr)
 
 })*/
-$(function(){
-	//var STATIC_URL="http://localhost:8085";
+function getDutyList(){
 	var coreArr=[];var linkageArr=[];
 	var dt = getNowFormatDate();
+	//alert(dt)
 	$.ajax({
 		url : STATIC_URL+'/dutyinfo/findByDate/' + dt,
 		dataType : 'json',
 		type : 'get',
-		async : true,
+		async :false ,
 		success : function(data) {
+
 			var tableLen =data.length;
 			var j=0,k=0;
 			for (var i = 0; i < tableLen; i++){
-			if((data[i].qjName==""||data[i].qjName == null)&&data[i].fzxName!="" &&data[i].fzxName!=null) {
-				data[i].address=data[i].fzxName;
-				coreArr[j++]=(data[i]);
+				if((data[i].qjName==""||data[i].qjName == null)&&data[i].fzxName!="" &&data[i].fzxName!=null) {
+					data[i].address=data[i].fzxName;
+					coreArr[j++]=(data[i]);
+				}
+				if((data[i].fzxName==""||data[i].fzxName == null)&&data[i].qjName!="" &&data[i].qjName!=null) {
+					data[i].address=data[i].qjName;
+					linkageArr[k++]=(data[i]);
+				}
 			}
-			if((data[i].fzxName==""||data[i].fzxName == null)&&data[i].qjName!="" &&data[i].qjName!=null) {
-				data[i].address=data[i].qjName;
-				linkageArr[k++]=(data[i]);
-			}
-			}
+
+			addTableList1('.core-table',coreArr);
+			addTableList1('.linkage-table',linkageArr)
 		}
 	})
+}
+
+$(function(){
+	//var STATIC_URL="http://localhost:8085";
+
 	//alert(JSON.stringify(coreArr))
 	//alert(JSON.stringify(linkageArr))
-	addTableList1('.core-table',coreArr);
-	addTableList1('.linkage-table',linkageArr)
+	getDutyList();
+	setInterval(getDutyList,6*60*60*1000)
+
 })
 
 var linkageTime='';

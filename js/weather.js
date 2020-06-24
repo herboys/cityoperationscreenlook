@@ -74,42 +74,58 @@ $(function () {
         let now = new Date();
         let hour = now.getHours() +1;
         let min = now.getMinutes();
-     /*   $.ajax({
-            url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=7Day',
-            dataType : 'json',
-            type : 'get',
-            async : false,
-            success : function(data) {
-                for(var i = 0; i < data.length; i++) {
-                    if(parseInt(now.getFullYear())==data[i].forecastday.substring(0,4)&&(parseInt(now.getMonth())+1)==parseInt(data[i].forecastday.substring(5,7))&&parseInt(now.getDate())==data[i].forecastday.substring(8,10))
-                    {
-                        if(parseInt(hour)>=6&&parseInt(hour)<=20) w=data[i].nighticonid;
-                        else  w=data[i].nighticonid;
-                        break;
+        /*    $.ajax({
+                url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=7Day',
+                dataType : 'json',
+                type : 'get',
+                async : false,
+                success : function(data) {
+                    for(var i = 0; i < data.length; i++) {
+                        if(parseInt(now.getFullYear())==data[i].forecastday.substring(0,4)&&(parseInt(now.getMonth())+1)==parseInt(data[i].forecastday.substring(5,7))&&parseInt(now.getDate())==data[i].forecastday.substring(8,10))
+                        {
+                            if(parseInt(hour)>=6&&parseInt(hour)<=20) w=data[i].nighticonid;
+                            else  w=data[i].nighticonid;
+                            break;
+                        }
                     }
                 }
-            }
-        })
-        $.ajax({
-            url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=zdz',
-            dataType : 'json',
-            type : 'get',
-            async : false,
-            success : function(data) {
-                for(var i = 0; i < data.length; i++) {
-                    if(data[i].stationname=="嘉定国家气象观测站"){
-                     tem=data[i].temper;
-                     if(data[i].one_rain>0&&data[i].one_rain<10)w="小雨";
-                     else if(data[i].one_rain>10&&data[i].one_rain<24.9)w="中雨";
-                     else if(data[i].one_rain>25&&data[i].one_rain<49.9)w="大雨";
-                     else  if(data[i].one_rain>50&&data[i].one_rain<99.9)w="暴雨";
-                     else  if(data[i].one_rain>100&&data[i].one_rain<249)w="大暴雨";
-                     else  if(data[i].one_rain>250)w="特大暴雨";
-                     break;
+            })*/
+            $.ajax({
+                url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=zdz',
+                dataType : 'json',
+                type : 'get',
+                async : false,
+                success : function(data) {
+                    w="-1"
+                    for(var i = 0; i < data.length; i++) {
+                        if(data[i].stationname=="嘉定国家气象观测站"){
+                         tem=data[i].temper;
+                         if(data[i].one_rain>0&&data[i].one_rain<10)w="小雨";
+                         else if(data[i].one_rain>10&&data[i].one_rain<24.9)w="中雨";
+                         else if(data[i].one_rain>25&&data[i].one_rain<49.9)w="大雨";
+                         else  if(data[i].one_rain>50&&data[i].one_rain<99.9)w="暴雨";
+                         else  if(data[i].one_rain>100&&data[i].one_rain<249)w="大暴雨";
+                         else  if(data[i].one_rain>250)w="特大暴雨";
+
+                         if(w!="-1"){
+                             $('#weatherIcon').show()
+                             $('.weather-text').removeClass('leftTxt')
+                             showWeather(w, tem);
+                         }
+                         break;
+                        }
                     }
                 }
-            }
-        })*/
+            })
+        if(w==="-1"){
+            $('#weatherIcon').hide()
+            $('.weather-text').addClass('leftTxt')
+            //$(".weather-icon > div").css({"background-position":“”});
+            $(".weather-text").html("降水量：0ml");
+            let unit = "<span style='font-size:1.6rem'>℃</span>"
+            $(".temperature-text").html(tem + unit);
+        }
+/*
         $.ajax({
             url : 'http://www.tianqiapi.com/api?version=v9&appid=23035354&appsecret=8YvlPNrz&version=v9&cityid=0&city=%E5%98%89%E5%AE%9A&ip=0&callback=0',
             dataType :'jsonp', //'json',
@@ -131,6 +147,7 @@ $(function () {
                 alert("weather error")
             }
         })
+*/
 
         $.ajax({
             url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=Warning',

@@ -67,6 +67,7 @@ $(function () {
         }
     }*/
 
+    changeWeather()
     function changeWeather(){
         var tem; var w,wth;var ty,tz;
         let now = new Date();
@@ -114,14 +115,17 @@ $(function () {
             type : 'get',
             async : false,
             success : function(data) {
-                for(var i = 0; i < data.data.length; i++) {
-                    if(parseInt(now.getFullYear())==data.data[i].date.substring(0,4)&&(parseInt(now.getMonth())+1)==parseInt(data.data[i].date.substring(5,7))&&parseInt(now.getDate())==data.data[i].date.substring(8,10))
-                    {
-                        w=data.data[i].wea;
-                        tem=data.data[i].tem;
-                        break;
-                    }
-                }
+                //for(var i = 0; i < data.data.length; i++) {
+                   // if(parseInt(now.getFullYear())==data.data[i].date.substring(0,4)&&(parseInt(now.getMonth())+1)==parseInt(data.data[i].date.substring(5,7))&&parseInt(now.getDate())==data.data[i].date.substring(8,10))
+                  //  {
+                        w=data.data[0].wea;
+                        tem=data.data[0].tem;
+                       // alert(tem)
+                        console.log(tem)
+                showWeather(w, tem);
+                 //       break;
+                 //   }
+                //}
             },error:function (data) {
                 alert("weather error")
             }
@@ -138,13 +142,15 @@ $(function () {
                      ty=y;tz=z;
                      y=data[0].disastername;
                      z=data[0].disastercolour;
+                    clearWarning();
+                    if(ty!=y||tz!=z)  showWarning(y,z,hour + "时"+min+"分")
                // }
             }
         })
 
-        showWeather(w, tem);
-        clearWarning();
-        if(ty!=y||tz!=z)  showWarning(y,z,hour + "时"+min+"分")
+        //showWeather(w, tem);
+        //clearWarning();
+        //if(ty!=y||tz!=z)  showWarning(y,z,hour + "时"+min+"分")
         //$(".early-warning-text").html(time +" ");
     }
 

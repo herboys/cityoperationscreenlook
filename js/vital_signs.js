@@ -153,7 +153,7 @@ $(function(){
 				j++
 			}
 			var j=0;
-			for(var i=3;i<data.length;i++){
+			for(var i=3;i<6;i++){
 				jtzkArr[j].today=data[i].timeDay;
 				jtzkArr[j].week=data[i].timeWeek;
 				jtzkArr[j].month=data[i].timeMonth;

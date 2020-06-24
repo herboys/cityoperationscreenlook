@@ -140,7 +140,7 @@ function addTableList(name,arr)
 			name1:'杨振东',
 			num:'12',
 			phone:'66742920',
-		},				
+		},
 		{
 			address:'江桥镇',
 			leader:'马维康',
@@ -172,11 +172,12 @@ function addTableList(name,arr)
 $(function(){
 	//var STATIC_URL="http://localhost:8085";
 	var coreArr=[];var linkageArr=[];
+	var dt = getNowFormatDate();
 	$.ajax({
-		url : STATIC_URL+'/dutyinfo/findAll',
+		url : STATIC_URL+'/dutyinfo/findByDate/' + dt,
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			var tableLen =data.length;
 			var j=0,k=0;
@@ -201,6 +202,25 @@ $(function(){
 var linkageTime='';
 var linkageNum=0;
 var linkageMax='';
+
+
+// 实例化点标记
+//获取当前时间，格式YYYY-MM-DD
+function getNowFormatDate() {
+	var date = new Date();
+	var seperator1 = "-";
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var strDate = date.getDate();
+	if (month >= 1 && month <= 9) {
+		month = "0" + month;
+	}
+	if (strDate >= 0 && strDate <= 9) {
+		strDate = "0" + strDate;
+	}
+	var currentdate = year + seperator1 + month + seperator1 + strDate;
+	return currentdate;
+}
 
 function addTableList1(name,arr)
 {
@@ -229,7 +249,7 @@ function addTableList1(name,arr)
 			 		linkageInt();
 				 })
 			},200*i+200)
-	
+
 		}
 	}
 }
@@ -243,8 +263,8 @@ function linkageInt(){
 				$('.linkage-table .list-box').css({top:-moveT*linkageNum});
 			}
 			linkageNum++;
-		
-	
+
+
 			$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum*6},1000,function(){
 				//if(linkageNum>=linkageMax/6)
 				//{

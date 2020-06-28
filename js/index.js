@@ -5,6 +5,7 @@ $(document).ready(function(){
 	setInterval(getName,12*60*60*1000)
 })
 
+
 function setFont(){
 	var size=$(window).width()*0.005;
 	if(size<12)

@@ -67,7 +67,7 @@ $(function () {
         }
     }*/
 
-    changeWeather()
+    changeWeather();
     function changeWeather(){
        // alert("weather")
         var tem; var w,wth;var ty,tz;
@@ -115,18 +115,34 @@ $(function () {
                          break;
                         }
                     }
+                    if(w==="-1"){
+                        $('#weatherIcon').hide()
+                        $('.weather-text').addClass('leftTxt')
+                        //$(".weather-icon > div").css({"background-position":“”});
+                        $(".weather-text").html("降水量：0mm");
+                        let unit = "<span style='font-size:1.6rem'>℃</span>"
+                        $(".temperature-text").html(tem + unit);
+                    }
                 }
             })
-        if(w==="-1"){
-            $('#weatherIcon').hide()
-            $('.weather-text').addClass('leftTxt')
-            //$(".weather-icon > div").css({"background-position":“”});
-            $(".weather-text").html("降水量：0ml");
-            let unit = "<span style='font-size:1.6rem'>℃</span>"
-            $(".temperature-text").html(tem + unit);
-        }
-/*
-        $.ajax({
+
+      /* $.ajax({
+            url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=7Day',
+            dataType : 'json',
+            type : 'get',
+            async : false,
+            success : function(data) {
+                for(var i = 0; i < data.length; i++) {
+                    if(parseInt(now.getFullYear())==data[i].forecastday.substring(0,4)&&(parseInt(now.getMonth())+1)==parseInt(data[i].forecastday.substring(5,7))&&parseInt(now.getDate())==data[i].forecastday.substring(8,10))
+                    {
+                        if(parseInt(hour)>=6&&parseInt(hour)<=20) w=data[i].nighticonid;
+                        else  w=data[i].nighticonid;
+                        break;
+                    }
+                }
+            }
+        })*/
+   /*  $.ajax({
             url : 'http://www.tianqiapi.com/api?version=v9&appid=23035354&appsecret=8YvlPNrz&version=v9&cityid=0&city=%E5%98%89%E5%AE%9A&ip=0&callback=0',
             dataType :'jsonp', //'json',
             type : 'get',
@@ -160,11 +176,13 @@ $(function () {
                      ty=y;tz=z;
                      y=data[0].disastername;
                      z=data[0].disastercolour;
+
                     clearWarning();
                     if(ty!=y||tz!=z)  showWarning(y,z,hour + "时"+min+"分")
                // }
             }
         })
+
 
         //showWeather(w, tem);
         //clearWarning();
@@ -174,5 +192,6 @@ $(function () {
 
     //setInterval(changeWeather,300000);
     setInterval(changeWeather,60000*15);
+   // setInterval(changeWeather,10000);
 
 })

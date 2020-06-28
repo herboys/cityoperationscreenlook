@@ -115,16 +115,17 @@ $(function () {
                          break;
                         }
                     }
+                    if(w==="-1"){
+                        $('#weatherIcon').hide()
+                        $('.weather-text').addClass('leftTxt')
+                        //$(".weather-icon > div").css({"background-position":“”});
+                        $(".weather-text").html("降水量：0mm");
+                        let unit = "<span style='font-size:1.6rem'>℃</span>"
+                        $(".temperature-text").html(tem + unit);
+                    }
                 }
             })
-        if(w==="-1"){
-            $('#weatherIcon').hide()
-            $('.weather-text').addClass('leftTxt')
-            //$(".weather-icon > div").css({"background-position":“”});
-            $(".weather-text").html("降水量：0ml");
-            let unit = "<span style='font-size:1.6rem'>℃</span>"
-            $(".temperature-text").html(tem + unit);
-        }
+
       /* $.ajax({
             url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=7Day',
             dataType : 'json',

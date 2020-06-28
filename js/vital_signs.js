@@ -185,6 +185,7 @@ $(function(){
 				jtzkArr[sct-3].week=data[i].timeWeek;
 				jtzkArr[sct-3].month=data[i].timeMonth;
 			 }*/
+
 			}
 		}
 	})
@@ -199,7 +200,7 @@ $(function(){
 		{
 			title:'民政救助',
 			//num:0.3,
-			unit:'人',
+			unit:'人次/月',
 		},
 		{
 			title:'最低工资标准',
@@ -214,7 +215,7 @@ $(function(){
 		{
 			title:'门诊就诊量',
 			//num:0.3,
-			unit:'万人次',
+			unit:'万人次/年',
 		},
 		{
 			title:'城镇登记失业人数',
@@ -224,7 +225,7 @@ $(function(){
 		{
 			title:'民政救助',
 			//num:0.3,
-			unit:'人',
+			unit:'人次/月',
 		},
 	]
 	$.ajax({

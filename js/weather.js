@@ -90,7 +90,7 @@ $(function () {
                     }
                 }
             })*/
-            $.ajax({
+           /* $.ajax({
                 url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=zdz',
                 dataType : 'json',
                 type : 'get',
@@ -124,8 +124,62 @@ $(function () {
                         $(".temperature-text").html(tem + unit);
                     }
                 }
-            })
+            })*/
 
+        var curDate=getNowFormatDate1()
+
+        var time = new Date();
+        var curHour=time.getHours()
+        if(curHour.length<2)
+            curHour="0"+curHour
+        $.ajax({
+            url:'http://61.152.122.122/JDData/JDDataForm.aspx?action=GetGfeDatasByAnyCoordinateDL',
+            dataType:'json',
+            type:'get',
+            async:true,
+            success:function (data) {
+                w="-1"
+                for(var i=0;i<data.length;i++){
+                    var data_time=data[i].datatime
+
+                    if(data_time.substr(0,10)===curDate){
+
+                        if(data_time.substr(11,2)==curHour){
+                            tem=data[i].temperature
+                            var rain=data[i].rain
+                            if(rain>0&&rain<10)
+                                w="小雨";
+                            else if(rain>10&&rain<24.9)
+                                w="中雨";
+                            else if(rain>25&&rain<49.9)
+                                w="大雨";
+                            else  if(rain>50&&rain<99.9)
+                                w="暴雨";
+                            else  if(rain>100&&rain<249)
+                                w="大暴雨";
+                            else  if(rain>250)
+                                w="特大暴雨";
+
+                            if(w!="-1"){
+                                $('#weatherIcon').show()
+                                $('.weather-text').removeClass('leftTxt')
+                                showWeather(w, tem);
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                if(w==="-1"){
+                    $('#weatherIcon').hide()
+                    $('.weather-text').addClass('leftTxt')
+                    //$(".weather-icon > div").css({"background-position":“”});
+                    $(".weather-text").html("降水量：0mm");
+                    let unit = "<span style='font-size:1.6rem'>℃</span>"
+                    $(".temperature-text").html(tem + unit);
+                }
+            }
+        })
       /* $.ajax({
             url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=7Day',
             dataType : 'json',

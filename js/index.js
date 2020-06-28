@@ -118,6 +118,7 @@ function getName(){
 		dataType : 'json',
 		type : 'get',
 		success : function(data) {
+
           for(var i = 0; i < data.length; i++) {
              // alert("nian"+parseInt(time.getFullYear())+"月"+(parseInt(time.getMonth())+1)+"日"+parseInt(time.getDate()))
 			 // alert("nia"+data[i].dutyDate.substring(0,4)+"月"+data[i].dutyDate.substring(5,7)+"日"+data[i].dutyDate.substring(8,10))
@@ -132,6 +133,3 @@ function getName(){
 		}
 	})
 }
-
-//alert("nian"+data.data[i].date.substring(0,4)+"yue"+parseInt(data.data[i].date.substring(5,7))+"ri"+data.data[i].date.substring(8,10));
-// alert("nian"+parseInt(now.getFullYear())+"yue"+(parseInt(now.getMonth())+1)+"ri"+parseInt(now.getDate()));

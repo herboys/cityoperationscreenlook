@@ -55,6 +55,7 @@ var linkageNum=0;
 var linkageMax='';
 
 
+
 // 实例化点标记
 //获取当前时间，格式YYYY-MM-DD
 function getNowFormatDate() {

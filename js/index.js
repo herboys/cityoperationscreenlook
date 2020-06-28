@@ -2,6 +2,7 @@
 $(document).ready(function(){
 	getZxgl();
 	getName();
+	setInterval(getName,12*60*60*1000)
 })
 
 function setFont(){
@@ -112,26 +113,18 @@ function getZxgl(){
 }
 
 function getName(){
-	var time=new Date();
+	var dt = getNowFormatDate();
 	$.ajax({
-		url : STATIC_URL+'/zonecenter/findAll',
+		url : STATIC_URL+'/zonecenter/findLeaderByDate/' + dt,
 		dataType : 'json',
 		type : 'get',
 		success : function(data) {
-          for(var i = 0; i < data.length; i++) {
-             // alert("nian"+parseInt(time.getFullYear())+"月"+(parseInt(time.getMonth())+1)+"日"+parseInt(time.getDate()))
-			 // alert("nia"+data[i].dutyDate.substring(0,4)+"月"+data[i].dutyDate.substring(5,7)+"日"+data[i].dutyDate.substring(8,10))
-          	if(parseInt(time.getFullYear())==data[i].dutyDate.substring(0,4)&&(parseInt(time.getMonth())+1)==parseInt(data[i].dutyDate.substring(5,7))&&parseInt(time.getDate())==data[i].dutyDate.substring(8,10)){
-			$('#name').html(data[i].leaderName);
-			$('#name1').html(data[i].directorName);
-			$('#name2').html(data[i].commanderName);
-			$('#name3').html(data[i].foremanName);
-			$('#name4').html(data[i].dutyName);
-		}
-		}
+			$('#name').html(data[0].leaderName);
+			$('#name1').html(data[0].directorName);
+			$('#name2').html(data[0].commanderName);
+			$('#name3').html(data[0].foremanName);
+			$('#name4').html(data[0].dutyName);
 		}
 	})
 }
 
-//alert("nian"+data.data[i].date.substring(0,4)+"yue"+parseInt(data.data[i].date.substring(5,7))+"ri"+data.data[i].date.substring(8,10));
-// alert("nian"+parseInt(now.getFullYear())+"yue"+(parseInt(now.getMonth())+1)+"ri"+parseInt(now.getDate()));

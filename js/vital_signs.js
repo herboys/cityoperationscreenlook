@@ -75,6 +75,9 @@ $(function(){
 		},
 	]*/
 	var asjczArr=[];
+	for(var i=0;i<5;i++){
+		asjczArr[i]=new Object()
+	}
 	$.ajax({
 		url : STATIC_URL+'/eventhandle/findAll',
 		dataType : 'json',
@@ -85,14 +88,54 @@ $(function(){
 			for(var i=0;i<data.length;i++){
 				var obj=new Object()
 				var alm=data[i].alarmType;
+				if(alm=="4" || alm=="5")
+					continue
 				obj.today=data[i].timeDay;
 				obj.week=data[i].timeWeek;
 				obj.month=data[i].timeMonth;
 				asjczArr[alm-1]=obj
 		}
+			get12345Grid()
+
 		}
 	})
+
+	function get12345Grid(){
+		//alert(123)
+		$.ajax({
+			url:"http://localhost:8090/taskInfoUrgent/findHotlineNum",
+			dataType:'json',
+			type:'get',
+			async:false,
+			success:function(data){
+				//alert(JSON.stringify(data))
+				var obj=new Object()
+				obj.today=data.yeaterdayNum
+				obj.week=data.weekNum
+				obj.month=data.monthNum
+				asjczArr[3]=obj
+
+				$.ajax({
+					url:"http://localhost:8090/taskInfoUrgent/findGridNum",
+					dataType:'json',
+					type:'get',
+					async:false,
+					success:function(data){
+					//	alert(JSON.stringify(data))
+						var obj=new Object()
+						obj.today=data.yeaterdayNum
+						obj.week=data.weekNum
+						obj.month=data.monthNum
+						asjczArr[4]=obj
+					}
+				})
+			}
+		})
+
+	}
+
 	addAsjcz(asjczArr);
+	setInterval(get12345Grid,5*60*1000)
 	var zygyArr=[
 		{
 			title:'用电总量',

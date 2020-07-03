@@ -181,6 +181,13 @@ $(function(){
 			//week:189,
 			//month:1234,
 			unit:'车次',
+		},
+		{
+			title:'景点人流量',
+			today:300,
+			week:2600,
+			month: 15000,
+			unit:'人次',
 		}
 	];
 //var zygyArr=[];var jtzkArr=[];

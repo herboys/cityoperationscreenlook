@@ -135,7 +135,7 @@ $(function(){
 	}
 
 	addAsjcz(asjczArr);
-	setInterval(get12345Grid,5*60*1000)
+	setInterval(get12345Grid,1*60*1000)
 	var zygyArr=[
 		{
 			title:'用电总量',

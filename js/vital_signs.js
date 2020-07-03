@@ -127,6 +127,7 @@ $(function(){
 						obj.week=data.weekNum
 						obj.month=data.monthNum
 						asjczArr[4]=obj
+						addAsjcz(asjczArr);
 					}
 				})
 			}

@@ -185,9 +185,9 @@ $(function(){
 		},
 		{
 			title:'景点人流量',
-			today:300,
+			/*today:300,
 			week:2600,
-			month: 15000,
+			month: 15000,*/
 			unit:'人次',
 		}
 	];
@@ -224,6 +224,10 @@ $(function(){
 					jtzkArr[2].today=data[i].timeDay;
 					jtzkArr[2].week=data[i].timeWeek;
 					jtzkArr[2].month=data[i].timeMonth;
+				}else if(sct==7){
+					jtzkArr[3].today=data[i].timeDay;
+					jtzkArr[3].week=data[i].timeWeek;
+					jtzkArr[3].month=data[i].timeMonth;
 				}
 
 			/*	if(sct<3){
@@ -347,7 +351,7 @@ $(function(){
 					hjbzArr[5].num=data[0].sewageTreatSum;
 				}
 			}
-			
+
 		}
 	})
 	addHjbz(hjbzArr) //环境保障
@@ -468,7 +472,7 @@ function addShbz(arr)
 				if(startNum>=arr.length)
 				{
 					startNum=0;
-				}			
+				}
 			}
 			else
 			{
@@ -535,6 +539,6 @@ function addHjbz(arr)
 			}
 
 		},5000)
-		
+
 	}
 }

@@ -48,6 +48,11 @@ function wblkgb(){
 	$('.weblink').addClass({transform: scale(0)})//.addClass('weblink');
 }
 */
+
+var zhihuiList=[]
+var anquanList=[]
+var gaoxiaoList=[]
+
 function getZxgl(){
 	//var STATIC_URL="http://localhost:8085";
 	$.ajax({
@@ -61,34 +66,60 @@ function getZxgl(){
 			//alert(123)
 			//var data=res.data
 			//alert(JSON.stringify(data))
+			for(var i=0;i<6;i++){
+				var obj1=new Object()
+				var obj2=new Object()
+				var obj3=new Object()
+
+				zhihuiList[i]=obj1
+				anquanList[i]=obj2
+				gaoxiaoList[i]=obj3
+			}
+
 			var tableLen =data.length;
 			var str = "";str1 = [];
 			for (var i = 0; i < tableLen; i++){
-				str += '<a  class="csyytz_txt text-centered" href= '+data[i].managementUrl+' target="_blank">'
+
+				var tmpIndex=data[i].indexOf-1;
+				if(tmpIndex>=6)
+					continue
+				if(data[i].category==="智慧"){
+					zhihuiList[tmpIndex].url=data[i].managementUrl
+					zhihuiList[tmpIndex].name=data[i].managementName
+				}else if(data[i].category==="高效"){
+					gaoxiaoList[tmpIndex].url=data[i].managementUrl
+					gaoxiaoList[tmpIndex].name=data[i].managementName
+				}else if(data[i].category==="安全"){
+					anquanList[tmpIndex].url=data[i].managementUrl
+					anquanList[tmpIndex].name=data[i].managementName
+				}
+
+				/*str += '<a  class="csyytz_txt text-centered" href= '+data[i].managementUrl+' target="_blank">'
 					+'<div class="arrowBar-box">'
 					+'<div class="arrowBar"></div>'
 					+'</div>'
-					+ data[i].managementName+ '</a>';
+					+ data[i].managementName+ '</a>';*/
 				//str1[i]='<div style="width: 90%;height:50%;top: 0.1vw;left:5%">'+data[i].management_url+'</div>';
 			}
-			str += '<div class="csyytz_txt text-centered">'
+
+
+
+			var zhihuiStr=createThree(zhihuiList)
+			var anquanStr=createThree(anquanList)
+			var gaoxiaoStr=createThree(gaoxiaoList)
+			$("#zhihuiBox").html(zhihuiStr)
+			$("#anquanBox").html(anquanStr)
+			$("#gaoxiaoBox").html(gaoxiaoStr)
+
+			/*str += '<div class="csyytz_txt text-centered">'
 					+'<div class="arrowBar-box">'
 					+'<div class="arrowBar"></div>'
 					+'</div>'
-					+ '更多......</div>'
+					+ '更多......</div>'*/
 			//str1[i]+='<button class="qd-btn" onclick="wblk()">关闭</button>';
 
-			$('#zxgl_detail').html(str);
-			//$('.weblinks').html(str1[i]);
-			/*var str1 = "";
-            for (var i = 16; i < tableLen; i++) {
-                str1 += '<div class="csyytz_txt text-centered">'
-                +'<div class="arrowBar-box">'
-                +'<div class="arrowBar"></div>'
-                +'</div>'
-                    + resultInfo[i] + '</div>'
-            }
-            $('#zxgl_detail1').html(str1);*/
+			//$('#zxgl_detail').html(str);
+
 		},
 		error:function (data) {
 			var resultInfo=[];
@@ -129,3 +160,99 @@ function getName(){
 	})
 }
 
+function moreZhihui(){
+	var str=$("#zhihuiAdd")[0].innerText
+	console.log(str)
+	//alert(str)
+	if(str==="+"){
+		zhihuiAdd()
+	}else{
+		zhihuiClose()
+	}
+}
+
+function moreAnquan(){
+	var str=$("#anquanAdd")[0].innerText
+	console.log(str)
+	//alert(str)
+	if(str==="+"){
+		anquanAdd()
+	}else{
+		anquanClose()
+	}
+}
+
+function moreGaoxiao(){
+	var str=$("#gaoxiaoAdd")[0].innerText
+	console.log(str)
+	//alert(str)
+	if(str==="+"){
+		gaoxiaoAdd()
+	}else{
+		gaoxiaoClose()
+	}
+}
+
+
+function zhihuiAdd(){
+	var zhihuiStr=createMore(zhihuiList)
+	$("#zhihuiBox").append(zhihuiStr)
+	$("#zhihuiAdd").html("^")
+
+}
+
+function zhihuiClose(){
+	var zhihuiStr=createThree(zhihuiList)
+	$("#zhihuiBox").html(zhihuiStr)
+	$("#zhihuiAdd").html("+")
+}
+
+function anquanAdd(){
+	var anquanStr=createMore(anquanList)
+	$("#anquanBox").append(anquanStr)
+	$("#anquanAdd").html("^")
+}
+
+function anquanClose(){
+	var anquanStr=createThree(anquanList)
+	$("#anquanBox").html(anquanStr)
+	$("#anquanAdd").html("+")
+}
+
+function gaoxiaoAdd(){
+	var gaoxiaoStr=createMore(gaoxiaoList)
+	$("#gaoxiaoBox").append(gaoxiaoStr)
+	$("#gaoxiaoAdd").html("^")
+
+}
+
+function gaoxiaoClose(){
+	var gaoxiaoStr=createThree(gaoxiaoList)
+	$("#gaoxiaoBox").html(gaoxiaoStr)
+	$("#gaoxiaoAdd").html("+")
+}
+
+
+function createThree(data) {
+	var str=""
+	for(var i=0;i<3;i++){
+		str += '<a  class="csyytz_txt text-centered" href= '+data[i].url+' target="_blank">'
+			+'<div class="arrowBar-box">'
+			+'<div class="arrowBar"></div>'
+			+'</div>'
+			+ data[i].name+ '</a>';
+	}
+	return str;
+}
+
+function createMore(data){
+	var str=""
+	for(var i=3;i<6;i++){
+		str += '<a  class="csyytz_txt text-centered" href= '+data[i].url+' target="_blank">'
+			+'<div class="arrowBar-box">'
+			+'<div class="arrowBar"></div>'
+			+'</div>'
+			+ data[i].name+ '</a>';
+	}
+	return str;
+}

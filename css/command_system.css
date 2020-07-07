@@ -254,12 +254,14 @@
 .command-system .table-box
 {
 	width: calc(100% - 3.16rem);
-	margin: 0 auto;
-	margin-top: 0.8rem;
+	margin: auto;
+	/*margin-top: 0.8rem;*/
+	margin-top: 0.4rem;
 	overflow: hidden;
 }
 .command-system .table-box .list-box
 {
+	/*height: calc(6px + 18rem);*/
 	height: calc(6px + 18rem);
 	overflow: hidden;
 }
@@ -309,7 +311,8 @@
 }
 .command-system .linkage-table .list-warp
 {
-	height: calc(2px + 8.5rem);
+	/*height: calc(2px + 8.5rem);*/
+	height: calc(2px + 9rem);
 	position: relative;
 	overflow: hidden;
 }

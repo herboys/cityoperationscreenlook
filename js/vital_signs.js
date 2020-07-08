@@ -94,7 +94,7 @@ $(function(){
 				obj.month=data[i].timeMonth;
 				asjczArr[alm-1]=obj
 		}
-		//	get12345Grid()
+			get12345Grid()
 
 		}
 	})
@@ -135,7 +135,7 @@ $(function(){
 	}
 
 	addAsjcz(asjczArr);
-//	setInterval(get12345Grid,1*60*1000)
+	setInterval(get12345Grid,1*60*1000)
 	var zygyArr=[
 		{
 			title:'用电总量',

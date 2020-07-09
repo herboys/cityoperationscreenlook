@@ -160,7 +160,7 @@ $(function () {
                             else  if(rain>250)
                                 w="特大暴雨";
 
-                            if(w!="-1"){
+                            if(w!="-1" && tem!=null){
                                 $('#weatherIcon').show()
                                 $('.weather-text').removeClass('leftTxt')
                                 showWeather(w, tem);
@@ -170,13 +170,15 @@ $(function () {
                     }
                 }
 
-                if(w==="-1"){
+                if(w==="-1" && tem!=null){
                     $('#weatherIcon').hide()
                     $('.weather-text').addClass('leftTxt')
                     //$(".weather-icon > div").css({"background-position":“”});
                     $(".weather-text").html("降水量：0mm");
                     let unit = "<span style='font-size:1.6rem'>℃</span>"
                     $(".temperature-text").html(tem + unit);
+                }else{
+                    $('#weatherIcon').hide()
                 }
             }
         })

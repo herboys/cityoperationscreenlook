@@ -339,21 +339,21 @@ $(function(){
 		success : function(data) {
 			for(var i=0;i<data.length;i++){
 				var index=data[i].id
-				if(index==="1"){
-					hjbzArr[0].num=data[0].wasteDisSum;
-					hjbzArr[1].num=data[0].sewageTreatSum;
-				}else if(index==="2"){
-					hjbzArr[2].num=data[0].wasteDisSum;
-					hjbzArr[3].num=data[0].sewageTreatSum;
-				}else if(index==="3"){
-					hjbzArr[4].num=data[0].wasteDisSum;
-					hjbzArr[5].num=data[0].sewageTreatSum;
+				if(index==1){
+					hjbzArr[0].num=data[i].wasteDisSum;
+					hjbzArr[1].num=data[i].sewageTreatSum;
+				}else if(index==2){
+					hjbzArr[2].num=data[i].wasteDisSum;
+					hjbzArr[3].num=data[i].sewageTreatSum;
+				}else if(index==3){
+					hjbzArr[4].num=data[i].wasteDisSum;
+					hjbzArr[5].num=data[i].sewageTreatSum;
 				}
 			}
-
+			addHjbz(hjbzArr) //环境保障
 		}
 	})
-	addHjbz(hjbzArr) //环境保障
+	//addHjbz(hjbzArr) //环境保障
 })
 function addjbgk(arr){ //基本概况
 	$('.vital-signs .top-box ul').html('')

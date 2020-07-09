@@ -10,6 +10,55 @@ function addTableList(name,arr)
 	}
 }
 
+function getDutyListReal(){
+	var coreArr=[];var linkageArr=[];
+	var dt = getNowFormatDate();
+	$.ajax({
+		url:ORACLE_URL+"/viewDuty/dutyList",
+		dataType: "json",
+		type:'get',
+		async: true,
+		success:function (data) {
+			var centerDuty=data.centerDutyList
+			var departmentDuty=data.departmentDutyList
+			for(var i=0;i<centerDuty.length;i++){
+				for(var key in centerDuty[i]){
+					if(centerDuty[i][key]==null)
+						centerDuty[i][key]="--"
+				}
+				var obj=new Object()
+				if(centerDuty[i].area==="嘉定新城（马陆镇）"){
+					centerDuty[i].area="嘉定新城(马陆镇)"
+				}
+				obj.address=centerDuty[i].area
+				obj.leaderName=centerDuty[i].leader
+				obj.dutyName=centerDuty[i].dutyOparetor
+				obj.foremanName=centerDuty[i].leaderPhoneNum
+				obj.dutyPhone=centerDuty[i].operatorPhoneNum
+				coreArr[i]=obj
+			}
+			for(var i=0;i<departmentDuty.length;i++){
+				for(var key in departmentDuty[i]){
+					if(departmentDuty[i][key]==null)
+						departmentDuty[i][key]="--"
+				}
+				var obj=new Object()
+				obj.address=departmentDuty[i].area
+				obj.leaderName=departmentDuty[i].leader
+				obj.dutyName=departmentDuty[i].dutyOparetor
+				obj.foremanName=departmentDuty[i].leaderPhoneNum
+				obj.dutyPhone=departmentDuty[i].operatorPhoneNum
+				linkageArr[i]=obj
+			}
+
+			addTableList1('.core-table',coreArr);
+			//	addTableList1('.core-table2',coreArr);
+			addTableList1('.linkage-table',linkageArr)
+		}
+	})
+}
+
+
 function getDutyList(){
 	var coreArr=[];var linkageArr=[];
 	var dt = getNowFormatDate();
@@ -47,8 +96,9 @@ $(function(){
 
 	//alert(JSON.stringify(coreArr))
 	//alert(JSON.stringify(linkageArr))
-	getDutyList();
-	setInterval(getDutyList,6*60*60*1000)
+	//getDutyList();
+	getDutyListReal();
+	setInterval(getDutyListReal,6*60*60*1000)
 
 })
 

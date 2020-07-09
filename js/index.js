@@ -2,6 +2,7 @@
 $(document).ready(function(){
 	getZxgl_old();
 	getZxgl();
+	getLeaderZone();
 	getName();
 	setInterval(getName,12*60*60*1000)
 })
@@ -203,6 +204,20 @@ function getZxgl_old(){
 	})
 }
 
+function getLeaderZone() {
+	$.ajax({
+		url:ORACLE_URL+"/viewDuty/leaderZone",
+		dataType:'json',
+		type:'get',
+		success:function (data) {
+			$('#name1').html(data.directorName);
+			$('#name2').html(data.commanderName);
+			$('#name3').html(data.foremanName);
+			$('#name4').html(data.dutyName);
+		}
+	})
+}
+
 
 function getName(){
 	var dt = getNowFormatDate();
@@ -212,10 +227,10 @@ function getName(){
 		type : 'get',
 		success : function(data) {
 			$('#name').html(data[0].leaderName);
-			$('#name1').html(data[0].directorName);
+			/*$('#name1').html(data[0].directorName);
 			$('#name2').html(data[0].commanderName);
 			$('#name3').html(data[0].foremanName);
-			$('#name4').html(data[0].dutyName);
+			$('#name4').html(data[0].dutyName);*/
 		}
 	})
 }

@@ -94,12 +94,12 @@ $(function(){
 				obj.month=data[i].timeMonth;
 				asjczArr[alm-1]=obj
 		}
-			get12345Grid()
+			get12345Grid119()
 
 		}
 	})
 
-	function get12345Grid(){
+	function get12345Grid119(){
 		//alert(123)
 		$.ajax({
 			url:ORACLE_URL+"/taskInfoUrgent/findHotlineNum",
@@ -126,7 +126,20 @@ $(function(){
 						obj.week=data.weekNum
 						obj.month=data.monthNum
 						asjczArr[4]=obj
-						addAsjcz(asjczArr);
+						$.ajax({
+							url: FIRE_URL + "/fireInfo/findFireNum",
+							dataType: 'json',
+							type: 'get',
+							async: false,
+							success: function (data) {
+								var obj=new Object()
+								obj.today=data.todayNum
+								obj.week=data.weekNum
+								obj.month=data.monthNum
+								asjczArr[1]=obj
+								addAsjcz(asjczArr);
+							}
+						})
 					}
 				})
 			}
@@ -134,8 +147,12 @@ $(function(){
 
 	}
 
-	addAsjcz(asjczArr);
-	setInterval(get12345Grid,1*60*1000)
+	function getFireNum(){
+
+	}
+
+	//addAsjcz(asjczArr);
+	setInterval(get12345Grid119,1*60*1000)
 	var zygyArr=[
 		{
 			title:'用电总量',

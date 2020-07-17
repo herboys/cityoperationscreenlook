@@ -279,7 +279,7 @@ function linkageInt(){
 			linkageNum++;
 
 
-			$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum*5.6},1000,function(){
+			$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum*5.82},1000,function(){
 				//if(linkageNum>=linkageMax/6)
 				//{
 				//	linkageNum=0;

@@ -90,7 +90,7 @@ $(function () {
                     }
                 }
             })*/
-           /* $.ajax({
+           $.ajax({
                 url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=zdz',
                 dataType : 'json',
                 type : 'get',
@@ -98,7 +98,7 @@ $(function () {
                 success : function(data) {
                     w="-1"
                     for(var i = 0; i < data.length; i++) {
-                        if(data[i].stationname=="嘉定国家气象观测站"){
+                        if(data[i].stationname=="嘉定嘉定镇气象观测站"){
                          tem=data[i].temper;
                          if(data[i].one_rain>0&&data[i].one_rain<10)w="小雨";
                          else if(data[i].one_rain>10&&data[i].one_rain<24.9)w="中雨";
@@ -124,9 +124,9 @@ $(function () {
                         $(".temperature-text").html(tem + unit);
                     }
                 }
-            })*/
+            })
 
-        var curDate=getNowFormatDate1()
+     /*   var curDate=getNowFormatDate1()
 
         var time = new Date();
         var curHour=time.getHours()
@@ -181,7 +181,7 @@ $(function () {
                     $('#weatherIcon').hide()
                 }
             }
-        })
+        })*/
       /* $.ajax({
             url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=7Day',
             dataType : 'json',

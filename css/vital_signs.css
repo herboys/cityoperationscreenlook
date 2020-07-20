@@ -112,7 +112,7 @@
 	width: calc(100% - 0.6rem);
 	height: 2px;
 }
-.vital-signs .top-box .title-box,.vital-signs .bottom-box .title-box
+.vital-signs .top-box .title-box,.vital-signs .bottom-box .title-box .roll-table
 {
 	padding-left: 2rem;
 }
@@ -127,7 +127,7 @@
 .vital-signs .bottom-box
 {
 	width: 100%;
-	height:7rem;
+	height:12rem;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -168,6 +168,8 @@
 	display: flex;
 	/*margin-bottom: 1rem;*/
 	margin-bottom: 0rem;
+	height: 5rem;
+    margin-top: 5rem;
 }
 .vital-signs .bottom-box .bottom-main .main-list
 {
@@ -446,4 +448,71 @@
 
 .tufaShijian{
 
+}
+
+.roll-table {
+	width: 100%;
+  	position: absolute;
+	left: 0;
+	height: 5rem;
+	top: 2rem;
+	overflow: hidden;
+}
+.content{
+	margin-bottom: 30px;
+	padding-bottom: 50px;
+}	
+.croll-width{
+	width:120px;
+	height:50px;
+}	
+/*偶数行样式*/
+/* .evenRowStyle{
+	background-color: #ccc;
+} */
+/*访问样式*/
+.rowhover{
+background-color: #52c1a1;
+color: #FFF;
+font-weight: bold;
+}
+.kgo-scroll-sty {
+	width: 100%;
+	height: 260px;
+	margin: 0 auto; 
+	border: 1px solid #364a5f; 
+	line-height: 26px; 
+	font-size: 12px; 
+	overflow: hidden;
+}
+.kgo-scroll-sty>ul{
+	list-style-type: none;
+	margin:0px;
+	padding: 0px;
+}
+.kgo-scroll-sty>ul>li{
+	color: #393939;
+	width: 100%;
+}
+.kgo-scroll-head{
+	margin-bottom:15px;
+	height:30px;
+	background-color: #364a5f;
+	color:#FFF;
+	font-size: 14px;
+	font-weight: 800;
+	z-index: 999;
+	text-align: center;
+}
+.baseStyle{
+	display: inline-block;
+	height: 100%;
+	text-align: center;
+	margin-left: 20px;
+	padding-left:10px ;
+	padding-right:10px ;
+}
+.kgo-scroll-sty li {
+	height: 26px;
+	
 }

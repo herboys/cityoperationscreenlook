@@ -26,7 +26,8 @@
 		<script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
-
+		<script type="text/javascript" src="js/scroll.js" ></script>
+		
 		<!--地图-->
 		<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch"></script>
 		<!-- <script src="https://webapi.amap.com/maps?v=1.4.15&key=33c02230e724e2bc7edce69756a28beb"></script> -->
@@ -41,6 +42,29 @@
 		</script>
 	</head>
 	<body>
+	<script type="text/javascript">
+		var dataObj=[
+		{title:'事件一一',content:'内容一一',time:'2020-7-20',remark:'备注一'},
+		{title:'事件二二',content:'内容二二',time:'2020-7-21',remark:'备注一'},
+		{title:'事件三三',content:'内容三三',time:'2020-7-22',remark:'备注一'},
+		{title:'事件四四',content:'内容四四',time:'2020-7-23',remark:'备注一'},
+		{title:'事件五五',content:'内容五五',time:'2020-7-24',remark:'备注一'},
+		{title:'事件六六',content:'内容六六',time:'2020-7-25',remark:'备注一'},			
+		];
+
+		$(function(){
+		$('.myscroll').beginScroll({
+		speed: 60, //数值越大，速度越慢
+		rowHeight: 16//li的高度
+		});
+		$('.myscroll').initScroll(dataObj);
+		$('.myscroll').rowOnclick(function(rowobj){
+		console.log(rowobj.alarm_device);
+		});
+		$('.myscroll').addClassForEven('evenRowStyle');
+		$('.myscroll').addClassForHover('rowhover');
+		});
+	</script>
 		<div class="header">
 			<img src="images/head2.png"/>
 			<div class="main-box left-box">
@@ -342,13 +366,14 @@
 							</div>
 						</div>
 					</div>
-
+					
+		
 					<div class="bottom-box">
 						<div class="title-box" style="margin-bottom: 0rem">
 							<div class="title-border-box">
-								<div class="top-border border-box"></div>
-								<div class="center-border border-box"></div>
-								<div class="bottom-border border-box"></div>
+								<div class="top-border border-box">11</div>
+								<div class="center-border border-box">22</div>
+								<div class="bottom-border border-box">33</div>
 							</div>
 							<h3>案事件处置</h3>
 							<div class="title-border-box title-border-right">
@@ -360,7 +385,22 @@
 								<div class="dividing-box"></div>
 							</div>
 						</div>
-						<div class="bottom-main">
+						<div class="roll-table">
+							<div class="content">
+	
+								<div class="myscroll kgo-scroll-sty">
+									<div class="kgo-scroll-head">
+										<div class="baseStyle croll-width" name="title">事件标题</div>
+										<div class="baseStyle croll-width" name="content">内容</div>
+										<div class="baseStyle croll-width" name="time">发布时间</div>
+										<div class="baseStyle croll-width" name="remark" style="width: 200px;">备注</div>
+
+									</div>
+									<ul class="kgo-croll-body"></ul>
+								</div>
+							</div>
+						</div>
+						<div class="bottom-main" >
 							<div class="main-list">
 								<div class="main-left">
 									<img src="images/manage.png"/>
@@ -563,5 +603,27 @@
 		createVideoSlideOne();
 		createVideoSlide();
 		//openVideo();
+		var dataObj=[
+		{title:'事件一一',content:'内容一一',time:'2020-7-20',remark:'备注一'},
+		{title:'事件二二',content:'内容二二',time:'2020-7-21',remark:'备注一'},
+		{title:'事件三三',content:'内容三三',time:'2020-7-22',remark:'备注一'},
+		{title:'事件四四',content:'内容四四',time:'2020-7-23',remark:'备注一'},
+		{title:'事件五五',content:'内容五五',time:'2020-7-24',remark:'备注一'},
+		{title:'事件六六',content:'内容六六',time:'2020-7-25',remark:'备注一'},			
+		];
+
+		$(function(){
+		$('.myscroll').beginScroll({
+		speed: 60, //数值越大，速度越慢
+		rowHeight: 16//li的高度
+		});
+		$('.myscroll').initScroll(dataObj);
+		$('.myscroll').rowOnclick(function(rowobj){
+		console.log(rowobj.alarm_device);
+		});
+		$('.myscroll').addClassForEven('evenRowStyle');
+		$('.myscroll').addClassForHover('rowhover');
+		});
+	
 	</script>
 </html>

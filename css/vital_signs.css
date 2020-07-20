@@ -127,6 +127,7 @@
 .vital-signs .bottom-box
 {
 	width: 100%;
+	height:7rem;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -163,9 +164,10 @@
 .vital-signs .bottom-box .bottom-main
 {
 	width: calc(100% - 2rem);
-	margin: 0 auto;
+	margin: auto;
 	display: flex;
-	margin-bottom: 1rem;
+	/*margin-bottom: 1rem;*/
+	margin-bottom: 0rem;
 }
 .vital-signs .bottom-box .bottom-main .main-list
 {
@@ -188,24 +190,27 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	font-size: 1.2rem;
+	/*font-size: 1.2rem;*/
+	font-size: 1rem;
 	color: #fff;
 	flex-direction: column;
 }
 .vital-signs .bottom-box .bottom-main .main-list .main-right p
 {
 	line-height: 1.5rem;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	color: #fff;
 }
 .vital-signs .bottom-box .bottom-main .main-list .main-right p .num-font
 {
 	display: inline-block;
-	font-size: 1.5rem;
+	/*font-size: 1.5rem;*/
+	font-size: 1rem;
 	color: #F5A623;
 	text-align: right;
-	width: 2.8rem;
-	margin-right: 10px;
+	/*width: 2.8rem;*/
+	width: 2.2rem;
+	margin-right: 5px;
 }
 .vital-signs .card-warp
 {
@@ -215,11 +220,13 @@
 }
 .vital-signs .zygy-warp
 {
-	top: 20%;
+	/*top: 20%;*/
+	top: 18%;
 }
 .vital-signs .jtqk-warp
 {
-	top: 50%;
+	/*top: 50%;*/
+	top: 46%;
 }
 .vital-signs .card-warp .list-box
 {
@@ -434,4 +441,9 @@
     {
         opacity: 0.6;
     }
+}
+
+
+.tufaShijian{
+
 }

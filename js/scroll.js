@@ -62,6 +62,10 @@
 				for(var key in item){					
 					var span_dom = $('.kgo-scroll-head').find("div[name='"+key+"']").clone();
 					span_dom.text(item[key]);
+
+					//span_dom.style.textAlign= "left";
+					//span_dom.title= item[key];
+					console.log(span_dom)
 					$('.kgo-croll-body').find('li:last-child>a').append(span_dom);
 				}				
 			});

@@ -96,8 +96,8 @@ $(function(){
 
 	//alert(JSON.stringify(coreArr))
 	//alert(JSON.stringify(linkageArr))
-	//getDutyList();
-	getDutyListReal();
+	getDutyList();
+	//getDutyListReal();
 	setInterval(getDutyListReal,6*60*60*1000)
 
 })

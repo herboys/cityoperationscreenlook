@@ -61,12 +61,14 @@ html
 	vertical-align: top;
 	height: 100%;
 	line-height: 3.9rem;
-	margin-right: 1rem;
+	margin-right: 0.5rem;
 }
 .header .main-box .weather-icon,.header .main-box .early-warning-icon
 {
-	width: 3.9rem;
-	height: 3.9rem;
+	/*width: 3.9rem;
+	height: 3.9rem;*/
+	width: 2.9rem;
+	height: 2.9rem;
 	margin-left: 1.4rem;
 	overflow: hidden;
 }

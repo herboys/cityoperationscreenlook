@@ -459,7 +459,7 @@
 	width: 100%;
     position: absolute;
     left: 0;
-    height: 10rem;
+    height: 9rem;
     top: 29rem;
     overflow: hidden;
 }
@@ -468,8 +468,8 @@
 	padding-bottom: 50px;
 }	
 .croll-width{
-	width:120px;
-	height:50px;
+	/*font-size: 13.328px;*/
+	font-size: 0.8rem;
 }	
 /*偶数行样式*/
 /* .evenRowStyle{
@@ -503,14 +503,14 @@ font-weight: bold;
 	/*padding-bottom: 0rem;*/
 }
 .kgo-scroll-head{
-	/*margin-bottom: 0.21rem ;*/
+	margin-bottom: 5px ;
 	height: 1.579rem;
 	background-color: #364a5f;
 	color:#FFF;
 	font-size: 0.7368rem;
 	font-weight: 800;
 	z-index: 999;
-	text-align: left;
+	text-align: center;
 }
 .baseStyle{
 	display: inline-block;
@@ -522,5 +522,30 @@ font-weight: bold;
 }
 .kgo-scroll-sty li {
 	height: 1rem;
-	
+}
+.dialog-box{
+	/* background-color: red; */
+	height: 10rem;
+	width: 10rem;
+	position: absolute;
+	right: 0;
+	top: 1.2rem;
+	background: linear-gradient(to bottom, #19778c, #095f88);
+				animation: dynamics 6s ease infinite;
+				-webkit-animation: dynamics 6s ease infinite;
+				-moz-animation: dynamics 6s ease infinite;
+				opacity: 0.9;
+				border: solid 1px #13a1fc;
+				background-size:1400% 300%;
+}
+.dialog-con{
+	background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top,
+	linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top,
+	linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom,
+	linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
+	background-repeat: no-repeat;
+	background-size: 3px 20px, 20px 3px;
+	height: 100%;
+	border-radius: 3px;
+	padding: 2rem;
 }

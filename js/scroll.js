@@ -59,14 +59,31 @@
 		
 			$.each(options,function(index,item){			
 				$('.kgo-croll-body').append('<li><a></a></li>')				
-				for(var key in item){					
-					var span_dom = $('.kgo-scroll-head').find("div[name='"+key+"']").clone();
+				for(var key in item){
+					console.log(item)
+					var span_dom = $('.kgo-scroll-head').find("p[name='"+key+"']").clone();
 					span_dom.text(item[key]);
 
+					var str=""
+					//console.log(key)
+					if(key=="title"){
+						str='<p class="baseStyle croll-width" style="width: 13.5rem;height:1rem;text-align: left;overflow: hidden">'+item[key]+'</p>'
+					}else if(key=="content"){
+						str='<p class="baseStyle croll-width"  style="width: 39.3rem;height:1rem;text-align: left;overflow: hidden">'+item[key]+'</p>'
+					}else if(key=="time"){
+						str='<p class="baseStyle croll-width"  style="width: 9.5rem;height:1rem;text-align: left; overflow: hidden">'+item[key]+'</p>'
+					}
+
+					/*console.log(span_dom)
+					if(span_dom[0]==null){
+						span_dom.style.textAlign="left"
+					}
+					else
+					span_dom[0].style.textAlign="left"*/
 					//span_dom.style.textAlign= "left";
 					//span_dom.title= item[key];
-					console.log(span_dom)
-					$('.kgo-croll-body').find('li:last-child>a').append(span_dom);
+
+					$('.kgo-croll-body').find('li:last-child>a').append(str);
 				}				
 			});
 		

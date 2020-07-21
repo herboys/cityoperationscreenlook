@@ -42,29 +42,20 @@
 		</script>
 	</head>
 	<body>
-	<script type="text/javascript">
-		var dataObj=[
-		{title:'事件一一',content:'内容一一',time:'2020-7-20',remark:'备注一'},
-		{title:'事件二二',content:'内容二二',time:'2020-7-21',remark:'备注一'},
-		{title:'事件三三',content:'内容三三',time:'2020-7-22',remark:'备注一'},
-		{title:'事件四四',content:'内容四四',time:'2020-7-23',remark:'备注一'},
-		{title:'事件五五',content:'内容五五',time:'2020-7-24',remark:'备注一'},
-		{title:'事件六六',content:'内容六六',time:'2020-7-25',remark:'备注一'},			
-		];
-
-		$(function(){
-		$('.myscroll').beginScroll({
-		speed: 500, //数值越大，速度越慢
-		rowHeight: 5//li的高度
-		});
-		$('.myscroll').initScroll(dataObj);
-		$('.myscroll').rowOnclick(function(rowobj){
-		console.log(rowobj.alarm_device);
-		});
-		$('.myscroll').addClassForEven('evenRowStyle');
-		$('.myscroll').addClassForHover('rowhover');
-		});
-	</script>
+		<script type="text/javascript">
+			$(function(){
+			$('.myscroll').beginScroll({
+			speed: 700, //数值越大，速度越慢
+			rowHeight: 5//li的高度
+			});
+			$('.myscroll').initScroll(dataObj);
+			$('.myscroll').rowOnclick(function(rowobj){
+			console.log(rowobj.alarm_device);
+			});
+			$('.myscroll').addClassForEven('evenRowStyle');
+			$('.myscroll').addClassForHover('rowhover');
+			});
+		</script>
 		<div class="header">
 			<img src="images/head2.png"/>
 			<div class="main-box left-box">
@@ -76,12 +67,20 @@
 				<div class="early-warning-icon left" id="warning3"></div>
 				<div class="early-warning-text left"></div>
 			</div>
+
+			<div class="main-box left-box-2">
+				<p class="text-title">人民城市人民建</p>
+			</div>
+
 			<div class="main-box right-box">
 				<div class="right date-box">
 					<p></p>
 					<p class="num-font"></p>
 				</div>
 				<div class="right time-box num-font"></div>
+			</div>
+			<div class="main-box right-box-2">
+				<p class="text-title">人民城市人民建</p>
 			</div>
 		</div>
 		<div class="main-warp" style="margin-top: -1%;height: 994px;">
@@ -371,9 +370,9 @@
 					<div class="roll-table">
 						<div class="title-box" style="margin-bottom: 0rem">
 							<div class="title-border-box">
-								<div class="top-border border-box">11</div>
-								<div class="center-border border-box">22</div>
-								<div class="bottom-border border-box">33</div>
+								<div class="top-border border-box"></div>
+								<div class="center-border border-box"></div>
+								<div class="bottom-border border-box"></div>
 							</div>
 							<h3>突发事件</h3>
 							<div class="title-border-box title-border-right">
@@ -389,9 +388,9 @@
 
 							<div class="myscroll kgo-scroll-sty">
 								<div class="kgo-scroll-head">
-									<div class="baseStyle croll-width" name="title"  style="width: 13.5rem;text-align: center;">地址</div>
-									<div class="baseStyle croll-width" name="content"  style="width: 30.3rem;text-align: center;">内容</div>
-									<div class="baseStyle croll-width" name="time"  style="width: 9.5rem;text-align: center;">发布时间</div>
+									<div class="baseStyle croll-width" name="title"  style="width: 13.5rem;text-align: center;overflow: hidden">地址</div>
+									<div class="baseStyle croll-width" name="content"  style="width: 39.3rem;text-align: center;overflow: hidden">内容</div>
+									<div class="baseStyle croll-width" name="time"  style="width: 9.5rem;text-align: center; overflow: hidden">发布时间</div>
 									<!--<div class="baseStyle croll-width" name="remark" style="width: 8.5rem;text-align: left;">备注</div>-->
 
 								</div>
@@ -403,9 +402,9 @@
 					<div class="bottom-box">
 						<div class="title-box" style="margin-bottom: 0rem">
 							<div class="title-border-box">
-								<div class="top-border border-box">11</div>
-								<div class="center-border border-box">22</div>
-								<div class="bottom-border border-box">33</div>
+								<div class="top-border border-box"></div>
+								<div class="center-border border-box"></div>
+								<div class="bottom-border border-box"></div>
 							</div>
 							<h3>案事件处置</h3>
 							<div class="title-border-box title-border-right">
@@ -512,6 +511,15 @@
 			<div class="main-box main-box-big">
 				<div class="map-box" id="mapContainer">
 
+				</div>
+				<div class="dialog-box">
+					<div class="dialog-con">
+						<a href="#" onClick="javascript: return false">华亭镇</a>
+						<a href="#" onClick="javascript: return false">徐行镇</a>
+						<a href="#" onClick="javascript: return false">马陆镇</a>
+						<a href="#" onClick="javascript: return false">嘉定工业区</a>
+						<a href="#" onClick="javascript: return false">菊园新区</a>
+					</div>
 				</div>
 			</div>
 			<div class="main-box main-box-min">
@@ -643,6 +651,6 @@
 		$('.myscroll').addClassForEven('evenRowStyle');
 		$('.myscroll').addClassForHover('rowhover');
 		});
-	
+
 	</script>
 </html>

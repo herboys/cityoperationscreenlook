@@ -8,6 +8,11 @@
     font-family: 'SourceHanSansCN'; 
     src: url('../fonts/SourceHanSansCN-Medium.ttf'); 
 }
+@font-face
+{
+	font-family: 'stxingkai';
+	src: url('../fonts/stxingkai.ttf');
+}
 html
 {
 	overflow: hidden;
@@ -42,9 +47,35 @@ html
 {
 	left: 0;
 }
+
+.header .left-box-2{
+	left:20%;
+}
+
+.header .left-box-2 .text-title{
+	font-family: "stxingkai";
+	font-size: 2.5rem;
+	color:#fff;
+	letter-spacing: 1.8rem;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+	line-height: 1.8;
+}
+
 .header .right-box
 {
 	right: 0;
+}
+.header .right-box-2{
+	left: 65%;
+}
+
+.header .right-box-2 .text-title{
+	font-family: "stxingkai";
+	font-size: 2.5rem;
+	color:#fff;
+	letter-spacing: 1.8rem;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+	line-height: 1.8;
 }
 .main-warp .main-box
 {

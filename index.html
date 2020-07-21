@@ -368,7 +368,37 @@
 							</div>
 						</div>
 					</div>
-					
+					<div class="roll-table">
+						<div class="title-box" style="margin-bottom: 0rem">
+							<div class="title-border-box">
+								<div class="top-border border-box">11</div>
+								<div class="center-border border-box">22</div>
+								<div class="bottom-border border-box">33</div>
+							</div>
+							<h3>突发事件</h3>
+							<div class="title-border-box title-border-right">
+								<div class="top-border border-box"></div>
+								<div class="center-border border-box"></div>
+								<div class="bottom-border border-box"></div>
+							</div>
+							<div class="dividing-line">
+								<div class="dividing-box"></div>
+							</div>
+						</div>
+						<div class="content">
+
+							<div class="myscroll kgo-scroll-sty">
+								<div class="kgo-scroll-head">
+									<div class="baseStyle croll-width" name="title"  style="width: 13.5rem;text-align: center;">地址</div>
+									<div class="baseStyle croll-width" name="content"  style="width: 30.3rem;text-align: center;">内容</div>
+									<div class="baseStyle croll-width" name="time"  style="width: 9.5rem;text-align: center;">发布时间</div>
+									<!--<div class="baseStyle croll-width" name="remark" style="width: 8.5rem;text-align: left;">备注</div>-->
+
+								</div>
+								<ul class="kgo-croll-body"></ul>
+							</div>
+						</div>
+					</div>
 		
 					<div class="bottom-box">
 						<div class="title-box" style="margin-bottom: 0rem">
@@ -387,21 +417,7 @@
 								<div class="dividing-box"></div>
 							</div>
 						</div>
-						<div class="roll-table">
-							<div class="content">
-	
-								<div class="myscroll kgo-scroll-sty">
-									<div class="kgo-scroll-head">
-										<div class="baseStyle croll-width" name="title"  style="width: 13.5rem;text-align: center;">地址</div>
-										<div class="baseStyle croll-width" name="content"  style="width: 30.3rem;text-align: center;">内容</div>
-										<div class="baseStyle croll-width" name="time"  style="width: 9.5rem;text-align: center;">发布时间</div>
-										<!--<div class="baseStyle croll-width" name="remark" style="width: 8.5rem;text-align: left;">备注</div>-->
-
-									</div>
-									<ul class="kgo-croll-body"></ul>
-								</div>
-							</div>
-						</div>
+					
 						<div class="bottom-main" >
 							<div class="main-list">
 								<div class="main-left">
@@ -617,8 +633,8 @@
 
 		$(function(){
 		$('.myscroll').beginScroll({
-		speed: 500, //数值越大，速度越慢
-		rowHeight: 5//li的高度
+		speed: 700, //数值越大，速度越慢
+		rowHeight: 12//li的高度
 		});
 		$('.myscroll').initScroll(dataObj);
 		$('.myscroll').rowOnclick(function(rowobj){

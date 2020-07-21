@@ -127,7 +127,6 @@
 .vital-signs .bottom-box
 {
 	width: 100%;
-	height:12rem;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -168,8 +167,8 @@
 	display: flex;
 	/*margin-bottom: 1rem;*/
 	margin-bottom: 0rem;
-	height: 5rem;
-    margin-top: 5rem;
+	/* height: 5rem;
+    margin-top: 5rem; */
 }
 .vital-signs .bottom-box .bottom-main .main-list
 {
@@ -458,11 +457,11 @@
 
 .roll-table {
 	width: 100%;
-  	position: absolute;
-	left: 0;
-	height: 5rem;
-	top: 2rem;
-	overflow: hidden;
+    position: absolute;
+    left: 0;
+    height: 10rem;
+    top: 29rem;
+    overflow: hidden;
 }
 .content{
 	margin-bottom: 30px;

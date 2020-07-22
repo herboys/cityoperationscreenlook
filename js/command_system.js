@@ -60,37 +60,30 @@ function getDutyListReal(){
 
 
 function getDutyList(){
-	var coreArr=[];var linkageArr=[];
+	var coreArr=[];
+	// var linkageArr=[];
+	var linkageArr= [
+		{address:'部门1',leaderName:'zs1',dutyName:'zs1'},
+		{address:'部门1',leaderName:'zs2',dutyName:'zs2'},
+		{address:'部门1',leaderName:'zs3',dutyName:'zs3'},
+		{address:'部门1',leaderName:'zs4',dutyName:'zs4'},
+		{address:'部门1',leaderName:'zs5',dutyName:'zs5'},
+		{address:'部门1',leaderName:'zs6',dutyName:'zs6'},
+		{address:'部门1',leaderName:'zs7',dutyName:'zs7'},
+		{address:'部门1',leaderName:'zs8',dutyName:'zs8'},
+		{address:'部门1',leaderName:'zs9',dutyName:'zs9'},
+		{address:'部门1',leaderName:'zs', dutyName:'zs'},
+		{address:'部门1',leaderName:'zs', dutyName:'zs'},
+		{address:'部门1',leaderName:'zs', dutyName:'zs'},
+		{address:'部门1',leaderName:'zs', dutyName:'zs'},
+	]
 	var dt = getNowFormatDate();
+	addTableList1('.core-table',coreArr);
+	//	addTableList1('.core-table2',coreArr);
+		addTableList1('.linkage-table',linkageArr)
+		addTableList1('.linkage-scroll-table',linkageArr)
 	//alert(dt)
-	$.ajax({
-		url : STATIC_URL+'/dutyinfo/findByDate/' + dt,
-		dataType : 'json',
-		type : 'get',
-		async :false ,
-		success : function(data) {
-
-			var tableLen =data.length;
-			var j=0,k=0;
-			for (var i = 0; i < tableLen; i++){
-				if((data[i].qjName==""||data[i].qjName == null)&&data[i].fzxName!="" &&data[i].fzxName!=null) {
-					data[i].address=data[i].fzxName;
-					coreArr[j++]=(data[i]);
-				}
-				if((data[i].fzxName==""||data[i].fzxName == null)&&data[i].qjName!="" &&data[i].qjName!=null) {
-					data[i].address=data[i].qjName;
-					linkageArr[k++]=(data[i]);
-				}
-			}
-
-			addTableList1('.core-table',coreArr);
-		//	addTableList1('.core-table2',coreArr);
-			addTableList1('.linkage-table',linkageArr)
-			addTableList1('.linkage-scroll-table',linkageArr)
-			
-			//addTableList1('.event-table',linkageArr)
-		}
-	})
+	
 }
 
 $(function(){
@@ -105,8 +98,11 @@ $(function(){
 })
 
 var linkageTime='';
+var linkageScrollTime='';
 var linkageNum=0;
+var linkageNumScroll=0;
 var linkageMax='';
+var linkScrollMax='';
 
 var coreTime='';
 var coreNum=0;
@@ -177,6 +173,26 @@ function addTableList1(name,arr)
 				 })
 				 $(name).mouseleave(function(){
 			 		linkageInt();
+				 })
+			},200*i+200)
+
+		} 
+		else if(name=='.linkage-scroll-table'&&i==arr.length-1&&arr.length>3)
+		{
+			alert(3)
+			console.log(arr, 'arr');
+			//linkageMax=arr.length;
+			linkScrollMax=arr.length
+			linkageNumScroll=0;
+			setTimeout(function(){
+				var html=$(name).find('.list-box').html();
+				$(name).find('.list-box').append(html);
+			 	linkageIntscroll();
+				 $(name).mouseenter(function(){
+				 	clearInterval(linkageScrollTime)
+				 })
+				 $(name).mouseleave(function(){
+			 		linkageIntscroll();
 				 })
 			},200*i+200)
 
@@ -283,6 +299,30 @@ function linkageInt(){
 
 
 			$('.linkage-table .list-box').animate({top:-(moveT+1)*linkageNum*5.82},1000,function(){
+				//if(linkageNum>=linkageMax/6)
+				//{
+				//	linkageNum=0;
+				//	$('.linkage-table .list-box').css({top:-moveT*linkageNum});
+				//	$('.linkage-table .list-box').css({top:-0});
+				//}
+			})
+		}
+		, 5000);
+}
+function linkScrollMaxlinkageIntscroll(){
+	var moveT=$('.linkage-scroll-table').find('.table-list').eq(0).height()-8;
+	//alert(moveT)
+	linkageScrollTime=setInterval(() => {
+			if(linkageNumScroll>=linkScrollMax/3)
+			{
+				linkageNumScroll=-1;
+				$('.linkage-scroll-table .list-box').css({top:-moveT*linkageNumScroll});
+			}
+			linkageNumScroll++;
+
+
+			$('.linkage-scroll-table .list-box').animate({top:-(moveT+1)*linkageNumScroll*2.82},1000,function(){
+				alert(5)
 				//if(linkageNum>=linkageMax/6)
 				//{
 				//	linkageNum=0;

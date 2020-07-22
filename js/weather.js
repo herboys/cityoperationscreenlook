@@ -4,6 +4,7 @@ $(function () {
         大雨:[0,1], 暴雨:[1,1], 大暴雨:[2,1], 特大暴雨:[3,1], 阵雪:[4,1], 小雪:[5,1], 中雪:[6,1], 大雪:[7,1], 
     };
 
+    showWarningDefault();
     function showWeather(weather, temperature){
         var xyIndex = weatherIndex[weather];
 
@@ -24,13 +25,38 @@ $(function () {
 
     function showWarning(name, color, time){
         let img = "images/warning/" + name + "_" + color + ".jpg";
-        $(".early-warning-icon").html("<img style='border-radius:3px; overflow:hidden' src='"+img+"'>");
+        $(".early-warning-icon").html("<img style='border-radius:3px; overflow:hidden;' src='"+img+"'>");
         $(".early-warning-icon").css({"margin-top":'0.4rem'});
         $(".early-warning-text").html(time +" "+ name + color + "预警");
     }
+
+    function showWarningDefault(){
+        let img1 = "images/warning/高温_灰.jpg";
+        let img2 = "images/warning/暴雨_灰.jpg";
+        let img3 = "images/warning/大风_灰.jpg";
+       /* $(".early-warning-icon").html("<img style='border-radius:3px; overflow:hidden;height:2.5rem;width:2.9rem' src='"+img+"'>");*/
+        $("#warning1").html("<img style='border-radius:3px; overflow:hidden;height:2.5rem;width:2.9rem' src='"+img1+"'>");
+        $("#warning2").html("<img style='border-radius:3px; overflow:hidden;height:2.5rem;width:2.9rem' src='"+img2+"'>");
+        $("#warning3").html("<img style='border-radius:3px; overflow:hidden;height:2.5rem;width:2.9rem' src='"+img3+"'>");
+        $(".early-warning-icon").css({"margin-top":'0.4rem'});
+        $(".early-warning-text").html("无预警");
+    }
+
+    function showWarningMulti(img1, img2,img3, time){
+        $("#warning1").html("<img style='border-radius:3px; overflow:hidden;height:2.5rem;width:2.9rem' src='images/warning/"+img1+"'>");
+        $("#warning2").html("<img style='border-radius:3px; overflow:hidden;height:2.5rem;width:2.9rem' src='images/warning/"+img2+"'>");
+        $("#warning3").html("<img style='border-radius:3px; overflow:hidden;height:2.5rem;width:2.9rem' src='images/warning/"+img3+"'>");
+        $(".early-warning-icon").css({"margin-top":'0.4rem'});
+        $(".early-warning-text").html(time);
+    }
+
    function clearWarning(){
-        $(".early-warning-icon").html('');
-        $(".early-warning-text").html('');
+       /* $(".early-warning-icon").html('');
+        $(".early-warning-text").html('');*/
+       $("#warning1").html("");
+       $("#warning2").html("");
+       $("#warning3").html("");
+       $(".early-warning-text").html('');
     }
     /* function clearWarning(time){
         $(".early-warning-icon").html('');
@@ -90,22 +116,59 @@ $(function () {
                     }
                 }
             })*/
-           /* $.ajax({
+           $.ajax({
                 url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=zdz',
                 dataType : 'json',
                 type : 'get',
                 async : false,
                 success : function(data) {
+                    var wind_speed=0
+                    var tem_waring="高温_灰.jpg"
+                    var rain_warning="暴雨_灰.jpg"
+                    var wind_warning="大风_灰.jpg"
+                    var curTime=""
+
                     w="-1"
+
                     for(var i = 0; i < data.length; i++) {
-                        if(data[i].stationname=="嘉定国家气象观测站"){
+                        if(data[i].stationname=="嘉定嘉定镇气象观测站"){
                          tem=data[i].temper;
+                         wind_speed=data[i].max_flu_ws;
+                         curTime=data[i].date.split(" ")[1]
+                         if(tem>35&& tem<37){
+                             tem_waring="高温_黄.jpg"
+                         }else if(tem>=37 && tem<40){
+                             tem_waring="高温_橙.jpg"
+                         }else if(tem>=40){
+                             tem_waring="高温_红.jpg"
+                         }
+
+
+                         if(wind_speed>13.9&& wind_speed<20.7){
+                             wind_warning="大风_蓝.jpg"
+                         }else if(wind_warning>=20.7 && wind_warning<28.4){
+                             wind_warning="大风_黄.jpg"
+                         }else if(wind_warning>=28.4 && wind_speed<32.6){
+                             wind_warning="大风_橙.jpg"
+                         }else if(wind_speed>=32.6){
+                             wind_warning="大风_红.jpg"
+                         }
+
                          if(data[i].one_rain>0&&data[i].one_rain<10)w="小雨";
                          else if(data[i].one_rain>10&&data[i].one_rain<24.9)w="中雨";
-                         else if(data[i].one_rain>25&&data[i].one_rain<49.9)w="大雨";
-                         else  if(data[i].one_rain>50&&data[i].one_rain<99.9)w="暴雨";
-                         else  if(data[i].one_rain>100&&data[i].one_rain<249)w="大暴雨";
-                         else  if(data[i].one_rain>250)w="特大暴雨";
+                         else if(data[i].one_rain>25&&data[i].one_rain<49.9){
+                             w="大雨";
+                             rain_warning="暴雨_蓝.jpg"
+                         } else  if(data[i].one_rain>50&&data[i].one_rain<99.9){
+                             w="暴雨";
+                             rain_warning="暴雨_黄.jpg"
+                         } else  if(data[i].one_rain>100&&data[i].one_rain<249){
+                             w="大暴雨";
+                             rain_warning="暴雨_橙.jpg"
+                         } else  if(data[i].one_rain>250){
+                             w="特大暴雨";
+                             rain_warning="暴雨_红.jpg"
+                         }
 
                          if(w!="-1"){
                              $('#weatherIcon').show()
@@ -123,10 +186,12 @@ $(function () {
                         let unit = "<span style='font-size:1.6rem'>℃</span>"
                         $(".temperature-text").html(tem + unit);
                     }
+                    clearWarning();
+                    showWarningMulti(tem_waring,rain_warning,wind_warning,curTime)
                 }
-            })*/
+            })
 
-        var curDate=getNowFormatDate1()
+     /*   var curDate=getNowFormatDate1()
 
         var time = new Date();
         var curHour=time.getHours()
@@ -181,7 +246,7 @@ $(function () {
                     $('#weatherIcon').hide()
                 }
             }
-        })
+        })*/
       /* $.ajax({
             url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=7Day',
             dataType : 'json',
@@ -229,7 +294,6 @@ $(function () {
             async : false,
             success : function(data) {
                for(var i = 0; i < data.length; i++) {
-
                     var y=data[0].disastername;
                     var z=data[0].disastercolour;
 
@@ -239,7 +303,7 @@ $(function () {
                }
             },
             error:function () {
-                alert("error")
+                alert("无预警信息")
             }
         })
 

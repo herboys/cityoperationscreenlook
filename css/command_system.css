@@ -324,6 +324,23 @@
 	width: 100%;
 	height: auto;
 }
+
+.command-system .linkage-scroll-table .list-warp
+{
+	/*height: calc(2px + 8.5rem);*/
+	height: calc(2px + 5rem);
+	position: relative;
+	overflow: hidden;
+}
+.command-system .linkage-scroll-table .list-box
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+}
+
 /*顺时针旋转*/
 @keyframes anm1{
 	0%

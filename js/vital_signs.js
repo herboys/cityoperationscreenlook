@@ -376,7 +376,7 @@ function addjbgk(arr){ //基本概况
 	$('.vital-signs .top-box ul').html('')
 	for(let i=0;i<arr.length;i++)
 	{
-		$('.vital-signs .top-box ul').append('<li><div class="text-centered"><p>'+arr[i].title+'</p><div class="bottom-text"><span class="num-font">'+arr[i].num+'</span><p>'+arr[i].unit+'</p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>')
+		$('.vital-signs .top-box ul').append('<li><div class="text-centered"><p>'+arr[i].title+'</p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">'+arr[i].num+'</span><p >'+arr[i].unit+'</p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>')
 	}
 }
 function addAsjcz(arr){
@@ -400,7 +400,7 @@ function addCard(arr,classStr)
 	boxObj.html('');
 	for(let i=0;i<arr.length;i++)
 	{
-		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[i].today+'</span>'+arr[i].unit+'</p><p>本周<span class="num-font">'+arr[i].week+'</span>'+arr[i].unit+'</p><p>当月<span class="num-font">'+arr[i].month+'</span>'+arr[i].unit+'</p></div></div>')
+		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[i].today+'</span>'+arr[i].unit+'</p><p>本周<span class="num-font">'+arr[i].week+'</span>'+arr[i].unit+'</p><p>当月<span class="num-font">'+arr[i].month+'</span>'+arr[i].unit+'</p></div></div>')
 	}
 	var cardTime='';
 	var cardTime1='';

@@ -112,7 +112,7 @@
 	width: calc(100% - 0.6rem);
 	height: 2px;
 }
-.vital-signs .top-box .title-box,.vital-signs .bottom-box .title-box
+.vital-signs .top-box .title-box,.vital-signs .bottom-box .title-box .roll-table
 {
 	padding-left: 2rem;
 }
@@ -163,9 +163,12 @@
 .vital-signs .bottom-box .bottom-main
 {
 	width: calc(100% - 2rem);
-	margin: 0 auto;
+	margin: auto;
 	display: flex;
-	margin-bottom: 1rem;
+	/*margin-bottom: 1rem;*/
+	margin-bottom: 0rem;
+	/* height: 5rem;
+    margin-top: 5rem; */
 }
 .vital-signs .bottom-box .bottom-main .main-list
 {
@@ -188,24 +191,27 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	font-size: 1.2rem;
+	/*font-size: 1.2rem;*/
+	font-size: 1rem;
 	color: #fff;
 	flex-direction: column;
 }
 .vital-signs .bottom-box .bottom-main .main-list .main-right p
 {
 	line-height: 1.5rem;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	color: #fff;
 }
 .vital-signs .bottom-box .bottom-main .main-list .main-right p .num-font
 {
 	display: inline-block;
-	font-size: 1.5rem;
+	/*font-size: 1.5rem;*/
+	font-size: 1rem;
 	color: #F5A623;
 	text-align: right;
-	width: 2.8rem;
-	margin-right: 10px;
+	/*width: 2.8rem;*/
+	width: 2.2rem;
+	margin-right: 5px;
 }
 .vital-signs .card-warp
 {
@@ -215,23 +221,26 @@
 }
 .vital-signs .zygy-warp
 {
-	top: 20%;
+	/*top: 20%;*/
+	top: 15%;
 }
 .vital-signs .jtqk-warp
 {
-	top: 50%;
+	/*top: 50%;*/
+	top: 39%;
 }
 .vital-signs .card-warp .list-box
 {
 	width: 100%;
-	height: 10rem;
+	/*height: 10rem;*/
+	height: 8rem;
 	position: relative;
 }
 .vital-signs .card-warp .list-box .card-box
 {
 	width: 15rem;
 	position: absolute;
-	height:9rem;/*edit by zn*/
+	height:7rem;/*edit by zn*/
 	left: 0;
 	top: 0;
     animation: anm4 1s ease-out;
@@ -257,7 +266,8 @@
 	padding: 0rem 1rem;
 	color: #fff;
 	background-color: rgba(67,113,255,0.7);
-	height: 6.8rem;
+	/*height: 6.8rem;*/
+	height: 5.4rem;
 	line-height: 1rem;
 }
 .vital-signs .card-warp .list-box .card-box .card-title .text-centered
@@ -268,7 +278,8 @@
 .vital-signs .card-warp .list-box .card-box .card-text
 {
 	width: calc(100% - 3.2rem);
-	height: 6.8rem;
+	/*height: 6.8rem;*/
+	height: 5.4rem;
 	background: rgba(3,32,49,0.90);
 	color: #fff;
 	font-size: 0.8rem;
@@ -281,11 +292,14 @@
 	white-space:nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	height:1.5rem;
+	font-size:0.8rem;
+	alignment: center
 }
 .vital-signs .card-warp .list-box .card-box .card-text .num-font
 {
 	display: inline-block;
-	font-size: 1.5rem;
+	font-size: 1.1rem;
 	color: #F5A623;
 	text-align: right;
 	width: 2.5rem;
@@ -299,7 +313,7 @@
 {
 	position: absolute;
 	right: 0;
-	top: 19%;
+	top: 15%;
 	width: 24rem;
 }
 .vital-signs .shbz-warp .list-box
@@ -392,7 +406,7 @@
 {
 	position: absolute;
 	right: 0;
-	top: 55%;
+	top: 46%;
 	width: 18rem;
 }
 .vital-signs .hjbz-warp .list-box
@@ -434,4 +448,103 @@
     {
         opacity: 0.6;
     }
+}
+
+
+.tufaShijian{
+
+}
+
+.roll-table {
+	width: 100%;
+    position: absolute;
+    left: 0;
+    height: 9rem;
+    top: 29rem;
+    overflow: hidden;
+}
+.content{
+	margin-bottom: 30px;
+	padding-bottom: 50px;
+}	
+.croll-width{
+	/*font-size: 13.328px;*/
+	font-size: 0.8rem;
+}	
+/*偶数行样式*/
+/* .evenRowStyle{
+	background-color: #ccc;
+} */
+/*访问样式*/
+.rowhover{
+background-color: #52c1a1;
+color: #FFF;
+font-weight: bold;
+}
+.kgo-scroll-sty {
+	width: 100%;
+	height: 13.684rem;
+	margin: 0 auto; 
+	border: 1px solid #364a5f; 
+	line-height: 1.3684rem;
+	font-size: 12px; 
+	overflow: hidden;
+}
+.vital-signs .kgo-scroll-sty>ul{
+	list-style-type: none;
+	margin:0px;
+	padding: 0px;
+	text-align: left!important;
+}
+.vital-signs .kgo-scroll-sty>ul>li{
+	color: #393939;
+	width: 100%;
+	text-align: left;
+	/*padding-bottom: 0rem;*/
+}
+.kgo-scroll-head{
+	margin-bottom: 5px ;
+	height: 1.579rem;
+	background-color: #364a5f;
+	color:#FFF;
+	font-size: 0.7368rem;
+	font-weight: 800;
+	z-index: 999;
+	text-align: center;
+}
+.baseStyle{
+	display: inline-block;
+	height: 100%;
+	text-align: center;
+	/*margin-left: 20px;*/
+	/*padding-left:10px ;*/
+	padding-right:10px ;
+}
+.kgo-scroll-sty li {
+	height: 1rem;
+}
+.dialog-box{
+
+	width: 10rem;
+	position: absolute;
+	right: 0;
+	top: 1.2rem;
+	background: linear-gradient(to bottom, #19778c, #095f88);
+				animation: dynamics 6s ease infinite;
+				-webkit-animation: dynamics 6s ease infinite;
+				-moz-animation: dynamics 6s ease infinite;
+				opacity: 0.9;
+				border: solid 1px #13a1fc;
+				background-size:1400% 300%;
+}
+.dialog-con{
+	background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top,
+	linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top,
+	linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom,
+	linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
+	background-repeat: no-repeat;
+	background-size: 3px 20px, 20px 3px;
+	height: 100%;
+	border-radius: 3px;
+	padding: 1rem;
 }

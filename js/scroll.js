@@ -60,7 +60,6 @@
 			$.each(options,function(index,item){			
 				$('.kgo-croll-body').append('<li><a></a></li>')				
 				for(var key in item){
-					console.log(item)
 					var span_dom = $('.kgo-scroll-head').find("p[name='"+key+"']").clone();
 					span_dom.text(item[key]);
 

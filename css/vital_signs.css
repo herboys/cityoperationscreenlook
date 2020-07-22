@@ -524,8 +524,7 @@ font-weight: bold;
 	height: 1rem;
 }
 .dialog-box{
-	/* background-color: red; */
-	height: 10rem;
+
 	width: 10rem;
 	position: absolute;
 	right: 0;
@@ -547,5 +546,5 @@ font-weight: bold;
 	background-size: 3px 20px, 20px 3px;
 	height: 100%;
 	border-radius: 3px;
-	padding: 2rem;
+	padding: 1rem;
 }

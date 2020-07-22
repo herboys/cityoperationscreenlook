@@ -86,6 +86,8 @@ function getDutyList(){
 			addTableList1('.core-table',coreArr);
 		//	addTableList1('.core-table2',coreArr);
 			addTableList1('.linkage-table',linkageArr)
+			addTableList1('.linkage-scroll-table',linkageArr)
+			
 			//addTableList1('.event-table',linkageArr)
 		}
 	})
@@ -179,6 +181,7 @@ function addTableList1(name,arr)
 			},200*i+200)
 
 		}
+		
 /*	else if(name=='.core-table'&&i==arr.length-1&&arr.length>6){
 			coreMax=arr.length;
 			coreNum=0;

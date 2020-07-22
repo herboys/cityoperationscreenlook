@@ -179,7 +179,6 @@ function addTableList1(name,arr)
 		} 
 		else if(name=='.linkage-scroll-table'&&i==arr.length-1&&arr.length>3)
 		{
-			alert(3)
 			console.log(arr, 'arr');
 			//linkageMax=arr.length;
 			linkScrollMax=arr.length
@@ -315,16 +314,12 @@ function linkageIntScroll(){
 	linkageScrollTime=setInterval(() => {
 			if(linkageNumScroll>=linkScrollMax/3)
 			{
-				alert(2)
 				linkageNumScroll=-1;
 				$('.linkage-scroll-table .list-box').css({top:-moveT*linkageNumScroll});
 			}
 			linkageNumScroll++;
 
-			alert(4)
-
 			$('.linkage-scroll-table .list-box').animate({top:-(moveT+1)*linkageNumScroll*2.82},1000,function(){
-				alert(5)
 				//if(linkageNum>=linkageMax/6)
 				//{
 				//	linkageNum=0;

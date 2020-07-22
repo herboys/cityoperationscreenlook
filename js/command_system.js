@@ -12,13 +12,15 @@ function addTableList(name,arr)
 
 function getDutyListReal(){
 	var coreArr=[];var linkageArr=[];
-	var dt = getNowFormatDate();
+
+	//alert(321)
 	$.ajax({
 		url:ORACLE_URL+"/viewDuty/dutyList",
 		dataType: "json",
 		type:'get',
 		async: true,
 		success:function (data) {
+			//alert(123)
 			var centerDuty=data.centerDutyList
 			var departmentDuty=data.departmentDutyList
 			for(var i=0;i<centerDuty.length;i++){
@@ -54,6 +56,9 @@ function getDutyListReal(){
 			addTableList1('.core-table',coreArr);
 			//	addTableList1('.core-table2',coreArr);
 			addTableList1('.linkage-table',linkageArr)
+		},
+		error:function () {
+			alert("error")
 		}
 	})
 }
@@ -62,7 +67,7 @@ function getDutyListReal(){
 function getDutyList(){
 	var coreArr=[];
 	// var linkageArr=[];
-	var linkageArr= [
+/*	var linkageArr= [
 		{address:'部门1',leaderName:'zs1',dutyName:'zs1'},
 		{address:'部门1',leaderName:'zs2',dutyName:'zs2'},
 		{address:'部门1',leaderName:'zs3',dutyName:'zs3'},
@@ -76,21 +81,20 @@ function getDutyList(){
 		{address:'部门1',leaderName:'zs', dutyName:'zs'},
 		{address:'部门1',leaderName:'zs', dutyName:'zs'},
 		{address:'部门1',leaderName:'zs', dutyName:'zs'},
-	]
+	]*/
 	var linkageArrScroll= [
-		{time:'2020-7-22',street:'嘉定镇街道',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府嘉定镇街道办事处'},
-		{time:'2020-7-22',street:'真新街道',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
-		{time:'2020-7-22',street:'新成路街道',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
-		{time:'2020-7-22',street:'南翔镇',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
-		{time:'2020-7-22',street:'马陆镇',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
-		{time:'2020-7-22',street:'华亭镇',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
+		{time:'6月27日19时07分许',street:'工业区',address:'工业区朱戴路50弄136号',content:'一名12岁男童自缢身亡。'},
+		{time:'6月30日13时20分许',street:'工业区',address:'工业区城北路、汇旺路路口',content:'一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。'},
+		{time:'7月3日8时55分许',street:'徐行镇',address:'徐行镇宝钱公路、前曹公路路口',content:'一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。'},
+		{time:'6月27日19时07分许',street:'工业区',address:'工业区朱戴路50弄136号',content:'一名12岁男童自缢身亡。'},
+		{time:'6月30日13时20分许',street:'工业区',address:'工业区城北路、汇旺路路口',content:'一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。'},
+		{time:'7月3日8时55分许',street:'徐行镇',address:'徐行镇宝钱公路、前曹公路路口',content:'一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。'}
 
 		// time street address content
 	
 	]
-	var dt = getNowFormatDate();
-	addTableList1('.core-table',coreArr);
-		addTableList1('.linkage-table',linkageArr)
+	//addTableList1('.core-table',coreArr);
+	//	addTableList1('.linkage-table',linkageArr)
 		addTableList2('.linkage-scroll-table',linkageArrScroll)
 }
 
@@ -100,7 +104,7 @@ $(function(){
 	//alert(JSON.stringify(coreArr))
 	//alert(JSON.stringify(linkageArr))
 	getDutyList();
-	//getDutyListReal();
+	getDutyListReal();
 	setInterval(getDutyListReal,6*60*60*1000)
 
 })
@@ -193,8 +197,8 @@ function addTableList2(name,arr)
 	for(let i=0;i<arr.length;i++)
 	{
 		setTimeout(function(){
-			$(name).find('.list-box').append('<div class="table-list"><p style="width: 8rem;">'+arr[i].time+'</p><p style="width: 12rem;">'+arr[i].street+'</p><p style="width: 18rem;">'+arr[i].address+'</p>' +
-				'<p style="width: 21rem;">'+arr[i].content+'</p></div>')
+			$(name).find('.list-box').append('<div class="table-list"><p style="width: 8rem;  overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem">'+arr[i].time+'</p><p style="width: 10rem;  overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem">'+arr[i].street+'</p><p style="width: 15rem; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem;" title="'+arr[i].address+'">'+arr[i].address+'</p>' +
+				'<p style="width: 26rem; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem"  title="'+arr[i].content+'">'+arr[i].content+'</p></div>')
 		},200*i)
 	 if(name=='.linkage-scroll-table'&&i==arr.length-1&&arr.length>3)
 		{
@@ -253,7 +257,7 @@ function linkageIntScroll(){
 			}
 			linkageNumScroll++;
 
-			$('.linkage-scroll-table .list-box').animate({top:-(moveT+1)*linkageNumScroll*2.82},1000,function(){
+			$('.linkage-scroll-table .list-box').animate({top:-(moveT+1)*linkageNumScroll*2.97},1000,function(){
 				//if(linkageNum>=linkageMax/6)
 				//{
 				//	linkageNum=0;

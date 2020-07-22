@@ -77,13 +77,21 @@ function getDutyList(){
 		{address:'部门1',leaderName:'zs', dutyName:'zs'},
 		{address:'部门1',leaderName:'zs', dutyName:'zs'},
 	]
+	var linkageArrScroll= [
+		{time:'2020-7-22',street:'嘉定镇街道',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府嘉定镇街道办事处'},
+		{time:'2020-7-22',street:'真新街道',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
+		{time:'2020-7-22',street:'新成路街道',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
+		{time:'2020-7-22',street:'南翔镇',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
+		{time:'2020-7-22',street:'马陆镇',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
+		{time:'2020-7-22',street:'华亭镇',address:'嘉定区塔城路885号',content:'上海市嘉定区人民政府街道办事处'},
+
+		// time street address content
+	
+	]
 	var dt = getNowFormatDate();
 	addTableList1('.core-table',coreArr);
-	//	addTableList1('.core-table2',coreArr);
 		addTableList1('.linkage-table',linkageArr)
-		addTableList1('.linkage-scroll-table',linkageArr)
-	//alert(dt)
-	
+		addTableList2('.linkage-scroll-table',linkageArrScroll)
 }
 
 $(function(){
@@ -177,10 +185,20 @@ function addTableList1(name,arr)
 			},200*i+200)
 
 		} 
-		else if(name=='.linkage-scroll-table'&&i==arr.length-1&&arr.length>3)
+	}
+}
+function addTableList2(name,arr)
+{
+	$(name).find('.list-box').html('');
+	for(let i=0;i<arr.length;i++)
+	{
+		setTimeout(function(){
+			$(name).find('.list-box').append('<div class="table-list"><p style="width: 8rem;">'+arr[i].time+'</p><p style="width: 12rem;">'+arr[i].street+'</p><p style="width: 18rem;">'+arr[i].address+'</p>' +
+				'<p style="width: 21rem;">'+arr[i].content+'</p></div>')
+		},200*i)
+	 if(name=='.linkage-scroll-table'&&i==arr.length-1&&arr.length>3)
 		{
 			console.log(arr, 'arr');
-			//linkageMax=arr.length;
 			linkScrollMax=arr.length
 			linkageNumScroll=0;
 			setTimeout(function(){
@@ -196,93 +214,9 @@ function addTableList1(name,arr)
 			},200*i+200)
 
 		}
-		
-/*	else if(name=='.core-table'&&i==arr.length-1&&arr.length>6){
-			coreMax=arr.length;
-			coreNum=0;
-			setTimeout(function(){
-				var html=$(name).find('.list-box').html();
-				$(name).find('.list-box').append(html);
-				dutyTableInt();
-				$(name).mouseenter(function(){
-					clearInterval(coreTime)
-				})
-				$(name).mouseleave(function(){
-					dutyTableInt();
-				})
-			},200*i+200)
-		}else if(name=='.core-table2'&&i==arr.length-1&&arr.length>6){
-			coreMax2=arr.length;
-			coreNum2=0;
-			setTimeout(function(){
-				var html=$(name).find('.list-box').html();
-				$(name).find('.list-box').append(html);
-				dutyTableInt2();
-				$(name).mouseenter(function(){
-					clearInterval(coreTime2)
-				})
-				$(name).mouseleave(function(){
-					dutyTableInt2();
-				})
-			},200*i+200)
-		}*/
 	}
 }
 
-
-//值班表1
-function dutyTableInt(){
-	var moveT=$('.core-table').find('.table-list').eq(0).height()-8;
-	//alert(moveT)
-	coreTime=setInterval(() => {
-			if(coreNum>=coreMax/6)
-			{
-				coreNum=-1;
-				$('.core-table .list-box').css({top:-moveT*coreNum});
-			}
-			coreNum++;
-
-
-			$('.core-table .list-box').animate({top:-(moveT+1)*coreNum*5.57},1000,function(){
-				//if(linkageNum>=linkageMax/6)
-				//{
-				//	linkageNum=0;
-				//	$('.linkage-table .list-box').css({top:-moveT*linkageNum});
-				//	$('.linkage-table .list-box').css({top:-0});
-				//}
-			})
-		}
-		, 5000);
-}
-
-//值班表2
-function dutyTableInt2(){
-	//alert(coreNum2+" "+coreMax2)
-
-	var moveT=$('.core-table2').find('.table-list').eq(0).height()-8;
-	//alert(moveT)
-	coreTime2=setInterval(() => {
-			if(coreNum2>=coreMax2/6)
-			{
-				//alert(111)
-				coreNum2=-1;
-				$('.core-table2 .list-box').css({top:-moveT*coreNum2});
-			}
-			coreNum2++;
-
-
-			$('.core-table2 .list-box').animate({top:-(moveT+1)*coreNum2*5.57},1000,function(){
-
-				//if(linkageNum>=linkageMax/6)
-				//{
-				//	linkageNum=0;
-				//	$('.linkage-table .list-box').css({top:-moveT*linkageNum});
-				//	$('.linkage-table .list-box').css({top:-0});
-				//}
-			})
-		}
-		, 5000);
-}
 
 //突发事件
 function linkageInt(){

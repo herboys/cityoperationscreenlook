@@ -10,8 +10,8 @@
 }
 @font-face
 {
-	font-family: 'stxingkai';
-	src: url('../fonts/stxingkai.ttf');
+	font-family: 'heiti';
+	src: url('../fonts/heiti.ttf');
 }
 html
 {
@@ -35,6 +35,7 @@ html
 {
 	width: 100%;
 	display: block;
+	opacity: 1;
 }
 .header .main-box
 {
@@ -53,12 +54,11 @@ html
 }
 
 .header .left-box-2 .text-title{
-	font-family: "stxingkai";
+	font-family: "heiti";
 	font-size: 2.5rem;
-	color:#F5A623;
+	color:#fff;
 	letter-spacing: 1.8rem;
 	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-	line-height: 1.8;
 }
 
 .header .right-box
@@ -70,12 +70,11 @@ html
 }
 
 .header .right-box-2 .text-title{
-	font-family: "stxingkai";
+	font-family: "heiti";
 	font-size: 2.5rem;
-	color:#F5A623;
+	color:#fff;
 	letter-spacing: 1.8rem;
 	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-	line-height: 1.8;
 }
 .main-warp .main-box
 {

@@ -27,6 +27,7 @@
 		<script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/scroll.js" ></script>
+
 		
 		<!--地图-->
 		<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch"></script>
@@ -42,20 +43,8 @@
 		</script>
 	</head>
 	<body>
-		<script type="text/javascript">
-			$(function(){
-			$('.myscroll').beginScroll({
-			speed: 700, //数值越大，速度越慢
-			rowHeight: 5//li的高度
-			});
-			$('.myscroll').initScroll(dataObj);
-			$('.myscroll').rowOnclick(function(rowobj){
-			console.log(rowobj.alarm_device);
-			});
-			$('.myscroll').addClassForEven('evenRowStyle');
-			$('.myscroll').addClassForHover('rowhover');
-			});
-		</script>
+		
+		<div id="app">
 		<div class="header">
 			<img src="images/head2.png"/>
 			<div class="main-box left-box">
@@ -193,7 +182,7 @@
 					<h3>城市运行生命体征</h3>
 				</div>
 				<div class="content-bg vital-signs-bg"></div>
-				<div class="content-box command-system vital-signs">
+				<div class="content-box  vital-signs">
 					<div class="top-box">
 						<div class="title-box" style="margin-bottom: 0.5rem">
 							<div class="title-border-box">
@@ -384,23 +373,13 @@
 								<div class="dividing-box"></div>
 							</div>
 						</div>
-						<!-- <div class="content">
-							<div class="myscroll kgo-scroll-sty">
-								<div class="kgo-scroll-head">
-									<div class="baseStyle croll-width" name="title"  style="width: 13.5rem;text-align: center;overflow: hidden">地址</div>
-									<div class="baseStyle croll-width" name="content"  style="width: 39.3rem;text-align: center;overflow: hidden">内容</div>
-									<div class="baseStyle croll-width" name="time"  style="width: 9.5rem;text-align: center; overflow: hidden">发布时间</div>
-								</div>
-								<ul class="kgo-croll-body"></ul>
-							</div>
-						</div> -->
+					
 						<div class="table-box linkage-scroll-table">
 							<div class="table-list table-title">
-								<p>部门</p>
-								<p>带班领导</p>
-								<p>值班电话</p>
-								<p>值班人员</p>
-								<p>值班电话</p>
+								<p style="width: 8rem;">时间</p>
+								<p style="width: 12rem">街道</p>
+								<p style="width: 18rem">详细地址</p>
+								<p style="width: 21rem">内容</p>
 							</div>
 							<div class="list-warp">
 								<div class="list-box"></div>
@@ -523,12 +502,13 @@
 				</div>
 				<div class="dialog-box">
 					<div class="dialog-con">
-						<div style="color: #F5A623;">拥堵路段统计:</div>
-						<a href="#" onClick="javascript: return false">华亭镇</a>
-						<a href="#" onClick="javascript: return false">徐行镇</a>
-						<a href="#" onClick="javascript: return false">马陆镇</a>
-						<a href="#" onClick="javascript: return false">嘉定工业区</a>
-						<a href="#" onClick="javascript: return false">菊园新区</a>
+						<div style="color: #F5A623;position: relative;">全区拥堵路段统计: 20</div>
+						<a href="#" onClick="javascript: return false"><span class="bot1"></span><span>500米拥堵路段——10</span></a>
+						<a href="#" onClick="javascript: return false"><span class="bot2"></span><span>500-1000米拥堵路段——5</span></a>
+						<a href="#" onClick="javascript: return false"><span class="bot3"></span><span>2000米拥堵路段——5</span></a>
+						<div style="position: absolute;background-color: #ccc;">
+
+						</div>
 					</div>
 				</div>
 			</div>
@@ -625,6 +605,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</body>
 	<script type="text/javascript">
 		$(function(){
@@ -639,28 +620,7 @@
 		createVideoSlideOne();
 		createVideoSlide();
 		//openVideo();
-		var dataObj=[
-		{title:'工业区朱戴路50弄136号',content:'一名12岁男童自缢身亡。',time:'6月27日19时07分许',remark:'备注一'},
-			{title:'工业区城北路、汇旺路路口',content:'一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。',time:'6月30日13时20分许',remark:'备注一'},
-			{title:'徐行镇宝钱公路、前曹公路路口',content:'一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。',time:'7月3日8时55分许',remark:'备注一'},
-			{title:'工业区朱戴路50弄136号',content:'一名12岁男童自缢身亡。',time:'6月27日19时07分许',remark:'备注一'},
-			{title:'工业区城北路、汇旺路路口',content:'一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。',time:'6月30日13时20分许',remark:'备注一'},
-			{title:'徐行镇宝钱公路、前曹公路路口',content:'一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。',time:'7月3日8时55分许',remark:'备注一'},
-
-		];
-
-		$(function(){
-		$('.myscroll').beginScroll({
-		speed: 700, //数值越大，速度越慢
-		rowHeight: 12//li的高度
-		});
-		$('.myscroll').initScroll(dataObj);
-		$('.myscroll').rowOnclick(function(rowobj){
-		console.log(rowobj.alarm_device);
-		});
-		$('.myscroll').addClassForEven('evenRowStyle');
-		$('.myscroll').addClassForHover('rowhover');
-		});
-
+	
+		
 	</script>
 </html>

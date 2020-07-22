@@ -26,7 +26,7 @@ $(function () {
         let img = "images/warning/" + name + "_" + color + ".jpg";
         $(".early-warning-icon").html("<img style='border-radius:3px; overflow:hidden' src='"+img+"'>");
         $(".early-warning-icon").css({"margin-top":'0.4rem'});
-        $(".early-warning-text").html(time +" "+ name + color + "色预警");
+        $(".early-warning-text").html(time +" "+ name + color + "预警");
     }
    function clearWarning(){
         $(".early-warning-icon").html('');
@@ -224,18 +224,22 @@ $(function () {
         $.ajax({
             url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=Warning',
             //dataType : 'json',
-            dataType :'jsonp',
+            dataType :'json',
             type : 'get',
             async : false,
             success : function(data) {
-               // for(var i = 0; i < data.length; i++) {
-                     ty=y;tz=z;
-                     y=data[0].disastername;
-                     z=data[0].disastercolour;
+               for(var i = 0; i < data.length; i++) {
 
+                    var y=data[0].disastername;
+                    var z=data[0].disastercolour;
+
+                    // alert(ty+" "+tz+" "+y+" "+z)
                     clearWarning();
-                    if(ty!=y||tz!=z)  showWarning(y,z,hour + "时"+min+"分")
-               // }
+                   /* if(ty!=y||tz!=z)*/  showWarning(y,z,hour + "时"+min+"分")
+               }
+            },
+            error:function () {
+                alert("error")
             }
         })
 

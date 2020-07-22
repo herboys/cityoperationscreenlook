@@ -187,12 +187,12 @@ function addTableList1(name,arr)
 			setTimeout(function(){
 				var html=$(name).find('.list-box').html();
 				$(name).find('.list-box').append(html);
-			 	linkageIntscroll();
+				linkageIntScroll();
 				 $(name).mouseenter(function(){
 				 	clearInterval(linkageScrollTime)
 				 })
 				 $(name).mouseleave(function(){
-			 		linkageIntscroll();
+					 linkageIntScroll();
 				 })
 			},200*i+200)
 
@@ -309,17 +309,19 @@ function linkageInt(){
 		}
 		, 5000);
 }
-function linkScrollMaxlinkageIntscroll(){
+function linkageIntScroll(){
 	var moveT=$('.linkage-scroll-table').find('.table-list').eq(0).height()-8;
 	//alert(moveT)
 	linkageScrollTime=setInterval(() => {
 			if(linkageNumScroll>=linkScrollMax/3)
 			{
+				alert(2)
 				linkageNumScroll=-1;
 				$('.linkage-scroll-table .list-box').css({top:-moveT*linkageNumScroll});
 			}
 			linkageNumScroll++;
 
+			alert(4)
 
 			$('.linkage-scroll-table .list-box').animate({top:-(moveT+1)*linkageNumScroll*2.82},1000,function(){
 				alert(5)

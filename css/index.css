@@ -96,10 +96,8 @@ html
 }
 .header .main-box .weather-icon,.header .main-box .early-warning-icon
 {
-	/*width: 3.9rem;
-	height: 3.9rem;*/
-	width: 2.9rem;
-	height: 2.9rem;
+	/*width: 3.9rem;*/
+	height: 3.9rem;
 	margin-left: 1.4rem;
 	overflow: hidden;
 }

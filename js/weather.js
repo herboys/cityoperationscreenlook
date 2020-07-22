@@ -4,7 +4,7 @@ $(function () {
         大雨:[0,1], 暴雨:[1,1], 大暴雨:[2,1], 特大暴雨:[3,1], 阵雪:[4,1], 小雪:[5,1], 中雪:[6,1], 大雪:[7,1], 
     };
 
-    showWarningDefault();
+   // showWarningDefault();
     function showWeather(weather, temperature){
         var xyIndex = weatherIndex[weather];
 
@@ -25,9 +25,10 @@ $(function () {
 
     function showWarning(name, color, time){
         let img = "images/warning/" + name + "_" + color + ".jpg";
-        $(".early-warning-icon").html("<img style='border-radius:3px; overflow:hidden;' src='"+img+"'>");
-        $(".early-warning-icon").css({"margin-top":'0.4rem'});
-        $(".early-warning-text").html(time +" "+ name + color + "预警");
+        //$(".early-warning-icon").html("<img style='border-radius:3px; overflow:hidden;' src='"+img+"'>");
+        $("#warningBox").append("<div class='early-warning-icon left' style='margin-left: 1rem'><img style='border-radius:3px; overflow:hidden;margin-left: 0.5rem;height:3.9rem;width:4.0rem' src='"+img+"'></div>");
+        $("#warningBox").css({"margin-top":'0.4rem'});
+       // $(".early-warning-text").html(time +" "+ name + color + "预警");
     }
 
     function showWarningDefault(){
@@ -53,9 +54,9 @@ $(function () {
    function clearWarning(){
        /* $(".early-warning-icon").html('');
         $(".early-warning-text").html('');*/
-       $("#warning1").html("");
-       $("#warning2").html("");
-       $("#warning3").html("");
+       $("#warningBox").html("");
+      // $("#warning2").html("");
+      // $("#warning3").html("");
        $(".early-warning-text").html('');
     }
     /* function clearWarning(time){
@@ -186,8 +187,8 @@ $(function () {
                         let unit = "<span style='font-size:1.6rem'>℃</span>"
                         $(".temperature-text").html(tem + unit);
                     }
-                    clearWarning();
-                    showWarningMulti(tem_waring,rain_warning,wind_warning,curTime)
+                   // clearWarning();
+                  //  showWarningMulti(tem_waring,rain_warning,wind_warning,curTime)
                 }
             })
 
@@ -293,13 +294,20 @@ $(function () {
             type : 'get',
             async : false,
             success : function(data) {
+                if(data.length>0){
+                    clearWarning();
+                }
+
                for(var i = 0; i < data.length; i++) {
-                    var y=data[0].disastername;
-                    var z=data[0].disastercolour;
+                    var y=data[i].disastername;
+                    var z=data[i].disastercolour;
 
                     // alert(ty+" "+tz+" "+y+" "+z)
-                    clearWarning();
+
                    /* if(ty!=y||tz!=z)*/  showWarning(y,z,hour + "时"+min+"分")
+               }
+               if(data==null || data.length==0){
+                   $(".early-warning-text").html("无预警");
                }
             },
             error:function () {

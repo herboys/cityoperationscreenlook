@@ -519,9 +519,9 @@
 				<div class="dialog-box">
 					<div class="dialog-con">
 						<div style="color: black;position: relative;">拥堵路段统计:</div>
-						<div style="margin: 0.4rem 0 " @click="visible1=true"><span class="bot1">500M-1000M</span><span>4 段</span></div>
-						<div style="margin: 0.4rem 0;" @click="visible2=true"><span class="bot2">1000M-2000M</span><span>3 段</span></div>
-						<div style="margin: 0.4rem 0;" @click="visible3=true"><span class="bot3">2000M以上</span><span>2 段</span></div>
+						<div style="margin: 0.4rem 0 " @click="visibleClick1"><span class="bot1">500M-1000M</span><span>4 段</span></div>
+						<div style="margin: 0.4rem 0;" @click="visibleClick2 "><span class="bot2">1000M-2000M</span><span>3 段</span></div>
+						<div style="margin: 0.4rem 0;" @click="visibleClick3"><span class="bot3">2000M以上</span><span>2 段</span></div>
 						<div v-show="visible1" class="dialog-box2" >
 							<a class="dialog-close" @click="visible1=false">	x</a>
 							<div  class="dialog-con2">
@@ -681,8 +681,24 @@
 			 visible2: false,
 			 visible3: false,
 		}
-   
-  }
+	},
+	methods: {
+		visibleClick1(){
+			this.visible1= true 
+			this.visible2= false 
+			this.visible3= false 
+		},
+		visibleClick2(){
+			this.visible1= false 
+			this.visible2= true 
+			this.visible3= false 
+		},
+		visibleClick3(){
+			this.visible1= false 
+			this.visible2= false 
+			this.visible3= true 
+		}
+	},
 })
 </script>
 </html>

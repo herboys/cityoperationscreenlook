@@ -524,18 +524,10 @@ font-weight: bold;
 	height: 1rem;
 }
 .dialog-box{
-
-	/* width: 14rem; */
 	position: absolute;
 	right: 0;
 	top: 1.2rem;
-	background: linear-gradient(to bottom, #19778c, #095f88);
-				animation: dynamics 6s ease infinite;
-				-webkit-animation: dynamics 6s ease infinite;
-				-moz-animation: dynamics 6s ease infinite;
-				opacity: 0.9;
-				border: solid 1px #13a1fc;
-				background-size:1400% 300%;
+	background: #19778c;
 }
 .dialog-con{
 	background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top,
@@ -547,6 +539,33 @@ font-weight: bold;
 	height: 100%;
 	border-radius: 3px;
 	padding: 1rem;
+}
+.dialog-box2{
+	position: absolute;
+	right: 0;
+	top: 14rem;
+	background: #19778c;
+
+}
+.dialog-con2{
+	background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top,
+	linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top,
+	linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom,
+	linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
+	background-repeat: no-repeat;
+	background-size: 3px 20px, 20px 3px;
+	height: 100%;
+	border-radius: 3px;
+	padding: 1rem;
+	padding-top: 2rem;
+}
+.dialog-close {
+	position: absolute;
+    right: 0rem;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    font-size: 1.5rem;
 }
 .dialog-con .bot1{
 	width: 8rem;

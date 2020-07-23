@@ -549,26 +549,43 @@ font-weight: bold;
 	padding: 1rem;
 }
 .dialog-con .bot1{
-	width: 0.5rem;
-    height: 0.5rem;
-    background: yellow;
-    border-radius: 1000px;
-   display: inline-block;
-       vertical-align: middle;
+	width: 8rem;
+	height: 2.2rem;
+	line-height: 2.2rem;
+	background: rgba(255, 230, 0, 0.87);
+	display: inline-block;
+	text-align: center;
+	border-radius: 0.5rem;
+	border: rgb(0, 110, 255) 0.25rem solid;
+	color: black;
+	font-weight: bold;
+	margin-right: 1rem;
 }
 .dialog-con .bot2{
-	width: 0.5rem;
-    height: 0.5rem;
-    background: #FF5511;
-    border-radius: 1000px;
-   display: inline-block;
-       vertical-align: middle;
+	width: 8rem;
+	height: 2.2rem;
+	line-height: 2.2rem;
+	background: rgb(255, 145, 0);
+	display: inline-block;
+	text-align: center;
+	border-radius: 0.5rem;
+	border: rgb(0, 110, 255) 0.25rem solid;
+	color: black;
+	font-weight: bold;
+	margin-right: 1rem;
+
 }
 .dialog-con .bot3{
-	width: 0.5rem;
-    height: 0.5rem;
-    background: red;
-    border-radius: 1000px;
-   display: inline-block;
-       vertical-align: middle;
+	width: 8rem;
+	height: 2.2rem;
+	line-height: 2.2rem;
+	background: red;
+	display: inline-block;
+	text-align: center;
+	border-radius: 0.5rem;
+	border: rgb(0, 110, 255) 0.25rem solid;
+	color: black;
+	font-weight: bold;
+	margin-right: 1rem;
+
 }

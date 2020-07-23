@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="renderer" content="webkit"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-		<title></title>
-		<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
-		<link rel="stylesheet" type="text/css" href="css/pubilic.css"/>
-		<link rel="stylesheet" type="text/css" href="css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="css/video.css">
-		<link rel="stylesheet" type="text/css" href="css/command_system.css"/>
-		<link rel="stylesheet" type="text/css" href="css/vital_signs.css"/>
-		<link rel="stylesheet" type="text/css" href="css/weather.css"/>
-		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/command_system.js" type="text/javascript" charset="utf-8"></script>
-		<link rel="stylesheet" type="text/css" href="css/video.css">
-		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/video.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/time.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript" src="js/scroll.js" ></script>
 
-		
-		<!--地图-->
-		<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch"></script>
-		<!-- <script src="https://webapi.amap.com/maps?v=1.4.15&key=33c02230e724e2bc7edce69756a28beb"></script> -->
-		<script src="js/map.js" type="text/javascript" charset="utf-8"></script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title></title>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+	<link rel="stylesheet" type="text/css" href="css/pubilic.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/video.css">
+	<link rel="stylesheet" type="text/css" href="css/command_system.css" />
+	<link rel="stylesheet" type="text/css" href="css/vital_signs.css" />
+	<link rel="stylesheet" type="text/css" href="css/weather.css" />
+	<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/command_system.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="css/video.css">
+	<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<!--
+	<script src="js/video.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="js/time.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/scroll.js"></script>
 
 
-		<link rel="stylesheet" type="text/css" href="./css/banner.css">
-		<!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
-		<script type="text/javascript" src="./js/banner.js"></script>
-		<script type="text/javascript">
-			setFont()
-		</script>
-	</head>
-	<body>
-		
-		<div id="app">
+	<!--地图-->
+	<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch">
+	</script>
+	<!-- <script src="https://webapi.amap.com/maps?v=1.4.15&key=33c02230e724e2bc7edce69756a28beb"></script> -->
+	<script src="js/map.js" type="text/javascript" charset="utf-8"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="./css/banner.css">
+	<!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
+	<script type="text/javascript" src="./js/banner.js"></script>
+	<script type="text/javascript">
+		setFont()
+	</script>
+</head>
+
+<body>
+
+	<div id="app">
 		<div class="header">
-			<img src="images/head2.png"/>
+			<img src="images/head2.png" />
 			<div class="main-box left-box">
-				<div class="weather-icon left" style="width: 3.9rem;height: 3.9rem;" id="weatherIcon"><div></div></div>
+				<div class="weather-icon left" style="width: 3.9rem;height: 3.9rem;" id="weatherIcon">
+					<div></div>
+				</div>
 				<div class="weather-text left" id="weatherText"></div>
 				<div class="temperature-text num-font left"></div>
 
@@ -100,14 +106,18 @@
 									<div class="arrow"></div>
 								</div>
 								<div class="arc-warp">
-									<div class="arc-box"><div class="arc"></div></div>
-									<div class="arc-box"><div class="arc"></div></div>
+									<div class="arc-box">
+										<div class="arc"></div>
+									</div>
+									<div class="arc-box">
+										<div class="arc"></div>
+									</div>
 								</div>
 								<div class="bg-box"></div>
 								<div class="bg-box bg-ac"></div>
 								<div class="text-box text-centered">
 									<p>带班区领导</p>
-									<h3 id="name" ></h3>
+									<h3 id="name"></h3>
 								</div>
 							</div>
 							<div class="working-places">
@@ -128,7 +138,7 @@
 								</div>
 								<div class="text-box text-centered left">
 									<p>值班长</p>
-									<h3  id="name3"></h3>
+									<h3 id="name3"></h3>
 								</div>
 								<div class="text-box text-centered left">
 									<p>值班人员</p>
@@ -218,7 +228,9 @@
 						</div>
 						<div class="list-box">
 							<div class="card-box">
-								<div class="card-title"><div class="text-centered">用电总量</div></div>
+								<div class="card-title">
+									<div class="text-centered">用电总量</div>
+								</div>
 								<div class="card-text">
 									<p>昨日<span class="num-font" style="font-size:0.8rem;alignment: center">20</span>万/立方米</p>
 									<p>本周<span class="num-font" style="font-size:0.8rem;alignment: center">189</span>万/立方米</p>
@@ -243,7 +255,9 @@
 						</div>
 						<div class="list-box">
 							<div class="card-box">
-								<div class="card-title"><div class="text-centered">景区景点人流</div></div>
+								<div class="card-title">
+									<div class="text-centered">景区景点人流</div>
+								</div>
 								<div class="card-text">
 									<p>昨日<span class="num-font" style="font-size:0.8rem;alignment: center">20</span>万/立方米</p>
 									<p>本周<span class="num-font" style="font-size:0.8rem;alignment: center">189</span>万/立方米</p>
@@ -376,7 +390,7 @@
 								<div class="dividing-box"></div>
 							</div>
 						</div>
-					
+
 						<div class="table-box linkage-scroll-table">
 							<div class="table-list table-title">
 								<p style="width: 8rem;">时间</p>
@@ -389,7 +403,7 @@
 							</div>
 						</div>
 					</div>
-		
+
 					<div class="bottom-box">
 						<div class="title-box" style="margin-bottom: 0rem">
 							<div class="title-border-box">
@@ -407,11 +421,11 @@
 								<div class="dividing-box"></div>
 							</div>
 						</div>
-					
-						<div class="bottom-main" >
+
+						<div class="bottom-main">
 							<div class="main-list">
 								<div class="main-left">
-									<img src="images/manage.png"/>
+									<img src="images/manage.png" />
 									<div class="text-centered">
 										<p>110</p>
 										<!--<p>警情</p>-->
@@ -425,7 +439,7 @@
 							</div>
 							<div class="main-list">
 								<div class="main-left">
-									<img src="images/manage.png"/>
+									<img src="images/manage.png" />
 									<div class="text-centered">
 										<p>119</p>
 										<!--<p>警情</p>-->
@@ -439,7 +453,7 @@
 							</div>
 							<div class="main-list">
 								<div class="main-left">
-									<img src="images/manage.png"/>
+									<img src="images/manage.png" />
 									<div class="text-centered">
 										<p>120</p>
 										<!--<p>警情</p>-->
@@ -453,7 +467,7 @@
 							</div>
 							<div class="main-list">
 								<div class="main-left">
-									<img src="images/manage.png"/>
+									<img src="images/manage.png" />
 									<div class="text-centered">
 										<p>12345</p>
 										<!--<p>警情</p>-->
@@ -467,7 +481,7 @@
 							</div>
 							<div class="main-list">
 								<div class="main-left">
-									<img src="images/manage.png"/>
+									<img src="images/manage.png" />
 									<div class="text-centered">
 										<p>网格化</p>
 										<!--<p>警情</p>-->
@@ -482,7 +496,7 @@
 
 							<div class="main-list">
 								<div class="main-left">
-									<img src="images/manage.png"/>
+									<img src="images/manage.png" />
 									<div class="text-centered">
 										<p>突发事件</p>
 										<!--<p>警情</p>-->
@@ -505,10 +519,10 @@
 				</div>
 				<div class="dialog-box">
 					<div class="dialog-con">
-						<div style="color: #F5A623;position: relative;">全区拥堵路段统计: 20</div>
-						<a href="#" onClick="javascript: return false"><span class="bot1"></span><span>500米拥堵路段——10</span></a>
-						<a href="#" onClick="javascript: return false"><span class="bot2"></span><span>500-1000米拥堵路段——5</span></a>
-						<a href="#" onClick="javascript: return false"><span class="bot3"></span><span>2000米拥堵路段——5</span></a>
+						<div style="	color: #F5A623;position: relative;">拥堵路段统计:</div>
+						<div style="margin: 0.4rem 0 "><span class="bot1">500M-1000M</span><span>9 段</span></div>
+						<div style="margin: 0.4rem 0;"><span class="bot2">1000M-2000M</span><span>5 段</span></div>
+						<div style="margin: 0.4rem 0;"><span class="bot3">2000M以上</span><span>3 段</span></div>
 						<div style="position: absolute;background-color: #ccc;">
 
 						</div>
@@ -524,14 +538,14 @@
 						<div class="title-border"></div>
 						<h3>视频轮询</h3>
 					</div>
-					<div class="content-bg">						
+					<div class="content-bg">
 					</div>
 					<div class="content-box">
 						<div class="jrwlzsj_box1">
 							<div class="slider" id="slider1">
 							</div>
 						</div>
-						<hr style="width: 30.3rem;margin-left: 0.9rem;margin-top: 0.5rem;border:1px dashed #aaa"/>
+						<hr style="width: 30.3rem;margin-left: 0.9rem;margin-top: 0.5rem;border:1px dashed #aaa" />
 
 						<div class="jrwlzsj_box1" style="margin-top:0.2rem">
 							<div class="slider" id="slider2">
@@ -541,9 +555,9 @@
 								</div> -->
 							</div>
 						</div>
-				
+
 					</div>
-					
+
 				</div>
 				<div class="special-box">
 					<div class="main-title">
@@ -554,38 +568,47 @@
 						<h3>专项管理</h3>
 					</div>
 					<div class="content-bg"></div>
-					<div class="content-box" >
+					<div class="content-box">
 						<div style="height:4rem;width:33rem;margin-top: 0rem">
-							<div style="float:left;margin-left:1.5rem;height: 3.8rem;width: 4rem;font-size: 1.3rem;color: white;display: inline">
-								<img style="height: 2rem;width: 4rem;" src="images/zhihui.png"/>
+							<div
+								style="float:left;margin-left:1.5rem;height: 3.8rem;width: 4rem;font-size: 1.3rem;color: white;display: inline">
+								<img style="height: 2rem;width: 4rem;" src="images/zhihui.png" />
 							</div>
-							<div style="height: 3.8rem;width: 29rem;display: inline;margin-left: 0.5rem;position: relative" id="zhihuiBox">
+							<div style="height: 3.8rem;width: 29rem;display: inline;margin-left: 0.5rem;position: relative"
+								id="zhihuiBox">
 							</div>
-							<div class="csyytz_txt text-centered" style="font-size: 1.5rem;width: 1.5rem;cursor: pointer" onclick="moreZhihui()" id="zhihuiAdd">
+							<div class="csyytz_txt text-centered" style="font-size: 1.5rem;width: 1.5rem;cursor: pointer"
+								onclick="moreZhihui()" id="zhihuiAdd">
 								+
 							</div>
 						</div>
 						<div style="height:4rem;width:33rem;margin-top: 0.5rem;font-size: 1.3rem;color: white;">
-							<div style="float:left;margin-left:1.5rem;height: 3.8rem;width: 4rem;font-size: 1.3rem;color: white;display: inline">
-								<img style="height: 2rem;width: 4rem;" src="images/anquan.png"/>
+							<div
+								style="float:left;margin-left:1.5rem;height: 3.8rem;width: 4rem;font-size: 1.3rem;color: white;display: inline">
+								<img style="height: 2rem;width: 4rem;" src="images/anquan.png" />
 							</div>
-							<div style="height: 3.8rem;width: 29rem;display: inline;margin-left: 0.5rem;position: relative" id="anquanBox">
+							<div style="height: 3.8rem;width: 29rem;display: inline;margin-left: 0.5rem;position: relative"
+								id="anquanBox">
 							</div>
-							<div class="csyytz_txt text-centered" style="font-size: 1.5rem;width: 1.5rem;cursor: pointer" onclick="moreAnquan()" id="anquanAdd">
+							<div class="csyytz_txt text-centered" style="font-size: 1.5rem;width: 1.5rem;cursor: pointer"
+								onclick="moreAnquan()" id="anquanAdd">
 								+
 							</div>
 						</div>
 						<div style="height:4rem;width:33rem;margin-top: 0.5rem;font-size: 1.3rem;color: white;">
-							<div style="float:left;margin-left:1.5rem;height: 3.8rem;width: 4rem;font-size: 1.3rem;color: white;display: inline">
-								<img style="height: 1.7rem;width: 3.9rem;" src="images/gaoxiao.png"/>
+							<div
+								style="float:left;margin-left:1.5rem;height: 3.8rem;width: 4rem;font-size: 1.3rem;color: white;display: inline">
+								<img style="height: 1.7rem;width: 3.9rem;" src="images/gaoxiao.png" />
 							</div>
-							<div style="height: 3.8rem;width: 29rem;display: inline;margin-left: 0.5rem;position: relative" id="gaoxiaoBox">
+							<div style="height: 3.8rem;width: 29rem;display: inline;margin-left: 0.5rem;position: relative"
+								id="gaoxiaoBox">
 							</div>
-							<div class="csyytz_txt text-centered" style="font-size: 1.5rem;width: 1.5rem;cursor: pointer" onclick="moreGaoxiao()" id="gaoxiaoAdd">
+							<div class="csyytz_txt text-centered" style="font-size: 1.5rem;width: 1.5rem;cursor: pointer"
+								onclick="moreGaoxiao()" id="gaoxiaoAdd">
 								+
 							</div>
 						</div>
-					<!--<div class="banners">
+						<!--<div class="banners">
 						&lt;!&ndash;div class="click_left"><img class="get_height" onclick="banner_left_right('left')" src="./images/banner_left.png"></div&ndash;&gt;
 						&lt;!&ndash;div class="number">
 							<div class="numbers"></div>
@@ -603,27 +626,26 @@
 						</script>&ndash;&gt;
 						
 					</div>-->
-					<!--<div style="height: 5%;margin-bottom: 2.7rem;top:-5%;position: relative;"><image style="width:13.16rem;margin: auto;" src="images/slogan.png"></image></div>-->
+						<!--<div style="height: 5%;margin-bottom: 2.7rem;top:-5%;position: relative;"><image style="width:13.16rem;margin: auto;" src="images/slogan.png"></image></div>-->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</body>
-	<script type="text/javascript">
-		$(function(){
-			$('header img').ready(function(){
-				$('.main-warp').height($('html').height()-$('.header').height());
-			})
-	    	$(window).resize(function(){
-				setFont()
-				$('.main-warp').height($('html').height()-$('.header').height())
-	    	})
+</body>
+<script type="text/javascript">
+	$(function () {
+		$('header img').ready(function () {
+			$('.main-warp').height($('html').height() - $('.header').height());
 		})
-		createVideoSlideOne();
-		createVideoSlide();
-		//openVideo();
-	
-		
-	</script>
+		$(window).resize(function () {
+			setFont()
+			$('.main-warp').height($('html').height() - $('.header').height())
+		})
+	})
+	createVideoSlideOne();
+	createVideoSlide();
+	//openVideo();
+</script>
+
 </html>

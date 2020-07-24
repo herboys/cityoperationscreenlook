@@ -359,6 +359,10 @@
 {
 	border-left: 1px solid #31FFFE;
 }
+.vital-signs .shbz-warp .text-list p:nth-child(1)
+{
+	margin-left: 0.6rem!important;
+}
 .vital-signs .shbz-warp .list-box .line-box:nth-child(2)
 {
 	left: calc(10% - 1px);
@@ -428,11 +432,21 @@
 {
 	top: 50%;
 	transform: rotate(42deg);
-	height: 64%;
+	height: 132%;
+}
+.vital-signs .hjbz-warp .list-box .line-box:nth-child(1)
+{
+	width: 104%;
 }
 .vital-signs .hjbz-warp .list-box .line-box:nth-child(2)
 {
 	left: -10%;
+	width: 110%;
+}
+.vital-signs .hjbz-warp .list-box .line-box:nth-child(3)
+{
+	left: -22%;
+	width: 118%;
 }
 .vital-signs .hjbz-warp .list-box .text-list
 {
@@ -460,7 +474,7 @@
     position: absolute;
     left: 0;
     height: 9rem;
-    top: 29rem;
+    top: 30rem;
     overflow: hidden;
 }
 .content{

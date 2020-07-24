@@ -259,6 +259,9 @@
 	margin-top: 0.4rem;
 	overflow: hidden;
 }
+.command-system .linkage-scroll-table {
+	margin-top: 0.5rem!important;
+}
 .command-system .table-box .list-box
 {
 	/*height: calc(6px + 18rem);*/
@@ -272,6 +275,10 @@
 	line-height: 1.5rem;
 	font-size: 0.8rem;
 	color: #D8D8D8;
+}
+.command-system .table-scroll
+{
+	line-height: 1.4rem!important;
 }
 .command-system .table-box .list-box .table-list
 {

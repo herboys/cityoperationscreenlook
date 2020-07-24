@@ -558,3 +558,9 @@ function addHjbz(arr)
 
 	}
 }
+$(function () {
+
+	$('.main-box-big').find('.dialog-toggle').click(function(){
+		 $('.main-box-big').children('.dialog-box').slideToggle();
+	})
+})

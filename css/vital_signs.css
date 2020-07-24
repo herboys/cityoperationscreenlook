@@ -542,6 +542,7 @@ font-weight: bold;
 	right: 0.15rem;
 	top: 3.5rem;
 	background: #19778c;
+	display: none;
 }
 .dialog-con{
 	background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top,

@@ -173,8 +173,8 @@ function getDutyList() {
 		// time street address content
 
 	]
-	addTableList1('.core-table', coreArr);
-	addTableList1('.linkage-table', linkageArr)
+	//addTableList1('.core-table', coreArr);
+	//addTableList1('.linkage-table', linkageArr)
 	addTableList2('.linkage-scroll-table', linkageArrScroll)
 }
 
@@ -184,8 +184,8 @@ $(function () {
 	//alert(JSON.stringify(coreArr))
 	//alert(JSON.stringify(linkageArr))
 	getDutyList();
-	//	getDutyListReal();
-	//	setInterval(getDutyListReal, 6 * 60 * 60 * 1000)
+		getDutyListReal();
+		setInterval(getDutyListReal, 6 * 60 * 60 * 1000)
 
 })
 

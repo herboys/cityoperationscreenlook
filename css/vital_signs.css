@@ -539,8 +539,8 @@ font-weight: bold;
 }
 .dialog-box{
 	position: absolute;
-	right: 0;
-	top: 1.2rem;
+	right: 0.15rem;
+	top: 3.5rem;
 	background: #19778c;
 }
 .dialog-con{
@@ -621,4 +621,18 @@ font-weight: bold;
 	font-weight: bold;
 	margin-right: 1rem;
 
+}
+.dialog-toggle{
+	position: absolute;
+	top: 1.3rem;
+	right: 0.15rem;
+	background-color: red;
+	display: block;
+	width: 4rem;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 0.4rem;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
 }

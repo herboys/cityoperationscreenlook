@@ -57,10 +57,10 @@ function initMap() {
         zoom: 12,
         zooms: [11, 18],  //设置地图缩放级别
     });
-    setMapStyle();
-    setMapFeatures();
-    drawJiadingBounds();
-    addJiadingBoundary();
+    setMapStyle();      /*设置地图风格*/
+    setMapFeatures();   /*设置地图显示要素*/
+    drawJiadingBounds();   //加载行政区划插件
+    addJiadingBoundary();  /*添加嘉定区和街道边界*/
     addJiadingZhenText();
     addTraffic();
     addPoiMarker();

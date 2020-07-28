@@ -31,6 +31,7 @@
 	<script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/scroll.js"></script>
 	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/resource.js" type="text/javascript" charset="utf-8"></script>
 
 	<!--地图-->
 	<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch">
@@ -282,7 +283,7 @@
 							</div>
 						</div>
 						<div class="list-box">
-							<div class="text-box" >
+							<div class="text-box">
 								<div class="line-box">
 									<div class="dividing-line">
 										<div class="dividing-box"></div>
@@ -403,10 +404,12 @@
 
 						<div class="table-box linkage-scroll-table">
 							<div class="table-list table-title table-scroll">
+								<p style="width: 8rem;">日期</p>
 								<p style="width: 8rem;">时间</p>
 								<p style="width: 10rem">街道</p>
 								<p style="width: 15rem">详细地址</p>
-								<p style="width: 26rem">内容</p>
+								<p style="width: 8rem">事件类型</p>
+								<p style="width: 10rem">内容</p>
 							</div>
 							<div class="list-warp">
 								<div class="list-box"></div>
@@ -527,41 +530,57 @@
 				<div class="map-box" id="mapContainer">
 
 				</div>
-				<a class="dialog-toggle">开发中</a>
+				<div class="dialog-toggle">折叠</div>
 				<div class="dialog-box">
-			
+
 					<div class="dialog-con">
-					
-						<div style="color: black;position: relative;">拥堵路段统计:</div>
-						<div style="margin: 0.4rem 0 " @click="visibleClick1"><span class="bot1">500M-1000M</span><span>4 段</span></div>
-						<div style="margin: 0.4rem 0;" @click="visibleClick2 "><span class="bot2">1000M-2000M</span><span>3 段</span></div>
-						<div style="margin: 0.4rem 0;" @click="visibleClick3"><span class="bot3">2000M以上</span><span>2 段</span></div>
-						<div v-show="visible1" class="dialog-box2" >
-							<a class="dialog-close" @click="visible1=false">	x</a>
-							<div  class="dialog-con2">
-								<div style="	color: black;position: relative;">500M-1000M拥堵路:</div>
-								<div style="margin: 0.4rem 0 "><span class="bot1">胜利路</span><span></span></div>
-								<div style="margin: 0.4rem 0 "><span class="bot1">胜利东路</span><span></span></div>
-								<div style="margin: 0.4rem 0 "><span class="bot1">新建路</span><span></span></div>
-								<div style="margin: 0.4rem 0 "><span class="bot1">徐曹路</span><span></span></div>
-							</div>
-					</div>
-					<div v-show="visible2" class="dialog-box2" >
-						<a class="dialog-close" @click="visible2=false">	x</a>
-						<div  class="dialog-con2">
-							<div style="	color: black;position: relative;">1000M-2000M拥堵路:</div>
-							<div style="margin: 0.4rem 0 "><span class="bot2">浏翔公路</span><span></span></div>
-							<div style="margin: 0.4rem 0 "><span class="bot2">新建一路</span><span></span></div>
-							<div style="margin: 0.4rem 0 "><span class="bot2">施曹公路</span><span></span></div>
+
+						<div style="color: black;font-weight: bold;">拥堵路段统计:</div>
+						<div style="margin: 0.4rem 0 " @click="visibleClick1"><span
+								class="bot1">500M-1000M</span><span>{{list1.length}} 段</span>
 						</div>
-				</div>	<div v-show="visible3" class="dialog-box2" >
-					<a class="dialog-close" @click="visible3=false">	x</a>
-					<div  class="dialog-con2">
-						<div style="	color: black;position: relative;">2000M以上:</div>
-						<div style="margin: 0.4rem 0 "><span class="bot3">金沙路</span><span></span></div>
-						<div style="margin: 0.4rem 0 "><span class="bot3">城中路</span><span></span></div>
-					</div>
-			</div>
+						<div style="margin: 0.4rem 0;" @click="visibleClick2 "><span
+								class="bot2">1000M-2000M</span><span>{{list2.length}} 段</span>
+						</div>
+						<div style="margin: 0.4rem 0;" @click="visibleClick3"><span
+								class="bot3">2000M以上</span><span>{{list3.length}} 段</span>
+						</div>
+						<div v-show="visible1" class="dialog-box2">
+							<a class="dialog-close" @click="visible1=false"> x</a>
+							<div class="dialog-con2">
+								<div style="color: black;font-weight: bold;">500M-1000M拥堵路:</div>
+								<div v-if="list1.length>0">
+									<div v-for="item in list1" style="margin: 0.4rem 0 " @click="clickLocus"><span
+											class="sub-bot1">{{item.name}}-{{item.direction}}</span>
+									</div>
+								</div>
+								<div v-else style="margin: 0.4rem 0 "><span class="sub-bot1">暂无</span></div>
+							</div>
+						</div>
+						<div v-show="visible2" class="dialog-box2">
+							<a class="dialog-close" @click="visible2=false"> x</a>
+							<div class="dialog-con2">
+								<div style="color: black;font-weight: bold;">1000M-2000M拥堵路:</div>
+								<div v-if="list2.length>0">
+									<div v-for="item in list2" style="margin: 0.4rem 0;" ><span
+											class="sub-bot2">{{item.name}}-{{item.direction}}</span>
+									</div>
+								</div>
+								<div v-else style="margin: 0.4rem 0 "><span class="sub-bot2">暂无</span></div>
+							</div>
+						</div>
+						<div v-show="visible3" class="dialog-box2">
+							<a class="dialog-close" @click="visible3=false"> x</a>
+							<div class="dialog-con2">
+								<div style="color: black;font-weight: bold;">2000M以上拥堵路:</div>
+								<div v-if="list3.length>0">
+									<div v-for="item in list3" style="margin: 0.4rem 0 " ><span
+											class="sub-bot3">{{item.name}}-{{item.direction}}</span>
+									</div>
+								</div>
+								<div v-else style="margin: 0.4rem 0 "><span class="sub-bot3">暂无</span></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -682,37 +701,93 @@
 	createVideoSlideOne();
 	createVideoSlide();
 	//openVideo();
-
-
 </script>
 <script>
-		var app = new Vue({
-  el: '#app',
-  data() {
-		return {
-			 message: 'Hello Vue!',
-			 visible1: false,
-			 visible2: false,
-			 visible3: false,
-		}
-	},
-	methods: {
-		visibleClick1(){
-			this.visible1= true 
-			this.visible2= false 
-			this.visible3= false 
+	var app = new Vue({
+		el: '#app',
+		data() {
+			return {
+				message: 'Hello Vue!',
+				visible1: false,
+				visible2: false,
+				visible3: false,
+				list1: [],
+				list2: [],
+				list3: []
+			}
 		},
-		visibleClick2(){
-			this.visible1= false 
-			this.visible2= true 
-			this.visible3= false 
+		methods: {
+			visibleClick1() {
+				this.visible1 = true
+				this.visible2 = false
+				this.visible3 = false
+			},
+			visibleClick2() {
+				this.visible1 = false
+				this.visible2 = true
+				this.visible3 = false
+			},
+			visibleClick3() {
+				this.visible1 = false
+				this.visible2 = false
+				this.visible3 = true
+			},
+			clickLocus() {
+				var lineArr = [
+					[121.250504, 31.3241196],
+					[121.247269, 31.3285904],
+					[121.246712, 31.3293915],
+					[121.245979, 31.3303947],
+					[121.245316, 31.3313503],
+					[121.243538, 31.3338089],
+					[121.243164, 31.3343639],
+					[121.242737, 31.3349686],
+					[121.24218, 31.3357506],
+					[121.240585, 31.3378925],
+					[121.23999, 31.3386841],
+					[121.2397, 31.3390675],
+					[121.239273, 31.3396263],
+					[121.238335, 31.3407383],
+					[121.237686, 31.341507],
+					[121.237099, 31.3421783],
+					[121.236488, 31.3428402],
+					[121.234962, 31.3444405],
+					[121.233994, 31.3454628]
+				]
+				var polyline = new AMap.Polyline({
+					map: map,
+					path: lineArr,
+					showDir: true,
+					strokeColor: "#28F", //线颜色
+					// strokeOpacity: 1,     //线透明度
+					strokeWeight: 6, //线宽
+					// strokeStyle: "solid"  //线样式
+				});
+			}
 		},
-		visibleClick3(){
-			this.visible1= false 
-			this.visible2= false 
-			this.visible3= true 
-		}
-	},
-})
+		created() {
+			get: {
+				//发送get请求
+				this.$http.get('http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall').then(function (res) {
+					console.log(res, 'res');
+					res.data.forEach(item => {
+						console.log(item);
+						if (item.length < 5000) {
+							return this.list1.push(item)
+						} else if (item.length > 5000 && item.length < 10000) {
+							return this.list2.push(item)
+						} else if (item.length > 10000) {
+							return this.list3.push(item)
+						}
+					});
+					// this.list1= res.data
+				}, function () {
+					console.log('请求失败处理');
+				});
+			}
+	
+		},
+	})
 </script>
+
 </html>

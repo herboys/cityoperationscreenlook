@@ -336,13 +336,13 @@
 }
 
 .vital-signs .shbz-warp .list-box .line-box {
-	height: 18%;
+	height: 45%;
 	position: relative;
 }
 
 .vital-signs .shbz-warp .list-box .line-box .dividing-line,
 .vital-signs .hjbz-warp .list-box .line-box .dividing-line {
-	width: 55%;
+	width: 62%;
 	position: absolute;
 	left: 0;
 	bottom: 2px;
@@ -436,6 +436,12 @@
 	position: relative;
 }
 
+.vital-signs .shbz-warp .list-box .slant {
+	top: 44%;
+	transform: rotate(-42deg);
+	height: 244%;
+	left: 0;
+}
 .vital-signs .hjbz-warp .list-box .slant {
 	top: 47%;
 	transform: rotate(42deg);

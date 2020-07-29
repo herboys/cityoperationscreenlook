@@ -328,6 +328,11 @@ $(function(){
 			unit:'万吨/日',
 		},
 		{
+			title:'在线建设工地',
+			num:52,
+			unit:'个/日',
+		},
+		{
 			title:'生活垃圾处理',
 			num:8256,
 			unit:'吨/周',
@@ -338,6 +343,11 @@ $(function(){
 			unit:'万吨/周',
 		},
 		{
+			title:'在线建设工地',
+			num:167,
+			unit:'个/周',
+		},
+		{
 			title:'生活垃圾处理',
 			num:51600,
 			unit:'吨/月',
@@ -346,6 +356,11 @@ $(function(){
 			title:'污水处理量',
 			num:1497,
 			unit:'万吨/月',
+		},
+		{
+			title:'在线建设工地',
+			num:529,
+			unit:'个/月',
 		},
 	]
 	$.ajax({
@@ -360,11 +375,11 @@ $(function(){
 					hjbzArr[0].num=data[i].wasteDisSum;
 					hjbzArr[1].num=data[i].sewageTreatSum;
 				}else if(index==2){
-					hjbzArr[2].num=data[i].wasteDisSum;
-					hjbzArr[3].num=data[i].sewageTreatSum;
+					hjbzArr[3].num=data[i].wasteDisSum;
+					hjbzArr[4].num=data[i].sewageTreatSum;
 				}else if(index==3){
-					hjbzArr[4].num=data[i].wasteDisSum;
-					hjbzArr[5].num=data[i].sewageTreatSum;
+					hjbzArr[6].num=data[i].wasteDisSum;
+					hjbzArr[7].num=data[i].sewageTreatSum;
 				}
 			}
 			addHjbz(hjbzArr) //环境保障
@@ -501,49 +516,63 @@ function addShbz(arr)
 function addHjbz(arr)
 {
 	$('.hjbz-warp .text-box').html('');
-	var maxNum=arr.length>2?2:arr.length
+	var maxNum=arr.length>3?3:arr.length
 	for(var i=0;i<maxNum;i++)
 	{
 		$('.hjbz-warp .text-box').append('<div style="left:'+(10-i*5)+'%;top:'+i*50+'%" class="text-list"><p>'+arr[i].title+'</p><p><span class="num-font">'+arr[i].num+'</span>'+arr[i].unit+'</p></div>')
 	}
-	if(arr.length>2)
+	if(arr.length>3)
 	{
 		var startNum=i;
 		var time='';
 		var distance=$('.hjbz-warp .text-list').height();
 		clearInterval(time)
 		time=setInterval(function(){
-			if($('.hjbz-warp .text-list').length==2)
+			if($('.hjbz-warp .text-list').length==3)
 			{
-				$('.hjbz-warp .text-box').append('<div style="left:0%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:-5%;top:150%;opacity:0" class="text-list"><p>'+arr[startNum+1].title+'</p><p><span class="num-font">'+arr[startNum+1].num+'</span>'+arr[startNum].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>'+arr[startNum+1].title+'</p><p><span class="num-font">'+arr[startNum+1].num+'</span>'+arr[startNum+1].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum+2].title+'</p><p><span class="num-font">'+arr[startNum+2].num+'</span>'+arr[startNum+2].unit+'</p></div>')
 				for(let i=0;i<$('.hjbz-warp .text-list').length;i++)
 				{
 					if(i==0)
 					{
 						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({top:-distance,opacity:0},300,function(){
+						$('.hjbz-warp .text-list').eq(num).animate({top:-distance,opacity:0},500,function(){
 							$(this).remove();
 						})
+						//alert(0)
 					}
 					if(i==1)
 					{
 						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-1)*5)+'%',top:(num-1)*50+'%',opacity:1},300,function(){
-							$(this).animate({top:-distance,opacity:0},300,function(){
+						$('.hjbz-warp .text-list').eq(num).animate({top:-distance*2,opacity:0},500,function(){
+							$(this).remove();
+						})
+						//alert(1)
+					}
+
+					if(i==2)
+					{
+						let num=i;
+						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-2)*15)+'%',top:(num-2)*50+'%',opacity:1},300,function(){
+							$(this).animate({top:-distance*2,opacity:0},500,function(){
 								$(this).remove();
 							})
 						})
-					}
-					else
-					{
+					} /*else if(i==1){
 						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-1)*5)+'%',top:(num-1)*50+'%',opacity:1},300,function(){
-							$(this).animate({left:(10-(num-2)*5)+'%',top:(num-2)*50+'%',opacity:1},300)
+						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-1)*10)+'%',top:100+'%',opacity:1},500,function(){
+							$(this).animate({left:(10-(num-2)*5)+'%',top:(num-1)*0+'%',opacity:1},500)
+						})
+					}*/else{
+						let num=i;
+						$('.hjbz-warp .text-list').eq(num).animate({left:(20-(num-1)*5)+'%',top:(num-2)*50+'%',opacity:1},500,function(){
+							$(this).animate({left:(25-(num-1)*6)+'%',top:(num-3)*50+'%',opacity:1},500)
 						})
 					}
 				}
-				startNum+=2;
+				startNum+=3;
 				if(startNum>=arr.length)
 				{
 					startNum=0;

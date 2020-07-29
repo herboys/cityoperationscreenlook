@@ -688,7 +688,7 @@
 	position: absolute;
 	top: 1.3rem;
 	right: 0.15rem;
-	width: 3rem;
+	/* width: 3rem; */
 	color: #fff;
 	cursor: pointer;
 	border-radius: 0.4rem;
@@ -696,4 +696,5 @@
 	text-align: center;
 	line-height: 1.8rem;
 	border: solid #fff 0.1rem;
+	padding: 0 0.2rem;
 }

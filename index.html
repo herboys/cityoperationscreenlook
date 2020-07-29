@@ -530,11 +530,12 @@
 				<div class="map-box" id="mapContainer">
 
 				</div>
-				<div class="dialog-toggle" >折叠</div>
-				<div class="dialog-box">
-
+				<div class="dialog-toggle" @click=showClick>
+					<span v-show="showDialog">折叠</span>
+					<span v-show="!showDialog">展开堵点信息</span>
+				</div>
+				<div class="dialog-box" v-show="showDialog">
 					<div class="dialog-con">
-
 						<div style="color: black;font-weight: bold;">拥堵路段统计:</div>
 						<div style="margin: 0.4rem 0 " @click="visibleClick1"><span
 								class="bot1">500M-1000M</span><span>{{list1.length}} 段</span>
@@ -713,7 +714,8 @@
 				visible3: false,
 				list1: [],
 				list2: [],
-				list3: []
+				list3: [],
+				showDialog: true,
 			}
 		},
 		methods: {
@@ -785,6 +787,10 @@
 					strokeWeight: 6, //线宽
 					strokeStyle: "solid"  //线样式
 				});
+			},
+			showClick(){
+				this.showDialog =!this.showDialog
+				
 			}
 		},
 		created() {

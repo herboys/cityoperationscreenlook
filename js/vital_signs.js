@@ -444,7 +444,7 @@ function addCard(arr,classStr)
 			}
 			else
 			{
-				window.location.reload()
+				// window.location.reload()
 			}
 		},5000)
 	}
@@ -492,7 +492,7 @@ function addShbz(arr)
 			}
 			else
 			{
-				window.location.reload()
+				// window.location.reload()
 			}
 
 		},5000)
@@ -551,7 +551,7 @@ function addHjbz(arr)
 			}
 			else
 			{
-				window.location.reload()
+				// window.location.reload()
 			}
 
 		},5000)

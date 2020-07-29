@@ -336,7 +336,7 @@
 }
 
 .vital-signs .shbz-warp .list-box .line-box {
-	height: 45%;
+	height: 20%;
 	position: relative;
 }
 
@@ -368,23 +368,23 @@
 }
 
 .vital-signs .shbz-warp .text-list p:nth-child(1) {
-	margin-left: 0.6rem !important;
+	/* margin-left: 0.6rem !important; */
 }
 
 .vital-signs .shbz-warp .list-box .line-box:nth-child(2) {
-	left: 9%;
+	left: calc(10% - 1px);
 }
 
 .vital-signs .shbz-warp .list-box .line-box:nth-child(3) {
-	left: 18%;
+	left: calc(20% - 1px);
 }
 
 .vital-signs .shbz-warp .list-box .line-box:nth-child(4) {
-	left: 26%;
+	left: calc(30% - 1px);
 }
 
 .vital-signs .shbz-warp .list-box .line-box:nth-child(5) {
-	left: 35%;
+	left: calc(40% - 5px);
 }
 
 .vital-signs .list-box .text-list {
@@ -437,9 +437,8 @@
 }
 
 .vital-signs .shbz-warp .list-box .slant {
-	top: 44%;
-	transform: rotate(-42deg);
-	height: 244%;
+	top: 20%;
+	height: 113%;
 	left: 0;
 }
 .vital-signs .hjbz-warp .list-box .slant {

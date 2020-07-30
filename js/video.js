@@ -7,9 +7,11 @@ var videoTimeOne='';
 var videoNum=2;
 var videoNumOne=1;
 var hlsListMap=new Object()
+var videoInterval;
 $(function(){
 	createVideoSlide();
 	createVideoSlideOne();
+	videoInterval=setInterval(removeVideoCache,15*60*1000) //每15分钟清空一次缓存
 })
 
 function getjrwlzsj(){
@@ -230,6 +232,8 @@ function createVideoSlide(){
 					video.play();
 				})
 
+				hlsListMap["slideTwo"]=hls
+
 			}
 		},
 		error:function (data) {
@@ -356,6 +360,7 @@ function createVideoSlideOne(){
 					video.play();
 				})
 
+				hlsListMap["slideOne"]=hls
 			}
 
 		},
@@ -419,14 +424,26 @@ function openVideo(urlList,urlName){
 	}else if(videoList.length==1){//只有一个视频点位，在大框中显示
 		insertOneVideo()
 		//alert($('#slider1').children().eq(0)[0].innerHTML)
+		clearInterval(videoInterval) //原先清除缓存的定时器取消，重新计时
+		videoInterval=setInterval(removeVideoCache,15*60*1000) //每15分钟清空一次缓存
 	}else{//两个视频，显示在下边两个框中
 		insertOneVideo()
-		insertSeconfVideo()
+		insertSecondVideo()
+		clearInterval(videoInterval) //原先清除缓存的定时器取消，重新计时
+		videoInterval=setInterval(removeVideoCache,15*60*1000) //每15分钟清空一次缓存
 	}
 }
 
 function insertOneVideo(){
-	clearInterval(videoTimeOne)
+	//clearInterval(videoTimeOne)
+
+
+	var removeVideo= $("#slider1 video")[0]
+	removeVideo.pause()
+	hlsListMap["slideOne"].destroy();
+	hlsListMap["slideOne"]=null
+	delete hlsListMap["slideOne"]
+
 		
 	console.log(1)
 	console.log($('#slider1').children().eq(0));
@@ -434,7 +451,7 @@ function insertOneVideo(){
 	$('#slider1').html('');
 	str += '<div class="slide1">'
 		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[0]+'</span>'
-	+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne(this)>关闭</span>'
+	+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
 
 	str +='<div class="jrwlzsjCont1">'
 
@@ -458,16 +475,23 @@ function insertOneVideo(){
 		video.play();
 	})
 
+	hlsListMap["slideOne"]=hls
 	videoFlagOne=1;
 }
 
-function insertSeconfVideo(){
+function insertSecondVideo(){
+
+	var removeVideo= $("#slider2 video")[0]
+	removeVideo.pause()
+	hlsListMap["slideTwo"].destroy();
+	hlsListMap["slideTwo"]=null
+	delete hlsListMap["slideTwo"]
 
 	$('#slider2').html('');
 	var str=''
 	str += '<div class="slide1">'
 		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[1]+'</span>'
-		+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(this)>关闭</span>'
+		+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo()>关闭</span>'
 	str +='<div class="jrwlzsjCont1">'
 
 	str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
@@ -486,6 +510,8 @@ function insertSeconfVideo(){
 	hls.on(Hls.Events.MANIFEST_PARSED, function () {
 		video.play();
 	})
+
+	hlsListMap["slideTwo"]=hls
 }
 
 function insertTwoVideo(first,second){
@@ -542,14 +568,14 @@ function insertTwoVideo(first,second){
 	})
 }
 
-function closeVideoOne(obj){
-	removeMapVideo(obj,"slideOne")
+function closeVideoOne(){
+	removeVideoOne()
 	createVideoSlideOne()
 }
 
 
-function closeVideoTwo(obj) {
-	removeMapVideo(obj,"slideTwo")
+function closeVideoTwo() {
+	removeVideoTwo()
 	createVideoSlide()
 }
 
@@ -653,30 +679,30 @@ function closeVideoTwo1(closeIndex){
 	videoFlagTwo--;
 }
 
-function removeMapVideo(obj,id) {
-	var a=obj.parentNode;
-	var b=id;
-	var removeVideo=a.children[1]
+function removeVideoOne() {
+
+	var removeVideo= $("#slider1 video")[0]
 	removeVideo.pause()
-	hlsListMap[b].destroy();
-	hlsListMap[b]=null
-	delete hlsListMap[b]
+	hlsListMap["slideOne"].destroy();
+	hlsListMap["slideOne"]=null
+	delete hlsListMap["slideOne"]
 }
 
-function removeOriginVideo(obj) {
+function removeVideoTwo() {
 
-	$('#slider2').children().eq(1)[0].innerHTML=str
-	console.log($('#slider2').children().eq(1));
-	//$("#slider2 video")[1].play()
-	var hls = new Hls();
-	var video = $("#slider2 video")[0];
-	hls.loadSource(videoList[first]);
-
-	var a=obj.parentNode;
-	var b=a.id;
-	var removeVideo=a.children[0]
+	var removeVideo= $("#slider2 video")[0]
 	removeVideo.pause()
-	hlsListMap[b].destroy();
-	hlsListMap[b]=null
-	delete hlsListMap[b]
+	hlsListMap["slideTwo"].destroy();
+	hlsListMap["slideTwo"]=null
+	delete hlsListMap["slideTwo"]
 }
+
+
+function removeVideoCache(){
+	alert("清楚缓存")
+	removeVideoOne()
+	removeVideoTwo()
+	createVideoSlide();
+	createVideoSlideOne();
+}
+

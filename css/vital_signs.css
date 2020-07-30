@@ -131,7 +131,6 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	display: none;
 }
 
 .vital-signs .dividing-line {
@@ -418,7 +417,7 @@
 .vital-signs .hjbz-warp {
 	position: absolute;
 	right: 0;
-	top: 44%;
+	top: 46%;
 	width: 18rem;
 }
 
@@ -466,6 +465,7 @@
 .vital-signs .hjbz-warp .list-box .text-list {
 	height: 50%;
 	width: 80%;
+	padding-bottom: 0.4rem;
 }
 
 @keyframes anm4 {

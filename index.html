@@ -378,7 +378,7 @@
 									<p><span class="num-font"></span>%</p>
 								</div>
 								<div class="text-list" style="left: 0%;top: 95%;">
-									<p>在线建设工程</p>
+									<p>扬尘检测工程</p>
 									<p><span class="num-font"></span>%</p>
 								</div>
 							</div>
@@ -699,9 +699,6 @@
 			$('.main-warp').height($('html').height() - $('.header').height())
 		})
 	})
-	createVideoSlideOne();
-	createVideoSlide();
-	//openVideo();
 </script>
 <script>
 	var app = new Vue({
@@ -716,6 +713,7 @@
 				list2: [],
 				list3: [],
 				showDialog: true,
+				showLocus: false
 			}
 		},
 		methods: {
@@ -771,14 +769,21 @@
 				});
 			},	
 			clickLocus3(item) {
-				let str = item.polyline
-				let arr = str.split(';')
 				let lineArr = []
-				arr.forEach((item) => {
-					let singleArr = item.split(',')
-					lineArr.push(singleArr)
-				})
-				var polyline = new AMap.Polyline({
+				if(!this.showLocus){
+					let str = item.polyline
+					let arr = str.split(';')
+					arr.forEach((item) => {
+						let singleArr = item.split(',')
+						lineArr.push(singleArr)
+					})
+					this.showLocus = true
+				}else  {
+					this.showLocus = false
+					map.remove(polyline)
+				}
+
+				 polyline = new AMap.Polyline({
 					map: map,
 					path: lineArr,
 					showDir: true,
@@ -796,7 +801,7 @@
 		created() {
 			get: {
 				//发送get请求
-				this.$http.get('http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall').then(function (res) {
+				this.$http.get(FIRE_URL+'/jdcymapofgaud/findall').then(function (res) {
 					console.log(res.data, 'res');
 					res.data.forEach(item => {
 						if (item.length < 5000) {

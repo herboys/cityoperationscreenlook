@@ -260,7 +260,7 @@
 	overflow: hidden;
 }
 .command-system .linkage-scroll-table {
-	margin-top: 0.5rem!important;
+	/* margin-top: 0.5rem!important; */
 }
 .command-system .table-box .list-box
 {

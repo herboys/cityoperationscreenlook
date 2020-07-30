@@ -485,7 +485,7 @@
 	width: 100%;
 	position: absolute;
 	left: 0;
-	height: 8.5rem;
+	height: 8.3rem;
 	top: 30rem;
 	overflow: hidden;
 }
@@ -655,35 +655,16 @@
 
 }
 
- .sub-bot1 {
-	height: 1.6rem;
-	line-height: 1.6rem;
+ .sub-bot1,.sub-bot2,.sub-bot3 {
+	height: 1.2rem;
+	line-height: 1.2rem;
 	display: inline-table;
-	border-radius: 0.5rem;
 	color: black;
-	/* font-weight: bold; */
 	padding: 0 0.3rem;
+	border-bottom: #ccc 0.01rem solid ;
 }
 
- .sub-bot2 {
-	height: 1.6rem;
-	line-height: 1.6rem;
-	display: inline-table;
-	border-radius: 0.5rem;
-	color: black;
-	/* font-weight: bold; */
-	padding: 0 0.3rem;
-}
 
- .sub-bot3 {
-	height: 1.6rem;
-	line-height: 1.6rem;
-	display: inline-table;
-	border-radius: 0.5rem;
-	color: black;
-	/* font-weight: bold; */
-	padding: 0 0.3rem;
-}
 
 .dialog-toggle {
 	position: absolute;

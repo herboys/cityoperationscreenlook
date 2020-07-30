@@ -698,8 +698,9 @@ function removeVideoTwo() {
 }
 
 
+//清除视频缓存，重新加载视频
 function removeVideoCache(){
-	alert("清楚缓存")
+	//alert("清楚缓存")
 	removeVideoOne()
 	removeVideoTwo()
 	createVideoSlide();

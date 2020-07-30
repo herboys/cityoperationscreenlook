@@ -576,13 +576,13 @@
 	background-size: 3px 20px, 20px 3px;
 	height: 100%;
 	border-radius: 3px;
-	padding: 1rem;
+	padding: 0.5rem;
 }
 
 .dialog-box2 {
 	position: absolute;
 	right: 0;
-	top: 14rem;
+	top: 11rem;
 	background: rgba(25,119,140,0.7);
 	max-height: 31rem;
 	overflow: hidden;
@@ -613,8 +613,8 @@
 
 .dialog-con .bot1 {
 	width: 8rem;
-	height: 2.2rem;
-	line-height: 2.2rem;
+	height: 1.6rem;
+	line-height: 1.6rem;
 	background: rgba(255, 230, 0, 0.7);
 	display: inline-block;
 	text-align: center;
@@ -627,8 +627,8 @@
 
 .dialog-con .bot2 {
 	width: 8rem;
-	height: 2.2rem;
-	line-height: 2.2rem;
+	height: 1.6rem;
+	line-height: 1.6rem;
 	background: rgba(255, 145, 0,0.7);
 	display: inline-block;
 	text-align: center;
@@ -642,8 +642,8 @@
 
 .dialog-con .bot3 {
 	width: 8rem;
-	height: 2.2rem;
-	line-height: 2.2rem;
+	height: 1.6rem;
+	line-height: 1.6rem;
 	background: rgba(255,0,0,0.7);
 	display: inline-block;
 	text-align: center;

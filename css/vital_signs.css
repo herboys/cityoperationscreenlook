@@ -131,6 +131,7 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	display: none;
 }
 
 .vital-signs .dividing-line {
@@ -484,7 +485,7 @@
 	width: 100%;
 	position: absolute;
 	left: 0;
-	height: 9rem;
+	height: 8.5rem;
 	top: 30rem;
 	overflow: hidden;
 }

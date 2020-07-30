@@ -799,7 +799,6 @@
 				this.$http.get('http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall').then(function (res) {
 					console.log(res.data, 'res');
 					res.data.forEach(item => {
-						console.log(item);
 						if (item.length < 5000) {
 							return this.list1.push(item)
 						} else if (item.length > 5000 && item.length < 10000) {

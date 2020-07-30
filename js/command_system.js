@@ -64,7 +64,7 @@ function getDutyListReal() {
 			}
 
 			addTableList1(".core-table", coreArr);
-			//	addTableList1('.core-table2',coreArr);
+				// addTableList1('.core-table2',coreArr);
 			addTableList1(".linkage-table", linkageArr);
 		},
 		error: function () {
@@ -123,79 +123,77 @@ function getDutyList() {
 		},
 		{
 			address: "部门1",
-			leaderName: "zs",
-			dutyName: "zs",
+			leaderName: "zs10",
+			dutyName: "zs10",
 		},
 		{
 			address: "部门1",
-			leaderName: "zs",
-			dutyName: "zs",
+			leaderName: "zs11",
+			dutyName: "zs11",
 		},
 		{
 			address: "部门1",
-			leaderName: "zs",
-			dutyName: "zs",
-		},
-		{
-			address: "部门1",
-			leaderName: "zs",
-			dutyName: "zs",
-		},
-	];
-	coreArr = linkageArr;
-	var linkageArrScroll = [{
-			date: "6月27日",
-			time: "19时07分许",
-			street: "工业区",
-			address: "工业区朱戴路50弄136号",
-			type: "事件类型",
-			content: "一名12岁男童自缢身亡。",
-		},
-		{
-			date: "6月30日",
-			time: "13时20分许",
-			street: "工业区",
-			address: "工业区城北路、汇旺路路口",
-			type: "事件类型",
-			content: "一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
-		},
-		{
-			date: "7月3日",
-			time: "8时55分许",
-			street: "徐行镇",
-			address: "徐行镇宝钱公路、前曹公路路口",
-			type: "事件类型",
-			content: "一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
-		},
-		{
-			date: "6月27日",
-			time: "19时07分许",
-			street: "工业区",
-			address: "工业区朱戴路50弄136号",
-			type: "事件类型",
-			content: "一名12岁男童自缢身亡。",
-		},
-		{
-			date: "6月30日",
-			time: "13时20分许",
-			street: "工业区",
-			address: "工业区城北路、汇旺路路口",
-			type: "事件类型",
-			content: "一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
-		},
-		{
-			date: "7月3日",
-			time: "8时55分许",
-			street: "徐行镇",
-			address: "徐行镇宝钱公路、前曹公路路口",
-			type: "事件类型",
-			content: "一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
+			leaderName: "zs12",
+			dutyName: "zs12",
 		},
 
+	];
+	coreArr = linkageArr;
+	var linkageArrScroll = [
+		{
+			date: "6月27日",
+			time: "19时07分许",
+			street: "工业区",
+			address: "工业区朱戴路50弄136号",
+			type: "事件类型",
+			content: "一名12岁男童自缢身亡。",
+		},
+		{
+			date: "6月30日",
+			time: "13时20分许",
+			street: "工业区",
+			address: "工业区城北路、汇旺路路口",
+			type: "事件类型",
+			content: "一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
+		},
+		{
+			date: "7月3日",
+			time: "8时55分许",
+			street: "徐行镇",
+			address: "徐行镇宝钱公路、前曹公路路口",
+			type: "事件类型",
+			content: "一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
+		},
+		{
+			date: "6月27日",
+			time: "19时07分许",
+			street: "工业区",
+			address: "工业区朱戴路50弄136号",
+			type: "事件类型",
+			content: "一名12岁男童自缢身亡。",
+		},
+		{
+			date: "6月30日",
+			time: "13时20分许",
+			street: "工业区",
+			address: "工业区城北路、汇旺路路口",
+			type: "事件类型",
+			content: "一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
+		},
+		{
+			date: "7月3日",
+			time: "8时55分许",
+			street: "徐行镇",
+			address: "徐行镇宝钱公路、前曹公路路口",
+			type: "事件类型",
+			content: "一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
+		},
+	
+	
 		// time street address content
 	];
-	//addTableList1('.core-table', coreArr);
-	//addTableList1('.linkage-table', linkageArr)
+	addTableList1('.core-table', coreArr);
+	addTableList1('.linkage-table', linkageArr)
 	addTableList2(".linkage-scroll-table", linkageArrScroll);
 }
 
@@ -324,13 +322,8 @@ function addTableList2(name, arr) {
 					"</p></div>"
 				);
 		}, 200 * i);
-		if (
-			name == ".linkage-scroll-table" &&
-			i == arr.length - 1 &&
-			arr.length > 3
-		) {
-			console.log(arr, "arr");
-			linkScrollMax = arr.length;
+		if ( name == ".linkage-scroll-table" && i == arr.length - 1 && 	arr.length > 3) {
+			linkScrollMax = arr.length;   //6
 			linkageNumScroll = 0;
 			setTimeout(function () {
 				var html = $(name).find(".list-box").html();
@@ -347,15 +340,15 @@ function addTableList2(name, arr) {
 	}
 }
 
-//突发事件
+// 部门table滚动
 function linkageInt() {
 	var moveT = $(".linkage-table").find(".table-list").eq(0).height() - 8;
-	//alert(moveT)
+	// alert(moveT) //30
 	linkageTime = setInterval(() => {
 		if (linkageNum >= linkageMax / 5) {
 			linkageNum = -1;
 			$(".linkage-table .list-box").css({
-				top: -moveT * linkageNum,
+				top: -moveT * linkageNum
 			});
 		}
 		linkageNum++;
@@ -364,21 +357,21 @@ function linkageInt() {
 				top: -(moveT + 1) * linkageNum * 5.82,
 			},
 			1000,
-			function () {
-				//if(linkageNum>=linkageMax/6)
-				//{
-				//	linkageNum=0;
-				//	$('.linkage-table .list-box').css({top:-moveT*linkageNum});
-				//	$('.linkage-table .list-box').css({top:-0});
-				//}
-			}
+			// function () {
+			// 	if(linkageNum>=linkageMax/6)
+			// 	{
+			// 		linkageNum=0;
+			// 		$('.linkage-table .list-box').css({top:-moveT*linkageNum});
+			// 		$('.linkage-table .list-box').css({top:-0});
+			// 	}
+			// }
 		);
 	}, 5000);
 }
-
+// 突发事件table滚动
 function linkageIntScroll() {
-	var moveT = $(".linkage-scroll-table").find(".table-list").eq(0).height() - 8;
-	//alert(moveT)
+	var moveT = $(".linkage-scroll-table").find(".table-list").eq(0).height() -11;
+	// alert(moveT)
 	linkageScrollTime = setInterval(() => {
 		if (linkageNumScroll >= linkScrollMax / 3) {
 			linkageNumScroll = -1;
@@ -389,17 +382,17 @@ function linkageIntScroll() {
 		linkageNumScroll++;
 
 		$(".linkage-scroll-table .list-box").animate({
-				top: -(moveT + 1) * linkageNumScroll * 2.97,
+				top: -(moveT + 1) * linkageNumScroll * 5.625,
 			},
 			1000,
-			function () {
-				//if(linkageNum>=linkageMax/6)
-				//{
-				//	linkageNum=0;
-				//	$('.linkage-table .list-box').css({top:-moveT*linkageNum});
-				//	$('.linkage-table .list-box').css({top:-0});
-				//}
-			}
+			// function () {
+			// 	if(linkageNum>=linkageMax/6)
+			// 	{
+			// 		linkageNum=0;
+			// 		$('.linkage-table .list-box').css({top:-moveT*linkageNum});
+			// 		$('.linkage-table .list-box').css({top:-0});
+			// 	}
+			// }
 		);
 	}, 5000);
 }

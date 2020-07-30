@@ -334,8 +334,8 @@
 
 .command-system .linkage-scroll-table .list-warp
 {
-	/*height: calc(2px + 8.5rem);*/
-	height: calc(2px + 5rem);
+	/* height: calc(2px + 8.5rem); */
+	height: calc(2px + 9rem);
 	position: relative;
 	overflow: hidden;
 }

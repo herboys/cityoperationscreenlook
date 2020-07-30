@@ -307,7 +307,7 @@ $(function () {
                    /* if(ty!=y||tz!=z)*/  showWarning(y,z,hour + "时"+min+"分")
                }
                if(data==null || data.length==0){
-                   $(".early-warning-text").html("无预警");
+                  // $(".early-warning-text").html("无预警");
                }
             },
             error:function () {

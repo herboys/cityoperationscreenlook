@@ -6,6 +6,12 @@ var videoTime='';
 var videoTimeOne='';
 var videoNum=2;
 var videoNumOne=1;
+var hlsListMap=new Object()
+$(function(){
+	createVideoSlide();
+	createVideoSlideOne();
+})
+
 function getjrwlzsj(){
 	$.ajax({// 根据指标获取相应的数据 findDetailByCode
 		url : '../../../sh/SocialAutonomySystem/todayUntrans',
@@ -301,7 +307,7 @@ function createVideoSlideOne(){
 				jrwlzsjListOne[i]=videoObj;
 			}
 
-			var str=""
+			/*var str=""
 			$('#slider1').html('');
 			str += '<div class="slide1">'
 				+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[0].name+'</span>'
@@ -317,11 +323,41 @@ function createVideoSlideOne(){
 			$('#slider1').html(str);
 			var hls = new Hls();
 			var video = $("#slider1 video")[0];
+			//alert(jrwlzsjListOne[1].src)
 			hls.loadSource(jrwlzsjListOne[0].src);
 			hls.attachMedia(video);
 			hls.on(Hls.Events.MANIFEST_PARSED, function () {
 				video.play();
-			})
+			})*/
+
+			var str=""
+			$('#slider1').html('');
+			for (var i = 0; i < 1; i++) {
+				str=''
+				str += '<div class="slide1">'
+					+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[i].name+'</span>'
+
+				str +='<div class="jrwlzsjCont1">'
+
+				str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
+
+				str	+= '  </video>'
+					+'</div>'
+					+'</div>'
+					+'</div>'
+
+				$('#slider1').append(str);
+
+				var hls = new Hls();
+				var video = $("#slider1 video")[i];
+				hls.loadSource(jrwlzsjListOne[i].src);
+				hls.attachMedia(video);
+				hls.on(Hls.Events.MANIFEST_PARSED, function () {
+					video.play();
+				})
+
+			}
+
 		},
 		error:function (data) {
 			console.log(data)
@@ -398,7 +434,7 @@ function insertOneVideo(){
 	$('#slider1').html('');
 	str += '<div class="slide1">'
 		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[0]+'</span>'
-	+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
+	+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne(this)>关闭</span>'
 
 	str +='<div class="jrwlzsjCont1">'
 
@@ -408,6 +444,8 @@ function insertOneVideo(){
 		+'</div>'
 		+'</div>'
 		+'</div>'
+
+
 
 
 	$('#slider1').append(str)
@@ -429,7 +467,7 @@ function insertSeconfVideo(){
 	var str=''
 	str += '<div class="slide1">'
 		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[1]+'</span>'
-		+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo()>关闭</span>'
+		+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(this)>关闭</span>'
 	str +='<div class="jrwlzsjCont1">'
 
 	str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
@@ -504,12 +542,14 @@ function insertTwoVideo(first,second){
 	})
 }
 
-function closeVideoOne(){
+function closeVideoOne(obj){
+	removeMapVideo(obj,"slideOne")
 	createVideoSlideOne()
 }
 
 
-function closeVideoTwo() {
+function closeVideoTwo(obj) {
+	removeMapVideo(obj,"slideTwo")
 	createVideoSlide()
 }
 
@@ -611,4 +651,32 @@ function closeVideoTwo1(closeIndex){
 
 	clearInterval(videoTime)
 	videoFlagTwo--;
+}
+
+function removeMapVideo(obj,id) {
+	var a=obj.parentNode;
+	var b=id;
+	var removeVideo=a.children[1]
+	removeVideo.pause()
+	hlsListMap[b].destroy();
+	hlsListMap[b]=null
+	delete hlsListMap[b]
+}
+
+function removeOriginVideo(obj) {
+
+	$('#slider2').children().eq(1)[0].innerHTML=str
+	console.log($('#slider2').children().eq(1));
+	//$("#slider2 video")[1].play()
+	var hls = new Hls();
+	var video = $("#slider2 video")[0];
+	hls.loadSource(videoList[first]);
+
+	var a=obj.parentNode;
+	var b=a.id;
+	var removeVideo=a.children[0]
+	removeVideo.pause()
+	hlsListMap[b].destroy();
+	hlsListMap[b]=null
+	delete hlsListMap[b]
 }

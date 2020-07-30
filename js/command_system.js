@@ -192,8 +192,8 @@ function getDutyList() {
 	
 		// time street address content
 	];
-	addTableList1('.core-table', coreArr);
-	addTableList1('.linkage-table', linkageArr)
+	//addTableList1('.core-table', coreArr);
+	//addTableList1('.linkage-table', linkageArr)
 	addTableList2(".linkage-scroll-table", linkageArrScroll);
 }
 
@@ -203,8 +203,8 @@ $(function () {
 	//alert(JSON.stringify(coreArr))
 	//alert(JSON.stringify(linkageArr))
 	getDutyList();
-	// getDutyListReal();
-	// setInterval(getDutyListReal, 6 * 60 * 60 * 1000)
+	 getDutyListReal();
+	 setInterval(getDutyListReal, 6 * 60 * 60 * 1000)
 });
 
 var linkageTime = "";
@@ -382,7 +382,7 @@ function linkageIntScroll() {
 		linkageNumScroll++;
 
 		$(".linkage-scroll-table .list-box").animate({
-				top: -(moveT + 1) * linkageNumScroll * 5.625,
+				top: -(moveT + 1) * linkageNumScroll * 6.05,
 			},
 			1000,
 			// function () {

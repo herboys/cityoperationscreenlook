@@ -363,6 +363,8 @@ $(function(){
 			unit:'个/月',
 		},
 	]
+
+	var hjbzFlag=false
 	$.ajax({
 		url : STATIC_URL+'/allowance/findAll',
 		dataType : 'json',
@@ -382,7 +384,24 @@ $(function(){
 					hjbzArr[7].num=data[i].sewageTreatSum;
 				}
 			}
-			addHjbz(hjbzArr) //环境保障
+			$.ajax({
+				url: FIRE_URL + '/constructionproject/countNum',
+				dataType: 'json',
+				type: 'get',
+				async: false,
+				success: function (data) {
+					hjbzArr[2].num=data.todayNum
+					hjbzArr[5].num=data.weekNum
+					hjbzArr[8].num=data.monthNum
+					addHjbz(hjbzArr) //环境保障
+					hjbzFlag=true
+				}
+			})
+
+			if(hjbzFlag==false){
+				addHjbz(hjbzArr) //环境保障
+				hjbzFlag=true
+			}
 		}
 	})
 	//addHjbz(hjbzArr) //环境保障

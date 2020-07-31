@@ -395,9 +395,18 @@ $(function(){
 					hjbzArr[8].num=data.monthNum
 					addHjbz(hjbzArr) //环境保障
 					hjbzFlag=true
+				},
+				error:function () {
+					if(hjbzFlag==false){
+						addHjbz(hjbzArr) //环境保障
+						hjbzFlag=true
+					}
 				}
 			})
 
+
+		},
+		error:function () {
 			if(hjbzFlag==false){
 				addHjbz(hjbzArr) //环境保障
 				hjbzFlag=true

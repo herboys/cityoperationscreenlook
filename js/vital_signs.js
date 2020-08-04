@@ -136,7 +136,7 @@ $(function(){
 								obj.today=data.todayNum
 								obj.week=data.weekNum
 								obj.month=data.monthNum
-								asjczArr[1]=obj
+								//asjczArr[1]=obj
 								addAsjcz(asjczArr);
 							}
 						})
@@ -330,7 +330,7 @@ $(function(){
 		{
 			title:'扬尘检测工地',
 			num:52,
-			unit:'个/日',
+			unit:'个',
 		},
 		{
 			title:'生活垃圾处理',
@@ -345,7 +345,7 @@ $(function(){
 		{
 			title:'扬尘检测工地',
 			num:167,
-			unit:'个/周',
+			unit:'个',
 		},
 		{
 			title:'生活垃圾处理',
@@ -360,7 +360,7 @@ $(function(){
 		{
 			title:'扬尘检测工地',
 			num:529,
-			unit:'个/月',
+			unit:'个',
 		},
 	]
 
@@ -386,7 +386,7 @@ $(function(){
 				}
 			}
 			$.ajax({
-				url: FIRE_URL + '/constructionproject/countNum',
+				url: FIRE_URL + '/constructionproject/projectNum',
 				dataType: 'json',
 				type: 'get',
 				async: false,

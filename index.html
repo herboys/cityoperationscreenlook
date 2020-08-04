@@ -1231,7 +1231,7 @@
         //发送get请求
         this.$http
           .get(
-            "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
+                  FIRE_URL+"/jdcymapofgaud/findall"
           )
           .then(
             function (res) {
@@ -1274,6 +1274,7 @@
       clearInterval(this.timer);
     }
   });
+
 </script>
 
 </html>

@@ -661,17 +661,16 @@
 	display: inline-table;
 	color: black;
 	padding: 0 0.3rem;
-	border-bottom: #ccc 0.01rem solid ;
+	border-bottom: rgba(0, 0, 0, 0.8) 0.01rem solid ;
 	font-size: 0.8rem;
+	cursor: pointer;
+	padding-bottom: 0.3rem;
 }
-
-
 
 .dialog-toggle {
 	position: absolute;
 	top: 1.3rem;
 	right: 0.15rem;
-	/* width: 3rem; */
 	color: #fff;
 	cursor: pointer;
 	border-radius: 0.4rem;
@@ -680,4 +679,14 @@
 	line-height: 1.8rem;
 	border: solid #fff 0.1rem;
 	padding: 0 0.2rem;
+}
+
+.rescue-box{
+	position: absolute;
+    background-color: blue;
+    top: 2rem;
+    left: 34rem;
+    width: 131rem;
+    height: 50rem;
+    z-index: 10;
 }

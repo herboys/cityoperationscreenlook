@@ -365,6 +365,7 @@ $(function(){
 	]
 
 	var hjbzFlag=false
+
 	$.ajax({
 		url : STATIC_URL+'/allowance/findAll',
 		dataType : 'json',
@@ -403,17 +404,17 @@ $(function(){
 					}
 				}
 			})
-
-
 		},
 		error:function () {
 			if(hjbzFlag==false){
 				addHjbz(hjbzArr) //环境保障
 				hjbzFlag=true
+
 			}
 		}
 	})
-	//addHjbz(hjbzArr) //环境保障
+	if(hjbzFlag==false)
+		addHjbz(hjbzArr) //环境保障
 })
 function addjbgk(arr){ //基本概况
 	$('.vital-signs .top-box ul').html('')

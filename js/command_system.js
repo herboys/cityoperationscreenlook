@@ -141,6 +141,47 @@ function getDutyList() {
 	coreArr = linkageArr;
 	var linkageArrScroll = [
 		{
+			date: "8月1日",
+			time: "14时30分",
+			street: "安亭镇",
+			address: "翔方公路2368号",
+			type: "道路交通",
+			content: "一辆厢式货车与一辆摩托车发生碰撞，骑车人死亡（1人）",
+		},
+
+		{
+			date: "8月2日",
+			time: "12时38分",
+			street: "工业区",
+			address: "叶城路沪宜公路口",
+			type: "道路交通",
+			content: "一辆货车与一辆摩托车发生碰撞，骑车人死亡（1人）",
+		},
+		{
+			date: "8月2日",
+			time: "19时",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "非正常死亡",
+			content: "一名儿童在车间内被发现压在成捆衣服下，窒息死亡（1人）",
+		},
+		{
+			date: "8月3日",
+			time: "11时16分",
+			street: "江桥镇",
+			address: "黄家花园路靖远路口",
+			type: "非正常死亡",
+			content: "两名工人在检测污水管道时跌入窨井内死亡（2人）",
+		},
+		{
+			date: "8月4日",
+			time: "8时4分",
+			street: "G15高速",
+			address: "G15高速由南向北127.4K处",
+			type: "道路交通",
+			content: "一辆轻型箱式货车与一辆重型货车发生碰撞，轻型箱式货车副驾驶死亡（1人）",
+		},
+		/*{
 			date: "6月27日",
 			time: "19时07分许",
 			street: "工业区",
@@ -188,7 +229,7 @@ function getDutyList() {
 			type: "事件类型",
 			content: "一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
 		},
-	
+	*/
 	
 		// time street address content
 	];

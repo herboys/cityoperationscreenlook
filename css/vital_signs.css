@@ -432,7 +432,7 @@
 }
 
 .vital-signs .hjbz-warp .list-box .line-box {
-	height: 48%;
+	height: 50%;
 	position: relative;
 }
 
@@ -442,9 +442,9 @@
 	left: 0;
 }
 .vital-signs .hjbz-warp .list-box .slant {
-	top: 47%;
+	top: 51%;
 	transform: rotate(42deg);
-	height: 125%;
+	height: 129%;
 	left: 0;
 }
 

@@ -14,6 +14,8 @@
   <link rel="stylesheet" type="text/css" href="css/command_system.css" />
   <link rel="stylesheet" type="text/css" href="css/vital_signs.css" />
   <link rel="stylesheet" type="text/css" href="css/weather.css" />
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/command_system.js" type="text/javascript" charset="utf-8"></script>
@@ -32,6 +34,8 @@
   <script type="text/javascript" src="js/scroll.js"></script>
   <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/resource.js" type="text/javascript" charset="utf-8"></script>
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
   <!--地图-->
   <script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch">
@@ -875,7 +879,8 @@
         <!-- <div class="main-box main-box-big"><div class="map-box" id="mapContainer"></div></div> -->
       </div>
       <div class="main-box main-box-big">
-        <div class="map-box" id="mapContainer"></div>
+		<div class="map-box" id="mapContainer"></div>
+		<div class="map-center" @click="mapCenter"><i class="el-icon-refresh-left"></i></div>
         <div class="dialog-toggle" @click="showClick">
           <span v-show="showDialog">折叠</span>
           <span v-show="!showDialog">展开堵点信息</span>
@@ -1089,6 +1094,7 @@
   //openVideo();
 </script>
 <script>
+
   var app = new Vue({
     el: "#app",
     data() {
@@ -1105,9 +1111,10 @@
         polyline: '',
         polylineArr: [],
         newList: [],
-        rescueShow: false,
+		rescueShow: false,
+		lineMap: {}
       };
-    },
+	},
     methods: {
       visibleClick1() {
         this.visible1 = true;
@@ -1128,8 +1135,10 @@
         this.visible1 = false;
         this.visible2 = false;
         this.visible3 = false;
+		map.remove(polyline)
       },
       clickLocus1(item, index) {
+		  console.log(index, 'index22');
         this.$set(this.list1, index, {
           isShow: !item.isShow,
           id: item.id,
@@ -1147,11 +1156,11 @@
               let lineArr = [];
               let str = items.polyline;
               let arr = str.split(";");
-              arr.forEach((items) => {
+			arr.forEach((items) => {
                 let singleArr = items.split(",");
                 lineArr.push(singleArr);
               });
-              this.polyline = new AMap.Polyline({
+              polyline = new AMap.Polyline({
                 map: map,
                 path: lineArr,
                 showDir: true,
@@ -1159,11 +1168,11 @@
                 // strokeOpacity: 1,     //线透明度
                 strokeWeight: 6, //线宽
                 strokeStyle: "solid", //线样式
-              });
+			  });
             }, 1)
           } else {
-            map.remove(polyline);
-            console.log(items.polyline,999);
+			map.remove(polyline);
+			
           }
         })
       },
@@ -1177,7 +1186,7 @@
           arr.forEach((item) => {
             let singleArr = item.split(",");
             lineArr.push(singleArr);
-          });
+		  });
           polyline = new AMap.Polyline({
             map: map,
             path: lineArr,
@@ -1189,7 +1198,7 @@
           });
           this.showLocus = true;
         } else {
-          this.showLocus = false;
+		  this.showLocus = false;
           map.remove(polyline);
         }
       },
@@ -1199,21 +1208,20 @@
         if (!this.showLocus) {
           let str = item.polyline;
           let arr = str.split(";");
-          arr.forEach((item) => {
+		arr.forEach((item) => {
             let singleArr = item.split(",");
             lineArr.push(singleArr);
-          });
+		  });
           this.polyline = new AMap.Polyline({
             map: map,
             path: lineArr,
             showDir: true,
-            strokeColor: "red", //线颜色
+            strokeColor: "rgb(255,0,0)", //线颜色
             // strokeOpacity: 1,     //线透明度
             strokeWeight: 6, //线宽
             strokeStyle: "solid", //线样式
           });
           this.polylineArr.push(this.polyline)
-          console.log(this.polylineArr, 'this.polylineArr[index]');
           this.showLocus = true;
         } else {
           map.remove(this.polylineArr);
@@ -1226,12 +1234,17 @@
       },
       rescueClick(){
         this.rescueShow = !this.rescueShow
-      },
+	  },
+	  mapCenter(){
+		map.setZoomAndCenter(11, [121.238825, 31.364284]);
+	  },
       getHttp() {
         //发送get请求
         this.$http
           .get(
-            "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
+			// "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
+			// "http://10.15.14.66:8080/city-operation/jdcymapofgaud/findall"
+			"http://127.0.0.1:5500/map/mock_data.json"
           )
           .then(
             function (res) {
@@ -1240,7 +1253,7 @@
                 if (item.length <= 5000) {
                   this.list1.push(item);
                   this.list1 = this.list1.map(v => {
-                    v.isShow = true
+					v.isShow = true
                     return v
                   })
                 } else if (item.length > 5000 && item.length <= 10000) {
@@ -1268,7 +1281,7 @@
       this.getHttp()
     },
     mounted() {
-      // this.timer = setInterval(this.getHttp, 1000*6);
+      // this.timer = setInterval(this.getHttp, 1000*60*15);
     },
     beforeDestroy() {
       clearInterval(this.timer);

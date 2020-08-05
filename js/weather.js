@@ -4,6 +4,7 @@ $(function () {
         大雨:[0,1], 暴雨:[1,1], 大暴雨:[2,1], 特大暴雨:[3,1], 阵雪:[4,1], 小雪:[5,1], 中雪:[6,1], 大雪:[7,1], 
     };
 
+
    // showWarningDefault();
     function showWeather(weather, temperature){
         var xyIndex = weatherIndex[weather];

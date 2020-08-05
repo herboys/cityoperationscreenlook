@@ -471,7 +471,7 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-              <div class="main-list"  @click="rescueClick">
+              <div class="main-list" >
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -528,352 +528,7 @@
           </div>
         </div>
       </div>
-      <div v-show="rescueShow" class="rescue-box">
-        <div class="main-box main-box-big" style="width: 49.8%;">
-          <div class="main-title">
-            <div class="title-bg title-bg1"></div>
-            <div class="title-bg title-bg2"></div>
-            <div class="title-bg title-bg3"></div>
-            <div class="title-border"></div>
-            <h3>城市运行生命体征</h3>
-          </div>
-          <div class="content-bg vital-signs-bg"></div>
-          <div class="content-box vital-signs">
-            <div class="top-box">
-              <div class="title-box" style="margin-bottom: 0.5rem;">
-                <div class="title-border-box">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <h3>基本概况</h3>
-                <div class="title-border-box title-border-right">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-              </div>
-              <ul></ul>
-            </div>
-            <div class="zygy-warp card-warp">
-              <div class="title-box" style="margin-bottom: 0.5rem;">
-                <div class="title-border-box">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <h3>资源供应</h3>
-                <div class="title-border-box title-border-right">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-              </div>
-              <div class="list-box">
-                <div class="card-box">
-                  <div class="card-title">
-                    <div class="text-centered">用电总量</div>
-                  </div>
-                  <div class="card-text">
-                    <p>
-                      昨日<span class="num-font" style="font-size: 0.8rem; alignment: center;">20</span>万/立方米
-                    </p>
-                    <p>
-                      本周<span class="num-font" style="font-size: 0.8rem; alignment: center;">189</span>万/立方米
-                    </p>
-                    <p>
-                      当月<span class="num-font" style="font-size: 0.8rem; alignment: center;">3482</span>万/立方米
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="jtqk-warp card-warp">
-              <div class="title-box" style="margin-bottom: 0.5rem;">
-                <div class="title-border-box">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <h3>交通人流</h3>
-                <div class="title-border-box title-border-right">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-              </div>
-              <div class="list-box">
-                <div class="card-box">
-                  <div class="card-title">
-                    <div class="text-centered">景区景点人流</div>
-                  </div>
-                  <div class="card-text">
-                    <p>
-                      昨日<span class="num-font" style="font-size: 0.8rem; alignment: center;">20</span>万/立方米
-                    </p>
-                    <p>
-                      本周<span class="num-font" style="font-size: 0.8rem; alignment: center;">189</span>万/立方米
-                    </p>
-                    <p>
-                      当月<span class="num-font" style="font-size: 0.8rem; alignment: center;">3482</span>万/立方米
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="shbz-warp">
-              <div class="title-box">
-                <div class="title-border-box">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <h3>社会保障</h3>
-                <div class="title-border-box title-border-right">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-              </div>
-              <div class="list-box">
-                <div class="list-bg">
-                  <div class="line-box">
-                    <div class="dividing-line">
-                      <div class="dividing-box"></div>
-                    </div>
-                  </div>
-                  <div class="line-box">
-                    <div class="dividing-line">
-                      <div class="dividing-box"></div>
-                    </div>
-                  </div>
-                  <div class="line-box">
-                    <div class="dividing-line">
-                      <div class="dividing-box"></div>
-                    </div>
-                  </div>
-                  <div class="line-box">
-                    <div class="dividing-line">
-                      <div class="dividing-box"></div>
-                    </div>
-                  </div>
-                  <div class="line-box">
-                    <div class="dividing-line">
-                      <div class="dividing-box"></div>
-                    </div>
-                  </div>
-                  <div class="slant"></div>
-                </div>
-                <div class="text-box">
-                  <div class="text-list">
-                    <p>城镇登记失业率</p>
-                    <p><span class="num-font"></span>%</p>
-                  </div>
-                  <div class="text-list">
-                    <p>社保综合参保率</p>
-                    <p><span class="num-font"></span>%</p>
-                  </div>
-                  <div class="text-list">
-                    <p>最低工资标准</p>
-                    <p><span class="num-font"></span>%</p>
-                  </div>
-                  <div class="text-list">
-                    <p>每千人医疗床位</p>
-                    <p><span class="num-font"></span>%</p>
-                  </div>
-                  <div class="text-list">
-                    <p>门诊就诊量</p>
-                    <p><span class="num-font"></span>%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="hjbz-warp">
-              <div class="title-box">
-                <div class="title-border-box">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <h3>生态环境</h3>
-                <div class="title-border-box title-border-right">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-              </div>
-              <div class="list-box">
-                <div class="list-bg">
-                  <div class="line-box">
-                    <div class="dividing-line">
-                      <div class="dividing-box"></div>
-                    </div>
-                  </div>
-                  <div class="line-box">
-                    <div class="dividing-line">
-                      <div class="dividing-box"></div>
-                    </div>
-                  </div>
-                  <div class="line-box">
-                    <div class="dividing-line">
-                      <div class="dividing-box"></div>
-                    </div>
-                  </div>
-                  <div class="slant"></div>
-                </div>
-                <div class="text-box">
-                  <div class="text-list" style="left: 10%; top: 0%;">
-                    <p>城镇登记失业率</p>
-                    <p><span class="num-font"></span>%</p>
-                  </div>
-                  <div class="text-list" style="left: 5%; top: 50%;">
-                    <p>社保综合参保率</p>
-                    <p><span class="num-font"></span>%</p>
-                  </div>
-                  <div class="text-list" style="left: 0%; top: 95%;">
-                    <p>在线建设工程</p>
-                    <p><span class="num-font"></span>%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="roll-table command-system">
-              <div class="title-box" style="margin-bottom: 0rem;">
-                <div class="title-border-box">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <h3>突发事件</h3>
-                <div class="title-border-box title-border-right">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <div class="dividing-line">
-                  <div class="dividing-box"></div>
-                </div>
-              </div>
-  
-              <div class="table-box linkage-scroll-table">
-                <div class="table-list table-title table-scroll">
-                  <p style="width: 8rem;">日期</p>
-                  <p style="width: 8rem;">时间</p>
-                  <p style="width: 10rem;">街道</p>
-                  <p style="width: 15rem;">详细地址</p>
-                  <p style="width: 8rem;">事件类型</p>
-                  <p style="width: 10rem;">内容</p>
-                </div>
-                <div class="list-warp">
-                  <div class="list-box"></div>
-                </div>
-              </div>
-            </div>
-  
-            <div class="bottom-box">
-              <div class="title-box" style="margin-bottom: 0rem;">
-                <div class="title-border-box">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <h3>案事件接报</h3>
-                <div class="title-border-box title-border-right">
-                  <div class="top-border border-box"></div>
-                  <div class="center-border border-box"></div>
-                  <div class="bottom-border border-box"></div>
-                </div>
-                <div class="dividing-line">
-                  <div class="dividing-box"></div>
-                </div>
-              </div>
-  
-              <div class="bottom-main">
-                <div class="main-list">
-                  <div class="main-left">
-                    <img src="images/manage.png" />
-                    <div class="text-centered">
-                      <p>110</p>
-                    </div>
-                  </div>
-                  <div class="main-right">
-                    <p>昨日<span class="num-font">20</span>起</p>
-                    <p>本周<span class="num-font">189</span>起</p>
-                    <p>当月<span class="num-font">3482</span>起</p>
-                  </div>
-                </div>
-                <div class="main-list">
-                  <div class="main-left">
-                    <img src="images/manage.png" />
-                    <div class="text-centered">
-                      <p>119</p>
-                    </div>
-                  </div>
-                  <div class="main-right">
-                    <p>昨日<span class="num-font">20</span>起</p>
-                    <p>本周<span class="num-font">189</span>起</p>
-                    <p>当月<span class="num-font">3482</span>起</p>
-                  </div>
-                </div>
-                <div class="main-list"  @click="rescueClick">
-                  <div class="main-left">
-                    <img src="images/manage.png" />
-                    <div class="text-centered">
-                      <p>120</p>
-                    </div>
-                  </div>
-                  <div class="main-right">
-                    <p>昨日<span class="num-font">20</span>起</p>
-                    <p>本周<span class="num-font">189</span>起</p>
-                    <p>当月<span class="num-font">3482</span>起</p>
-                  </div>
-                </div>
-                <div class="main-list">
-                  <div class="main-left">
-                    <img src="images/manage.png" />
-                    <div class="text-centered">
-                      <p>12345</p>
-                    </div>
-                  </div>
-                  <div class="main-right">
-                    <p>今日<span class="num-font">20</span>起</p>
-                    <p>本周<span class="num-font">189</span>起</p>
-                    <p>当月<span class="num-font">3482</span>起</p>
-                  </div>
-                </div>
-                <div class="main-list">
-                  <div class="main-left">
-                    <img src="images/manage.png" />
-                    <div class="text-centered">
-                      <p>网格化</p>
-                    </div>
-                  </div>
-                  <div class="main-right">
-                    <p>今日<span class="num-font">20</span>起</p>
-                    <p>本周<span class="num-font">189</span>起</p>
-                    <p>当月<span class="num-font">3482</span>起</p>
-                  </div>
-                </div>
-  
-                <div class="main-list">
-                  <div class="main-left">
-                    <img src="images/manage.png" />
-                    <div class="text-centered">
-                      <p>突发事件</p>
-                    </div>
-                  </div>
-                  <div class="main-right">
-                    <p>今日<span class="num-font">0</span>起</p>
-                    <p>本周<span class="num-font">0</span>起</p>
-                    <p>当月<span class="num-font">5</span>起</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="main-box main-box-big"><div class="map-box" id="mapContainer"></div></div> -->
-      </div>
+
       <div class="main-box main-box-big">
         <div class="map-box" id="mapContainer"></div>
         <div class="dialog-toggle" @click="showClick">
@@ -915,7 +570,7 @@
                   1000M-2000M拥堵路:
                 </div>
                 <div v-if="list2.length>0">
-                  <div v-for="item in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item)">
+                  <div v-for="(item, index) in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item, index)">
                     <span class="sub-bot2">{{item.name}}-{{item.direction}}</span>
                   </div>
                 </div>
@@ -931,7 +586,7 @@
                   2000M以上拥堵路:
                 </div>
                 <div v-if="list3.length>0">
-                  <div v-for="item in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item)">
+                  <div v-for="(item, index) in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item, index)">
                     <span class="sub-bot3">{{item.name}}-{{item.direction}}</span>
                   </div>
                 </div>
@@ -1101,11 +756,9 @@
         list2: [],
         list3: [],
         showDialog: true,
-        showLocus: false,
-        polyline: '',
-        polylineArr: [],
-        newList: [],
-        rescueShow: false,
+        polylines1: new Map(),
+        polylines2: new Map(),
+        polylines3: new Map()
       };
     },
     methods: {
@@ -1128,133 +781,116 @@
         this.visible1 = false;
         this.visible2 = false;
         this.visible3 = false;
+    
+        console.log(this.polylines1, this.polylines2, this.polylines3);
       },
       clickLocus1(item, index) {
-        this.$set(this.list1, index, {
-          isShow: !item.isShow,
-          id: item.id,
-          name: item.name,
-          direction: item.direction,
-          status: item.status,
-          speed: item.speed,
-          polyline: item.polyline,
-          time: item.time,
-          length: item.length
-        })
-        this.list1.map((items) => {
-          if (items.isShow == false) {
-            setTimeout(function () {
-              let lineArr = [];
-              let str = items.polyline;
-              let arr = str.split(";");
-              arr.forEach((items) => {
-                let singleArr = items.split(",");
-                lineArr.push(singleArr);
-              });
-              this.polyline = new AMap.Polyline({
-                map: map,
-                path: lineArr,
-                showDir: true,
-                strokeColor: "rgb(255, 230, 0)", //线颜色
-                // strokeOpacity: 1,     //线透明度
-                strokeWeight: 6, //线宽
-                strokeStyle: "solid", //线样式
-              });
-            }, 1)
-          } else {
-            map.remove(polyline);
-            console.log(items.polyline,999);
+        console.log(index, 'index111');
+        this.list1[index].isShow = !this.list1[index].isShow
+        if (this.list1[index].isShow) {
+          let lineArr = [];
+          let str = '';
+          if (this.list1[index].polyline) {
+            str = this.list1[index].polyline;
           }
-        })
-      },
-      //   strokeColor: "rgb(255, 145, 0)", //线颜色
-      clickLocus2(item) {
-        console.log(item, 111);
-        let lineArr = [];
-        if (!this.showLocus) {
-          let str = item.polyline;
           let arr = str.split(";");
-          arr.forEach((item) => {
-            let singleArr = item.split(",");
+          arr.forEach((items) => {
+            let singleArr = items.split(",");
             lineArr.push(singleArr);
-          });
-          polyline = new AMap.Polyline({
+          })
+          this.polylines1.set(index, new AMap.Polyline({
+            map: map,
+            path: lineArr,
+            showDir: true,
+            strokeColor: "rgb(255, 230, 0)", //线颜色
+            // strokeOpacity: 1,     //线透明度
+            strokeWeight: 6, //线宽
+            strokeStyle: "solid", //线样式
+          }));
+        } else {
+          map.remove(this.polylines1.get(index));
+          this.polylines1.delete(index)
+        }
+      },
+      clickLocus2(item, index) {
+        console.log(index, 'index222');
+        this.list2[index].isShow = !this.list2[index].isShow
+        if (this.list2[index].isShow) {
+          let lineArr = [];
+          let str = '';
+          if (this.list2[index].polyline) {
+            str = this.list2[index].polyline;
+          }
+          let arr = str.split(";");
+          arr.forEach((items) => {
+            let singleArr = items.split(",");
+            lineArr.push(singleArr);
+          })
+          this.polylines2.set(index, new AMap.Polyline({
             map: map,
             path: lineArr,
             showDir: true,
             strokeColor: "rgb(255, 145, 0)", //线颜色
-            // strokeOpacity: 1,     //线透明度
+            // strokeOpacity: 1,     //线透明度
             strokeWeight: 6, //线宽
             strokeStyle: "solid", //线样式
-          });
-          this.showLocus = true;
+          }));
         } else {
-          this.showLocus = false;
-          map.remove(polyline);
+          map.remove(this.polylines2.get(index));
+          this.polylines2.delete(index)
         }
-      },
-      clickLocus3(item) {
-        console.log(item, '999')
-        let lineArr = [];
-        if (!this.showLocus) {
-          let str = item.polyline;
+      }, 
+       clickLocus3(item, index) {
+        console.log(index, 'index333');
+        this.list3[index].isShow = !this.list3[index].isShow
+        if (this.list3[index].isShow) {
+          let lineArr = [];
+          let str = '';
+          if (this.list3[index].polyline) {
+            str = this.list3[index].polyline;
+          }
           let arr = str.split(";");
-          arr.forEach((item) => {
-            let singleArr = item.split(",");
+          arr.forEach((items) => {
+            let singleArr = items.split(",");
             lineArr.push(singleArr);
-          });
-          this.polyline = new AMap.Polyline({
+          })
+          this.polylines3.set(index, new AMap.Polyline({
             map: map,
             path: lineArr,
             showDir: true,
-            strokeColor: "red", //线颜色
-            // strokeOpacity: 1,     //线透明度
+            strokeColor: "rgb(255, 0, 0)", //线颜色
+            // strokeOpacity: 1,     //线透明度
             strokeWeight: 6, //线宽
             strokeStyle: "solid", //线样式
-          });
-          this.polylineArr.push(this.polyline)
-          console.log(this.polylineArr, 'this.polylineArr[index]');
-          this.showLocus = true;
+          }));
         } else {
-          map.remove(this.polylineArr);
-          this.showLocus = false;
+          map.remove(this.polylines3.get(index));
+          this.polylines3.delete(index)
         }
-
       },
+
       showClick() {
         this.showDialog = !this.showDialog;
       },
-      rescueClick(){
-        this.rescueShow = !this.rescueShow
-      },
+
       getHttp() {
         //发送get请求
         this.$http
           .get(
-            "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
+            // "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
+            "http://127.0.0.1:5500/map/mock_data.json"
           )
           .then(
             function (res) {
               console.log(res.data, "res");
               res.data.forEach((item) => {
+                item.isShow = false
                 if (item.length <= 5000) {
-                  this.list1.push(item);
-                  this.list1 = this.list1.map(v => {
-                    v.isShow = true
-                    return v
-                  })
+                 return this.list1.push(item);
                 } else if (item.length > 5000 && item.length <= 10000) {
-                  this.list2.push(item);
-                  this.list2 = this.list2.map(v => {
-                    v.isShow = true
-                    return v
-                  })
+                 return this.list2.push(item);
                 } else if (item.length > 10000) {
-                   this.list3.push(item);
-                  this.list3 = this.list3.map(v => {
-                    v.isShow = true
-                    return v
-                  })
+                 return this.list3.push(item);
                 }
               });
             },

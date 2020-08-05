@@ -4,7 +4,7 @@ $(function () {
         大雨:[0,1], 暴雨:[1,1], 大暴雨:[2,1], 特大暴雨:[3,1], 阵雪:[4,1], 小雪:[5,1], 中雪:[6,1], 大雪:[7,1], 
     };
 
-    if( window.localStorage.getItem("alarm")==null){
+  if( window.localStorage.getItem("alarm")==null){
         window.localStorage.setItem("alarm","")
         var date= getNowFormatDate();
         window.localStorage.setItem("date",date)
@@ -304,35 +304,38 @@ $(function () {
                     clearWarning();
                 }
 
+               var object=new Object()
+                object["disastername"]="高温"
+                object["disastercolour"]="红色"
+                data[0]=object
+
                 var grayAlarm=[];
                 var index=0;
                 var alarm=window.localStorage.getItem("alarm")
                 var alarmList=alarm.split(" ");
-                for(var i=0;i<alarmList.length;i++){
-
-                    var tmpAlarm=alarmList[i];
-                    if(tmpAlarm==="")
-                        continue;
-                    var findFlag=false;
-                    for(var i = 0; i < data.length; i++) {
-                        var y=data[i].disastername;
-                        if(y===tmpAlarm){
-                            findFlag=true
-                            break;
+                    for(var i=0;i<alarmList.length;i++){
+                        var tmpAlarm=alarmList[i];
+                        if(tmpAlarm==="")
+                            continue;
+                        var findFlag=false;
+                        for(var j = 0; j < data.length; j++) {
+                            var y=data[j].disastername;
+                            if(y===tmpAlarm){
+                                findFlag=true
+                                break;
+                            }
+                        }
+                        if(findFlag==false){
+                            grayAlarm[index++]=tmpAlarm
                         }
                     }
-                    if(findFlag==false){
-                        grayAlarm[index++]=tmpAlarm
-                    }
-                }
-
+                alarm=window.localStorage.getItem("alarm")
                for(var i = 0; i < data.length; i++) {
                     var y=data[i].disastername;
                     var z=data[i].disastercolour;
 
                     showWarning(y,z,hour + "时"+min+"分")
-                    var alarm=window.localStorage.getItem("alarm")
-                    if(alarm.indexOf(y)){
+                    if(alarm.indexOf(y)==-1){
                        alarm=alarm+" "+y;
                        window.localStorage.setItem("alarm",alarm);
                     }
@@ -360,8 +363,19 @@ $(function () {
         //$(".early-warning-text").html(time +" ");
     }
 
+    function clearAlarm(){
+        var lastDate=window.localStorage.getItem("date")
+        var curDate=getNowFormatDate()
+        if(lastDate!=curDate){//
+            window.localStorage.removeItem("alarm")//删除昨日预警
+            window.localStorage.setItem("date",curDate)
+        }
+    }
     //setInterval(changeWeather,300000);
+    //每15分钟一次
     setInterval(changeWeather,60000*15);
+    //每小时检查一次
+    setInterval(clearAlarm,1*60*60*1000)
    // setInterval(changeWeather,10000);
 
 })

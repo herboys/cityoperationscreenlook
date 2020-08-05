@@ -96,6 +96,7 @@ $(function(){
 		}
 			get12345Grid119()
 
+
 		}
 	})
 
@@ -153,6 +154,7 @@ $(function(){
 
 	//addAsjcz(asjczArr);
 	setInterval(get12345Grid119,1*60*1000)
+
 	var zygyArr=[
 		{
 			title:'用电总量',

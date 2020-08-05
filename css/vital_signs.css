@@ -688,13 +688,13 @@
 	cursor: pointer;
 	padding:  0.3rem;
 }
-
-.rescue-box{
+.map-delete{
 	position: absolute;
-    background-color: blue;
-    top: 2rem;
-    left: 34rem;
-    width: 131rem;
-    height: 50rem;
-    z-index: 10;
+	top: 3.3rem;
+	left: 0.3rem;
+	color: #fff;
+	cursor: pointer;
+	padding:  0.3rem;
 }
+
+

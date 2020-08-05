@@ -5,6 +5,13 @@ $(function () {
     };
 
 
+    if( window.localStorage.getItem("alarm")==null){
+        window.localStorage.setItem("alarm","")
+        var date= getNowFormatDate();
+        window.localStorage.setItem("date",date)
+    }
+
+
    // showWarningDefault();
     function showWeather(weather, temperature){
         var xyIndex = weatherIndex[weather];
@@ -299,14 +306,46 @@ $(function () {
                     clearWarning();
                 }
 
+                var grayAlarm=[];
+                var index=0;
+                var alarm=window.localStorage.getItem("alarm")
+                var alarmList=alarm.split(" ");
+                for(var i=0;i<alarmList.length;i++){
+
+                    var tmpAlarm=alarmList[i];
+                    if(tmpAlarm==="")
+                        continue;
+                    var findFlag=false;
+                    for(var i = 0; i < data.length; i++) {
+                        var y=data[i].disastername;
+                        if(y===tmpAlarm){
+                            findFlag=true
+                            break;
+                        }
+                    }
+                    if(findFlag==false){
+                        grayAlarm[index++]=tmpAlarm
+                    }
+                }
+
                for(var i = 0; i < data.length; i++) {
                     var y=data[i].disastername;
                     var z=data[i].disastercolour;
 
-                    // alert(ty+" "+tz+" "+y+" "+z)
-
-                   /* if(ty!=y||tz!=z)*/  showWarning(y,z,hour + "时"+min+"分")
+                    showWarning(y,z,hour + "时"+min+"分")
+                    var alarm=window.localStorage.getItem("alarm")
+                    if(alarm.indexOf(y)){
+                       alarm=alarm+" "+y;
+                       window.localStorage.setItem("alarm",alarm);
+                    }
                }
+
+               for(var i=0;i<grayAlarm.length;i++){
+                   showWarning(grayAlarm[i],"灰","")
+               }
+
+
+
                if(data==null || data.length==0){
                   // $(".early-warning-text").html("无预警");
                }

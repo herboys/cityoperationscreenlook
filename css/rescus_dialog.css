@@ -1,0 +1,26 @@
+.rescue-box-big{
+	width: 49.8%!important;
+}
+
+.rescue-box{
+	position: absolute;
+    background-color: #ccc;
+    top: 2rem;
+    left: 34.3rem;
+    width: 130.8rem;
+    height: 50rem;
+    z-index: 10;
+}
+
+.rescue-box-big{
+	width: 49.8%!important;
+}
+
+.rescue-close {
+	position: absolute;
+	right: 0rem;
+	height: 2rem;
+	width: 2rem;
+	line-height: 2rem;
+	font-size: 1.5rem;
+}

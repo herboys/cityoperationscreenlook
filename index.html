@@ -14,6 +14,8 @@
   <link rel="stylesheet" type="text/css" href="css/command_system.css" />
   <link rel="stylesheet" type="text/css" href="css/vital_signs.css" />
   <link rel="stylesheet" type="text/css" href="css/weather.css" />
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/command_system.js" type="text/javascript" charset="utf-8"></script>
@@ -32,6 +34,8 @@
   <script type="text/javascript" src="js/scroll.js"></script>
   <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/resource.js" type="text/javascript" charset="utf-8"></script>
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
   <!--地图-->
   <script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch">
@@ -530,7 +534,8 @@
       </div>
 
       <div class="main-box main-box-big">
-        <div class="map-box" id="mapContainer"></div>
+		<div class="map-box" id="mapContainer"></div>
+		<div class="map-center" @click="mapCenter"><i class="el-icon-refresh-left"></i></div>
         <div class="dialog-toggle" @click="showClick">
           <span v-show="showDialog">折叠</span>
           <span v-show="!showDialog">展开堵点信息</span>
@@ -744,6 +749,7 @@
   //openVideo();
 </script>
 <script>
+
   var app = new Vue({
     el: "#app",
     data() {
@@ -760,7 +766,7 @@
         polylines2: new Map(),
         polylines3: new Map()
       };
-    },
+	},
     methods: {
       visibleClick1() {
         this.visible1 = true;
@@ -872,13 +878,20 @@
       showClick() {
         this.showDialog = !this.showDialog;
       },
-
+      rescueClick(){
+        this.rescueShow = !this.rescueShow
+	  },
+	  mapCenter(){
+    map.setZoomAndCenter(12, [121.238825, 31.364284]);
+	  },
       getHttp() {
         //发送get请求
         this.$http
           .get(
-            // "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
-            "http://127.0.0.1:5500/map/mock_data.json"
+			// "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
+			// "http://10.15.14.66:8080/city-operation/jdcymapofgaud/findall"
+			"http://127.0.0.1:5500/map/mock_data.json"
+                  // FIRE_URL+"/jdcymapofgaud/findall"
           )
           .then(
             function (res) {
@@ -904,12 +917,13 @@
       this.getHttp()
     },
     mounted() {
-      // this.timer = setInterval(this.getHttp, 1000*6);
+      // this.timer = setInterval(this.getHttp, 1000*60*15);
     },
     beforeDestroy() {
       clearInterval(this.timer);
     }
   });
+
 </script>
 
 </html>

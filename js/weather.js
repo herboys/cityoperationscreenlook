@@ -4,6 +4,15 @@ $(function () {
         大雨:[0,1], 暴雨:[1,1], 大暴雨:[2,1], 特大暴雨:[3,1], 阵雪:[4,1], 小雪:[5,1], 中雪:[6,1], 大雪:[7,1], 
     };
 
+    //alert(window.localStorage.getItem("alarm"))
+    var lastDate=window.localStorage.getItem("date")
+    //alert(lastDate)
+    var curDate=getNowFormatDate()
+    if(curDate!=lastDate){
+        window.localStorage.removeItem("alarm")
+        window.localStorage.setItem("date",curDate)
+    }
+   // window.localStorage.clear()
   if( window.localStorage.getItem("alarm")==null){
         window.localStorage.setItem("alarm","")
         var date= getNowFormatDate();
@@ -304,10 +313,10 @@ $(function () {
                     clearWarning();
                 }
 
-               var object=new Object()
+            /*   var object=new Object()
                 object["disastername"]="高温"
                 object["disastercolour"]="红色"
-                data[0]=object
+                data[0]=object*/
 
                 var grayAlarm=[];
                 var index=0;
@@ -366,8 +375,8 @@ $(function () {
     function clearAlarm(){
         var lastDate=window.localStorage.getItem("date")
         var curDate=getNowFormatDate()
-        if(lastDate!=curDate){//
-            window.localStorage.removeItem("alarm")//删除昨日预警
+        if(lastDate!=curDate){
+            window.localStorage.removeItem("alarm")
             window.localStorage.setItem("date",curDate)
         }
     }

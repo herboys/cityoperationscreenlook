@@ -20,9 +20,13 @@
 .rest-box-left{
   width: 50%;
   height: 100%;
+  background-color: pink;
 }
 .main-title .top-title{
   font-size: 1rem;
+}
+.rest-top-box{
+  position: absolute;
 }
 /* .rest-box-big .top-box .title-box {
     padding-left: 2rem;

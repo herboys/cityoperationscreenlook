@@ -1,0 +1,34 @@
+.rest-box{
+	position: absolute;
+  background-color: #1D2B56;
+  top: 5.1rem;
+  left: 34.6rem;
+  width: 130.8rem;
+  height: 49.35rem;
+  z-index: 11;
+}
+.rest-box-big{
+  position: absolute;
+  width: 97%;
+  height: 95%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.rest-box-left{
+  width: 50%;
+  height: 100%;
+}
+.main-title .top-title{
+  font-size: 1rem;
+}
+/* .rest-box-big .top-box .title-box {
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+}
+.rest-box-big .title-border-box {
+  display: inline-block;
+  vertical-align: top;
+} */

@@ -690,39 +690,58 @@
                 <h3 class="top-title">基本概况</h3>
                 <h3 class="top-title">服务概况</h3>
               </div>
-              <div class="vital-signs">
-                <div class="top-box rest-top-box">
-                  <div class="title-box" style="margin-bottom: 0.5rem;">
-                    <div class="title-border-box">
-                      <div class="top-border border-box"></div>
-                      <div class="center-border border-box"></div>
-                      <div class="bottom-border border-box"></div>
-                    </div>
-                    <h3>基本老龄化信息</h3>
-                    <div class="title-border-box title-border-right">
-                      <div class="top-border border-box"></div>
-                      <div class="center-border border-box"></div>
-                      <div class="bottom-border border-box"></div>
-                    </div>
+            </div>
+            <div class="vital-signs">
+              <div class="top-box rest-top-box">
+                <div class="title-box" style="margin-bottom: 1rem;">
+                  <div class="title-border-box">
+                    <div class="top-border border-box"></div>
+                    <div class="center-border border-box"></div>
+                    <div class="bottom-border border-box"></div>
                   </div>
-                  <ul>
+                  <h3>基本老龄化信息</h3>
+                  <div class="title-border-box title-border-right">
+                    <div class="top-border border-box"></div>
+                    <div class="center-border border-box"></div>
+                    <div class="bottom-border border-box"></div>
+                  </div>
+                </div>
+                <div style="display: flex;">
+                  <ul class="rest-info-lists" >
                     <li>
                       <div class="text-centered">
-                        <p>www</p>
+                        <p>户籍人口数</p>
                         <div class="bottom-text" style="height:2rem">
-                          <span class="num-font" style="font-size:1.5rem;alignment: center">1122</span>
-                          <p>dsds</p>
+                          <span class="num-font" style="font-size:1.5rem;alignment: center">62.5</span>
+                          <p>万人</p>
+                        </div>
+                      </div>
+                      <div class="text-centered" style="left: 10rem;">
+                        <p>老龄人口数</p>
+                        <div class="bottom-text" style="height:2rem">
+                          <span class="num-font" style="font-size:1.5rem;alignment: center">20.4</span>
+                          <p>万人</p>
+                        </div>
+                      </div>
+                      <div class="text-centered">
+                        <p>老龄人口占比</p>
+                        <div class="bottom-text" style="height:2rem">
+                          <span class="num-font" style="font-size:1.5rem;alignment: center">32.66</span>
+                          <p>%</p>
                         </div>
                       </div>
                     </li>
                   </ul>
-
-               
+                  <div style="width: 60%; background: blue">
+                      dasd
+                  </div>
                 </div>
+
+
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
 
@@ -1100,7 +1119,7 @@
             // "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
             // "http://10.15.14.66:8080/city-operation/jdcymapofgaud/findall"
             // "http://127.0.0.1:5500/map/mock_data.json"
-            FIRE_URL+"/jdcymapofgaud/findall"
+            FIRE_URL + "/jdcymapofgaud/findall"
           )
           .then(
             function (res) {

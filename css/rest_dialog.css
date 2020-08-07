@@ -27,6 +27,11 @@
 }
 .rest-top-box{
   position: absolute;
+  width: 50%;
+}
+.rest-info-lists {
+  width: 40%;
+  text-align: left !important;
 }
 /* .rest-box-big .top-box .title-box {
     padding-left: 2rem;

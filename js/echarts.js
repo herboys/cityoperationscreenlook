@@ -127,7 +127,7 @@ function initEcharts() {
       show: true, // 是否显示提示框
       trigger: "item",
       backgroundColor: "rgba(0,0,0,0.75)",
-      formatter: "{b} </br> 销量{c}件  占比{d}%", // 提示框显示内容,此处{b}表示各数据项名称，此项配置为默认显示项，{c}表示数据项的值，默认不显示，({d}%)表示数据项项占比，默认不显示。
+      formatter: "{b} </br> {c}人  占比{d}%", // 提示框显示内容,此处{b}表示各数据项名称，此项配置为默认显示项，{c}表示数据项的值，默认不显示，({d}%)表示数据项项占比，默认不显示。
       extraCssText: "padding:0.5rem;",
     },
 
@@ -320,7 +320,7 @@ function initEcharts2() {
       show: true, // 是否显示提示框
       trigger: "item",
       backgroundColor: "rgba(0,0,0,0.75)",
-      formatter: "{b} </br> 销量{c}件  占比{d}%", // 提示框显示内容,此处{b}表示各数据项名称，此项配置为默认显示项，{c}表示数据项的值，默认不显示，({d}%)表示数据项项占比，默认不显示。
+      formatter: "{b} </br> {c}人  占比{d}%", // 提示框显示内容,此处{b}表示各数据项名称，此项配置为默认显示项，{c}表示数据项的值，默认不显示，({d}%)表示数据项项占比，默认不显示。
       extraCssText: "padding:0.5rem;",
     },
 

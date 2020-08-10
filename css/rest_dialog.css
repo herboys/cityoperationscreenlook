@@ -47,6 +47,9 @@
   color: #fff;
   position: relative;
 }
+.info-box .bottom-text * {
+  display: inline-block;
+}
 .info-box::after {
   content: '.';
   font-size: 0;
@@ -58,6 +61,28 @@
   border-right: 0.5rem solid transparent;
   color: #54FEFA;
 }
-.vital-signs ul li {
-  width: 146px;
+.rest-infos {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  padding-right: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin: 0.3rem 0.9rem;
 }
+.rest-border-right {
+  width: 2px;
+  height: calc(100% - 0.6rem);
+}
+.rest-border-bottom {
+  width: calc(100% - 0.6rem);
+  height: 2px;
+}
+.rest-border-box {
+  position: absolute;
+  bottom: 0;
+  background-color: #50BAE3;
+  right: 0;
+}
+/* .vital-signs ul li {
+  width: 146px;
+} */

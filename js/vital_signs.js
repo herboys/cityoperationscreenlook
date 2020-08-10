@@ -36,7 +36,7 @@ $(function(){
 		url : STATIC_URL+'/overview/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			jbqkArr[0].num=data[0].popu;
 			jbqkArr[1].num=data[0].popuSum;
@@ -44,9 +44,10 @@ $(function(){
 			jbqkArr[3].num=data[0].popuDesity;
 			jbqkArr[4].num=data[0].gdp;
 			jbqkArr[5].num=data[0].incomePer;
+			addjbgk(jbqkArr);
 		}
 	})
-	addjbgk(jbqkArr);
+
 /*	var asjczArr=[
 		{
 			today:20,
@@ -82,7 +83,7 @@ $(function(){
 		url : STATIC_URL+'/eventhandle/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 
 			for(var i=0;i<data.length;i++){
@@ -93,10 +94,8 @@ $(function(){
 				obj.week=data[i].timeWeek;
 				obj.month=data[i].timeMonth;
 				asjczArr[alm-1]=obj
-		}
+			}
 			get12345Grid119()
-
-
 		}
 	})
 
@@ -106,7 +105,7 @@ $(function(){
 			url:ORACLE_URL+"/taskInfoUrgent/findHotlineNum",
 			dataType:'json',
 			type:'get',
-			async:false,
+			async:true,
 			success:function(data){
 				//alert(JSON.stringify(data))
 				var obj=new Object()
@@ -214,7 +213,7 @@ $(function(){
 		url : STATIC_URL+'/resource/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			for(var i=0;i<data.length;i++){
 				var sct=data[i].sourcetype;
@@ -235,12 +234,12 @@ $(function(){
 					/*jtzkArr[0].today=data[i].timeDay;
 					jtzkArr[0].week=data[i].timeWeek;
 					jtzkArr[0].month=data[i].timeMonth;*/
-					jtzkArr[0].xlnum=89;
+					/*jtzkArr[0].xlnum=89;
 					jtzkArr[0].carnum=777;
 					jtzkArr[0].jhnum=9146;
 					jtzkArr[0].sjnum=4954;
 					jtzkArr[0].bczxl=99.81;
-					jtzkArr[0].smbczdl=99.44;
+					jtzkArr[0].smbczdl=99.44;*/
 				}else if(sct==5){
 					jtzkArr[1].today=data[i].timeDay;
 					jtzkArr[1].week=data[i].timeWeek;
@@ -255,22 +254,32 @@ $(function(){
 					jtzkArr[3].month=data[i].timeMonth;
 				}
 
-			/*	if(sct<3){
-				zygyArr[sct].today=data[i].timeDay;
-				zygyArr[sct].week=data[i].timeWeek;
-				zygyArr[sct].month=data[i].timeMonth;
-				}
-			 else{
-				jtzkArr[sct-3].today=data[i].timeDay;
-				jtzkArr[sct-3].week=data[i].timeWeek;
-				jtzkArr[sct-3].month=data[i].timeMonth;
-			 }*/
-
 			}
+			addCard(zygyArr,'.zygy-warp') //资源供应
+			$.ajax({
+				url : FIRE_URL+'/restnumberbus/countRestNum',
+				dataType : 'json',
+				type : 'get',
+				async : false,
+				success : function(data) {
+					jtzkArr[0].xlnum=data.xlnum;
+					jtzkArr[0].carnum=data.carnum;
+					jtzkArr[0].jhnum=data.jhnum;
+					jtzkArr[0].sjnum=data.sjnum;
+					jtzkArr[0].bczxl=data.bczxl;
+					jtzkArr[0].smbczdl=data.smbczdl;
+					addCard(jtzkArr,'.jtqk-warp') //交通情况
+				},error:function () {
+					addCard(jtzkArr,'.jtqk-warp') //交通情况
+				}
+			})
+		},error:function () {
+			addCard(jtzkArr,'.jtqk-warp') //交通情况
 		}
 	})
-	addCard(zygyArr,'.zygy-warp') //资源供应
-	addCard(jtzkArr,'.jtqk-warp') //交通情况
+
+
+	/*addCard(jtzkArr,'.jtqk-warp') //交通情况*/
 	var shbzArr=[
 		{
 			title:'城镇登记失业人数',
@@ -312,7 +321,7 @@ $(function(){
 		url : STATIC_URL+'/insurance/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			shbzArr[0].num=data[0].unemployRate;
 			/*shbzArr[1].num=data[0].insurRate;*/
@@ -321,10 +330,13 @@ $(function(){
 			shbzArr[4].num=data[0].outpatientVisit;
 			shbzArr[5].num=data[0].unemployRate;
 			shbzArr[6].num=data[0].insurRate;
-		}
+			addShbz(shbzArr)
+		},error:(function () {
+			addShbz(shbzArr)
+		})
 	})
 
-	addShbz(shbzArr)
+
 	var hjbzArr=[
 		{
 			title:'生活垃圾处理',
@@ -379,7 +391,7 @@ $(function(){
 		url : STATIC_URL+'/allowance/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			for(var i=0;i<data.length;i++){
 				var index=data[i].id

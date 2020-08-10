@@ -181,7 +181,7 @@ $(function(){
 
 	var jtzkArr=[
 		{
-			title:'出租车客运量',
+			title:'公交线路情况',
 			//today:35,
 			//week:253,
 			//month:1534,
@@ -222,6 +222,7 @@ $(function(){
 					zygyArr[0].today=data[i].timeDay;
 					zygyArr[0].week=data[i].timeWeek;
 					zygyArr[0].month=data[i].timeMonth;
+
 				}else if(sct==2){
 					zygyArr[1].today=data[i].timeDay;
 					zygyArr[1].week=data[i].timeWeek;
@@ -231,9 +232,15 @@ $(function(){
 					zygyArr[2].week=data[i].timeWeek;
 					zygyArr[2].month=data[i].timeMonth;
 				}else if(sct==4){
-					jtzkArr[0].today=data[i].timeDay;
+					/*jtzkArr[0].today=data[i].timeDay;
 					jtzkArr[0].week=data[i].timeWeek;
-					jtzkArr[0].month=data[i].timeMonth;
+					jtzkArr[0].month=data[i].timeMonth;*/
+					jtzkArr[0].xlnum=89;
+					jtzkArr[0].carnum=777;
+					jtzkArr[0].jhnum=9146;
+					jtzkArr[0].sjnum=4954;
+					jtzkArr[0].bczxl=99.81;
+					jtzkArr[0].smbczdl=99.44;
 				}else if(sct==5){
 					jtzkArr[1].today=data[i].timeDay;
 					jtzkArr[1].week=data[i].timeWeek;
@@ -444,7 +451,29 @@ function addCard(arr,classStr)
 	var apartW=Math.floor(distanceW/(arr.length-1));
 	var opacity=(1-(arr.length-1)*0.1)<0.4?'0.4':(1-(arr.length-1)*0.1)
 	boxObj.html('');
-	for(let i=0;i<arr.length;i++)
+	/*zygyArr[0].xlnum=56;
+	zygyArr[0].carnum=89;
+	zygyArr[0].jhnum=234;
+	zygyArr[0].sjnum=137;
+	zygyArr[0].bczxl=98;
+	zygyArr[0].smbczdl=95;*/
+	let i=0;
+	if(arr[0].title==="公交线路情况"){
+		for(;i<1;i++)
+		{
+			console.log(arr[0])
+			boxObj.append('<div class="card-box" style="width:20rem" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;' +
+				'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[i].title+'</div></div>' +
+				'<div class="card-text" style="height:6.5rem">' +
+				'<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">'+arr[i].xlnum+'</span>条 &nbsp;&nbsp;在线车辆'+'<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].carnum+'</span>辆'+'</p>' +
+				'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].jhnum+'</span>辆 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].sjnum+'</span>辆 </p>'+
+
+				'<p style="float:left;padding-left: 0.5rem">昨日班次执行率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[i].bczxl+'</span>%'+'</p>'+
+				'<p style="float:left;padding-left: 0.5rem">昨日首末班车准点率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[i].smbczdl+'</span>%'+'</p></div></div>')
+		}
+	}
+
+	for(;i<arr.length;i++)
 	{
 		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[i].today+'</span>'+arr[i].unit+'</p><p>本周<span class="num-font">'+arr[i].week+'</span>'+arr[i].unit+'</p><p>当月<span class="num-font">'+arr[i].month+'</span>'+arr[i].unit+'</p></div></div>')
 	}
@@ -486,13 +515,29 @@ function addCard(arr,classStr)
 					}
 				}
 				arr.unshift(arr.splice(arr.length-1 , 1)[0]);
-				boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left:0px;top:0px"><div class="card-title"><div class="text-centered">'+arr[0].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[0].today+'</span>'+arr[0].unit+'</p><p>本周<span class="num-font">'+arr[0].week+'</span>'+arr[0].unit+'</p><p>当月<span class="num-font">'+arr[0].month+'</span>'+arr[0].unit+'</p></div></div>')
+				if(arr[0].title==="公交线路情况"){
+					/*boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left: 0px;' +
+						'top:0px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[0].title+'</div></div>' +
+						'<div class="card-text"><p style="float:left;width: 8rem;">线路总数<span class="num-font">'+arr[0].xlnum+'</span>条'+'</p><p style="float:left;width:8rem">在线车辆<span class="num-font">'+arr[0].carnum+'</span>辆'+
+						'</p><p>当日计划班次<span class="num-font">'+arr[0].jhnum+'</span>辆'+'</p></div></div>')*/
+					boxObj.prepend('<div class="card-box" style="width:20rem" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;' +
+						'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[0].title+'</div></div>' +
+						'<div class="card-text" style="height:6.5rem">' +
+						'<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">'+arr[0].xlnum+'</span>条 &nbsp;&nbsp;在线车辆'+'<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].carnum+'</span>辆'+'</p>' +
+						'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].jhnum+'</span>辆 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].sjnum+'</span>辆 </p>'+
+
+						'<p style="float:left;padding-left: 0.5rem">昨日班次执行率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[0].bczxl+'</span>%'+'</p>'+
+						'<p style="float:left;padding-left: 0.5rem">昨日首末班车准点率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[0].smbczdl+'</span>%'+'</p></div></div>')
+
+				}else{
+					boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left:0px;top:0px"><div class="card-title"><div class="text-centered">'+arr[0].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[0].today+'</span>'+arr[0].unit+'</p><p>本周<span class="num-font">'+arr[0].week+'</span>'+arr[0].unit+'</p><p>当月<span class="num-font">'+arr[0].month+'</span>'+arr[0].unit+'</p></div></div>')
+				}
 			}
 			else
 			{
 				// window.location.reload()
 			}
-		},5000)
+		},10000)
 	}
 }
 var time='';
@@ -506,64 +551,28 @@ function addShbz(arr)
 	}
 
 	$('.shbz-warp .text-box').mouseenter(function(){
+		//alert(1)
 		clearInterval(time);
 	})
 	$('.shbz-warp .text-box').mouseleave(function(){
+		//alert(4)
 		time=setTimeout(function(){
 			shbzInit(arr)
 		},5000)
 	})
-
+	//动态效果
 	shbzInit(arr)
-/*	if(arr.length>5)
-	{
-		var startNum=i;
-
-		var distance=$('.shbz-warp .text-list').height();
-		clearInterval(time);
-		time=setInterval(function(){
-			if($('.shbz-warp .text-list').length==5)
-			{
-				$('.shbz-warp .text-box').append('<div style="left:40%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
-				for(let i=0;i<$('.shbz-warp .text-list').length;i++)
-				{
-					if(i==0)
-					{
-						$('.shbz-warp .text-list').eq(i).animate({top:-distance,opacity:0},1000,function(){
-							$('.shbz-warp .text-list').eq(i).remove();
-						})
-					}
-					else if(i==$('.shbz-warp .text-list').length-1)
-					{
-						$('.shbz-warp .text-list').eq(i).animate({top:(i-1)*20+'%',opacity:1},900)
-					}
-					else
-					{
-						$('.shbz-warp .text-list').eq(i).animate({left:(i-1)*10+'%',top:(i-1)*20+'%'},900)
-					}
-				}
-				startNum++;
-				if(startNum>=arr.length)
-				{
-					startNum=0;
-				}
-			}
-			else
-			{
-				// window.location.reload()
-			}
-
-		},5000)
-	}*/
 }
 var startNum=5;
 function shbzInit(arr){
+	//alert("arr,length "+arr.length+" "+startNum)
 	if(arr.length>5)
 	{
-
 		var distance=$('.shbz-warp .text-list').height();
 		clearInterval(time);
 		time=setInterval(function(){
+
+			//alert($('.shbz-warp .text-list').length)
 			if($('.shbz-warp .text-list').length==5)
 			{
 				$('.shbz-warp .text-box').append('<div style="left:40%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
@@ -585,6 +594,7 @@ function shbzInit(arr){
 					}
 				}
 				startNum++;
+				//alert(arr.length+" "+startNum)
 				if(startNum>=arr.length)
 				{
 					startNum=0;
@@ -617,87 +627,22 @@ function addHjbz(arr)
 		},5000)
 	})
 
+	//设置动态效果
 	hjbzInit(arr)
-	/*if(arr.length>3)
-	{
-		var startNum=i;
-		var time='';
-		var distance=$('.hjbz-warp .text-list').height();
-		clearInterval(time)
-		time=setInterval(function(){
-			if($('.hjbz-warp .text-list').length==3)
-			{
-				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>'+arr[startNum+1].title+'</p><p><span class="num-font">'+arr[startNum+1].num+'</span>'+arr[startNum+1].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum+2].title+'</p><p><span class="num-font">'+arr[startNum+2].num+'</span>'+arr[startNum+2].unit+'</p></div>')
-				for(let i=0;i<$('.hjbz-warp .text-list').length;i++)
-				{
-					if(i==0)
-					{
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({top:-distance,opacity:0},500,function(){
-							$(this).remove();
-						})
-						//alert(0)
-					}
-					if(i==1)
-					{
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({top:-distance*2,opacity:0},500,function(){
-							$(this).remove();
-						})
-						//alert(1)
-					}
-
-					if(i==2)
-					{
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-2)*15)+'%',top:(num-2)*50+'%',opacity:1},300,function(){
-							$(this).animate({top:-distance*2,opacity:0},500,function(){
-								$(this).remove();
-							})
-						})
-					} /!*else if(i==1){
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-1)*10)+'%',top:100+'%',opacity:1},500,function(){
-							$(this).animate({left:(10-(num-2)*5)+'%',top:(num-1)*0+'%',opacity:1},500)
-						})
-					}*!/else{
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({left:(20-(num-1)*5)+'%',top:(num-2)*50+'%',opacity:1},500,function(){
-							$(this).animate({left:(25-(num-1)*6)+'%',top:(num-3)*50+'%',opacity:1},500)
-						})
-					}
-				}
-				startNum+=3;
-				if(startNum>=arr.length)
-				{
-					startNum=0;
-				}
-			}
-			else
-			{
-				// window.location.reload()
-			}
-
-		},5000)
-
-	}*/
 }
 
-var startNum=3;
+var hjbzNum=3;
 function hjbzInit(arr){
 	if(arr.length>3)
 	{
-		var time='';
 		var distance=$('.hjbz-warp .text-list').height();
-		clearInterval(time)
-		time=setInterval(function(){
+		clearInterval(hjbzTime)
+		hjbzTime=setInterval(function(){
 			if($('.hjbz-warp .text-list').length==3)
 			{
-				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>'+arr[startNum+1].title+'</p><p><span class="num-font">'+arr[startNum+1].num+'</span>'+arr[startNum+1].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum+2].title+'</p><p><span class="num-font">'+arr[startNum+2].num+'</span>'+arr[startNum+2].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>'+arr[hjbzNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[hjbzNum].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>'+arr[hjbzNum+1].title+'</p><p><span class="num-font">'+arr[startNum+1].num+'</span>'+arr[hjbzNum+1].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>'+arr[hjbzNum+2].title+'</p><p><span class="num-font">'+arr[startNum+2].num+'</span>'+arr[hjbzNum+2].unit+'</p></div>')
 				for(let i=0;i<$('.hjbz-warp .text-list').length;i++)
 				{
 					if(i==0)
@@ -737,10 +682,10 @@ function hjbzInit(arr){
 						})
 					}
 				}
-				startNum+=3;
-				if(startNum>=arr.length)
+				hjbzNum+=3;
+				if(hjbzNum>=arr.length)
 				{
-					startNum=0;
+					hjbzNum=0;
 				}
 			}
 			else

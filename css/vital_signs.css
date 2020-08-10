@@ -408,7 +408,8 @@
 }
 
 .vital-signs .list-box .text-list p .num-font {
-	font-size: 1.6rem;
+/*	font-size: 1.6rem;*/
+	font-size: 1rem;
 	color: #F5A623;
 	letter-spacing: 2px;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);

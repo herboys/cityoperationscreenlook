@@ -19,6 +19,7 @@ $(function () {
         window.localStorage.setItem("date",date)
     }
 
+
    // showWarningDefault();
     function showWeather(weather, temperature){
         var xyIndex = weatherIndex[weather];

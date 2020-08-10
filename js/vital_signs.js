@@ -36,7 +36,7 @@ $(function(){
 		url : STATIC_URL+'/overview/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			jbqkArr[0].num=data[0].popu;
 			jbqkArr[1].num=data[0].popuSum;
@@ -44,9 +44,10 @@ $(function(){
 			jbqkArr[3].num=data[0].popuDesity;
 			jbqkArr[4].num=data[0].gdp;
 			jbqkArr[5].num=data[0].incomePer;
+			addjbgk(jbqkArr);
 		}
 	})
-	addjbgk(jbqkArr);
+
 /*	var asjczArr=[
 		{
 			today:20,
@@ -82,7 +83,7 @@ $(function(){
 		url : STATIC_URL+'/eventhandle/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 
 			for(var i=0;i<data.length;i++){
@@ -93,10 +94,8 @@ $(function(){
 				obj.week=data[i].timeWeek;
 				obj.month=data[i].timeMonth;
 				asjczArr[alm-1]=obj
-		}
+			}
 			get12345Grid119()
-
-
 		}
 	})
 
@@ -106,7 +105,7 @@ $(function(){
 			url:ORACLE_URL+"/taskInfoUrgent/findHotlineNum",
 			dataType:'json',
 			type:'get',
-			async:false,
+			async:true,
 			success:function(data){
 				//alert(JSON.stringify(data))
 				var obj=new Object()
@@ -181,7 +180,7 @@ $(function(){
 
 	var jtzkArr=[
 		{
-			title:'出租车客运量',
+			title:'公交线路情况',
 			//today:35,
 			//week:253,
 			//month:1534,
@@ -214,7 +213,7 @@ $(function(){
 		url : STATIC_URL+'/resource/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			for(var i=0;i<data.length;i++){
 				var sct=data[i].sourcetype;
@@ -222,6 +221,7 @@ $(function(){
 					zygyArr[0].today=data[i].timeDay;
 					zygyArr[0].week=data[i].timeWeek;
 					zygyArr[0].month=data[i].timeMonth;
+
 				}else if(sct==2){
 					zygyArr[1].today=data[i].timeDay;
 					zygyArr[1].week=data[i].timeWeek;
@@ -231,9 +231,15 @@ $(function(){
 					zygyArr[2].week=data[i].timeWeek;
 					zygyArr[2].month=data[i].timeMonth;
 				}else if(sct==4){
-					jtzkArr[0].today=data[i].timeDay;
+					/*jtzkArr[0].today=data[i].timeDay;
 					jtzkArr[0].week=data[i].timeWeek;
-					jtzkArr[0].month=data[i].timeMonth;
+					jtzkArr[0].month=data[i].timeMonth;*/
+					/*jtzkArr[0].xlnum=89;
+					jtzkArr[0].carnum=777;
+					jtzkArr[0].jhnum=9146;
+					jtzkArr[0].sjnum=4954;
+					jtzkArr[0].bczxl=99.81;
+					jtzkArr[0].smbczdl=99.44;*/
 				}else if(sct==5){
 					jtzkArr[1].today=data[i].timeDay;
 					jtzkArr[1].week=data[i].timeWeek;
@@ -248,22 +254,32 @@ $(function(){
 					jtzkArr[3].month=data[i].timeMonth;
 				}
 
-			/*	if(sct<3){
-				zygyArr[sct].today=data[i].timeDay;
-				zygyArr[sct].week=data[i].timeWeek;
-				zygyArr[sct].month=data[i].timeMonth;
-				}
-			 else{
-				jtzkArr[sct-3].today=data[i].timeDay;
-				jtzkArr[sct-3].week=data[i].timeWeek;
-				jtzkArr[sct-3].month=data[i].timeMonth;
-			 }*/
-
 			}
+			addCard(zygyArr,'.zygy-warp') //资源供应
+			$.ajax({
+				url : FIRE_URL+'/restnumberbus/countRestNum',
+				dataType : 'json',
+				type : 'get',
+				async : false,
+				success : function(data) {
+					jtzkArr[0].xlnum=data.xlnum;
+					jtzkArr[0].carnum=data.carnum;
+					jtzkArr[0].jhnum=data.jhnum;
+					jtzkArr[0].sjnum=data.sjnum;
+					jtzkArr[0].bczxl=data.bczxl;
+					jtzkArr[0].smbczdl=data.smbczdl;
+					addCard(jtzkArr,'.jtqk-warp') //交通情况
+				},error:function () {
+					addCard(jtzkArr,'.jtqk-warp') //交通情况
+				}
+			})
+		},error:function () {
+			addCard(jtzkArr,'.jtqk-warp') //交通情况
 		}
 	})
-	addCard(zygyArr,'.zygy-warp') //资源供应
-	addCard(jtzkArr,'.jtqk-warp') //交通情况
+
+
+	/*addCard(jtzkArr,'.jtqk-warp') //交通情况*/
 	var shbzArr=[
 		{
 			title:'城镇登记失业人数',
@@ -271,9 +287,9 @@ $(function(){
 			unit:'人',
 		},
 		{
-			title:'民政救助',
-			//num:0.3,
-			unit:'人次/月',
+			title:'养老机构',
+			num:25,
+			unit:'个',
 		},
 		{
 			title:'最低工资标准',
@@ -305,19 +321,22 @@ $(function(){
 		url : STATIC_URL+'/insurance/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			shbzArr[0].num=data[0].unemployRate;
-			shbzArr[1].num=data[0].insurRate;
+			/*shbzArr[1].num=data[0].insurRate;*/
 			shbzArr[2].num=data[0].wageMinimum;
 			shbzArr[3].num=data[0].medicalBedThou;
 			shbzArr[4].num=data[0].outpatientVisit;
 			shbzArr[5].num=data[0].unemployRate;
 			shbzArr[6].num=data[0].insurRate;
-		}
+			addShbz(shbzArr)
+		},error:(function () {
+			addShbz(shbzArr)
+		})
 	})
 
-	addShbz(shbzArr)
+
 	var hjbzArr=[
 		{
 			title:'生活垃圾处理',
@@ -372,7 +391,7 @@ $(function(){
 		url : STATIC_URL+'/allowance/findAll',
 		dataType : 'json',
 		type : 'get',
-		async : false,
+		async : true,
 		success : function(data) {
 			for(var i=0;i<data.length;i++){
 				var index=data[i].id
@@ -444,7 +463,29 @@ function addCard(arr,classStr)
 	var apartW=Math.floor(distanceW/(arr.length-1));
 	var opacity=(1-(arr.length-1)*0.1)<0.4?'0.4':(1-(arr.length-1)*0.1)
 	boxObj.html('');
-	for(let i=0;i<arr.length;i++)
+	/*zygyArr[0].xlnum=56;
+	zygyArr[0].carnum=89;
+	zygyArr[0].jhnum=234;
+	zygyArr[0].sjnum=137;
+	zygyArr[0].bczxl=98;
+	zygyArr[0].smbczdl=95;*/
+	let i=0;
+	if(arr[0].title==="公交线路情况"){
+		for(;i<1;i++)
+		{
+			console.log(arr[0])
+			boxObj.append('<div class="card-box" style="width:20rem" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;' +
+				'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[i].title+'</div></div>' +
+				'<div class="card-text" style="height:6.5rem">' +
+				'<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">'+arr[i].xlnum+'</span>条 &nbsp;&nbsp;在线车辆'+'<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].carnum+'</span>辆'+'</p>' +
+				'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].jhnum+'</span>辆 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].sjnum+'</span>辆 </p>'+
+
+				'<p style="float:left;padding-left: 0.5rem">昨日班次执行率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[i].bczxl+'</span>%'+'</p>'+
+				'<p style="float:left;padding-left: 0.5rem">昨日首末班车准点率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[i].smbczdl+'</span>%'+'</p></div></div>')
+		}
+	}
+
+	for(;i<arr.length;i++)
 	{
 		boxObj.append('<div class="card-box" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[i].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[i].today+'</span>'+arr[i].unit+'</p><p>本周<span class="num-font">'+arr[i].week+'</span>'+arr[i].unit+'</p><p>当月<span class="num-font">'+arr[i].month+'</span>'+arr[i].unit+'</p></div></div>')
 	}
@@ -486,7 +527,23 @@ function addCard(arr,classStr)
 					}
 				}
 				arr.unshift(arr.splice(arr.length-1 , 1)[0]);
-				boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left:0px;top:0px"><div class="card-title"><div class="text-centered">'+arr[0].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[0].today+'</span>'+arr[0].unit+'</p><p>本周<span class="num-font">'+arr[0].week+'</span>'+arr[0].unit+'</p><p>当月<span class="num-font">'+arr[0].month+'</span>'+arr[0].unit+'</p></div></div>')
+				if(arr[0].title==="公交线路情况"){
+					/*boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left: 0px;' +
+						'top:0px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[0].title+'</div></div>' +
+						'<div class="card-text"><p style="float:left;width: 8rem;">线路总数<span class="num-font">'+arr[0].xlnum+'</span>条'+'</p><p style="float:left;width:8rem">在线车辆<span class="num-font">'+arr[0].carnum+'</span>辆'+
+						'</p><p>当日计划班次<span class="num-font">'+arr[0].jhnum+'</span>辆'+'</p></div></div>')*/
+					boxObj.prepend('<div class="card-box" style="width:20rem" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;' +
+						'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[0].title+'</div></div>' +
+						'<div class="card-text" style="height:6.5rem">' +
+						'<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">'+arr[0].xlnum+'</span>条 &nbsp;&nbsp;在线车辆'+'<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].carnum+'</span>辆'+'</p>' +
+						'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].jhnum+'</span>辆 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].sjnum+'</span>辆 </p>'+
+
+						'<p style="float:left;padding-left: 0.5rem">昨日班次执行率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[0].bczxl+'</span>%'+'</p>'+
+						'<p style="float:left;padding-left: 0.5rem">昨日首末班车准点率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[0].smbczdl+'</span>%'+'</p></div></div>')
+
+				}else{
+					boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left:0px;top:0px"><div class="card-title"><div class="text-centered">'+arr[0].title+'</div></div><div class="card-text"><p>昨日<span class="num-font">'+arr[0].today+'</span>'+arr[0].unit+'</p><p>本周<span class="num-font">'+arr[0].week+'</span>'+arr[0].unit+'</p><p>当月<span class="num-font">'+arr[0].month+'</span>'+arr[0].unit+'</p></div></div>')
+				}
 			}
 			else
 			{
@@ -495,6 +552,7 @@ function addCard(arr,classStr)
 		},5000)
 	}
 }
+var time='';
 function addShbz(arr)
 {
 	$('.shbz-warp .text-box').html('');
@@ -503,13 +561,30 @@ function addShbz(arr)
 	{
 		$('.shbz-warp .text-box').append('<div style="left:'+i*10+'%;top:'+i*20+'%" class="text-list"><p>'+arr[i].title+'</p><p><span class="num-font">'+arr[i].num+'</span>'+arr[i].unit+'</p></div>')
 	}
+
+	$('.shbz-warp .text-box').mouseenter(function(){
+		//alert(1)
+		clearInterval(time);
+	})
+	$('.shbz-warp .text-box').mouseleave(function(){
+		//alert(4)
+		time=setTimeout(function(){
+			shbzInit(arr)
+		},5000)
+	})
+	//动态效果
+	shbzInit(arr)
+}
+var startNum=5;
+function shbzInit(arr){
+	//alert("arr,length "+arr.length+" "+startNum)
 	if(arr.length>5)
 	{
-		var startNum=i;
-		var time='';
 		var distance=$('.shbz-warp .text-list').height();
 		clearInterval(time);
 		time=setInterval(function(){
+
+			//alert($('.shbz-warp .text-list').length)
 			if($('.shbz-warp .text-list').length==5)
 			{
 				$('.shbz-warp .text-box').append('<div style="left:40%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
@@ -531,6 +606,7 @@ function addShbz(arr)
 					}
 				}
 				startNum++;
+				//alert(arr.length+" "+startNum)
 				if(startNum>=arr.length)
 				{
 					startNum=0;
@@ -544,6 +620,7 @@ function addShbz(arr)
 		},5000)
 	}
 }
+var hjbzTime;
 function addHjbz(arr)
 {
 	$('.hjbz-warp .text-box').html('');
@@ -552,18 +629,32 @@ function addHjbz(arr)
 	{
 		$('.hjbz-warp .text-box').append('<div style="left:'+(10-i*5)+'%;top:'+i*50+'%" class="text-list"><p>'+arr[i].title+'</p><p><span class="num-font">'+arr[i].num+'</span>'+arr[i].unit+'</p></div>')
 	}
+
+	$('.hjbz-warp .text-box').mouseenter(function(){
+		clearInterval(hjbzTime);
+	})
+	$('.hjbz-warp .text-box').mouseleave(function(){
+		hjbzTime=setTimeout(function(){
+			hjbzInit(arr)
+		},5000)
+	})
+
+	//设置动态效果
+	hjbzInit(arr)
+}
+
+var hjbzNum=3;
+function hjbzInit(arr){
 	if(arr.length>3)
 	{
-		var startNum=i;
-		var time='';
 		var distance=$('.hjbz-warp .text-list').height();
-		clearInterval(time)
-		time=setInterval(function(){
+		clearInterval(hjbzTime)
+		hjbzTime=setInterval(function(){
 			if($('.hjbz-warp .text-list').length==3)
 			{
-				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>'+arr[startNum+1].title+'</p><p><span class="num-font">'+arr[startNum+1].num+'</span>'+arr[startNum+1].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum+2].title+'</p><p><span class="num-font">'+arr[startNum+2].num+'</span>'+arr[startNum+2].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>'+arr[hjbzNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[hjbzNum].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>'+arr[hjbzNum+1].title+'</p><p><span class="num-font">'+arr[startNum+1].num+'</span>'+arr[hjbzNum+1].unit+'</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>'+arr[hjbzNum+2].title+'</p><p><span class="num-font">'+arr[startNum+2].num+'</span>'+arr[hjbzNum+2].unit+'</p></div>')
 				for(let i=0;i<$('.hjbz-warp .text-list').length;i++)
 				{
 					if(i==0)
@@ -603,10 +694,10 @@ function addHjbz(arr)
 						})
 					}
 				}
-				startNum+=3;
-				if(startNum>=arr.length)
+				hjbzNum+=3;
+				if(hjbzNum>=arr.length)
 				{
-					startNum=0;
+					hjbzNum=0;
 				}
 			}
 			else

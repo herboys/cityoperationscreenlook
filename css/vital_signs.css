@@ -326,7 +326,8 @@
 
 .vital-signs .shbz-warp .list-box .list-bg,
 .vital-signs .hjbz-warp .list-box .list-bg,
-.vital-signs .shbz-warp .list-box .text-box {
+.vital-signs .shbz-warp .list-box .text-box,
+.vital-signs .hjbz-warp .list-box .text-box {
 	width: 94%;
 	height: 100%;
 	position: absolute;
@@ -408,7 +409,8 @@
 }
 
 .vital-signs .list-box .text-list p .num-font {
-	font-size: 1.6rem;
+/*	font-size: 1.6rem;*/
+	font-size: 1.2rem;
 	color: #F5A623;
 	letter-spacing: 2px;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);

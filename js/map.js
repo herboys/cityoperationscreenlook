@@ -51,7 +51,6 @@ var jiading_district = [{ name: "安亭镇", lon: 121.2047, lat: 31.2987 },
 
 
 function initMap() {
-    console.log("initmap");
     map = new AMap.Map('mapContainer', {
         center: [121.238825, 31.364284],
         zoom: 12,
@@ -62,8 +61,8 @@ function initMap() {
     drawJiadingBounds();   //加载行政区划插件
     addJiadingBoundary();  /*添加嘉定区和街道边界*/
     addJiadingZhenText();
-    addTraffic();
-    addPoiMarker();
+    addTraffic();           /*添加实时路况情况*/
+    addPoiMarker();         /*添加嘉定区主要监控点*/
 }
 
 /*设置地图风格*/
@@ -99,7 +98,6 @@ function drawJiadingBounds() {
     //行政区查询
     district.setLevel("district")
 
-    console.log("=======" + shanghai_district.length)
     var that = this;
     for (var i = 0; i < shanghai_district.length; i++) {
         district.search(shanghai_district[i].adcode, function (status, result) {
@@ -171,7 +169,6 @@ function drawJiadingBounds() {
 
 /*添加嘉定区和街道边界*/
 function addJiadingBoundary() {
-    console.log("addJiadingBoundary");
     // var url = "./map/jiading_json.json";
     // var configure_json = $.ajax({url: url,async: false}).responseText;
     // var geoJSON = $.parseJSON(configure_json);
@@ -210,7 +207,6 @@ function addJiadingBoundary() {
     geojson1.setMap(map);
 }
 function addJiadingZhenText() {
-    console.log("addJiadingZhenText");
     var icon = new AMap.Icon({
         // 图标尺寸
         size: new AMap.Size(0, 0),
@@ -222,7 +218,6 @@ function addJiadingZhenText() {
         // imageOffset: new AMap.Pixel(-9, -3)
     });
     for (var i = 0; i < jiading_district.length; i++) {
-        console.log("addJiadingZhenText i = " + i);
         var marker = new AMap.Marker({
             position: new AMap.LngLat(jiading_district[i].lon, jiading_district[i].lat),
             icon: icon,
@@ -271,7 +266,6 @@ function addPoiMarker() {
     var p11 = { pointId: 90, name: "安亭北站", lng: 121.158416, lat: 31.314374, type: "qiakou" };//lng: 121.164746, lat: 31.320193
     var mapMarker = [p1, p2, p3, p4, p6, p7, p8, p9, p10, p11, p5];
 
-    console.log(mapMarker.length);
     for (var i = 0; i < mapMarker.length; i++) {
         console.log(JSON.stringify(mapMarker[i]));
         // 创建一个 Icon

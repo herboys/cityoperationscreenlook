@@ -278,9 +278,9 @@ $(function(){
 			unit:'人',
 		},
 		{
-			title:'民政救助',
-			//num:0.3,
-			unit:'人次/月',
+			title:'养老机构',
+			num:25,
+			unit:'个',
 		},
 		{
 			title:'最低工资标准',
@@ -315,7 +315,7 @@ $(function(){
 		async : false,
 		success : function(data) {
 			shbzArr[0].num=data[0].unemployRate;
-			shbzArr[1].num=data[0].insurRate;
+			/*shbzArr[1].num=data[0].insurRate;*/
 			shbzArr[2].num=data[0].wageMinimum;
 			shbzArr[3].num=data[0].medicalBedThou;
 			shbzArr[4].num=data[0].outpatientVisit;
@@ -537,7 +537,7 @@ function addCard(arr,classStr)
 			{
 				// window.location.reload()
 			}
-		},10000)
+		},5000)
 	}
 }
 var time='';

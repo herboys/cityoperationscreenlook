@@ -109,3 +109,15 @@
 /* .vital-signs ul li {
   width: 146px;
 } */
+
+
+.convenient-box{
+	position: absolute;
+  background-color: #1D2B56;
+  top: 6.1rem;
+  left: 34.6rem;
+  width: 130.8rem;
+  height: 49.35rem;
+  z-index: 11;
+  /* background: url(../images/imgs/bg-img.png) no-repeat; */
+}

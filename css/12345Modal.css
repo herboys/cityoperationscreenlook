@@ -1,0 +1,223 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #1D2B56;
+    z-index: 999999
+}
+
+.Modal-warp {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: inherit;
+    padding:0px 0px;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.Modal-warp:after {
+    content: "X";
+    pointer-events: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 8px;
+    color: white;
+
+}
+.Modal-left{
+flex: 1;
+
+    padding:0px 20px;
+}
+
+.line{
+    border-left: 2px solid #31FFFE ;
+    height: 20px;
+    position: relative;
+}
+.line:after{
+    content: "";
+    position: absolute;
+    border-left: 2px solid #31FFFE;
+    height: 8px;
+    top: -4px;
+    transform: rotate(45deg);
+
+}
+.line:before{
+    content: "";
+    position: absolute;
+    border-left: 2px solid #31FFFE;
+    height: 8px;
+    bottom: -4px;
+    transform: rotate(-45deg);
+
+}
+.line1{
+    border-left: 2px solid #31FFFE ;
+    height: 20px;
+    position: relative;
+}
+.line1:after{
+    content: "";
+    position: absolute;
+    border-left: 2px solid #31FFFE;
+    height: 8px;
+    top: -4px;
+    right: 2px;
+
+    transform: rotate(-45deg);
+
+}
+.line1:before{
+    content: "";
+    position: absolute;
+    border-left: 2px solid #31FFFE;
+    height: 8px;
+    bottom: -4px;
+
+    right: 2px;
+
+    transform: rotate(45deg);
+
+}
+.Modal-left-item{
+
+}
+.Modal-left-item .header{
+    margin: 10px 0px;
+    margin-top: 20px;
+    display: flex;justify-content: left;
+    align-items: center;
+}
+.Modal-left-item .header span{
+    font-size: 20px;
+    color: white;
+    letter-spacing: 2px;
+    margin: 0px 20px;
+}
+.work-older{
+    display: flex;
+
+}
+.work-older-item{
+    flex: 1;
+}
+.work-older-item:nth-child(2n){
+margin: 0px 20px;
+}
+.work-older-header {
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 4px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 微软雅黑;
+}
+.work-older-header button{
+    list-style-type: none;
+    border-radius: 4px ;
+    border: 2px solid #59647A;
+    padding: 2px 10px;
+    background-color: inherit;
+    color: white;
+}
+.work-older-list{
+    background-color: #08282C;
+    background:-webkit-linear-gradient(left top,#08292D,#050C0F);/*for safari5.1-6.0*/
+    background:-o-linear-gradient(bottom right,#08292D,#050C0F);/*Opera 11.1-12.0*/
+    background:-moz-linear-gradient(bottom right,#08292D,#050C0F);/*firefox 3.6-15*/
+    background:linear-gradient(to bottom right,#08292D,#050C0F);/*标准语法*/
+}
+.work-older-list-ul{
+    display: flex;
+   text-align: center;
+}
+.work-older-list-ul li{
+    flex: 1;
+    padding: 4px ;
+    color: #00FFF0;
+    font-size: 12px;
+}
+.ul-line{
+    flex: 1;
+    border-top: 1px solid #116F75   ;
+
+}
+.ul-line li{
+    color: white !important;
+    font-size: 12px;
+
+}
+
+
+
+.Satisfaction-warp{
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+
+}
+.Satisfaction-warp-item{
+    height: 298px;
+    flex: 1;
+    box-sizing: border-box;
+}
+.Satisfaction-warp-item-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.Satisfaction-warp-item:nth-child(2n){
+    margin-left: 20px;
+}.Satisfaction-warp-item:nth-child(2n+1){
+    margin-right: 20px;
+}
+ .Satisfaction-warp-item-header-left{
+     display: flex;
+ }
+.banner1{
+width: 117px;
+    height: 25px;
+    background-image: url(../Modal/images/banner.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center; line-height: 25px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+.banner2{
+width: 117px;
+    height: 25px;
+    background-image: url(../Modal/images/banner2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    line-height: 25px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.Satisfaction-warp-item-echarts{
+    background-color:#050E11 ;
+    width: inherit;
+    height: 255px;
+
+}
+
+
+.Modal-right{
+    flex: 1;
+    /*background-color: yellow;*/
+}

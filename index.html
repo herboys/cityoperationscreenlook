@@ -1351,6 +1351,9 @@
           </div>
         </div>
       </div>
+      <div class="ModalBox" id="ModalBox" >
+        <iframe id="openiframe" src="Modal/12345Modal.html" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
     </div>
   </div>
 </body>
@@ -1370,6 +1373,10 @@
   //openVideo();
 </script>
 <script>
+
+function ModalClick() {
+  document.getElementById("ModalBox").style.display="block"
+}
   var app = new Vue({
     el: "#app",
     data() {

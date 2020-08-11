@@ -1,37 +1,51 @@
 $(function(){
-	var jbqkArr=[
-		{
-			title:'常住人口',
-			//num:'215.53',
-			unit:'万'
-		},
-		{
-			title:'户籍人口',
-			//num:'68.28',
-			unit:'万'
-		},
-		{
-			title:'面积',
-			//num:'464.2',
-			unit:'平方公里'
-		},
-		{
-			title:'人口密度',
-			//num:'2801',
-			unit:'人/平方公里'
-		},
-		{
-			title:'GDP',
-			//num:'2362.7',
-			unit:'亿元/年'
-		},
-		{
-			title:'人均',
-			//num:'7350',
-			unit:'元/年'
-		},
 
-	];
+	getJbgkData();//基本概况
+	getCardData();//资源供应，交通人流
+	getShbzData();//社会保障
+	getHjbzData();//环境保障
+	getAsjjbData();//案事件接报
+
+
+	//setInterval(get12345Grid119,1*60*1000)
+})
+//基本概况数组
+var jbqkArr=[
+	{
+		title:'常住人口',
+		//num:'215.53',
+		unit:'万'
+	},
+	{
+		title:'户籍人口',
+		//num:'68.28',
+		unit:'万'
+	},
+	{
+		title:'面积',
+		//num:'464.2',
+		unit:'平方公里'
+	},
+	{
+		title:'人口密度',
+		//num:'2801',
+		unit:'人/平方公里'
+	},
+	{
+		title:'GDP',
+		//num:'2362.7',
+		unit:'亿元/年'
+	},
+	{
+		title:'人均',
+		//num:'7350',
+		unit:'元/年'
+	},
+
+];
+
+//基本概况
+function getJbgkData(){
 	$.ajax({
 		url : STATIC_URL+'/overview/findAll',
 		dataType : 'json',
@@ -47,168 +61,66 @@ $(function(){
 			addjbgk(jbqkArr);
 		}
 	})
+}
 
-/*	var asjczArr=[
-		{
-			today:20,
-			week:189,
-			month:1234,
-		},
-		{
-			today:20,
-			week:189,
-			month:1234,
-		},
-		{
-			today:20,
-			week:189,
-			month:1234,
-		},
-		{
-			today:20,
-			week:189,
-			month:1234,
-		},
-		{
-			today:20,
-			week:189,
-			month:1234,
-		},
-	]*/
-	var asjczArr=[];
-	for(var i=0;i<5;i++){
-		asjczArr[i]=new Object()
+//资源供应数组
+var zygyArr=[
+	{
+		title:'用电总量',
+		//today:20,
+		//week:189,
+		//month:1234,
+		unit:'万千瓦时',
+	},
+	{
+		title:'用水总量',
+		//today:20,
+		//week:189,
+		//month:1234,
+		unit:'万吨',
+	},
+	{
+		title:'供气总量',
+		//today:20,
+		//week:189,
+		//month:1234,
+		unit:'万立方米',
+	},
+];
+//交通人流数组
+var jtzkArr=[
+	{
+		title:'公交线路情况',
+		//today:35,
+		//week:253,
+		//month:1534,
+		unit:'万人次',
+	},
+	{
+		title:'交通客运量',
+		//today:42,
+		//week:198,
+		//month:1345,
+		unit:'万人次',
+	},
+	{
+		title:'交通流量',
+		//today:20,
+		//week:189,
+		//month:1234,
+		unit:'车次',
+	},
+	{
+		title:'景点人流量',
+		/*today:300,
+        week:2600,
+        month: 15000,*/
+		unit:'人次',
 	}
-	$.ajax({
-		url : STATIC_URL+'/eventhandle/findAll',
-		dataType : 'json',
-		type : 'get',
-		async : true,
-		success : function(data) {
+];
 
-			for(var i=0;i<data.length;i++){
-				var obj=new Object()
-				var alm=data[i].alarmType;
-
-				obj.today=data[i].timeDay;
-				obj.week=data[i].timeWeek;
-				obj.month=data[i].timeMonth;
-				asjczArr[alm-1]=obj
-			}
-			get12345Grid119()
-		}
-	})
-
-	function get12345Grid119(){
-		//alert(123)
-		$.ajax({
-			url:ORACLE_URL+"/taskInfoUrgent/findHotlineNum",
-			dataType:'json',
-			type:'get',
-			async:true,
-			success:function(data){
-				//alert(JSON.stringify(data))
-				var obj=new Object()
-				obj.today=data.yeaterdayNum
-				obj.week=data.weekNum
-				obj.month=data.monthNum
-				asjczArr[3]=obj
-
-				$.ajax({
-					url:ORACLE_URL+"/taskInfoUrgent/findGridNum",
-					dataType:'json',
-					type:'get',
-					async:false,
-					success:function(data){
-					//	alert(JSON.stringify(data))
-						var obj=new Object()
-						obj.today=data.yeaterdayNum
-						obj.week=data.weekNum
-						obj.month=data.monthNum
-						asjczArr[4]=obj
-						$.ajax({
-							url: FIRE_URL + "/fireInfo/findFireNum",
-							dataType: 'json',
-							type: 'get',
-							async: false,
-							success: function (data) {
-								var obj=new Object()
-								obj.today=data.todayNum
-								obj.week=data.weekNum
-								obj.month=data.monthNum
-								//asjczArr[1]=obj
-								addAsjcz(asjczArr);
-							}
-						})
-					}
-				})
-			}
-		})
-
-	}
-
-	function getFireNum(){
-
-	}
-
-	//addAsjcz(asjczArr);
-	setInterval(get12345Grid119,1*60*1000)
-
-	var zygyArr=[
-		{
-			title:'用电总量',
-			//today:20,
-			//week:189,
-			//month:1234,
-			unit:'万千瓦时',
-		},
-		{
-			title:'用水总量',
-			//today:20,
-			//week:189,
-			//month:1234,
-			unit:'万吨',
-		},
-		{
-			title:'供气总量',
-			//today:20,
-			//week:189,
-			//month:1234,
-			unit:'万立方米',
-		},
-	];
-
-	var jtzkArr=[
-		{
-			title:'公交线路情况',
-			//today:35,
-			//week:253,
-			//month:1534,
-			unit:'万人次',
-		},
-		{
-			title:'交通客运量',
-			//today:42,
-			//week:198,
-			//month:1345,
-			unit:'万人次',
-		},
-		{
-			title:'交通流量',
-			//today:20,
-			//week:189,
-			//month:1234,
-			unit:'车次',
-		},
-		{
-			title:'景点人流量',
-			/*today:300,
-			week:2600,
-			month: 15000,*/
-			unit:'人次',
-		}
-	];
-//var zygyArr=[];var jtzkArr=[];
+//资源供应，交通人流
+function getCardData(){
 	$.ajax({
 		url : STATIC_URL+'/resource/findAll',
 		dataType : 'json',
@@ -217,7 +129,17 @@ $(function(){
 		success : function(data) {
 			for(var i=0;i<data.length;i++){
 				var sct=data[i].sourcetype;
-				if(sct=="1"){
+				if(sct<=3){
+					zygyArr[sct-1].today=data[i].timeDay;
+					zygyArr[sct-1].week=data[i].timeWeek;
+					zygyArr[sct-1].month=data[i].timeMonth;
+				}
+				if(sct>=5){
+					jtzkArr[sct-4].today=data[i].timeDay;
+					jtzkArr[sct-4].week=data[i].timeWeek;
+					jtzkArr[sct-4].month=data[i].timeMonth;
+				}
+				/*if(sct==1){
 					zygyArr[0].today=data[i].timeDay;
 					zygyArr[0].week=data[i].timeWeek;
 					zygyArr[0].month=data[i].timeMonth;
@@ -231,15 +153,9 @@ $(function(){
 					zygyArr[2].week=data[i].timeWeek;
 					zygyArr[2].month=data[i].timeMonth;
 				}else if(sct==4){
-					/*jtzkArr[0].today=data[i].timeDay;
+					/!*jtzkArr[0].today=data[i].timeDay;
 					jtzkArr[0].week=data[i].timeWeek;
-					jtzkArr[0].month=data[i].timeMonth;*/
-					/*jtzkArr[0].xlnum=89;
-					jtzkArr[0].carnum=777;
-					jtzkArr[0].jhnum=9146;
-					jtzkArr[0].sjnum=4954;
-					jtzkArr[0].bczxl=99.81;
-					jtzkArr[0].smbczdl=99.44;*/
+					jtzkArr[0].month=data[i].timeMonth;*!/
 				}else if(sct==5){
 					jtzkArr[1].today=data[i].timeDay;
 					jtzkArr[1].week=data[i].timeWeek;
@@ -252,71 +168,58 @@ $(function(){
 					jtzkArr[3].today=data[i].timeDay;
 					jtzkArr[3].week=data[i].timeWeek;
 					jtzkArr[3].month=data[i].timeMonth;
-				}
+				}*/
 
 			}
 			addCard(zygyArr,'.zygy-warp') //资源供应
-			$.ajax({
-				url : FIRE_URL+'/restnumberbus/countRestNum',
-				dataType : 'json',
-				type : 'get',
-				async : false,
-				success : function(data) {
-					jtzkArr[0].xlnum=data.xlnum;
-					jtzkArr[0].carnum=data.carnum;
-					jtzkArr[0].jhnum=data.jhnum;
-					jtzkArr[0].sjnum=data.sjnum;
-					jtzkArr[0].bczxl=data.bczxl;
-					jtzkArr[0].smbczdl=data.smbczdl;
-					addCard(jtzkArr,'.jtqk-warp') //交通情况
-				},error:function () {
-					addCard(jtzkArr,'.jtqk-warp') //交通情况
-				}
-			})
+			getGongJiaoData();//获取公交数据
 		},error:function () {
 			addCard(jtzkArr,'.jtqk-warp') //交通情况
 		}
 	})
 
+}
 
-	/*addCard(jtzkArr,'.jtqk-warp') //交通情况*/
-	var shbzArr=[
-		{
-			title:'城镇登记失业人数',
-			//num:0.3,
-			unit:'人',
-		},
-		{
-			title:'养老机构',
-			num:25,
-			unit:'个',
-		},
-		{
-			title:'最低工资标准',
-			//num:0.3,
-			unit:'元/月',
-		},
-		{
-			title:'每千人医疗床位',
-			//num:0.3,
-			unit:'个',
-		},
-		{
-			title:'门诊就诊量',
-			//num:0.3,
-			unit:'万人次/年',
-		},
-		{
-			title:'城镇登记失业人数',
-			//num:0.3,
-			unit:'人',
-		},
-		{
-			title:'民政救助',
-			//num:0.3,
-			unit:'人次/月',
-		},
-	]
+//社会保障数组
+var shbzArr=[
+	{
+		title:'城镇登记失业人数',
+		//num:0.3,
+		unit:'人',
+	},
+	{
+		title:'养老机构',
+		num:25,
+		unit:'个',
+	},
+	{
+		title:'最低工资标准',
+		//num:0.3,
+		unit:'元/月',
+	},
+	{
+		title:'每千人医疗床位',
+		//num:0.3,
+		unit:'个',
+	},
+	{
+		title:'门诊就诊量',
+		//num:0.3,
+		unit:'万人次/年',
+	},
+	{
+		title:'城镇登记失业人数',
+		//num:0.3,
+		unit:'人',
+	},
+	{
+		title:'民政救助',
+		//num:0.3,
+		unit:'人次/月',
+	},
+]
+//社会保障
+function getShbzData(){
 	$.ajax({
 		url : STATIC_URL+'/insurance/findAll',
 		dataType : 'json',
@@ -337,56 +240,59 @@ $(function(){
 	})
 
 
-	var hjbzArr=[
-		{
-			title:'生活垃圾处理',
-			num:2064,
-			unit:'吨/日',
-		},
-		{
-			title:'污水处理量',
-			num:49.73,
-			unit:'万吨/日',
-		},
-		{
-			title:'扬尘检测工地',
-			num:52,
-			unit:'个',
-		},
-		{
-			title:'生活垃圾处理',
-			num:8256,
-			unit:'吨/周',
-		},
-		{
-			title:'污水处理量',
-			num:348.14,
-			unit:'万吨/周',
-		},
-		{
-			title:'扬尘检测工地',
-			num:167,
-			unit:'个',
-		},
-		{
-			title:'生活垃圾处理',
-			num:51600,
-			unit:'吨/月',
-		},
-		{
-			title:'污水处理量',
-			num:1497,
-			unit:'万吨/月',
-		},
-		{
-			title:'扬尘检测工地',
-			num:529,
-			unit:'个',
-		},
-	]
+}
+//环境保障数组
+var hjbzArr=[
+	{
+		title:'生活垃圾处理',
+		num:2064,
+		unit:'吨/日',
+	},
+	{
+		title:'污水处理量',
+		num:49.73,
+		unit:'万吨/日',
+	},
+	{
+		title:'扬尘检测工地',
+		num:52,
+		unit:'个',
+	},
+	{
+		title:'生活垃圾处理',
+		num:8256,
+		unit:'吨/周',
+	},
+	{
+		title:'污水处理量',
+		num:348.14,
+		unit:'万吨/周',
+	},
+	{
+		title:'扬尘检测工地',
+		num:167,
+		unit:'个',
+	},
+	{
+		title:'生活垃圾处理',
+		num:51600,
+		unit:'吨/月',
+	},
+	{
+		title:'污水处理量',
+		num:1497,
+		unit:'万吨/月',
+	},
+	{
+		title:'扬尘检测工地',
+		num:529,
+		unit:'个',
+	},
+]
 
+//环境保障
+function getHjbzData() {
 	var hjbzFlag=false
-
 	$.ajax({
 		url : STATIC_URL+'/allowance/findAll',
 		dataType : 'json',
@@ -436,7 +342,87 @@ $(function(){
 	})
 	if(hjbzFlag==false)
 		addHjbz(hjbzArr) //环境保障
-})
+}
+
+//案事件接报数组
+var asjczArr=[];
+//案事件接报
+function getAsjjbData(){
+	for(var i=0;i<5;i++){
+		asjczArr[i]=new Object()
+	}
+	$.ajax({
+		url : STATIC_URL+'/eventhandle/findAll',
+		dataType : 'json',
+		type : 'get',
+		async : true,
+		success : function(data) {
+
+			for(var i=0;i<data.length;i++){
+				var obj=new Object()
+				var alm=data[i].alarmType;
+
+				obj.today=data[i].timeDay;
+				obj.week=data[i].timeWeek;
+				obj.month=data[i].timeMonth;
+				asjczArr[alm-1]=obj
+			}
+			get12345Grid119()
+		}
+	})
+
+}
+
+//获取12345,网格化，119的数据
+function get12345Grid119(){
+	//alert(123)
+	$.ajax({
+		url:ORACLE_URL+"/taskInfoUrgent/findHotlineNum",
+		dataType:'json',
+		type:'get',
+		async:true,
+		success:function(data){
+			//alert(JSON.stringify(data))
+			var obj=new Object()
+			obj.today=data.yeaterdayNum
+			obj.week=data.weekNum
+			obj.month=data.monthNum
+			asjczArr[3]=obj
+
+			$.ajax({
+				url:ORACLE_URL+"/taskInfoUrgent/findGridNum",
+				dataType:'json',
+				type:'get',
+				async:true,
+				success:function(data){
+					//	alert(JSON.stringify(data))
+					var obj=new Object()
+					obj.today=data.yeaterdayNum
+					obj.week=data.weekNum
+					obj.month=data.monthNum
+					asjczArr[4]=obj
+					$.ajax({
+						url: FIRE_URL + "/fireInfo/findFireNum",
+						dataType: 'json',
+						type: 'get',
+						async: true,
+						success: function (data) {
+							var obj=new Object()
+							obj.today=data.todayNum
+							obj.week=data.weekNum
+							obj.month=data.monthNum
+							//asjczArr[1]=obj
+							addAsjcz(asjczArr);
+						}
+					})
+				}
+			})
+		}
+	})
+
+}
+
+
 function addjbgk(arr){ //基本概况
 	$('.vital-signs .top-box ul').html('')
 	for(let i=0;i<arr.length;i++)
@@ -463,12 +449,6 @@ function addCard(arr,classStr)
 	var apartW=Math.floor(distanceW/(arr.length-1));
 	var opacity=(1-(arr.length-1)*0.1)<0.4?'0.4':(1-(arr.length-1)*0.1)
 	boxObj.html('');
-	/*zygyArr[0].xlnum=56;
-	zygyArr[0].carnum=89;
-	zygyArr[0].jhnum=234;
-	zygyArr[0].sjnum=137;
-	zygyArr[0].bczxl=98;
-	zygyArr[0].smbczdl=95;*/
 	let i=0;
 	if(arr[0].title==="公交线路情况"){
 		for(;i<1;i++)
@@ -643,42 +623,60 @@ function addHjbz(arr)
 	hjbzInit(arr)
 }
 
+function getGongJiaoData(){
+	$.ajax({
+		url : FIRE_URL+'/restnumberbus/countRestNum',
+		dataType : 'json',
+		type : 'get',
+		async : false,
+		success : function(data) {
+			jtzkArr[0].xlnum=data.xlnum;
+			jtzkArr[0].carnum=data.carnum;
+			jtzkArr[0].jhnum=data.jhnum;
+			jtzkArr[0].sjnum=data.sjnum;
+			jtzkArr[0].bczxl=data.bczxl;
+			jtzkArr[0].smbczdl=data.smbczdlz;
+			addCard(jtzkArr,'.jtqk-warp') //交通情况
+		},error:function () {
+			addCard(jtzkArr,'.jtqk-warp') //交通情况
+		}
+	})
+}
+
 var hjbzNum=3;
-function hjbzInit(arr){
-	if(arr.length>3)
-	{
-		var distance=$('.hjbz-warp .text-list').height();
+function hjbzInit(arr) {
+	if (arr.length > 3) {
+		var distance = $('.hjbz-warp .text-list').height();
 		clearInterval(hjbzTime)
-		hjbzTime=setInterval(function(){
-			if($('.hjbz-warp .text-list').length==3)
-			{
-				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>'+arr[hjbzNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[hjbzNum].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>'+arr[hjbzNum+1].title+'</p><p><span class="num-font">'+arr[startNum+1].num+'</span>'+arr[hjbzNum+1].unit+'</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>'+arr[hjbzNum+2].title+'</p><p><span class="num-font">'+arr[startNum+2].num+'</span>'+arr[hjbzNum+2].unit+'</p></div>')
-				for(let i=0;i<$('.hjbz-warp .text-list').length;i++)
-				{
-					if(i==0)
-					{
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({top:-distance,opacity:0},500,function(){
+		hjbzTime = setInterval(function () {
+			if ($('.hjbz-warp .text-list').length == 3) {
+				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>' + arr[hjbzNum].title + '</p><p><span class="num-font">' + arr[startNum].num + '</span>' + arr[hjbzNum].unit + '</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>' + arr[hjbzNum + 1].title + '</p><p><span class="num-font">' + arr[startNum + 1].num + '</span>' + arr[hjbzNum + 1].unit + '</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>' + arr[hjbzNum + 2].title + '</p><p><span class="num-font">' + arr[startNum + 2].num + '</span>' + arr[hjbzNum + 2].unit + '</p></div>')
+				for (let i = 0; i < $('.hjbz-warp .text-list').length; i++) {
+					if (i == 0) {
+						let num = i;
+						$('.hjbz-warp .text-list').eq(num).animate({top: -distance, opacity: 0}, 500, function () {
 							$(this).remove();
 						})
 						//alert(0)
 					}
-					if(i==1)
-					{
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({top:-distance*2,opacity:0},500,function(){
+					if (i == 1) {
+						let num = i;
+						$('.hjbz-warp .text-list').eq(num).animate({top: -distance * 2, opacity: 0}, 500, function () {
 							$(this).remove();
 						})
 						//alert(1)
 					}
 
-					if(i==2)
-					{
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-2)*15)+'%',top:(num-2)*50+'%',opacity:1},300,function(){
-							$(this).animate({top:-distance*2,opacity:0},500,function(){
+					if (i == 2) {
+						let num = i;
+						$('.hjbz-warp .text-list').eq(num).animate({
+							left: (10 - (num - 2) * 15) + '%',
+							top: (num - 2) * 50 + '%',
+							opacity: 1
+						}, 300, function () {
+							$(this).animate({top: -distance * 2, opacity: 0}, 500, function () {
 								$(this).remove();
 							})
 						})
@@ -687,26 +685,30 @@ function hjbzInit(arr){
 						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-1)*10)+'%',top:100+'%',opacity:1},500,function(){
 							$(this).animate({left:(10-(num-2)*5)+'%',top:(num-1)*0+'%',opacity:1},500)
 						})
-					}*/else{
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({left:(20-(num-1)*5)+'%',top:(num-2)*50+'%',opacity:1},500,function(){
-							$(this).animate({left:(25-(num-1)*6)+'%',top:(num-3)*50+'%',opacity:1},500)
+					}*/ else {
+						let num = i;
+						$('.hjbz-warp .text-list').eq(num).animate({
+							left: (20 - (num - 1) * 5) + '%',
+							top: (num - 2) * 50 + '%',
+							opacity: 1
+						}, 500, function () {
+							$(this).animate({
+								left: (25 - (num - 1) * 6) + '%',
+								top: (num - 3) * 50 + '%',
+								opacity: 1
+							}, 500)
 						})
 					}
 				}
-				hjbzNum+=3;
-				if(hjbzNum>=arr.length)
-				{
-					hjbzNum=0;
+				hjbzNum += 3;
+				if (hjbzNum >= arr.length) {
+					hjbzNum = 0;
 				}
-			}
-			else
-			{
+			} else {
 				// window.location.reload()
 			}
 
-		},5000)
+		}, 5000)
 
 	}
 }
-

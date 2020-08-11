@@ -236,7 +236,7 @@ function getDutyList() {
 	//addTableList1('.core-table', coreArr);
 	//addTableList1('.linkage-table', linkageArr)
 	addTableList2(".linkage-scroll-table", linkageArrScroll);
-	addTableList3(".linkage-table2", linkageArrScroll);
+	//addTableList3(".linkage-table2", linkageArrScroll);
 }
 
 $(function () {
@@ -411,8 +411,8 @@ function addTableList2(name, arr) {
 			linkScrollMax = arr.length;   //6
 			linkageNumScroll = 0;
 			setTimeout(function () {
-				var html = $(name).find(".list-box").html();
-				$(name).find(".list-box").append(html);
+			//	var html = $(name).find(".list-box").html();
+			//	$(name).find(".list-box").append(html);
 				linkageIntScroll();
 				$(name).mouseenter(function () {
 					clearInterval(linkageScrollTime);
@@ -428,6 +428,7 @@ function addTableList2(name, arr) {
 // 部门table滚动
 function linkageInt() {
 	var moveT = $(".linkage-table").find(".table-list").eq(0).height() - 8;
+	alert(moveT)
 	// alert(moveT) //30
 	linkageTime = setInterval(() => {
 		if (linkageNum >= linkageMax / 5) {
@@ -484,16 +485,20 @@ function linkageInt2() {
 // 突发事件table滚动
 function linkageIntScroll() {
 	var moveT = $(".linkage-scroll-table").find(".table-list").eq(0).height() -11;
+
+	//alert("linkScrollMax "+linkScrollMax)
 	// alert(moveT)
 	linkageScrollTime = setInterval(() => {
-		if (linkageNumScroll >= linkScrollMax / 3) {
+		if (linkageNumScroll >= linkScrollMax/3-1) {
+		//	alert("aaa "+moveT)
 			linkageNumScroll = -1;
 			$(".linkage-scroll-table .list-box").css({
-				top: -moveT * linkageNumScroll,
+				top: -moveT * linkageNumScroll
 			});
 		}
 		linkageNumScroll++;
-
+		//alert(linkageNumScroll)
+		//alert(moveT)
 		$(".linkage-scroll-table .list-box").animate({
 				top: -(moveT + 1) * linkageNumScroll * 6.05,
 			},

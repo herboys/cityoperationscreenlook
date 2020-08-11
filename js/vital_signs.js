@@ -724,5 +724,10 @@ function hjbzInit(arr) {
 }
 
 function oldPeopleHomePage(){
-	alert("养老机构")
+	// alert("养老机构")
+	$('#restShow').show();
+}
+
+function closeOldPeopleHome(){
+	$('#restShow').hide();
 }

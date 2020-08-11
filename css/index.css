@@ -1,278 +1,290 @@
 @font-face {
-	font-family: 'SFUDinEngschrift';
-	src: url('../fonts/SFUDinEngschrift.TTF');
+    font-family: 'SFUDinEngschrift';
+    src: url('../fonts/SFUDinEngschrift.TTF');
 }
 
 @font-face {
-	font-family: 'SourceHanSansCN';
-	src: url('../fonts/SourceHanSansCN-Medium.ttf');
+    font-family: 'SourceHanSansCN';
+    src: url('../fonts/SourceHanSansCN-Medium.ttf');
 }
 
 @font-face {
-	font-family: 'heiti';
-	src: url('../fonts/heiti.ttf');
+    font-family: 'heiti';
+    src: url('../fonts/heiti.ttf');
 }
 
 html {
-	overflow: hidden;
-	background-image: -webkit-gradient(linear, 100% 0, 0 0, from(#001A54), color-stop(0.57, #010825), to(#000421));
-	background-image: -webkit-linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
-	background-image: -moz-linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
-	background-image: -o-linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
-	background-image: linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
-	font-family: 'SourceHanSansCN';
+    overflow: hidden;
+    background-image: -webkit-gradient(linear, 100% 0, 0 0, from(#001A54), color-stop(0.57, #010825), to(#000421));
+    background-image: -webkit-linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
+    background-image: -moz-linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
+    background-image: -o-linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
+    background-image: linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
+    font-family: 'SourceHanSansCN';
 }
 
 .num-font {
-	font-family: 'SFUDinEngschrift';
+    font-family: 'SFUDinEngschrift';
 }
 
 .header {
-	position: relative;
+    position: relative;
 }
 
-.header>img {
-	width: 100%;
-	display: block;
+.header > img {
+    width: 100%;
+    display: block;
 }
 
 .header .main-box {
-	position: absolute;
-	width: 39%;
-	bottom: 24%;
-	height: 55%;
+    position: absolute;
+    width: 39%;
+    bottom: 24%;
+    height: 55%;
 }
 
 .header .left-box {
-	left: 0;
+    left: 0;
 }
 
 .header .left-box-2 {
-	left: 20%;
+    left: 20%;
 }
 
 .header .left-box-2 .text-title {
-	font-family: "heiti";
-	font-size: 2.2rem;
-	color: #fff;
-	letter-spacing: 1.8rem;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: "heiti";
+    font-size: 2.2rem;
+    color: #fff;
+    letter-spacing: 1.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .header .right-box {
-	right: 0;
+    right: 0;
 }
 
 .header .right-box-2 {
-	left: 65%;
+    left: 65%;
 }
 
 .header .right-box-2 .text-title {
-	font-family: "heiti";
-	font-size: 2.2rem;
-	color: #fff;
-	letter-spacing: 1.8rem;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: "heiti";
+    font-size: 2.2rem;
+    color: #fff;
+    letter-spacing: 1.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .main-warp .main-box {
-	position: relative;
-	display: inline-block;
-	vertical-align: top;
-	height: 100%;
-	/*height:51rem;*/
-	margin-left: 0.3%;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    /*height:51rem;*/
+    margin-left: 0.3%;
 }
 
-.header .main-box>div {
-	display: inline-block;
-	vertical-align: top;
-	height: 100%;
-	line-height: 3.9rem;
-	margin-right: 0.5rem;
+.header .main-box > div {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    line-height: 3.9rem;
+    margin-right: 0.5rem;
 }
 
 .header .main-box .weather-icon,
 .header .main-box .early-warning-icon {
-	/*width: 3.9rem;*/
-	height: 3.9rem;
-	margin-left: 1.4rem;
-	overflow: hidden;
+    /*width: 3.9rem;*/
+    height: 3.9rem;
+    margin-left: 1.4rem;
+    overflow: hidden;
 }
 
 .header .main-box .weather-text {
-	font-size: 1.6rem;
-	color: #fff;
+    font-size: 1.6rem;
+    color: #fff;
 }
 
 .header .main-box .num-font {
-	font-size: 2.3rem;
-	background: linear-gradient(180deg, #FFFFFF 0%, #FFC96F 100%);
-	-webkit-background-clip: text;
-	color: transparent;
-	line-height: 3.3rem;
+    font-size: 2.3rem;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFC96F 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    line-height: 3.3rem;
 }
 
 .header .left-box .early-warning-icon {
-	margin-left: 0;
+    margin-left: 0;
 }
 
 .header .left-box .early-warning-text {
-	font-size: 1.2rem;
-	color: #fff;
+    font-size: 1.2rem;
+    color: #fff;
 }
 
 .header .right-box .num-font {
-	line-height: 4.7rem;
-	font-size: 2.7rem;
+    line-height: 4.7rem;
+    font-size: 2.7rem;
 }
 
 .header .right-box .date-box {
-	margin-right: 2.2rem;
-	margin-left: 1rem;
+    margin-right: 2.2rem;
+    margin-left: 1rem;
 }
 
 .header .right-box .date-box p {
-	text-align: right;
-	color: #fff;
+    text-align: right;
+    color: #fff;
 }
 
 .header .right-box .date-box p:nth-child(1) {
-	font-size: 1.1rem;
-	line-height: 1rem;
-	margin-top: 1rem;
+    font-size: 1.1rem;
+    line-height: 1rem;
+    margin-top: 1rem;
 }
 
 .header .right-box .date-box p:nth-child(2) {
-	font-size: 1.5rem;
-	line-height: 1.9rem;
+    font-size: 1.5rem;
+    line-height: 1.9rem;
 }
 
 .main-warp .main-box-big {
-	width: 32.3%;
+    width: 32.3%;
 }
 
 .main-warp .main-box-min {
-	width: 16.1%;
+    width: 16.1%;
 }
 
 .main-title {
-	width: 100%;
-	padding-bottom: 0.2rem;
-	position: relative;
-	z-index: 10;
+    width: 100%;
+    padding-bottom: 0.2rem;
+    position: relative;
+    z-index: 10;
 }
 
 .title-border {
-	height: 1rem;
-	border-left: 3px solid #00D9FF;
-	border-right: 3px solid #00D9FF;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
+    height: 1rem;
+    border-left: 3px solid #00D9FF;
+    border-right: 3px solid #00D9FF;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 
 .main-title .title-bg {
-	height: 1rem;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	background-color: #226CD2;
-	opacity: 0.28;
+    height: 1rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #226CD2;
+    opacity: 0.28;
 }
 
 .main-title .title-bg1,
 .main-title .title-bg2 {
-	width: 100%;
+    width: 100%;
 }
 
 .main-title .title-bg2 {
-	width: 81.7%;
+    width: 81.7%;
 }
 
 .main-title .title-bg3 {
-	width: 63.4%;
-	opacity: 0.41;
+    width: 63.4%;
+    opacity: 0.41;
 }
 
 .main-title h3 {
-	font-size: 1.68rem;
-	line-height: 3rem;
-	color: #fff;
-	position: relative;
-	z-index: 2;
-	text-align: center;
-	letter-spacing: 5px;
+    font-size: 1.68rem;
+    line-height: 3rem;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 5px;
 }
 
 .main-warp .main-box .content-bg {
-	height: calc(100% - 2rem);
-	width: 100%;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	opacity: 0.2;
-	background-image: linear-gradient(180deg, #3E76CC 0%, #1D419D 100%);
-	box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.50);
+    height: calc(100% - 2rem);
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0.2;
+    background-image: linear-gradient(180deg, #3E76CC 0%, #1D419D 100%);
+    box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.50);
 }
 
 .main-warp .main-box .video-box {
-	height: 68.5%;
-	position: relative;
+    height: 68.5%;
+    position: relative;
 }
 
 .main-warp .main-box .special-box {
-	height: 31.5%;
-	position: relative;
+    height: 31.5%;
+    position: relative;
 }
 
 .main-warp .main-box .map-box {
-	margin-top: 1.1rem;
-	border: 3px solid #164695;
-	height: calc(100% - 1rem - 6px);
+    margin-top: 1.1rem;
+    border: 3px solid #164695;
+    height: calc(100% - 1rem - 6px);
 }
 
 .main-warp .main-box .content-box {
-	height: calc(100% - 3rem);
-	width: 100%;
-	position: absolute;
-	left: 0;
-	bottom: 0;
+    height: calc(100% - 3rem);
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 .footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	z-index: -1;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 /*隐藏地图loge*/
 .amap-logo {
-	opacity: 0;
+    opacity: 0;
 }
 
 .amap-copyright {
-	opacity: 0;
+    opacity: 0;
 }
 
 .amap-marker-label {
-	border: 0;
-	background-color: transparent;
-	color: #9CA09D;
-	font-size: large;
+    border: 0;
+    background-color: transparent;
+    color: #9CA09D;
+    font-size: large;
 }
 
 .info {
-	position: relative;
-	top: 0;
-	right: 0;
-	min-width: 0;
+    position: relative;
+    top: 0;
+    right: 0;
+    min-width: 0;
+
+}
+
+.ModalBox {
+    position: fixed;
+display: none;
+    z-index: 9999;
+    margin: auto;
+    top: 6rem;
+    left: 34.6rem;
+    width: 130.8rem;
+    height: 48.3rem;
 }

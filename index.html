@@ -480,7 +480,7 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-              <div class="main-list" >
+              <div class="main-list" onclick="ModalClick()">
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -1323,6 +1323,9 @@
           </div>
         </div>
       </div>
+      <div class="ModalBox" id="ModalBox" >
+        <iframe id="openiframe" src="Modal/12345Modal.html" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
     </div>
   </div>
 </body>
@@ -1342,6 +1345,10 @@
   //openVideo();
 </script>
 <script>
+
+function ModalClick() {
+  document.getElementById("ModalBox").style.display="block"
+}
   var app = new Vue({
     el: "#app",
     data() {

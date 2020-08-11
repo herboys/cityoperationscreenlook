@@ -458,7 +458,7 @@ function addCard(arr,classStr)
 				'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[i].title+'</div></div>' +
 				'<div class="card-text" style="height:6.5rem">' +
 				'<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">'+arr[i].xlnum+'</span>条 &nbsp;&nbsp;在线车辆'+'<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].carnum+'</span>辆'+'</p>' +
-				'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].jhnum+'</span>辆 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].sjnum+'</span>辆 </p>'+
+				'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].jhnum+'</span>个 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].sjnum+'</span>个 </p>'+
 
 				'<p style="float:left;padding-left: 0.5rem">昨日班次执行率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[i].bczxl+'</span>%'+'</p>'+
 				'<p style="float:left;padding-left: 0.5rem">昨日首末班车准点率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[i].smbczdl+'</span>%'+'</p></div></div>')
@@ -516,7 +516,7 @@ function addCard(arr,classStr)
 						'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[0].title+'</div></div>' +
 						'<div class="card-text" style="height:6.5rem">' +
 						'<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">'+arr[0].xlnum+'</span>条 &nbsp;&nbsp;在线车辆'+'<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].carnum+'</span>辆'+'</p>' +
-						'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].jhnum+'</span>辆 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].sjnum+'</span>辆 </p>'+
+						'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].jhnum+'</span>个 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].sjnum+'</span>个 </p>'+
 
 						'<p style="float:left;padding-left: 0.5rem">昨日班次执行率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[0].bczxl+'</span>%'+'</p>'+
 						'<p style="float:left;padding-left: 0.5rem">昨日首末班车准点率<span class="num-font" style="width:3rem;margin-right: 0px">'+arr[0].smbczdl+'</span>%'+'</p></div></div>')

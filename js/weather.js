@@ -82,7 +82,6 @@ function changeWeather(){
                         w="大暴雨";
                     } else  if(data[i].one_rain>250){
                         w="特大暴雨";
-
                     }
 
                     if(w!="-1"){

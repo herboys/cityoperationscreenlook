@@ -236,7 +236,7 @@ function getDutyList() {
 	//addTableList1('.core-table', coreArr);
 	//addTableList1('.linkage-table', linkageArr)
 	addTableList2(".linkage-scroll-table", linkageArrScroll);
-	//addTableList3(".linkage-table2", linkageArrScroll);
+	addTableList3(".linkage-table2", linkageArrScroll);
 }
 
 $(function () {

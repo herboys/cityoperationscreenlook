@@ -508,7 +508,7 @@
                 </div>
               </div>
 
-              <div class="main-list">
+              <div class="main-list" onclick="ModalClick()">
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -665,7 +665,7 @@
         </div>
         <!-- <div class="map-box" id="mapContainer2"></div> -->
       </div>
-      <div  v-show="restShow" class="rest-box" transition="fade">
+      <div  v-show="restShow" class="rest-box" >
         <a class="rescue-close" @click="restClose"> x</a>
         <div class="rest-box-big">
           <div class="rest-box-left">
@@ -1585,7 +1585,7 @@ function ModalClick() {
           .get(
             // "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
             // "http://10.15.14.66:8080/city-operation/jdcymapofgaud/findall"
-            //"http://127.0.0.1:5500/map/mock_data.json"
+            // "http://127.0.0.1:5500/map/mock_data.json"
              FIRE_URL+"/jdcymapofgaud/findall"
           )
           .then(

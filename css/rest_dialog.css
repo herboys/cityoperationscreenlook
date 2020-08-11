@@ -149,4 +149,17 @@
     background:rgba(240,20,20,0)
 }
    
-   
+.rest-box{
+  /* transition: 1s height cubic-bezier(.83,.97,.05,1.44); */
+  /* animation: rotate 5s linear 0s infinite alternate; */
+  animation: go 1s ease 0s 1 ;   /*声明动画*/
+}
+/*定义动画*/
+@keyframes go {
+  from {   /*0%*/
+      transform: translateX(-400px);
+  }
+  to {    /*100%*/
+      transform: translateX(400px);
+  }
+}

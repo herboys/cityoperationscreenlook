@@ -539,7 +539,12 @@ function addShbz(arr)
 	var maxNum=arr.length>5?5:arr.length
 	for(var i=0;i<maxNum;i++)
 	{
-		$('.shbz-warp .text-box').append('<div style="left:'+i*10+'%;top:'+i*20+'%" class="text-list"><p>'+arr[i].title+'</p><p><span class="num-font">'+arr[i].num+'</span>'+arr[i].unit+'</p></div>')
+		if(arr[i].title==="养老机构"){
+			$('.shbz-warp .text-box').append('<div style=" cursor: pointer;left:'+i*10+'%;top:'+i*20+'%" class="text-list" onclick="oldPeopleHomePage()"><p>'+arr[i].title+'</p><p><span class="num-font">'+arr[i].num+'</span>'+arr[i].unit+'</p></div>')
+		}else{
+			$('.shbz-warp .text-box').append('<div style="left:'+i*10+'%;top:'+i*20+'%" class="text-list"><p>'+arr[i].title+'</p><p><span class="num-font">'+arr[i].num+'</span>'+arr[i].unit+'</p></div>')
+		}
+
 	}
 
 	$('.shbz-warp .text-box').mouseenter(function(){
@@ -567,7 +572,12 @@ function shbzInit(arr){
 			//alert($('.shbz-warp .text-list').length)
 			if($('.shbz-warp .text-list').length==5)
 			{
-				$('.shbz-warp .text-box').append('<div style="left:40%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
+				if(arr[startNum].title==="养老机构"){
+					$('.shbz-warp .text-box').append('<div style="cursor: pointer;left:40%;top:100%;opacity:0;" class="text-list" onclick="oldPeopleHomePage()"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
+				}else{
+					$('.shbz-warp .text-box').append('<div style="left:40%;top:100%;opacity:0" class="text-list"><p>'+arr[startNum].title+'</p><p><span class="num-font">'+arr[startNum].num+'</span>'+arr[startNum].unit+'</p></div>')
+				}
+
 				for(let i=0;i<$('.shbz-warp .text-list').length;i++)
 				{
 					if(i==0)
@@ -711,4 +721,8 @@ function hjbzInit(arr) {
 		}, 5000)
 
 	}
+}
+
+function oldPeopleHomePage(){
+	alert("养老机构")
 }

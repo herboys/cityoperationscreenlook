@@ -90,7 +90,7 @@ var zygyArr=[
 //交通人流数组
 var jtzkArr=[
 	{
-		title:'公交线路情况',
+		title:'公交车辆',
 		//today:35,
 		//week:253,
 		//month:1534,
@@ -450,12 +450,12 @@ function addCard(arr,classStr)
 	var opacity=(1-(arr.length-1)*0.1)<0.4?'0.4':(1-(arr.length-1)*0.1)
 	boxObj.html('');
 	let i=0;
-	if(arr[0].title==="公交线路情况"){
+	if(arr[0].title==="公交车辆"){
 		for(;i<1;i++)
 		{
 			console.log(arr[0])
 			boxObj.append('<div class="card-box" style="width:20rem" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;' +
-				'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[i].title+'</div></div>' +
+				'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered" style="height:5.8rem">'+arr[i].title+'</div></div>' +
 				'<div class="card-text" style="height:6.5rem">' +
 				'<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">'+arr[i].xlnum+'</span>条 &nbsp;&nbsp;在线车辆'+'<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].carnum+'</span>辆'+'</p>' +
 				'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].jhnum+'</span>个 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[i].sjnum+'</span>个 </p>'+
@@ -507,13 +507,13 @@ function addCard(arr,classStr)
 					}
 				}
 				arr.unshift(arr.splice(arr.length-1 , 1)[0]);
-				if(arr[0].title==="公交线路情况"){
+				if(arr[0].title==="公交车辆"){
 					/*boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left: 0px;' +
 						'top:0px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[0].title+'</div></div>' +
 						'<div class="card-text"><p style="float:left;width: 8rem;">线路总数<span class="num-font">'+arr[0].xlnum+'</span>条'+'</p><p style="float:left;width:8rem">在线车辆<span class="num-font">'+arr[0].carnum+'</span>辆'+
 						'</p><p>当日计划班次<span class="num-font">'+arr[0].jhnum+'</span>辆'+'</p></div></div>')*/
 					boxObj.prepend('<div class="card-box" style="width:20rem" style="opacity:'+((1-(arr.length-1-i)*0.1)<opacity?opacity:(1-(arr.length-1-i)*0.1))+';left:'+(apartW*i)+'px;' +
-						'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[0].title+'</div></div>' +
+						'top:'+(apartH*i)+'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered" style="height:5.8rem">'+arr[0].title+'</div></div>' +
 						'<div class="card-text" style="height:6.5rem">' +
 						'<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">'+arr[0].xlnum+'</span>条 &nbsp;&nbsp;在线车辆'+'<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].carnum+'</span>辆'+'</p>' +
 						'<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].jhnum+'</span>个 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">'+arr[0].sjnum+'</span>个 </p>'+
@@ -660,9 +660,9 @@ function hjbzInit(arr) {
 		clearInterval(hjbzTime)
 		hjbzTime = setInterval(function () {
 			if ($('.hjbz-warp .text-list').length == 3) {
-				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>' + arr[hjbzNum].title + '</p><p><span class="num-font">' + arr[startNum].num + '</span>' + arr[hjbzNum].unit + '</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>' + arr[hjbzNum + 1].title + '</p><p><span class="num-font">' + arr[startNum + 1].num + '</span>' + arr[hjbzNum + 1].unit + '</p></div>')
-				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>' + arr[hjbzNum + 2].title + '</p><p><span class="num-font">' + arr[startNum + 2].num + '</span>' + arr[hjbzNum + 2].unit + '</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:15%;top:0%;opacity:0" class="text-list"><p>' + arr[hjbzNum].title + '</p><p><span class="num-font">' + arr[hjbzNum].num + '</span>' + arr[hjbzNum].unit + '</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:10%;top:50%;opacity:0" class="text-list"><p>' + arr[hjbzNum + 1].title + '</p><p><span class="num-font">' + arr[hjbzNum + 1].num + '</span>' + arr[hjbzNum + 1].unit + '</p></div>')
+				$('.hjbz-warp .text-box').append('<div style="left:5%;top:100%;opacity:0" class="text-list"><p>' + arr[hjbzNum + 2].title + '</p><p><span class="num-font">' + arr[hjbzNum + 2].num + '</span>' + arr[hjbzNum + 2].unit + '</p></div>')
 				for (let i = 0; i < $('.hjbz-warp .text-list').length; i++) {
 					if (i == 0) {
 						let num = i;

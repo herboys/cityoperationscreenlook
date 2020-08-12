@@ -22,7 +22,7 @@
   height: 100%;
   /* background-color: pink; */
 }
-.main-title .top-title1{
+ .top-title1{
   font-size: 1rem;
   position:absolute;
   right: 13%;
@@ -30,12 +30,12 @@
  transform: translate(-50%, -50%);
  color: #fff;
 }
-.main-title .top-img1{
+ .top-img1{
   width: 8rem;
   height: 2.35rem;
   margin-top: 0.68rem;
 }
-.main-title .top-title2{
+ .top-title2{
   font-size: 1rem;
   position:absolute;
   top:50%;
@@ -43,7 +43,23 @@
  transform: translate(-50%, -50%);
  color: #fff;
 }
-.main-title .top-img2{
+.top-title3{
+  font-size: 1rem;
+  position:absolute;
+  left: 4.5%;
+  top: 15%;
+ transform: translate(-50%, -50%);
+ color: #fff;
+}
+.top-title4{
+  font-size: 1rem;
+  position:absolute;
+  top:15%;
+  left: 11%;;
+ transform: translate(-50%, -50%);
+ color: #fff;
+}
+ .top-img2{
   width: 6rem;
   height: 2rem;
   margin-top: 0.98rem;
@@ -120,4 +136,30 @@
   height: 49.35rem;
   z-index: 11;
   /* background: url(../images/imgs/bg-img.png) no-repeat; */
+}
+
+.fade-transition {
+    transition:all 0.1s;
+    opacity: 1;
+    background:rgba(240,20,20,0.5)
+}
+  
+.fade-enter,.fade-leave {
+   opacity:0;
+    background:rgba(240,20,20,0)
+}
+   
+.rest-box{
+  /* transition: 1s height cubic-bezier(.83,.97,.05,1.44); */
+  /* animation: rotate 5s linear 0s infinite alternate; */
+  animation: go 1s ease 0s 1 ;   /*声明动画*/
+}
+/*定义动画*/
+@keyframes go {
+  from {   /*0%*/
+      transform: translateX(-400px);
+  }
+  to {    /*100%*/
+      transform: translateX(400px);
+  }
 }

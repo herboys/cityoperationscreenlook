@@ -21,6 +21,25 @@ function addTableList(name, arr) {
 	}
 }
 
+var streetUrl=new Object();
+
+
+streetUrl["工业区"] =	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=zOC3P4zi8q5cNj4eerHa103BPqjPVq5M"
+streetUrl["江桥镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=cGY379xEe8zqL7UvnTekGinxMMPpGmEq"
+streetUrl["外冈镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=1OL40c-E-oNj2tSNrsZ7Xs0QSFeVqCbL"
+streetUrl["华亭镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=6zBuhhJlaaN1l-mBKIoAKZjrO-MYOm1b"
+streetUrl["徐行镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=tAgmmwNNl_nfmGHe_74Psv_7mA2C5Ubu"
+streetUrl["嘉定新城(马陆镇)"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=3HjQBizY2LJOz-a15FcluIHXSqOj-Wmk"
+streetUrl["安亭镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=2t4XI4c657NutfueY_SrXwSlY7PhkUlC"
+streetUrl["南翔镇"]= "http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=OjO62riA9EoGvpeNNqHOd6WkYwbn4hDz"
+streetUrl["嘉定镇街道"]	="http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=YnP6Avbz5Oq1-jbI7NlnMti_oRZkBthA"
+streetUrl["菊园新区"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=QOi7CjQf6NZWVbPVnFwbGZrI20D4wFg1"
+streetUrl["真新街道"]="“”http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=ayXKuEhgZhclEqPXyaXL4Xz7pfx6ElNF"
+streetUrl["新成路街道"]="http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=iWCW6vTk0s-UgLaolu6bMYp1aR0af93W"
+
+
+
+
 function getDutyListReal() {
 	var coreArr = [];
 	var linkageArr = [];
@@ -39,6 +58,7 @@ function getDutyListReal() {
 				for (var key in centerDuty[i]) {
 					if (centerDuty[i][key] == null) centerDuty[i][key] = "--";
 				}
+
 				var obj = new Object();
 				if (centerDuty[i].area === "嘉定新城（马陆镇）") {
 					centerDuty[i].area = "嘉定新城(马陆镇)";
@@ -76,65 +96,90 @@ function getDutyListReal() {
 function getDutyList() {
 	var coreArr = [];
 	// var linkageArr=[];
+
 	var linkageArr = [{
-			address: "部门1",
+			address: "工业区",
 			leaderName: "zs1",
 			dutyName: "zs1",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "江桥镇",
 			leaderName: "zs2",
 			dutyName: "zs2",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "外冈镇",
 			leaderName: "zs3",
 			dutyName: "zs3",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "华亭镇",
 			leaderName: "zs4",
 			dutyName: "zs4",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "徐行镇",
 			leaderName: "zs5",
 			dutyName: "zs5",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "嘉定新城(马陆镇)",
 			leaderName: "zs6",
 			dutyName: "zs6",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "安亭镇",
 			leaderName: "zs7",
 			dutyName: "zs7",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "南翔镇",
 			leaderName: "zs8",
 			dutyName: "zs8",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "嘉定镇街道",
 			leaderName: "zs9",
 			dutyName: "zs9",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "菊园新区",
 			leaderName: "zs10",
 			dutyName: "zs10",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "真新街道",
 			leaderName: "zs11",
 			dutyName: "zs11",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 		{
-			address: "部门1",
+			address: "新成路街道",
 			leaderName: "zs12",
 			dutyName: "zs12",
+			foremanName:"aaa",
+			dutyPhone:"11111"
 		},
 
 	];
@@ -236,7 +281,7 @@ function getDutyList() {
 	//addTableList1('.core-table', coreArr);
 	//addTableList1('.linkage-table', linkageArr)
 	addTableList2(".linkage-scroll-table", linkageArrScroll);
-	//addTableList3(".linkage-table2", linkageArrScroll);
+	addTableList3(".linkage-table2", linkageArrScroll);
 }
 
 $(function () {
@@ -299,28 +344,61 @@ function getNowFormatDate1() {
 }
 
 function addTableList1(name, arr) {
+
 	$(name).find(".list-box").html("");
-	for (let i = 0; i < arr.length; i++) {
-		setTimeout(function () {
-			$(name)
-				.find(".list-box")
-				.append(
-					'<div class="table-list"><p>' +
-					arr[i].address +
-					"</p><p>" +
-					arr[i].leaderName +
-					"</p><p>" +
-					arr[i].foremanName +
-					"</p>" +
-					//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
-					//'<p class="num">'
-					"<p>" +
-					arr[i].dutyName +
-					"</p><p>" +
-					arr[i].dutyPhone +
-					"</p></div>"
-				);
-		}, 200 * i);
+
+	var index=0;
+	for (var i = 0; i < arr.length; i++) {
+		if(name===".core-table"){
+			setTimeout(function () {
+
+				$(name)
+					.find(".list-box")
+					.append(
+						'<div class="table-list"><p>' +
+						'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+
+						arr[index].address +
+						'</a></p><p>' +
+						arr[index].leaderName +
+						"</p><p>" +
+						arr[index].foremanName +
+						"</p>" +
+						//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
+						//'<p class="num">'
+						"<p>" +
+						arr[index].dutyName +
+						"</p><p>" +
+						arr[index].dutyPhone +
+						"</p></div>"
+					);
+				index++;
+			}, 200 * i);
+
+
+		}else{
+			setTimeout(function () {
+				$(name)
+					.find(".list-box")
+					.append(
+						'<div class="table-list"><p>' +
+						arr[i].address +
+						"</p><p>" +
+						arr[i].leaderName +
+						"</p><p>" +
+						arr[i].foremanName +
+						"</p>" +
+						//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
+						//'<p class="num">'
+						"<p>" +
+						arr[i].dutyName +
+						"</p><p>" +
+						arr[i].dutyPhone +
+						"</p></div>"
+					);
+			}, 200 * i);
+		}
+
+
 
 		if (name == ".linkage-table" && i == arr.length - 1 && arr.length > 6) {
 			linkageMax = arr.length;
@@ -338,6 +416,7 @@ function addTableList1(name, arr) {
 			}, 200 * i + 200);
 		}
 	}
+	alert(i)
 }
 //  工单table滚动
 function addTableList3(name, arr) {

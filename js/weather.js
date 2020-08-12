@@ -186,9 +186,7 @@ function changeWeather(){
         type : 'get',
         async : false,
         success : function(data) {
-            if(data.length>0){
-                clearWarning();
-            }
+            clearWarning();
 
             var grayAlarm=[];
             var index=0;

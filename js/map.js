@@ -56,6 +56,7 @@ function initMap() {
         zoom: 12,
         zooms: [11, 18],  //设置地图缩放级别
     });
+
     setMapStyle();      /*设置地图风格*/
     setMapFeatures();   /*设置地图显示要素*/
     drawJiadingBounds();   //加载行政区划插件
@@ -63,6 +64,7 @@ function initMap() {
     addJiadingZhenText();
     addTraffic();           /*添加实时路况情况*/
     addPoiMarker();         /*添加嘉定区主要监控点*/
+    map.addControl(new AMap.Scale());
 }
 
 /*设置地图风格*/

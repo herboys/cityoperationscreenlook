@@ -278,7 +278,7 @@ function getDutyList() {
 	
 		// time street address content
 	];
-	//addTableList1('.core-table', coreArr);
+	// addTableList1('.core-table', coreArr);
 	//addTableList1('.linkage-table', linkageArr)
 	addTableList2(".linkage-scroll-table", linkageArrScroll);
 	addTableList3(".linkage-table2", linkageArrScroll);
@@ -357,6 +357,7 @@ function addTableList1(name, arr) {
 					.append(
 						'<div class="table-list"><p>' +
 						'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+
+						'<img src="../images/map-center.png" style="display: inline-block!important;width: 30px;height: 30px;vertical-align: middle;"> '+
 						arr[index].address +
 						'</a></p><p>' +
 						arr[index].leaderName +

@@ -1170,9 +1170,9 @@
         <div class="map-center" @click="mapCenter" title="回到行政区域中心">
           <img src="images/refresh-left.png" alt="" />
         </div>
-        <div class="map-delete" @click="mapDeletePolyline" title="消除全部划线">
+        <!-- <div class="map-delete" @click="mapDeletePolyline" title="消除全部划线">
           <img src="images/icon-delete.png" alt="" />
-        </div>
+        </div> -->
         <div class="dialog-toggle" @click="showClick">
           <span v-show="showDialog">折叠</span>
           <span v-show="!showDialog">展开堵点信息</span>
@@ -1197,7 +1197,7 @@
                 </div>
                 <div v-if="list1.length>0">
                   <div v-for="(item,index) in list1" style="margin: 0.4rem 0;" @click="clickLocus1(item,index)">
-                    <span class="sub-bot1">{{item.name}}-{{item.direction}}</span>
+                    <span class="sub-bot1">{{item.roadname}}-{{item.location}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1213,7 +1213,7 @@
                 </div>
                 <div v-if="list2.length>0">
                   <div v-for="(item, index) in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item, index)">
-                    <span class="sub-bot2">{{item.name}}-{{item.direction}}</span>
+                    <span class="sub-bot2">{{item.roadname}}-{{item.location}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1229,7 +1229,7 @@
                 </div>
                 <div v-if="list3.length>0">
                   <div v-for="(item, index) in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item, index)">
-                    <span class="sub-bot3">{{item.name}}-{{item.direction}}</span>
+                    <span class="sub-bot3">{{item.roadname}}-{{item.location}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1462,92 +1462,32 @@ function ModalClick() {
           this.switchShow4 = false
       },
       clickLocus1(item, index) {
-        this.list1[index].isShow = !this.list1[index].isShow;
-        if (this.list1[index].isShow) {
-          let lineArr = [];
-          let str = "";
-          if (this.list1[index].polyline) {
-            str = this.list1[index].polyline;
+        let str = "";
+          if (this.list1[index].lnglat) {
+            str = this.list1[index].lnglat;
           }
-          let arr = str.split(";");
-          arr.forEach((items) => {
-            let singleArr = items.split(",");
-            lineArr.push(singleArr);
-          });
-          var polyline1 = new AMap.Polyline({
-            map: map,
-            path: lineArr,
-            showDir: true,
-            strokeColor: "rgb(255, 230, 0)", //线颜色
-            // strokeOpacity: 1,     //线透明度
-            strokeWeight: 6, //线宽
-            strokeStyle: "solid", //线样式
-          });
-          this.polylines1.set(index, polyline1);
-        } else {
-          map.remove(this.polylines1.get(index));
-          this.polylines1.delete(index);
-        }
+          let arr = str.split(",");
+          console.log(arr, '===arr');
+          map.setZoomAndCenter(15, arr);
       },
       clickLocus2(item, index) {
-        this.list2[index].isShow = !this.list2[index].isShow;
-        if (this.list2[index].isShow) {
-          let lineArr = [];
-          let str = "";
-          if (this.list2[index].polyline) {
-            str = this.list2[index].polyline;
+        let str = "";
+          if (this.list2[index].lnglat) {
+            str = this.list2[index].lnglat;
           }
-          let arr = str.split(";");
-          arr.forEach((items) => {
-            let singleArr = items.split(",");
-            lineArr.push(singleArr);
-          });
-          this.polylines2.set(
-            index,
-            new AMap.Polyline({
-              map: map,
-              path: lineArr,
-              showDir: true,
-              strokeColor: "rgb(255, 145, 0)", //线颜色
-              // strokeOpacity: 1,     //线透明度
-              strokeWeight: 6, //线宽
-              strokeStyle: "solid", //线样式
-            })
-          );
-        } else {
-          map.remove(this.polylines2.get(index));
-          this.polylines2.delete(index);
-        }
+          let lineArr = str.split(",");
+          console.log(lineArr, '===lineArr');
+          map.setZoomAndCenter(15, lineArr);
+        ;
       },
       clickLocus3(item, index) {
-        this.list3[index].isShow = !this.list3[index].isShow;
-        if (this.list3[index].isShow) {
-          let lineArr = [];
           let str = "";
-          if (this.list3[index].polyline) {
-            str = this.list3[index].polyline;
+          if (this.list3[index].lnglat) {
+            str = this.list3[index].lnglat;
           }
-          let arr = str.split(";");
-          arr.forEach((items) => {
-            let singleArr = items.split(",");
-            lineArr.push(singleArr);
-          });
-          this.polylines3.set(
-            index,
-            new AMap.Polyline({
-              map: map,
-              path: lineArr,
-              showDir: true,
-              strokeColor: "rgb(255, 0, 0)", //线颜色
-              // strokeOpacity: 1,     //线透明度
-              strokeWeight: 6, //线宽
-              strokeStyle: "solid", //线样式
-            })
-          );
-        } else {
-          map.remove(this.polylines3.get(index));
-          this.polylines3.delete(index);
-        }
+          let arr = str.split(",");
+          console.log(arr, '===arr');
+          map.setZoomAndCenter(15, arr);
       },
 
       showClick() {
@@ -1583,21 +1523,20 @@ function ModalClick() {
         //发送get请求
         this.$http
           .get(
-            // "http://192.168.10.32:9090/city-operation/jdcymapofgaud/findall"
-            // "http://10.15.14.66:8080/city-operation/jdcymapofgaud/findall"
-            // "http://127.0.0.1:5500/map/mock_data.json"
-             FIRE_URL+"/jdcymapofgaud/findall"
+            // "http://10.15.2.233:8091/jdcytrafficnew/findall"
+            "http://127.0.0.1:5500/map/mock_data.json"
+            //  FIRE_URL+"/jdcymapofgaud/findall"
           )
           .then(
             function (res) {
               console.log(res.data, "res");
               res.data.forEach((item) => {
                 item.isShow = false;
-                if (item.length <= 5000) {
+                if (item.length <= 1000) {
                   return this.list1.push(item);
-                } else if (item.length > 5000 && item.length <= 10000) {
+                } else if (item.length > 1000 && item.length <= 2000) {
                   return this.list2.push(item);
-                } else if (item.length > 10000) {
+                } else if (item.length > 2000) {
                   return this.list3.push(item);
                 }
               });

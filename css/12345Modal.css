@@ -16,8 +16,6 @@ body {
 
 }
 
-
-
 .Modal-warp:after {
     content: "X";
     pointer-events: auto;

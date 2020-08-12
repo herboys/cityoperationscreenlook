@@ -283,7 +283,7 @@ function addTableList1(name, arr) {
 					.append(
 						'<div class="table-list"><p>' +
 						'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+
-						'<img src="../images/map-center.png" style="display: inline-block!important;width: 30px;height: 30px;vertical-align: middle;"> '+
+						'<img src="images/map-center.png" style="display: inline-block!important;width: 30px;height: 30px;vertical-align: middle;"> '+
 						arr[index].address +
 						'</a></p><p>' +
 						arr[index].leaderName +

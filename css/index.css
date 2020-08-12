@@ -287,4 +287,47 @@ display: none;
     left: 34.6rem;
     width: 130.8rem;
     height: 48.3rem;
+    animation: 0.6s;
+    -webkit-animation: zoom 0.6s;
+    /*box-shadow: 10px 10px 10px red;*/
+    /*-moz-box-shadow: 110px 10px 10px red;*/
+    /*-webkit-box-shadow: 10px 10px 10px red;*/
+}
+.ModalBox:before,.ModalBox:after {
+    /*影子 主要用了伪类*/
+    position: absolute;
+    width: 35%;
+    height: 10px;
+    content: ' ';/*空内容*/
+    left: 12px;
+    bottom: 19px;
+    background: rgba(0, 0, 0, 0);
+    -webkit-transform: skew(-5deg) rotate(-4deg);
+    -moz-transform: skew(-5deg) rotate(-4deg);
+    -ms-transform: skew(-5deg) rotate(-4deg);
+    -o-transform: skew(-5deg) rotate(-5deg);
+    transform: skew(-5deg) rotate(-4deg);
+    -webkit-box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 6px 18px 12px rgba(0,0,0,0.6);
+    box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    max-width: 300px; /* 最大宽度*/
+}
+.ModalBox:after {
+    left: auto; /*重新来个这段的目的 利用CSS优先级创建 右侧阴影，这段肯定是在 .boxshadow:before,.boxshadow:after 这段之后的~~*/
+    right: 12px;
+    -webkit-transform: skew(5deg) rotate(4deg);
+    -moz-transform: skew(5deg) rotate(4deg);
+    -ms-transform: skew(5deg) rotate(4deg);
+    -o-transform: skew(5deg) rotate(4deg);
+    transform: skew(5deg) rotate(4deg);
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }

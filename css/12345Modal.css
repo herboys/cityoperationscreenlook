@@ -14,8 +14,9 @@ body {
     display: flex;
     justify-content: space-between;
 
-
 }
+
+
 
 .Modal-warp:after {
     content: "X";

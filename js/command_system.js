@@ -22,24 +22,6 @@ function addTableList(name, arr) {
 }
 
 var streetUrl=new Object();
-
-
-streetUrl["工业区"] =	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=zOC3P4zi8q5cNj4eerHa103BPqjPVq5M"
-streetUrl["江桥镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=cGY379xEe8zqL7UvnTekGinxMMPpGmEq"
-streetUrl["外冈镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=1OL40c-E-oNj2tSNrsZ7Xs0QSFeVqCbL"
-streetUrl["华亭镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=6zBuhhJlaaN1l-mBKIoAKZjrO-MYOm1b"
-streetUrl["徐行镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=tAgmmwNNl_nfmGHe_74Psv_7mA2C5Ubu"
-streetUrl["嘉定新城(马陆镇)"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=3HjQBizY2LJOz-a15FcluIHXSqOj-Wmk"
-streetUrl["安亭镇"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=2t4XI4c657NutfueY_SrXwSlY7PhkUlC"
-streetUrl["南翔镇"]= "http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=OjO62riA9EoGvpeNNqHOd6WkYwbn4hDz"
-streetUrl["嘉定镇街道"]	="http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=YnP6Avbz5Oq1-jbI7NlnMti_oRZkBthA"
-streetUrl["菊园新区"]=	"http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=QOi7CjQf6NZWVbPVnFwbGZrI20D4wFg1"
-streetUrl["真新街道"]="“”http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=ayXKuEhgZhclEqPXyaXL4Xz7pfx6ElNF"
-streetUrl["新成路街道"]="http://10.81.71.38/chengyun/chengyun_town/page1.html#/?code=iWCW6vTk0s-UgLaolu6bMYp1aR0af93W"
-
-
-
-
 function getDutyListReal() {
 	var coreArr = [];
 	var linkageArr = [];
@@ -83,7 +65,23 @@ function getDutyListReal() {
 				linkageArr[i] = obj;
 			}
 
-			addTableList1(".core-table", coreArr);
+			$.ajax({
+				url:STATIC_URL+"/jdcytownurl/findAll",
+				type:"get",
+				async: true,
+				success:function (data) {
+
+					for(var i=0;i<data.length;i++){
+						if (data[i].streetName === "嘉定新城（马陆镇）") {
+							data[i].streetName = "嘉定新城(马陆镇)";
+						}
+						streetUrl[data[i].streetName]=data[i].url
+					}
+					addTableList1(".core-table", coreArr);
+				}
+			})
+
+			//addTableList1(".core-table", coreArr);
 				// addTableList1('.core-table2',coreArr);
 			addTableList1(".linkage-table", linkageArr);
 		},
@@ -184,104 +182,32 @@ function getDutyList() {
 
 	];
 	coreArr = linkageArr;
-	var linkageArrScroll = [
-		{
-			date: "8月1日",
-			time: "14时30分",
-			street: "安亭镇",
-			address: "翔方公路2368号",
-			type: "道路交通",
-			content: "一辆厢式货车与一辆摩托车发生碰撞，骑车人死亡（1人）",
-		},
+	var linkageArrScroll =[]
+	$.ajax({
+		url:STATIC_URL+"/jdcyemergency/findTopByNumber/6",
+		type:"get",
+		async:true,
+		success:function (data) {
 
-		{
-			date: "8月2日",
-			time: "12时38分",
-			street: "工业区",
-			address: "叶城路沪宜公路口",
-			type: "道路交通",
-			content: "一辆货车与一辆摩托车发生碰撞，骑车人死亡（1人）",
-		},
-		{
-			date: "8月2日",
-			time: "19时",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
-			type: "非正常死亡",
-			content: "一名儿童在车间内被发现压在成捆衣服下，窒息死亡（1人）",
-		},
-		{
-			date: "8月3日",
-			time: "11时16分",
-			street: "江桥镇",
-			address: "黄家花园路靖远路口",
-			type: "非正常死亡",
-			content: "两名工人在检测污水管道时跌入窨井内死亡（2人）",
-		},
-		{
-			date: "8月4日",
-			time: "8时4分",
-			street: "G15高速",
-			address: "G15高速由南向北127.4K处",
-			type: "道路交通",
-			content: "一辆轻型箱式货车与一辆重型货车发生碰撞，轻型箱式货车副驾驶死亡（1人）",
-		},
-		{
-			date: "6月27日",
-			time: "19时07分许",
-			street: "工业区",
-			address: "工业区朱戴路50弄136号",
-			type: "事件类型",
-			content: "一名12岁男童自缢身亡。",
-		},
-		{
-			date: "6月30日",
-			time: "13时20分许",
-			street: "工业区",
-			address: "工业区城北路、汇旺路路口",
-			type: "事件类型",
-			content: "一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
-		},
-		{
-			date: "7月3日",
-			time: "8时55分许",
-			street: "徐行镇",
-			address: "徐行镇宝钱公路、前曹公路路口",
-			type: "事件类型",
-			content: "一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
-		},
-		{
-			date: "6月27日",
-			time: "19时07分许",
-			street: "工业区",
-			address: "工业区朱戴路50弄136号",
-			type: "事件类型",
-			content: "一名12岁男童自缢身亡。",
-		},
-		{
-			date: "6月30日",
-			time: "13时20分许",
-			street: "工业区",
-			address: "工业区城北路、汇旺路路口",
-			type: "事件类型",
-			content: "一辆中型货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
-		},
-		{
-			date: "7月3日",
-			time: "8时55分许",
-			street: "徐行镇",
-			address: "徐行镇宝钱公路、前曹公路路口",
-			type: "事件类型",
-			content: "一辆大型厢式货车与一辆电动自行车发生碰撞，致电动自行车骑车人死亡。",
-		},
-	
-	
-		// time street address content
-	];
-	// addTableList1('.core-table', coreArr);
-	//addTableList1('.linkage-table', linkageArr)
-	addTableList2(".linkage-scroll-table", linkageArrScroll);
-	addTableList3(".linkage-table2", linkageArrScroll);
+			//"id":18,"date":"8月9日","time":"9时26分","streetName":"安亭镇","addr":"安亭老街618号","type":"安全生产","description":"四名男子在焊接作业中，气体钢瓶发生爆燃，2人死亡2人受伤"
+			for(var i=0;i<data.length;i++){
+				var obj=new Object()
+				obj.date=data[i].date
+				obj.time=data[i].time
+				obj.street=data[i].streetName
+				obj.address=data[i].addr
+				obj.type=data[i].type
+				obj.content=data[i].description
+				linkageArrScroll[i]=obj
+			}
+
+			addTableList2(".linkage-scroll-table", linkageArrScroll);
+		//	addTableList3(".linkage-table2", linkageArrScroll);
+		}
+	})
+
+
+
 }
 
 $(function () {
@@ -382,20 +308,21 @@ function addTableList1(name, arr) {
 					.find(".list-box")
 					.append(
 						'<div class="table-list"><p>' +
-						arr[i].address +
+						arr[index].address +
 						"</p><p>" +
-						arr[i].leaderName +
+						arr[index].leaderName +
 						"</p><p>" +
-						arr[i].foremanName +
+						arr[index].foremanName +
 						"</p>" +
 						//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
 						//'<p class="num">'
 						"<p>" +
-						arr[i].dutyName +
+						arr[index].dutyName +
 						"</p><p>" +
-						arr[i].dutyPhone +
+						arr[index].dutyPhone +
 						"</p></div>"
 					);
+				index++;
 			}, 200 * i);
 		}
 
@@ -417,7 +344,7 @@ function addTableList1(name, arr) {
 			}, 200 * i + 200);
 		}
 	}
-	alert(i)
+	//alert(i)
 }
 //  工单table滚动
 function addTableList3(name, arr) {
@@ -491,8 +418,8 @@ function addTableList2(name, arr) {
 			linkScrollMax = arr.length;   //6
 			linkageNumScroll = 0;
 			setTimeout(function () {
-			//	var html = $(name).find(".list-box").html();
-			//	$(name).find(".list-box").append(html);
+				var html = $(name).find(".list-box").html();
+				$(name).find(".list-box").append(html);
 				linkageIntScroll();
 				$(name).mouseenter(function () {
 					clearInterval(linkageScrollTime);
@@ -517,7 +444,7 @@ function linkageInt() {
 		}
 		linkageNum++;
 
-		$(".linkage-table .list-box").animate({
+		$(".linkage-table .list-box").stop(true, true).animate({
 				top: -(moveT + 1) * linkageNum * 5.82,
 			},
 			1000,
@@ -544,8 +471,9 @@ function linkageInt2() {
 		}
 		linkageNum++;
 
-		$(".linkage-table2 .list-box").animate({
-				top: -(moveT + 1) * linkageNum * 6.022,
+
+		$(".linkage-table2 .list-box").stop(true, true).animate({
+				top: -(moveT + 1) * linkageNum * 5.82,
 			},
 			1000,
 			// function () {
@@ -573,8 +501,9 @@ function linkageIntScroll() {
 		linkageNumScroll++;
 		//alert(linkageNumScroll)
 		//alert(moveT)
-		$(".linkage-scroll-table .list-box").animate({
-				top: -(moveT + 1) * linkageNumScroll * 5.508,
+		$(".linkage-scroll-table .list-box").stop(true, true).animate({
+				top: -(moveT + 1) * linkageNumScroll * 6.05,
+
 			},
 			1000,
 			// function () {

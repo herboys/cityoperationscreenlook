@@ -253,7 +253,7 @@
                 <div class="center-border border-box"></div>
                 <div class="bottom-border border-box"></div>
               </div>
-              <h3>交通人流</h3>
+              <h3>交通客流</h3>
               <div class="title-border-box title-border-right">
                 <div class="top-border border-box"></div>
                 <div class="center-border border-box"></div>
@@ -1529,8 +1529,9 @@
         this.$http
           .get(
             // "http://10.15.2.233:8091/jdcytrafficnew/findall"
-            "http://127.0.0.1:5500/map/mock_data.json"
+            //"http://127.0.0.1:5500/map/mock_data.json"
             //  FIRE_URL+"/jdcymapofgaud/findall"
+                  FIRE_URL+"/jdcytrafficnew/findall"
           )
           .then(
             function (res) {

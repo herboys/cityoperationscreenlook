@@ -608,6 +608,7 @@
 	border-radius: 3px;
 	padding: 1rem;
 	padding-top: 2rem;
+	font-weight: bold;
 }
 
 .dialog-close {
@@ -669,7 +670,7 @@
 	display: inline-table;
 	color: black;
 	padding: 0 0.3rem;
-	border-bottom: rgba(0, 0, 0, 0.8) 0.01rem solid ;
+	border-bottom: rgba(0, 0, 0, 0.6) 1px solid ;
 	font-size: 0.8rem;
 	cursor: pointer;
 	padding-bottom: 0.3rem;

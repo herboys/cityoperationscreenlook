@@ -473,7 +473,7 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-              <div class="main-list" @click="rescueClick">
+              <div class="main-list" >
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -486,7 +486,7 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-              <div class="main-list" onclick="ModalClick()">
+              <div class="main-list" >
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -499,7 +499,7 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-              <div class="main-list " @click="restClick" >
+              <div class="main-list" @click="restClick" >
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -513,7 +513,7 @@
                 </div>
               </div>
 
-              <div class="main-list" onclick="ModalClick()">
+              <div class="main-list" >
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -859,7 +859,7 @@
                   <div style="width: 36%;display: flex;padding-top: 3%;" >
                     <div style="height: 5rem;margin-left: 1rem;">
                       <div class="rest-infos" style="width: 9rem;">
-                        <div class="info-box" style="display: flex;background-color: #21f9ff;">
+                        <div class="info-box"  style="display: flex;">
                           <div>  <img src="images/imgs/rest-bottom-left.png" style="width: 40%;height: 59.09px;"></div>
                         
                           <div style="width: 4rem;position: absolute;right: 6%;">养老机构位置信息</div>
@@ -1529,7 +1529,7 @@
         this.$http
           .get(
             // "http://10.15.2.233:8091/jdcytrafficnew/findall"
-            //"http://127.0.0.1:5500/map/mock_data.json"
+            // "http://127.0.0.1:5500/map/mock_data.json"
             //  FIRE_URL+"/jdcymapofgaud/findall"
                   FIRE_URL+"/jdcytrafficnew/findall"
           )
@@ -1556,9 +1556,8 @@
     },
     created() {
       this.getHttp()
-
     },
-    mounted() {
+    mounted() { 
       // this.timer = setInterval(this.getHttp, 1000*60*15);
     },
     beforeDestroy() {

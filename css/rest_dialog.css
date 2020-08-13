@@ -79,7 +79,7 @@
   background-color: pink;
 }
 .info-box{
-  padding: 0.6rem;
+  padding: 0.4rem;
   background: rgba(80, 227, 194, 0.2);
   border: 1px solid #50BAE3;
   flex-direction: column;

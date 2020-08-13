@@ -101,7 +101,7 @@
             <div class="core-title">
               <div class="title-bg"></div>
               <h3>
-                <a href="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf">
+                <a href="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" target="_blank">
                 <img src="images/map-center.png" style="display: inline-block;width: 1.7rem;height: 1.7rem;vertical-align: middle;">
                 <span>区中心</span>
               </a>
@@ -500,7 +500,7 @@
                 </div>
               </div>
 
-              <div class="main-list"  >
+              <div class="main-list" @click="restClick" >
 
                 <div class="main-left">
                   <img src="images/manage.png" />
@@ -710,41 +710,41 @@
                   </div>
                 </div>
                 <div style="display: flex; height: 12rem;">
-                  <ul class="rest-info-lists">
-                    <li style="margin-top: 0.5rem;">
-                      <div class="info-box">
-                        <p>户籍人口数</p>
-                        <div class="bottom-text" style="height: 2rem;">
-                          <span class="num-font" style="font-size: 1.5rem; alignment: center;">62.5</span>
-                          <p>万人</p>
-                        </div>
+                  <div class="rest-info-lists">
+                   <div class="rest-infos" style="width: 8rem;">
+                    <div class="info-box">
+                      <p>户籍人口数</p>
+                      <div class="bottom-text" style="height: 2rem;">
+                        <span class="num-font" style="font-size: 1.5rem; alignment: center;">62.5</span>
+                        <p>万人</p>
                       </div>
-                      <div class="border-box border-right"></div>
-                      <div class="border-box border-bottom"></div>
-                    </li>
-                    <li style="top: 3rem;">
-                      <div class="info-box">
-                        <p>老龄人口占比</p>
-                        <div class="bottom-text" style="height: 2rem;">
-                          <span class="num-font" style="font-size: 1.5rem; alignment: center;">32.66</span>
-                          <p>%</p>
-                        </div>
+                    </div>
+                    <div class="rest-border-box rest-border-right"></div>
+                    <div class="rest-border-box rest-border-bottom"></div>
+                  </div>
+                  <div class="rest-infos" style="top: 3rem;width: 8rem;">
+                    <div class="info-box">
+                      <p>老龄人口占比</p>
+                      <div class="bottom-text" style="height: 2rem;">
+                        <span class="num-font" style="font-size: 1.5rem; alignment: center;">32.66</span>
+                        <p>%</p>
                       </div>
-                      <div class="border-box border-right"></div>
-                      <div class="border-box border-bottom"></div>
-                    </li>
-                    <li style="margin-top: 1rem;">
-                      <div class="info-box">
-                        <p>老龄人口数</p>
-                        <div class="bottom-text" style="height: 2rem;">
-                          <span class="num-font" style="font-size: 1.5rem; alignment: center;">20.4</span>
-                          <p>万人</p>
-                        </div>
+                    </div>
+                    <div class="rest-border-box rest-border-right"></div>
+                    <div class="rest-border-box rest-border-bottom"></div>
+                  </div>
+                  <div class="rest-infos" style="width: 8rem;">
+                    <div class="info-box">
+                      <p>老龄人口数</p>
+                      <div class="bottom-text" style="height: 2rem;">
+                        <span class="num-font" style="font-size: 1.5rem; alignment: center;">20.4</span>
+                        <p>万人</p>
                       </div>
-                      <div class="border-box border-right"></div>
-                      <div class="border-box border-bottom"></div>
-                    </li>
-                  </ul>
+                    </div>
+                    <div class="rest-border-box rest-border-right"></div>
+                    <div class="rest-border-box rest-border-bottom"></div>
+                  </div> 
+                </div>
                   <div style="width: 65%; height: 100%;">
                     <div id="ec1" style="height: 230px; width: 780px;"></div>
                   </div>
@@ -765,8 +765,8 @@
                   </div>
                 </div>
                 <div style="display: flex; height: 12rem;">
-                  <ul class="rest-info-lists">
-                    <li style="margin-top: 0.5rem;">
+                  <div class="rest-info-lists">
+                    <div class="rest-infos" style="width: 8rem;">
                       <div class="info-box">
                         <p>男性人数</p>
                         <div class="bottom-text" style="height: 2rem;">
@@ -774,10 +774,10 @@
                           <p>人</p>
                         </div>
                       </div>
-                      <div class="border-box border-right"></div>
-                      <div class="border-box border-bottom"></div>
-                    </li>
-                    <li style="margin-top: 0.5rem;">
+                      <div class="rest-border-box rest-border-right"></div>
+                      <div class="rest-border-box rest-border-bottom"></div>
+                    </div>
+                    <div class="rest-infos" style="width: 8rem;">
                       <div class="info-box">
                         <p>男性占比</p>
                         <div class="bottom-text" style="height: 2rem;">
@@ -785,10 +785,10 @@
                           <p>%</p>
                         </div>
                       </div>
-                      <div class="border-box border-right"></div>
-                      <div class="border-box border-bottom"></div>
-                    </li>
-                    <li style="margin-top: 1rem;">
+                      <div class="rest-border-box rest-border-right"></div>
+                    <div class="rest-border-box rest-border-bottom"></div>  
+                    </div>
+                    <div class="rest-infos" style="width: 8rem;">
                       <div class="info-box">
                         <p>女性人数</p>
                         <div class="bottom-text" style="height: 2rem;">
@@ -796,21 +796,21 @@
                           <p>人</p>
                         </div>
                       </div>
-                      <div class="border-box border-right"></div>
-                      <div class="border-box border-bottom"></div>
-                    </li>
-                    <li style="margin-top: 0.5rem;">
+                      <div class="rest-border-box rest-border-right"></div>
+                    <div class="rest-border-box rest-border-bottom"></div>  
+                    </div>
+                    <div class="rest-infos" style="width: 8rem;">
                       <div class="info-box">
-                        <p>男性占比</p>
+                        <p>女性占比</p>
                         <div class="bottom-text" style="height: 2rem;">
                           <span class="num-font" style="font-size: 1.5rem; alignment: center;">20.4</span>
                           <p>%</p>
                         </div>
                       </div>
-                      <div class="border-box border-right"></div>
-                      <div class="border-box border-bottom"></div>
-                    </li>
-                  </ul>
+                      <div class="rest-border-box rest-border-right"></div>
+                    <div class="rest-border-box rest-border-bottom"></div>  
+                    </div>
+                  </div>
                   <div style="width: 65%; height: 100%;">
                     <div id="ec2" style="height: 230px; width: 780px;"></div>
                   </div>
@@ -863,7 +863,7 @@
                       <div class="rest-infos" style="width: 9rem;">
                         <div :class="{'info-active': isActive}" @click="colorClick1">
                         <div class="info-box"  style="display: flex;" >
-                          <div>  <img src="images/imgs/rest-bottom-left.png" style="width: 40%;height: 59.09px;"></div>
+                          <div>  <img src="images/imgs/rest-bottom-left.png" style="width: 40%;height: 62.18px;"></div>
                           <div style="width: 4rem;position: absolute;right: 6%;">养老机构位置信息</div>
                         </div>
                         </div>
@@ -917,7 +917,7 @@
                     <div class="top-title4">种类分布</div>
                     </div>
                 </div>
-                <div style="display: flex;height: 5.8rem;" v-show="switchShow3">
+                <div style="display: flex;height: 5.3rem;" v-show="switchShow3">
                   <div class="rest-infos">
                     <div class="info-box">
                       <p>户籍人口数</p>
@@ -952,7 +952,7 @@
                     <div class="rest-border-box rest-border-bottom"></div>
                   </div>
                 </div>
-                <div style="color: #fff;height: 5.8rem;" v-show="switchShow4">
+                <div style="color: #fff;height: 5.3rem;" v-show="switchShow4">
                   <h1>种类分布</h1>
                 </div>
               </div>
@@ -1149,15 +1149,17 @@
                       <div class="rest-border-box rest-border-bottom"></div>
                     </div>
                   </div>
-                  <div class="rest-infos"
-                    style="float: right; background: rgba(80, 227, 194, 0.2);margin-top: 0.5rem;height: 3rem;">
-                    <div class="info-box">
-                      <img src="images/refresh-left.png" style="width: 1rem;height: 1rem;display: inline-block;">
-                      <span>各街道老龄化程度</span></div>
-
-                    <div class="rest-border-box rest-border-right"></div>
-                    <div class="rest-border-box rest-border-bottom"></div>
+                  <div style="height: 5rem;float: right;">
+                    <div class="rest-infos" style="width: 10rem;">
+                      <div class="info-box" style="display: flex;background-color: #21f9ff;" >
+                        <div>  <img src="images/imgs/rest-bottom-user.png" style="width: 40%;"></div>
+                        <div style="width: 4rem;position: absolute;right: 6%;">各街道老龄化程度</div>
+                      </div>
+                      <div class="rest-border-box rest-border-right"></div>
+                      <div class="rest-border-box rest-border-bottom"></div>
+                    </div>
                   </div>
+              
                 </div>
               </div>
             </div>
@@ -1425,7 +1427,7 @@
         polylines2: new Map(),
         polylines3: new Map(),
         isActive: true,
-        isUnactive: false
+        isUnactive: false,
       };
     },
     methods: {

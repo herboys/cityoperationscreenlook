@@ -86,6 +86,9 @@
   color: #fff;
   position: relative;
 }
+.info-active {
+  background-color: #21f9ff;
+}
 .info-box .bottom-text * {
   display: inline-block;
 }

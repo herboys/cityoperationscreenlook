@@ -859,10 +859,11 @@
                   <div style="width: 36%;display: flex;padding-top: 3%;" >
                     <div style="height: 5rem;margin-left: 1rem;">
                       <div class="rest-infos" style="width: 9rem;">
-                        <div class="info-box"  style="display: flex;">
+                        <div :class="{'info-active': isActive}" @click="colorClick1">
+                        <div class="info-box"  style="display: flex;" >
                           <div>  <img src="images/imgs/rest-bottom-left.png" style="width: 40%;height: 59.09px;"></div>
-                        
                           <div style="width: 4rem;position: absolute;right: 6%;">养老机构位置信息</div>
+                        </div>
                         </div>
                         <div class="rest-border-box rest-border-right"></div>
                         <div class="rest-border-box rest-border-bottom"></div>
@@ -870,10 +871,11 @@
                     </div>
                     <div style="height: 5rem;margin-left: 0.2rem;">
                       <div class="rest-infos" style="width: 9rem;">
-                        <div class="info-box" style="display: flex;">
+                        <div :class="{'info-active': isUnactive}" @click="colorClick2">
+                        <div class="info-box" style="display: flex;" >
                           <div>  <img src="images/imgs/rest-bottom-right.png" style="width: 40%;"></div>
-                        
                           <div style="width: 4rem;position: absolute;right: 6%;">养老机构统计信息</div>
+                        </div>
                         </div>
                         <div class="rest-border-box rest-border-right"></div>
                         <div class="rest-border-box rest-border-bottom"></div>
@@ -1420,6 +1422,8 @@
         polylines1: new Map(),
         polylines2: new Map(),
         polylines3: new Map(),
+        isActive: true,
+        isUnactive: false
       };
     },
     methods: {
@@ -1465,6 +1469,8 @@
           this.switchShow2 = false,
           this.switchShow3 = true,
           this.switchShow4 = false
+          this.isActive = true,
+        this.isUnactive = false
       },
       clickLocus1(item, index) {
         let str = "";
@@ -1494,16 +1500,23 @@
           console.log(arr, '===arr');
           map.setZoomAndCenter(15, arr);
       },
-
+      colorClick1(){
+        this.isActive = true,
+        this.isUnactive = false
+      },
+      colorClick2(){
+        this.isActive = false,
+        this.isUnactive = true
+      },
       showClick() {
         this.showDialog = !this.showDialog;
       },
       // rescueClick() {
       //   this.rescueShow = true;
       // },
-      // restClick() {
-      //   this.restShow = true;
-      // },
+      restClick() {
+        this.restShow = true;
+      },
       // convenientClick(){
       //   this.convenientShow = true 
       // },

@@ -106,9 +106,14 @@ function getZxgl(){
 
 
 
-			var zhihuiStr=createThree(zhihuiList)
+			/*var zhihuiStr=createThree(zhihuiList)
 			var anquanStr=createThree(anquanList)
-			var gaoxiaoStr=createThree(gaoxiaoList)
+			var gaoxiaoStr=createThree(gaoxiaoList)*/
+
+			var zhihuiStr=createMore(zhihuiList)
+			var anquanStr=createMore(anquanList)
+			var gaoxiaoStr=createMore(gaoxiaoList)
+
 			$("#zhihuiBox").html(zhihuiStr)
 			$("#anquanBox").html(anquanStr)
 			$("#gaoxiaoBox").html(gaoxiaoStr)

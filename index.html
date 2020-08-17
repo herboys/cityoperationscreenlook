@@ -1499,6 +1499,8 @@
       },
       clickLocus1(item, index) {
         let str = "";
+        console.log("list1")
+        console.log(this.list1)
           if (this.list1[index].lnglat) {
             console.log(this.list2[index].lnglat)
             str = this.list1[index].lnglat;
@@ -1509,6 +1511,8 @@
       },
       clickLocus2(item, index) {
         let str = "";
+        console.log("list2")
+        console.log(this.list2)
           if (this.list2[index].lnglat) {
             console.log(this.list2[index].lnglat)
             str = this.list2[index].lnglat;
@@ -1520,6 +1524,8 @@
       },
       clickLocus3(item, index) {
           let str = "";
+        console.log("list3")
+        console.log(this.list3)
           if (this.list3[index].lnglat) {
             console.log(this.list2[index].lnglat)
             str = this.list3[index].lnglat;
@@ -1580,13 +1586,25 @@
               res.data.forEach((item) => {
                 item.isShow = false;
                 if (item.length <= 1000) {
+                  console.log(this.list1)
+                  console.log(this.list2)
+                  console.log(this.list3)
                   return this.list1.push(item);
                 } else if (item.length > 1000 && item.length <= 2000) {
+                  console.log(this.list1)
+                  console.log(this.list2)
+                  console.log(this.list3)
                   return this.list2.push(item);
                 } else if (item.length > 2000) {
+                  console.log(this.list1)
+                  console.log(this.list2)
+                  console.log(this.list3)
                   return this.list3.push(item);
                 }
+
               });
+              //alert(321)
+
             },
             function () {
               console.log("请求失败处理");

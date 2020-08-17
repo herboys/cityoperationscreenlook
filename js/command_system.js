@@ -56,6 +56,9 @@ function getDutyListReal() {
 				for (var key in departmentDuty[i]) {
 					if (departmentDuty[i][key] == null) departmentDuty[i][key] = "--";
 				}
+				if(departmentDuty[i].area==="区建委"){
+					departmentDuty[i].area="建管委"
+				}
 				var obj = new Object();
 				obj.address = departmentDuty[i].area;
 				obj.leaderName = departmentDuty[i].leader;

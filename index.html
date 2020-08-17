@@ -101,10 +101,10 @@
             <div class="core-title">
               <div class="title-bg"></div>
               <h3>
-                <a href="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" target="_blank">
-                <img src="images/map-center.png" style="display: inline-block;width: 1.7rem;height: 1.7rem;vertical-align: middle;">
+                <!-- <a href="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" target="_blank"> -->
+                <img src="images/map-center.png" style="display: inline-block;width: 1.7rem;height: 1.7rem;vertical-align: middle;" @click="httpShow=true">
                 <span>区中心</span>
-              </a>
+              <!-- </a> -->
                 </h3>
             </div>
             <div class="core-box core-left">
@@ -1258,7 +1258,7 @@
             <div class="title-bg title-bg2"></div>
             <div class="title-bg title-bg3"></div>
             <div class="title-border"></div>
-            <h3>视频轮询</h3>
+            <h3>视频轮巡</h3>
           </div>
           <div class="content-bg"></div>
           <div class="content-box">
@@ -1313,7 +1313,7 @@
                   " id="zhihuiBox"></div>
               <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer;"
                 onclick="moreZhihui()" id="zhihuiAdd">
-                +
+                ^
               </div>
             </div>
             <div style="
@@ -1343,7 +1343,7 @@
                   " id="anquanBox"></div>
               <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer;"
                 onclick="moreAnquan()" id="anquanAdd">
-                +
+                ^
               </div>
             </div>
             <div style="
@@ -1373,7 +1373,7 @@
                   " id="gaoxiaoBox"></div>
               <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer;"
                 onclick="moreGaoxiao()" id="gaoxiaoAdd">
-                +
+                ^
               </div>
             </div>
           </div>
@@ -1381,6 +1381,12 @@
       </div>
       <div class="ModalBox" id="ModalBox" >
         <iframe id="openiframe" src="Modal/12345Modal.html" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+      <div v-show="httpShow" class="rest-www">
+        <div class="httpShow-close" @click="httpShow=false" > x</div>
+        <div style="width: 198rem;height: 56.25rem;;">
+          <iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -1428,6 +1434,7 @@
         polylines3: new Map(),
         isActive: true,
         isUnactive: false,
+        httpShow: false,
       };
     },
     methods: {

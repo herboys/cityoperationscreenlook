@@ -284,11 +284,12 @@ function addTableList1(name, arr) {
 				$(name)
 					.find(".list-box")
 					.append(
-						'<div class="table-list"><p>' +
-						'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+
+						'<div class="table-list"><p onclick="openIframe('+streetUrl[arr[index].address]+')">' +
+						/*'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+*/
 						'<img src="images/map-center.png" style="display: inline-block!important;width: 1.2rem;height: 1.2rem;vertical-align: middle;margin-left: -0.6rem"> '+
 						arr[index].address +
-						'</a></p><p>' +
+						'</a>'+
+						'</p><p>' +
 						arr[index].leaderName +
 						"</p><p>" +
 						arr[index].foremanName +

@@ -42,6 +42,7 @@
   <!--地图-->
   <script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale">
   </script>
+  <!-- <script src="//a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script> -->
   <!-- <script src="https://webapi.amap.com/maps?v=1.4.15&key=33c02230e724e2bc7edce69756a28beb"></script> -->
   <script src="js/map.js" type="text/javascript" charset="utf-8"></script>
 
@@ -670,8 +671,9 @@
             </div>
           </div>
         </div>
-        <!-- <div class="map-box" id="mapContainer2"></div> -->
+        
       </div>
+      
       <div  v-show="restShow" class="rest-box" >
         <a class="rescue-close" @click="restClose"> x</a>
         <div class="rest-box-big">
@@ -1164,7 +1166,7 @@
               </div>
             </div>
 
-          </div>
+          </div> 
         </div>
       </div>
       <div v-show="convenientShow" class="convenient-box" >
@@ -1190,7 +1192,7 @@
         </div>
         <div class="dialog-box" v-show="showDialog">
           <div class="dialog-con">
-            <div style="color: black; font-weight: bold;">拥堵路段统计:</div>
+            <div style="font-weight: bold;">拥堵路段统计:</div>
             <div style="margin: 0.4rem 0; cursor: pointer;" @click="visibleClick1">
               <span class="bot1">500M-1000M</span><span>{{list1.length}} 段</span>
             </div>
@@ -1203,7 +1205,7 @@
             <div v-show="visible1" class="dialog-box2">
               <a class="dialog-close" @click="closeClick"> x</a>
               <div class="dialog-con2">
-                <div style="color: black; font-weight: bold;">
+                <div style="font-weight: bold;">
                   500M-1000M拥堵路:
                 </div>
                 <div v-if="list1.length>0">
@@ -1219,7 +1221,7 @@
             <div v-show="visible2" class="dialog-box2">
               <a class="dialog-close" @click="closeClick"> x</a>
               <div class="dialog-con2">
-                <div style="color: black; font-weight: bold;">
+                <div style="font-weight: bold;">
                   1000M-2000M拥堵路:
                 </div>
                 <div v-if="list2.length>0">
@@ -1235,7 +1237,7 @@
             <div v-show="visible3" class="dialog-box2">
               <a class="dialog-close" @click="closeClick"> x</a>
               <div class="dialog-con2">
-                <div style="color: black; font-weight: bold;">
+                <div style="font-weight: bold;">
                   2000M以上拥堵路:
                 </div>
                 <div v-if="list3.length>0">
@@ -1481,7 +1483,8 @@
           this.switchShow3 = true,
           this.switchShow4 = false
           this.isActive = true,
-        this.isUnactive = false
+        this.isUnactive = false,
+        this.httpShow=false
       },
       clickLocus1(item, index) {
         let str = "";

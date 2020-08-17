@@ -7,15 +7,15 @@
   height: 56.25rem;*/
     width: 100%;
  height: 100%;
-  z-index: 199;
+  z-index: 11199;
 }
 .httpShow-close {
     position: absolute;
   float: right;
   height: 2rem;
   width: 2rem;
-    top:10rem;
-    right: 10rem;
+    top:1rem;
+    right: 1rem;
   text-align: center;
 	line-height: 2rem;
   font-size: 1.5rem;

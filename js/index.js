@@ -106,9 +106,14 @@ function getZxgl(){
 
 
 
-			var zhihuiStr=createThree(zhihuiList)
+			/*var zhihuiStr=createThree(zhihuiList)
 			var anquanStr=createThree(anquanList)
-			var gaoxiaoStr=createThree(gaoxiaoList)
+			var gaoxiaoStr=createThree(gaoxiaoList)*/
+
+			var zhihuiStr=createMore(zhihuiList)
+			var anquanStr=createMore(anquanList)
+			var gaoxiaoStr=createMore(gaoxiaoList)
+
 			$("#zhihuiBox").html(zhihuiStr)
 			$("#anquanBox").html(anquanStr)
 			$("#gaoxiaoBox").html(gaoxiaoStr)
@@ -271,7 +276,7 @@ function moreGaoxiao(){
 
 function zhihuiAdd(){
 	var zhihuiStr=createMore(zhihuiList)
-	$("#zhihuiBox").append(zhihuiStr)
+	$("#zhihuiBox").html(zhihuiStr)
 	$("#zhihuiAdd").html("^")
 
 }
@@ -284,7 +289,7 @@ function zhihuiClose(){
 
 function anquanAdd(){
 	var anquanStr=createMore(anquanList)
-	$("#anquanBox").append(anquanStr)
+	$("#anquanBox").html(anquanStr)
 	$("#anquanAdd").html("^")
 }
 
@@ -296,7 +301,7 @@ function anquanClose(){
 
 function gaoxiaoAdd(){
 	var gaoxiaoStr=createMore(gaoxiaoList)
-	$("#gaoxiaoBox").append(gaoxiaoStr)
+	$("#gaoxiaoBox").html(gaoxiaoStr)
 	$("#gaoxiaoAdd").html("^")
 
 }
@@ -311,23 +316,23 @@ function gaoxiaoClose(){
 function createThree(data) {
 	var str=""
 	for(var i=0;i<3;i++){
-		str += '<a  class="csyytz_txt text-centered" href= '+data[i].url+' target="_blank">'
+		str += '<div  class="csyytz_txt text-centered"  onclick=openIframe("'+data[i].url+'")>'
 			+'<div class="arrowBar-box">'
 			+'<div class="arrowBar"></div>'
 			+'</div>'
-			+ data[i].name+ '</a>';
+			+ data[i].name+ '</div>';
 	}
 	return str;
 }
 
 function createMore(data){
 	var str=""
-	for(var i=3;i<6;i++){
-		str += '<a  class="csyytz_txt text-centered" href= '+data[i].url+' target="_blank">'
+	for(var i=0;i<6;i++){
+		str += '<div  class="csyytz_txt text-centered"  onclick=openIframe("'+data[i].url+'") style="cursor: pointer">'
 			+'<div class="arrowBar-box">'
 			+'<div class="arrowBar"></div>'
 			+'</div>'
-			+ data[i].name+ '</a>';
+			+ data[i].name+ '</div>';
 	}
 	return str;
 }

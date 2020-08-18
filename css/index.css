@@ -20,7 +20,7 @@ html {
     background-image: -moz-linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
     background-image: -o-linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
     background-image: linear-gradient(180deg, #001A54 0%, #010825 57%, #000421 100%);
-    font-family: 'SourceHanSansCN';
+    /* font-family: 'SourceHanSansCN'; */
 }
 
 .num-font {

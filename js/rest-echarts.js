@@ -9,12 +9,12 @@ function initEcharts() {
   option = null;
   // 圆环图各环节的颜色
   var color = [
-    "#3BA0FF",
-    "#36CBCB",
-    "#4DCB73",
-    "#FAD337",
-    "#F2637B",
-    "#975FE4",
+    "#FF0000",
+    "#0000FF",
+    "#FFFF00",
+    "#FF0099",
+    "#66FFFF",
+    "#33FF66",
     "#FF9D4D",
     "#269A99",
     "#FF99C3",
@@ -48,29 +48,29 @@ function initEcharts() {
 
   option = {
     //背景色
-    // backgroundColor: {
-    //   // 背景颜色
-    //   type: "linear",
-    //   x: 0,
-    //   y: 0,
-    //   x2: 0,
-    //   y2: 1,
-    //   colorStops: [
-    //     {
-    //       offset: 0,
-    //       color: "rgba(0,0,0,0.4)", // 0% 处的颜色
-    //     },
-    //     {
-    //       offset: 0.5,
-    //       color: "rgba(0,0,0,0.4)", // 50% 处的颜色
-    //     },
-    //     {
-    //       offset: 1,
-    //       color: "rgba(0,0,0,0.4)", // 100% 处的颜色
-    //     },
-    //   ],
-    //   globalCoord: false, // 缺省为 false
-    // },
+    backgroundColor: {
+      // 背景颜色
+      type: "linear",
+      x: 0,
+      y: 0,
+      x2: 0,
+      y2: 1,
+      colorStops: [
+        {
+          offset: 0,
+          color: "rgba(0,0,0,0.4)", // 0% 处的颜色
+        },
+        {
+          offset: 0.5,
+          color: "rgba(0,0,0,0.4)", // 50% 处的颜色
+        },
+        {
+          offset: 1,
+          color: "rgba(0,0,0,0.4)", // 100% 处的颜色
+        },
+      ],
+      globalCoord: false, // 缺省为 false
+    },
 
     // 图例
     legend: [
@@ -80,7 +80,7 @@ function initEcharts() {
         itemWidth: 8,
         itemHeight: 8,
         top: "20%",
-        left: "65%",
+        left: "55%",
         icon: "circle",
         formatter: name => {
           let data = option.series[0].data
@@ -176,19 +176,7 @@ function initEcharts() {
           },
         },
         data: data, // 系列中的数据内容数组。
-         itemStyle: {
-              // 此配置
-              normal: {
-                borderWidth: 2,
-                borderColor: '#ffffff'
-              },
-              emphasis: {
-                borderWidth: 0,
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
+      
       },
     ],
   };
@@ -202,12 +190,12 @@ function initEcharts2() {
   option = null;
   // 圆环图各环节的颜色
   var color = [
-    "#3BA0FF",
-    "#36CBCB",
-    "#4DCB73",
-    "#FAD337",
-    "#F2637B",
-    "#975FE4",
+    "#FF0000",
+    "#0000FF",
+    "#FFFF00",
+    "#FF0099",
+    "#66FFFF",
+    "#33FF66",
     "#FF9D4D",
     "#269A99",
     "#FF99C3",
@@ -241,29 +229,29 @@ function initEcharts2() {
 
   option = {
     //背景色
-    // backgroundColor: {
-    //   // 背景颜色
-    //   type: "linear",
-    //   x: 0,
-    //   y: 0,
-    //   x2: 0,
-    //   y2: 1,
-    //   colorStops: [
-    //     {
-    //       offset: 0,
-    //       color: "rgba(0,0,0,0.4)", // 0% 处的颜色
-    //     },
-    //     {
-    //       offset: 0.5,
-    //       color: "rgba(0,0,0,0.4)", // 50% 处的颜色
-    //     },
-    //     {
-    //       offset: 1,
-    //       color: "rgba(0,0,0,0.4)", // 100% 处的颜色
-    //     },
-    //   ],
-    //   globalCoord: false, // 缺省为 false
-    // },
+    backgroundColor: {
+      // 背景颜色
+      type: "linear",
+      x: 0,
+      y: 0,
+      x2: 0,
+      y2: 1,
+      colorStops: [
+        {
+          offset: 0,
+          color: "rgba(0,0,0,0.4)", // 0% 处的颜色
+        },
+        {
+          offset: 0.5,
+          color: "rgba(0,0,0,0.4)", // 50% 处的颜色
+        },
+        {
+          offset: 1,
+          color: "rgba(0,0,0,0.4)", // 100% 处的颜色
+        },
+      ],
+      globalCoord: false, // 缺省为 false
+    },
 
     // 图例
     legend: [
@@ -273,7 +261,7 @@ function initEcharts2() {
         itemWidth: 8,
         itemHeight: 8,
         top: "20%",
-        left: "65%",
+        left: "55%",
         icon: "circle",
         formatter: name => {
           let data = option.series[0].data
@@ -369,19 +357,6 @@ function initEcharts2() {
           },
         },
         data: data, // 系列中的数据内容数组。
-         itemStyle: {
-              // 此配置
-              normal: {
-                borderWidth: 2,
-                borderColor: '#ffffff'
-              },
-              emphasis: {
-                borderWidth: 0,
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
       },
     ],
   };

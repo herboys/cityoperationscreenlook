@@ -35,6 +35,8 @@
   right: 0;
   top: 0;
   bottom: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .rest-box-left{
@@ -99,7 +101,7 @@
   background-color: pink;
 }
 .info-box{
-  padding: 0.4rem;
+  padding: 0.3rem;
   background: rgba(80, 227, 194, 0.2);
   border: 1px solid #50BAE3;
   flex-direction: column;
@@ -195,4 +197,20 @@
   to {
       transform: scale(1)
   }
+}
+
+.rest-foot-box2 .first-info {
+  display: inline-block;
+  width: 11rem;
+  text-align: right;
+}
+.rest-foot-box2 .second-info {
+  display: inline-block;
+  width: 7rem;
+  text-align: right;
+}
+.rest-foot-box2 .third-info {
+  display: inline-block;
+  width: 5rem;
+  text-align: right;
 }

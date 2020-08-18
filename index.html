@@ -50,7 +50,6 @@
   <script src="js/map.js" type="text/javascript" charset="utf-8"></script>
   <!-- <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script> -->
   <script src="Modal/Js/Maps.js" type="text/javascript" charset="utf-8"></script>
-  <script src="Modal/Js/Maps2.js" type="text/javascript" charset="utf-8"></script>
 
   <link rel="stylesheet" type="text/css" href="./css/banner.css" />
   <!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
@@ -1668,11 +1667,11 @@
               console.log(res.data, "res");
               res.data.forEach((item) => {
                 item.isShow = false;
-                if (item.length <= 1000) {
+                if (item.length <= 1000 && item.lnglat !=='') {
                   return this.list1.push(item);
-                } else if (item.length > 1000 && item.length <= 2000) {
+                } else if (item.length > 1000 && item.length <= 2000 && item.lnglat !=='') {
                   return this.list2.push(item);
-                } else if (item.length > 2000) {
+                } else if (item.length > 2000 && item.lnglat !=='') {
                   return this.list3.push(item);
                 }
               });
@@ -1687,7 +1686,10 @@
       this.getHttp();
     },
     mounted() {
-      // this.timer = setInterval(this.getHttp, 1000*60*15);
+      this.list1.clear()
+      this.list2.clear()
+      this.list3.clear()
+      this.timer = setInterval(this.getHttp, 1000*60*15);
     },
     beforeDestroy() {
       clearInterval(this.timer);

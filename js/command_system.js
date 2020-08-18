@@ -350,49 +350,6 @@ function addTableList1(name, arr) {
 	}
 	//alert(i)
 }
-//  工单table滚动
-function addTableList3(name, arr) {
-	$(name).find(".list-box").html("");
-	for (let i = 0; i < arr.length; i++) {
-		setTimeout(function () {
-			$(name)
-				.find(".list-box")
-				.append(
-					'<div class="table-list"><p style="width: 8%;  overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem">' +
-					arr[i].date +
-					'</p><p style="width: 10%;  overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem">' +
-					arr[i].time +
-					'</p><p style="width: 15%;  overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem">' +
-					arr[i].street +
-					'</p><p style="width: 20%; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem;padding-left: 0.8rem;">' +
-					arr[i].address +
-					'</p><p style="width: 15%; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem;padding-left: 0rem;">' +
-					arr[i].type +
-					'</p><p style="width: 26%; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem;padding-left: 0.8rem;"  title="' +
-					arr[i].content +
-					'">' +
-					arr[i].content +
-					"</p></div>"
-				);
-		}, 200 * i);
-
-		if (name == ".linkage-table2" && i == arr.length - 1 && arr.length > 6) {
-			linkageMax = arr.length; 
-			linkageNum = 0;
-			setTimeout(function () {
-				var html = $(name).find(".list-box").html();
-				$(name).find(".list-box").append(html);
-				linkageInt2();
-				$(name).mouseenter(function () {
-					clearInterval(linkageTime);
-				});
-				$(name).mouseleave(function () {
-					linkageInt2();
-				});
-			}, 200 * i + 200);
-		}
-	}
-}
 
 function addTableList2(name, arr) {
 	$(name).find(".list-box").html("");
@@ -449,7 +406,7 @@ function linkageInt() {
 		linkageNum++;
 
 		$(".linkage-table .list-box").stop(true, true).animate({
-				top: -(moveT + 1) * linkageNum * 5.82,
+				top: -(moveT + 1) * linkageNum * 5.62,
 			},
 			1000,
 			// function () {
@@ -463,39 +420,12 @@ function linkageInt() {
 		);
 	}, 5000);
 }
-// 工单table滚动
-function linkageInt2() {
-	var moveT = $(".linkage-table2").find(".table-list").eq(0).height() + 14;
-	linkageTime = setInterval(() => {
-		if (linkageNum >= linkageMax / 5) {
-			linkageNum = -1;
-			$(".linkage-table2 .list-box").css({
-				top: -moveT * linkageNum
-			});
-		}
-		linkageNum++;
 
-
-		$(".linkage-table2 .list-box").stop(true, true).animate({
-				top: -(moveT + 1) * linkageNum * 5.82,
-			},
-			1000,
-			// function () {
-			// 	if(linkageNum>=linkageMax/6)
-			// 	{
-			// 		linkageNum=0;
-			// 		$('.linkage-table .list-box').css({top:-moveT*linkageNum});
-			// 		$('.linkage-table .list-box').css({top:-0});
-			// 	}
-			// }
-		);
-	}, 5000);
-}
 // 突发事件table滚动
 function linkageIntScroll() {
 	var moveT = $(".linkage-scroll-table").find(".table-list").eq(0).height() -11;
 	linkageScrollTime = setInterval(() => {
-		if (linkageNumScroll >= linkScrollMax/3-1) {
+		if (linkageNumScroll >= linkScrollMax/2) {
 		//	alert("aaa "+moveT)
 			linkageNumScroll = -1;
 			$(".linkage-scroll-table .list-box").css({
@@ -506,7 +436,7 @@ function linkageIntScroll() {
 		//alert(linkageNumScroll)
 		//alert(moveT)
 		$(".linkage-scroll-table .list-box").stop(true, true).animate({
-				top: -(moveT + 1) * linkageNumScroll * 6.05,
+				top: -(moveT + 1) * linkageNumScroll * 5.72,
 
 			},
 			1000,

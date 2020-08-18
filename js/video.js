@@ -293,7 +293,7 @@ function createVideoSlideOne(){
 		url:STATIC_URL+'/videoStream/getVideoSource/1',
 		type:'get',
 		dataType: "json",
-		async:false,
+		async:true,
 		success:function (data) {
 			var resData=data.data;
 

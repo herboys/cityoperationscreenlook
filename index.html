@@ -39,6 +39,7 @@
   <script src="js/rest-echarts.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/interval.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/rest-scroll.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/iframe.js" type="text/javascript" charset="utf-8"></script>
 
   <!--地图-->
   <script
@@ -1490,9 +1491,19 @@
         <iframe id="openiframe" src="Modal/12345Modal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
       <div v-show="httpShow" class="rest-www">
-        <div class="httpShow-close" @click="httpShow=false">x</div>
-        <div style="width: 198rem; height: 56.25rem;">
-          <!-- <iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" width="100%" height="100%" frameborder="0"></iframe> -->
+
+        <div class="httpShow-close" @click="httpShow=false"> x</div>
+        <div style="width: 100%;height: 100%;">
+          <iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" width="100%" height="100%" frameborder="0"></iframe>
+        <!--  <iframe id="openiframe1" src="https://www.baidu.com" width="100%" height="100%" frameborder="0"></iframe>-->
+        </div>
+      </div>
+
+      <div style="display: none;" class="rest-www" id="publicIframe">
+        <div class="httpShow-close" onclick="closeIframe()"> x</div>
+        <div style="width: 140%;height: 140%;" id="iframeDiv">
+          <!--<iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" width="100%" height="100%" frameborder="0"></iframe>-->
+         <!-- <iframe src="https://www.baidu.com" width="100%" height="100%" frameborder="0"></iframe>-->
         </div>
       </div>
     </div>
@@ -1612,6 +1623,7 @@
         let arr = str.split(",");
         console.log(arr, "===arr");
         map.setZoomAndCenter(15, arr);
+
       },
       colorClick1() {
         (this.isActive = true), (this.isUnactive = false);
@@ -1667,6 +1679,7 @@
                 } else if (item.length > 1000 && item.length <= 2000 && item.lnglat !=='') {
                   return this.list2.push(item);
                 } else if (item.length > 2000 && item.lnglat !=='') {
+
                   return this.list3.push(item);
                 }
               });

@@ -22,6 +22,7 @@
   font-weight: bold;
   cursor: pointer;
   background-color: #fff;
+    z-index: 11200;
 }
 .rest-box{
 	position: absolute;

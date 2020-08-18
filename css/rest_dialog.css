@@ -264,6 +264,8 @@
   padding: 2px 8px !important;
   background-color: red;
 }
+
+
 .rest-foot-box2 .first-info {
   display: inline-block;
   width: 11rem;
@@ -278,4 +280,23 @@
   display: inline-block;
   width: 5rem;
   text-align: right;
+}
+
+.echarts1 {
+  height: 230px;
+  width: 680px;
+  background-image: url(../images/imgs/echarts-bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.echarts2 {
+  height: 230px;
+  width: 680px;
+  background-image: url(../images/imgs/echarts-bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.echarts3 {
+  height: 100%;
+  width: 8rem;
 }

@@ -769,19 +769,36 @@ function addHjbz(arr) {
   $(".hjbz-warp .text-box").html("");
   var maxNum = arr.length > 3 ? 3 : arr.length;
   for (var i = 0; i < maxNum; i++) {
-    $(".hjbz-warp .text-box").append(
-      '<div style="left:' +
-        (10 - i * 5) +
-        "%;top:" +
-        i * 50 +
-        '%" class="text-list"><p>' +
-        arr[i].title +
-        '</p><p><span class="num-font">' +
-        arr[i].num +
-        "</span>" +
-        arr[i].unit +
-        "</p></div>"
-    );
+    if(arr[i].title==="生活垃圾"){
+      $(".hjbz-warp .text-box").append(
+          '<div style="left:' +
+          (10 - i * 5) +
+          "%;top:" +
+          i * 50 +
+          '%" class="text-list"><p style="cursor:pointer;" onclick="openGarbageClassification()">' +
+          arr[i].title +
+          '</p><p><span class="num-font">' +
+          arr[i].num +
+          "</span>" +
+          arr[i].unit +
+          "</p></div>"
+      );
+    }else {
+      $(".hjbz-warp .text-box").append(
+          '<div style="left:' +
+          (10 - i * 5) +
+          "%;top:" +
+          i * 50 +
+          '%" class="text-list"><p>' +
+          arr[i].title +
+          '</p><p><span class="num-font">' +
+          arr[i].num +
+          "</span>" +
+          arr[i].unit +
+          "</p></div>"
+      );
+    }
+
   }
 
   $(".hjbz-warp .text-box").mouseenter(function () {
@@ -818,6 +835,7 @@ function getGongJiaoData() {
   });
 }
 
+//环境保障动画效果
 var hjbzNum = 3;
 function hjbzInit(arr) {
   if (arr.length > 3) {
@@ -826,7 +844,7 @@ function hjbzInit(arr) {
     hjbzTime = setInterval(function () {
       if ($(".hjbz-warp .text-list").length == 3) {
         $(".hjbz-warp .text-box").append(
-          '<div style="left:15%;top:0%;opacity:0" class="text-list"><p>' +
+          '<div style="left:15%;top:0%;opacity:0" class="text-list"><p style="cursor:pointer;" onclick="openGarbageClassification()">' +
             arr[hjbzNum].title +
             '</p><p><span class="num-font">' +
             arr[hjbzNum].num +
@@ -939,4 +957,10 @@ function oldPeopleHomePage() {
 
 function closeOldPeopleHome() {
   $("#restShow").hide();
+}
+
+
+//生活垃圾
+function openGarbageClassification(){
+  alert("进入垃圾分类页面")
 }

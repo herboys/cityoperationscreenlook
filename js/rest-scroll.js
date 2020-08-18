@@ -41,39 +41,39 @@ $(function(){
     };
     
     //开启自动轮播
-    autoPlay("-470px");
+    autoPlay("-157px");
     
     //按钮
     $(".z-prev").click(function(){
-        $(".u-box").css("marginLeft","-470px");
+        $(".u-box").css("marginLeft","-157px");
         //alert("1"); 不是很明白
         $(".u-box li").eq($(".u-box li").length-1).insertBefore($(".u-box li").eq(0));
         //alert("1");
-        sMove("470px");
+        sMove("157px");
     });
     
     $(".z-next").click(function(){
-        sMove("-470px");
+        sMove("-157px");
         
     });
     
     //鼠标移入
-    // $(".z-prev").mouseover(function(){
-    //     //console.log("停止播放！");
-    //     clearInterval(timer);
-    // });
-    // $(".z-prev").mouseout(function(){
-    //     //console.log("开启自动播放！");
-    //     autoPlay("-470px");
-    // });
-    // $(".z-next").mouseover(function(){
-    //     //console.log("停止播放！");
-    //     clearInterval(timer);
-    // });
-    // $(".z-next").mouseout(function(){
-    //     //console.log("开启自动播放！");
-    //     autoPlay("-470px");
-    // });
+    $(".z-prev").mouseover(function(){
+        //console.log("停止播放！");
+        clearInterval(timer);
+    });
+    $(".z-prev").mouseout(function(){
+        //console.log("开启自动播放！");
+        autoPlay("-157px");
+    });
+    $(".z-next").mouseover(function(){
+        //console.log("停止播放！");
+        clearInterval(timer);
+    });
+    $(".z-next").mouseout(function(){
+        //console.log("开启自动播放！");
+        autoPlay("-157px");
+    });
     
     //小按钮点击事件
     function smallButtonclick(){
@@ -83,14 +83,14 @@ $(function(){
                     //console.log("$(this).index()="+$(this).index()+"/"+"index="+index);
                     var j=index-$(this).index();
                     for(var i=0;i<j;i++){                
-                            $(".u-box").css("marginLeft","-470px");
+                            $(".u-box").css("marginLeft","-157px");
                             $(".u-box li").eq($(".u-box li").length-1).insertBefore($(".u-box li").eq(0));
                             sMove("467px");
                     }
                 }else{
                     var j=$(this).index()-index;
                     for(var i=0;i<j;i++){
-                        sMove("-470px");
+                        sMove("-157px");
                     }
                 }    
             });        
@@ -103,7 +103,7 @@ $(function(){
             clearInterval(timer);
         });
         $(".n-box").mouseout(function(){
-            autoPlay("-470px");
+            autoPlay("-157px");
         });
     }
     onSmallButton();

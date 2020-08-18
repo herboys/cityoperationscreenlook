@@ -34,14 +34,14 @@ $(function(){
     }
     
     //自动轮播
-    function autoPlay(direction){
-        timer=setInterval(function(){
-            sMove(direction);
-        },3000);
-    };
+    // function autoPlay(direction){
+    //     timer=setInterval(function(){
+    //         sMove(direction);
+    //     },3000);
+    // };
     
     //开启自动轮播
-    autoPlay("-157px");
+    // autoPlay("-157px");
     
     //按钮
     $(".z-prev").click(function(){

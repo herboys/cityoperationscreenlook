@@ -34,8 +34,8 @@
 }
 .rest-box-big{
   position: absolute;
-  width: 97%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   left: 0;
   right: 0;
   top: 0;
@@ -74,14 +74,14 @@
   font-size: 1rem;
   position:absolute;
   left: 4.5%;
-  top: 15%;
+  top: 14.2%;
  transform: translate(-50%, -50%);
  color: #fff;
 }
 .top-title4{
   font-size: 1rem;
   position:absolute;
-  top:15%;
+  top:14.2%;
   left: 11%;;
  transform: translate(-50%, -50%);
  color: #fff;
@@ -210,7 +210,8 @@
   margin:0px auto;
   overflow:hidden;
   padding: 0 80px;
-    height: 100%;
+  height: 100%;
+  margin-top: 1.5rem;
 }
 .u-box{
   display: flex;
@@ -300,4 +301,38 @@
   height: 100%;
   width: 8rem;
   margin-left: 2rem;
+}
+
+.rest-foot-box2  .infos-box{
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-left: 2rem;
+  color: #fff;
+  text-align: right;
+  width: 62%;
+  padding-right: 1rem;
+  background-image: url(../images/imgs/echarts-bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.switchShow1 {
+  width: 8rem;
+  height: 2.35rem;
+  margin-top: 0.68rem; 
+   background-image: url(../images/imgs/rest-top-left.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  text-align: center;
+  line-height: 1.75rem;
+}
+.switchShow2 {
+  width: 8rem;
+  height: 2.35rem;
+  margin-top: 0.68rem; 
+   background-image: url(../images/imgs/rest-top-right.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 99;
+  text-align: center;
+  line-height: 1.75rem;
 }

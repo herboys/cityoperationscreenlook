@@ -691,16 +691,18 @@
               <div class="title-bg title-bg2"></div>
               <div class="title-bg title-bg3"></div>
               <div class="title-border"></div>
-              <div style="display: flex; justify-content: flex-end;">
-                <div style="z-index: 11;" @click="switchClick1">
-                  <img class="top-img1" v-show="switchShow1" src="images/imgs/rest-top-left.png" />
-                  <img class="top-img1" v-show="switchShow2" src="images/imgs/rest-top-right.png" />
-                  <div class="top-title1">基本概况</div>
+              <div style="display: flex; justify-content: flex-end;padding-right: 2rem;">
+                <div v-show="switchShow1" @click="switchClick1" class="switchShow1">
+                  <span style="font-size: 1rem;color: #fff;">基本概况</span>
                 </div>
-                <div style="z-index: 11;" @click="switchClick2">
-                  <img class="top-img1" v-show="switchShow1" src="images/imgs/rest-top-right.png" />
-                  <img class="top-img1" v-show="switchShow2" src="images/imgs/rest-top-left.png" />
-                  <div class="top-title2">服务概况</div>
+                <div v-show="switchShow2" @click="switchClick1" class="switchShow2">
+                   <span style="font-size: 1rem;color: #fff;">基本概况</span>
+                </div>
+                <div v-show="switchShow1" @click="switchClick2" class="switchShow2">
+                   <span style="font-size: 1rem;color: #fff;">服务概况</span>
+                </div>
+                <div v-show="switchShow2" @click="switchClick2" class="switchShow1">
+                   <span style="font-size: 1rem;color: #fff;">服务概况</span>
                 </div>
               </div>
             </div>
@@ -851,14 +853,7 @@
                   </div>
                 </div>
                 <div style="display: flex;">
-                  <div style="
-                        background-color: rgba(0, 0, 0, 0.4);
-                        margin-left: 2rem;
-                        color: #fff;
-                        text-align: right;
-                        width: 62%;
-                        padding-right: 1rem;
-                      ">
+                  <div class="infos-box">
                     <h3 style="text-align: left; margin-left: 1rem;">
                       床位信息
                     </h3>
@@ -984,8 +979,8 @@
                     <div class="center-border border-box"></div>
                     <div class="bottom-border border-box"></div>
                   </div>
-                  <span style="float: right; color: #fff;">工单总数 76878 单</span>
-                  <span style="float: right; color: #fff; margin-right: 3rem;">今日工单数 134 单</span>
+                  <span style="float: right; color: #fff;margin-right:2rem;margin-top: 1rem;">工单总数 <span style="color: #33ffff;">76878</span> 单</span>
+                  <span style="float: right; color: #fff; margin-right: 3rem;margin-top: 1rem;">今日工单数 <span style="color: #33ffff;">134</span> 单</span>
                 </div>
                 <div style="color: #fff; display: flex; padding-left: 2rem;">
                   <div @click="switchClick3">
@@ -998,6 +993,11 @@
                     <img class="top-img1" v-show="switchShow4" src="images/imgs/rest-top-left.png" />
                     <div class="top-title4">种类分布</div>
                   </div>
+                  <div style="margin-left: 42.5rem; margin-top: 1.8rem;">
+                    <select>
+                      <option>累计</option>
+                  </select>
+                  </div>
                 </div>
                 <div style="display: flex; height: 5.3rem;" v-show="switchShow3">
                   <div class="z-box">
@@ -1008,7 +1008,7 @@
                             <div style="display: flex;">
                                 <div class="bottom-text">
                                   <p>南翔镇</p>
-                                  <span class="num-font" style="color: #33ffff;">46756</span>
+                                  <span class="num-font" style="color: #33ffff;">1111</span>
                                  </div>
                                  <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
                             </div>
@@ -1023,7 +1023,7 @@
                             <div style="display: flex;">
                                 <div class="bottom-text">
                                   <p>南翔镇</p>
-                                  <span class="num-font" style="color: #33ffff;">46756</span>
+                                  <span class="num-font" style="color: #33ffff;">2222</span>
                                  </div>
                                  <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
                             </div>
@@ -1038,7 +1038,7 @@
                             <div style="display: flex;">
                                 <div class="bottom-text">
                                   <p>南翔镇</p>
-                                  <span class="num-font" style="color: #33ffff;">46756</span>
+                                  <span class="num-font" style="color: #33ffff;">3333</span>
                                  </div>
                                  <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
                             </div>
@@ -1055,7 +1055,7 @@
                  
                 </div>
                 <div style="color: #fff; height: 5.3rem;" v-show="switchShow4">
-                  <div style="height: 5.3rem;">
+                  <div style="padding-top: 1.5rem;">
                     <div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div>
                 </div>
                   
@@ -1106,10 +1106,15 @@
                       <div class="center-border border-box"></div>
                       <div class="bottom-border border-box"></div>
                     </div>
-                    <span style="float: right; margin-right: 1rem;">服务总人次： 171469</span>
+                    <span style="float: right; margin-right: 2rem;">服务总人次： <span style="color: #33ffff;">171469</span></span>
                   </div>
                   <div>
-                    <span>本月服务人次：</span><span style="float: right; margin-right: 1.5rem;">累计</span>
+                    <span>本月服务人次：<span style="color: #33ffff;">171469</span></span>
+                    <span style="float: right; margin-right: 2rem;">   
+                      <select>
+                      <option>累计</option>
+                     </select>
+                    </span>
                   </div>
                   <div style="display: flex;">
                     <div class="rest-infos" style="width: 8rem;">
@@ -1195,7 +1200,7 @@
                   </div>
 
                   <div>
-                    <span>本月服务人数：</span><span style="float: right; margin-right: 1.5rem;">服务总人数</span>
+                    <span>本月服务人数：<span style="color: #33ffff;">171469</span></span><span style="float: right; margin-right: 2rem;">服务总人数:<span style="color: #33ffff;">171469</span></span>
                   </div>
                   <div style="display: flex;">
                     <div class="rest-infos" style="width: 8rem;">
@@ -1653,9 +1658,9 @@
         this.$http
           .get(
             // "http://10.15.2.233:8091/jdcytrafficnew/findall"
-            // "http://127.0.0.1:5500/map/mock_data.json"
+            "http://127.0.0.1:5500/map/mock_data.json"
             //  FIRE_URL+"/jdcymapofgaud/findall"
-            FIRE_URL + "/jdcytrafficnew/findall"
+            // FIRE_URL + "/jdcytrafficnew/findall"
           )
           .then(
             function (res) {

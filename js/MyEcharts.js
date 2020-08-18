@@ -98,8 +98,13 @@ var MyEcharts = {
          * @param data : json 数据
          */
         bar: function (title, subtext, data) {
-            // var datas = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
-            var option = {
+            console.log(data)
+             var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
+
+       var     xData = ["本年话务总量", "本年人工话务量", "每万客户呼入量",'每万客户呼入量'];
+        var    yData = [2342, 1230, 425,900];
+         var   option = {
+                backgroundColor: '#061326',
                 "grid": {
                     "top": "25%",
                     "left": "-5%",
@@ -113,7 +118,7 @@ var MyEcharts = {
                 animation: false,
                 "xAxis": [{
                     "type": "category",
-                    "data": data.xData,
+                    "data": xData,
                     "axisTick": {
                         "alignWithLabel": true
                     },
@@ -169,7 +174,7 @@ var MyEcharts = {
                         }
                     },
                     color: "#2DB1EF",
-                    data: data.yData
+                    data: yData
                 },
                     {
                         name: '',
@@ -179,7 +184,7 @@ var MyEcharts = {
                         // "barWidth": "20",
                         z: 12,
                         "color": "#2DB1EF",
-                        "data": data.yData
+                        "data": yData
                     },
                     {
                         name: '',
@@ -195,8 +200,24 @@ var MyEcharts = {
                                 borderWidth: 1
                             }
                         },
-                        data: data.yData
+                        data: yData
+                    },        {
+                        name: '',
+                        type: 'pictorialBar',
+                        symbolSize: [50, 15],
+                        symbolOffset: [0, 12],
+                        z: 10,
+                        itemStyle: {
+                            normal: {
+                                color: 'transparent',
+                                borderColor: '#2EA9E5',
+                                borderType: 'solid',
+                                borderWidth: 1
+                            }
+                        },
+                        data: yData
                     },
+
                     {
                         name: '',
                         type: 'pictorialBar',
@@ -211,7 +232,7 @@ var MyEcharts = {
                                 borderWidth: 2
                             }
                         },
-                        data: data.yData
+                        data: yData
                     },
                     {
                         type: 'bar',
@@ -233,8 +254,60 @@ var MyEcharts = {
                                 opacity: .8
                             },
                         },
-                        data: data.yData
-                    }
+                        data: yData
+                    },{
+                        name: '日用气量分析',
+                        type: 'line',
+                        // smooth: true, //是否平滑
+                        showAllSymbol: true,
+                        // symbol: 'image://./static/images/guang-circle.png',
+                        symbol: 'circle',
+                        symbolSize: 25,
+                        lineStyle: {
+                            normal: {
+                                color: "#6c50f3",
+                                shadowColor: 'rgba(0, 0, 0, .3)',
+                                shadowBlur: 0,
+                                shadowOffsetY: 5,
+                                shadowOffsetX: 5,
+                            },
+                        },
+                        label: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: '#6c50f3',
+                            }
+                        },
+                        itemStyle: {
+                            color: "#6c50f3",
+                            borderColor: "#fff",
+                            borderWidth: 3,
+                            shadowColor: 'rgba(0, 0, 0, .3)',
+                            shadowBlur: 0,
+                            shadowOffsetY: 2,
+                            shadowOffsetX: 2,
+                        },
+                        tooltip: {
+                            show: true
+                        },
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgba(108,80,243,0.3)'
+                                },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(108,80,243,0)'
+                                    }
+                                ], false),
+                                shadowColor: 'rgba(108,80,243, 0.9)',
+                                shadowBlur: 20
+                            }
+                        },
+                        data: [2330, 205.97,2340,900 ]
+                    },
                 ]
             };
             return option;

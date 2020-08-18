@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    initMap();
+    initMap2();
 })
 
 var map;
@@ -17,7 +17,8 @@ var mapStyle = ["normal",       //0-标准
 ];
 var district;
 var polygons = [];
-var shanghai_district = [{ adcode: "310151", name: "崇明区" },
+var shanghai_district = [
+{ adcode: "310151", name: "崇明区" },
 { adcode: "310115", name: "浦东新区" },
 { adcode: "310120", name: "奉贤区" },
 { adcode: "310116", name: "金山区" },
@@ -50,8 +51,8 @@ var jiading_district = [{ name: "安亭镇", lon: 121.2047, lat: 31.2987 },
 { name: "真新街道", lon: 121.35715, lat: 31.25199 }];
 
 
-function initMap() {
-    map = new AMap.Map('mapContainer', {
+function initMap2() {
+    map = new AMap.Map('mapContainer2', {
         center: [121.238825, 31.364284],
         zoom: 12,
         zooms: [11, 18],  //设置地图缩放级别
@@ -59,7 +60,7 @@ function initMap() {
 
     setMapStyle();      /*设置地图风格*/
     setMapFeatures();   /*设置地图显示要素*/
-    drawJiadingBounds();   //加载行政区划插件
+    drawJiadingBounds2();   //加载行政区划插件
     addJiadingBoundary();  /*添加嘉定区和街道边界*/
     addJiadingZhenText();
     addTraffic();           /*添加实时路况情况*/
@@ -86,7 +87,7 @@ function setMapFeatures() {
     map.setFeatures(features);
 }
 
-function drawJiadingBounds() {
+function drawJiadingBounds2() {
     //加载行政区划插件
     if (!district) {
         //实例化DistrictSearch
@@ -158,6 +159,7 @@ function drawJiadingBounds() {
 
                     });
                     polygons.push(polygon);
+                    console.log(polygon, polygons ,'=====polygons');
                 }
 
             }
@@ -269,7 +271,7 @@ function addPoiMarker() {
     var mapMarker = [p1, p2, p3, p4, p6, p7, p8, p9, p10, p11, p5];
 
     for (var i = 0; i < mapMarker.length; i++) {
-        // console.log(JSON.stringify(mapMarker[i]));
+        console.log(JSON.stringify(mapMarker[i]));
         // 创建一个 Icon
         var icon = new AMap.Icon({
             // 图标尺寸

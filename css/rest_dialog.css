@@ -1,3 +1,28 @@
+.rest-www{
+	position: absolute;
+  background-color: #1D2B56;
+  top: 0;
+  left: 0;
+ /* width: 200rem;
+  height: 56.25rem;*/
+    width: 100%;
+ height: 100%;
+  z-index: 11199;
+}
+.httpShow-close {
+    position: absolute;
+  float: right;
+  height: 2rem;
+  width: 2rem;
+    top:1rem;
+    right: 1rem;
+  text-align: center;
+	line-height: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #fff;
+}
 .rest-box{
 	position: absolute;
   background-color: #1D2B56;
@@ -5,7 +30,7 @@
   left: 34.6rem;
   width: 130.8rem;
   height: 49.35rem;
-  z-index: 11;
+  z-index: 199;
 }
 .rest-box-big{
   position: absolute;
@@ -15,6 +40,8 @@
   right: 0;
   top: 0;
   bottom: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .rest-box-left{
@@ -79,7 +106,7 @@
   background-color: pink;
 }
 .info-box{
-  padding: 0.4rem;
+  padding: 0.3rem;
   background: rgba(80, 227, 194, 0.2);
   border: 1px solid #50BAE3;
   flex-direction: column;
@@ -236,4 +263,19 @@
   margin: 0!important;
   padding: 2px 8px !important;
   background-color: red;
+}
+.rest-foot-box2 .first-info {
+  display: inline-block;
+  width: 11rem;
+  text-align: right;
+}
+.rest-foot-box2 .second-info {
+  display: inline-block;
+  width: 7rem;
+  text-align: right;
+}
+.rest-foot-box2 .third-info {
+  display: inline-block;
+  width: 5rem;
+  text-align: right;
 }

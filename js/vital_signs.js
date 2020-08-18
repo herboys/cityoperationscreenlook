@@ -370,51 +370,58 @@ function getAsjjbData() {
 }
 
 //获取12345,网格化，119的数据
-function get12345Grid119() {
-  //alert(123)
-  $.ajax({
-    url: ORACLE_URL + "/taskInfoUrgent/findHotlineNum",
-    dataType: "json",
-    type: "get",
-    async: true,
-    success: function (data) {
-      //alert(JSON.stringify(data))
-      var obj = new Object();
-      obj.today = data.yeaterdayNum;
-      obj.week = data.weekNum;
-      obj.month = data.monthNum;
-      asjczArr[3] = obj;
 
-      $.ajax({
-        url: ORACLE_URL + "/taskInfoUrgent/findGridNum",
-        dataType: "json",
-        type: "get",
-        async: true,
-        success: function (data) {
-          //	alert(JSON.stringify(data))
-          var obj = new Object();
-          obj.today = data.yeaterdayNum;
-          obj.week = data.weekNum;
-          obj.month = data.monthNum;
-          asjczArr[4] = obj;
-          $.ajax({
-            url: FIRE_URL + "/fireInfo/findFireNum",
-            dataType: "json",
-            type: "get",
-            async: true,
-            success: function (data) {
-              var obj = new Object();
-              obj.today = data.todayNum;
-              obj.week = data.weekNum;
-              obj.month = data.monthNum;
-              //asjczArr[1]=obj
-              addAsjcz(asjczArr);
-            },
-          });
-        },
-      });
-    },
-  });
+var eventFlag=false
+function get12345Grid119(){
+	//alert(123)
+	$.ajax({
+		url:ORACLE_URL+"/taskInfoUrgent/findHotlineNum",
+		dataType:'json',
+		type:'get',
+		async:true,
+		success:function(data){
+			//alert(JSON.stringify(data))
+			var obj=new Object()
+			obj.today=data.yeaterdayNum
+			obj.week=data.weekNum
+			obj.month=data.monthNum
+			asjczArr[3]=obj
+
+			$.ajax({
+				url:ORACLE_URL+"/taskInfoUrgent/findGridNum",
+				dataType:'json',
+				type:'get',
+				async:true,
+				success:function(data){
+					//	alert(JSON.stringify(data))
+					var obj=new Object()
+					obj.today=data.yeaterdayNum
+					obj.week=data.weekNum
+					obj.month=data.monthNum
+					asjczArr[4]=obj
+					$.ajax({
+						url: FIRE_URL + "/fireInfo/findFireNum",
+						dataType: 'json',
+						type: 'get',
+						async: true,
+						success: function (data) {
+							var obj=new Object()
+							obj.today=data.todayNum
+							obj.week=data.weekNum
+							obj.month=data.monthNum
+							//asjczArr[1]=obj
+							addAsjcz(asjczArr);
+							eventFlag=true
+						},
+						error:function () {
+							addAsjcz(asjczArr);
+						}
+					})
+				}
+			})
+		}
+	})
+
 }
 
 function addjbgk(arr) {

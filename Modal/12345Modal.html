@@ -10,14 +10,29 @@
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
 <body>
-<div class="Modal-warp" id="clearid">
+<div class="Modal-warp" >
+    <div id="clearid">x</div>
     <div class="Modal-left">
+        <div style="  padding: 0px 20px;">
         <div class="Modal-left-item">
-            <div class="header">
-                <a class="line"></a>
-                <span>12345事件统计分析</span>
-                <a class="line1"></a>
+            <div class="FX_header">
+                <div class="header">
+                    <a class="line"></a>
+                    <span>12345事件统计分析</span>
+                    <a class="line1"></a>
+                </div>
+                <div id="dropdown">
+                    <p style="border:1px solid #1DD6DF;color: #1DD6DF">月份</p>
+                    <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
+                        <li><a href="#" rel="1">长沙</a></li>
+                        <li><a href="#" rel="2">北京</a></li>
+                        <li><a href="#" rel="3">南京</a></li>
+                        <li><a href="#" rel="4">堪培拉</a></li>
+                        <li><a href="#" rel="5">多伦多</a></li>
+                    </ul>
+                </div>
             </div>
+
             <div class="Satisfaction-warp">
                 <div class="Satisfaction-warp-item">
                     <div class="Satisfaction-warp-item-header">
@@ -25,12 +40,19 @@
                             <div class="banner1">基本情况</div>
                             <div class="banner2">趋势分析</div>
                         </div>
-                        <select>
-                            <option>--查询--</option>
-                        </select>
+                        <div id="dropdown">
+                            <p>问题来源</p>
+                            <ul>
+                                <li><a href="#" rel="1">长沙</a></li>
+                                <li><a href="#" rel="2">北京</a></li>
+                                <li><a href="#" rel="3">南京</a></li>
+                                <li><a href="#" rel="4">堪培拉</a></li>
+                                <li><a href="#" rel="5">多伦多</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="Satisfaction-warp-item-echarts">
-                        <div id="SmallECharts3" style="width: 597px;height:255px"></div>
+                        <div id="SmallECharts3" style="width: 575px;height:255px"></div>
                     </div>
 
 
@@ -38,15 +60,22 @@
                 <div class="Satisfaction-warp-item">
                     <div class="Satisfaction-warp-item-header">
                         <div class="Satisfaction-warp-item-header-left">
-                            <div class="banner1">基本情况</div>
+                            <div class="banner1">效能评估</div>
                             <div class="banner2">趋势分析</div>
                         </div>
-                        <select>
-                            <option>--查询--</option>
-                        </select>
+                        <div id="dropdown">
+                            <p>街镇效能</p>
+                            <ul>
+                                <li><a href="#" rel="1">长沙</a></li>
+                                <li><a href="#" rel="2">北京</a></li>
+                                <li><a href="#" rel="3">南京</a></li>
+                                <li><a href="#" rel="4">堪培拉</a></li>
+                                <li><a href="#" rel="5">多伦多</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="Satisfaction-warp-item-echarts">
-                        <div id="SmallECharts4" style="width: 597px;height:255px"></div>
+                        <div id="SmallECharts4" style="width: 575px;height:255px;margin-right: 20px"></div>
                     </div>
 
 
@@ -63,29 +92,25 @@
                 <div class="Satisfaction-warp-item">
                     <div class="Satisfaction-warp-item-header">
                         <div class="Satisfaction-warp-item-header-left">
-                            <div class="banner1">基本情况</div>
+                            <div class="banner1">街镇</div>
                             <div class="banner2">趋势分析</div>
                         </div>
-                        <select>
-                            <option>--查询--</option>
-                        </select>
+
                     </div>
                     <div class="Satisfaction-warp-item-echarts">
-                        <div id="SmallECharts" style="width: 597px;height:255px"></div>
+                        <div id="SmallECharts" style="width:  617px;height:255px"></div>
                     </div>
                 </div>
                 <div class="Satisfaction-warp-item">
                     <div class="Satisfaction-warp-item-header">
                         <div class="Satisfaction-warp-item-header-left">
-                            <div class="banner1">基本情况</div>
+                            <div class="banner1">委办局(公司)</div>
                             <div class="banner2">趋势分析</div>
                         </div>
-                        <select>
-                            <option>--查询--</option>
-                        </select>
+
                     </div>
                     <div class="Satisfaction-warp-item-echarts">
-                        <div id="SmallECharts1" style="width: 597px;height:255px"></div>
+                        <div id="SmallECharts1" style="width: 617px;height:255px"></div>
                     </div>
                 </div>
             </div>
@@ -93,17 +118,19 @@
 
 
         <div class="Modal-left-item">
-            <div class="header">
-                <a class="line"></a>
-                <span>工单列表</span>
-                <a class="line1"></a>
-            </div>
+
             <div class="work-older">
 
+                <div class="header">
+                    <a class="line"></a>
+                    <span>工单列表</span>
+                    <a class="line1"></a>
+                </div>
                 <div class="work-older-item">
                     <div class="work-older-header">
                         <span>紧急工单</span>
-                        <button>更多</button>
+                        <button>次紧急工单</button>
+<!--                        <button>更多</button>-->
                     </div>
                     <div class="work-older-list">
                         <ul class="work-older-list-ul">
@@ -112,6 +139,7 @@
                             <li>案例来源</li>
                             <li>截至时间</li>
                             <li>最后期限</li>
+                            <li>工单状态</li>
                         </ul>
                         <ul class="work-older-list-ul ul-line ">
                             <li>AT00987</li>
@@ -119,6 +147,7 @@
                             <li>安亭镇</li>
                             <li>2020/08/01</li>
                             <li>2020/08/01</li>
+                            <li>处置中</li>
                         </ul>
                         <ul class="work-older-list-ul ul-line ">
                             <li>AT00987</li>
@@ -126,13 +155,14 @@
                             <li>安亭镇</li>
                             <li>2020/08/01</li>
                             <li>2020/08/01</li>
+                            <li>处置中</li>
                         </ul>
                     </div>
                 </div>
                 <div class="work-older-item">
                     <div class="work-older-header">
-                        <span>逾期工单</span>
-                        <button>更多</button>
+                        <button >反复退单</button>
+<!--                        <button>更多</button>-->
                     </div>
                     <div class="work-older-list">
                         <ul class="work-older-list-ul">
@@ -141,6 +171,7 @@
                             <li>案例来源</li>
                             <li>截至时间</li>
                             <li>最后期限</li>
+                            <li>工单状态</li>
                         </ul>
                         <ul class="work-older-list-ul ul-line ">
                             <li>AT00987</li>
@@ -148,6 +179,7 @@
                             <li>安亭镇</li>
                             <li>2020/08/01</li>
                             <li>2020/08/01</li>
+                            <li>处置中</li>
                         </ul>
                         <ul class="work-older-list-ul ul-line ">
                             <li>AT00987</li>
@@ -155,35 +187,7 @@
                             <li>安亭镇</li>
                             <li>2020/08/01</li>
                             <li>2020/08/01</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="work-older-item">
-                    <div class="work-older-header">
-                        <span>反复退单</span>
-                        <button>更多</button>
-                    </div>
-                    <div class="work-older-list">
-                        <ul class="work-older-list-ul">
-                            <li>工单编号</li>
-                            <li>发生时间</li>
-                            <li>案例来源</li>
-                            <li>截至时间</li>
-                            <li>最后期限</li>
-                        </ul>
-                        <ul class="work-older-list-ul ul-line ">
-                            <li>AT00987</li>
-                            <li>2020/08/01</li>
-                            <li>安亭镇</li>
-                            <li>2020/08/01</li>
-                            <li>2020/08/01</li>
-                        </ul>
-                        <ul class="work-older-list-ul ul-line ">
-                            <li>AT00987</li>
-                            <li>2020/08/01</li>
-                            <li>安亭镇</li>
-                            <li>2020/08/01</li>
-                            <li>2020/08/01</li>
+                            <li>处置中</li>
                         </ul>
                     </div>
                 </div>
@@ -193,23 +197,42 @@
         </div>
 
     </div>
+    </div>
     <div class="Modal-right" id="container"></div>
 </div>
 </body>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="Js/Maps.js"></script>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script>
     document.getElementById("clearid").onclick = function () {
         window.parent.document.getElementById("ModalBox").style.display = "none";
     }
-    window.onload = function () {
+    $("#dropdown p").click(function() {
+        var ul = $("#dropdown ul");
+        if (ul.css("display") == "none") {
+            ul.slideDown("fast");
+        } else {
+            ul.slideUp("fast");
+        }
+        $("#dropdown ul li a").click(function () {
+            var txt = $(this).text();
+            $("#dropdown p").html(txt);
+            var value = $(this).attr("rel");
+            $("#dropdown ul").hide();
+            $("#result").html("您选择了" + txt + "，值为：" + value);
+        });
+    })
+        window.onload = function () {
         let para = {
             xData: ["本年话务总量", "本年人工话务量", "每万客户呼入量"],
             yData: [2342, 1230, 425]
         }
-        MyEcharts.initChart(MyEcharts.EchartsOption.bar('name', "单位（人）", para), "SmallECharts")
-        MyEcharts.initChart(MyEcharts.EchartsOption.bar('name', "单位（人）", para), "SmallECharts1")
+        let color2 = '#F9392D'
+        let color1 = '#4489D3'
+        MyEcharts.initChart(MyEcharts.EchartsOption.goods(color2), "SmallECharts")
+        MyEcharts.initChart(MyEcharts.EchartsOption.goods(color1), "SmallECharts1")
         let data = [{
             "name": "业务1",
             "value": 10
@@ -233,9 +256,12 @@
                 "value": 25
             },
         ];
-        let color = [ "#fec101", "#b5b8cd ", "#ff6226","#f60000","#2cc78f","#2ca7f9"]
-        MyEcharts.initChart(MyEcharts.EchartsOption.pie('name', color, data), "SmallECharts3")
-        MyEcharts.initChart(MyEcharts.EchartsOption.pie('name',color, data), "SmallECharts4")
+        let color = ["#fec101", "#b5b8cd ", "#ff6226", "#f60000", "#2cc78f", "#2ca7f9"]
+        MyEcharts.initChart(MyEcharts.EchartsOption.pie('12345\n工单问题', color, data), "SmallECharts3")
+        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name'), "SmallECharts4")
+        // window.onresize = function () {
+        //     SmallECharts4.resize();
+        // }
     }
 </script>
 </html>

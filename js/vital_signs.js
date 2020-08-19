@@ -960,7 +960,7 @@ function closeOldPeopleHome() {
 }
 
 
-//生活垃圾
-function openGarbageClassification(){
-  alert("进入垃圾分类页面")
-}
+// //生活垃圾
+// function openGarbageClassification(){
+//   alert("进入垃圾分类页面")
+// }

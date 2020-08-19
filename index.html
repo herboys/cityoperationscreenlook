@@ -512,7 +512,7 @@
                 </div>
               </div>
 
-              <div class="main-list" @click="restClick">
+              <div class="main-list"  onclick="GridModalShow()">
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -1513,6 +1513,9 @@
       <div class="ModalBox" id="GarBageModal">
         <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
+      <div class="ModalBox" id="GridModal" style="display: block;">
+        <iframe id="openiframeGridModal" src="Modal/GridModal.html" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
       <div v-show="httpShow" class="rest-www">
 
         <div class="httpShow-close" @click="httpShow=false"> x</div>
@@ -1585,7 +1588,9 @@
   function openGarbageClassification(){
     document.getElementById("GarBageModal").style.display = "block";
   }
-
+  function GridModalShow(){
+    $("#GridModal").show();
+  }
   var app = new Vue({
     el: "#app",
     data() {
@@ -1669,6 +1674,16 @@
         }
         let arr = str.split(",");
         console.log(arr, "===arr");
+        map.add( new AMap.Circle({
+          center: arr, // 圆心位置
+          radius: 1000,  //半径
+          strokeColor: "#F33",  //线颜色
+          strokeOpacity: 1,  //线透明度
+          strokeWeight: 3,  //线粗细度
+          fillColor: "#ee2200",  //填充颜色
+          fillOpacity: 0.35 //填充透明度
+      }));
+        map.setFitView();
         map.setZoomAndCenter(15, arr);
         this.changeIndex1 = index
       },

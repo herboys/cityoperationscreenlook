@@ -305,7 +305,6 @@
 }
 
 .rest-foot-box2  .infos-box{
-  background-color: rgba(0, 0, 0, 0.4);
   margin-left: 2rem;
   color: #fff;
   text-align: right;
@@ -336,4 +335,9 @@
   z-index: 99;
   text-align: center;
   line-height: 1.75rem;
+}
+
+.mapListActive {
+  /* background-color: red; */
+  color: yellowgreen;
 }

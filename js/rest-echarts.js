@@ -49,29 +49,29 @@ function initEcharts() {
 
   option = {
     //背景色
-    backgroundColor: {
-      // 背景颜色
-      type: "linear",
-      x: 0,
-      y: 0,
-      x2: 0,
-      y2: 1,
-      colorStops: [
-        {
-          offset: 0,
-          color: "rgba(0,0,0,0.4)", // 0% 处的颜色
-        },
-        {
-          offset: 0.5,
-          color: "rgba(0,0,0,0.4)", // 50% 处的颜色
-        },
-        {
-          offset: 1,
-          color: "rgba(0,0,0,0.4)", // 100% 处的颜色
-        },
-      ],
-      globalCoord: false, // 缺省为 false
-    },
+    // backgroundColor: {
+    //   // 背景颜色
+    //   type: "linear",
+    //   x: 0,
+    //   y: 0,
+    //   x2: 0,
+    //   y2: 1,
+    //   colorStops: [
+    //     {
+    //       offset: 0,
+    //       color: "rgba(0,0,0,0.4)", // 0% 处的颜色
+    //     },
+    //     {
+    //       offset: 0.5,
+    //       color: "rgba(0,0,0,0.4)", // 50% 处的颜色
+    //     },
+    //     {
+    //       offset: 1,
+    //       color: "rgba(0,0,0,0.4)", // 100% 处的颜色
+    //     },
+    //   ],
+    //   globalCoord: false, // 缺省为 false
+    // },
 
     // 图例
     legend: [
@@ -230,29 +230,29 @@ function initEcharts2() {
 
   option = {
     //背景色
-    backgroundColor: {
-      // 背景颜色
-      type: "linear",
-      x: 0,
-      y: 0,
-      x2: 0,
-      y2: 1,
-      colorStops: [
-        {
-          offset: 0,
-          color: "rgba(0,0,0,0.4)", // 0% 处的颜色
-        },
-        {
-          offset: 0.5,
-          color: "rgba(0,0,0,0.4)", // 50% 处的颜色
-        },
-        {
-          offset: 1,
-          color: "rgba(0,0,0,0.4)", // 100% 处的颜色
-        },
-      ],
-      globalCoord: false, // 缺省为 false
-    },
+    // backgroundColor: {
+    //   // 背景颜色
+    //   type: "linear",
+    //   x: 0,
+    //   y: 0,
+    //   x2: 0,
+    //   y2: 1,
+    //   colorStops: [
+    //     {
+    //       offset: 0,
+    //       color: "rgba(0,0,0,0.4)", // 0% 处的颜色
+    //     },
+    //     {
+    //       offset: 0.5,
+    //       color: "rgba(0,0,0,0.4)", // 50% 处的颜色
+    //     },
+    //     {
+    //       offset: 1,
+    //       color: "rgba(0,0,0,0.4)", // 100% 处的颜色
+    //     },
+    //   ],
+    //   globalCoord: false, // 缺省为 false
+    // },
 
     // 图例
     legend: [

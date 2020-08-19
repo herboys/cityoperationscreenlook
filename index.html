@@ -683,8 +683,8 @@
         </div>
       </div>
 
-      <div v-show="restShow" class="rest-box">
-        <a class="rescue-close" @click="restClose"> x</a>
+      <div v-show="restShow" id="restShow" style="display: none;" class="rest-box">
+        <a class="rescue-close" onclick="closeOldPeopleHome()" @click="restClose"> x</a>
         <div class="rest-box-big">
           <div class="rest-box-left">
             <div class="main-title">
@@ -1320,8 +1320,8 @@
                   500M-1000M拥堵路:
                 </div>
                 <div v-if="list1.length>0">
-                  <div v-for="(item,index) in list1" style="margin: 0.4rem 0;" @click="clickLocus1(item,index)">
-                    <span class="sub-bot1">{{item.roadname}}-{{item.location}}</span>
+                  <div v-for="(item,index) in list1" style="margin: 0.4rem 0;" @click="clickLocus1(item,index)" > 
+                    <span class="sub-bot1" :class="{ mapListActive: index == changeIndex1 }">{{item.roadname}}-{{item.location}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1336,8 +1336,8 @@
                   1000M-2000M拥堵路:
                 </div>
                 <div v-if="list2.length>0">
-                  <div v-for="(item, index) in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item, index)">
-                    <span class="sub-bot2">{{item.roadname}}-{{item.location}}</span>
+                  <div v-for="(item, index) in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item, index)" >
+                    <span class="sub-bot2" :class="{ mapListActive: index == changeIndex2 }">{{item.roadname}}-{{item.location}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1352,8 +1352,8 @@
                   2000M以上拥堵路:
                 </div>
                 <div v-if="list3.length>0">
-                  <div v-for="(item, index) in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item, index)">
-                    <span class="sub-bot3">{{item.roadname}}-{{item.location}}</span>
+                  <div v-for="(item, index) in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item, index)"  >
+                    <span class="sub-bot3" :class="{ mapListActive: index == changeIndex3 }">{{item.roadname}}-{{item.location}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1557,6 +1557,9 @@
         isActive: true,
         isUnactive: false,
         httpShow: false,
+        changeIndex1: -1,
+        changeIndex2: -1,
+        changeIndex3: -1,
       };
     },
     methods: {
@@ -1564,16 +1567,19 @@
         this.visible1 = true;
         this.visible2 = false;
         this.visible3 = false;
+        this.changeIndex1 = -1
       },
       visibleClick2() {
         this.visible1 = false;
         this.visible2 = true;
         this.visible3 = false;
+        this.changeIndex2 = -1
       },
       visibleClick3() {
         this.visible1 = false;
         this.visible2 = false;
         this.visible3 = true;
+        this.changeIndex3 = -1
       },
       closeClick() {
         this.visible1 = false;
@@ -1603,6 +1609,7 @@
         (this.httpShow = false);
       },
       clickLocus1(item, index) {
+        console.log(index,'==index');
         let str = "";
         if (this.list1[index].lnglat) {
           str = this.list1[index].lnglat;
@@ -1610,6 +1617,7 @@
         let arr = str.split(",");
         console.log(arr, "===arr");
         map.setZoomAndCenter(15, arr);
+        this.changeIndex1 = index
       },
       clickLocus2(item, index) {
         let str = "";
@@ -1619,6 +1627,7 @@
         let lineArr = str.split(",");
         console.log(lineArr, "===lineArr");
         map.setZoomAndCenter(15, lineArr);
+        this.changeIndex2 = index
       },
       clickLocus3(item, index) {
         let str = "";
@@ -1628,7 +1637,7 @@
         let arr = str.split(",");
         console.log(arr, "===arr");
         map.setZoomAndCenter(15, arr);
-
+        this.changeIndex3 = index
       },
       colorClick1() {
         (this.isActive = true), (this.isUnactive = false);
@@ -1637,6 +1646,9 @@
         (this.isActive = false), (this.isUnactive = true);
       },
       showClick() {
+        this.changeIndex1 = -1
+        this.changeIndex2 = -1
+        this.changeIndex3 = -1
         this.showDialog = !this.showDialog;
       },
       // rescueClick() {

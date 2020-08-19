@@ -994,10 +994,17 @@
                     <img class="top-img1" v-show="switchShow4" src="images/imgs/rest-top-left.png" />
                     <div class="top-title4">种类分布</div>
                   </div>
-                  <div style="margin-left: 42.5rem; margin-top: 1.8rem;">
-                    <select>
-                      <option>累计</option>
-                  </select>
+                  <div style="margin-left: 38.5rem; margin-top: 1.8rem;">
+                  <div id="dropdown">
+                    <p>累计<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
+                    <ul>
+                        <li><a href="#" rel="1">一月</a></li>
+                        <li><a href="#" rel="2">二月</a></li>
+                        <li><a href="#" rel="3">三月</a></li>
+                        <li><a href="#" rel="4">四月</a></li>
+                        <li><a href="#" rel="5">五月</a></li>
+                    </ul>
+                </div>
                   </div>
                 </div>
                 <div style="display: flex; height: 5.3rem;" v-show="switchShow3">
@@ -1050,9 +1057,10 @@
                       </li>
                       
                     </ul>
-                    <span class="z-prev"></span>
-                    <span class="z-next"></span>
+                   
                   </div>
+                  <span class="z-prev"> < </span>
+                  <span class="z-next"> > </span>
                  
                 </div>
                 <div style="color: #fff; height: 5.3rem;" v-show="switchShow4">
@@ -1109,13 +1117,20 @@
                     </div>
                     <span style="float: right; margin-right: 2rem;">服务总人次： <span style="color: #33ffff;">171469</span></span>
                   </div>
-                  <div>
-                    <span>本月服务人次：<span style="color: #33ffff;">171469</span></span>
-                    <span style="float: right; margin-right: 2rem;">   
-                      <select>
-                      <option>累计</option>
-                     </select>
-                    </span>
+                  <div style="display: flex;margin: 0.5rem 0;">
+                    <div>本月服务人次：<span style="color: #33ffff;">171469</span></div>
+                    <div style=" margin-left: 13.25rem;">   
+                      <div id="dropdown2">
+                        <p>累计<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
+                        <ul>
+                            <li><a href="#" rel="1">一月</a></li>
+                            <li><a href="#" rel="2"></a></li>
+                            <li><a href="#" rel="3">南京</a></li>
+                            <li><a href="#" rel="4">堪培拉</a></li>
+                            <li><a href="#" rel="5">多伦多</a></li>
+                        </ul>
+                    </div>
+                  </div>
                   </div>
                   <div style="display: flex;">
                     <div class="rest-infos" style="width: 8rem;">
@@ -1200,7 +1215,7 @@
                     </div>
                   </div>
 
-                  <div>
+                  <div style="margin: 0.5rem 0;">
                     <span>本月服务人数：<span style="color: #33ffff;">171469</span></span><span style="float: right; margin-right: 2rem;">服务总人数:<span style="color: #33ffff;">171469</span></span>
                   </div>
                   <div style="display: flex;">
@@ -1527,6 +1542,36 @@
       setFont();
       $(".main-warp").height($("html").height() - $(".header").height());
     });
+    $("#dropdown p").click(function() {
+        var ul = $("#dropdown ul");
+        if (ul.css("display") == "none") {
+            ul.slideDown("fast");
+        } else {
+            ul.slideUp("fast");
+        }
+        $("#dropdown ul li a").click(function () {
+            var txt = $(this).text();
+            $("#dropdown p").html(txt);
+            var value = $(this).attr("rel");
+            $("#dropdown ul").hide();
+            $("#result").html("您选择了" + txt + "，值为：" + value);
+        });
+    })
+    $("#dropdown2 p").click(function() {
+        var ul = $("#dropdown2 ul");
+        if (ul.css("display") == "none") {
+            ul.slideDown("fast");
+        } else {
+            ul.slideUp("fast");
+        }
+        $("#dropdown2 ul li a").click(function () {
+            var txt = $(this).text();
+            $("#dropdown2 p").html(txt);
+            var value = $(this).attr("rel");
+            $("#dropdown2 ul").hide();
+            $("#result").html("您选择了" + txt + "，值为：" + value);
+        });
+    })
   });
   // createVideoSlideOne();
   // createVideoSlide();
@@ -1540,6 +1585,7 @@
   function openGarbageClassification(){
     document.getElementById("GarBageModal").style.display = "block";
   }
+
   var app = new Vue({
     el: "#app",
     data() {

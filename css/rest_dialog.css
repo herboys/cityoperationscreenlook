@@ -228,26 +228,23 @@
   padding: 0!important;
 }
 .z-prev{
-  display:block;
-  width:20px;
-  height:20px;
   position:absolute;
-  top:28%;
-  left:40px;
-  box-shadow:0px 0px 5px yellow;
+  top:22%;
+  left:2%;
+  /* box-shadow:0px 0px 5px yellow; */
   z-index:661;
   cursor:pointer;
+  font-size: 2rem;
+  color: #fff;
 }
 .z-next{
-  display:block;
-  width:20px;
-  height:20px;
   position:absolute;
-  top:28%;
-  right:40px;
-  box-shadow:0px 0px 5px yellow;
+  top:22%;
+  left: 47%;
   z-index:661;
   cursor:pointer;
+  font-size: 2rem;
+  color: #fff;
 }
 .n-box{
   width:100%;
@@ -340,4 +337,25 @@
 .mapListActive {
   /* background-color: red; */
   color: yellowgreen;
+}
+
+#dropdown{font-size:16px;z-index: 99999}
+#dropdown p{width:80px; height:32px; line-height:32px; padding-left:10px; padding-right:30px;
+    border:1px solid #a9c9e2; background:inherit url('V') no-repeat right 4px;
+    color: #ffffff; cursor:pointer}
+#dropdown ul{width:119px; background-color: #061839;; margin-top:2px; border:2px solid #50657D;
+    position:absolute; display:none}
+#dropdown ul li{height:24px; line-height:24px; text-indent:10px}
+#dropdown ul li a{display:block; height:24px; color: #ffffff; text-decoration:none}
+#dropdown ul li a:hover{background:#c6dbfc; color: #ffffff
+}
+#dropdown2{font-size:16px;z-index: 99999}
+#dropdown2 p{width:80px; height:32px; line-height:32px; padding-left:10px; padding-right:30px;
+    border:1px solid #a9c9e2; background:inherit url('V') no-repeat right 4px;
+    color: #ffffff; cursor:pointer}
+#dropdown2 ul{width:119px; background-color: #061839;; margin-top:2px; border:2px solid #50657D;
+    position:absolute; display:none}
+#dropdown2 ul li{height:24px; line-height:24px; text-indent:10px}
+#dropdown2 ul li a{display:block; height:24px; color: #ffffff; text-decoration:none}
+#dropdown2 ul li a:hover{background:#c6dbfc; color: #ffffff
 }

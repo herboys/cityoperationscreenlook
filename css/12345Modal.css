@@ -367,7 +367,7 @@ ul li {
 }
 
 .GarBage-child-item {
-    flex: 1;
+    width: 50%;
     display: flex;
     align-items: center;
 
@@ -412,7 +412,7 @@ ul li {
 .GarBage-child-1 {
     display: flex;
     margin-top: 4px;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .Municipal-level {

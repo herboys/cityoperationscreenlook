@@ -1,6 +1,3 @@
-//let STATIC_URL="http://192.168.30.192:8086"
-let STATIC_URL = ""   //生产环境
-// let STATIC_URL="localhost:9090";  //本地环境
 let globalToken = ""
 const ERROR_403 = 403;
 let refreshToken = false;
@@ -9,12 +6,11 @@ const TOKEN_REFRESH_TIME = 110000; // token刷新时间
 
 const ajaxPromise = param => {
     return   new Promise((resolve, reject) => {
-
         $.ajax({
             type: param.type,
             async: param.async,
             data: param.data,
-            url: STATIC_URL + param.url,
+            url: GarBage_URl + param.url,
             dataType: param.dataType,
             contentType: param.contentType,
             // jsonp:'callback',

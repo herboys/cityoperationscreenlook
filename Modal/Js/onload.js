@@ -30,8 +30,8 @@ function EndFacilities() {
                 para += ' <div class="GarBage-child-item GarBage-child-end">'
                     + '<img src="../Modal/images/icon_.png ">'
                     + '   <div>'
-                    + '  <p>' + res.data[i].pointName + '</p>'
-                    + '<span>' + res.data[i].shuntOneDayTotal + '</span>'
+                    + '  <p style="font-size: 14px">' + res.data[i].pointName + '</p>'
+                    + '<span style="font-size: 14px">' + res.data[i].shuntOneDayTotal + '</span>'
                     + '</div>'
                     + ' </div>'
             }
@@ -55,6 +55,7 @@ function TownLifeGarbage() {
     }
     ajaxPromise(para).then(res => {
         if (res.status === 'OK') {
+            console.log(res)
             let para = ''
             for (let i = 0; i < res.data.length; i++) {
                 para += '<ul style="color: white">'

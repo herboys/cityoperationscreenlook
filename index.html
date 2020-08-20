@@ -1555,16 +1555,16 @@
         }
         let arr = str.split(",");
         console.log(arr, "===arr");
-        map.add( new AMap.Circle({
-          center: arr, // 圆心位置
-          radius: 1000,  //半径
-          strokeColor: "#F33",  //线颜色
-          strokeOpacity: 1,  //线透明度
-          strokeWeight: 3,  //线粗细度
-          fillColor: "#ee2200",  //填充颜色
-          fillOpacity: 0.35 //填充透明度
-      }));
-        map.setFitView();
+      //   map.add( new AMap.Circle({
+      //     center: arr, // 圆心位置
+      //     radius: 1000,  //半径
+      //     strokeColor: "#F33",  //线颜色
+      //     strokeOpacity: 1,  //线透明度
+      //     strokeWeight: 3,  //线粗细度
+      //     fillColor: "#ee2200",  //填充颜色
+      //     fillOpacity: 0.35 //填充透明度
+      // }));
+      //   map.setFitView();
         map.setZoomAndCenter(15, arr);
         this.changeIndex1 = index
       },

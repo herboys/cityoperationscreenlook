@@ -141,8 +141,8 @@ function drawJiadingBounds() {
                 // 地图自适应
                 // map.setFitView()
                 // map.getZoom
-                console.log("getZoom",map.getZoom())
-                console.log("getZoom",map.setZoom(10))
+                // console.log("getZoom",map.getZoom())
+                // console.log("getZoom",map.setZoom(10))
 
             }
         })

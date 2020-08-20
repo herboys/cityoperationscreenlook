@@ -32,7 +32,6 @@
   <script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript" src="js/scroll.js"></script>
   <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/resource.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
@@ -708,7 +707,7 @@
               </div>
             </div>
             <div class="vital-signs" v-show="switchShow1">
-              <div class="top-box rest-top-box">
+              <div class=" rest-top-box">
                 <div class="title-box" style="margin-bottom: 0.2rem;">
                   <div class="title-border-box">
                     <div class="top-border border-box"></div>
@@ -967,7 +966,7 @@
               </div>
             </div>
             <div class="vital-signs" v-show="switchShow2">
-              <div class="top-box rest-top-box">
+              <div class=" rest-top-box">
                 <div class="title-box" style="margin-bottom: 0.2rem;">
                   <div class="title-border-box">
                     <div class="top-border border-box"></div>
@@ -1124,10 +1123,10 @@
                         <p>累计<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
                         <ul>
                             <li><a href="#" rel="1">一月</a></li>
-                            <li><a href="#" rel="2"></a></li>
-                            <li><a href="#" rel="3">南京</a></li>
-                            <li><a href="#" rel="4">堪培拉</a></li>
-                            <li><a href="#" rel="5">多伦多</a></li>
+                            <li><a href="#" rel="2">二月</a></li>
+                            <li><a href="#" rel="3">三月</a></li>
+                            <li><a href="#" rel="4">四月</a></li>
+                            <li><a href="#" rel="5">五月</a></li>
                         </ul>
                     </div>
                   </div>
@@ -1513,7 +1512,7 @@
       <div class="ModalBox" id="GarBageModal">
         <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
-      <div class="ModalBox" id="GridModal">
+      <div class="ModalBox" id="GridModal" style="display: none;">
         <iframe id="openiframeGridModal" src="Modal/GridModal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
       <div v-show="httpShow" class="rest-www">
@@ -1750,9 +1749,9 @@
         this.$http
           .get(
             // "http://10.15.2.233:8091/jdcytrafficnew/findall"
-            "http://127.0.0.1:5500/map/mock_data.json"
+            // "http://127.0.0.1:5500/map/mock_data.json"
             //  FIRE_URL+"/jdcymapofgaud/findall"
-            // FIRE_URL + "/jdcytrafficnew/findall"
+            FIRE_URL + "/jdcytrafficnew/findall"
           )
           .then(
             function (res) {

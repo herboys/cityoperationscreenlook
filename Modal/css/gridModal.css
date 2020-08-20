@@ -114,7 +114,7 @@ body {
 
 .work-older {
     display: flex;
-
+    margin-top: 20px;
 }
 
 .work-older-item {
@@ -288,52 +288,59 @@ ul li {
 
 .echarts-info{
     width: 100px;display: inline-block;
-    background-image: url(../images/grid-bg.png);
+    background-image: url(../images/echarts-info-bg.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     line-height: 3rem;
     margin-right: 20px;
+    text-align: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*!*垃圾分类i*!*/
-.GarBage-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.echarts-bg-box{
+    width: 290px;height: 205px;
+    background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
+    background-repeat: no-repeat;
+    background-size: 3px 20px, 20px 3px;
+    margin: auto 0;
+    margin-left: -20px;
+    border: solid 1px rgb(35, 80, 121);
 }
-.GarBage-between{
-    /*display: flex;*/
-    /*justify-content: space-between;*/
+
+.ranking-public{
+    width: 90px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    line-height: 100px;
+    margin: auto;
+    margin-bottom: 10px;
 }
-.flex-item-1{
+.ranking-first{
+    background-image: url(../images/ranking-red.png);
+}
+.ranking-second{
+    background-image: url(../images/ranking-yellow.png);
+}
+.ranking-third{
+    background-image: url(../images/ranking-cyan.png);
+}
+.ranking-fourth{
+    background-image: url(../images/ranking-blue.png);
+}
+.ranking-fifth{
+    background-image: url(../images/ranking-fifth.png);
+}
+.ranking-6{
+    background-image: url(../images/ranking-6.png);
+}
+.ranking-7{
+    background-image: url(../images/ranking-7.png);
+}
+
+.Modal-left-item .footer {
+    margin-left: 20px;
+    margin-right: 30px;
     flex: 1;
+    height: 150px;
+    border: 1px solid #13a1fc;
 }
-.item-right{
-    margin-left: 10px;
-}
-.item-left{
-    margin-right: 10px;
-}
-

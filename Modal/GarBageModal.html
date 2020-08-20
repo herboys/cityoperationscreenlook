@@ -9,126 +9,593 @@
 <link rel="stylesheet" type="text/css" href="../css/pubilic.css"/>
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+<style>
+    #SmallECharts3, #SmallECharts1 {
+        padding: 34px 30px 0px 30px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    #SmallECharts {
+        padding: 34px 24px 0px 30px;
+        box-sizing: border-box;
+    }
+
+</style>
 <body>
-<div class="Modal-warp" >
+<div class="Modal-warp">
     <div id="clearid">x</div>
     <div class="Modal-left">
+
         <div style="  padding: 0px 40px;">
-        <div class="GarBage-header">
-            <div class="Modal-left-item flex-item-1" >
-                <div class="item-left">
-                <div class="FX_header">
-                    <div class="header">
-                        <a class="line"></a>
-                        <span>分类工作基础信息</span>
-                        <a class="line1"></a>
-                    </div>
-                </div>
-                <div class="Satisfaction-warp-item-echarts" style="height: 280px">
-                    <div id="SmallECharts3" style="width: 570px;height:280px"></div>
-                </div>
-            </div>
-            </div>
-            <div class="Modal-left-item GarBage-between flex-item-1">
-                <div class="item-right" >
-                <div class="FX_header">
-                    <div class="header">
-                        <a class="line"></a>
-                        <span>垃圾产生量在线监测</span>
-                        <a class="line1"></a>
-                    </div>
-                    <div id="dropdown">
-                        <p style="border:1px solid #1DD6DF;color: #1DD6DF">请选择日期</p>
-                        <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
-                            <li><a href="#" rel="1">长沙</a></li>
-                            <li><a href="#" rel="2">北京</a></li>
-                            <li><a href="#" rel="3">南京</a></li>
-                            <li><a href="#" rel="4">堪培拉</a></li>
-                            <li><a href="#" rel="5">多伦多</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="Satisfaction-warp-item-echarts" style="height: 280px">
-                    <div id="SmallECharts1" style="width: 570px;height:280px">
-                        <div>sada </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="GarBage-header">
-            <div class="Modal-left-item flex-item-1" >
-                <div class="item-left">
-                <div class="FX_header">
-                    <div class="header">
-                        <a class="line"></a>
-                        <span>街镇生活垃圾产生量TOP5</span>
-                        <a class="line1"></a>
-                    </div>
-                    <div id="dropdown">
-                        <p style="border:1px solid #1DD6DF;color: #1DD6DF">请选择日期</p>
-                        <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
-                            <li><a href="#" rel="1">长沙</a></li>
-                            <li><a href="#" rel="2">北京</a></li>
-                            <li><a href="#" rel="3">南京</a></li>
-                            <li><a href="#" rel="4">堪培拉</a></li>
-                            <li><a href="#" rel="5">多伦多</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="Satisfaction-warp-item-echarts" style="height: 210px">
-                    <div id="SmallECharts4" style="width: 570px;height:210px"></div>
-                </div>
-            </div>
-            </div>
-            <div class="Modal-left-item GarBage-between flex-item-1">
-                <div class="item-right" >
-                <div class="FX_header">
-                    <div class="header">
-                        <a class="line"></a>
-                        <span>末端处置设施在线监测</span>
-                        <a class="line1"></a>
-                    </div>
+            <div class="GarBage-header">
+                <div class="Modal-left-item flex-item-1">
+                    <div class="item-left">
+                        <div class="FX_header">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>分类工作基础信息</span>
+                                <a class="line1"></a>
+                            </div>
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts" style="height: 300px">
+                            <div id="SmallECharts3" style=" width: 570px;height:300px">
+                                <div>
+                                    <div class="banner-span">
+                                        嘉定区源头达标实效动态
+                                    </div>
+                                    <div class="GarBage-child-1">
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>辖区农村总数</p>
+                                                <span>111个</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>辖区居住区总数</p>
+                                                <span>758个</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>达标小区总数</p>
+                                                <span>758个</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="GarBage-child-1">
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>六类单位 </p>
+                                                <span>338家</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p style="font-size: 12px">定点投放点位</p>
+                                                <span>1654个</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>生活垃圾收运签约单位数</p>
+                                                <span>5532家</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="GarBage-child-1">
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>志愿者人数</p>
+                                                <span>8698人</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>分类达标(示范)街镇</p>
+                                                <span>5个</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>入户宣传数</p>
+                                                <span>52万户</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                </div>
-                <div class="Satisfaction-warp-item-echarts"style="height: 210px">
-                    <div id="SmallECharts" style="width: 570px;height:210px"></div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="GarBage-header">
-            <div class="Modal-left-item GarBage-between flex-item-1">
-                <div >
-                <div class="FX_header">
-                    <div class="header">
-                        <a class="line"></a>
-                        <span>末端处置设施在线监测</span>
-                        <a class="line1"></a>
+                                <div style="margin-top: 15px">
+                                    <div class="banner-span">
+                                        嘉定区源头达标实效动态
+                                    </div>
+                                    <div class="GarBage-child-1">
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>辖区农村总数</p>
+                                                <span>111个</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>辖区农村总数</p>
+                                                <span>111个</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>辖区农村总数</p>
+                                                <span>111个</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="GarBage-child-1">
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>辖区农村总数</p>
+                                                <span>111个</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>辖区农村总数</p>
+                                                <span>111个</span>
+                                            </div>
+                                        </div>
+                                        <div class="GarBage-child-item">
+                                            <img src="../Modal/images/icon_.png ">
+                                            <div>
+                                                <p>辖区农村总数</p>
+                                                <span>111个</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="Modal-left-item GarBage-between flex-item-1">
+                    <div class="item-right">
+                        <div class="FX_header">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>垃圾产生量在线监测</span>
+                                <a class="line1"></a>
+                            </div>
+                            <div id="dropdown">
+                                <p style="border:1px solid #1DD6DF;color: #1DD6DF">请选择日期</p>
+                                <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
+                                    <li><a href="#" rel="1">长沙</a></li>
+                                    <li><a href="#" rel="2">北京</a></li>
+                                    <li><a href="#" rel="3">南京</a></li>
+                                    <li><a href="#" rel="4">堪培拉</a></li>
+                                    <li><a href="#" rel="5">多伦多</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts" style="height: 300px">
+                            <div id="SmallECharts1" style="width: 570px;height:300px">
+                                <div>
+                                    <div class="banner-span">
+                                        市级指标数
+                                    </div>
+                                    <div class="Municipal-level">
+                                        <div>
+                                            <img src="../Modal/images/dry.png"/>
+                                            <li>
+                                                <p>干垃圾控制量</p>
+                                                <p><1796吨/日</p>
+                                            </li>
+                                        </div>
 
-                </div>
-                <div class="Satisfaction-warp-item-echarts"style="height: 210px">
-                    <div id="SmallECharts" style="width: 570px;height:280px"></div>
+
+                                        <div>
+                                            <img src="../Modal/images/wet.png"/>
+                                            <li>
+                                                <p>湿垃圾产生量</p>
+                                                <p>>368吨/日</p>
+                                            </li>
+                                        </div>
+                                        <div>
+                                            <img src="../Modal/images/can.png"/>
+                                            <li>
+                                                <p>可回收物量</p>
+                                                <p>>268吨/日</p>
+                                            </li>
+                                        </div>
+                                        <div>
+                                            <img src="../Modal/images/Harmful.png"/>
+                                            <li>
+                                                <p>有害垃圾量</p>
+                                                <p>— 吨/日</p>
+                                            </li>
+                                        </div>
+
+                                    </div>
+                                    <div class="banner-span" onclick="ModalClick()">
+                                        区每日实际产生量
+                                    </div>
+                                    <div class="Municipal-level">
+                                        <div>
+                                            <img src="../Modal/images/dry.png"/>
+                                            <li>
+                                                <p>干垃圾控制量</p>
+                                                <p style="color: #f9392d">2796吨/日</p>
+                                            </li>
+                                        </div>
+
+
+                                        <div>
+                                            <img src="../Modal/images/wet.png"/>
+                                            <li>
+                                                <p>湿垃圾产生量</p>
+                                                <p>468吨/日</p>
+                                            </li>
+                                        </div>
+                                        <div>
+                                            <img src="../Modal/images/can.png"/>
+                                            <li>
+                                                <p>可回收物量</p>
+                                                <p style="color: #f9392d">168吨/日</p>
+                                            </li>
+                                        </div>
+                                        <div>
+                                            <img src="../Modal/images/Harmful.png"/>
+                                            <li>
+                                                <p>有害垃圾量</p>
+                                                <p>0吨/日</p>
+                                            </li>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Municipal-level-Model" id="ModalBox">
+                                    <div class="Municipal-level-warp">
+                                        <div class="Municipal-level-warp-header" >
+                                            <ul style="background-color: #0a3f6c">
+                                                <li>街镇</li>
+                                                <li>干垃圾</li>
+                                                <li>湿垃圾<span class="font-10">(居住区含菜场)</span></li>
+                                                <li>湿垃圾(餐厨)</li>
+                                                <li>可回收物</li>
+                                                <li>总计产生量</li>
+                                            </ul>
+                                            <ul style="color: white">
+                                                <li>华亭镇</li>
+                                                <li>26吨/日</li>
+                                                <li>15吨/日</li>
+                                                <li>3吨/日</li>
+                                                <li>0吨/日</li>
+                                                <li>44吨/日</li>
+                                            </ul>  <ul style="color: white">
+                                                <li>嘉定工业区</li>
+                                                <li>26吨/日</li>
+                                                <li>15吨/日</li>
+                                                <li>3吨/日</li>
+                                                <li>0吨/日</li>
+                                                <li>44吨/日</li>
+                                            </ul>  <ul style="color: white">
+                                                <li>华亭镇</li>
+                                                <li>26吨/日</li>
+                                                <li>15吨/日</li>
+                                                <li>3吨/日</li>
+                                                <li>0吨/日</li>
+                                                <li>44吨/日</li>
+                                            </ul>  <ul style="color: white">
+                                                <li>华亭镇</li>
+                                                <li>26吨/日</li>
+                                                <li>15吨/日</li>
+                                                <li>3吨/日</li>
+                                                <li>0吨/日</li>
+                                                <li>44吨/日</li>
+                                            </ul> <ul style="color: white">
+                                                <li>华亭镇</li>
+                                                <li>26吨/日</li>
+                                                <li>15吨/日</li>
+                                                <li>3吨/日</li>
+                                                <li>0吨/日</li>
+                                                <li>44吨/日</li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="clears" onclick="clanesClick()">X</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="GarBage-header">
+                <div class="Modal-left-item flex-item-1">
+                    <div class="item-left">
+                        <div class="FX_header">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>街镇生活垃圾产生量TOP5</span>
+                                <a class="line1"></a>
+                            </div>
+                            <div id="dropdown">
+                                <p style="border:1px solid #1DD6DF;color: #1DD6DF">请选择日期</p>
+                                <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
+                                    <li><a href="#" rel="1">长沙</a></li>
+                                    <li><a href="#" rel="2">北京</a></li>
+                                    <li><a href="#" rel="3">南京</a></li>
+                                    <li><a href="#" rel="4">堪培拉</a></li>
+                                    <li><a href="#" rel="5">多伦多</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts" style="height: 240px">
+                            <div id="SmallECharts4" style="width: 570px;height:240px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Modal-left-item GarBage-between flex-item-1">
+                    <div class="item-right">
+                        <div class="FX_header">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>末端处置设施在线监测</span>
+                                <a class="line1"></a>
+                            </div>
+
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts" style="height: 240px">
+                            <div id="SmallECharts" style="width: 570px;height:240px">
+                                <div class="GarBage-child-1">
+                                    <div class="GarBage-child-item GarBage-child-end">
+                                        <img src="../Modal/images/icon_.png ">
+                                        <div>
+                                            <p>辖区农村总数</p>
+                                            <span>111个</span>
+                                        </div>
+                                    </div>
+                                    <div class="GarBage-child-item GarBage-child-end">
+                                        <img src="../Modal/images/icon_.png ">
+                                        <div>
+                                            <p>辖区农村总数</p>
+                                            <span>111个</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="GarBage-child-1 ">
+                                    <div class="GarBage-child-item GarBage-child-end">
+                                        <img src="../Modal/images/icon_.png ">
+                                        <div>
+                                            <p>辖区农村总数</p>
+                                            <span>111个</span>
+                                        </div>
+                                    </div>
+                                    <div class="GarBage-child-item GarBage-child-end">
+                                        <img src="../Modal/images/icon_.png ">
+                                        <div>
+                                            <p>辖区农村总数</p>
+                                            <span>111个</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="GarBage-child-1">
+                                    <div class="GarBage-child-item GarBage-child-end">
+                                        <img src="../Modal/images/icon_.png ">
+                                        <div>
+                                            <p>辖区农村总数</p>
+                                            <span>111个</span>
+                                        </div>
+                                    </div>
+                                    <div class="GarBage-child-item GarBage-child-end">
+                                        <img src="../Modal/images/icon_.png ">
+                                        <div>
+                                            <p>辖区农村总数</p>
+                                            <span>111个</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="GarBage-header">
+                <div class="Modal-left-item GarBage-between flex-item-1">
+                    <div>
+                        <div class="FX_header">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>垃圾分类末端在线监管</span>
+                                <a class="line1"></a>
+                            </div>
+
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts" style="height: 210px">
+                            <div id="SmallECharts" style="height:210px;display: flex">
+                                <div style="flex: 2;padding-right: 20px">
+                                    <div class="banner-span">
+                                        当日投入运营车辆数
+                                    </div>
+                                    <div class="topicWrap" >
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="flex: 2;padding-right: 20px">
+                                    <div class="banner-span">
+                                        分类运输车辆装载情况在线监测
+                                    </div>
+                                    <div class="topicWrap">
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="flex: 1;padding-right: 20px" class="vehicle">
+                                    <div class="banner-span">
+                                        分类运输车辆装载率监测
+                                    </div>
+                                    <div class="topicWrap"  onclick="vehicleClick()">
+                                        <div class="topicItem topicItemBtn  ">
+                                            <span class="font-10">123</span>
+                                            <span class="font-10">299.50%</span>
+
+                                        </div>
+                                        <div class="topicItem topicItemBtn">
+                                            <span class="font-10">123</span>
+                                            <span class="font-10">299.50%</span>
+                                        </div>
+                                        <div class="topicItem topicItemBtn">
+
+                                            <span class="font-10">23</span>
+                                            <span class="font-10">299.50%</span>
+                                        </div>
+                                        <div class="topicItem topicItemBtn">
+
+                                            <span class="font-10">123</span>
+                                            <span class="font-10">299.50%</span>
+                                        </div>
+                                        <div class="topicItem topicItemBtn">
+
+                                            <span class="font-10">213</span>
+                                            <span class="font-10">299.50%</span>
+                                        </div>
+                                        <div class="topicItem topicItemBtn">
+
+                                            <span class="font-10">123231</span>
+                                            <span class="font-10">299.50%</span>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-Modal " id="vehicle-Modal" >
+                                        <div class="vehicle-Modal-warp">
+                                            <div class="vehicle-Modal-warp-header" >
+                                                <div class="vehicle-Modal-warp-time">称重时间:<p style="color: rgb(31,224,233)">2020/1/8 09:28</p></div>
+                                                <div class="clears " onclick="vehicleNoneClick()">X</div>
+                                            </div>
+                                            <div class="vehicle-Modal-room">
+                                                <div style="   box-sizing: border-box;
+    padding: 3px 4px; width: 74px;height: 40px;border:1px solid rgba(31, 224, 233, 0.5)" >
+                                                    <p>车辆类型</p>
+                                                    <span>自卸车</span>
+                                                </div>
+                                                <div style="   box-sizing: border-box;
+    padding: 3px 4px; width: 74px;height: 40px;border:1px solid rgba(31, 224, 233, 0.5);position:absolute;right: 2px;top:2px" >
+                                                    <p>装载率</p>
+                                                    <span>318.00%</span>
+                                                </div>
+                                                <div style="    box-sizing: border-box;
+    padding: 3px 4px;width: 74px;height: 40px;border:1px solid rgba(31, 224, 233, 0.5);position: absolute;left: 2px;bottom: 10px" >
+                                                    <p>标准装载量</p>
+                                                    <span>2500KG</span>
+                                                </div>
+                                                <div style="    box-sizing: border-box;
+    padding: 3px 4px;width: 74px;height: 40px;border:1px solid rgba(31, 224, 233, 0.5);position: absolute;right: 2px;bottom: 10px" >
+                                                    <p>实际装载量</p>
+                                                    <span>7950KG</span>
+                                                </div>
+                                                <div><img src="../Modal/images/car.png" style=" width: 50px;
+    height: 47px;
+    position: absolute;
+    left: 84px;
+    top: 20px;"></div>
+                                                <div style="    margin-top: 35px;
+    text-align: center;">沪DG0497</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
-    <div class="Modal-right" id="container"></div>
+    <div class="Modal-right" id="mapContainer">
+        <div class="Modal-right-title">嘉定区垃圾分类图</div>
+    </div>
 </div>
 </body>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="Js/Maps.js"></script>
+<script type="text/javascript" src="Js/GarBageMap.js"></script>
+<script type="text/javascript" src="Js/ajaxPromise.js"></script>
+<script type="text/javascript" src="Js/onload.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script>
+    window.onload = function () {
+        newonload()
+    }
+
+
+
+
+
     document.getElementById("clearid").onclick = function () {
         window.parent.document.getElementById("GarBageModal").style.display = "none";
     }
-    $("#dropdown p").click(function() {
+    function ModalClick() {
+        document.getElementById("ModalBox").style.display = "block";
+    }  function vehicleClick() {
+        document.getElementById("vehicle-Modal").style.display = "block";
+    }
+    function vehicleNoneClick() {
+        document.getElementById("vehicle-Modal").style.display = "none";
+    }    function clanesClick() {
+        document.getElementById("ModalBox").style.display = "none";
+    }
+    $("#dropdown p").click(function () {
         var ul = $("#dropdown ul");
         if (ul.css("display") == "none") {
             ul.slideDown("fast");
@@ -143,44 +610,5 @@
             $("#result").html("您选择了" + txt + "，值为：" + value);
         });
     })
-    window.onload = function () {
-        let para = {
-            xData: ["本年话务总量", "本年人工话务量", "每万客户呼入量"],
-            yData: [2342, 1230, 425]
-        }
-        let color2 = '#F9392D'
-        let color1 = '#4489D3'
-        //MyEcharts.initChart(MyEcharts.EchartsOption.goods(color2), "SmallECharts")
-       // MyEcharts.initChart(MyEcharts.EchartsOption.goods(color1), "SmallECharts1")
-        let data = [{
-            "name": "业务1",
-            "value": 10
-        }, {
-            "name": "业务2",
-            "value": 15
-        }, {
-            "name": "业务3",
-            "value": 15
-        },
-            {
-                "name": "业务4",
-                "value": 25
-            },
-            {
-                "name": "业务5",
-                "value": 10
-            },
-            {
-                "name": "业务6",
-                "value": 25
-            },
-        ];
-        let color = ["#fec101", "#b5b8cd ", "#ff6226", "#f60000", "#2cc78f", "#2ca7f9"]
-     //   MyEcharts.initChart(MyEcharts.EchartsOption.pie('12345\n工单问题', color, data), "SmallECharts3")
-        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name'), "SmallECharts4")
-        // window.onresize = function () {
-        //     SmallECharts4.resize();
-        // }
-    }
 </script>
 </html>

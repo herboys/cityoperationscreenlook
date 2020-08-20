@@ -484,7 +484,7 @@ var MyEcharts = {
             }
 
             var attackSourcesData = [70, 34, 60, 70, 34, 70, 34, 34];
-            var attackSourcesName = ['绕过攻击', '网络爬虫', '其他有害程序事件', '远程代码执行', '信息泄露', 'HTTP请求攻击', '其他注入攻击', '后门攻击'];
+            var attackSourcesName = ['江桥镇', '安亭镇', '南翔镇', '嘉定工业区', '南翔镇1', '嘉定工业区2', '江桥镇3', '嘉定工业区4'];
             var attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474'];
 
             function attackSourcesDataFmt(sData) {
@@ -506,7 +506,7 @@ var MyEcharts = {
                     show: true,
                     // backgroundColor: 'rgba(3,169,244, 0.5)',//背景颜色（此时为默认色）
                     textStyle: {
-                        fontSize: 16
+                        fontSize: 12
                     },
                     // trigger: 'axis',
                     // axisPointer: {
@@ -585,7 +585,7 @@ var MyEcharts = {
                         data: attackSourcesName,
                         axisLabel: {
                             margin: 140,
-                            fontSize: 14,
+                            fontSize: 12,
                             align: 'left',
                             color: '#333',
                             rich: {
@@ -625,7 +625,7 @@ var MyEcharts = {
 
                                     color: '#fff',
                                     width: 90,
-                                    align: 'left',
+                                    align: 'center',
                                     borderRadius: 5,
                                     padding: 5,
                                 },
@@ -633,7 +633,7 @@ var MyEcharts = {
 
                                     color: '#fff',
                                     width: 90,
-                                    align: 'left',
+                                    align: 'center',
                                     borderRadius: 5,
                                     padding: 5,
                                 },
@@ -641,7 +641,7 @@ var MyEcharts = {
 
                                     color: '#fff',
                                     width: 90,
-                                    align: 'left',
+                                    align: 'center',
                                     borderRadius: 5,
                                     padding: 5,
                                 },
@@ -649,7 +649,7 @@ var MyEcharts = {
 
                                     color: '#fff',
                                     width: 90,
-                                    align: 'left',
+                                    align: 'center',
                                     borderRadius: 5,
                                     padding: 5,
                                 }

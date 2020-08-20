@@ -100,11 +100,11 @@ var MyEcharts = {
          */
         bar: function (title, subtext, data) {
             console.log(data)
-             var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
+            var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
 
-       var     xData = ["本年话务总量", "本年人工话务量", "每万客户呼入量",'每万客户呼入量'];
-        var    yData = [2342, 1230, 425,900];
-         var   option = {
+            var xData = ["本年话务总量", "本年人工话务量", "每万客户呼入量", '每万客户呼入量'];
+            var yData = [2342, 1230, 425, 900];
+            var option = {
                 // backgroundColor: '#061326',
                 "grid": {
                     "top": "25%",
@@ -113,8 +113,8 @@ var MyEcharts = {
                     "right": "5%",
                     "containLabel": true
                 },
-                tooltip:{
-                    show:true
+                tooltip: {
+                    show: true
                 },
                 animation: false,
                 "xAxis": [{
@@ -202,7 +202,7 @@ var MyEcharts = {
                             }
                         },
                         data: yData
-                    },        {
+                    }, {
                         name: '',
                         type: 'pictorialBar',
                         symbolSize: [50, 15],
@@ -256,7 +256,7 @@ var MyEcharts = {
                             },
                         },
                         data: yData
-                    },{
+                    }, {
                         name: '日用气量分析',
                         type: 'line',
                         // smooth: true, //是否平滑
@@ -307,41 +307,41 @@ var MyEcharts = {
                                 shadowBlur: 20
                             }
                         },
-                        data: [2330, 205.97,2340,900 ]
+                        data: [2330, 205.97, 2340, 900]
                     },
                 ]
             };
             return option;
         },
-        pie:function(title,color,data) {
-            let setLabel = (data)=>{
+        pie: function (title, color, data) {
+            let setLabel = (data) => {
                 let opts = [];
-                for(let i=0;i<data.length;i++){
+                for (let i = 0; i < data.length; i++) {
                     let item = {};
                     item.name = data[i].name;
                     item.value = data[i].value;
                     item.label = {
-                        normal:{
+                        normal: {
                             //控制引导线上文字颜色和位置,此处a是显示文字区域，b做一个小圆圈在引导线尾部显示
-                            show:true,
+                            show: true,
                             //a和b来识别不同的文字区域
-                            formatter:[
+                            formatter: [
                                 '{a|{d}%  {b}}',//引导线上面文字
                                 '{b|}' //引导线下面文字
                             ].join('\n'), //用\n来换行
-                            rich:{
-                                a:{
-                                    left:20,
-                                    padding:[0,-80,-15,-80]
+                            rich: {
+                                a: {
+                                    left: 20,
+                                    padding: [0, -80, -15, -80]
                                 },
-                                b:{
-                                    height:5,
-                                    width:5,
+                                b: {
+                                    height: 5,
+                                    width: 5,
                                     lineHeight: 5,
                                     marginBottom: 10,
-                                    padding:[0,-5],
-                                    borderRadius:5,
-                                    backgroundColor:color[i], // 圆点颜色和饼图块状颜色一致
+                                    padding: [0, -5],
+                                    borderRadius: 5,
+                                    backgroundColor: color[i], // 圆点颜色和饼图块状颜色一致
                                 }
                             },
 
@@ -358,18 +358,18 @@ var MyEcharts = {
             var option = {
 
                 legend: {
-                    type:"scroll",
+                    type: "scroll",
                     orient: 'vertical',
-                    right:'5%',
-                    align:'left',
-                    top:'middle',
+                    right: '5%',
+                    align: 'left',
+                    top: 'middle',
                     textStyle: {
-                        color:'#8C8C8C'
+                        color: '#8C8C8C'
                     },
-                    height:150
+                    height: 150
                 },
                 title: [{
-                    text: '{name|' + title +'}',
+                    text: '{name|' + title + '}',
 
                     top: 'center',
                     left: 'center',
@@ -390,11 +390,13 @@ var MyEcharts = {
                     }
 
                 }],
-                formatter:function(val){    return val.split("-").join("\n");},//此语句是让legend 中的文字进行换行</span>
+                formatter: function (val) {
+                    return val.split("-").join("\n");
+                },//此语句是让legend 中的文字进行换行</span>
                 animation: true,
                 series: [
                     {
-                        color:color,
+                        color: color,
                         name: '饼图圆点',
                         type: 'pie',
                         radius: ['30%', '50%'],
@@ -410,11 +412,11 @@ var MyEcharts = {
                                 show: true
                             }
                         },
-                        data:setLabel(data)
+                        data: setLabel(data)
                     }
                 ]
             }
-          return option
+            return option
         },
         /**
          * 折线图
@@ -471,7 +473,14 @@ var MyEcharts = {
             };
             return option;
         },
-        Ranking:function(name){
+        /**
+         * 折线图
+         * @param name : 标题 <br>
+         * @param attackSourcesName : Y轴 <br>
+         * @param attackSourcesData : json 数据
+         * @param attackSourcesColor : color
+         */
+        Ranking: function (name, attackSourcesName, attackSourcesData,attackSourcesColor) {
 
             function contains(arr, dst) {
                 var i = arr.length;
@@ -483,13 +492,13 @@ var MyEcharts = {
                 return false;
             }
 
-            var attackSourcesData = [70, 34, 60, 70, 34, 70, 34, 34];
-            var attackSourcesName = ['绕过攻击', '网络爬虫', '其他有害程序事件', '远程代码执行', '信息泄露', 'HTTP请求攻击', '其他注入攻击', '后门攻击'];
-            var attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474'];
+            var attackSourcesData = attackSourcesData;
+            var attackSourcesName = attackSourcesName
+           var attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474'];
 
             function attackSourcesDataFmt(sData) {
                 var sss = [];
-                sData.forEach(function(item, i) {
+                sData.forEach(function (item, i) {
                     itemStyle = {
                         color: i > 3 ? attackSourcesColor[3] : attackSourcesColor[i]
                     }
@@ -501,12 +510,13 @@ var MyEcharts = {
                 console.log(sss)
                 return sss;
             }
+
             var option = {
                 tooltip: {
                     show: true,
                     // backgroundColor: 'rgba(3,169,244, 0.5)',//背景颜色（此时为默认色）
                     textStyle: {
-                        fontSize: 16
+                        fontSize: 12
                     },
                     // trigger: 'axis',
                     // axisPointer: {
@@ -518,7 +528,7 @@ var MyEcharts = {
                 },
                 grid: {
                     left: 180,
-                    right:80
+                    right: 80
                 },
                 dataZoom: [{
                     type: 'slider',
@@ -528,10 +538,9 @@ var MyEcharts = {
                     handleSize: 0,
                     showDetail: false,
                     start: 0,
-                    right:25,
                     end: 50,
                     handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
-                    handleSize: '100%',
+                    handleSize: '110%',
                     handleStyle: {
                         color: "#d3dee5",
                     },
@@ -584,8 +593,8 @@ var MyEcharts = {
                         },
                         data: attackSourcesName,
                         axisLabel: {
-                            margin: 140,
-                            fontSize: 14,
+                            margin: 120,
+                            fontSize: 16,
                             align: 'left',
                             color: '#333',
                             rich: {
@@ -625,7 +634,7 @@ var MyEcharts = {
 
                                     color: '#fff',
                                     width: 90,
-                                    align: 'left',
+                                    align: 'center',
                                     borderRadius: 5,
                                     padding: 5,
                                 },
@@ -633,7 +642,7 @@ var MyEcharts = {
 
                                     color: '#fff',
                                     width: 90,
-                                    align: 'left',
+                                    align: 'center',
                                     borderRadius: 5,
                                     padding: 5,
                                 },
@@ -641,7 +650,7 @@ var MyEcharts = {
 
                                     color: '#fff',
                                     width: 90,
-                                    align: 'left',
+                                    align: 'center',
                                     borderRadius: 5,
                                     padding: 5,
                                 },
@@ -649,13 +658,15 @@ var MyEcharts = {
 
                                     color: '#fff',
                                     width: 90,
-                                    align: 'left',
+                                    align: 'center',
                                     borderRadius: 5,
                                     padding: 5,
                                 }
                             },
-                            formatter: function(value, index) {
+
+                            formatter: function (value, index) {
                                 index = contains(attackSourcesName, value) + 1
+                                console.log(value,index)
                                 if (index - 1 < 3) {
                                     return [
                                         '{nt' + index + '|' + index + '}' + '  {title' + index + '|' + value + '}'
@@ -679,14 +690,14 @@ var MyEcharts = {
                                 color: '#ffffff',
                                 fontSize: '12'
                             },
-                            formatter: function(value) {
-                                console.log(value,'123')
+                            formatter: function (value) {
 
-                                    return (value).toLocaleString() + '%';
+
+                                return (value).toLocaleString() + '吨';
 
                             },
                         },
-                        data:attackSourcesData
+                        data: attackSourcesData
                     }],
                 series: [{
                     z: 3,
@@ -697,7 +708,7 @@ var MyEcharts = {
                     data: attackSourcesDataFmt(attackSourcesData),
                     itemStyle: {
                         normal: {
-                            color: function(params) {
+                            color: function (params) {
                                 return attackSourcesColor[params.dataIndex > 3 ? 3 : params.dataIndex]
                             },
                             barBorderRadius: 5,
@@ -711,14 +722,14 @@ var MyEcharts = {
                         offset: [10, 0]
                     },
 
-                } , {
+                }, {
                     name: '背景',
                     type: 'bar',
                     barWidth: 10,
                     barGap: '-100%',
                     z: 1,
                     animationDuration: 1500,
-                    data:  [100, 100, 100, 100, 100, 100, 100, 100, 100, 1],
+                    data: [100, 100,100, 100, 100, 100, 100, 100, 100, 100, 100, 1],
                     itemStyle: {
                         normal: {
                             color: '#15345D',
@@ -735,79 +746,81 @@ var MyEcharts = {
         },
         /**
          *@param color : 颜色 数据
-        * */
-        goods:function (color) {
+         * */
+        goods: function (color) {
             // xdata
-            let xData = ['松山湖','南城','东城','莞城','万江','大朗','大岭山','茶山','道滘', '厚街']
+            let xData = ['松山湖', '南城', '东城', '莞城', '万江', '大朗', '大岭山', '茶山', '道滘', '厚街']
 // ydata
             let yData = [2900, 2700, 2500, 2300, 2100, 1900, 1700, 1500, 1300, 1100]
 // pictorialData
             let pictorialData = []
-            yData.map(v => { pictorialData.push({ value: v, symbolPosition: 'end', }) })
+            yData.map(v => {
+                pictorialData.push({value: v, symbolPosition: 'end',})
+            })
 
-           let option = {
-               legend: {
-                   data: ['满意度', '街镇事件处理总量'],
-                  x:'center',
-                   top:30,
-                   right:0,
-                   textStyle: {
-                       fontSize: 12,
-                       color: '#ffffff'
-                   }
-               },
-               color:['#2db7f5','#FFF000'],
+            let option = {
+                legend: {
+                    data: ['满意度', '街镇事件处理总量'],
+                    x: 'center',
+                    top: 30,
+                    right: 0,
+                    textStyle: {
+                        fontSize: 12,
+                        color: '#ffffff'
+                    }
+                },
+                color: ['#2db7f5', '#FFF000'],
 
                 // tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-               dataZoom: [{
-                   type: 'slider',
-                   xAxisIndex: 0,
-                   zoomLock: true,
-                   width: 400,
-                   height:10,
-                   handleSize: 0,
-                   showDetail: false,
-                   start: 0,
-                   left:"center",
-                   bottom:20,
-                   end: 50,
-                   handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
-                   handleSize: '100%',
-                   handleStyle: {
-                       color: "#d3dee5",
-                   },
-                   borderColor: "#90979c"
-               }, {
-                   type: 'inside',
-                   id: 'dataZoomX',
-                   xAxisIndex: 0,
-                   start: 0,
-                   end: 50,
-                   orient:'vertical',
-                   zoomOnMouseWheel: false,
-                   moveOnMouseMove: true,
-                   moveOnMouseWheel: true
-               }],
+                dataZoom: [{
+                    type: 'slider',
+                    xAxisIndex: 0,
+                    zoomLock: true,
+                    width: 400,
+                    height: 10,
+                    handleSize: 0,
+                    showDetail: false,
+                    start: 0,
+                    left: "center",
+                    bottom: 20,
+                    end: 50,
+                    handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                    handleSize: '100%',
+                    handleStyle: {
+                        color: "#d3dee5",
+                    },
+                    borderColor: "#90979c"
+                }, {
+                    type: 'inside',
+                    id: 'dataZoomX',
+                    xAxisIndex: 0,
+                    start: 0,
+                    end: 50,
+                    orient: 'vertical',
+                    zoomOnMouseWheel: false,
+                    moveOnMouseMove: true,
+                    moveOnMouseWheel: true
+                }],
                 xAxis: [{
                     type: 'category',
                     data: xData,
                     // axisTick: { alignWithLabel: true },
-                    axisLabel: {  textStyle: { fontSize: '90%', color: "#fff" } },
+                    axisLabel: {textStyle: {fontSize: '90%', color: "#fff"}},
                     // axisLine: { show: false },
                     axisTick: false
-                },{
-                    "show" : false,
+                }, {
+                    "show": false,
                     data: xData,
-                }, ],
-                yAxis:[{
+                },],
+                yAxis: [{
                     type: 'value',
-                    name:'单位',
-                    nameTextStyle: { color: '#fff', fontSize: '90%', padding: [0, 0, 0, -45]},
-                    splitLine: { lineStyle: { color: 'rgba(255,255,255, .1)'}},
-                    axisLabel: { textStyle: { fontSize: '90%', color: "#fff" }},
-                    axisLine: { show: false },
+                    name: '单位',
+                    nameTextStyle: {color: '#fff', fontSize: '90%', padding: [0, 0, 0, -45]},
+                    splitLine: {lineStyle: {color: 'rgba(255,255,255, .1)'}},
+                    axisLabel: {textStyle: {fontSize: '90%', color: "#fff"}},
+                    axisLine: {show: false},
                     axisTick: false
-                },{
+                }, {
                     type: 'value',
                     position: 'left',
                     nameTextStyle: {
@@ -831,7 +844,7 @@ var MyEcharts = {
                         fontSize: 14
                     }
                 },],
-                series:[{
+                series: [{
                     name: '满意度',
                     type: 'bar',
                     barWidth: 30,
@@ -840,8 +853,8 @@ var MyEcharts = {
                         color: color
                     },
 
-                },{
-                   name:'街镇事件处理总量',
+                }, {
+                    name: '街镇事件处理总量',
                     itemStyle: {
                         normal: {
                             color: "#FFF000",
@@ -853,7 +866,7 @@ var MyEcharts = {
                     type: "line",
                     data: yData,
                 },
-                  ]
+                ]
             };
             return option
 
@@ -866,7 +879,7 @@ var MyEcharts = {
      * @param echartId : string 需要加引号
      */
     initChart: function (option, echartId) {
-        console.log(option, echartId,'123123')
+        console.log(option, echartId, '123123')
         var container = eval("document.getElementById('" + echartId + "')");
         var myChart = echarts.init(container);
         myChart.setOption(option, true);	// 为echarts对象加载数据

@@ -6312,5 +6312,6 @@ ajax('https://a.amap.com/jsapi_demos/static/geojson/chongqing.json', function (e
         log.success('GeoJSON 数据加载完成')
     } else {
         log.error('GeoJSON 服务请求失败')
+
     }
 })

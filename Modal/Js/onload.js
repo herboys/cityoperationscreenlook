@@ -9,7 +9,8 @@ function newonload() {
 
 function intervalFunction() {
     let time = 1000 * 60 * 2
-    setInterval(EndFacilities, time) //一个小时获取一次最新的防汛概览
+    setInterval(EndFacilities, time)
+    setInterval(TownLifeGarbage, time)
 }
 
 /**
@@ -67,11 +68,9 @@ function TownLifeGarbage() {
             }
             document.getElementById("ActualOutputID").innerHTML = para
             res.data.map(item => item.total = item.total.split(item.unit)[0].trim())
-
             res.data.sort(function (a, b) {
                 return b.total - a.total;
             });
-            console.log(res.data, '街镇生活垃圾产生量TOP5')
             let attackSourcesData = []
             let attackSourcesName = []
             let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']

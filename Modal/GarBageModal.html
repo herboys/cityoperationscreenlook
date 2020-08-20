@@ -183,9 +183,9 @@
                             <div id="dropdown">
                                 <p style="border:1px solid #1DD6DF;color: #1DD6DF">请选择日期</p>
                                 <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
-                                    <li><a href="#" rel="1">年</a></li>
-                                    <li><a href="#" rel="2">月</a></li>
-                                    <li><a href="#" rel="3">日</a></li>
+                                    <li><a href="#" rel="1"> 今日</a></li>
+                                    <li><a href="#" rel="2">本周</a></li>
+                                    <li><a href="#" rel="3">本年度</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -297,12 +297,12 @@
                                 <span>街镇生活垃圾产生量TOP5</span>
                                 <a class="line1"></a>
                             </div>
-                            <div id="dropdown">
+                            <div id="dropdown1">
                                 <p style="border:1px solid #1DD6DF;color: #1DD6DF">请选择日期</p>
                                 <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
-                                    <li><a href="#" rel="1">年</a></li>
-                                    <li><a href="#" rel="2">月</a></li>
-                                    <li><a href="#" rel="3">日</a></li>
+                                    <li><a href="#" rel="1"> 今日</a></li>
+                                    <li><a href="#" rel="2">本周</a></li>
+                                    <li><a href="#" rel="3">本年度</a></li>
 
                                 </ul>
                             </div>
@@ -529,6 +529,21 @@
             var value = $(this).attr("rel");
             $("#dropdown ul").hide();
             $("#result").html("您选择了" + txt + "，值为：" + value);
+        });
+    })
+    $("#dropdown1 p").click(function () {
+        var ul = $("#dropdown1 ul");
+        if (ul.css("display") == "none") {
+            ul.slideDown("fast");
+        } else {
+            ul.slideUp("fast");
+        }
+        $("#dropdown1 ul li a").click(function () {
+            var txt = $(this).text();
+            $("#dropdown1 p").html(txt);
+            var value = $(this).attr("rel");
+            $("#dropdown1 ul").hide();
+            $("#result1").html("您选择了" + txt + "，值为：" + value);
         });
     })
 </script>

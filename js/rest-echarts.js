@@ -381,7 +381,7 @@ function initEcharts3(){
     // 指定图表的配置项和数据
     var option = {
         
-        backgroundColor: "#000",
+        // backgroundColor: "#fff",
         
         tooltip: {              // 本系列特定的 tooltip 设定。   
                 show: true,
@@ -512,7 +512,7 @@ function initEcharts4(){
     // 指定图表的配置项和数据
     var option = {
         
-        backgroundColor: "#000",
+        // backgroundColor: "#fff",
         
         tooltip: {              // 本系列特定的 tooltip 设定。   
                 show: true,
@@ -643,7 +643,7 @@ function initEcharts5(){
     // 指定图表的配置项和数据
     var option = {
         
-        backgroundColor: "#000",
+        // backgroundColor: "#000",
         
         tooltip: {              // 本系列特定的 tooltip 设定。   
                 show: true,
@@ -774,7 +774,7 @@ function initEcharts6(){
     // 指定图表的配置项和数据
     var option = {
         
-        backgroundColor: "#000",
+        // backgroundColor: "#000",
         
         tooltip: {              // 本系列特定的 tooltip 设定。   
                 show: true,
@@ -905,7 +905,7 @@ function initEcharts7(){
     // 指定图表的配置项和数据
     var option = {
         
-        backgroundColor: "#000",
+        // backgroundColor: "#000",
         
         tooltip: {              // 本系列特定的 tooltip 设定。   
                 show: true,

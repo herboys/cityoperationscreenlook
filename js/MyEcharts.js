@@ -242,15 +242,15 @@ var MyEcharts = {
             //  function aaa(title){    return title.split("-").join("\n");}
             // console.log(aaa())
             var option = {
-                graphic: {
-                    type: "text", // [ default: image ]用 setOption 首次设定图形元素时必须指定。image, text, circle, sector, ring, polygon, polyline, rect, line, bezierCurve, arc, group,
-                    top: "48%", // 描述怎么根据父元素进行定位。top 和 bottom 只有一个可以生效。如果指定 top 或 bottom，则 shape 里的 y、cy 等定位属性不再生效。『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 group 的子元素，父元素就是 group 元素。
-                    left: "35%", // 同上
-                    style: {
-                        text: title, // 文本块文字。可以使用 \n 来换行。[ default: '' ]
-                        fill: "#fff", // 填充色。
-                        fontSize: 14, // 字体大小
-                        fontWeight: "bold", // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
+                graphic:{
+                    type:"text",// [ default: image ]用 setOption 首次设定图形元素时必须指定。image, text, circle, sector, ring, polygon, polyline, rect, line, bezierCurve, arc, group,
+                    top:"48%",// 描述怎么根据父元素进行定位。top 和 bottom 只有一个可以生效。如果指定 top 或 bottom，则 shape 里的 y、cy 等定位属性不再生效。『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 group 的子元素，父元素就是 group 元素。
+                    left:"35%",// 同上
+                    style:{
+                        text:title,// 文本块文字。可以使用 \n 来换行。[ default: '' ]
+                        fill:"#fff",// 填充色。
+                        fontSize:14,// 字体大小
+                        fontWeight:"bold",// 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
                     },
                 },
                 legend: {
@@ -378,7 +378,7 @@ var MyEcharts = {
          * @param attackSourcesData : json 数据
          * @param attackSourcesColor : color
          */
-        Ranking: function (name, attackSourcesName, attackSourcesData,attackSourcesColor) {
+        Ranking: function (name, attackSourcesName, attackSourcesData,attackSourcesColor,total) {
 
             function contains(arr, dst) {
                 var i = arr.length;
@@ -591,7 +591,7 @@ var MyEcharts = {
                             formatter: function (value) {
 
 
-                                return (value).toLocaleString() + '吨';
+                                return (value).toLocaleString() + total;
 
                             },
                         },

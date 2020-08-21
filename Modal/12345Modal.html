@@ -18,7 +18,7 @@
                 <div class="FX_header">
                     <div class="header">
                         <a class="line"></a>
-                        <span>12345事件统计分析</span>
+                        <span>统计分析</span>
                         <a class="line1"></a>
                     </div>
                     <div id="dropdown">
@@ -56,8 +56,8 @@
                     <div class="Satisfaction-warp-item">
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
-                                <div class="banner1" onclick="TabsFun(5)">效能评估</div>
-                                <div class="banner2" onclick="TabsFun(6)">趋势分析</div>
+                                <div class="banner1" onclick="TabsFun(5)">热词</div>
+<!--                                <div class="banner2" onclick="TabsFun(6)">趋势分析</div>-->
                             </div>
                             <div id="dropdown2">
                                 <p>街镇效能</p>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
-                            <div id="SmallECharts4" style="width: 575px;height:255px;margin-right: 20px"></div>
+                            <div id="SmallECharts4" style="width: 575px;height:305px;margin-right: 20px;margin-top: -20px"></div>
                         </div>
 
 
@@ -81,7 +81,7 @@
             <div class="Modal-left-item">
                 <div class="header">
                     <a class="line"></a>
-                    <span>12345事件满意率</span>
+                    <span>12345事件效能评估</span>
                     <a class="line1"></a>
                 </div>
                 <div class="Satisfaction-warp">
@@ -94,7 +94,7 @@
 
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
-                            <div id="SmallECharts" style="width:  617px;height:255px"></div>
+                            <div id="SmallECharts" style="width:  383px;height:255px"></div>
                         </div>
                     </div>
                     <div class="Satisfaction-warp-item">
@@ -105,7 +105,18 @@
                             </div>
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
-                            <div id="SmallECharts1" style="width: 617px;height:255px"></div>
+                            <div id="SmallECharts1" style="width: 383px;height:255px"></div>
+                        </div>
+                    </div>
+                    <div class="Satisfaction-warp-item">
+                        <div class="Satisfaction-warp-item-header">
+                            <div class="Satisfaction-warp-item-header-left">
+                                <div class="banner1" onclick="TabsFun(7)">委办局(公司)</div>
+                                <div class="banner2" onclick="TabsFun(8)">趋势分析</div>
+                            </div>
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts">
+                            <div id="SmallECharts1" style="width: 383px;height:255px"></div>
                         </div>
                     </div>
                 </div>
@@ -188,7 +199,47 @@
         </div>
     </div>
     <div class="Modal-right" id="container">
+        <div class="Modal-right-title">嘉定区垃圾分类图</div>
+        <div class="Modal-right-tabs">
+            <div class="pmVerticalRightOut" id="pmVerticalRightOut">
+                <div class="level">
+                    <div class="levelTitle">问题来源</div>
+                    <div class="level_">
+                        <div class="level_title">level_ title</div>
+                        <a>level_ title 1</a>
+                        <a>level_ title 2</a>
+                        <a>level_ title 3</a>
+                        <a>level_ title 4</a>
+                        <a>level_ title 5</a>
+                    </div>
+                </div>
+                <div class="level">
+                    <div class="levelTitle">问题类型</div>
+                    <div class="level_">
+                        <div class="level_title">level_ title</div>
+                        <a>level_ title 1</a>
+                        <a>level_ title 2</a>
+                        <a>level_ title 3</a>
+                        <a>level_ title 4</a>
+                        <a>level_ title 5</a>
+                    </div>
+                </div>
+                <div class="level">
+                    <div class="levelTitle">诉求情况</div>
+                    <div class="level_">
+                        <div class="level_title">level_ title</div>
+                        <a>level_ title 1</a>
+                        <a>level_ title 2</a>
+                        <a>level_ title 3</a>
+                        <a>level_ title 4</a>
+                        <a>level_ title 5</a>
+                    </div>
+                </div>
 
+
+            </div>
+
+        </div>
     </div>
 </div>
 </body>
@@ -291,7 +342,7 @@
         let attackSourcesData = ["340", "337", "330", "189", "154", "150", "103", "99", "90", "74", "73", "55"]
         let attackSourcesName = ["江桥镇", "马陆镇", "安亭镇", "南翔镇", "嘉定工业区", "真新街道", "菊园新区", "徐行镇", "外冈镇", "嘉定镇街道", "华亭镇", "新成路街道"]
         let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor), "SmallECharts4")
+        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'%'), "SmallECharts4")
         // window.onresize = function () {
         //     SmallECharts4.resize();
         // }

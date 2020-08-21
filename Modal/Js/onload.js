@@ -80,7 +80,7 @@ function TownLifeGarbage() {
                 attackSourcesName.push(item.street)
             })
             console.log(attackSourcesData, attackSourcesName)
-            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor), "SmallECharts4")
+            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'吨'), "SmallECharts4")
         } else {
             alert('街镇生活垃圾产生量TOP5接口发生错误')
         }

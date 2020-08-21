@@ -49,22 +49,22 @@ function TabsFun(num) {
 
             break;
         case 5:
-            para[1].innerHTML = '<div class="banner1" onclick="TabsFun(5)">' + '效能评估' + '</div>' +
-                '<div class="banner2" onclick="TabsFun(6)">' + '趋势分析' + '</div>'
+            para[1].innerHTML = '<div class="banner1" onclick="TabsFun(5)">' + '热词' + '</div>'
+                // + '<div class="banner2" onclick="TabsFun(6)">' + '趋势分析' + '</div>'
             attackSourcesData = ["340", "337", "330", "189", "154", "150", "103", "99", "90", "74", "73", "55"]
             attackSourcesName = ["江桥镇", "马陆镇", "安亭镇", "南翔镇", "嘉定工业区", "真新街道", "菊园新区", "徐行镇", "外冈镇", "嘉定镇街道", "华亭镇", "新成路街道"]
             attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor), "SmallECharts4")
+            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'%'), "SmallECharts4")
             break;
             break;
-        case 6:
-            para[1].innerHTML = '<div class="banner2" onclick="TabsFun(5)">' + '效能评估' + '</div>' +
-                '<div class="banner1" onclick="TabsFun(6)">' + '趋势分析' + '</div>'
-
-            xData =  ["江桥镇", "马陆镇", "安亭镇", "南翔镇", "嘉定工业区", "真新街道", "菊园新区", "徐行镇", "外冈镇", "嘉定镇街道", "华亭镇", "新成路街道"]
-            yData = ["340", "337", "330", "189", "154", "150", "103", "99", "90", "74", "73", "55"]
-            MyEcharts.initChart(MyEcharts.EchartsOption.bar(xData,yData), "SmallECharts4")
-            break;
+        // case 6:
+        //     para[1].innerHTML = '<div class="banner2" onclick="TabsFun(5)">' + '效能评估' + '</div>' +
+        //         '<div class="banner1" onclick="TabsFun(6)">' + '趋势分析' + '</div>'
+        //
+        //     xData =  ["江桥镇", "马陆镇", "安亭镇", "南翔镇", "嘉定工业区", "真新街道", "菊园新区", "徐行镇", "外冈镇", "嘉定镇街道", "华亭镇", "新成路街道"]
+        //     yData = ["340", "337", "330", "189", "154", "150", "103", "99", "90", "74", "73", "55"]
+        //     MyEcharts.initChart(MyEcharts.EchartsOption.bar(xData,yData), "SmallECharts4")
+        //     break;
         case 7:
             para[3].innerHTML = '<div class="banner1" onclick="TabsFun(7)">' + '委办局(公司)' + '</div>' +
                 '<div class="banner2" onclick="TabsFun(8)">' + '趋势分析' + '</div>'

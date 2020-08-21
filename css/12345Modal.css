@@ -41,12 +41,104 @@ body {
     height: 20px;
     position: relative;
 }
+.Modal-right-tabs{
+    position:absolute;
+    background: red;
+    top: 100px;
+    left: 20px;
+    z-index: 99999;
+}
+*{text-decoration:none!important; /* 定义所有链接不显示下划线 */}
+/* ------------------- start 针对 Opera, Firefox 的 CSS 弹出菜单 -------------------*/
+.pmVerticalRightOut{background-color:#fff!important; /* 定义主菜单域背景色 */}
+.pmVerticalRightOut .level{   /* 定义一级类别属性 */
+    width:120px; /* 宽度 */
+    height:30px; /* 高度 */
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+
+    position:relative; /* 显示位置为相对位置 */
+    display:block; /* 以块模式显示 */
+    background-color:#D8D8D8; /* 背景色 */
+    padding:0px 2px; /* 文字内补丁间隔 */
+    margin:0px 0px 1px 0px; /* 菜单外补丁间隔 */
+}
+.pmVerticalRightOut .level:hover { /* 当鼠标划过一级菜单时 */
+    background-color:#6633FF; /* 背景色 */
+    color:#FFFFFF; /* 文字颜色 */
+}
+.pmVerticalRightOut .level_{display:none; /* 默认隐藏二级类别 */}
+
+.pmVerticalRightOut .level:hover .level_ { /* 鼠标划过时触发显示二级类别 */
+    display:block; /* 以块显示 */
+    left:124px; /* 相对于一级类别显示的位置 */
+    width:120px; /* 宽度 */
+    height:auto; /* 高度 */
+    top:0px; /* 相对于一级类别所在位置的顶端 */
+    background-color:#EFEFEF; /* 定义背景色 */
+    position:absolute; /* 位置为绝对位置 */
+}
+.pmVerticalRightOut .level:hover .level_ .level_title {
+    /* 定义二级类别标题样式 */
+    font-weight:bold; /* 字体加粗 */
+    background-color:#A7ADFE; /* 背景色 */
+    color:white; /* 文字颜色 */
+}
+.pmVerticalRightOut .level:hover .level_ a:hover {
+    /* 定义二级类别链接显示样式 */
+    background-color:#F83658; /* 背景色 */
+    color:white; /* 文字颜色 */
+}
+.pmVerticalRightOut .level:hover .level_ * {
+    /* 定义所有二级类别通用属性 */
+    display:block; /* 以块显示 */
+    color:black; /* 文字颜色 */
+    padding:0px 2px; /* 内补丁间隔 */
+}
+/* ------------------- end 针对 Opera, Firefox 的 CSS 弹出菜单 -------------------*/
+
+/* ------------------- start 针对 IE 的 CSS 弹出菜单 -------------------*/
+.levelIe{   /* 定义一级类别属性 */
+    width:120px; /* 宽度 */
+    position:relative; /* 显示位置为相对位置 */
+    display:block; /* 以块模式显示 */
+    background-color:#D8D8D8; /* 背景色 */
+    padding:0px 2px; /* 文字内补丁间隔 */
+    margin:0px 0px 1px 0px; /* 菜单外补丁间隔 */
+}
+.levelIe .level_ { /* 鼠标划过时触发显示二级类别 */
+    display:block; /* 以块显示 */
+    left:124px; /* 相对于一级类别显示的位置 */
+    width:120px; /* 宽度 */
+    height:auto; /* 高度 */
+    top:0px; /* 相对于一级类别所在位置的顶端 */
+    background-color:#EFEFEF; /* 定义背景色 */
+    position:absolute; /* 位置为绝对位置 */
+}
+.levelIe .level_ .level_title {
+    /* 定义二级类别标题样式 */
+    font-weight:bold; /* 字体加粗 */
+    background-color:#A7ADFE; /* 背景色 */
+    color:white; /* 文字颜色 */
+}
+.levelIe .level_ a:hover {
+    /* 定义二级类别链接显示样式 */
+    background-color:#F83658; /* 背景色 */
+    color:white; /* 文字颜色 */
+}
+.levelIe .level_ * {
+    /* 定义所有二级类别通用属性 */
+    display:block; /* 以块显示 */
+    color:black; /* 文字颜色 */
+    padding:0px 2px; /* 内补丁间隔 */
+}
 
 .line:after {
     content: "";
     position: absolute;
     border-left: 2px solid #31FFFE;
-    height: 8px;
+    height: 10px;
     top: -4px;
     transform: rotate(45deg);
 
@@ -200,8 +292,8 @@ body {
 }
 
 .Satisfaction-warp-item {
-    width: 575px;
-    height: 298px;
+    /*width: 575px;*/
+    /*height: 298px;*/
 
     box-sizing: border-box;
 }

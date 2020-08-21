@@ -583,10 +583,14 @@ ul li {
 }
 
 .Modal-right-title {
-    display: inline-block;
-    position: fixed;
+    position: absolute;
     top: 30px;
-    left: 52%;
+    left: 20px;
+    /*left: 52%;*/
+    /*display: inline-block;*/
+    /*position: fixed;*/
+    /*top: 30px;*/
+    /*left: 52%;*/
 
     background-color: rgba(15, 58, 125, 0.7);
     fontFamily: "SimHei";

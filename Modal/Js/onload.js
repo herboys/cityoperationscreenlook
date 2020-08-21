@@ -18,7 +18,7 @@ function intervalFunction() {
  * */
 function EndFacilities() {
     let para = {
-        url: '/sh/garbageSort/getGarbageContentDisplay',
+        url: GarBage_URl+'/sh/garbageSort/getGarbageContentDisplay',
         async: true,
         type: 'get',
         dataType: 'JSON',
@@ -48,7 +48,7 @@ function EndFacilities() {
  * */
 function TownLifeGarbage() {
     let para = {
-        url: '/sh/garbageSort/getGarbageStreetProduce',
+        url: GarBage_URl+'/sh/garbageSort/getGarbageStreetProduce',
         async: true,
         type: 'get',
         dataType: 'JSON',

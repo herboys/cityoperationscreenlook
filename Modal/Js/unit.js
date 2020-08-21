@@ -77,13 +77,45 @@ function TabsFun(num) {
         case 9:
             document.getElementsByClassName("work-older-header")[0].innerHTML =' <button onclick="TabsFun(9)">'+'紧急工单'+'</button>'
                 +'<span onclick="TabsFun(10)">'+'次紧急工单'+'</span>'
+            GongDan(1)
 
             break;
             break;
         case 10:
             document.getElementsByClassName("work-older-header")[0].innerHTML =' <span onclick="TabsFun(9)">'+'紧急工单'+'</span>'
                 +'<button onclick="TabsFun(10)">'+'次紧急工单'+'</button>'
+            GongDan(0)
             break;
     }
 
+}
+
+
+
+function GongDan(num) {
+    let para = {
+        url: 'http://localhost:8090/taskInfo/findInfoUrgent',
+        async: true,
+        type: 'post',
+        data:JSON.stringify({
+            "urgent":num,
+            "date":"2020-05"
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        para=''
+        for (let i = 0; i < res.length; i++) {
+
+            para +=  '<ul class="work-older-list-ul ul-line ">'
+                +'<li>'+res[i].TASKID+'</li>'
+                + '<li>'+res[i].DISCOVERTIME+'</li>'
+                +'<li>'+res[i].STREETNAME+'</li>'
+                +'<li>'+res[i].STIME+'</li>'
+                +'<li>'+res[i].ENDTIME+'</li>'
+                +'<li>'+res[i].STATUSNAME+'</li>'
+                + '</ul>'
+        }
+        document.getElementById("GongDanID").innerHTML=para
+    })
 }

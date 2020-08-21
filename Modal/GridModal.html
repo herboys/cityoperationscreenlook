@@ -45,11 +45,13 @@
             <div class="Satisfaction-warp-item">
               <div class="Satisfaction-warp-item-header">
                 <div class="Satisfaction-warp-item-header-left">
-                  <div class="banner1">基本情况</div>
-                  <div class="banner2">队伍配置</div>
+                  <div v-show="switchShow1" @click="switchClick1" class="banner1">基本情况</div>
+                  <div v-show="switchShow2" @click="switchClick1" class="banner2">基本情况</div>
+                  <div v-show="switchShow1" @click="switchClick2" class="banner2">队伍配置</div>
+                  <div v-show="switchShow2" @click="switchClick2" class="banner1">队伍配置</div>
                 </div>
               </div>
-              <div class="Satisfaction-warp-item-echarts">
+              <div  v-show="switchShow1" class="Satisfaction-warp-item-echarts">
                 <div id="SmallECharts3" style="width: 575px; height: 255px;display: none;"></div>
                 <div style="padding: 2rem 2rem 1rem 2rem;color: #fff;margin-bottom: 0.2rem;">
                   <p style="font-size: 1.5rem;margin-bottom: 6px;">发现事件<span style="color: #56D0E3;">46364</span>件</p>
@@ -83,13 +85,13 @@
                       <div id="ecPie2" style="width: 260px;height: 100px;"></div>
                     </div>
                   </div>
-
-
-
                 </div>
-
-
               </div>
+              <div  v-show="switchShow2" class="Satisfaction-warp-item-echarts">
+                <div style="padding: 2rem 2rem 1rem 2rem;color: #fff;margin-bottom: 0.2rem;">
+                  <p style="font-size: 1.5rem;margin-bottom: 6px;">发现事件<span style="color: #56D0E3;">46364</span>件</p>
+              </div>
+            </div>
             </div>
             <div class="Satisfaction-warp-item">
               <div class="Satisfaction-warp-item-header">
@@ -223,10 +225,10 @@
   </div>
 </body>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script> -->
 <script type="text/javascript" src="Js/Maps.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<!-- <script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>   -->
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>  
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="Js/echartsPackage.js"></script>
 <script type="text/javascript">
@@ -256,12 +258,16 @@
             { name: '基础得分', max: 38000},
  
     ];
-    MyEcharts.initChart(
-      MyEcharts.EchartsOption.Ranking("name"),
+    let attackSourcesData = [80, 34, 60, 70, 34];
+    let attackSourcesName = ['区网络一', '区网络二', '区网络三', '区网络四', '区网络五'];
+    let attackSourcesName2 = ['公安', '城管', '司法', '民政', '水务'];
+
+    MyEcharts2.initChart(
+      MyEcharts2.EchartsOption.Ranking("name",attackSourcesName,attackSourcesData),
       "SmallECharts4"
     );
-    MyEcharts.initChart(
-      MyEcharts.EchartsOption.Ranking("name"),
+    MyEcharts2.initChart(
+      MyEcharts2.EchartsOption.Ranking("name",attackSourcesName2,attackSourcesData),
       "SmallECharts44"
     );
     MyEcharts2.initChart(
@@ -274,14 +280,24 @@
     );
   };
 </script>
-<!-- <script>
+<script>
     var app = new Vue({
       el: "#app2",
       data() {
-        return {};
+        return {
+          switchShow1: true,
+          switchShow2: false,
+        };
       },
-      methods: {},
+      methods: {
+        switchClick1() {
+        (this.switchShow1 = true), (this.switchShow2 = false);
+      },
+      switchClick2() {
+        (this.switchShow1 = false), (this.switchShow2 = true);
+      },
+      },
     });
-  </script> -->
+  </script>
 
 </html>

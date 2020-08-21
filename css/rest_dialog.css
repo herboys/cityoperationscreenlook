@@ -297,8 +297,14 @@
 }
 .echarts3 {
   height: 100%;
-  width: 8rem;
-  margin-left: 2rem;
+  width: 12.5rem;
+  /* margin-left: 2rem; */
+}
+.ecLists{
+  display: flex;
+  background-image: url(../images/imgs/echarts-bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .rest-foot-box2  .infos-box{

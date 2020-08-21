@@ -1,5 +1,5 @@
 var map = new AMap.Map('container', {
-    mapStyle: 'amap://styles/62552e0c6e791d4374f1072c702a6787',
+    mapStyle: 'amap://styles/5078b8edf11b4b3f9ab4b0e45c45e8fe',
     center: [121.2655, 31.37473],
     zoom: 12,
     resizeEnable: true,

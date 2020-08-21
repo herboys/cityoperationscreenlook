@@ -107,7 +107,6 @@
             <div class="core-title">
               <div class="title-bg"></div>
               <h3>
-                <!-- <a href="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" target="_blank"> -->
                 <img src="images/map-center.png" style="
                       display: inline-block;
                       width: 1.7rem;
@@ -115,7 +114,6 @@
                       vertical-align: middle;
                     " @click="httpShow=true" />
                 <span>区中心</span>
-                <!-- </a> -->
               </h3>
             </div>
             <div class="core-box core-left">
@@ -511,7 +509,7 @@
                 </div>
               </div>
 
-              <div class="main-list"  onclick="GridModalShow()">
+              <div class="main-list"  >
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -525,7 +523,7 @@
                 </div>
               </div>
 
-              <div class="main-list">
+              <div class="main-list" >
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -954,8 +952,15 @@
                  
                 </div>
                 <div style="color: #fff; height: 5.3rem;" v-show="switchShow4">
-                  <div style="padding-top: 1.5rem;">
-                    <div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div>
+                  <div style="padding-top: 1.5rem;padding-left: 2rem;padding-right: 2.5rem;">
+                    <div  class="ecLists">
+                    <div id="ec3" class="echarts3"></div>
+                    <div id="ec4" class="echarts3"></div>
+                    <div id="ec5" class="echarts3"></div>
+                    <div id="ec6" class="echarts3"></div>
+                    <div id="ec7" class="echarts3" style="padding-right: 2rem;margin-right: 2rem;"></div>
+                    <div id="ec8" class="echarts3"></div>
+                  </div>
                 </div>
                   
                 </div>
@@ -1391,18 +1396,16 @@
       <div class="ModalBox" id="ModalBox">
         <iframe id="openiframe" src="Modal/12345Modal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
-      <div class="ModalBox" id="GarBageModal">
+      <div class="ModalBox" id="GarBageModal" >
         <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
       <div class="ModalBox" id="GridModal" style="display: none;">
         <iframe id="openiframeGridModal" src="Modal/GridModal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
       <div v-show="httpShow" class="rest-www">
-
         <div class="httpShow-close" @click="httpShow=false"> x</div>
         <div style="width: 140%;height: 140%;">
           <iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf"  width="160%" height="160%" frameborder="0"  style="transform: scale(0.45);margin-left:-44%;margin-top:-12.5%"></iframe>
-        <!--  <iframe id="openiframe1" src="https://www.baidu.com" width="100%" height="100%" frameborder="0"></iframe>-->
         </div>
       </div>
 
@@ -1469,9 +1472,9 @@
   function openGarbageClassification(){
     document.getElementById("GarBageModal").style.display = "block";
   }
-  function GridModalShow(){
-    $("#GridModal").show();
-  }
+  // function GridModalShow(){
+  //   $("#GridModal").show();
+  // }
   var app = new Vue({
     el: "#app",
     data() {
@@ -1555,7 +1558,7 @@
         }
         let arr = str.split(",");
         console.log(arr, "===arr");
-      //   map.add( new AMap.Circle({
+           //   map.add( new AMap.Circle({
       //     center: arr, // 圆心位置
       //     radius: 1000,  //半径
       //     strokeColor: "#F33",  //线颜色
@@ -1565,6 +1568,8 @@
       //     fillOpacity: 0.35 //填充透明度
       // }));
       //   map.setFitView();
+
+      
         map.setZoomAndCenter(15, arr);
         this.changeIndex1 = index
       },

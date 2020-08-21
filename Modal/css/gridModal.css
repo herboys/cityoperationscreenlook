@@ -264,7 +264,7 @@ body {
 
 .Modal-right {
     flex: 1;
-    /*background-color: yellow;*/
+    /* background-color: yellow; */
 }
 .FX_header{
     display: flex;
@@ -344,3 +344,66 @@ ul li {
     height: 150px;
     border: 1px solid #13a1fc;
 }
+
+.Municipal-level {
+    margin: 1.6rem 0;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+}
+
+.Municipal-level div {
+    flex: 1;
+    display: inline-block;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.Municipal-level div img {
+    width: 40px;
+    height: 40px;
+}
+
+.Municipal-level div li {
+    margin-left: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.Municipal-level div li p:nth-child(2) {
+    color: #1fe0e9;
+}
+
+ .progress{
+     width: 120px;
+     height: 14px;
+     border-radius: 0.1rem;
+ }
+ /* 表示总长度背景色 */
+ .progress::-webkit-progress-bar{     
+        background-color: rgb(21, 55, 95);
+        border-radius: 0.2rem;
+    }
+    /* 表示已完成进度背景色 */
+    .progress::-webkit-progress-value{
+          background: #20d180;
+          border-radius: 0.2rem; 
+    }
+
+    .progress2{
+        width: 120px;
+        height: 14px;
+        border-radius: 0.1rem;
+    }
+    /* 表示总长度背景色 */
+    .progress2::-webkit-progress-bar{     
+           background-color: rgb(21, 55, 95);
+           border-radius: 0.2rem;
+       }
+       /* 表示已完成进度背景色 */
+       .progress2::-webkit-progress-value{
+             background: #0093ff;
+             border-radius: 0.2rem; 
+       }

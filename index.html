@@ -511,7 +511,7 @@
                 </div>
               </div>
 
-              <div class="main-list"  onclick="GridModalShow()">
+              <div class="main-list"  >
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -954,8 +954,15 @@
                  
                 </div>
                 <div style="color: #fff; height: 5.3rem;" v-show="switchShow4">
-                  <div style="padding-top: 1.5rem;">
-                    <div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div><div id="ec3" class="echarts3"></div>
+                  <div style="padding-top: 1.5rem;padding-left: 2rem;">
+                    <div  class="ecLists">
+                    <div id="ec3" class="echarts3"></div>
+                    <div id="ec4" class="echarts3"></div>
+                    <div id="ec5" class="echarts3"></div>
+                    <div id="ec6" class="echarts3"></div>
+                    <div id="ec7" class="echarts3" style="padding-right: 2rem;margin-right: 2rem;"></div>
+                    <div id="ec8" class="echarts3"></div>
+                  </div>
                 </div>
                   
                 </div>
@@ -1469,9 +1476,9 @@
   function openGarbageClassification(){
     document.getElementById("GarBageModal").style.display = "block";
   }
-  function GridModalShow(){
-    $("#GridModal").show();
-  }
+  // function GridModalShow(){
+  //   $("#GridModal").show();
+  // }
   var app = new Vue({
     el: "#app",
     data() {
@@ -1555,7 +1562,7 @@
         }
         let arr = str.split(",");
         console.log(arr, "===arr");
-      //   map.add( new AMap.Circle({
+           //   map.add( new AMap.Circle({
       //     center: arr, // 圆心位置
       //     radius: 1000,  //半径
       //     strokeColor: "#F33",  //线颜色
@@ -1565,6 +1572,8 @@
       //     fillOpacity: 0.35 //填充透明度
       // }));
       //   map.setFitView();
+
+      
         map.setZoomAndCenter(15, arr);
         this.changeIndex1 = index
       },

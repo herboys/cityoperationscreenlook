@@ -18,7 +18,7 @@ function intervalFunction() {
  * */
 function EndFacilities() {
     let para = {
-        url: '/sh/garbageSort/getGarbageContentDisplay',
+        url: GarBage_URl+'/sh/garbageSort/getGarbageContentDisplay',
         async: true,
         type: 'get',
         dataType: 'JSON',
@@ -48,7 +48,7 @@ function EndFacilities() {
  * */
 function TownLifeGarbage() {
     let para = {
-        url: '/sh/garbageSort/getGarbageStreetProduce',
+        url: GarBage_URl+'/sh/garbageSort/getGarbageStreetProduce',
         async: true,
         type: 'get',
         dataType: 'JSON',
@@ -80,7 +80,7 @@ function TownLifeGarbage() {
                 attackSourcesName.push(item.street)
             })
             console.log(attackSourcesData, attackSourcesName)
-            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor), "SmallECharts4")
+            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'吨'), "SmallECharts4")
         } else {
             alert('街镇生活垃圾产生量TOP5接口发生错误')
         }

@@ -769,7 +769,7 @@ function addHjbz(arr) {
   $(".hjbz-warp .text-box").html("");
   var maxNum = arr.length > 3 ? 3 : arr.length;
   for (var i = 0; i < maxNum; i++) {
-    if(arr[i].title==="生活垃圾"){
+    if(arr[i].title==="生活垃圾处理"){
       $(".hjbz-warp .text-box").append(
           '<div style="left:' +
           (10 - i * 5) +

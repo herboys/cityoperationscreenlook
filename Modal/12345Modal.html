@@ -59,16 +59,16 @@
                                 <div class="banner1" onclick="TabsFun(5)">热词</div>
 <!--                                <div class="banner2" onclick="TabsFun(6)">趋势分析</div>-->
                             </div>
-                            <div id="dropdown2">
-                                <p>街镇效能</p>
-                                <ul>
-                                    <li><a href="#" rel="1">街镇效能</a></li>
-                                    <li><a href="#" rel="2">部门效能</a></li>
-<!--                                    <li><a href="#" rel="3">南京</a></li>-->
-<!--                                    <li><a href="#" rel="4">堪培拉</a></li>-->
-<!--                                    <li><a href="#" rel="5">多伦多</a></li>-->
-                                </ul>
-                            </div>
+<!--                            <div id="dropdown2">-->
+<!--                                <p>街镇效能</p>-->
+<!--                                <ul>-->
+<!--                                    <li><a href="#" rel="1">街镇效能</a></li>-->
+<!--                                    <li><a href="#" rel="2">部门效能</a></li>-->
+<!--&lt;!&ndash;                                    <li><a href="#" rel="3">南京</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <li><a href="#" rel="4">堪培拉</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <li><a href="#" rel="5">多伦多</a></li>&ndash;&gt;-->
+<!--                                </ul>-->
+<!--                            </div>-->
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
                             <div id="SmallECharts4" style="width: 575px;height:305px;margin-right: 20px;margin-top: -20px"></div>
@@ -199,7 +199,7 @@
         </div>
     </div>
     <div class="Modal-right" id="container">
-        <div class="Modal-right-title">嘉定区垃圾分类图</div>
+        <div class="Modal-right-title">嘉定区12345事件热力图</div>
         <div class="Modal-right-tabs">
             <div class="pmVerticalRightOut" id="pmVerticalRightOut">
                 <div class="level">
@@ -313,6 +313,7 @@
     })
     window.onload = function () {
         GongDan(0)
+        findproblemFun()
         let para = {
             xData: ["本年话务总量", "本年人工话务量", "每万客户呼入量"],
             yData: [2342, 1230, 425]

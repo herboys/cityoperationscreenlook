@@ -674,7 +674,7 @@ var MyEcharts = {
                     type: 'slider',
                     xAxisIndex: 0,
                     zoomLock: true,
-                    width: 400,
+                    width: 300,
                     height: 10,
                     handleSize: 0,
                     showDetail: false,

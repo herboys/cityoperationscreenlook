@@ -1,3 +1,4 @@
+let ORACLE_URL = "http://10.237.115.83:8089/oracleConnection"
 function TabsFun(num) {
     let para = document.getElementsByClassName("Satisfaction-warp-item-header-left")
     let data = ''
@@ -93,7 +94,8 @@ function TabsFun(num) {
 
 function GongDan(num) {
     let para = {
-        url: 'http://localhost:8090/taskInfo/findInfoUrgent',
+       // url: 'http://localhost:8090/taskInfo/findInfoUrgent',
+        url: ORACLE_URL+'/taskInfo/findInfoUrgent',
         async: true,
         type: 'post',
         data: JSON.stringify({
@@ -124,12 +126,13 @@ function GongDan(num) {
 
 function findproblemFun() {
     let para = {
-        url: 'http://localhost:8090/taskInfo/findproblem',
+       // url: 'http://localhost:8090/taskInfo/findproblem',
+        url: ORACLE_URL+'/taskInfo/findproblem',
         type: 'get',
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        ajaxPromise({url:'http://localhost:8090/taskInfo/findInfozcSort',type:'post',dataType: 'JSON',data:JSON.stringify({}),}).then(tree=>{
+        ajaxPromise({url:ORACLE_URL+'/taskInfo/findInfozcSort',type:'post',dataType: 'JSON',data:JSON.stringify({}),}).then(tree=>{
             console.log(res,tree)
             res[res.length-1].children=tree
             para = ''

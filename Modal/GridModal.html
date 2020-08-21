@@ -8,8 +8,10 @@
 <!-- <link rel="stylesheet" type="text/css" href="../css/12345Modal.css" /> -->
 <link rel="stylesheet" type="text/css" href="../css/pubilic.css" />
 <link rel="stylesheet" type="text/css" href="css/gridModal.css" />
+<script src="../js/map3.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+<script type="text/javascript" src="../js/map3.js"></script>
 
 <body>
   <div id="app2" class="Modal-warp">
@@ -51,14 +53,16 @@
                   <div v-show="switchShow2" @click="switchClick2" class="banner1">队伍配置</div>
                 </div>
               </div>
-              <div  v-show="switchShow1" class="Satisfaction-warp-item-echarts">
+              <div v-show="switchShow1" class="Satisfaction-warp-item-echarts">
                 <div id="SmallECharts3" style="width: 575px; height: 255px;display: none;"></div>
-                <div style="padding: 2rem 2rem 1rem 2rem;color: #fff;margin-bottom: 0.2rem;">
+                <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
                   <p style="font-size: 1.5rem;margin-bottom: 6px;">发现事件<span style="color: #56D0E3;">46364</span>件</p>
-                  <div style="display: flex;height: 3rem;margin-bottom: 2rem;">
+                  <div style="display: flex;height: 3rem;margin-bottom: 1rem;">
                     <div style="padding-left: 1.5rem;width: 50%;">
-                      <p style="margin-bottom: 6px;">主动发现<span style="color: #20d180;">40990</span></p>
-                      <p>被动发现<span style="color: #0093ff;">4379</span></p>
+                      <p style="margin-bottom: 6px;">主动发现<progress value='70' max='100' class="pr1"></progress><span
+                          style="color: #20d180;">40990</span></p>
+                      <p>被动发现<progress value='30' max='100' class="pr2"></progress><span
+                          style="color: #0093ff;">4379</span></p>
                     </div>
                     <div style="width: 50%;">
                       <span class="echarts-info">同比 <span style="color: #20d180;">+16%</span></span>
@@ -73,7 +77,7 @@
                         <span style="color: #20d180;">某某总量</span>
                         <span style="color: #0093ff;">某某总量</span>
                       </p>
-                      <div id="ecPie1" style="width: 260px;height: 100px;"></div>
+                      <div id="ecPie1" style="width: 260px;height: 160px;"></div>
                     </div>
                     <div style="width: 50%;">
                       <p>
@@ -82,16 +86,133 @@
                         <span style="color: #20d180;">某某总量</span>
                         <span style="color: #0093ff;">某某总量</span>
                       </p>
-                      <div id="ecPie2" style="width: 260px;height: 100px;"></div>
+                      <div id="ecPie2" style="width: 260px;height: 160px;"></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div  v-show="switchShow2" class="Satisfaction-warp-item-echarts">
-                <div style="padding: 2rem 2rem 1rem 2rem;color: #fff;margin-bottom: 0.2rem;">
-                  <p style="font-size: 1.5rem;margin-bottom: 6px;">发现事件<span style="color: #56D0E3;">46364</span>件</p>
+              <div v-show="switchShow2" class="Satisfaction-warp-item-echarts">
+                <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
+                  <p style="font-size: 1.5rem;margin-bottom: 6px;">队伍配置总数<span style="color: #56D0E3;">46364</span>人</p>
+                  <div class="Municipal-level">
+                    <div>
+                      <img src="../Modal/images/icons/公安.png" />
+                      <li>
+                        <p>公安</p>
+                        <p>
+                          <span>1910</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/民政.png" />
+                      <li>
+                        <p>民政</p>
+                        <p>
+                          <span>39</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/司法.png" />
+                      <li>
+                        <p>司法</p>
+                        <p>
+                          <span>23</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/人社.png" />
+                      <li>
+                        <p>人社</p>
+                        <p>
+                          <span>366</span>人
+                        </p>
+                      </li>
+                    </div>
+
+                  </div>
+                  <div class="Municipal-level">
+                    <div>
+                      <img src="../Modal/images/icons/综治.png" />
+                      <li>
+                        <p>综治</p>
+                        <p>
+                          <span>31</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/建设.png" />
+                      <li>
+                        <p>建设</p>
+                        <p>
+                          <span>21</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/规划资源.png" />
+                      <li>
+                        <p>规划资源</p>
+                        <p>
+                          <span>340</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/市场监管.png" />
+                      <li>
+                        <p>市场监管</p>
+                        <p>
+                          <span>27</span>人
+                        </p>
+                      </li>
+                    </div>
+
+                  </div>
+                  <div class="Municipal-level">
+                    <div>
+                      <img src="../Modal/images/icons/城管.png" />
+                      <li>
+                        <p>城管</p>
+                        <p>
+                          <span>19</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/联勤.png" />
+                      <li>
+                        <p>联勤</p>
+                        <p>
+                          <span>125</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/水务.png" />
+                      <li>
+                        <p>水务</p>
+                        <p>
+                          <span>24</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
+                      <img src="../Modal/images/icons/农业.png" />
+                      <li>
+                        <p>农业</p>
+                        <p>
+                          <span>19</span>人
+                        </p>
+                      </li>
+                    </div>
+
+                  </div>
+                </div>
               </div>
-            </div>
             </div>
             <div class="Satisfaction-warp-item">
               <div class="Satisfaction-warp-item-header">
@@ -103,7 +224,7 @@
               <div class="Satisfaction-warp-item-echarts">
                 <div style="display: flex;">
                   <div id="SmallECharts4" style="width: 275px; height: 255px;"></div>
-                  <div  class="echarts-bg-box" style="display: flex;">
+                  <div class="echarts-bg-box" style="display: flex;">
                     <div id="ecRadar1" style="width: 150px;height: 200px;"></div>
                     <div id="ecbar3" style="width: 150px;height: 200px;"></div>
                   </div>
@@ -135,7 +256,7 @@
                 </div>
               </div>
               <div class="Satisfaction-warp-item-echarts">
-                  <!-- <div id="SmallECharts22" style="width: 617px; height: 255px;"></div> -->
+                <!-- <div id="SmallECharts22" style="width: 617px; height: 255px;"></div> -->
                 <div style="display: flex;">
                   <div id="SmallECharts44" style="width: 300px; height: 255px;"></div>
                   <div id="ecRadar2" class="echarts-bg-box"></div>
@@ -152,26 +273,26 @@
               </div>
               <div class="Satisfaction-warp-item-echarts">
                 <div style="display: flex;height: 100%;color:#fff;padding: 0 10px;">
-                    <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                      <div class="ranking-public ranking-fourth">94分</div>
-                      <p>邵明杰</p>
-                    </div>
-                    <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                      <div class="ranking-public ranking-second">94分</div>
-                      <p>邵明杰</p>
-                    </div>
-                    <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                      <div class="ranking-public ranking-first">94分</div>
-                      <p>邵明杰</p>
-                    </div>
-                    <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                      <div class="ranking-public ranking-third">94分</div>
-                      <p>邵明杰</p>
-                    </div>
-                    <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                      <div class="ranking-public ranking-fifth">94分</div>
-                      <p>邵明杰</p>
-                    </div>
+                  <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                    <div class="ranking-public ranking-fourth">94分</div>
+                    <p>邵明杰</p>
+                  </div>
+                  <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                    <div class="ranking-public ranking-second">94分</div>
+                    <p>邵明杰</p>
+                  </div>
+                  <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                    <div class="ranking-public ranking-first">94分</div>
+                    <p>邵明杰</p>
+                  </div>
+                  <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                    <div class="ranking-public ranking-third">94分</div>
+                    <p>邵明杰</p>
+                  </div>
+                  <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                    <div class="ranking-public ranking-fifth">94分</div>
+                    <p>邵明杰</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -186,53 +307,57 @@
               <a class="line1"></a>
             </div>
             <div class="footer">
-            <div style="display: flex;height: 100%;color:#fff;padding: 0 10px;">
-              <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                <div class="ranking-public ranking-6">94分</div>
-                <p>邵明杰</p>
+              <div style="display: flex;height: 100%;color:#fff;padding: 0 10px;">
+                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                  <div class="ranking-public ranking-6">94分</div>
+                  <p>邵明杰</p>
+                </div>
+                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                  <div class="ranking-public ranking-fourth">94分</div>
+                  <p>邵明杰</p>
+                </div>
+                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                  <div class="ranking-public ranking-second">94分</div>
+                  <p>邵明杰</p>
+                </div>
+                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                  <div class="ranking-public ranking-first">94分</div>
+                  <p>邵明杰</p>
+                </div>
+                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                  <div class="ranking-public ranking-third">94分</div>
+                  <p>邵明杰</p>
+                </div>
+                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                  <div class="ranking-public ranking-fifth">94分</div>
+                  <p>邵明杰</p>
+                </div>
+                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
+                  <div class="ranking-public ranking-7">94分</div>
+                  <p>邵明杰</p>
+                </div>
               </div>
-              <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                <div class="ranking-public ranking-fourth">94分</div>
-                <p>邵明杰</p>
-              </div>
-              <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                <div class="ranking-public ranking-second">94分</div>
-                <p>邵明杰</p>
-              </div>
-              <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                <div class="ranking-public ranking-first">94分</div>
-                <p>邵明杰</p>
-              </div>
-              <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                <div class="ranking-public ranking-third">94分</div>
-                <p>邵明杰</p>
-              </div>
-              <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                <div class="ranking-public ranking-fifth">94分</div>
-                <p>邵明杰</p>
-              </div>
-              <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                <div class="ranking-public ranking-7">94分</div>
-                <p>邵明杰</p>
-              </div>
-           </div>
-           </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="Modal-right" id="container"></div>
+    <div class="Modal-right" style="flex: 1;">
+      <!-- <div id="GridMapContainer" style="width: 100%;height: 100%;"></div> -->
+      <div id="container" style="width: 100%;height: 100%;"></div>
+    </div>
   </div>
 </body>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <!-- <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script> -->
-<script type="text/javascript" src="Js/Maps.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>  
+<script type="text/javascript" src="Js/Maps.js"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="Js/echartsPackage.js"></script>
 <script type="text/javascript">
   document.getElementById("clearid").onclick = function () {
+    alert(22)
     window.parent.document.getElementById("GridModal").style.display = "none";
   };
   $("#dropdown p").click(function () {
@@ -251,53 +376,109 @@
     });
   });
   window.onload = function () {
-   let data= [
-            { name: '发现得分', max: 6500},
-            { name: '协调得分', max: 16000},
-            { name: '办结得分', max: 30000},
-            { name: '基础得分', max: 38000},
- 
+    let indicator = [{
+        name: '发现得分',
+        max: 6500
+      },
+      {
+        name: '协调得分',
+        max: 16000
+      },
+      {
+        name: '办结得分',
+        max: 30000
+      },
+      {
+        name: '基础得分',
+        max: 38000
+      },
+    ];
+    let indicator2 = [{
+        name: '响应得分',
+        max: 6500
+      },
+      {
+        name: '办结得分',
+        max: 30000
+      },
+      {
+        name: '基础得分',
+        max: 38000
+      },
     ];
     let attackSourcesData = [80, 34, 60, 70, 34];
     let attackSourcesName = ['区网络一', '区网络二', '区网络三', '区网络四', '区网络五'];
     let attackSourcesName2 = ['公安', '城管', '司法', '民政', '水务'];
-
+    let category = [{
+        name: "管控",
+        value: 2500
+      },
+      {
+        name: "集中式",
+        value: 8000
+      },
+      {
+        name: "纳管",
+        value: 3000
+      }
+    ];
+    let pieData = [{
+        name: "本科",
+        value: 754
+      },
+      {
+        name: "硕士",
+        value: 611
+      },
+    ];
     MyEcharts2.initChart(
-      MyEcharts2.EchartsOption.Ranking("name",attackSourcesName,attackSourcesData),
+      MyEcharts2.EchartsOption.Ranking("name", attackSourcesName, attackSourcesData),
       "SmallECharts4"
     );
     MyEcharts2.initChart(
-      MyEcharts2.EchartsOption.Ranking("name",attackSourcesName2,attackSourcesData),
+      MyEcharts2.EchartsOption.Ranking("name", attackSourcesName2, attackSourcesData),
       "SmallECharts44"
     );
     MyEcharts2.initChart(
-      MyEcharts2.EchartsOption.radar("data"),
+      MyEcharts2.EchartsOption.radar("name", indicator),
       "ecRadar1"
     );
     MyEcharts2.initChart(
-      MyEcharts2.EchartsOption.radar("data"),
+      MyEcharts2.EchartsOption.radar("name", indicator2),
       "ecRadar2"
+    );
+    MyEcharts2.initChart(
+      MyEcharts2.EchartsOption.progress("name", category),
+      "ecbar3"
+    );
+    MyEcharts2.initChart(
+      MyEcharts2.EchartsOption.PieChart("name", pieData),
+      "ecPie1"
+    );
+    MyEcharts2.initChart(
+      MyEcharts2.EchartsOption.PieChart("name", pieData),
+      "ecPie2"
     );
   };
 </script>
 <script>
-    var app = new Vue({
-      el: "#app2",
-      data() {
-        return {
-          switchShow1: true,
-          switchShow2: false,
-        };
-      },
-      methods: {
-        switchClick1() {
+  var app = new Vue({
+    el: "#app2",
+    data() {
+      return {
+        switchShow1: true,
+        switchShow2: false,
+      };
+    },
+    methods: {
+      switchClick1() {
         (this.switchShow1 = true), (this.switchShow2 = false);
       },
       switchClick2() {
         (this.switchShow1 = false), (this.switchShow2 = true);
       },
-      },
-    });
-  </script>
+    },
+  });
+</script>
 
 </html>

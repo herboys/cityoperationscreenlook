@@ -59,7 +59,7 @@ function changeWeather(){
         url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=zdz',
         dataType : 'json',
         type : 'get',
-        async : false,
+        async : true,
         success : function(data) {
             var wind_speed=0
             var curTime=""
@@ -184,7 +184,7 @@ function changeWeather(){
         //dataType : 'json',
         dataType :'json',
         type : 'get',
-        async : false,
+        async : true,
         success : function(data) {
             clearWarning();
 

@@ -24,9 +24,9 @@
                     <div id="dropdown">
                         <p style="border:1px solid #1DD6DF;color: #1DD6DF">今日</p>
                         <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
-                            <li><a href="#" rel="1"> 今日</a></li>
-                            <li><a href="#" rel="2">本周</a></li>
-                            <li><a href="#" rel="3">本年度</a></li>
+                            <li><a href="#" rel="1"> 日</a></li>
+                            <li><a href="#" rel="2">周</a></li>
+                            <li><a href="#" rel="3">年</a></li>
                         </ul>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
 <!--                                </ul>-->
 <!--                            </div>-->
                         </div>
-                        <div class="Satisfaction-warp-item-echarts">
+                        <div class="Satisfaction-warp-item-echarts" style="margin-top: 40px">
                             <div id="SmallECharts4" style="width: 575px;height:305px;margin-right: 20px;margin-top: -20px"></div>
                         </div>
 
@@ -200,46 +200,46 @@
     </div>
     <div class="Modal-right" id="container">
         <div class="Modal-right-title">嘉定区12345事件热力图</div>
-        <div class="Modal-right-tabs">
-            <div class="pmVerticalRightOut" id="pmVerticalRightOut">
-                <div class="level">
-                    <div class="levelTitle">问题来源</div>
-                    <div class="level_">
-                        <div class="level_title">level_ title</div>
-                        <a>level_ title 1</a>
-                        <a>level_ title 2</a>
-                        <a>level_ title 3</a>
-                        <a>level_ title 4</a>
-                        <a>level_ title 5</a>
-                    </div>
-                </div>
-                <div class="level">
-                    <div class="levelTitle">问题类型</div>
-                    <div class="level_">
-                        <div class="level_title">level_ title</div>
-                        <a>level_ title 1</a>
-                        <a>level_ title 2</a>
-                        <a>level_ title 3</a>
-                        <a>level_ title 4</a>
-                        <a>level_ title 5</a>
-                    </div>
-                </div>
-                <div class="level">
-                    <div class="levelTitle">诉求情况</div>
-                    <div class="level_">
-                        <div class="level_title">level_ title</div>
-                        <a>level_ title 1</a>
-                        <a>level_ title 2</a>
-                        <a>level_ title 3</a>
-                        <a>level_ title 4</a>
-                        <a>level_ title 5</a>
-                    </div>
-                </div>
+<!--        <div class="Modal-right-tabs">-->
+<!--            <div class="pmVerticalRightOut" id="pmVerticalRightOut">-->
+<!--                <div class="level">-->
+<!--                    <div class="levelTitle">问题来源</div>-->
+<!--                    <div class="level_">-->
+<!--                        <div class="level_title">level_ title</div>-->
+<!--                        <a>level_ title 1</a>-->
+<!--                        <a>level_ title 2</a>-->
+<!--                        <a>level_ title 3</a>-->
+<!--                        <a>level_ title 4</a>-->
+<!--                        <a>level_ title 5</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="level">-->
+<!--                    <div class="levelTitle">问题类型</div>-->
+<!--                    <div class="level_">-->
+<!--                        <div class="level_title">level_ title</div>-->
+<!--                        <a>level_ title 1</a>-->
+<!--                        <a>level_ title 2</a>-->
+<!--                        <a>level_ title 3</a>-->
+<!--                        <a>level_ title 4</a>-->
+<!--                        <a>level_ title 5</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="level">-->
+<!--                    <div class="levelTitle">诉求情况</div>-->
+<!--                    <div class="level_">-->
+<!--                        <div class="level_title">level_ title</div>-->
+<!--                        <a>level_ title 1</a>-->
+<!--                        <a>level_ title 2</a>-->
+<!--                        <a>level_ title 3</a>-->
+<!--                        <a>level_ title 4</a>-->
+<!--                        <a>level_ title 5</a>-->
+<!--                    </div>-->
+<!--                </div>-->
 
 
-            </div>
+<!--            </div>-->
 
-        </div>
+<!--        </div>-->
     </div>
 </div>
 </body>
@@ -341,9 +341,9 @@
         let color = ["#fec101", "#b5b8cd ", "#ff6226", "#f60000", "#2cc78f", "#2ca7f9"]
         MyEcharts.initChart(MyEcharts.EchartsOption.pie('工单问题', color, data), "SmallECharts3")
         let attackSourcesData = ["340", "337", "330", "189", "154", "150", "103", "99", "90", "74", "73", "55"]
-        let attackSourcesName = ["江桥镇", "马陆镇", "安亭镇", "南翔镇", "嘉定工业区", "真新街道", "菊园新区", "徐行镇", "外冈镇", "嘉定镇街道", "华亭镇", "新成路街道"]
+        let attackSourcesName = ["架空线", "防盗", "盖子", "暴露", "损坏", "消火栓", "监督员", "张贴", "垃圾桶", "坠落", "广告", "垃圾"]
         let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'%'), "SmallECharts4")
+        MyEcharts.initChart(MyEcharts.EchartsOption.wordCloud('name', attackSourcesName, attackSourcesData, attackSourcesColor,'次'), "SmallECharts4")
         // window.onresize = function () {
         //     SmallECharts4.resize();
         // }

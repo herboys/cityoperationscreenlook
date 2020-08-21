@@ -360,6 +360,9 @@ body {
     /*    border-image-width: 200px 300px 400px 200px;*/
 
 }
+#SmallECharts4 {
+    top: -20px
+}
 
 
 .Modal-right {
@@ -379,7 +382,8 @@ ul li {
 
 #dropdown {
     font-size: 16px;
-    z-index: 99999
+    z-index: 99999;
+    text-align: center;
 }#dropdown1 {
     font-size: 16px;
     z-index: 99999

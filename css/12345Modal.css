@@ -291,6 +291,9 @@ ul li {
 }#dropdown1 {
     font-size: 16px;
     z-index: 99999
+}#dropdown2 {
+    font-size: 16px;
+    z-index: 99999
 }
 
 #dropdown p {
@@ -304,6 +307,16 @@ ul li {
     color: #ffffff;
     cursor: pointer
 }#dropdown1 p {
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+    padding-right: 30px;
+    border: 1px solid #a9c9e2;
+    background: inherit url('V') no-repeat right 4px;
+    color: #ffffff;
+    cursor: pointer
+}#dropdown2 p {
     width: 80px;
     height: 32px;
     line-height: 32px;
@@ -329,6 +342,13 @@ ul li {
     border: 2px solid #50657D;
     position: absolute;
     display: none
+}#dropdown2 ul {
+    width: 119px;
+    background-color: #061839;;
+    margin-top: 2px;
+    border: 2px solid #50657D;
+    position: absolute;
+    display: none
 }
 
 #dropdown ul li {
@@ -336,6 +356,10 @@ ul li {
     line-height: 24px;
     text-indent: 10px
 }#dropdown1 ul li {
+    height: 24px;
+    line-height: 24px;
+    text-indent: 10px
+}#dropdown2 ul li {
     height: 24px;
     line-height: 24px;
     text-indent: 10px
@@ -351,12 +375,20 @@ ul li {
     height: 24px;
     color: #ffffff;
     text-decoration: none
+}#dropdown2 ul li a {
+    display: block;
+    height: 24px;
+    color: #ffffff;
+    text-decoration: none
 }
 
 #dropdown ul li a:hover {
     background: #c6dbfc;
     color: #ffffff
 }#dropdown1 ul li a:hover {
+    background: #c6dbfc;
+    color: #ffffff
+}#dropdown2 ul li a:hover {
     background: #c6dbfc;
     color: #ffffff
 }
@@ -437,8 +469,8 @@ ul li {
 }
 .GarBage-child-item div p {
     font-size: 12px;
-    transform: scale(0.9);
-    -webkit-transform: scale(0.9);
+    /*transform: scale(0.9);*/
+    /*-webkit-transform: scale(0.9);*/
 }
 
 .GarBage-child-1 {
@@ -537,7 +569,7 @@ ul li {
 
 .Municipal-level div li {
     margin-left: 10px;
-    font-size: 12px;
+    font-size: 14px;
     color: white;
 }
 
@@ -613,10 +645,10 @@ ul li {
 
 .font-10 {
 
-    transform: scale(0.8);
-    font-size: 10px;
-    -webkit-transform: scale(0.7);
-    font-size: 10px;
+    /*transform: scale(0.8);*/
+    /*font-size: 10px;*/
+    /*-webkit-transform: scale(0.7);*/
+    font-size: 12px;
 }
 
 .ModalBox {

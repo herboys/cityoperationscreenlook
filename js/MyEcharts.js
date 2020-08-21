@@ -98,218 +98,104 @@ var MyEcharts = {
          * @param subtext ：副标题<br>
          * @param data : json 数据
          */
-        bar: function (title, subtext, data) {
-            console.log(data)
-            var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
+        bar: function (xData,yData) {
+            // console.log(data)
+           // var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
 
-            var xData = ["本年话务总量", "本年人工话务量", "每万客户呼入量", '每万客户呼入量'];
-            var yData = [2342, 1230, 425, 900];
+            // var xData = ["电话", "网站", "手机App", '微信'];
+            // var yData = [2342, 1230, 425, 900, 600];
             var option = {
-                // backgroundColor: '#061326',
-                "grid": {
-                    "top": "25%",
-                    "left": "-5%",
-                    "bottom": "5%",
-                    "right": "5%",
-                    "containLabel": true
-                },
-                tooltip: {
-                    show: true
-                },
-                animation: false,
-                "xAxis": [{
-                    "type": "category",
-                    "data": xData,
-                    "axisTick": {
-                        "alignWithLabel": true
-                    },
-                    "nameTextStyle": {
-                        "color": "#82b0ec"
-                    },
-                    "axisLine": {
-                        show: false,
-                        "lineStyle": {
-                            "color": "#82b0ec"
-                        }
-                    },
-                    "axisLabel": {
-                        "textStyle": {
-                            "color": "#fff"
-                        },
-                        margin: 30
-                    }
-                }],
-                "yAxis": [{
-                    show: false,
-                    "type": "value",
-                    "axisLabel": {
-                        "textStyle": {
-                            "color": "#fff"
-                        },
-                    },
-                    "splitLine": {
-                        "lineStyle": {
-                            "color": "#0c2c5a"
-                        }
-                    },
-                    "axisLine": {
-                        "show": false
-                    }
-                }],
-                "series": [{
-                    "name": "",
-                    type: 'pictorialBar',
-                    symbolSize: [40, 10],
-                    symbolOffset: [0, -6],
-                    symbolPosition: 'end',
-                    z: 12,
-                    // "barWidth": "0",
-                    "label": {
-                        "normal": {
-                            "show": true,
-                            "position": "top",
-                            // "formatter": "{c}%"
-                            fontSize: 25,
-                            fontWeight: 'bold',
-                            color: '#34DCFF'
-                        }
-                    },
-                    color: "#2DB1EF",
-                    data: yData
-                },
-                    {
-                        name: '',
-                        type: 'pictorialBar',
-                        symbolSize: [40, 10],
-                        symbolOffset: [0, 7],
-                        // "barWidth": "20",
-                        z: 12,
-                        "color": "#2DB1EF",
-                        "data": yData
-                    },
-                    {
-                        name: '',
-                        type: 'pictorialBar',
-                        symbolSize: [50, 15],
-                        symbolOffset: [0, 12],
-                        z: 10,
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent',
-                                borderColor: '#2EA9E5',
-                                borderType: 'solid',
-                                borderWidth: 1
-                            }
-                        },
-                        data: yData
-                    }, {
-                        name: '',
-                        type: 'pictorialBar',
-                        symbolSize: [50, 15],
-                        symbolOffset: [0, 12],
-                        z: 10,
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent',
-                                borderColor: '#2EA9E5',
-                                borderType: 'solid',
-                                borderWidth: 1
-                            }
-                        },
-                        data: yData
-                    },
-
-                    {
-                        name: '',
-                        type: 'pictorialBar',
-                        symbolSize: [70, 20],
-                        symbolOffset: [0, 18],
-                        z: 10,
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent',
-                                borderColor: '#19465D',
-                                borderType: 'solid',
-                                borderWidth: 2
-                            }
-                        },
-                        data: yData
-                    },
-                    {
-                        type: 'bar',
-                        //silent: true,
-                        "barWidth": "40",
-                        barGap: '10%', // Make series be overlap
-                        barCateGoryGap: '10%',
-                        itemStyle: {
-                            normal: {
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 0.7, [{
-                                    offset: 0,
-                                    color: "#38B2E6"
-                                },
-                                    {
-                                        offset: 1,
-                                        color: "#0B3147"
-                                    }
-                                ]),
-                                opacity: .8
-                            },
-                        },
-                        data: yData
-                    }, {
-                        name: '日用气量分析',
-                        type: 'line',
-                        // smooth: true, //是否平滑
-                        showAllSymbol: true,
-                        // symbol: 'image://./static/images/guang-circle.png',
-                        symbol: 'circle',
-                        symbolSize: 25,
+                backgroundColor: '#011c3a',
+                xAxis: {
+                    data: xData,
+                    axisLine: {
                         lineStyle: {
-                            normal: {
-                                color: "#6c50f3",
-                                shadowColor: 'rgba(0, 0, 0, .3)',
-                                shadowBlur: 0,
-                                shadowOffsetY: 5,
-                                shadowOffsetX: 5,
-                            },
-                        },
-                        label: {
-                            show: true,
-                            position: 'top',
-                            textStyle: {
-                                color: '#6c50f3',
-                            }
-                        },
-                        itemStyle: {
-                            color: "#6c50f3",
-                            borderColor: "#fff",
-                            borderWidth: 3,
-                            shadowColor: 'rgba(0, 0, 0, .3)',
-                            shadowBlur: 0,
-                            shadowOffsetY: 2,
-                            shadowOffsetX: 2,
-                        },
-                        tooltip: {
-                            show: true
-                        },
-                        areaStyle: {
-                            normal: {
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                    offset: 0,
-                                    color: 'rgba(108,80,243,0.3)'
-                                },
-                                    {
-                                        offset: 1,
-                                        color: 'rgba(108,80,243,0)'
-                                    }
-                                ], false),
-                                shadowColor: 'rgba(108,80,243, 0.9)',
-                                shadowBlur: 20
-                            }
-                        },
-                        data: [2330, 205.97, 2340, 900]
+                            color: '#3d5269'
+                        }
                     },
-                ]
+                    axisLabel: {
+                        color: '#fff',
+                        fontSize: 14
+                    }
+                },
+                dataZoom: [{
+                    type: 'slider',
+                    xAxisIndex: 0,
+                    zoomLock: true,
+                    width: 400,
+                    height: 10,
+                    handleSize: 0,
+                    showDetail: false,
+                    start: 0,
+                    left: "center",
+                    bottom: 20,
+                    end: 50,
+                    handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                    handleSize: '100%',
+                    handleStyle: {
+                        color: "#d3dee5",
+                    },
+                    borderColor: "#90979c"
+                }, {
+                    type: 'inside',
+                    id: 'dataZoomX',
+                    xAxisIndex: 0,
+                    start: 0,
+                    end: 50,
+                    orient: 'vertical',
+                    zoomOnMouseWheel: false,
+                    moveOnMouseMove: true,
+                    moveOnMouseWheel: true
+                }],
+                yAxis: {
+                    name: "单位:次",
+                    nameTextStyle: {
+                        color: '#fff',
+                        fontSize: 14
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#3d5269'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#fff',
+                        fontSize: 14
+                    },
+                    splitLine: {
+                        show:true,
+                        lineStyle: {
+                            color: '#2d3d53'
+                        }
+                    },
+                    interval:500,
+
+                },
+                series: [{
+                    type: 'bar',
+                    barWidth: 30,
+                    itemStyle:{
+                        normal:{
+                            color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: '#5ef3ff'
+                            }, {
+                                offset: 1,
+                                color: '#06a4f4'
+                            }], false)
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            fontSize: 18,
+                            fontWeight: 'bold',
+                            color: '#ffffff',
+                            position: 'top',
+                        }
+                    },
+                    data:yData
+                }]
             };
             return option;
         },
@@ -356,7 +242,17 @@ var MyEcharts = {
             //  function aaa(title){    return title.split("-").join("\n");}
             // console.log(aaa())
             var option = {
-
+                graphic: {
+                    type: "text", // [ default: image ]用 setOption 首次设定图形元素时必须指定。image, text, circle, sector, ring, polygon, polyline, rect, line, bezierCurve, arc, group,
+                    top: "48%", // 描述怎么根据父元素进行定位。top 和 bottom 只有一个可以生效。如果指定 top 或 bottom，则 shape 里的 y、cy 等定位属性不再生效。『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 group 的子元素，父元素就是 group 元素。
+                    left: "35%", // 同上
+                    style: {
+                        text: title, // 文本块文字。可以使用 \n 来换行。[ default: '' ]
+                        fill: "#fff", // 填充色。
+                        fontSize: 14, // 字体大小
+                        fontWeight: "bold", // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
+                    },
+                },
                 legend: {
                     type: "scroll",
                     orient: 'vertical',
@@ -364,12 +260,12 @@ var MyEcharts = {
                     align: 'left',
                     top: 'middle',
                     textStyle: {
-                        color: '#8C8C8C'
+                        color: '#fff'
                     },
                     height: 150
                 },
                 title: [{
-                    text: '{name|' + title + '}',
+                    // text: '{name|' + title + '}',
 
                     top: 'center',
                     left: 'center',
@@ -400,6 +296,7 @@ var MyEcharts = {
                         name: '饼图圆点',
                         type: 'pie',
                         radius: ['30%', '50%'],
+                        center: ['40%', '50%'],
                         avoidLabelOverlap: false,
                         labelLine: {
                             normal: {
@@ -427,6 +324,7 @@ var MyEcharts = {
         Line: function (title, subtext, data) {
             var datas = MyEcharts.EchartsDataFormate.GroupFormate(data, 'line');
             var option = {
+
                 //标题
                 title: {
                     text: title || "",	//标题
@@ -535,7 +433,7 @@ var MyEcharts = {
                     yAxisIndex: [0,1],
                     zoomLock: true,
                     width: 10,
-                    handleSize: 0,
+                    handleSize: 20,
                     showDetail: false,
                     start: 0,
                     end: 50,
@@ -749,9 +647,9 @@ var MyEcharts = {
          * */
         goods: function (color) {
             // xdata
-            let xData = ['松山湖', '南城', '东城', '莞城', '万江', '大朗', '大岭山', '茶山', '道滘', '厚街']
+            let xData =["徐行镇", "外冈镇", "嘉定镇街道", "华亭镇", "新成路街道", "江桥镇", "马陆镇", "安亭镇", "南翔镇", "嘉定工业区", "真新街道", "菊园新区"]
 // ydata
-            let yData = [2900, 2700, 2500, 2300, 2100, 1900, 1700, 1500, 1300, 1100]
+            let yData = ["99", "90", "74", "73", "55", "340", "337", "330", "189", "154", "150", "103"]
 // pictorialData
             let pictorialData = []
             yData.map(v => {
@@ -760,7 +658,7 @@ var MyEcharts = {
 
             let option = {
                 legend: {
-                    data: ['满意度', '街镇事件处理总量'],
+                    data: ['满意度', '总量'],
                     x: 'center',
                     top: 30,
                     right: 0,
@@ -845,7 +743,7 @@ var MyEcharts = {
                     }
                 },],
                 series: [{
-                    name: '满意度',
+                    name: '总量',
                     type: 'bar',
                     barWidth: 30,
                     data: yData,
@@ -854,7 +752,7 @@ var MyEcharts = {
                     },
 
                 }, {
-                    name: '街镇事件处理总量',
+                    name: '满意度',
                     itemStyle: {
                         normal: {
                             color: "#FFF000",

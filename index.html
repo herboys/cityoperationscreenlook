@@ -28,7 +28,7 @@
 
   <script src="js/time.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="js/weather.js" type="text/javascript" charset="utf-8"></script> -->
   <script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
@@ -1222,7 +1222,7 @@
                 </div>
                 <div v-if="list1.length>0">
                   <div v-for="(item,index) in list1" style="margin: 0.4rem 0;" @click="clickLocus1(item,index)" > 
-                    <span class="sub-bot1" :class="{ mapListActive: index == changeIndex1 }">{{item.roadname}}-{{item.location}}</span>
+                    <span class="sub-bot1" :class="{ mapListActive: index == changeIndex1 }">{{item.startAddress}}-{{item.endAddress}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1238,7 +1238,7 @@
                 </div>
                 <div v-if="list2.length>0">
                   <div v-for="(item, index) in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item, index)" >
-                    <span class="sub-bot2" :class="{ mapListActive: index == changeIndex2 }">{{item.roadname}}-{{item.location}}</span>
+                    <span class="sub-bot2" :class="{ mapListActive: index == changeIndex2 }">{{item.startAddress}}-{{item.endAddress}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1254,7 +1254,7 @@
                 </div>
                 <div v-if="list3.length>0">
                   <div v-for="(item, index) in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item, index)"  >
-                    <span class="sub-bot3" :class="{ mapListActive: index == changeIndex3 }">{{item.roadname}}-{{item.location}}</span>
+                    <span class="sub-bot3" :class="{ mapListActive: index == changeIndex3 }">{{item.startAddress}}-{{item.endAddress}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1551,32 +1551,19 @@
         (this.httpShow = false);
       },
       clickLocus1(item, index) {
-        console.log(index,'==index');
         let str = "";
-        if (this.list1[index].lnglat) {
-          str = this.list1[index].lnglat;
+        if (this.list1[index].listLinkInfoState[0].lastPoint) {
+          str = this.list1[index].listLinkInfoState[0].lastPoint;
         }
-        let arr = str.split(",");
-        console.log(arr, "===arr");
-           //   map.add( new AMap.Circle({
-      //     center: arr, // 圆心位置
-      //     radius: 1000,  //半径
-      //     strokeColor: "#F33",  //线颜色
-      //     strokeOpacity: 1,  //线透明度
-      //     strokeWeight: 3,  //线粗细度
-      //     fillColor: "#ee2200",  //填充颜色
-      //     fillOpacity: 0.35 //填充透明度
-      // }));
-      //   map.setFitView();
-
-      
-        map.setZoomAndCenter(15, arr);
+        let lineArr = str.split(",");
+        console.log(lineArr, "===lineArr");
+        map.setZoomAndCenter(15, lineArr);
         this.changeIndex1 = index
       },
       clickLocus2(item, index) {
         let str = "";
-        if (this.list2[index].lnglat) {
-          str = this.list2[index].lnglat;
+        if (this.list2[index].listLinkInfoState[0].lastPoint) {
+          str = this.list2[index].listLinkInfoState[0].lastPoint;
         }
         let lineArr = str.split(",");
         console.log(lineArr, "===lineArr");
@@ -1585,8 +1572,8 @@
       },
       clickLocus3(item, index) {
         let str = "";
-        if (this.list3[index].lnglat) {
-          str = this.list3[index].lnglat;
+        if (this.list3[index].listLinkInfoState[0].lastPoint) {
+          str = this.list3[index].listLinkInfoState[0].lastPoint;
         }
         let arr = str.split(",");
         console.log(arr, "===arr");
@@ -1600,9 +1587,7 @@
         (this.isActive = false), (this.isUnactive = true);
       },
       showClick() {
-        this.changeIndex1 = -1
-        this.changeIndex2 = -1
-        this.changeIndex3 = -1
+     
         this.showDialog = !this.showDialog;
       },
       // rescueClick() {
@@ -1635,21 +1620,21 @@
         //发送get请求
         this.$http
           .get(
-            // "http://10.15.2.233:8091/jdcytrafficnew/findall"
             // "http://127.0.0.1:5500/map/mock_data.json"
+            // "http://127.0.0.1:5500/map/congrestion.json"
             //  FIRE_URL+"/jdcymapofgaud/findall"
             FIRE_URL + "/jdcytrafficnew/findall"
           )
           .then(
             function (res) {
-              console.log(res.data, "res");
+              console.log(res.data, "res111");
               res.data.forEach((item) => {
                 item.isShow = false;
-                if (item.length <= 1000 && item.lnglat !=='') {
+                if (item.distance <= 1000 && item.listLinkInfoState !=='') {
                   return this.list1.push(item);
-                } else if (item.length > 1000 && item.length <= 2000 && item.lnglat !=='') {
+                } else if (item.distance > 1000 && item.distance <= 2000 && item.listLinkInfoState !=='') {
                   return this.list2.push(item);
-                } else if (item.length > 2000 && item.lnglat !=='') {
+                } else if (item.distance > 2000 && item.listLinkInfoState !=='') {
 
                   return this.list3.push(item);
                 }

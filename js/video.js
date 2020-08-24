@@ -11,6 +11,7 @@ var videoInterval;
 $(function(){
 	createVideoSlide();
 	createVideoSlideOne();
+	openLargeVideo();
 	videoInterval=setInterval(removeVideoCache,15*60*1000) //每15分钟清空一次缓存
 })
 
@@ -212,6 +213,7 @@ function createVideoSlide(){
 				str=''
 				str += '<div class="slide1">'
 					+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjList[i].name+'</span>'
+					+'<img onclick="openLargeVideo(jrwlzsjList[i].name,jrwlzsjList[i].src)" src="images/fullscreen.png"/>'
 
 				str +='<div class="jrwlzsjCont1">'
 
@@ -339,8 +341,8 @@ function createVideoSlideOne(){
 			for (var i = 0; i < 1; i++) {
 				str=''
 				str += '<div class="slide1">'
-					+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[i].name+'</span>'
-
+					+ '<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+jrwlzsjListOne[i].name+'</span>'
+					+ '<img onclick="openLargeVideo(jrwlzsjListOne[i].name,jrwlzsjListOne[i].src)" src="images/fullscreen.png"/>'
 				str +='<div class="jrwlzsjCont1">'
 
 				str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
@@ -451,7 +453,8 @@ function insertOneVideo(){
 	$('#slider1').html('');
 	str += '<div class="slide1">'
 		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[0]+'</span>'
-	+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
+		+'<img onclick="openLargeVideo(videoName[0],videoList[0])" src="images/fullscreen.png"/>'
+		+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
 
 	str +='<div class="jrwlzsjCont1">'
 
@@ -491,6 +494,7 @@ function insertSecondVideo(){
 	var str=''
 	str += '<div class="slide1">'
 		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[1]+'</span>'
+		+'<img onclick="openLargeVideo(videoName[1],videoList[1])" src="images/fullscreen.png"/>'
 		+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo()>关闭</span>'
 	str +='<div class="jrwlzsjCont1">'
 
@@ -545,7 +549,8 @@ function insertTwoVideo(first,second){
 		str=''
 		str += '<div class="slide">'
 				+'<div class="jrwlzsjTxt"> <span style="left:0px;top:-5px;font-size:0.95rem;position:absolute;color:#00fff6;z-index:999">'+videoName[second]+'</span>' +
-			'<span style="right:0px;top:0px;font-size:0.98rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(1)>关闭</span>'
+				+ '<img onclick="openLargeVideo(videoName[second],videoList[second])" src="images/fullscreen.png"/>'
+				+ '<span style="right:0px;top:0px;font-size:0.98rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo(1)>关闭</span>'
 		
 		str +='<div class="jrwlzsjCont">'
 		//str	+='<video controls="" autoplay preload muted name="media" class="video-list" muted="muted" src="'+videoList[second]+'">'
@@ -561,7 +566,7 @@ function insertTwoVideo(first,second){
 		//$("#slider2 video")[1].play()
 	var hls = new Hls();
 	var video = $("#slider2 video")[1];
-	hls.loadSource(videoList[first]);
+	hls.loadSource(videoList[second]);
 	hls.attachMedia(video);
 	hls.on(Hls.Events.MANIFEST_PARSED, function () {
 		video.play();
@@ -707,3 +712,33 @@ function removeVideoCache(){
 	createVideoSlideOne();
 }
 
+var videoFlagThree=0;
+function openLargeVideo(name,videoUrl){
+
+	str= '<span style="left:0px;top:0px;font-size:1.5rem;position:absolute;color:#00fff6;z-index:10000">'+name+'</span>'
+	+ '<span style="right:0px;top:0px;font-size:1.5rem;position:absolute;color:#999;z-index:10000" onclick="removeLargeVideo()">关闭</span>'
+	+ '<div class="largeVideoDiv">'
+	+ '<video controls="" autoplay preload muted name="media" class="largeVideo"  muted="muted"></video>'
+	+ '</div>'
+	var hls = new Hls();
+	var video = $("#slider3 video")[0];
+	hls.loadSource(videoUrl);
+	hls.attachMedia(video);
+	hls.on(Hls.Events.MANIFEST_PARSED, function () {
+		video.play();
+	})
+
+	hlsListMap["slideThree"]=hls
+	videoFlagThree=1;
+	$('#slider3').show();
+}
+
+function removeLargeVideo(){
+	alert(123)
+	var removeVideo= $("#slider3 video")[0]
+	removeVideo.pause()
+//	hlsListMap["slideThree"].destroy();
+	hlsListMap["slideThree"]=null
+	delete hlsListMap["slideThree"]
+	$("#slider3").hide()
+}

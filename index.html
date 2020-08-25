@@ -1294,12 +1294,12 @@
 								</div> -->
               </div>
             </div>
-                  <div class="openVideo" id="slider3">
-                      <span style="left:0px;top:0px;font-size:1.5rem;position:absolute;color:#00fff6;z-index:10000">监控视频1</span>
+                  <div class="openVideo" id="slider3" style="display: none">
+                     <!-- <span style="left:0px;top:0px;font-size:1.5rem;position:absolute;color:#00fff6;z-index:10000">监控视频1</span>
                       <span style="right:0px;top:0px;font-size:1.5rem;position:absolute;color:#999;z-index:10000" onclick="removeLargeVideo()">关闭</span>
                       <div class="largeVideoDiv">
                          <video controls="" autoplay preload muted name="media" class="largeVideo"  muted="muted"></video>
-                      </div>
+                      </div>-->
                   </div>
 
           </div>
@@ -1631,7 +1631,9 @@
             // "http://127.0.0.1:5500/map/mock_data.json"
             // "http://127.0.0.1:5500/map/congrestion.json"
             //  FIRE_URL+"/jdcymapofgaud/findall"
-            FIRE_URL + "/jdcytrafficnew/findall"
+           // FIRE_URL + "/jdcytrafficnew/findall"
+      //  FIRE_URL + "/jdcytrafficnew/findall"
+                  FIRE_URL+"/cityBrain/getSession"
           )
           .then(
             function (res) {

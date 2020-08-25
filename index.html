@@ -1222,7 +1222,7 @@
                 </div>
                 <div v-if="list1.length>0">
                   <div v-for="(item,index) in list1" style="margin: 0.4rem 0;" @click="clickLocus1(item,index)" > 
-                    <span class="sub-bot1" :class="{ mapListActive: index == changeIndex1 }">{{item.startAddress}}-{{item.endAddress}}</span>
+                    <span class="sub-bot1" :class="{ mapListActive: index == changeIndex1 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1238,7 +1238,7 @@
                 </div>
                 <div v-if="list2.length>0">
                   <div v-for="(item, index) in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item, index)" >
-                    <span class="sub-bot2" :class="{ mapListActive: index == changeIndex2 }">{{item.startAddress}}-{{item.endAddress}}</span>
+                    <span class="sub-bot2" :class="{ mapListActive: index == changeIndex2 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1254,7 +1254,7 @@
                 </div>
                 <div v-if="list3.length>0">
                   <div v-for="(item, index) in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item, index)"  >
-                    <span class="sub-bot3" :class="{ mapListActive: index == changeIndex3 }">{{item.startAddress}}-{{item.endAddress}}</span>
+                    <span class="sub-bot3" :class="{ mapListActive: index == changeIndex3 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">

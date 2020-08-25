@@ -1,10 +1,19 @@
 function newonload() {
+    getPopupFun1()
+    var aa =getPopupFun1()
+    console.log(aa,'987654321')
+    aa.then(res=>{
+        console.log(aa,'987654321')
+    })
+
+        GetCarNewInfoFun()
     initMap();
     init1()
     EndFacilities()
     TownLifeGarbage()
 
     intervalFunction()
+
 }
 
 function intervalFunction() {
@@ -31,7 +40,7 @@ function EndFacilities() {
                     + '<img src="../Modal/images/icon_.png ">'
                     + '   <div>'
                     + '  <p style="font-size: 14px">' + res.data[i].pointName + '</p>'
-                    + '<span style="font-size: 14px">' + res.data[i].shuntOneDayTotal + '</span>'
+                    + '<span style="font-size: 14px">' + res.data[i].dryOneDayTotal + '</span>'
                     + '</div>'
                     + ' </div>'
             }
@@ -40,7 +49,6 @@ function EndFacilities() {
             alert('末端处置设施在线检测接口发生错误')
         }
     })
-
 }
 
 /**
@@ -84,6 +92,79 @@ function TownLifeGarbage() {
         } else {
             alert('街镇生活垃圾产生量TOP5接口发生错误')
         }
+    })
+
+}
+
+
+
+
+/**
+ * @name :运输车载系统
+ *
+ * */
+
+function GetCarNewInfoFun() {
+
+    let aa=''
+    let para={
+        url: GarBage_URl+'/sh/garbageSort/getCarNewInfo',
+        async: true,
+        type: 'get',
+        dataType: 'JSON',
+    }
+  ajaxPromise(para).then(res=>{
+        console.log(res,'xxxx ')
+
+
+    })
+    getPopupFun2()
+    getGarbageRectify()
+}
+function getPopupFun1(){
+    return new Promise((resolve, reject) => {
+        let para={
+            url: GarBage_URl+'/sh/garbageSort/getPopup/1',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+            console.log(res,'11111 ')
+            resolve(res)
+
+        })
+    })
+
+}
+function getPopupFun2(){
+    return new Promise((resolve, reject) => {
+        let para={
+            url: GarBage_URl+'/sh/garbageSort/getGarbageCarLoading',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+            console.log(res,'11111 ')
+            resolve(res)
+
+        })
+    })
+
+}function getGarbageRectify(){
+    return new Promise((resolve, reject) => {
+        let para={
+            url: GarBage_URl+'/sh/garbageSort/getGarbageRectify',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+            console.log(res,'11111 ')
+            resolve(res)
+
+        })
     })
 
 }

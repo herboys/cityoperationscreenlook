@@ -4,7 +4,12 @@ body {
     background-color: #061839;
     z-index: 999999
 }
-
+.amap-logo{
+    display: none;
+}
+.amap-copyright {
+    opacity:0;
+}
 .Modal-warp {
     position: relative;
     box-sizing: border-box;
@@ -430,7 +435,7 @@ ul li {
     padding-left: 10px;
     padding-right: 30px;
     border: 1px solid #a9c9e2;
-    background: inherit url('V') no-repeat right 4px;
+    /*background: inherit url('V') no-repeat right 4px;*/
     color: #ffffff;
     cursor: pointer
 }#dropdown1 p {
@@ -440,7 +445,7 @@ ul li {
     padding-left: 10px;
     padding-right: 30px;
     border: 1px solid #a9c9e2;
-    background: inherit url('V') no-repeat right 4px;
+    /*background: inherit url('V') no-repeat right 4px;*/
     color: #ffffff;
     cursor: pointer
 }#dropdown2 p {
@@ -450,7 +455,7 @@ ul li {
     padding-left: 10px;
     padding-right: 30px;
     border: 1px solid #a9c9e2;
-    background: inherit url('V') no-repeat right 4px;
+    /*background: inherit url('V') no-repeat right 4px;*/
     color: #ffffff;
     cursor: pointer
 }
@@ -912,7 +917,7 @@ position: absolute;
     -webkit-animation-direction: normal;
 }
 /*动画*/
-@-webkit-keyframes 'spark' {
+@-webkit-keyframes spark {
     0% {
         left: 6px;
         transform: rotate(0deg)

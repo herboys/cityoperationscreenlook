@@ -103,10 +103,13 @@ function init1 () {//区域遮盖
             pathArray.push.apply(pathArray, holes)
             that.polygon = new AMap.Polygon({
                 pathL: pathArray,
-                strokeColor: 'red',//城市边界颜色
-                strokeWeight: 1,
-                fillColor: '#220986', // 遮罩背景色黑色
-                fillOpacity: 0.1
+                // strokeColor: 'red',//城市边界颜色
+                // strokeWeight: 1,
+                // fillColor: '#220986', // 遮罩背景色黑色
+                // fillOpacity: 0.1
+                strokeColor: '#9CA09D',
+                fillOpacity: 1,
+                fillColor: '#061839',
             })
             that.polygon.setPath(pathArray)
             that.map.add(that.polygon)

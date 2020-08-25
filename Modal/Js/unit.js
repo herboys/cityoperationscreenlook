@@ -15,7 +15,8 @@ function ToOnload(){
     GongDan(1)
     // findbcName()
     // findproblemFun()
-    // initMap()
+    initMap()
+    init1()
     TabsFun(3)
     TabsFun(6)
     findscName('年').then(res=>{

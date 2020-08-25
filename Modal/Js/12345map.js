@@ -61,7 +61,7 @@ function initMap() {
     addTraffic();           /*添加实时路况情况*/
     addPoiMarker();         /*添加嘉定区主要监控点*/
     //  map.addControl(new AMap.Scale());
-    init1()
+
 }
 
 /*设置地图风格*/

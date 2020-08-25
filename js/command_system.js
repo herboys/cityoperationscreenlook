@@ -286,7 +286,7 @@ function addTableList1(name, arr) {
 					.append(
 						'<div class="table-list"><p onclick=openIframe("'+streetUrl[arr[index].address]+'") style="cursor: pointer">' +
 						/*'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+*/
-						'<img src="images/point.png" style="display: inline-block!important;width: 1.2rem;height: 1.2rem;vertical-align: middle;margin-left: -0.5rem"> '+
+						'<img src="images/point1.png" style="display: inline-block!important;width: 1.2rem;height: 1.2rem;vertical-align: middle;margin-left: -0.5rem"> '+
 						arr[index].address +
 						'</a>'+
 						'</p><p>' +
@@ -406,7 +406,7 @@ function linkageInt() {
 		linkageNum++;
 
 		$(".linkage-table .list-box").stop(true, true).animate({
-				top: -(moveT + 1) * linkageNum * 5.62,
+				top: -(moveT + 1) * linkageNum * 5.6,
 			},
 			1000,
 			// function () {
@@ -436,7 +436,7 @@ function linkageIntScroll() {
 		//alert(linkageNumScroll)
 		//alert(moveT)
 		$(".linkage-scroll-table .list-box").stop(true, true).animate({
-				top: -(moveT + 1) * linkageNumScroll * 5.72,
+				top: -(moveT + 1) * linkageNumScroll * 5.75,
 
 			},
 			1000,

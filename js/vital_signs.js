@@ -770,18 +770,35 @@ function addHjbz(arr) {
   var maxNum = arr.length > 3 ? 3 : arr.length;
   for (var i = 0; i < maxNum; i++) {
     if(arr[i].title==="生活垃圾处理"){
-      $(".hjbz-warp .text-box").append(
+     /* $(".hjbz-warp .text-box").append(
           '<div style="left:' +
           (10 - i * 5) +
           "%;top:" +
           i * 50 +
-          '%" class="text-list"><p style="cursor:pointer;" onclick="openGarbageClassification()">' +
+          '%" class="text-list"><p style="cursor:pointer;" onclick="openGarbageClassification()" style="text-shadow: text-shadow: 0px 1px 0px #c0c0c0,  ' +
+          '            0.11rem 0.11rem 0px #b0b0b0,  '  +
+          '           0px 3px 0px #a0a0a0,    '  +
+          '             0px 4px 0px #909090,    '  +
+          '          0px 5px 10px rgba(0, 0, 0, 0.9);">' +
           arr[i].title +
           '</p><p><span class="num-font">' +
           arr[i].num +
           "</span>" +
           arr[i].unit +
+          "</p></div>"*/
+
+      $(".hjbz-warp .text-box").append(
+          '<div style="left:' +
+          (10 - i * 5) +
+          "%;top:" +
+          i * 50 +
+          '%" class="text-list"><img style="cursor:pointer;margin-top: 0.5rem;width:6rem" onclick="openGarbageClassification()" src="images/shlj.png" />' +
+          '<p><span class="num-font">' +
+          arr[i].num +
+          "</span>" +
+          arr[i].unit +
           "</p></div>"
+
       );
     }else {
       $(".hjbz-warp .text-box").append(
@@ -843,10 +860,24 @@ function hjbzInit(arr) {
     clearInterval(hjbzTime);
     hjbzTime = setInterval(function () {
       if ($(".hjbz-warp .text-list").length == 3) {
-        $(".hjbz-warp .text-box").append(
-          '<div style="left:15%;top:0%;opacity:0" class="text-list"><p style="cursor:pointer;" onclick="openGarbageClassification()">' +
+       /* $(".hjbz-warp .text-box").append(
+          '<div style="left:15%;top:0%;opacity:0" class="text-list"><p style="cursor:pointer;" onclick="openGarbageClassification()" style="text-shadow: 0px 1px 0px #c0c0c0,  ' +
+            '0.11rem 0.11rem 0px #b0b0b0,   ' +
+            ' 0px 3px 0px #a0a0a0,    ' +
+            ' 0px 4px 0px #909090,    ' +
+            ' 0px 5px 10px rgba(0, 0, 0, 0.9);">' +
             arr[hjbzNum].title +
             '</p><p><span class="num-font">' +
+            arr[hjbzNum].num +
+            "</span>" +
+            arr[hjbzNum].unit +
+            "</p></div>"
+        );*/
+
+        $(".hjbz-warp .text-box").append(
+            '<div style="left:15%;top:0%;opacity:0" class="text-list">' +
+            ' <img style="cursor:pointer;margin-top: 0.5rem;width:6rem" onclick="openGarbageClassification()" src="images/shlj.png" />'+
+            '<p><span class="num-font">' +
             arr[hjbzNum].num +
             "</span>" +
             arr[hjbzNum].unit +

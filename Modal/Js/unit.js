@@ -41,21 +41,28 @@ function TabsFun(num) {
             break;
         case 3:
             para[2].innerHTML = '<div class="banner1" onclick="TabsFun(3)">' + '街镇' + '</div>' +
-                '<div class="banner2" onclick="TabsFun(4)">' + '趋势分析' + '</div>'
+                '<div class="banner2" onclick="TabsFun(4)">' + '委办局' + '</div>'
+               + '<div class="banner2" onclick="TabsFun(5)">' + '公司' + '</div>'
+            MyEcharts.initChart(MyEcharts.EchartsOption.goods("#F9392D"), "SmallECharts")
             break;
             break;
         case 4:
             para[2].innerHTML = '<div class="banner2" onclick="TabsFun(3)">' + '街镇' + '</div>' +
-                '<div class="banner1" onclick="TabsFun(4)">' + '趋势分析' + '</div>'
-
+                '<div class="banner1" onclick="TabsFun(4)">' + '委办局' + '</div>'
+                + '<div class="banner2" onclick="TabsFun(5)">' + '公司' + '</div>'
+            MyEcharts.initChart(MyEcharts.EchartsOption.goods("#4489D3"), "SmallECharts")
             break;
         case 5:
-            para[1].innerHTML = '<div class="banner1" onclick="TabsFun(5)">' + '热词' + '</div>'
+            para[2].innerHTML = '<div class="banner2" onclick="TabsFun(3)">' + '街镇' + '</div>' +
+                '<div class="banner2" onclick="TabsFun(4)">' + '委办局' + '</div>'
+                + '<div class="banner1" onclick="TabsFun(5)">' + '公司' + '</div>'
+            MyEcharts.initChart(MyEcharts.EchartsOption.goods("#04FDF5"), "SmallECharts")
+            // para[1].innerHTML = '<div class="banner1" onclick="TabsFun(5)">' + '热词' + '</div>'
             // + '<div class="banner2" onclick="TabsFun(6)">' + '趋势分析' + '</div>'
-            attackSourcesData = ["340", "337", "330", "189", "154", "150", "103", "99", "90", "74", "73", "55"]
-            attackSourcesName = ["架空线", "防盗", "盖子", "暴露", "损坏", "消火栓", "监督员", "张贴", "垃圾桶", "坠落", "广告", "垃圾"]
-            attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-            MyEcharts.initChart(MyEcharts.EchartsOption.wordCloud('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
+            // attackSourcesData = ["340", "337", "330", "189", "154", "150", "103", "99", "90", "74", "73", "55"]
+            // attackSourcesName = ["架空线", "防盗", "盖子", "暴露", "损坏", "消火栓", "监督员", "张贴", "垃圾桶", "坠落", "广告", "垃圾"]
+            // attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
+            // MyEcharts.initChart(MyEcharts.EchartsOption.wordCloud('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
             break;
             break;
         // case 6:

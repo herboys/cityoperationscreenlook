@@ -1,10 +1,19 @@
 function newonload() {
+    getPopupFun1()
+    var aa =getPopupFun1()
+    console.log(aa,'987654321')
+    aa.then(res=>{
+        console.log(aa,'987654321')
+    })
+
+        GetCarNewInfoFun()
     initMap();
     init1()
     EndFacilities()
     TownLifeGarbage()
 
     intervalFunction()
+
 }
 
 function intervalFunction() {
@@ -40,7 +49,6 @@ function EndFacilities() {
             alert('末端处置设施在线检测接口发生错误')
         }
     })
-
 }
 
 /**
@@ -48,7 +56,7 @@ function EndFacilities() {
  * */
 function TownLifeGarbage() {
     let para = {
-        url: GarBage_URl+'/sh/garbageSort/getGarbageStreetProduce',
+        url: GarBage_URl+'sh/garbageSort/getGarbageStreetProduce',
         async: true,
         type: 'get',
         dataType: 'JSON',
@@ -87,3 +95,60 @@ function TownLifeGarbage() {
     })
 
 }
+
+
+
+
+/**
+ * @name :运输车载系统
+ *
+ * */
+
+function GetCarNewInfoFun() {
+
+    let aa=''
+    let para={
+        url: GarBage_URl+'/sh/garbageSort/getCarNewInfo',
+        async: true,
+        type: 'get',
+        dataType: 'JSON',
+    }
+  ajaxPromise(para).then(res=>{
+        console.log(res,'xxxx ')
+
+
+    })
+
+}
+function getPopupFun1(){
+    return new Promise((resolve, reject) => {
+        let para={
+            url: GarBage_URl+'/sh/garbageSort/getPopup/1',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+            console.log(res,'11111 ')
+            resolve(res)
+
+        })
+    })
+
+}
+// function getPopupFun1(){
+//     return new Promise((resolve, reject) => {
+//         let para={
+//             url: GarBage_URl+'/http://180.167.35.167:7085/sh/garbageSort/getCarNewInfo',
+//             async: true,
+//             type: 'get',
+//             dataType: 'JSON',
+//         }
+//         ajaxPromise(para).then(res=>{
+//             console.log(res,'11111 ')
+//             resolve(res)
+//
+//         })
+//     })
+//
+// }

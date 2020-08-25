@@ -642,11 +642,12 @@ var MyEcharts = {
             return option;
 
         },
+
         /**
          * @name 词云库
          *
          * **/
-        wordCloud:function(name, attackSourcesName, attackSourcesData,attackSourcesColor,total){
+        hotspot: function () {
             // mock数据
             let data = [{ name: '微信', value: 3328 }, { name: '南方+', value: 1045 }, { name: '东莞时间网',
                 value: 834 }, { name: 'i东莞', value: 804 }, { name: '新浪微博', value: 532 }, { name: '今日头条', value: 493 }, {
@@ -686,7 +687,7 @@ var MyEcharts = {
                 return `rgb(${r}, ${g}, ${b})`
             }
 
-         var   option = {
+            let   option = {
                 backgroundColor:'rgba(0,0,0,.5)',
                 tooltip: {
                     trigger: 'item',
@@ -722,9 +723,11 @@ var MyEcharts = {
                 }]
             };
 
-            return option
+            return option;
+
         },
         /**
+         *wordCloud
          *@param color : 颜色 数据
          * */
         goods: function (color) {

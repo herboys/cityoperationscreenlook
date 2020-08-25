@@ -725,6 +725,7 @@ ul li {
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
+    margin-left: 6px;
 }
 
 .topicItem {

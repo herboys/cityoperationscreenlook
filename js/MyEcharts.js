@@ -495,6 +495,7 @@ var MyEcharts = {
                             fontSize: 16,
                             align: 'left',
                             color: '#333',
+                            barMaxWidth:20,
                             rich: {
                                 nt1: {
                                     color: '#fff',

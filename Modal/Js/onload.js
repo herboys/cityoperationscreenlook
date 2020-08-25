@@ -9,7 +9,6 @@ function newonload() {
     intervalFunction()
 
 }
-
 function intervalFunction() {
     let time = 1000 * 60 * 2
     setInterval(EndFacilities, time)
@@ -84,8 +83,6 @@ function TownLifeGarbage() {
             document.getElementById("ActualOutputID").innerHTML = para
             res.data.map(item => item.total = item.total.split(item.unit)[0].trim())
 
-
-
             res.data.sort(function (a, b) {
                 return b.total - a.total;
             });
@@ -122,8 +119,6 @@ function GetCarNewInfoFun() {
     }
     ajaxPromise(para).then(res => {
         console.log(res, 'xxxx ')
-
-
     })
     getGarbageRectify()
 }
@@ -203,7 +198,7 @@ function getGarbageCarLoading() {
                 for (let i = 0; i < res.data[0].garbageTranVels.length; i++) {
 
                     para += ' <div class="topicItem">'
-                        + '<p>' + res.data[0].garbageTranVels[i].popIndex + '</p>'
+                        + '<p>' + res.data[0].garbageTranVels[i].popIndex.slice(2,res.data[0].garbageTranVels[i].popIndex.length) + '</p>'
                         + ' <span>' + res.data[0].garbageTranVels[i].sum + res.data[0].garbageTranVels[i].unit + '</span>'
                         + ' </div>'
                 }

@@ -220,7 +220,29 @@
                 <div class="bottom-border border-box"></div>
               </div>
             </div>
-            <ul></ul>
+            <ul>
+                <div class="card">
+                  <div class="card-back">
+                      <code>
+                          <span class="variable">const </span><span class="function">aboutMe </span><span class="operator">= </span><span>{</span>
+                          <div class="indent"> <span class="property">name</span><span class="operator">: </span><span class="string">'Joshua Ward'</span><span>,</span></div>
+                          <div class="indent"> <span class="property">title</span><span class="operator">: </span><span class="string">'Sr. UI/UX Developer'</span><span>,</span></div>
+                          <div class="indent">
+                              <span class="property">contact</span><span class="operator">: </span><span>{</span>
+                              <div class="indent"> <span class="property">email</span><span class="operator">: </span><span class="string">'josh@geekstudios.co'</span><span>,</span></div>
+                              <div class="indent"><span class="property">website</span><span class="operator">:</span><span class="string">'geekstudios.co'</span></div><span>}</span>
+                          </div><span>}</span>
+                      </code>
+                  </div>
+                  <div class="card-front" >
+                    <code>
+                          <span class="variable">哈哈哈哈哈哈哈哈</span>
+                          <div class="indent">哈哈哈哈哈哈哈哈哈</span>
+                      </code>
+                  </div>
+              </div>
+
+            </ul>
           </div>
           <div class="zygy-warp card-warp">
             <div class="title-box" style="margin-bottom: 0.5rem;">
@@ -509,7 +531,7 @@
                 </div>
               </div>
 
-              <div class="main-list"  >
+              <div class="main-list"  onclick="GridModalShow()">
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -1473,6 +1495,28 @@
   //openVideo();
 </script>
 <script>
+  $(function () {
+    flip();
+  });
+
+  function flip() {
+    var timer = null;
+    var i = 0;
+    var j = 0;
+    var aFlip = $(".card");
+
+    function flipFn(arg1, arg2) {
+      aFlip.eq(i).toggleClass('card-flipped');
+      i++;
+      if (i == 5) {
+        i = 0;
+      }
+
+    }
+    timer = setInterval(flipFn, 1000);
+  }
+</script>
+<script>
   function ModalClick() {
     document.getElementById("ModalBox").style.display = "block";
   }
@@ -1480,9 +1524,9 @@
   function openGarbageClassification(){
     document.getElementById("GarBageModal").style.display = "block";
   }
-  // function GridModalShow(){
-  //   $("#GridModal").show();
-  // }
+  function GridModalShow(){
+    $("#GridModal").show();
+  }
   var app = new Vue({
     el: "#app",
     data() {
@@ -1563,10 +1607,41 @@
         if (this.list1[index].listLinkInfoState[0].lastPoint) {
           str = this.list1[index].listLinkInfoState[0].lastPoint;
         }
-        let lineArr = str.split(",");
-        console.log(lineArr, "===lineArr");
-        map.setZoomAndCenter(15, lineArr);
+        let lineArr1 = str.split(",");
+        map.setZoomAndCenter(15, lineArr1);
         this.changeIndex1 = index
+
+        this.list1[index].isShow = !this.list1[index].isShow;
+          if (this.list1[index].isShow) {
+            let lineArr = [];
+            let str1 = "";
+            this.list1[index].listLinkInfoState.forEach((v,index)=>{
+              str1 = v.lngLats
+              console.log(v,index,str1,'===v11');
+             
+            })
+        
+            let arr = str1.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+              lineArr.push(singleArr);
+            });
+            console.log(lineArr,'===lineArr11');
+            var polyline1 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "rgb(255, 230, 0)", //线颜色
+              strokeOpacity: 1,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+            this.polylines1.set(index, polyline1);
+          } else {
+            map.remove(this.polylines1.get(index));
+            this.polylines1.delete(index);
+          }
+
       },
       clickLocus2(item, index) {
         let str = "";
@@ -1629,9 +1704,9 @@
         this.$http
           .get(
             // "http://127.0.0.1:5500/map/mock_data.json"
-            // "http://127.0.0.1:5500/map/congrestion.json"
+            "http://127.0.0.1:5500/map/congrestion.json"
             //  FIRE_URL+"/jdcymapofgaud/findall"
-            FIRE_URL + "/jdcytrafficnew/findall"
+            // FIRE_URL + "/jdcytrafficnew/findall"
           )
           .then(
             function (res) {

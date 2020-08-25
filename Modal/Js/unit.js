@@ -342,7 +342,6 @@ function findTypeMsg(time, name) {
     })
 }
 
-
 /**获取热词*/
 function findscName(time) {
     return new Promise((resolve, reject) => {

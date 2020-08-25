@@ -1,7 +1,5 @@
 function newonload() {
     getPopupFun1()
-
-
     GetCarNewInfoFun()
     initMap();
     init1()

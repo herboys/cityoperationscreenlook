@@ -1,17 +1,13 @@
 function newonload() {
     getPopupFun1()
-    var aa =getPopupFun1()
-    console.log(aa,'987654321')
-    aa.then(res=>{
-        console.log(aa,'987654321')
-    })
 
-        GetCarNewInfoFun()
+
+    GetCarNewInfoFun()
     initMap();
     init1()
     EndFacilities()
     TownLifeGarbage()
-
+    getGarbageCarLoading()
     intervalFunction()
 
 }
@@ -27,20 +23,23 @@ function intervalFunction() {
  * */
 function EndFacilities() {
     let para = {
-        url: GarBage_URl+'/sh/garbageSort/getGarbageContentDisplay',
+        url: GarBage_URl + '/sh/garbageSort/getGarbageContentDisplay',
         async: true,
         type: 'get',
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
         if (res.status === 'OK') {
+            res.data.map(item => item.wetOneDayTotal = item.wetOneDayTotal.split("吨")[0].trim())
+            res.data.map(item => item.dryOneDayTotal = item.dryOneDayTotal.split("吨")[0].trim())
+            res.data.map(item => item.connts =`${ parseInt(item.dryOneDayTotal)+ parseInt(item.wetOneDayTotal)+'吨'}` )
             let para = ''
             for (let i = 0; i < res.data.length; i++) {
                 para += ' <div class="GarBage-child-item GarBage-child-end">'
                     + '<img src="../Modal/images/icon_.png ">'
                     + '   <div>'
                     + '  <p style="font-size: 14px">' + res.data[i].pointName + '</p>'
-                    + '<span style="font-size: 14px">' + res.data[i].dryOneDayTotal + '</span>'
+                    + '<span style="font-size: 14px">' + res.data[i].connts + '</span>'
                     + '</div>'
                     + ' </div>'
             }
@@ -56,7 +55,7 @@ function EndFacilities() {
  * */
 function TownLifeGarbage() {
     let para = {
-        url: GarBage_URl+'/sh/garbageSort/getGarbageStreetProduce',
+        url: GarBage_URl + '/sh/garbageSort/getGarbageStreetProduce',
         async: true,
         type: 'get',
         dataType: 'JSON',
@@ -64,6 +63,15 @@ function TownLifeGarbage() {
     ajaxPromise(para).then(res => {
         if (res.status === 'OK') {
             console.log(res)
+            /**干垃圾*/
+                let dryGarbage = 0
+            // dryGarbage
+            // res.data.map(item=>{
+            //
+            // })
+                // res.data.reduce((dryGarbage, item) => dryGarbage + item.dryGarbage.split(item.unit)[0].trim(), 0)
+                //
+                // alert(dryGarbage)
             let para = ''
             for (let i = 0; i < res.data.length; i++) {
                 para += '<ul style="color: white">'
@@ -77,6 +85,9 @@ function TownLifeGarbage() {
             }
             document.getElementById("ActualOutputID").innerHTML = para
             res.data.map(item => item.total = item.total.split(item.unit)[0].trim())
+
+
+
             res.data.sort(function (a, b) {
                 return b.total - a.total;
             });
@@ -88,15 +99,13 @@ function TownLifeGarbage() {
                 attackSourcesName.push(item.street)
             })
             console.log(attackSourcesData, attackSourcesName)
-            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'吨'), "SmallECharts4")
+            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '吨'), "SmallECharts4")
         } else {
             alert('街镇生活垃圾产生量TOP5接口发生错误')
         }
     })
 
 }
-
-
 
 
 /**
@@ -106,63 +115,103 @@ function TownLifeGarbage() {
 
 function GetCarNewInfoFun() {
 
-    let aa=''
-    let para={
-        url: GarBage_URl+'/sh/garbageSort/getCarNewInfo',
+    let aa = ''
+    let para = {
+        url: GarBage_URl + '/sh/garbageSort/getCarNewInfo',
         async: true,
         type: 'get',
         dataType: 'JSON',
     }
-  ajaxPromise(para).then(res=>{
-        console.log(res,'xxxx ')
+    ajaxPromise(para).then(res => {
+        console.log(res, 'xxxx ')
 
 
     })
-    getPopupFun2()
     getGarbageRectify()
 }
-function getPopupFun1(){
+
+function getPopupFun1() {
+    let para = {
+        url: GarBage_URl + '/sh/garbageSort/getPopup/1',
+        async: true,
+        type: 'get',
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        console.log(res, '11111 ')
+        let e=''
+        e=res.data[res.data.length-1]
+        if (res.status == "OK") {
+            para = `
+                    <div class="topicItem">
+                                            <p>驳运车辆数（干垃圾）</p>
+                                            <span>${e.dry_car}</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>驳运车辆数（有害垃圾）</p>
+                                            <span>${e.recyclable_car}</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>驳运车辆数（湿垃圾）</p>
+                                            <span>${e.wet_car}</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>驳运机具规范数</p>
+                                            <span>${e.total}</span>
+                                        </div>
+                                        <div class="topicItem">
+                                            <p>驳运车辆数（可回收物）</p>
+                                            <span>${e.kitchen_car}</span>
+                                        </div>
+                `
+            document.getElementById("getPopup1ID").innerHTML=para
+        }
+    })
+}
+
+function getGarbageRectify() {
     return new Promise((resolve, reject) => {
-        let para={
-            url: GarBage_URl+'/sh/garbageSort/getPopup/1',
+        let para = {
+            url: GarBage_URl + '/sh/garbageSort/getGarbageRectify',
             async: true,
             type: 'get',
             dataType: 'JSON',
         }
-        ajaxPromise(para).then(res=>{
-            console.log(res,'11111 ')
+        ajaxPromise(para).then(res => {
+            console.log(res, '11111 ')
             resolve(res)
 
         })
     })
 
 }
-function getPopupFun2(){
-    return new Promise((resolve, reject) => {
-        let para={
-            url: GarBage_URl+'/sh/garbageSort/getGarbageCarLoading',
+
+/**
+ * 当日投入运营车辆数
+ * */
+function getGarbageCarLoading() {
+    new Promise((resolve, reject) => {
+        let para = {
+            url: GarBage_URl + '/sh/garbageSort/getGarbageCarLoading',
             async: true,
             type: 'get',
             dataType: 'JSON',
         }
-        ajaxPromise(para).then(res=>{
-            console.log(res,'11111 ')
-            resolve(res)
+        ajaxPromise(para).then(res => {
+            console.log(res, '11111 ')
 
-        })
-    })
+            if (res.status == 'OK') {
+                para = ''
+                for (let i = 0; i < res.data[0].garbageTranVels.length; i++) {
 
-}function getGarbageRectify(){
-    return new Promise((resolve, reject) => {
-        let para={
-            url: GarBage_URl+'/sh/garbageSort/getGarbageRectify',
-            async: true,
-            type: 'get',
-            dataType: 'JSON',
-        }
-        ajaxPromise(para).then(res=>{
-            console.log(res,'11111 ')
-            resolve(res)
+                    para += ' <div class="topicItem">'
+                        + '<p>' + res.data[0].garbageTranVels[i].popIndex + '</p>'
+                        + ' <span>' + res.data[0].garbageTranVels[i].sum + res.data[0].garbageTranVels[i].unit + '</span>'
+                        + ' </div>'
+                }
+                console.log(para, '0999999999')
+                document.getElementById("getGarbageCarLoadingID").innerHTML = para
+            }
 
         })
     })

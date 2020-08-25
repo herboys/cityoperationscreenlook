@@ -6,7 +6,6 @@ const TOKEN_REFRESH_TIME = 110000; // token刷新时间
 
 const ajaxPromise = param => {
     return   new Promise((resolve, reject) => {
-        console.log(param,'查看数据')
         $.ajax({
             type: param.type,
             async: param.async,

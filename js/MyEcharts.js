@@ -405,7 +405,7 @@ var MyEcharts = {
                         // itemStyle: itemStyle
                     });
                 });
-                console.log(sss)
+
                 return sss;
             }
 
@@ -564,7 +564,7 @@ var MyEcharts = {
 
                             formatter: function (value, index) {
                                 index = contains(attackSourcesName, value) + 1
-                                console.log(value,index)
+
                                 if (index - 1 < 3) {
                                     return [
                                         '{nt' + index + '|' + index + '}' + '  {title' + index + '|' + value + '}'
@@ -730,11 +730,11 @@ var MyEcharts = {
          *wordCloud
          *@param color : 颜色 数据
          * */
-        goods: function (color) {
+        goods: function (xData,yData,zData,color) {
             // xdata
-            let xData =["徐行镇", "外冈镇", "嘉定镇街道", "华亭镇", "新成路街道", "江桥镇", "马陆镇", "安亭镇", "南翔镇", "嘉定工业区", "真新街道", "菊园新区"]
+
 // ydata
-            let yData = ["99", "90", "74", "73", "55", "340", "337", "330", "189", "154", "150", "103"]
+
 // pictorialData
             let pictorialData = []
             yData.map(v => {
@@ -847,7 +847,7 @@ var MyEcharts = {
                         }
                     },
                     type: "line",
-                    data: yData,
+                    data: zData,
                 },
                 ]
             };
@@ -862,7 +862,6 @@ var MyEcharts = {
      * @param echartId : string 需要加引号
      */
     initChart: function (option, echartId) {
-        console.log(option, echartId, '123123')
         var container = eval("document.getElementById('" + echartId + "')");
         var myChart = echarts.init(container);
         myChart.setOption(option, true);	// 为echarts对象加载数据

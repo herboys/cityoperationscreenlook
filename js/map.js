@@ -321,7 +321,7 @@ function playVideo(e) {
             for (var i = 0; i < resData.length; i++) {
                 if (resData[i].url != null && resData[i].url != '') {
                     urlList[index] = resData[i].url
-                    urlName[index++] = resData[i].monitorPoint.substr(9)
+                    urlName[index++] = resData[i].monitorPoint.substr(9).replace(" ","_").replace(" ","_")
                 }
             }
             // alert(JSON.stringify(urlName))

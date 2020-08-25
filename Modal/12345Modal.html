@@ -324,8 +324,8 @@
 <script type="text/javascript" src="../js/commonJs.js"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="Js/GarBageMap.js"></script>
-<script type="text/javascript" src="Js/onload.js"></script>
+<script type="text/javascript" src="Js/12345map.js"></script>
+
 <script type="text/javascript" src="Js/ajaxPromise.js"></script>
 <script type="text/javascript" src="Js/unit.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
@@ -389,9 +389,10 @@
         });
     })
     window.onload = function () {
-        initMap()
+
         GongDan(0)
         findproblemFun()
+        initMap()
 
         let para = {
             xData: ["本年话务总量", "本年人工话务量", "每万客户呼入量"],

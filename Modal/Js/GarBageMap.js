@@ -108,8 +108,8 @@ function init1 () {//区域遮盖
                 // fillColor: '#220986', // 遮罩背景色黑色
                 // fillOpacity: 0.1
                 strokeColor: '#9CA09D',
-                fillOpacity: 1,
-                fillColor: '#061839',
+                fillOpacity:.5,
+                fillColor: '#80d8ff',
             })
             that.polygon.setPath(pathArray)
             that.map.add(that.polygon)

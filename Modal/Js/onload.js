@@ -40,7 +40,7 @@ function EndFacilities() {
                     + '<img src="../Modal/images/icon_.png ">'
                     + '   <div>'
                     + '  <p style="font-size: 14px">' + res.data[i].pointName + '</p>'
-                    + '<span style="font-size: 14px">' + res.data[i].shuntOneDayTotal + '</span>'
+                    + '<span style="font-size: 14px">' + res.data[i].dryOneDayTotal + '</span>'
                     + '</div>'
                     + ' </div>'
             }
@@ -56,7 +56,7 @@ function EndFacilities() {
  * */
 function TownLifeGarbage() {
     let para = {
-        url: GarBage_URl+'sh/garbageSort/getGarbageStreetProduce',
+        url: GarBage_URl+'/sh/garbageSort/getGarbageStreetProduce',
         async: true,
         type: 'get',
         dataType: 'JSON',
@@ -118,7 +118,8 @@ function GetCarNewInfoFun() {
 
 
     })
-
+    getPopupFun2()
+    getGarbageRectify()
 }
 function getPopupFun1(){
     return new Promise((resolve, reject) => {
@@ -136,19 +137,34 @@ function getPopupFun1(){
     })
 
 }
-// function getPopupFun1(){
-//     return new Promise((resolve, reject) => {
-//         let para={
-//             url: GarBage_URl+'/http://180.167.35.167:7085/sh/garbageSort/getCarNewInfo',
-//             async: true,
-//             type: 'get',
-//             dataType: 'JSON',
-//         }
-//         ajaxPromise(para).then(res=>{
-//             console.log(res,'11111 ')
-//             resolve(res)
-//
-//         })
-//     })
-//
-// }
+function getPopupFun2(){
+    return new Promise((resolve, reject) => {
+        let para={
+            url: GarBage_URl+'/sh/garbageSort/getGarbageCarLoading',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+            console.log(res,'11111 ')
+            resolve(res)
+
+        })
+    })
+
+}function getGarbageRectify(){
+    return new Promise((resolve, reject) => {
+        let para={
+            url: GarBage_URl+'/sh/garbageSort/getGarbageRectify',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+            console.log(res,'11111 ')
+            resolve(res)
+
+        })
+    })
+
+}

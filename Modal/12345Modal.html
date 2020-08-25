@@ -32,7 +32,7 @@
 </style>
 <link rel="stylesheet" type="text/css" href="../css/12345Modal.css"/>
 <link rel="stylesheet" type="text/css" href="../css/pubilic.css"/>
-<script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
 <body>
 <div class="Modal-warp">
@@ -40,7 +40,7 @@
     <div class="Modal-left">
         <div style="  padding: 0px 20px;">
             <div class="Modal-left-header">
-                12345事件
+                12345市民服务热线
             </div>
             <div class="Modal-left-item">
                 <div class="FX_header">
@@ -99,32 +99,32 @@
 <!--                            </div>-->
                         </div>
                         <div class="Satisfaction-warp-item-echarts" style="margin-top: 40px;height: 400px">
-                            <div id="SmallECharts4" style="width: 575px;height:400px;margin-right: 20px;margin-top: -20px">
-                                <div id="rotate">
+                            <div id="SmallECharts4" style="width: 575px;height:400px;margin-right: 20px;margin-top: -20px;padding-top:20px ">
+<!--                                <div id="rotate">-->
 
-                                    <a  target="_blank">上水井盖</a>
-                                    <a  target="_blank">住房保障</a>
-                                    <a  target="_blank">路灯井盖</a>
-                                    <a  target="_blank">人力保障</a>
-                                    <a  target="_blank">信息交接箱</a>
-                                    <a  target="_blank">污水井盖</a>
-                                    <a  target="_blank">农业农业</a>
-                                    <a  target="_blank">燃气调压站</a>
-                                    <a  target="_blank">治安亭</a>
-                                    <a  target="_blank">交通立杆</a>
-                                    <a  target="_blank"> 民政民政</a>
-                                    <a  target="_blank">自来水管破裂</a>
-                                    <a  target="_blank">发展改革</a>
-                                    <a  target="_blank">新闻出版</a>
-                                    <a  target="_blank">其他其他</a>
-                                    <a  target="_blank">机关事务管理</a>
-                                    <a  target="_blank">垃圾箱</a>
-                                    <a  target="_blank">邮政通信</a>
-                                    <a  target="_blank">电力电力</a>
-                                    <a  target="_blank">残垣断壁</a>
-                                    <a  target="_blank">乱堆放</a>
+<!--                                    <a  target="_blank">上水井盖</a>-->
+<!--                                    <a  target="_blank">住房保障</a>-->
+<!--                                    <a  target="_blank">路灯井盖</a>-->
+<!--                                    <a  target="_blank">人力保障</a>-->
+<!--                                    <a  target="_blank">信息交接箱</a>-->
+<!--                                    <a  target="_blank">污水井盖</a>-->
+<!--                                    <a  target="_blank">农业农业</a>-->
+<!--                                    <a  target="_blank">燃气调压站</a>-->
+<!--                                    <a  target="_blank">治安亭</a>-->
+<!--                                    <a  target="_blank">交通立杆</a>-->
+<!--                                    <a  target="_blank"> 民政民政</a>-->
+<!--                                    <a  target="_blank">自来水管破裂</a>-->
+<!--                                    <a  target="_blank">发展改革</a>-->
+<!--                                    <a  target="_blank">新闻出版</a>-->
+<!--                                    <a  target="_blank">其他其他</a>-->
+<!--                                    <a  target="_blank">机关事务管理</a>-->
+<!--                                    <a  target="_blank">垃圾箱</a>-->
+<!--                                    <a  target="_blank">邮政通信</a>-->
+<!--                                    <a  target="_blank">电力电力</a>-->
+<!--                                    <a  target="_blank">残垣断壁</a>-->
+<!--                                    <a  target="_blank">乱堆放</a>-->
 
-                                </div>
+<!--                                </div>-->
                             </div>
                         </div>
 
@@ -321,16 +321,14 @@
     </div>
 </div>
 </body>
-<script src="Js/echarts-wordcloud.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../js/commonJs.js"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="Js/Maps.js"></script>
 <script type="text/javascript" src="Js/onload.js"></script>
 <script type="text/javascript" src="Js/ajaxPromise.js"></script>
-
 <script type="text/javascript" src="Js/unit.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-
 <script>
     document.getElementById("clearid").onclick = function () {
         window.parent.document.getElementById("ModalBox").style.display = "none";
@@ -391,8 +389,10 @@
         });
     })
     window.onload = function () {
+        initMap()
         GongDan(0)
         findproblemFun()
+
         let para = {
             xData: ["本年话务总量", "本年人工话务量", "每万客户呼入量"],
             yData: [2342, 1230, 425]
@@ -422,11 +422,19 @@
         let attackSourcesData = ["340", "337", "330", "189", "154", "150", "103", "99", "90", "74", "73", "55"]
         let attackSourcesName = ["架空线", "防盗", "盖子", "暴露", "损坏", "消火栓", "监督员", "张贴", "垃圾桶", "坠落", "广告", "垃圾"]
         let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-     //   MyEcharts.initChart(MyEcharts.EchartsOption.hotspot(), "SmallECharts4")
+        // MyEcharts.initChart("SmallECharts4").on('click', function(param) { //添加点击事件
+        //     console.log(param );
+        //     myChart1.dispatchAction({ type: 'highlight', dataIndex: param.dataIndex }); //激活点击区域高亮
+        //     if (param.dataIndex !== number) { // 当鼠标点击的时候 消除上一个扇区的高亮
+        //         myChart1.dispatchAction({ type: 'downplay', dataIndex: number });
+        //     }
+        //     number = param.dataIndex //接住当前扇区的dataIndex
+        // });
+        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'次'), "SmallECharts4")
         // window.onresize = function () {
         //     SmallECharts4.resize();
         // }
-        ThesaurusFun()
+       // ThesaurusFun()
     }
 
     var radius = 140;

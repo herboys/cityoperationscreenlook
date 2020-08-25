@@ -15,6 +15,5 @@ let FIRE_URL = "http://10.237.115.83:8089/city-operation";
 //let FIRE_URL = "http://10.237.115.83:8091";
 let GarBage_URl= "http://192.168.10.12:8085";
 //let GarBage_URl= "http://180.167.35.167:7085";
-
 //let FIRE_URL="http://10.237.206.140:8091";
 //let FIRE_URL="http://localhost:8091";

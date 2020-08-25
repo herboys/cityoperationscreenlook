@@ -1,4 +1,4 @@
-let ORACLE_URL = "http://10.237.115.83:8089/oracleConnection"
+
 function TabsFun(num) {
     let para = document.getElementsByClassName("Satisfaction-warp-item-header-left")
     let data = ''

@@ -863,7 +863,7 @@ var MyEcharts = {
                     name: '总量',
                     type: 'bar',
                     barWidth: 30,
-                    data: yData,
+                    data: yData.sort(function(a, b){return b- a}),
                     itemStyle: {
                         color: color
                     },
@@ -879,7 +879,7 @@ var MyEcharts = {
                         }
                     },
                     type: "line",
-                    data: zData,
+                    data: zData.sort(function(a, b){return b- a}),
                 },
                 ]
             };

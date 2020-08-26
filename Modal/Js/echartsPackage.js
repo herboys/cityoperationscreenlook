@@ -107,7 +107,6 @@ var MyEcharts2 = {
          * @param attackSourcesColor : color
          */
         Ranking: function (name, attackSourcesName, attackSourcesData, attackSourcesColor) {
-            console.log(attackSourcesName, '===attackSourcesName');
 
             function contains(arr, dst) {
                 var i = arr.length;
@@ -134,7 +133,6 @@ var MyEcharts2 = {
                         // itemStyle: itemStyle
                     });
                 });
-                console.log(sss)
                 return sss;
             }
 
@@ -873,7 +871,6 @@ var MyEcharts2 = {
      * @param echartId : string 需要加引号
      */
     initChart: function (option, echartId) {
-        console.log(option, echartId, '123123')
         var container = eval("document.getElementById('" + echartId + "')");
         var myChart = echarts.init(container);
         myChart.setOption(option, true); // 为echarts对象加载数据

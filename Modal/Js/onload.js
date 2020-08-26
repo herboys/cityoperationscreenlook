@@ -79,6 +79,11 @@ function TownLifeGarbage() {
             document.getElementById("dryGarbageID").innerHTML = para
             para = `<p>湿垃圾产生量</p><p >${recoverable1}吨/日</p>`
             document.getElementById("recoverableID").innerHTML = para
+            res.data.map(item=>{
+                if (item.recoverable.length==0){
+                    item.recoverable="0吨/日"
+                }
+            })
 
             para = ''
             for (let i = 0; i < res.data.length; i++) {

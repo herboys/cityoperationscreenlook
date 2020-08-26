@@ -1,17 +1,5 @@
 function ToOnload(){
-    findbcNameType().then(res=>{
-        let color = [ "#F9392D", "#4489D3", "#FFCE14","#2cc78f",]
 
-        let attackSourcesData = []
-        let attackSourcesName = []
-        let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-        res.map(item=>{
-            attackSourcesName.push(item.INFOBCNAME)
-            attackSourcesData.push(item.COUNTINFOBCNAME)
-        })
-
-        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'次'), "SmallECharts3")
-    })
     // countWork('日')
     GongDan(1)
     // findbcName()
@@ -20,8 +8,13 @@ function ToOnload(){
     init1()
     TabsFun(3)
     TabsFun(6)
+    findbcNameType()
     findscName('年').then(res=>{
-        let List=res.slice(0,10)
+
+        let List=res.slice(0,10).sort(function (a, b) {
+            return b.COUNTSCNAME - a.COUNTSCNAME;
+        });
+
         let attackSourcesData = []
         let attackSourcesName = []
         let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
@@ -281,10 +274,7 @@ function findbcName() {
 }
 /**统计分析-基本情况*/
 function findbcNameType() {
-    return new Promise(resolve => {
-
     let para = {
-        // url: 'http://localhost:8090/taskInfo/findInfoUrgent',
         url: ORACLE_URL + '/taskInfo/findbcNameType',
         async: true,
         type: 'post',
@@ -294,9 +284,21 @@ function findbcNameType() {
         dataType: 'JSON',
     }
         ajaxPromise(para).then(res => {
-            resolve(res)
+            let color = [ "#F9392D", "#4489D3", "#FFCE14","#2cc78f",]
+            let newres=''
+            newres= res.slice(0,12).sort(function (a, b) {
+                return b.COUNTINFOBCNAME - a.COUNTINFOBCNAME;
+            });
+            let attackSourcesData = []
+            let attackSourcesName = []
+            let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
+            newres.map(item=>{
+                attackSourcesName.push(item.INFOBCNAME)
+                attackSourcesData.push(item.COUNTINFOBCNAME)
+            })
+
+            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'次'), "SmallECharts3")
         })
-    })
 }
 
 /**获取紧急工单非紧急工单的数量*/

@@ -100,7 +100,7 @@ var MyEcharts = {
          */
         bar: function (xData,yData) {
             // console.log(data)
-           // var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
+            // var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
 
             // var xData = ["电话", "网站", "手机App", '微信'];
             // var yData = [2342, 1230, 425, 900, 600];
@@ -392,7 +392,7 @@ var MyEcharts = {
 
             var attackSourcesData = attackSourcesData;
             var attackSourcesName = attackSourcesName
-           var attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474'];
+            var attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474'];
 
             function attackSourcesDataFmt(sData) {
                 var sss = [];

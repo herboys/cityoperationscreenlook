@@ -62,14 +62,14 @@ function TownLifeGarbage() {
         if (res.status === 'OK') {
             console.log(res)
             /**干垃圾*/
-                let dryGarbage = 0
+            let dryGarbage = 0
             // dryGarbage
             // res.data.map(item=>{
             //
             // })
-                // res.data.reduce((dryGarbage, item) => dryGarbage + item.dryGarbage.split(item.unit)[0].trim(), 0)
-                //
-                // alert(dryGarbage)
+            // res.data.reduce((dryGarbage, item) => dryGarbage + item.dryGarbage.split(item.unit)[0].trim(), 0)
+            //
+            // alert(dryGarbage)
             let para = ''
             for (let i = 0; i < res.data.length; i++) {
                 para += '<ul style="color: white">'

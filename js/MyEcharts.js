@@ -878,7 +878,7 @@ var MyEcharts = {
                         }
                     },
                     type: "line",
-                    data: zData,
+                    data: zData.sort(function(a, b){return b- a}),
                 },
                 ]
             };

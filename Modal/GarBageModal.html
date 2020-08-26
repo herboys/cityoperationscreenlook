@@ -27,6 +27,9 @@
         height: 10rem;
         overflow: overlay;
     }
+    #lasttopicItemID p{
+        color: #e7cb35;
+    }
 
 </style>
 <body>
@@ -355,66 +358,26 @@
                                         当日投入运营车辆数
                                     </div>
                                     <div class="topicWrap"  id="getPopup1ID">
-                                        <div class="topicItem">
-                                            <p>驳运车辆数（干垃圾）</p>
-                                            <span>239辆</span>
-                                        </div>
-                                        <div class="topicItem">
-                                            <p>驳运车辆数（有害垃圾）</p>
-                                            <span>11辆</span>
-                                        </div>
-                                        <div class="topicItem">
-                                            <p>驳运车辆数（湿垃圾）</p>
-                                            <span>117辆</span>
-                                        </div>
-                                        <div class="topicItem">
-                                            <p>驳运机具规范数</p>
-                                            <span>65辆</span>
-                                        </div>
-                                        <div class="topicItem">
-                                            <p>驳运车辆数（可回收物）</p>
-                                            <span>1辆</span>
-                                        </div>
                                     </div>
                                 </div>
                                 <div style="flex: 5;padding-right: 20px;margin-top: 10px">
-                                    <div class="banner-span" onclick="vehicleNone1Click()">
+                                    <div class="banner-span">
                                         分类运输车辆装载情况在线监测
                                     </div>
-                                    <div class="topicWrap" id="getGarbageCarLoadingID">
-                                        <div class="topicItem" >
-                                            <p>分类运输车辆在线总数</p>
-                                            <span>358辆</span>
-                                        </div>
-                                        <div class="topicItem">
-                                            <p>分类运输车辆在线总数(可回收物)</p>
-                                            <span>42辆</span>
-                                        </div>
-                                        <div class="topicItem">
-                                            <p>分类运输车辆在线总数(干垃圾)</p>
-                                            <span>109辆</span>
-                                        </div>
-                                        <div class="topicItem">
-                                            <p>装载异常运输车辆在线总数</p>
-                                            <span>89辆</span>
-                                        </div>
-                                        <div class="topicItem">
-                                            <p>分类运输车辆在线总数(湿垃圾)</p>
-                                            <span>207辆</span>
-                                        </div>
+                                    <div class="topicWrap" id="getGarbageCarLoadingID"  >
                                     </div>
                                 </div>
                                 <div style="width: 250px;padding-right: 20px;margin-top: 10px" class="vehicle">
-                                    <div class="banner-span" >
-                                        分类运输车辆装载率监测
+                                    <div class="banner-span-no" >
+<!--                                        分类运输车辆装载率监测-->
                                     </div>
                                     <div class="topicWrap">
-                                        <div id="lasttopicItemID" class="topicItem" style="width: 100%;">
+                                        <div id="lasttopicItemID" class="topicItem" style="width: 100%;cursor: pointer" onclick="vehicleNone1Click()">
                                             <p>分类运输车辆在线总数</p>
                                             <span>358辆</span>
                                         </div>
 
-                                        <div id="OnDutyToday_box" style="height: 80px;overflow: hidden; width: 100%;height: 50px;">
+                                        <div id="OnDutyToday_box" style="height: 80px;overflow: hidden; width: 100%;height: 48px;">
                                             <div id="OnDutyToday" style="display: flex;flex-wrap: wrap;">12321</div>
                                             <div id="OnDutyTodayCopy"></div>
                                         </div>
@@ -478,7 +441,7 @@
 <!--                                                </div>-->
 
                                                 <div id="OnDutyToday_box1" style="  overflow: hidden; width: 100%;height: 110px;">
-                                                    <div id="OnDutyToday1" >12321</div>
+                                                    <div id="OnDutyToday1" ></div>
                                                     <div id="OnDutyTodayCopy1"></div>
                                                 </div>
 

@@ -210,7 +210,7 @@ function getGarbageCarLoading() {
                 para = ''
                 for (let i = 0; i < res.data[0].garbageTranVels.length - 1; i++) {
 
-                    para += ' <div class="topicItem">'
+                    para += ' <div class="topicItem"  >'
                         + '<p>' + res.data[0].garbageTranVels[i].popIndex.slice(2, res.data[0].garbageTranVels[i].popIndex.length) + '</p>'
                         + ' <span>' + res.data[0].garbageTranVels[i].sum + res.data[0].garbageTranVels[i].unit + '</span>'
                         + ' </div>'

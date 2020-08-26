@@ -135,3 +135,7 @@
 	position:absolute;
 	z-index: 9999;
 }
+
+video::-webkit-media-controls-fullscreen-button{
+	display: none;
+}

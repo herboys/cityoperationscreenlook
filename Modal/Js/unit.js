@@ -9,6 +9,7 @@ function ToOnload(){
             attackSourcesName.push(item.INFOBCNAME)
             attackSourcesData.push(item.COUNTINFOBCNAME)
         })
+
         MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'次'), "SmallECharts3")
     })
     // countWork('日')
@@ -97,8 +98,9 @@ function TabsFun(num) {
                 '<div class="banner1" onclick="TabsFun(4)">' + '委办局' + '</div>'
                 + '<div class="banner2" onclick="TabsFun(5)">' + '公司' + '</div>'
             findTypeMsg('年', "区委办").then(res => {
+                console.log(res,'区委办')
                 res.map(item => {
-                    xData.push(item.STREETNAME)
+                    xData.push(item.DEPTNAME)
                     yData.push(item.COUNTNAME)
                     zData.push(item.COUNTNULL)
                 })

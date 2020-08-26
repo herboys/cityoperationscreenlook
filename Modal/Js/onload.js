@@ -9,6 +9,7 @@ function newonload() {
     intervalFunction()
 
 }
+
 function intervalFunction() {
     let time = 1000 * 60 * 2
     setInterval(EndFacilities, time)
@@ -29,7 +30,7 @@ function EndFacilities() {
         if (res.status === 'OK') {
             res.data.map(item => item.wetOneDayTotal = item.wetOneDayTotal.split("吨")[0].trim())
             res.data.map(item => item.dryOneDayTotal = item.dryOneDayTotal.split("吨")[0].trim())
-            res.data.map(item => item.connts =`${ parseInt(item.dryOneDayTotal)+ parseInt(item.wetOneDayTotal)+'吨'}` )
+            res.data.map(item => item.connts = `${parseInt(item.dryOneDayTotal) + parseInt(item.wetOneDayTotal) + '吨'}`)
             let para = ''
             for (let i = 0; i < res.data.length; i++) {
                 para += ' <div class="GarBage-child-item GarBage-child-end">'
@@ -59,17 +60,27 @@ function TownLifeGarbage() {
     }
     ajaxPromise(para).then(res => {
         if (res.status === 'OK') {
-            console.log(res)
-            /**干垃圾*/
-                let dryGarbage = 0
-            // dryGarbage
-            // res.data.map(item=>{
-            //
-            // })
-                // res.data.reduce((dryGarbage, item) => dryGarbage + item.dryGarbage.split(item.unit)[0].trim(), 0)
-                //
-                // alert(dryGarbage)
             let para = ''
+            console.log(res, '123123')
+            /**干垃圾*/
+            let dryGarbage = []
+            let recoverable = []
+            res.data.map(item => {
+                dryGarbage.push(item.dryGarbage.split(item.unit)[0].trim())
+                recoverable.push(parseInt(item.wetGarbageDwe.split(item.unit)[0].trim()) + parseInt(item.wetGarbageKit.split(item.unit)[0].trim()))
+            })
+            let Ganlaji = eval(dryGarbage.join("+")) / dryGarbage.length
+            let recoverable1 = eval(recoverable.join("+")) / recoverable.length
+            Ganlaji = Ganlaji.toFixed(2)
+            recoverable1 = recoverable1.toFixed(2)
+            console.log(Ganlaji, '干垃圾数量总数')
+            console.log(recoverable1, '干垃圾数量总数')
+            para = `<p>干垃圾生产量</p><p >${Ganlaji}吨/日</p>`
+            document.getElementById("dryGarbageID").innerHTML = para
+            para = `<p>湿垃圾产生量</p><p >${recoverable1}吨/日</p>`
+            document.getElementById("recoverableID").innerHTML = para
+
+            para = ''
             for (let i = 0; i < res.data.length; i++) {
                 para += '<ul style="color: white">'
                     + ' <li>' + res.data[i].street + '</li>'
@@ -132,8 +143,8 @@ function getPopupFun1() {
     }
     ajaxPromise(para).then(res => {
         console.log(res, '11111 ')
-        let e=''
-        e=res.data[res.data.length-1]
+        let e = ''
+        e = res.data[res.data.length - 1]
         if (res.status == "OK") {
             para = `
                     <div class="topicItem">
@@ -148,16 +159,13 @@ function getPopupFun1() {
                                             <p>驳运车辆数（湿垃圾）</p>
                                             <span>${e.wet_car}</span>
                                         </div>
-                                        <div class="topicItem">
-                                            <p>驳运机具规范数</p>
-                                            <span>${e.total}</span>
-                                        </div>
+                                      
                                         <div class="topicItem">
                                             <p>驳运车辆数（可回收物）</p>
                                             <span>${e.kitchen_car}</span>
                                         </div>
                 `
-            document.getElementById("getPopup1ID").innerHTML=para
+            document.getElementById("getPopup1ID").innerHTML = para
         }
     })
 }
@@ -195,18 +203,91 @@ function getGarbageCarLoading() {
 
             if (res.status == 'OK') {
                 para = ''
-                for (let i = 0; i < res.data[0].garbageTranVels.length; i++) {
+                for (let i = 0; i < res.data[0].garbageTranVels.length - 1; i++) {
 
                     para += ' <div class="topicItem">'
-                        + '<p>' + res.data[0].garbageTranVels[i].popIndex.slice(2,res.data[0].garbageTranVels[i].popIndex.length) + '</p>'
+                        + '<p>' + res.data[0].garbageTranVels[i].popIndex.slice(2, res.data[0].garbageTranVels[i].popIndex.length) + '</p>'
                         + ' <span>' + res.data[0].garbageTranVels[i].sum + res.data[0].garbageTranVels[i].unit + '</span>'
                         + ' </div>'
                 }
-                console.log(para, '0999999999')
+                console.log(res.data[0].garbageTranVels[res.data[0].garbageTranVels.length - 1], '0999999999')
                 document.getElementById("getGarbageCarLoadingID").innerHTML = para
+                para = `<p>${res.data[0].garbageTranVels[res.data[0].garbageTranVels.length - 1].popIndex}</p>
+                                            <span>${res.data[0].garbageTranVels[res.data[0].garbageTranVels.length - 1].sum}${res.data[0].garbageTranVels[res.data[0].garbageTranVels.length - 1].unit}</span>`
+                document.getElementById("lasttopicItemID").innerHTML = para
+                para = ''
+                res.data[0].garbageCarLoading.forEach(e => {
+                    para += `<div class="topicItem topicItemBtn" >
+                                       <span class="font-10">${e.carNumber}</span>
+                                          <span class="font-10">${e.loadingRate}</span>
+                                      </div>`
+                })
+                document.getElementById("OnDutyToday").innerHTML = para
+                let ul1 = document.getElementById("OnDutyToday");
+                let ul2 = document.getElementById("OnDutyTodayCopy");
+                let rollbox = document.getElementById("OnDutyToday_box");
+                rolls(20, ul1, ul2, rollbox)
+                para = ''
+                res.data[0].garbageCarLoading.forEach(e => {
+                    para += `<ul style="color: white">
+                                                    <li style="flex: 3">${e.weighTime}</li>
+                                                    <li style="flex: 2">${e.carNumber}</li>
+                                                    <li style="flex: 2">${e.carType}</li>
+                                                    <li style="flex: 2">${e.standardWeigh}<span class="font-10">(kg)</span></li>
+                                                    <li style="flex: 2">${e.trueWeigh}</li>
+                                                    <li style="flex: 1">${e.loadingRate}</li>
+                                                </ul>`
+                })
+                document.getElementById("OnDutyToday1").innerHTML = para
+                ul1 = document.getElementById("OnDutyToday1");
+                 ul2 = document.getElementById("OnDutyTodayCopy1");
+                 rollbox = document.getElementById("OnDutyToday_box1");
+                rolls1(20, ul1, ul2, rollbox)
+
+
             }
 
         })
     })
 
+}
+
+function rolls(t, ul1, ul2, rollbox) {
+    ul2.innerHTML = ul1.innerHTML;
+    rollbox.scrollTop = 0;
+    let timer = setInterval(rollStarts, t);
+    rollbox.onmouseover = function () {
+        clearInterval(timer);
+    }
+    rollbox.onmouseout = function () {
+        timer = setInterval(rollStarts, t);
+    }
+}function rolls1(t, ul1, ul2, rollbox) {
+    ul2.innerHTML = ul1.innerHTML;
+    rollbox.scrollTop = 0;
+    let timer = setInterval(rollStarts1, t);
+    rollbox.onmouseover = function () {
+        clearInterval(timer);
+    }
+    rollbox.onmouseout = function () {
+        timer = setInterval(rollStarts1, t);
+    }
+}
+
+function rollStarts() {
+    let ul1 = document.getElementById("OnDutyToday");
+    let rollbox = document.getElementById("OnDutyToday_box");
+    if (rollbox.scrollTop >= ul1.scrollHeight) {
+        rollbox.scrollTop = 0;
+    } else {
+        rollbox.scrollTop++;
+    }
+}function rollStarts1() {
+    let ul1 = document.getElementById("OnDutyToday1");
+    let rollbox = document.getElementById("OnDutyToday_box1");
+    if (rollbox.scrollTop >= ul1.scrollHeight) {
+        rollbox.scrollTop = 0;
+    } else {
+        rollbox.scrollTop++;
+    }
 }

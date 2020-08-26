@@ -237,16 +237,12 @@
                                     <div class="Municipal-level">
                                         <div>
                                             <img src="../Modal/images/dry.png"/>
-                                            <li>
-                                                <p>干垃圾控制量</p>
-                                                <p style="color: #f9392d">2796吨/日</p>
+                                            <li id="dryGarbageID">
                                             </li>
                                         </div>
-
-
                                         <div>
                                             <img src="../Modal/images/wet.png"/>
-                                            <li>
+                                            <li id="recoverableID">
                                                 <p>湿垃圾产生量</p>
                                                 <p>468吨/日</p>
                                             </li>
@@ -255,7 +251,8 @@
                                             <img src="../Modal/images/can.png"/>
                                             <li>
                                                 <p>可回收物量</p>
-                                                <p style="color: #f9392d">168吨/日</p>
+                                                <p>403吨/日</p>
+<!--                                                <p  style="color: #f9392d">403吨/日</p>-->
                                             </li>
                                         </div>
                                         <div>
@@ -320,7 +317,7 @@
                         <div class="FX_header">
                             <div class="header">
                                 <a class="line"></a>
-                                <span>运输过程监管</span>
+                                <span>垃圾末端处置在线监测</span>
                                 <a class="line1"></a>
                             </div>
 
@@ -347,13 +344,13 @@
                         <div class="FX_header">
                             <div class="header">
                                 <a class="line"></a>
-                                <span>垃圾分类末端在线监管</span>
+                                <span>垃圾分类驳运在线监测</span>
                                 <a class="line1"></a>
                             </div>
                         </div>
                         <div class="Satisfaction-warp-item-echarts" style="height: 210px">
                             <div id="SmallECharts" style="height:210px;display: flex">
-                                <div style="flex: 4;padding-right: 20px">
+                                <div style="flex: 4;padding-right: 20px;margin-top: 10px">
                                     <div class="banner-span">
                                         当日投入运营车辆数
                                     </div>
@@ -380,8 +377,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div style="flex: 5;padding-right: 20px">
-                                    <div class="banner-span">
+                                <div style="flex: 5;padding-right: 20px;margin-top: 10px">
+                                    <div class="banner-span" onclick="vehicleNone1Click()">
                                         分类运输车辆装载情况在线监测
                                     </div>
                                     <div class="topicWrap" id="getGarbageCarLoadingID">
@@ -407,30 +404,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div style="width: 250px;padding-right: 20px" class="vehicle">
-                                    <div class="banner-span">
+                                <div style="width: 250px;padding-right: 20px;margin-top: 10px" class="vehicle">
+                                    <div class="banner-span" >
                                         分类运输车辆装载率监测
                                     </div>
-                                    <div class="topicWrap"  onclick="vehicleClick()">
+                                    <div class="topicWrap">
+                                        <div id="lasttopicItemID" class="topicItem" style="width: 100%;">
+                                            <p>分类运输车辆在线总数</p>
+                                            <span>358辆</span>
+                                        </div>
 
-                                        <div class="topicItem topicItemBtn" >
-                                            <span class="font-10">沪DG0497</span>
-                                            <span class="font-10">299.50%</span>
-                                        </div> <div class="topicItem topicItemBtn" >
-                                            <span class="font-10">沪DP1889</span>
-                                            <span class="font-10">257.20%</span>
-                                        </div><div class="topicItem topicItemBtn" >
-                                            <span class="font-10">沪DP1862</span>
-                                            <span class="font-10">275.60%</span>
-                                        </div><div class="topicItem topicItemBtn" >
-                                            <span class="font-10">沪DP1862</span>
-                                            <span class="font-10">251.19%</span>
-                                        </div><div class="topicItem topicItemBtn" >
-                                            <span class="font-10">沪AZZ093</span>
-                                            <span class="font-10">266.39%</span>
-                                        </div><div class="topicItem topicItemBtn" >
-                                            <span class="font-10">沪FD1288</span>
-                                            <span class="font-10">236.31%</span>
+                                        <div id="OnDutyToday_box" style="height: 80px;overflow: hidden; width: 100%;height: 50px;">
+                                            <div id="OnDutyToday" style="display: flex;flex-wrap: wrap;">12321</div>
+                                            <div id="OnDutyTodayCopy"></div>
                                         </div>
 
                                     </div>
@@ -476,6 +462,32 @@
 
 
                             </div>
+                            <div class="SatisfactionModel" id="SatisfactionModelId">
+                                <div class="SatisfactionModel-warp">
+                                        <div class="Municipal-level-warp">
+                                            <div class="Municipal-level-warp-header" >
+                                                <ul style="background-color: #0a3f6c">
+                                                    <li style="flex: 3">称重时间</li>
+                                                    <li style="flex: 2">车牌号</li>
+                                                    <li style="flex: 2">车辆类型<span class="font-10">(居住区含菜场)</span></li>
+                                                    <li style="flex: 2">标准装载量<span class="font-10">(kg)</span></li>
+                                                    <li style="flex: 2">实际装载量<span class="font-10">(kg)</span></li>
+                                                    <li style="flex: 1">装载率</li>
+                                                </ul>
+<!--                                                <div id="ActualOutputID">-->
+<!--                                                </div>-->
+
+                                                <div id="OnDutyToday_box1" style="  overflow: hidden; width: 100%;height: 110px;">
+                                                    <div id="OnDutyToday1" >12321</div>
+                                                    <div id="OnDutyTodayCopy1"></div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="clears" onclick="clanes1Click()"><img src="images/cha.png"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -515,9 +527,22 @@
     }
     function vehicleNoneClick() {
         document.getElementById("vehicle-Modal").style.display = "none";
-    }    function clanesClick() {
+    }     function vehicleNone1Click() {
+        document.getElementById("SatisfactionModelId").style.display = "block";
+    }
+    function clanesClick() {
         document.getElementById("ModalBox").style.display = "none";
     }
+
+
+
+     function clanes1Click() {
+        document.getElementById("SatisfactionModelId").style.display = "none";
+    }
+
+
+
+
     $("#dropdown p").click(function () {
         var ul = $("#dropdown ul");
         if (ul.css("display") == "none") {

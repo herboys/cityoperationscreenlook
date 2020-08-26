@@ -1,4 +1,4 @@
-function ToOnload(){
+function ToOnload() {
 
     // countWork('日')
     GongDan(1)
@@ -9,20 +9,20 @@ function ToOnload(){
     TabsFun(3)
     TabsFun(6)
     findbcNameType()
-    findscName('年').then(res=>{
+    findscName('年').then(res => {
 
-        let List=res.slice(0,10).sort(function (a, b) {
-            return b.COUNTSCNAME - a.COUNTSCNAME;
+        let List = res.slice(0, 10).sort(function (a, b) {
+            return b.COUNTATNAME - a.COUNTATNAME;
         });
 
         let attackSourcesData = []
         let attackSourcesName = []
         let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-        List.map(item=>{
-            attackSourcesName.push(item.INFOSCNAME)
-            attackSourcesData.push(item.COUNTSCNAME)
+        List.map(item => {
+            attackSourcesName.push(item.ATNAME)
+            attackSourcesData.push(item.COUNTATNAME)
         })
-        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'次'), "SmallECharts4")
+        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
 
 
     })
@@ -91,7 +91,7 @@ function TabsFun(num) {
                 '<div class="banner1" onclick="TabsFun(4)">' + '委办局' + '</div>'
                 + '<div class="banner2" onclick="TabsFun(5)">' + '公司' + '</div>'
             findTypeMsg('年', "区委办").then(res => {
-                console.log(res,'区委办')
+                console.log(res, '区委办')
                 res.map(item => {
                     xData.push(item.DEPTNAME)
                     yData.push(item.COUNTNAME)
@@ -106,7 +106,7 @@ function TabsFun(num) {
                 + '<div class="banner1" onclick="TabsFun(5)">' + '公司' + '</div>'
             findTypeMsg('年', "公司").then(res => {
                 res.map(item => {
-                    xData.push(item.STREETNAME)
+                    xData.push(item.DEPTNAME)
                     yData.push(item.COUNTNAME)
                     zData.push(item.COUNTNULL)
                 })
@@ -169,7 +169,14 @@ function GongDan(num) {
         } else {
 
 
-            para = ''
+            para = `  <ul class="work-older-list-ul">
+                                        <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>案例来源</li>
+                                        <li>截至日期</li>
+                                        <li>最后期限</li>
+                                        <li>工单状态</li>
+                                    </ul>`
             for (let i = 0; i < res.length; i++) {
                 if (i < 2) {
                     para += '<ul class="work-older-list-ul ul-line ">'
@@ -196,7 +203,7 @@ function GongDanfanhu(num) {
         type: 'post',
         data: JSON.stringify({
             "urgent": num,
-            "date":ModelTime
+            "date": ModelTime
         }),
         dataType: 'JSON',
     }
@@ -207,14 +214,21 @@ function GongDanfanhu(num) {
         } else {
 
 
-            para = ''
+            para = `  <ul class="work-older-list-ul">
+                                        <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>案例来源</li>
+                                        <li>退单次数</li>
+                                        <li>最后期限</li>
+                                        <li>工单状态</li>
+                                    </ul>`
             for (let i = 0; i < res.length; i++) {
                 if (i < 2) {
                     para += '<ul class="work-older-list-ul ul-line ">'
                         + '<li>' + res[i].TASKID + '</li>'
                         + '<li>' + res[i].DISCOVERTIME + '</li>'
                         + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].LASTSOLVINGTIME + '</li>'
+                        + '<li>' + res[i].BACKCOUNT + '</li>'
                         + '<li>' + res[i].ALLENDTIME + '</li>'
                         + '<li>' + res[i].STATUSNAME + '</li>'
                         + '</ul>'
@@ -272,6 +286,7 @@ function findbcName() {
     ajaxPromise(para).then(res => {
     })
 }
+
 /**统计分析-基本情况*/
 function findbcNameType() {
     let para = {
@@ -283,22 +298,24 @@ function findbcNameType() {
         }),
         dataType: 'JSON',
     }
-        ajaxPromise(para).then(res => {
-            let color = [ "#F9392D", "#4489D3", "#FFCE14","#2cc78f",]
-            let newres=''
-            newres= res.slice(0,12).sort(function (a, b) {
-                return b.COUNTINFOBCNAME - a.COUNTINFOBCNAME;
-            });
-            let attackSourcesData = []
-            let attackSourcesName = []
-            let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-            newres.map(item=>{
-                attackSourcesName.push(item.INFOBCNAME)
-                attackSourcesData.push(item.COUNTINFOBCNAME)
-            })
-
-            MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor,'次'), "SmallECharts3")
+    ajaxPromise(para).then(res => {
+        let color = ["#F9392D", "#4489D3", "#FFCE14", "#2cc78f",]
+        let newres = ''
+        newres = res.sort(function (a, b) {
+            return b.COUNTINFOBCNAME - a.COUNTINFOBCNAME;
+        });
+        let attackSourcesData = []
+        let attackSourcesName = []
+        let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
+        newres.map(item => {
+            attackSourcesName.push(item.INFOBCNAME)
+            attackSourcesData.push(item.COUNTINFOBCNAME)
         })
+        let soption = MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
+        // console.log(soption)
+        // MyEcharts.on("click", eConsole);
+        MyEcharts.initChart(soption, "SmallECharts3")
+    })
 }
 
 /**获取紧急工单非紧急工单的数量*/

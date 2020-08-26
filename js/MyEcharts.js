@@ -827,7 +827,6 @@ var MyEcharts = {
                 },
                 ],
                 yAxis: [{
-                    inverse: true,
                     type: 'value',
                     name: '单位',
                     nameTextStyle: {color: '#fff', fontSize: '90%', padding: [0, 0, 0, -45]},

@@ -6,7 +6,7 @@ function newonload() {
         console.log(aa,'987654321')
     })
 
-        GetCarNewInfoFun()
+    GetCarNewInfoFun()
     initMap();
     init1()
     EndFacilities()
@@ -113,7 +113,7 @@ function GetCarNewInfoFun() {
         type: 'get',
         dataType: 'JSON',
     }
-  ajaxPromise(para).then(res=>{
+    ajaxPromise(para).then(res=>{
         console.log(res,'xxxx ')
 
 

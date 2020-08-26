@@ -313,14 +313,15 @@ function gaoxiaoClose(){
 }
 
 
-function createThree(data) {
+/*function createThree(data) {
 	var str=""
 	for(var i=0;i<3;i++){
-		str += '<div  class="csyytz_txt text-centered"  onclick=openIframe("'+data[i].url+'")>'
+		str += /!*'<div  class="csyytz_txt text-centered"  onclick=openIframe("'+data[i].url+'")>'*!/
+			+'<a  class="csyytz_txt text-centered"  target="_blank" href='+data[i].url+'>'
 			+'<div class="arrowBar-box">'
 			+'<div class="arrowBar"></div>'
 			+'</div>'
-			+ data[i].name+ '</div>';
+			+ data[i].name+ '</a>';
 	}
 	return str;
 }
@@ -328,11 +329,37 @@ function createThree(data) {
 function createMore(data){
 	var str=""
 	for(var i=0;i<6;i++){
-		str += '<div  class="csyytz_txt text-centered"  onclick=openIframe("'+data[i].url+'") style="cursor: pointer">'
+		str +=/!* '<div  class="csyytz_txt text-centered"  onclick=openIframe("'+data[i].url+'") style="cursor: pointer">'*!/
+			'<a  class="csyytz_txt text-centered"  target="_blank" href='+data[i].url+'>'
 			+'<div class="arrowBar-box">'
 			+'<div class="arrowBar"></div>'
 			+'</div>'
-			+ data[i].name+ '</div>';
+			+ data[i].name+ '</a>';
+	}
+	return str;
+}*/
+
+
+function createThree(data){
+	var str=""
+	for(var i=0;i<3;i++){
+		str += '<a  class="csyytz_txt text-centered" href= '+data[i].url+' target="_blank">'
+			+'<div class="arrowBar-box">'
+			+'<div class="arrowBar"></div>'
+			+'</div>'
+			+ data[i].name+ '</ a>';
+	}
+	return str;
+}
+
+function createMore(data){
+	var str=""
+	for(var i=0;i<6;i++){
+		str += '<a  class="csyytz_txt text-centered" href= '+data[i].url+' target="_blank">'
+			+'<div class="arrowBar-box">'
+			+'<div class="arrowBar"></div>'
+			+'</div>'
+			+ data[i].name+ '</ a>';
 	}
 	return str;
 }

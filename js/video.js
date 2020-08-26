@@ -554,6 +554,16 @@ function removeVideoCache(){
 var videoFlagThree=0;
 function openLargeVideo(name,videoUrl){
 
+	//先清空已有的
+	if(hlsListMap["slideThree"]!=null){
+		var removeVideo= $("#slider3 video")[0]
+		removeVideo.pause()
+		hlsListMap["slideThree"].destroy();
+		hlsListMap["slideThree"]=null
+		delete hlsListMap["slideThree"]
+	}
+
+
 	var str= '<span style="left:0px;top:0px;font-size:1.5rem;position:absolute;color:#00fff6;z-index:10000">'+name+'</span>'
 	+ '<span style="right:0px;top:0px;font-size:1.5rem;position:absolute;color:#999;z-index:10000" onclick="removeLargeVideo()">关闭</span>'
 	+ '<div class="largeVideoDiv">'
@@ -577,7 +587,7 @@ function openLargeVideo(name,videoUrl){
 function removeLargeVideo(){
 	var removeVideo= $("#slider3 video")[0]
 	removeVideo.pause()
-//	hlsListMap["slideThree"].destroy();
+	hlsListMap["slideThree"].destroy();
 	hlsListMap["slideThree"]=null
 	delete hlsListMap["slideThree"]
 	$("#slider3").hide()

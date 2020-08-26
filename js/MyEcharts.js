@@ -100,7 +100,7 @@ var MyEcharts = {
          */
         bar: function (xData,yData) {
             // console.log(data)
-           // var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
+            // var data = MyEcharts.EchartsDataFormate.GroupFormate(data, 'bar');
 
             // var xData = ["电话", "网站", "手机App", '微信'];
             // var yData = [2342, 1230, 425, 900, 600];
@@ -392,7 +392,7 @@ var MyEcharts = {
 
             var attackSourcesData = attackSourcesData;
             var attackSourcesName = attackSourcesName
-           var attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474'];
+            var attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474'];
 
             function attackSourcesDataFmt(sData) {
                 var sss = [];
@@ -405,7 +405,7 @@ var MyEcharts = {
                         // itemStyle: itemStyle
                     });
                 });
-                console.log(sss)
+
                 return sss;
             }
 
@@ -495,6 +495,7 @@ var MyEcharts = {
                             fontSize: 16,
                             align: 'left',
                             color: '#333',
+                            barMaxWidth:20,
                             rich: {
                                 nt1: {
                                     color: '#fff',
@@ -564,7 +565,7 @@ var MyEcharts = {
 
                             formatter: function (value, index) {
                                 index = contains(attackSourcesName, value) + 1
-                                console.log(value,index)
+
                                 if (index - 1 < 3) {
                                     return [
                                         '{nt' + index + '|' + index + '}' + '  {title' + index + '|' + value + '}'
@@ -730,11 +731,11 @@ var MyEcharts = {
          *wordCloud
          *@param color : 颜色 数据
          * */
-        goods: function (color) {
+        goods: function (xData,yData,zData,color) {
             // xdata
-            let xData =["徐行镇", "外冈镇", "嘉定镇街道", "华亭镇", "新成路街道", "江桥镇", "马陆镇", "安亭镇", "南翔镇", "嘉定工业区", "真新街道", "菊园新区"]
+
 // ydata
-            let yData = ["99", "90", "74", "73", "55", "340", "337", "330", "189", "154", "150", "103"]
+
 // pictorialData
             let pictorialData = []
             yData.map(v => {
@@ -787,14 +788,45 @@ var MyEcharts = {
                 xAxis: [{
                     type: 'category',
                     data: xData,
+                    
                     // axisTick: { alignWithLabel: true },
-                    axisLabel: {textStyle: {fontSize: '90%', color: "#fff"}},
+                    axisLabel: {
+                        textStyle: {fontSize: '90%', color: "#fff"},
+                        interval: 0,  
+                        formatter:function(value)  
+                        {  
+                         
+                            var ret = "";//拼接加\n返回的类目项  
+                            var maxLength = 4;//每项显示文字个数  
+                            var valLength = value.length;//X轴类目项的文字个数  
+                            var rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数  
+                            if (rowN > 1)//如果类目项的文字大于3,  
+                            {  
+                                for (var i = 0; i < rowN; i++) {  
+                                    var temp = "";//每次截取的字符串  
+                                    var start = i * maxLength;//开始截取的位置  
+                                    var end = start + maxLength;//结束截取的位置  
+                                    //这里也可以加一个是否是最后一行的判断，但是不加也没有影响，那就不加吧  
+                                    temp = value.substring(start, end) + "\n";  
+                                    ret += temp; //凭借最终的字符串  
+                                }  
+                                return ret;  
+                            }  
+                            else {  
+                                return value;  
+                            }  
+                        }   
+                    
+                    },
                     // axisLine: { show: false },
                     axisTick: false
-                }, {
+                }
+                , {
                     "show": false,
                     data: xData,
-                },],
+                    inverse:true
+                },
+                ],
                 yAxis: [{
                     type: 'value',
                     name: '单位',
@@ -831,7 +863,7 @@ var MyEcharts = {
                     name: '总量',
                     type: 'bar',
                     barWidth: 30,
-                    data: yData,
+                    data: yData.sort(function(a, b){return b- a}),
                     itemStyle: {
                         color: color
                     },
@@ -847,7 +879,7 @@ var MyEcharts = {
                         }
                     },
                     type: "line",
-                    data: yData,
+                    data: zData.sort(function(a, b){return b- a}),
                 },
                 ]
             };
@@ -862,7 +894,6 @@ var MyEcharts = {
      * @param echartId : string 需要加引号
      */
     initChart: function (option, echartId) {
-        console.log(option, echartId, '123123')
         var container = eval("document.getElementById('" + echartId + "')");
         var myChart = echarts.init(container);
         myChart.setOption(option, true);	// 为echarts对象加载数据

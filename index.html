@@ -39,7 +39,6 @@
   <script src="js/interval.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/rest-scroll.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/iframe.js" type="text/javascript" charset="utf-8"></script>
-
   <!--地图-->
   <script
     src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale">
@@ -107,7 +106,7 @@
             <div class="core-title">
               <div class="title-bg"></div>
               <h3 style="cursor: pointer">
-                <img src="images/point.png" style="
+                <img src="images/point1.png" style="
                       display: inline-block;
                       width: 1.7rem;
                       height: 1.7rem;
@@ -220,7 +219,7 @@
                 <div class="bottom-border border-box"></div>
               </div>
             </div>
-            <ul></ul>
+               <ul></ul>
           </div>
           <div class="zygy-warp card-warp">
             <div class="title-box" style="margin-bottom: 0.5rem;">
@@ -495,11 +494,13 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-              <div class="main-list" onclick="ModalClick()">
+             <!-- <div class="main-list" onclick="ModalClick()">-->
+              <div class="main-list">
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
-                    <p>12345</p>
+                  <p>12345</p>
+                 <!--   <img src="images/12345.png" style="width:3rem;cursor: pointer"/>-->
                   </div>
                 </div>
                 <div class="main-right">
@@ -1222,7 +1223,7 @@
                 </div>
                 <div v-if="list1.length>0">
                   <div v-for="(item,index) in list1" style="margin: 0.4rem 0;" @click="clickLocus1(item,index)" > 
-                    <span class="sub-bot1" :class="{ mapListActive: index == changeIndex1 }">{{item.startAddress}}-{{item.endAddress}}</span>
+                    <span class="sub-bot1" :class="{ mapListActive: index == changeIndex1 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1238,7 +1239,7 @@
                 </div>
                 <div v-if="list2.length>0">
                   <div v-for="(item, index) in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item, index)" >
-                    <span class="sub-bot2" :class="{ mapListActive: index == changeIndex2 }">{{item.startAddress}}-{{item.endAddress}}</span>
+                    <span class="sub-bot2" :class="{ mapListActive: index == changeIndex2 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1254,7 +1255,7 @@
                 </div>
                 <div v-if="list3.length>0">
                   <div v-for="(item, index) in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item, index)"  >
-                    <span class="sub-bot3" :class="{ mapListActive: index == changeIndex3 }">{{item.startAddress}}-{{item.endAddress}}</span>
+                    <span class="sub-bot3" :class="{ mapListActive: index == changeIndex3 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
                 <div v-else style="margin: 0.4rem 0;">
@@ -1473,6 +1474,28 @@
   //openVideo();
 </script>
 <script>
+  $(function () {
+    flip();
+  });
+
+  function flip() {
+    var timer = null;
+    var i = 0;
+    var j = 0;
+    var aFlip = $(".card");
+
+    function flipFn(arg1, arg2) {
+      aFlip.eq(i).toggleClass('card-flipped');
+      i++;
+      if (i == 5) {
+        i = 0;
+      }
+
+    }
+    timer = setInterval(flipFn, 1000);
+  }
+</script>
+<script>
   function ModalClick() {
     document.getElementById("ModalBox").style.display = "block";
   }
@@ -1563,9 +1586,8 @@
         if (this.list1[index].listLinkInfoState[0].lastPoint) {
           str = this.list1[index].listLinkInfoState[0].lastPoint;
         }
-        let lineArr = str.split(",");
-        console.log(lineArr, "===lineArr");
-        map.setZoomAndCenter(15, lineArr);
+        let lineArr1 = str.split(",");
+        map.setZoomAndCenter(15, lineArr1);
         this.changeIndex1 = index
       },
       clickLocus2(item, index) {
@@ -1630,10 +1652,7 @@
           .get(
             // "http://127.0.0.1:5500/map/mock_data.json"
             // "http://127.0.0.1:5500/map/congrestion.json"
-            //  FIRE_URL+"/jdcymapofgaud/findall"
-           // FIRE_URL + "/jdcytrafficnew/findall"
-      //  FIRE_URL + "/jdcytrafficnew/findall"
-                  FIRE_URL+"/cityBrain/getSession"
+                FIRE_URL+"/cityBrain/getSession"
           )
           .then(
             function (res) {

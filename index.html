@@ -1196,9 +1196,9 @@
         <div class="map-center" @click="mapCenter" title="回到行政区域中心">
           <img src="images/refresh-left.png" alt="" />
         </div>
-        <!-- <div class="map-delete" @click="mapDeletePolyline" title="消除全部划线">
+        <div class="map-delete" @click="mapDeletePolyline" title="消除全部划线">
           <img src="images/icon-delete.png" alt="" />
-        </div> -->
+        </div>
         <div class="dialog-toggle" @click="showClick">
           <span v-show="showDialog">折叠</span>
           <span v-show="!showDialog">展开堵点信息</span>
@@ -1598,41 +1598,46 @@
           let str = "";
 
 
-          var polylineList=[]
+          var polylineList1=[]
 
           for(var i=0;i<this.list1[index].listLinkInfoState.length;i++){
-            if (this.list1[index].listLinkInfoState[0].lngLats) {
-              str = this.list1[index].listLinkInfoState[0].lngLats;
+            if(this.list1[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list1[index].listLinkInfoState[i].lngLats) {
+              str = this.list1[index].listLinkInfoState[i].lngLats;
             }
             console.log(str,'===str');
             let arr = str.split(";");
             arr.forEach((items) => {
               let singleArr = items.split(",");
             lineArr.push(singleArr);
+
           });
             var polyline1 = new AMap.Polyline({
               map: map,
               path: lineArr,
               showDir: true,
               strokeColor: "red", //线颜色
-              strokeOpacity: 0.5,     //线透明度
+              strokeOpacity: 0.3,     //线透明度
               strokeWeight: 12, //线宽
               strokeStyle: "solid", //线样式
             });
            // this.polylines1.set(index, polyline1);
-            polylineList[i]=polyline1
+            polylineList1[i]=polyline1
 
           }
 
-          this.polylines1.set(index, polylineList);
+          this.polylines1.set(index, polylineList1);
 
 
 
 
         } else {
-          var curPolylineList=this.polylines1[index]
+          var curPolylineList=this.polylines1.get(index)
+          console.log("+++++++")
+          console.log(curPolylineList)
           for(var j=0;j<curPolylineList.length;j++){
-            map.remove(curPolylineList[i]);
+            map.remove(curPolylineList[j]);
           }
          // map.remove(this.polylines1.get(index));
           this.polylines1.delete(index);
@@ -1648,6 +1653,55 @@
         console.log(lineArr, "===lineArr");
         map.setZoomAndCenter(15, lineArr);
         this.changeIndex2 = index
+
+        this.list2[index].isShow = !this.list2[index].isShow;
+        if (this.list2[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+
+
+          var polylineList2=[]
+
+          for(var i=0;i<this.list2[index].listLinkInfoState.length;i++){
+            if(this.list2[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list2[index].listLinkInfoState[i].lngLats) {
+              str = this.list2[index].listLinkInfoState[i].lngLats;
+            }
+            console.log(str,'===str');
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+              lineArr.push(singleArr);
+
+            });
+            var polyline2 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.3,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+            // this.polylines1.set(index, polyline1);
+            polylineList2[i]=polyline2
+
+          }
+
+          this.polylines2.set(index, polylineList2);
+        } else {
+          var curPolylineList=this.polylines2.get(index)
+          console.log("+++++++")
+          console.log(curPolylineList)
+          for(var j=0;j<curPolylineList.length;j++){
+            map.remove(curPolylineList[j]);
+          }
+          // map.remove(this.polylines1.get(index));
+          this.polylines2.delete(index);
+        }
+
       },
       clickLocus3(item, index) {
         let str = "";
@@ -1658,6 +1712,56 @@
         console.log(arr, "===arr");
         map.setZoomAndCenter(15, arr);
         this.changeIndex3 = index
+
+        this.list3[index].isShow = !this.list3[index].isShow;
+        if (this.list3[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+
+          var polylineList3=[]
+
+          for(var i=0;i<this.list3[index].listLinkInfoState.length;i++){
+            if(this.list3[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list3[index].listLinkInfoState[i].lngLats) {
+              str = this.list3[index].listLinkInfoState[i].lngLats;
+            }
+            console.log(str,'===str');
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+              lineArr.push(singleArr);
+
+            });
+            var polyline3 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.3,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+            // this.polylines1.set(index, polyline1);
+            polylineList3[i]=polyline3
+
+          }
+
+          this.polylines3.set(index, polylineList3);
+        } else {
+          var curPolylineList=this.polylines3.get(index)
+         // alert(curPolylineList.length)
+          for(var j=0;j<curPolylineList.length;j++){
+            console.log(123344677)
+            console.log(curPolylineList[j])
+            map.remove(curPolylineList[j]);
+          }
+          // map.remove(this.polylines1.get(index));
+        //  this.polylines3.delete(index);
+        }
+
+
       },
       colorClick1() {
         (this.isActive = true), (this.isUnactive = false);
@@ -1691,21 +1795,37 @@
         this.polylines3.forEach((item) => {
           map.remove(item);
         });
-        // this.polylines1.clear()
-        // this.polylines2.clear()
-        // this.polylines3.clear()
+        this.polylines1.clear()
+        this.polylines2.clear()
+        this.polylines3.clear()
+
+        for(var i=0;i<this.list1.length;i++){
+          this.list1[i].isShow=false;
+        }
+        console.log(this.list1)
+        for(var i=0;i<this.list1.length;i++){
+          this.list2[i].isShow=false;
+        }
+        console.log(this.list2)
+        for(var i=0;i<this.list1.length;i++){
+          this.list3[i].isShow=false;
+        }
+        console.log(this.list3)
+
       },
       getHttp() {
         //发送get请求
         this.$http
           .get(
             // "http://127.0.0.1:5500/map/mock_data.json"
-            // "http://127.0.0.1:5500/map/congrestion.json"
-                FIRE_URL+"/cityBrain/getSession"
+            //"http://127.0.0.1:63342/cityoperationscreen/map/congrestion.json"
+                 FIRE_URL+"/cityBrain/getSession"
+                 //"http://10.237.115.83:8089/cityoperationscreen/congrestion.json"
           )
           .then(
             function (res) {
               console.log(res.data, "res111");
+             // alert(123)
               res.data.forEach((item) => {
                 item.isShow = false;
                 if (item.distance <= 1000 && item.listLinkInfoState !=='') {
@@ -1728,9 +1848,9 @@
       this.getHttp();
     },
     mounted() {
-      this.list1.clear()
-      this.list2.clear()
-      this.list3.clear()
+      this.list1=[]
+      this.list2=[]
+      this.list3=[]
       this.timer = setInterval(this.getHttp, 1000*60*15);
     },
     beforeDestroy() {

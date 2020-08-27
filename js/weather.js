@@ -230,7 +230,7 @@ function changeWeather(){
             }
         },
         error:function () {
-            alert("无预警信息")
+            //alert("无预警信息")
         }
     })
 }

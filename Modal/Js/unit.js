@@ -22,14 +22,14 @@ function ToOnload() {
             attackSourcesName.push(item.ATNAME)
             attackSourcesData.push(item.COUNTATNAME)
         })
-        let HostOption=MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
+        let HostOption = MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
         MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
 
         var HostChart = echarts.init(document.getElementById("SmallECharts4"));
         HostChart.setOption(HostOption);
-        HostChart.on("click", function(param){
-            console.log(param.name,param.data.value)
-            HostSteetFun(ModelTime,param.name,param.data.value)
+        HostChart.on("click", function (param) {
+            console.log(param.name, param.data.value)
+            HostSteetFun(ModelTime, param.name, param.data.value)
 
         })
 
@@ -294,24 +294,37 @@ function findbcName() {
     ajaxPromise(para).then(res => {
     })
 }
+
 /**热词下钻数据*/
-function HostSteetFun(ModelTime,name) {
+function HostSteetFun(ModelTime, name) {
     let para = {
-        url: ORACLE_URL + '/taskInfo/findscNameType',
+        url: ORACLE_URL + '/taskInfo/findscNameStreet',
         async: true,
         type: 'post',
         data: JSON.stringify({
             "date": ModelTime,
-            "scname":name,
-    
+            "scname": name,
+
         }),
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-console.log(res,'000')
+        res.map(item => {
+            LastHeatmMapData.map(child => {
+                if (child.name == item.STREETNAME) {
+                    child.count = item.COUNTSCNAME
+                }
+            })
+        })
+        heatmapData = ''
+        heatmapData = LastHeatmMapData
+        console.log(heatmapData, '查看')
+        initMap()
+        init1()
 
     })
 }
+
 /**统计分析-基本情况*/
 function findbcNameType() {
     let para = {
@@ -339,68 +352,85 @@ function findbcNameType() {
         let option = MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
         var FindbcNameTypeChart = echarts.init(document.getElementById("SmallECharts3"));
         FindbcNameTypeChart.setOption(option);
-        FindbcNameTypeChart.on("click", function(param){
-            console.log(param.name,param.data.value)
-            JiBenXinXi(ModelTime,param.name,param.data.value)
-            JiBenXinXiReLiability(ModelTime,param.name)
+        FindbcNameTypeChart.on("click", function (param) {
+            console.log(param.name, param.data.value)
+            JiBenXinXi(ModelTime, param.name, param.data.value)
+            JiBenXinXiReLiability(ModelTime, param.name)
 
         })
     })
 }
-function backBtn(){
+
+function backBtn() {
     console.log(111)
-    document.getElementById("SmallECharts3").style.display="block"
-    document.getElementById("SmallECharts3copy").style.display="none"
+    document.getElementById("backBtnclass").style.display = "none"
+    document.getElementById("SmallECharts3").style.display = "block"
+    document.getElementById("SmallECharts3copy").style.display = "none"
 }
+
 /**获取基本信息下钻数据*/
-function JiBenXinXi (ModelTime,name,value){
-    para={
+function JiBenXinXi(ModelTime, name, value) {
+    para = {
         url: ORACLE_URL + '/taskInfo/findscNameType',
         async: true,
         type: 'post',
         data: JSON.stringify({
             "date": ModelTime,
-            "bcname":name,
-            "countbcname":value
+            "bcname": name,
+            "countbcname": value
         }),
         dataType: 'JSON',
     }
-    
-    ajaxPromise(para).then(res=>{
-        document.getElementById("SmallECharts3copy").style.display="block"
-        document.getElementById("SmallECharts3").style.display="none"
-        console.log(res,'下钻数据',document.getElementById("SmallECharts3copy"))
-     let    attackSourcesData2 = []
-      let   attackSourcesName2 = []
-       let  attackSourcesColor2 = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-         res.map(item => {
+
+    ajaxPromise(para).then(res => {
+        document.getElementById("SmallECharts3copy").style.display = "block"
+        document.getElementById("backBtnclass").style.display = "block"
+        document.getElementById("SmallECharts3").style.display = "none"
+        console.log(res, '下钻数据', document.getElementById("SmallECharts3copy"))
+        let attackSourcesData2 = []
+        let attackSourcesName2 = []
+        let attackSourcesColor2 = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
+        res.map(item => {
             attackSourcesName2.push(item.INFOSCNAME)
             attackSourcesData2.push(item.COUNTSCNAME)
         })
-     let option2 = MyEcharts.EchartsOption.Ranking('name', attackSourcesName2, attackSourcesData2, attackSourcesColor2, '次')
-let FindbcNameTypeChart2 = echarts.init(document.getElementById("SmallECharts3copy"));
-FindbcNameTypeChart2.setOption(option2);
+        let option2 = MyEcharts.EchartsOption.Ranking('name', attackSourcesName2, attackSourcesData2, attackSourcesColor2, '次')
+        let FindbcNameTypeChart2 = echarts.init(document.getElementById("SmallECharts3copy"));
+        FindbcNameTypeChart2.setOption(option2);
     })
 }
+
 /**获取基本信息下钻数据热力图*/
-function JiBenXinXiReLiability (ModelTime,name){
-    para={
+function JiBenXinXiReLiability(ModelTime, name) {
+    para = {
         url: ORACLE_URL + '/taskInfo/findcNameStreet',
         async: true,
         type: 'post',
         data: JSON.stringify({
             "date": ModelTime,
-            "bcname":name,
-           
+            "bcname": name,
+
         }),
         dataType: 'JSON',
     }
-    
-    ajaxPromise(para).then(res=>{
+    ajaxPromise(para).then(res => {
+        res.map(item => {
+            LastHeatmMapData.map(child => {
+                if (child.name == item.STREETNAME) {
+                    child.count = item.COUNTSCNAME
+                }
+            })
+        })
+        heatmapData = ''
+        heatmapData = LastHeatmMapData
+        console.log(heatmapData, '查看')
+        initMap()
+        init1()
 
-        console.log(res,'二级热力图数据')
+
     })
 }
+
 /**获取紧急工单非紧急工单的数量*/
 function countWork(type) {
     let para = {

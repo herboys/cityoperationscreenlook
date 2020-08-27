@@ -231,7 +231,7 @@ function getGarbageCarLoading() {
                 let ul1 = document.getElementById("OnDutyToday");
                 let ul2 = document.getElementById("OnDutyTodayCopy");
                 let rollbox = document.getElementById("OnDutyToday_box");
-                rolls(20, ul1, ul2, rollbox)
+                rolls(50, ul1, ul2, rollbox)
                 para = ''
                 res.data[0].garbageCarLoading.forEach(e => {
                     para += `<ul style="color: white">
@@ -247,7 +247,7 @@ function getGarbageCarLoading() {
                 ul1 = document.getElementById("OnDutyToday1");
                  ul2 = document.getElementById("OnDutyTodayCopy1");
                  rollbox = document.getElementById("OnDutyToday_box1");
-                rolls1(20, ul1, ul2, rollbox)
+                rolls1(50, ul1, ul2, rollbox)
 
 
             }

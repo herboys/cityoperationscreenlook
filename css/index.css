@@ -288,7 +288,7 @@ html {
     width: 130.8rem;
     height: 48.3rem;
     animation: 0.6s;
-    -webkit-animation: zoom 0.6s;
+    -webkit-animation: zoom 2s;
     /*box-shadow: 10px 10px 10px red;*/
     /*-moz-box-shadow: 110px 10px 10px red;*/
     /*-webkit-box-shadow: 10px 10px 10px red;*/

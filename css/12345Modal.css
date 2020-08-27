@@ -15,7 +15,7 @@ body {
     box-sizing: border-box;
     width: 100%;
     height: inherit;
-    padding: 0px 0px;
+    padding: 0rem 0rem;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -29,8 +29,8 @@ body {
     font-weight: bold;
     z-index: 999;
     cursor: pointer;
-    right: 10px;
-    top: 8px;
+    right: 0.833rem;
+    top: 0.667rem;
     color: white;
 
 }
@@ -42,32 +42,32 @@ body {
 }
 
 .line {
-    border-left: 2px solid #31FFFE;
-    height: 20px;
+    border-left: 0.167rem solid #31FFFE;
+    height: 1.667rem;
     position: relative;
 }
 .Modal-right-tabs{
     position:absolute;
     background: red;
-    top: 100px;
-    left: 20px;
+    top: 8.333rem;
+    left: 1.667rem;
     z-index: 99999;
 }
 *{text-decoration:none!important; /* 定义所有链接不显示下划线 */}
 /* ------------------- start 针对 Opera, Firefox 的 CSS 弹出菜单 -------------------*/
 .pmVerticalRightOut{background-color:#fff!important; /* 定义主菜单域背景色 */}
 .pmVerticalRightOut .level{   /* 定义一级类别属性 */
-    width:120px; /* 宽度 */
-    height:30px; /* 高度 */
-    line-height: 30px;
+    width:10rem; /* 宽度 */
+    height:2.5rem; /* 高度 */
+    line-height: 2.5rem;
     text-align: center;
-    font-size: 14px;
+    font-size: 1.167rem;
 
     position:relative; /* 显示位置为相对位置 */
     display:block; /* 以块模式显示 */
     background-color:#D8D8D8; /* 背景色 */
-    padding:0px 2px; /* 文字内补丁间隔 */
-    margin:0px 0px 1px 0px; /* 菜单外补丁间隔 */
+    padding:0rem 0.167rem; /* 文字内补丁间隔 */
+    margin:0rem 0rem 0.083rem 0rem; /* 菜单外补丁间隔 */
 }
 .pmVerticalRightOut .level:hover { /* 当鼠标划过一级菜单时 */
     background-color:#6633FF; /* 背景色 */
@@ -77,10 +77,10 @@ body {
 
 .pmVerticalRightOut .level:hover .level_ { /* 鼠标划过时触发显示二级类别 */
     display:block; /* 以块显示 */
-    left:124px; /* 相对于一级类别显示的位置 */
-    width:120px; /* 宽度 */
+    left:10.333rem; /* 相对于一级类别显示的位置 */
+    width:10rem; /* 宽度 */
     height:auto; /* 高度 */
-    top:0px; /* 相对于一级类别所在位置的顶端 */
+    top:0rem; /* 相对于一级类别所在位置的顶端 */
     background-color:#EFEFEF; /* 定义背景色 */
     position:absolute; /* 位置为绝对位置 */
 }
@@ -99,25 +99,25 @@ body {
     /* 定义所有二级类别通用属性 */
     display:block; /* 以块显示 */
     color:black; /* 文字颜色 */
-    padding:0px 2px; /* 内补丁间隔 */
+    padding:0rem 0.167rem; /* 内补丁间隔 */
 }
 /* ------------------- end 针对 Opera, Firefox 的 CSS 弹出菜单 -------------------*/
 
 /* ------------------- start 针对 IE 的 CSS 弹出菜单 -------------------*/
 .levelIe{   /* 定义一级类别属性 */
-    width:120px; /* 宽度 */
+    width:10rem; /* 宽度 */
     position:relative; /* 显示位置为相对位置 */
     display:block; /* 以块模式显示 */
     background-color:#D8D8D8; /* 背景色 */
-    padding:0px 2px; /* 文字内补丁间隔 */
-    margin:0px 0px 1px 0px; /* 菜单外补丁间隔 */
+    padding:0rem 0.167rem; /* 文字内补丁间隔 */
+    margin:0rem 0rem 0.083rem 0rem; /* 菜单外补丁间隔 */
 }
 .levelIe .level_ { /* 鼠标划过时触发显示二级类别 */
     display:block; /* 以块显示 */
-    left:124px; /* 相对于一级类别显示的位置 */
-    width:120px; /* 宽度 */
+    left:10.333rem; /* 相对于一级类别显示的位置 */
+    width:10rem; /* 宽度 */
     height:auto; /* 高度 */
-    top:0px; /* 相对于一级类别所在位置的顶端 */
+    top:0rem; /* 相对于一级类别所在位置的顶端 */
     background-color:#EFEFEF; /* 定义背景色 */
     position:absolute; /* 位置为绝对位置 */
 }
@@ -136,15 +136,15 @@ body {
     /* 定义所有二级类别通用属性 */
     display:block; /* 以块显示 */
     color:black; /* 文字颜色 */
-    padding:0px 2px; /* 内补丁间隔 */
+    padding:0rem 0.167rem; /* 内补丁间隔 */
 }
 
 .line:after {
     content: "";
     position: absolute;
-    border-left: 2px solid #31FFFE;
-    height: 10px;
-    top: -4px;
+    border-left: 0.167rem solid #31FFFE;
+    height: 0.833rem;
+    top: -0.333rem;
     transform: rotate(45deg);
 
 }
@@ -152,26 +152,26 @@ body {
 .line:before {
     content: "";
     position: absolute;
-    border-left: 2px solid #31FFFE;
-    height: 8px;
-    bottom: -4px;
+    border-left: 0.167rem solid #31FFFE;
+    height: 0.667rem;
+    bottom: -0.333rem;
     transform: rotate(-45deg);
 
 }
 
 .line1 {
-    border-left: 2px solid #31FFFE;
-    height: 20px;
+    border-left: 0.167rem solid #31FFFE;
+    height: 1.667rem;
     position: relative;
 }
 
 .line1:after {
     content: "";
     position: absolute;
-    border-left: 2px solid #31FFFE;
-    height: 8px;
-    top: -4px;
-    right: 2px;
+    border-left: 0.167rem solid #31FFFE;
+    height: 0.667rem;
+    top: -0.333rem;
+    right: 0.167rem;
 
     transform: rotate(-45deg);
 
@@ -180,20 +180,20 @@ body {
 .line1:before {
     content: "";
     position: absolute;
-    border-left: 2px solid #31FFFE;
-    height: 8px;
-    bottom: -4px;
+    border-left: 0.167rem solid #31FFFE;
+    height: 0.667rem;
+    bottom: -0.333rem;
 
-    right: 2px;
+    right: 0.167rem;
 
     transform: rotate(45deg);
 
 }
 .Modal-left-header{
-    font-size: 35px;
+    font-size: 2.917rem;
     color: #1fe0e9;
     font-weight: 500;
-    padding: 10px;
+    padding: 0.833rem;
     text-align: center;
 }
 
@@ -201,11 +201,11 @@ body {
 
 }
 /*.Modal-left-item:nth-child(2) {*/
-/*    margin-bottom: 150px;*/
+/*    margin-bottom: 12.5rem;*/
 /*}*/
 
 .Modal-left-item .header {
-    margin: 10px 0px;
+    margin: 0.833rem 0rem;
 
     display: flex;
     justify-content: left;
@@ -213,10 +213,10 @@ body {
 }
 
 .Modal-left-item .header span {
-    font-size: 20px;
+    font-size: 1.667rem;
     color: white;
-    letter-spacing: 2px;
-    margin: 0px 20px;
+    letter-spacing: 0.167rem;
+    margin: 0rem 1.667rem;
 }
 
 .work-older {
@@ -229,7 +229,7 @@ body {
 }
 
 .work-older-item:nth-child(2n) {
-    margin: 0px 20px;
+    margin: 0rem 1.667rem;
 }
 
 .work-older-header {
@@ -237,28 +237,28 @@ body {
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 4px 4px;
+    padding: 0.333rem 0.333rem;
     color: white;
-    font-size: 18px;
+    font-size: 1.5rem;
     font-weight: 500;
     font-family: 微软雅黑;
 }
 
 .work-older-header button {
     list-style-type: none;
-    border-radius: 4px;
-    border: 2px solid #59647A;
-    padding: 4px 10px;
+    border-radius: 0.333rem;
+    border: 0.167rem solid #59647A;
+    padding: 0.333rem 0.833rem;
     background-color: inherit;
     color: #01DFD2;
-    font-size: 16px;
-    border: 0px;
+    font-size: 1.333rem;
+    border: 0rem;
     outline: none;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     -webkit-focus-ring-color: rgba(0, 0, 0, 0);
-    border-top: 2px solid #1DD3DE;
-    box-shadow: inset 0px 0px 5px 8px #107E9A;
-    margin: 0px 10px;
+    border-top: 0.167rem solid #1DD3DE;
+    box-shadow: inset 0rem 0rem 0.417rem 0.667rem #107E9A;
+    margin: 0rem 0.833rem;
 }
 
 .work-older-list {
@@ -267,8 +267,8 @@ body {
     /*background: -o-linear-gradient(bottom right, #08292D, #050C0F); !*Opera 11.1-12.0*!*/
     /*background: -moz-linear-gradient(bottom right, #08292D, #050C0F); !*firefox 3.6-15*!*/
     /*background: linear-gradient(to bottom right, #08292D, #050C0F); !*标准语法*!*/
-    /*border: 2px solid #09587d;*/
-    /*box-shadow: inset 0px 0px 5px 5px rgba(28, 70, 105, 0.6);*/
+    /*border: 0.167rem solid #09587d;*/
+    /*box-shadow: inset 0rem 0rem 0.417rem 0.417rem rgba(28, 70, 105, 0.6);*/
 }
 
 .work-older-list-ul {
@@ -279,20 +279,20 @@ body {
 
 .work-older-list-ul li {
     flex: 1;
-    margin: 10px 0px;
+    margin: 0.833rem 0rem;
     color: #00FFF0;
-    font-size: 12px;
+    font-size: 1rem;
 }
 
 .ul-line {
     flex: 1;
-    border-top: 1px solid #116F75;
+    border-top: 0.083rem solid #116F75;
 
 }
 
 .ul-line li {
     color: white !important;
-    font-size: 12px;
+    font-size: 1rem;
 
 }
 
@@ -302,13 +302,13 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     justify-content: space-between;
-    /*margin-right: 30px;*/
+    /*margin-right: 2.5rem;*/
 
 }
 
 .Satisfaction-warp-item {
-    /*width: 575px;*/
-    /*height: 298px;*/
+    /*width: 47.917rem;*/
+    /*height: 24.833rem;*/
 flex: 1;
     box-sizing: border-box;
 }
@@ -317,10 +317,10 @@ flex: 1;
 position: absolute;
     width: 100%;
     height: 100%;
-    top: 0px;
+    top: 0rem;
     z-index: 99;
     box-sizing: border-box;
-    padding: 30px 30px 10px 20px;
+    padding: 2.5rem 2.5rem 0.833rem 1.667rem;
     animation: 0.6s;
     -webkit-animation: zoom 0.6s;
 
@@ -336,17 +336,17 @@ position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    padding-right: 24px;
-    height: 34px;
+    margin-bottom: 0.833rem;
+    padding-right: 2rem;
+    height: 2.833rem;
 }
 
 /*.Satisfaction-warp-item:nth-child(2n) {*/
-/*    !*margin-left: 20px;*!*/
+/*    !*margin-left: 1.667rem;*!*/
 /*}*/
 
 /*.Satisfaction-warp-item:nth-child(2n+1) {*/
-/*    !*margin-right: 20px;*!*/
+/*    !*margin-right: 1.667rem;*!*/
 /*}*/
 
 .Satisfaction-warp-item-header-left {
@@ -354,38 +354,38 @@ position: absolute;
 }
 
 .banner1 {
-    width: 117px;
-    height: 25px;
+    width: 9.75rem;
+    height: 2.083rem;
     background-image: url(../Modal/images/banner.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
-    line-height: 25px;
+    line-height: 2.083rem;
     font-weight: 500;
-    letter-spacing: 1px;
-    font-size: 12px;
+    letter-spacing: 0.083rem;
+    font-size: 1rem;
     color: #000000;
 }
 
 .banner2 {
-    width: 117px;
-    height: 25px;
+    width: 9.75rem;
+    height: 2.083rem;
     background-image: url(../Modal/images/banner2.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     color: white;
     text-align: center;
     font-weight: 500;
-    line-height: 25px;
-    font-size: 12px;
-    letter-spacing: 1px;
+    line-height: 2.083rem;
+    font-size: 1rem;
+    letter-spacing: 0.083rem;
 }
 
 .Satisfaction-warp-item-echarts {
     width: inherit;
-    height: 313px;
+    height: 26.083rem;
     position: relative;
-    /*border: 1px solid white;*/
+    /*border: 0.083rem solid white;*/
     background-image: url(../Modal/images/12345icon.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -393,17 +393,17 @@ position: absolute;
     /*    border-image-source: url(../Modal/images/12345icon.png);*/
     /*    border-image-slice: 200 300 400 200;*/
     /*// border-image-outset:200 300 400 200;*/
-    /*    border-image-width: 200px 300px 400px 200px;*/
+    /*    border-image-width: 16.667rem 25rem 33.333rem 16.667rem;*/
 
 }
 .Workorder{
     width: inherit;
-    padding: 40px 20px 30px 20px;
+    padding: 3.333rem 1.667rem 2.5rem 1.667rem;
 
 }
 
 #SmallECharts4 {
-    top: -20px
+    top: -1.667rem
 }
 
 
@@ -423,99 +423,99 @@ ul li {
 }
 
 #dropdown {
-    font-size: 16px;
+    font-size: 1.333rem;
     z-index: 99999;
     text-align: center;
 }#dropdown1 {
-    font-size: 16px;
+    font-size: 1.333rem;
     z-index: 99999
 }#dropdown2 {
-    font-size: 16px;
+    font-size: 1.333rem;
     z-index: 99999
 }
 
 #dropdown p {
-    width: 80px;
-    height: 32px;
-    line-height: 32px;
-    padding-left: 10px;
-    padding-right: 30px;
-    border: 1px solid #a9c9e2;
-    /*background: inherit url('V') no-repeat right 4px;*/
+    width: 6.667rem;
+    height: 2.667rem;
+    line-height: 2.667rem;
+    padding-left: 0.833rem;
+    padding-right: 2.5rem;
+    border: 0.083rem solid #a9c9e2;
+    /*background: inherit url('V') no-repeat right 0.333rem;*/
     color: #ffffff;
     cursor: pointer
 }#dropdown1 p {
-    width: 80px;
-    height: 32px;
-    line-height: 32px;
-    padding-left: 10px;
-    padding-right: 30px;
-    border: 1px solid #a9c9e2;
-    /*background: inherit url('V') no-repeat right 4px;*/
+    width: 6.667rem;
+    height: 2.667rem;
+    line-height: 2.667rem;
+    padding-left: 0.833rem;
+    padding-right: 2.5rem;
+    border: 0.083rem solid #a9c9e2;
+    /*background: inherit url('V') no-repeat right 0.333rem;*/
     color: #ffffff;
     cursor: pointer
 }#dropdown2 p {
-    width: 80px;
-    height: 32px;
-    line-height: 32px;
-    padding-left: 10px;
-    padding-right: 30px;
-    border: 1px solid #a9c9e2;
-    /*background: inherit url('V') no-repeat right 4px;*/
+    width: 6.667rem;
+    height: 2.667rem;
+    line-height: 2.667rem;
+    padding-left: 0.833rem;
+    padding-right: 2.5rem;
+    border: 0.083rem solid #a9c9e2;
+    /*background: inherit url('V') no-repeat right 0.333rem;*/
     color: #ffffff;
     cursor: pointer
 }
 
 #dropdown ul {
-    width: 119px;
+    width: 9.917rem;
     background-color: #061839;;
-    margin-top: 2px;
-    border: 2px solid #50657D;
+    margin-top: 0.167rem;
+    border: 0.167rem solid #50657D;
     position: absolute;
     display: none
 }#dropdown1 ul {
-    width: 119px;
+    width: 9.917rem;
     background-color: #061839;;
-    margin-top: 2px;
-    border: 2px solid #50657D;
+    margin-top: 0.167rem;
+    border: 0.167rem solid #50657D;
     position: absolute;
     display: none
 }#dropdown2 ul {
-    width: 119px;
+    width: 9.917rem;
     background-color: #061839;;
-    margin-top: 2px;
-    border: 2px solid #50657D;
+    margin-top: 0.167rem;
+    border: 0.167rem solid #50657D;
     position: absolute;
     display: none
 }
 
 #dropdown ul li {
-    height: 24px;
-    line-height: 24px;
-    text-indent: 10px
+    height: 2rem;
+    line-height: 2rem;
+    text-indent: 0.833rem
 }#dropdown1 ul li {
-    height: 24px;
-    line-height: 24px;
-    text-indent: 10px
+    height: 2rem;
+    line-height: 2rem;
+    text-indent: 0.833rem
 }#dropdown2 ul li {
-    height: 24px;
-    line-height: 24px;
-    text-indent: 10px
+    height: 2rem;
+    line-height: 2rem;
+    text-indent: 0.833rem
 }
 
 #dropdown ul li a {
     display: block;
-    height: 24px;
+    height: 2rem;
     color: #ffffff;
     text-decoration: none
 }#dropdown1 ul li a {
     display: block;
-    height: 24px;
+    height: 2rem;
     color: #ffffff;
     text-decoration: none
 }#dropdown2 ul li a {
     display: block;
-    height: 24px;
+    height: 2rem;
     color: #ffffff;
     text-decoration: none
 }
@@ -537,6 +537,7 @@ ul li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0rem 1.667rem;
 }
 
 .GarBage-between {
@@ -544,16 +545,15 @@ ul li {
     /*justify-content: space-between;*/
 }
 
-.flex-item-1 {
-    flex: 1;
+.flex-item-1{
+    text-align: left;
 }
-
 .item-right {
-    margin-left: 10px;
+    margin-left: 0.833rem;
 }
 
 .item-left {
-    margin-right: 10px;
+    margin-right: 0.833rem;
 }
 
 .banner-span {
@@ -561,10 +561,10 @@ ul li {
     background-color: rgba(15, 58, 125, 0.7);
     fontFamily: "SimHei";
     color: #1fe0e9;
-    padding: 4px 12px 6px 12px;
-    font-size: 15px;
-    /*font-size:10px;-webkit-transform:scale(0.7);*/
-    border-left: 3px solid #1fe0e9;
+    padding: 0.333rem 1rem 0.5rem 1rem;
+    font-size: 1.25rem;
+    /*font-size:0.833rem;-webkit-transform:scale(0.7);*/
+    border-left: 0.25rem solid #1fe0e9;
     display: inline-block;
 }
 .banner-span-no {
@@ -573,9 +573,9 @@ ul li {
 
     /*fontFamily: "SimHei";*/
     /*color: #1fe0e9;*/
-    /*padding: 4px 12px 6px 12px;*/
-    /*font-size: 15px;*/
-    /*font-size:10px;-webkit-transform:scale(0.7);*/
+    /*padding: 0.333rem 1rem 0.5rem 1rem;*/
+    /*font-size: 1.25rem;*/
+    /*font-size:0.833rem;-webkit-transform:scale(0.7);*/
 
     display: inline-block;
 
@@ -590,22 +590,22 @@ ul li {
 }
 
 .GarBage-child-item img {
-    width: 20px;
-    height: 20px;
+    width: 1.667rem;
+    height: 1.667rem;
 }
 
 .GarBage-child-item div {
 
-    margin: 0px 10px;
+    margin: 0rem 0.833rem;
     width: 100%;
     display: flex;
-    font-size: 12px;
+    font-size: 1rem;
     color: white;
     display: flex;
-    padding: 4px 0px;
+    padding: 0.333rem 0rem;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #50637c;
+    border-bottom: 0.083rem solid #50637c;
 
 }
 
@@ -614,24 +614,24 @@ ul li {
     font-Family: PingFangSC-Semibold;
     font-weight: 500;
     color: #29c399;
-    font-size: 12px;
+    font-size: 1rem;
     transform: scale(0.9);
     -webkit-transform: scale(0.9);
 }
 .GarBage-child-item div p {
-    font-size: 12px;
+    font-size: 1rem;
     /*transform: scale(0.9);*/
     /*-webkit-transform: scale(0.9);*/
 }
 
 .GarBage-child-1 {
     display: flex;
-    margin-top: 4px;
+    margin-top: 0.333rem;
     flex-wrap: wrap;
 }
 
 .Municipal-level {
-    margin: 24px 0px 40px 0px;
+    margin: 2rem 0rem 3.333rem 0rem;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -644,9 +644,9 @@ ul li {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    top: 0px;
-    left: 0px;
-    padding: 30px 20px 20px 20px;
+    top: 0rem;
+    left: 0rem;
+    padding: 2.5rem 1.667rem 1.667rem 1.667rem;
     animation: 0.6s;
     -webkit-animation: zoom 0.6s;
 }
@@ -654,9 +654,9 @@ ul li {
 .clears {
     position: absolute;
     font-weight: bold;
-    top: 31px;
-    right: 23px;
-    font-size: 20px;
+    top: 2.583rem;
+    right: 1.917rem;
+    font-size: 1.667rem;
     color: #1fe0e9;
 }
 
@@ -665,12 +665,12 @@ ul li {
     width: 100%;
     height: 100%;
     background-color: #082442;
-   // border: 2px solid red;
-    padding: 10px 20px;
+   // border: 0.167rem solid red;
+    padding: 0.833rem 1.667rem;
 }
 
 .Municipal-level-warp-header {
-    /*border:2px solid pink; */
+    /*border:0.167rem solid pink; */
     width: 100%;
     height: 100%;
 }
@@ -679,29 +679,29 @@ ul li {
     display: flex;
     color: #1fe0e9;
 
-    padding-left: 8px;
-    border-bottom: 1px dashed #0a3f6c;
+    padding-left: 0.667rem;
+    border-bottom: 0.083rem dashed #0a3f6c;
 }
 .Municipal-level-warp-header ul:first-child {
     font-weight: bold;
 }
 .Municipal-level-warp-header ul:last-child {
-    border: 0px;
+    border: 0rem;
 }
 
 .Municipal-level-warp-header ul li {
     flex: 1;
-    padding: 12px 0px 9px 0px;
+    padding: 1rem 0rem 0.75rem 0rem;
 }
 
 .Municipal-level-warp-header ul li:nth-child(3) {
 
-    min-width: 140px;
+    min-width: 11.667rem;
 }
 
 .Municipal-level-warp-header ul li:nth-child(4) {
 
-    min-width: 80px;
+    min-width: 6.667rem;
 }
 
 
@@ -714,13 +714,13 @@ ul li {
 }
 
 .Municipal-level div img {
-    width: 30px;
-    height: 30px;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .Municipal-level div li {
-    margin-left: 10px;
-    font-size: 14px;
+    margin-left: 0.833rem;
+    font-size: 1.167rem;
     color: white;
 }
 
@@ -730,45 +730,45 @@ ul li {
 
 .GarBage-child-end {
     width: 50%;
-    margin: 10px 0px;
+    margin: 0.833rem 0rem;
 }
 
 .Modal-right-title {
     position: absolute;
-    top: 30px;
-    left: 20px;
+    top: 2.5rem;
+    left: 1.667rem;
     /*left: 52%;*/
     /*display: inline-block;*/
     /*position: fixed;*/
-    /*top: 30px;*/
+    /*top: 2.5rem;*/
     /*left: 52%;*/
 
     background-color: rgba(15, 58, 125, 0.7);
     fontFamily: "SimHei";
     color: #1fe0e9;
-    padding: 4px 12px 6px 12px;
-    font-size: 30px;
+    padding: 0.333rem 1rem 0.5rem 1rem;
+    font-size: 2.5rem;
     z-index: 999;
-    /*font-size:10px;-webkit-transform:scale(0.7);*/
+    /*font-size:0.833rem;-webkit-transform:scale(0.7);*/
 
 }
 
 .topicWrap {
-    margin-top: 15px;
+    margin-top: 1.25rem;
     width: 100%;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 6px;
+    margin-left: 0.5rem;
 }
 
 .topicItem {
     width: 48%;
-    border-bottom: 1px solid #50637c;
+    border-bottom: 0.083rem solid #50637c;
     display: flex;
     justify-content: space-between;
-    margin: 10px 0px;
-    padding: 4px 0px;
+    margin: 0.833rem 0rem;
+    padding: 0.333rem 0rem;
     color: white;
 }
 
@@ -788,23 +788,23 @@ ul li {
     width:auto;
     box-sizing: border-box;
     display: flex;
-    margin: 4px 0px;
-    padding: 4px 4px;
+    margin: 0.333rem 0rem;
+    padding: 0.333rem 0.333rem;
     color: white;
-    border-radius: 2px;
+    border-radius: 0.167rem;
     width: 48%;
 
 
     background-color: rgba(31, 224, 233, 0.2);
-    border: 1px solid rgba(31, 224, 233, 0.5);
+    border: 0.083rem solid rgba(31, 224, 233, 0.5);
 }
 
 .font-10 {
 
     /*transform: scale(0.8);*/
-    /*font-size: 10px;*/
+    /*font-size: 0.833rem;*/
     /*-webkit-transform: scale(0.7);*/
-    font-size: 12px;
+    font-size: 1rem;
 }
 
 .ModalBox {
@@ -818,35 +818,35 @@ ul li {
     height: 48.3rem;
     animation: 0.6s;
     -webkit-animation: zoom 0.6s;
-    /*box-shadow: 10px 10px 10px red;*/
-    /*-moz-box-shadow: 110px 10px 10px red;*/
-    /*-webkit-box-shadow: 10px 10px 10px red;*/
+    /*box-shadow: 0.833rem 0.833rem 0.833rem red;*/
+    /*-moz-box-shadow: 9.167rem 0.833rem 0.833rem red;*/
+    /*-webkit-box-shadow: 0.833rem 0.833rem 0.833rem red;*/
 }
 
 .ModalBox:before, .ModalBox:after {
     /*影子 主要用了伪类*/
     position: absolute;
     width: 35%;
-    height: 10px;
+    height: 0.833rem;
     content: ' '; /*空内容*/
-    left: 12px;
-    bottom: 19px;
+    left: 1rem;
+    bottom: 1.583rem;
     background: rgba(0, 0, 0, 0);
     -webkit-transform: skew(-5deg) rotate(-4deg);
     -moz-transform: skew(-5deg) rotate(-4deg);
     -ms-transform: skew(-5deg) rotate(-4deg);
     -o-transform: skew(-5deg) rotate(-5deg);
     transform: skew(-5deg) rotate(-4deg);
-    -webkit-box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
-    box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0.5rem 1.5rem 1rem rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0.5rem 1.5rem 1rem rgba(0, 0, 0, 0.6);
+    box-shadow: 0.5rem 1.5rem 1rem rgba(0, 0, 0, 0.6);
     z-index: -1;
-    max-width: 300px; /* 最大宽度*/
+    max-width: 25rem; /* 最大宽度*/
 }
 
 .ModalBox:after {
     left: auto; /*重新来个这段的目的 利用CSS优先级创建 右侧阴影，这段肯定是在 .boxshadow:before,.boxshadow:after 这段之后的~~*/
-    right: 12px;
+    right: 1rem;
     -webkit-transform: skew(5deg) rotate(4deg);
     -moz-transform: skew(5deg) rotate(4deg);
     -ms-transform: skew(5deg) rotate(4deg);
@@ -871,9 +871,9 @@ position: absolute;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    top: 0px;
-    left: 0px;
-    padding: 32px 4px 20px 0px;
+    top: 0rem;
+    left: 0rem;
+    padding: 2.667rem 0.333rem 1.667rem 0rem;
     animation: 0.6s;
     -webkit-animation: zoom 0.6s;
 }.vehicle-Modal-warp{
@@ -882,18 +882,18 @@ position: absolute;
     width: 100%;
     height: 100%;
     background-color: #082443;
-    padding: 10px 2px 0px 2px;
+    padding: 0.833rem 0.167rem 0rem 0.167rem;
 
 }
  .vehicle-Modal-warp .clears{
-     top: 36px;
-     right: 12px;
+     top: 3rem;
+     right: 1rem;
  }
  .vehicle-Modal-warp-header{
      display: flex;
      justify-content: space-between;
      align-items: center;
-     margin-bottom: 4px;
+     margin-bottom: 0.333rem;
  }
  .vehicle-Modal-warp-time{
      color: white;
@@ -904,14 +904,14 @@ position: absolute;
      height: 100%;
      /*background-color: red;*/
      position: relative;
-     padding: 2px;
+     padding: 0.167rem;
      box-sizing: border-box;
      color: white;
  }.vehicle-Modal-room-div{
     background-image: url(../Modal/images/smallborder.png);
-    padding-top: 3px;
-    padding-left: 8px;
-    padding-right: 0px;
+    padding-top: 0.25rem;
+    padding-left: 0.667rem;
+    padding-right: 0rem;
    }
  .vehicle-Modal-room span{
      color: #1fe0e9;
@@ -923,11 +923,11 @@ position: absolute;
 /*光点*/
 .spark {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 1.667rem;
+    height: 1.667rem;
     /*background-image: radial-gradient(red, green, blue);*/
-    top: 107px;
-    left: 20px;
+    top: 8.917rem;
+    left: 1.667rem;
     background-color: white;
     -webkit-animation-name: spark;
     -webkit-transform-origin: 50% 100%;
@@ -939,22 +939,22 @@ position: absolute;
 /*动画*/
 @-webkit-keyframes spark {
     0% {
-        left: 6px;
+        left: 0.5rem;
         transform: rotate(0deg)
     }
 
     35% {
-        left: 112px;
+        left: 9.333rem;
         transform: rotate(0deg)
     }
 
     50% {
-        left: 112px;
+        left: 9.333rem;
         transform: rotate(180deg)
     }
 
     85% {
-        left: 6px;
+        left: 0.5rem;
         transform: rotate(180deg)
     }
 

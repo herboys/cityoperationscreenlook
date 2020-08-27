@@ -36,8 +36,8 @@ function EndFacilities() {
                 para += ' <div class="GarBage-child-item GarBage-child-end">'
                     + '<img src="../Modal/images/icon_.png ">'
                     + '   <div>'
-                    + '  <p style="font-size: 14px">' + res.data[i].pointName + '</p>'
-                    + '<span style="font-size: 14px">' + res.data[i].connts + '</span>'
+                    + '  <p style="font-size: 1.167rem">' + res.data[i].pointName + '</p>'
+                    + '<span style="font-size: 1.167rem">' + res.data[i].connts + '</span>'
                     + '</div>'
                     + ' </div>'
             }

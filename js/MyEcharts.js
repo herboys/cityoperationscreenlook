@@ -896,6 +896,7 @@ var MyEcharts = {
     initChart: function (option, echartId) {
         var container = eval("document.getElementById('" + echartId + "')");
         var myChart = echarts.init(container);
+   
         myChart.setOption(option, true);	// 为echarts对象加载数据
         return myChart;
     }

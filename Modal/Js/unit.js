@@ -124,20 +124,20 @@ function TabsFun(num) {
             break;
         case 6:
             para[3].innerHTML = `     <div class="banner1" onclick="TabsFun(6)">紧急工单</div>
-                                <div class="banner2" onclick="TabsFun(7)">非紧急工单</div>
+                                <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>`
             GongDan(1)
             break;
         case 7:
             para[3].innerHTML = `     <div class="banner2" onclick="TabsFun(6)">紧急工单</div>
-                                <div class="banner1" onclick="TabsFun(7)">非紧急工单</div>
+                                <div class="banner1" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>`
             GongDan(0)
             break;
             break;
         case 8:
             para[3].innerHTML = `     <div class="banner2" onclick="TabsFun(6)">紧急工单</div>
-                                <div class="banner2" onclick="TabsFun(7)">非紧急工单</div>
+                                <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner1" onclick="TabsFun(8)">反复退单</div>`
             GongDanfanhu()
             break;
@@ -176,7 +176,6 @@ function GongDan(num) {
             document.getElementById("GongDanID").innerHTML = para
         } else {
 
-
             para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
@@ -185,8 +184,10 @@ function GongDan(num) {
                                         <li>最后期限</li>
                                         <li>工单状态</li>
                                     </ul>`
+            document.getElementById("GongDanTitleID").innerHTML = para
+            para = ''
             for (let i = 0; i < res.length; i++) {
-                if (i < 2) {
+
                     para += '<ul class="work-older-list-ul ul-line ">'
                         + '<li>' + res[i].TASKID + '</li>'
                         + '<li>' + res[i].DISCOVERTIME + '</li>'
@@ -195,12 +196,38 @@ function GongDan(num) {
                         + '<li>' + res[i].ALLENDTIME + '</li>'
                         + '<li>' + res[i].STATUSNAME + '</li>'
                         + '</ul>'
-                }
             }
 
             document.getElementById("GongDanID").innerHTML = para
+            let ul1 = document.getElementById("GongDanID");
+            let ul2 = document.getElementById("GongDanIDCopy");
+            let rollbox = document.getElementById("GongDanIDBox");
+            rolls(50, ul1, ul2, rollbox)
         }
     })
+}
+
+function rolls(t, ul1, ul2, rollbox) {
+    console.log(t,'+++++')
+    ul2.innerHTML = ul1.innerHTML;
+    rollbox.scrollTop = 0;
+    let timer = setInterval(rollStarts, t);
+    rollbox.onmouseover = function () {
+        clearInterval(timer);
+    }
+    rollbox.onmouseout = function () {
+        timer = setInterval(rollStarts, t);
+    }
+}
+
+function rollStarts() {
+     ul1 = document.getElementById("GongDanID");
+     rollbox = document.getElementById("GongDanIDBox");
+    if (rollbox.scrollTop >= ul1.scrollHeight) {
+        rollbox.scrollTop = 0;
+    } else {
+        rollbox.scrollTop++;
+    }
 }
 
 function GongDanfanhu(num) {
@@ -230,8 +257,9 @@ function GongDanfanhu(num) {
                                         <li>最后期限</li>
                                         <li>工单状态</li>
                                     </ul>`
+            document.getElementById("GongDanTitleID").innerHTML = para
+            para = ''
             for (let i = 0; i < res.length; i++) {
-                if (i < 2) {
                     para += '<ul class="work-older-list-ul ul-line ">'
                         + '<li>' + res[i].TASKID + '</li>'
                         + '<li>' + res[i].DISCOVERTIME + '</li>'
@@ -240,10 +268,13 @@ function GongDanfanhu(num) {
                         + '<li>' + res[i].ALLENDTIME + '</li>'
                         + '<li>' + res[i].STATUSNAME + '</li>'
                         + '</ul>'
-                }
             }
 
             document.getElementById("GongDanID").innerHTML = para
+            let ul1 = document.getElementById("GongDanID");
+            let ul2 = document.getElementById("GongDanIDCopy");
+            let rollbox = document.getElementById("GongDanIDBox");
+            rolls(50, ul1, ul2, rollbox)
         }
     })
 }
@@ -447,12 +478,12 @@ function countWork(type) {
 
         para = `      <li><p>紧急工单</p>
                                 <div>${res.counturgentMsg}次</div>
-                                </li><li><p>非紧急工单</p>
+                                </li><li><p>重复工单</p>
                                 <div>${res.countNullurgentMsg}次</div>
                                 </li><li><p>反复退单</p>
                                 <div>${res.countInfoBack}次</div>
                                 </li>`
-        document.getElementById("WorkorderID").innerHTML = para
+        document.getElementById("GongDanTitleID").innerHTML = para
     })
 }
 

@@ -207,7 +207,7 @@
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
                                 <div class="banner1" onclick="TabsFun(6)">紧急工单</div>
-                                <div class="banner2" onclick="TabsFun(7)">非紧急工单</div>
+                                <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
                             </div>
                         </div>
@@ -215,7 +215,11 @@
 
                             <ul class="Workorder " id="WorkorderID">
                                 <div class="work-older-list" >
-                                    <div id="GongDanID"></div>
+                                    <div id="GongDanTitleID" ></div>
+                                    <div id="GongDanIDBox" style="height: 100px;overflow: hidden">
+                                        <div id="GongDanID"></div>
+                                        <div id="GongDanIDCopy"></div>
+                                    </div>
                                 </div>
                             </ul>
                         </div>

@@ -144,7 +144,6 @@
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
                                 <div class="banner1" onclick="TabsFun(1)">基本情况</div>
-                                <!--                                <div class="banner2" onclick="TabsFun(2)">趋势分析</div>-->
                             </div>
                             <div id="dropdown1">
                                 <p>问题类型</p>
@@ -155,23 +154,20 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="Satisfaction-warp-item-echarts"  style="height:400px">
+                        <div class="Satisfaction-warp-item-echarts">
                             <div id="SmallECharts3" class="SmallECharts3" style="width: 575px;height:400px;margin-right: 20px;padding-top:-40px"></div>
                             <div id="SmallECharts3copy" class="SmallECharts3copy" style="width: 575px;height:400px;margin-right: 20px;padding-top:-40px"></div>
                             <div id="backBtnclass" onclick="backBtn()">返回上一级</div>
                         </div>
-
-
                     </div>
                     <div class="Satisfaction-warp-item" >
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
                                 <div class="banner1" >热词</div>
                             </div>
-
                         </div>
-                        <div class="Satisfaction-warp-item-echarts" style="margin-top: 40px;height: 400px">
-                            <div id="SmallECharts4" style="width: 575px;height:400px;margin-right: 20px;margin-top: -20px;padding-top:20px ">
+                        <div class="Satisfaction-warp-item-echarts" >
+                            <div id="SmallECharts4" style="width: 575px;height:400px;margin-right: 20px;padding-top: -40px;">
                             </div>
                         </div>
                     </div>
@@ -195,7 +191,7 @@
 
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
-                            <div id="SmallECharts" style="width: 550px;height:255px"></div>
+                            <div id="SmallECharts" style="width: 550px;height:313px"></div>
                         </div>
                     </div>
                     <div class="Satisfaction-warp-item">
@@ -309,6 +305,7 @@
     }
     window.onload = function () {
         ToOnload()
+        canvaslineFun()
     }
 
 

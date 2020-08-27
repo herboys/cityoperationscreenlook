@@ -338,6 +338,7 @@ position: absolute;
     align-items: center;
     margin-bottom: 10px;
     padding-right: 24px;
+    height: 34px;
 }
 
 /*.Satisfaction-warp-item:nth-child(2n) {*/
@@ -382,7 +383,7 @@ position: absolute;
 
 .Satisfaction-warp-item-echarts {
     width: inherit;
-    height: 255px;
+    height: 313px;
     position: relative;
     /*border: 1px solid white;*/
     background-image: url(../Modal/images/12345icon.png);

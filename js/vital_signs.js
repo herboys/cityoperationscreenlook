@@ -983,11 +983,11 @@ function hjbzInit(arr) {
 }
 
 function oldPeopleHomePage() {
-  $("#restShow").show();
+  $("#RestModal").show();
 }
 
 function closeOldPeopleHome() {
-  $("#restShow").hide();
+  $("#RestModal").hide();
 }
 
 

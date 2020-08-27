@@ -8,10 +8,10 @@
 <!-- <link rel="stylesheet" type="text/css" href="../css/12345Modal.css" /> -->
 <link rel="stylesheet" type="text/css" href="../css/pubilic.css" />
 <link rel="stylesheet" type="text/css" href="css/gridModal.css" />
-<script src="../js/map3.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="../js/map3.js" type="text/javascript" charset="utf-8"></script> -->
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
-<script type="text/javascript" src="../js/map3.js"></script>
+<!-- <script type="text/javascript" src="../js/map3.js"></script> -->
 
 <body>
   <div id="app2" class="Modal-warp">
@@ -354,10 +354,10 @@
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="Js/echartsPackage.js"></script>
 <script type="text/javascript">
-  document.getElementById("clearid").onclick = function () {
+  $("#clearid").click(function () {
     alert(22)
     window.parent.document.getElementById("GridModal").style.display = "none";
-  };
+  });
   $("#dropdown p").click(function () {
     var ul = $("#dropdown ul");
     if (ul.css("display") == "none") {

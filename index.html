@@ -1589,6 +1589,55 @@
         let lineArr1 = str.split(",");
         map.setZoomAndCenter(15, lineArr1);
         this.changeIndex1 = index
+
+
+        this.list1[index].isShow = !this.list1[index].isShow;
+        if (this.list1[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+
+
+          var polylineList=[]
+
+          for(var i=0;i<this.list1[index].listLinkInfoState.length;i++){
+            if (this.list1[index].listLinkInfoState[0].lngLats) {
+              str = this.list1[index].listLinkInfoState[0].lngLats;
+            }
+            console.log(str,'===str');
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+            lineArr.push(singleArr);
+          });
+            var polyline1 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.5,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+           // this.polylines1.set(index, polyline1);
+            polylineList[i]=polyline1
+
+          }
+
+          this.polylines1.set(index, polylineList);
+
+
+
+
+        } else {
+          var curPolylineList=this.polylines1[index]
+          for(var j=0;j<curPolylineList.length;j++){
+            map.remove(curPolylineList[i]);
+          }
+         // map.remove(this.polylines1.get(index));
+          this.polylines1.delete(index);
+        }
+
       },
       clickLocus2(item, index) {
         let str = "";

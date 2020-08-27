@@ -191,7 +191,7 @@
 
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
-                            <div id="SmallECharts" style="width: 550px;height:313px"></div>
+                            <div id="SmallECharts" style="width: 570px;height:260px;position: absolute;left: 20px;top: 30px"></div>
                         </div>
                     </div>
                     <div class="Satisfaction-warp-item">
@@ -308,6 +308,7 @@
         ToOnload()
     }
     window.onload = function () {
+        MyEcharts.initChart(MyEcharts.EchartsOption.newbar(), "SmallECharts")
         ToOnload()
         canvaslineFun()
     }

@@ -1,5 +1,6 @@
 function ToOnload() {
 
+
     // countWork('日')
     GongDan(1)
     // findbcName()
@@ -89,6 +90,7 @@ function TabsFun(num) {
                     yData.push(item.COUNTNAME)
                     zData.push(item.COUNTNULL)
                 })
+
                 MyEcharts.initChart(MyEcharts.EchartsOption.goods(xData, yData, zData, "#F9392D"), "SmallECharts")
             })
 

@@ -46,6 +46,7 @@ function TabsFun(num) {
     let xData = []
     let yData = []
     let zData = []
+    let legend = []
     let attackSourcesData = ''
     let attackSourcesName = ''
     let attackSourcesColor = ''
@@ -88,10 +89,10 @@ function TabsFun(num) {
                 res.map(item => {
                     xData.push(item.STREETNAME)
                     yData.push(item.COUNTNAME)
-                    zData.push(item.COUNTNULL)
+                    zData.push(item.PROPORTION)
                 })
-
-                MyEcharts.initChart(MyEcharts.EchartsOption.goods(xData, yData, zData, "#F9392D"), "SmallECharts")
+                legend=[]
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
             })
 
             break;
@@ -105,9 +106,10 @@ function TabsFun(num) {
                 res.map(item => {
                     xData.push(item.DEPTNAME)
                     yData.push(item.COUNTNAME)
-                    zData.push(item.COUNTNULL)
+                    zData.push(item.PROPORTION)
                 })
-                MyEcharts.initChart(MyEcharts.EchartsOption.goods(xData, yData, zData, "#4489D3"), "SmallECharts")
+                legend=[]
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
             })
             break;
         case 5:
@@ -118,9 +120,10 @@ function TabsFun(num) {
                 res.map(item => {
                     xData.push(item.DEPTNAME)
                     yData.push(item.COUNTNAME)
-                    zData.push(item.COUNTNULL)
+                    zData.push(item.PROPORTION)
                 })
-                MyEcharts.initChart(MyEcharts.EchartsOption.goods(xData, yData, zData, "#04FDF5"), "SmallECharts")
+                legend=[]
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
             })
             break;
             break;
@@ -389,7 +392,7 @@ function findbcNameType() {
             console.log(param.name, param.data.value)
             JiBenXinXi(ModelTime, param.name, param.data.value)
             JiBenXinXiReLiability(ModelTime, param.name)
-
+            findbcNamesc( param.name)
         })
     })
 }
@@ -528,5 +531,42 @@ function findscName(time) {
         })
     })
 }
+/***
+ * 根据大类获取热词的数量
+ */
+function findbcNamesc(name) {
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findbcNamesc',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": ModelTime,
+            "typeName": name
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
 
+        let List = res.slice(0, 10).sort(function (a, b) {
+            return b.COUNTATNAME - a.COUNTATNAME;
+        });
 
+        let attackSourcesData = []
+        let attackSourcesName = []
+        let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
+        List.map(item => {
+            attackSourcesName.push(item.ATNAME)
+            attackSourcesData.push(item.COUNTATNAME)
+        })
+        let HostOption = MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
+        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
+
+        var HostChart = echarts.init(document.getElementById("SmallECharts4"));
+        HostChart.setOption(HostOption);
+        HostChart.on("click", function (param) {
+            console.log(param.name, param.data.value)
+            HostSteetFun(ModelTime, param.name, param.data.value)
+
+        })
+    })
+}

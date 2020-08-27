@@ -731,14 +731,12 @@ var MyEcharts = {
          *wordCloud
          *@param color : 颜色 数据
          * */
-        newbar:function (){
-            var xData = ["1月", "2月", "3月", "4月", "5月", "6月","是的9卡上的钱","是的卡7上的钱","是的卡上5的钱","是的卡上4的钱","是的3卡上的钱","是的卡上的2钱","是的卡上12的钱"],
-                yData1 = [],
-                yData2 = [100, 206, 236, 106, 80, 100, 206, 236, 106, 80, 80, 160],
-                yData3 = [],
-                yData4 = [90, 56, 36, 6, 50, 90, 56, 36, 6, 50,50, 70],
+        newbar:function (xData,yData,zData,color,legend,yAxisname){
+            var xData = xData,
+                yData2 = yData,
+                yData4 =zData,
                 borderData = [],
-                legend = ["电力用户",  "同比"],
+                legend = legend,
                 colorArr = [
                     {
                         start: "rgba(71, 173, 245,0.5)",
@@ -749,7 +747,6 @@ var MyEcharts = {
                     }
                 ];
             var normalColor = "rgba(255,255,255,0.5)";
-//   var fontSize = 20;
             let seriesData = [];
             var borderHeight = 4;
             xData.forEach(element => {
@@ -791,19 +788,19 @@ var MyEcharts = {
                             }
                         }
                     };
-                    obj2 = {
-                        name: "",
-                        type: "bar",
-                        stack: legend[index],
-                        itemStyle: {
-                            normal: {
-                                color: colorArr[index].start + "1)"
-                            }
-                        },
-                        data: borderData
-                    };
+                    // obj2 = {
+                    //     name: "",
+                    //     type: "bar",
+                    //     stack: legend[index],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             color: colorArr[index].start + "1)"
+                    //         }
+                    //     },
+                    //     data: borderData
+                    // };
                     seriesData.push(obj1);
-                    seriesData.push(obj2);
+                    // seriesData.push(obj2);
                 } else {
                     var obj3 = {
                         name: legend[index],
@@ -900,7 +897,7 @@ var MyEcharts = {
                 }],
                 yAxis: [{
                     type: "value",
-                    name: "亿千瓦时",
+                    name:yAxisname,
                     nameTextStyle: {
                         color: normalColor,
                         fontSize: 12
@@ -937,7 +934,7 @@ var MyEcharts = {
                             color: normalColor,
                             fontSize: 12
                         },
-                        min: -100,
+                        min: 0,
                         max: 100,
                         axisLabel: {
                             formatter: "{value}",

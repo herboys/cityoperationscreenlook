@@ -93,7 +93,7 @@ function TabsFun(num) {
                     yData.push(item.PROPORTION)
                 })
                 legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
 
             break;
@@ -110,7 +110,7 @@ function TabsFun(num) {
                     yData.push(item.PROPORTION)
                 })
                 legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
             break;
         case 5:
@@ -124,7 +124,7 @@ function TabsFun(num) {
                     yData.push(item.PROPORTION)
                 })
                 legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
             break;
             break;
@@ -177,7 +177,7 @@ function GongDan(num) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        if (res==[]) {
+        if (res[0].count !== undefined && res[0].count == "0") {
             para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
             document.getElementById("GongDanID").innerHTML = para
             document.getElementById("GongDanIDCopy").innerHTML = ""
@@ -194,14 +194,15 @@ function GongDan(num) {
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
             for (let i = 0; i < res.length; i++) {
-                    para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
-                        + '<li>' + res[i].ATNAME + '</li>'
-                        + '<li>' + res[i].ATNAME + '</li>'
-                        + '</ul>'
+
+                para += '<ul class="work-older-list-ul ul-line ">'
+                    + '<li>' + res[i].TASKID + '</li>'
+                    + '<li>' + res[i].DISCOVERTIME + '</li>'
+                    + '<li>' + res[i].STREETNAME + '</li>'
+                    + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '</ul>'
             }
             document.getElementById("GongDanID").innerHTML = para
             let ul1 = document.getElementById("GongDanID");
@@ -213,7 +214,7 @@ function GongDan(num) {
 }
 
 function rolls(t, ul1, ul2, rollbox) {
-
+    console.log(t,'+++++')
     ul2.innerHTML = ul1.innerHTML;
     rollbox.scrollTop = 0;
     let timer = setInterval(rollStarts, t);
@@ -226,9 +227,8 @@ function rolls(t, ul1, ul2, rollbox) {
 }
 
 function rollStarts() {
-     ul1 = document.getElementById("GongDanID");
-     rollbox = document.getElementById("GongDanIDBox");
-     // console.log(rollbox,'+++--')
+    ul1 = document.getElementById("GongDanID");
+    rollbox = document.getElementById("GongDanIDBox");
     if (rollbox.scrollTop >= ul1.scrollHeight) {
         rollbox.scrollTop = 0;
     } else {
@@ -256,24 +256,24 @@ function GongDanfanhu(num) {
 
 
             para = `  <ul class="work-older-list-ul">
-                                        <li>工单编号</li>
-                                        <li>发生时间</li>
-                                        <li>主责部门</li>
-                                        <li>退单次数</li>
-                                        <li>最后期限</li>
-                                        <li>工单状态</li>
+            <li>工单编号</li>
+            <li>发生时间</li>
+            <li>街镇名</li>
+            <li>主责部门</li>
+            <li>管理要点</li>
+            <li>问题内容</li>
                                     </ul>`
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
             for (let i = 0; i < res.length; i++) {
-                    para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].BACKCOUNT + '</li>'
-                        + '<li>' + res[i].ALLENDTIME + '</li>'
-                        + '<li>' + res[i].STATUSNAME + '</li>'
-                        + '</ul>'
+                para += '<ul class="work-older-list-ul ul-line ">'
+                    + '<li>' + res[i].TASKID + '</li>'
+                    + '<li>' + res[i].DISCOVERTIME + '</li>'
+                    + '<li>' + res[i].STREETNAME + '</li>'
+                    + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '</ul>'
             }
 
             document.getElementById("GongDanID").innerHTML = para
@@ -595,7 +595,6 @@ function findbcNamesc(name) {
         //     HostSteetFun(ModelTime, param.name, param.data.value)
         //
         // })
-
     })
 }
 
@@ -604,8 +603,8 @@ function findbcNamesc(name) {
 
 
 /**3D球**/
-var radius = 150;
-var dtr = Math.PI / 180;
+var radius = 100;
+var dtr = Math.PI / 200;
 var d = 300;
 
 var mcList = [];
@@ -626,24 +625,24 @@ var oDiv = null;
 
 function   rotateFun() {
     radius = 100;
-     dtr = Math.PI / 200;
+    dtr = Math.PI / 200;
     d = 300;
 
-     mcList = [];
-     active = false;
-     lasta = 1;
-     lastb = 1;
-     distr = true;
+    mcList = [];
+    active = false;
+    lasta = 1;
+    lastb = 1;
+    distr = true;
     tspeed = 2;
     size = 250;
 
     mouseX = 0;
     mouseY = 0;
 
-     howElliptical = 1;
+    howElliptical = 1;
 
-     aA = null;
-     oDiv = null;
+    aA = null;
+    oDiv = null;
     active = false;
     var i = 0;
     var oTag = null;
@@ -666,7 +665,7 @@ function   rotateFun() {
 
     positionAll();
     oDiv.onmouseover = function () {
-        active = false ;
+        active = false;
     };
     oDiv.onmouseout = function () {
         active = true;
@@ -682,7 +681,7 @@ function   rotateFun() {
         mouseY /= 5;
     };
 
-    setInterval(update, 200);
+    setInterval(update, 30);
 };
 
 function update() {
@@ -798,9 +797,11 @@ function positionAll() {
             phi = Math.random() * (Math.PI);
             theta = Math.random() * (2 * Math.PI);
         }
+
         mcList[i - 1].cx = radius * Math.cos(theta) * Math.sin(phi);
         mcList[i - 1].cy = radius * Math.sin(theta) * Math.sin(phi);
         mcList[i - 1].cz = radius * Math.cos(phi);
+
         aA[i - 1].style.left = mcList[i - 1].cx + oDiv.offsetWidth / 2 - mcList[i - 1].offsetWidth / 2 + 'px';
         aA[i - 1].style.top = mcList[i - 1].cy + oDiv.offsetHeight / 2 - mcList[i - 1].offsetHeight / 2 + 'px';
     }

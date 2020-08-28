@@ -492,7 +492,7 @@ var MyEcharts = {
                         data: attackSourcesName,
                         axisLabel: {
                             margin: 120,
-                            fontSize: 18,
+                            fontSize: 16,
                             align: 'left',
                             color: '#333',
                             barMaxWidth: 20,
@@ -920,7 +920,7 @@ var MyEcharts = {
                     axisLabel: {
                         textStyle: {
                             color: normalColor,
-                            fontSize: 14
+                            fontSize: 12
                         },
                         rotate: 50,
                     },
@@ -941,7 +941,7 @@ var MyEcharts = {
                     name: yAxisname,
                     nameTextStyle: {
                         color: normalColor,
-                        fontSize: 14
+                        fontSize: 12
                     },
                     // "min": 0,
                     // "max": 50,
@@ -949,7 +949,7 @@ var MyEcharts = {
                         formatter: "{value}",
                         textStyle: {
                             color: normalColor,
-                            fontSize: 14
+                            fontSize: 12
                         }
                     },
                     axisLine: {
@@ -970,23 +970,18 @@ var MyEcharts = {
                 },
                     {
                         type: "value",
-                        name: "%",
+                        name: "件",
                         nameTextStyle: {
                             color: normalColor,
-                            fontSize: 14
+                            fontSize: 12
                         },
-<<<<<<< Updated upstream
                         // min: 0,
                         // max: 100,
-=======
-                        min: 40,
-                        max: 90,
->>>>>>> Stashed changes
                         axisLabel: {
                             formatter: "{value}",
                             textStyle: {
                                 color: normalColor,
-                                fontSize: 14
+                                fontSize: 12
                             }
                         },
                         axisLine: {

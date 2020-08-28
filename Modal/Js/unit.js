@@ -177,7 +177,7 @@ function GongDan(num) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        if (res[0].count !== undefined && res[0].count == "0") {
+        if (res==[]) {
             para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
             document.getElementById("GongDanID").innerHTML = para
             document.getElementById("GongDanIDCopy").innerHTML = ""
@@ -194,7 +194,6 @@ function GongDan(num) {
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
             for (let i = 0; i < res.length; i++) {
-
                     para += '<ul class="work-older-list-ul ul-line ">'
                         + '<li>' + res[i].TASKID + '</li>'
                         + '<li>' + res[i].DISCOVERTIME + '</li>'
@@ -214,7 +213,7 @@ function GongDan(num) {
 }
 
 function rolls(t, ul1, ul2, rollbox) {
-    console.log(t,'+++++')
+
     ul2.innerHTML = ul1.innerHTML;
     rollbox.scrollTop = 0;
     let timer = setInterval(rollStarts, t);
@@ -229,6 +228,7 @@ function rolls(t, ul1, ul2, rollbox) {
 function rollStarts() {
      ul1 = document.getElementById("GongDanID");
      rollbox = document.getElementById("GongDanIDBox");
+     // console.log(rollbox,'+++--')
     if (rollbox.scrollTop >= ul1.scrollHeight) {
         rollbox.scrollTop = 0;
     } else {
@@ -258,7 +258,7 @@ function GongDanfanhu(num) {
             para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>案例来源</li>
+                                        <li>主责部门</li>
                                         <li>退单次数</li>
                                         <li>最后期限</li>
                                         <li>工单状态</li>
@@ -595,6 +595,7 @@ function findbcNamesc(name) {
         //     HostSteetFun(ModelTime, param.name, param.data.value)
         //
         // })
+
     })
 }
 
@@ -603,8 +604,8 @@ function findbcNamesc(name) {
 
 
 /**3D球**/
-var radius = 100;
-var dtr = Math.PI / 200;
+var radius = 150;
+var dtr = Math.PI / 180;
 var d = 300;
 
 var mcList = [];
@@ -665,7 +666,7 @@ function   rotateFun() {
 
     positionAll();
     oDiv.onmouseover = function () {
-        active = false;
+        active = false ;
     };
     oDiv.onmouseout = function () {
         active = true;
@@ -681,7 +682,7 @@ function   rotateFun() {
         mouseY /= 5;
     };
 
-    setInterval(update, 30);
+    setInterval(update, 200);
 };
 
 function update() {
@@ -797,11 +798,9 @@ function positionAll() {
             phi = Math.random() * (Math.PI);
             theta = Math.random() * (2 * Math.PI);
         }
-
         mcList[i - 1].cx = radius * Math.cos(theta) * Math.sin(phi);
         mcList[i - 1].cy = radius * Math.sin(theta) * Math.sin(phi);
         mcList[i - 1].cz = radius * Math.cos(phi);
-
         aA[i - 1].style.left = mcList[i - 1].cx + oDiv.offsetWidth / 2 - mcList[i - 1].offsetWidth / 2 + 'px';
         aA[i - 1].style.top = mcList[i - 1].cy + oDiv.offsetHeight / 2 - mcList[i - 1].offsetHeight / 2 + 'px';
     }

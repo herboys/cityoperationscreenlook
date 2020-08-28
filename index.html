@@ -499,11 +499,12 @@
                 </div>
               </div>
               <div class="main-list" onclick="ModalClick()">
+              <!--   <div class="main-list">-->
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
-                    <!--  <p>12345</p>-->
-                    <img src="images/12345.png" style="width: 3rem; cursor: pointer" />
+                  <p>12345</p>
+                 <!--   <img src="images/12345.png" style="width:3rem;cursor: pointer"/>-->
                   </div>
                 </div>
                 <div class="main-right">
@@ -752,7 +753,7 @@
           </div>
         </div>
       </div>
-      <div class="ModalBox" id="ModalBox">
+      <div class="ModalBox" id="ModalBox" onclick="ModalClick()">
         <iframe id="openiframe" src="Modal/12345Modal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
       <div class="ModalBox" id="GarBageModal">
@@ -824,7 +825,7 @@
 
 <script>
   function ModalClick() {
-    document.getElementById("ModalBox").style.display = "block";
+    //document.getElementById("ModalBox").style.display = "block";
   }
   //生活垃圾
   function openGarbageClassification() {
@@ -894,7 +895,61 @@
         }
         let lineArr1 = str.split(",");
         map.setZoomAndCenter(15, lineArr1);
-        this.changeIndex1 = index;
+        this.changeIndex1 = index
+
+
+        this.list1[index].isShow = !this.list1[index].isShow;
+        if (this.list1[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+
+
+          var polylineList1=[]
+
+          for(var i=0;i<this.list1[index].listLinkInfoState.length;i++){
+            lineArr = [];
+            if(this.list1[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list1[index].listLinkInfoState[i].lngLats) {
+              str = this.list1[index].listLinkInfoState[i].lngLats;
+            }
+            console.log(str,'===str');
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+            lineArr.push(singleArr);
+
+          });
+            var polyline1 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.5,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+           // this.polylines1.set(index, polyline1);
+            polylineList1[i]=polyline1
+
+          }
+
+          this.polylines1.set(index, polylineList1);
+
+
+
+
+        } else {
+          var curPolylineList=this.polylines1.get(index)
+          console.log("+++++++")
+          console.log(curPolylineList)
+          for(var j=0;j<curPolylineList.length;j++){
+            map.remove(curPolylineList[j]);
+          }
+        //  map.remove(this.polylines1.get(index));
+          this.polylines1.delete(index);
+        }
 
       },
       clickLocus2(item, index) {
@@ -904,9 +959,57 @@
         }
         let lineArr = str.split(",");
         map.setZoomAndCenter(15, lineArr);
-        this.changeIndex2 = index;
+        this.changeIndex2 = index
 
-     
+        this.list2[index].isShow = !this.list2[index].isShow;
+        if (this.list2[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+
+
+          var polylineList2=[]
+
+          for(var i=0;i<this.list2[index].listLinkInfoState.length;i++){
+            lineArr = [];
+            if(this.list2[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list2[index].listLinkInfoState[i].lngLats) {
+              str = this.list2[index].listLinkInfoState[i].lngLats;
+            }
+            console.log(str,'===str');
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+              lineArr.push(singleArr);
+
+            });
+            var polyline2 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.5,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+            // this.polylines1.set(index, polyline1);
+            polylineList2[i]=polyline2
+
+          }
+
+          this.polylines2.set(index, polylineList2);
+        } else {
+          // var curPolylineList=this.polylines2.get(index)
+          // console.log("+++++++")
+          // console.log(curPolylineList)
+          // for(var j=0;j<curPolylineList.length;j++){
+          //   map.remove(curPolylineList[j]);
+          // }
+          map.remove(this.polylines2.get(index));
+          this.polylines2.delete(index);
+        }
+
       },
       clickLocus3(item, index) {
         let str = "";
@@ -915,9 +1018,64 @@
         }
         let arr = str.split(",");
         map.setZoomAndCenter(15, arr);
-        this.changeIndex3 = index;
+        this.changeIndex3 = index
 
-      
+        this.list3[index].isShow = !this.list3[index].isShow;
+        if (this.list3[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+
+          var polylineList3=[]
+
+          for(var i=0;i<this.list3[index].listLinkInfoState.length;i++){
+            lineArr = [];
+            if(this.list3[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list3[index].listLinkInfoState[i].lngLats) {
+              str = this.list3[index].listLinkInfoState[i].lngLats;
+            }
+            console.log(str,'===str');
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+              lineArr.push(singleArr);
+
+            });
+            var polyline3 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.5,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+            // this.polylines1.set(index, polyline1);
+            polylineList3[i]=polyline3
+
+          }
+
+          this.polylines3.set(index, polylineList3);
+        } else {
+          var curPolylineList=this.polylines3.get(index)
+         // alert(curPolylineList.length)
+          for(var j=0;j<curPolylineList.length;j++){
+            console.log(123344677)
+            console.log(curPolylineList[j])
+            map.remove(curPolylineList[j]);
+          }
+          // map.remove(this.polylines1.get(index));
+        //  this.polylines3.delete(index);
+        }
+
+
+      },
+      colorClick1() {
+        (this.isActive = true), (this.isUnactive = false);
+      },
+      colorClick2() {
+        (this.isActive = false), (this.isUnactive = true);
       },
    
       showClick() {
@@ -937,28 +1095,35 @@
         this.polylines3.forEach((item) => {
           map.remove(item);
         });
-        for (let index = 0; index < this.list1.length; index++) {
-          this.list1[index].isShow = false;
+        this.polylines1.clear()
+        this.polylines2.clear()
+        this.polylines3.clear()
+
+        for(var i=0;i<this.list1.length;i++){
+          this.list1[i].isShow=false;
         }
-        for (let index = 0; index < this.list2.length; index++) {
-          this.list2[index].isShow = false;
+        console.log(this.list1)
+        for(var i=0;i<this.list1.length;i++){
+          this.list2[i].isShow=false;
         }
-        for (let index = 0; index < this.list3.length; index++) {
-          this.list3[index].isShow = false;
+        console.log(this.list2)
+        for(var i=0;i<this.list1.length;i++){
+          this.list3[i].isShow=false;
         }
+        console.log(this.list3)
+
       },
       getHttp() {
         //发送get请求
         this.$http.get(
             // "http://127.0.0.1:5500/map/mock_data.json"
-            // "http://127.0.0.1:5500/map/congrestion.json"
-            FIRE_URL+"/cityBrain/getSession"
+            "http://127.0.0.1:5500/map/congrestion.json"
+            // FIRE_URL+"/cityBrain/getSession"
           ).then(
             function (res) {
               this.list1 = [];
               this.list2 = [];
               this.list3 = [];
-              // console.log(res.data, "res111");
               res.data.forEach((item) => {
                 item.isShow = false;
 

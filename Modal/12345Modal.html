@@ -419,10 +419,10 @@
 
         positionAll();
         oDiv.onmouseover = function () {
-            active = true;
+            active = false;
         };
         oDiv.onmouseout = function () {
-            active = false;
+            active = true;
         };
 
         oDiv.onmousemove = function (ev) {
@@ -435,7 +435,7 @@
             mouseY /= 5;
         };
 
-        setInterval(update, 30);
+        setInterval(update, 60);
     };
 
     function update() {

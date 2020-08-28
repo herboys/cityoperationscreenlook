@@ -28,7 +28,7 @@
 
   <script src="js/time.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
-  <!-- <script src="js/weather.js" type="text/javascript" charset="utf-8"></script> -->
+  <script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
@@ -1756,7 +1756,8 @@
           var curPolylineList=this.polylines3.get(index)
          // alert(curPolylineList.length)
           for(var j=0;j<curPolylineList.length;j++){
-            console.log(123344677)
+            console.log(curPolylineList)
+            console.log(j)
             console.log(curPolylineList[j])
             map.remove(curPolylineList[j]);
           }

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     initMap2();
+    init1()
 })
 
 var map;
@@ -60,12 +61,48 @@ function initMap2() {
 
     setMapStyle();      /*设置地图风格*/
     setMapFeatures();   /*设置地图显示要素*/
-    drawJiadingBounds2();   //加载行政区划插件
+    drawJiadingBounds();   //加载行政区划插件
     addJiadingBoundary();  /*添加嘉定区和街道边界*/
     addJiadingZhenText();
     addTraffic();           /*添加实时路况情况*/
     addPoiMarker();         /*添加嘉定区主要监控点*/
     map.addControl(new AMap.Scale());
+}
+
+function init1 () {//区域遮盖
+    let  city='嘉定区'
+    var that =this
+    if( that.polygon ) {
+        that.map.remove(that.polygon)
+    }
+    AMap.plugin('AMap.DistrictSearch', function () {
+        new AMap.DistrictSearch({
+            extensions: 'all',
+            subdistrict: 0
+        }).search(city, function(status, result) {// 外多边形坐标数组和内多边形坐标数组
+            var outer = [
+                new AMap.LngLat(-360, 90, true),
+                new AMap.LngLat(-360, -90, true),
+                new AMap.LngLat(360, -90, true),
+                new AMap.LngLat(360, 90, true)
+            ]
+            var holes = result.districtList[0].boundaries
+            var pathArray = [outer]
+            pathArray.push.apply(pathArray, holes)
+            that.polygon = new AMap.Polygon({
+                pathL: pathArray,
+                // strokeColor: 'red',//城市边界颜色
+                // strokeWeight: 1,
+                // fillColor: '#220986', // 遮罩背景色黑色
+                // fillOpacity: 0.1
+                strokeColor: '#9CA09D',
+                fillOpacity:0.5,
+                fillColor: '#80d8ff',
+            })
+            that.polygon.setPath(pathArray)
+            that.map.add(that.polygon)
+        })
+    })
 }
 
 /*设置地图风格*/
@@ -87,23 +124,23 @@ function setMapFeatures() {
     map.setFeatures(features);
 }
 
-function drawJiadingBounds2() {
+function drawJiadingBounds() {
     //加载行政区划插件
-    if (!district) {
+    if (!district1) {
         //实例化DistrictSearch
         var opts = {
             subdistrict: 1,   //获取边界不需要返回下级行政区
             extensions: 'all',  //返回行政区边界坐标组等具体信息
             level: 'district'  //查询行政级别为 市
         };
-        district = new AMap.DistrictSearch(opts);
+        district1 = new AMap.DistrictSearch(opts);
     }
     //行政区查询
-    district.setLevel("district")
+    district1.setLevel("district1")
 
     var that = this;
     for (var i = 0; i < shanghai_district.length; i++) {
-        district.search(shanghai_district[i].adcode, function (status, result) {
+        district1.search(shanghai_district[i].adcode, function (status, result) {
             polygons = [];
             var bounds = result.districtList[0].boundaries;
             if (bounds) {
@@ -143,7 +180,7 @@ function drawJiadingBounds2() {
     // map.add(polygons)
 
     for (var i = 0; i < other_district.length; i++) {
-        district.search(other_district[i].adcode, function (status, result) {
+        district1.search(other_district[i].adcode, function (status, result) {
             polygons = [];
             var bounds = result.districtList[0].boundaries;
             if (bounds) {

@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="css/rest_dialog.css" />
 <link rel="stylesheet" type="text/css" href="../css/command_system.css" />
 <link rel="stylesheet" type="text/css" href="../css/rescus_dialog.css" />
+<link rel="stylesheet" type="text/css" href="../css/banner.css" />
+
 <!-- <script src="../js/map3.js" type="text/javascript" charset="utf-8"></script> -->
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
@@ -30,11 +32,11 @@
 </script>
 <!-- 热力图 -->
 <!-- <script src="//a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script> -->
-<script src="../js/map2.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/map.js" type="text/javascript" charset="utf-8"></script> 
-<!-- <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script> -->
+<script src="Js/intercity-map.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="../js/map2.js" type="text/javascript" charset="utf-8"></script> -->
+<script type="text/javascript" src="../js/rest-scroll.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/banner.css" />
+
 <script type="text/javascript" src="../js/banner.js"></script>
 
 <body>
@@ -351,13 +353,11 @@
                 </div>
                 <div style="margin-left: 38.5rem; margin-top: 1.8rem;">
                 <div id="dropdown">
-                  <p>累计<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
+                  <p>日<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
                   <ul>
-                      <li><a href="#" rel="1">一月</a></li>
-                      <li><a href="#" rel="2">二月</a></li>
-                      <li><a href="#" rel="3">三月</a></li>
-                      <li><a href="#" rel="4">四月</a></li>
-                      <li><a href="#" rel="5">五月</a></li>
+                      <li><a href="#" rel="1">年</a></li>
+                      <li><a href="#" rel="2">月</a></li>
+                      <li><a href="#" rel="3">日</a></li>
                   </ul>
               </div>
                 </div>
@@ -513,13 +513,11 @@
                   <div>本月服务人次：<span style="color: #33ffff;">171469</span></div>
                   <div style=" margin-left: 13.25rem;">   
                     <div id="dropdown2">
-                      <p>累计<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
+                      <p>日<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
                       <ul>
-                          <li><a href="#" rel="1">一月</a></li>
-                          <li><a href="#" rel="2">二月</a></li>
-                          <li><a href="#" rel="3">三月</a></li>
-                          <li><a href="#" rel="4">四月</a></li>
-                          <li><a href="#" rel="5">五月</a></li>
+                          <li><a href="#" rel="1">年</a></li>
+                          <li><a href="#" rel="2">月</a></li>
+                          <li><a href="#" rel="3">日</a></li>
                       </ul>
                   </div>
                 </div>
@@ -684,53 +682,135 @@
             </div>
           </div>
         </div>
-        <div style="flex: 1;" id="mapContainer2"></div>
+        <div style="flex: 1;"  >
+          <iframe id="mapContainer1" class="map-box" frameborder="no"   width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+        <!-- <div class="mapiframe" id="map">
+					<iframe id="mapContainer" class="mapiframe" frameborder="no" scrolling="no" allowtransparency="true" width="496.13px" height="711.2px"></iframe>
+				</div> -->
       </div>
   </div>
 </body>
-<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
-<!-- <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script> -->
-<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="Js/Maps.js"></script>
-<script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="Js/echartsPackage.js"></script>
-<script type="text/javascript" src="../js/rest-scroll.js"></script>
+<script>
+  var bridge = new CityGis.Bridge({
+    id: "mapContainer1",
+    url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
+    onReady: function () {
+      this.Invoke(
+          [
+            {
+              "ActionName": "changeTheme",
+              "Parameters": {
+                "id": "Home"
+              }
+            },
+            {
+              "ActionName": "userMenu",
+              "Parameters": {
+                "url": "http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14",
+                "visible": true
+              }
+            },
+            {
+									"ActionName": "ShowData",
+									"Parameters": {
+										"name": "car_dian",
+										"isMouseHoverInfo": true,
+										"data": {
+											"url": "http://127.0.0.1:5500/Modal/Js/intercity-point.json",
+											"parsedata": "function(d){return d.features}",
+											"parsegeometry": "function(item){return item.geometry}"
+										},
+										"popupTemplate": {
+											"content": [
+												{
+													"type": "fields",
+													"fieldInfos": [
+														{
+															"fieldName": "名称",
+															"label": "名称"
+														},
+														{
+															"fieldName": "地址"
+														}
+													]
+												}
+											]
+										},
+										"legendVisible": true,
+										"popupEnabled": true,
+										"isLocate": true,
+										"renderer": {
+											"type": "simple",
+											"label": "",
+											"visualVariables": [],
+											"symbol": {
+												"type": "simple-marker",
+												"size": 10,
+												"color": "red",
+												"outline": {
+													"width": 0.5,
+													"color": "white"
+												}
+											}
+										},
+										"labels": [
+											{
+												"fields": [
+													"#.名称",
+													"#.地址"
+												],
+												"color": [
+													255,
+													255,
+													0,
+													0.5
+												],
+												"size": 18
+											}
+										]
+									}
+            }
+          ]
+      );
+    }
+  });
+</script>
 <script type="text/javascript">
   $(function () {
 
-$("#dropdown p").click(function () {
-  var ul = $("#dropdown ul");
-  if (ul.css("display") == "none") {
-    ul.slideDown("fast");
-  } else {
-    ul.slideUp("fast");
-  }
-  $("#dropdown ul li a").click(function () {
-    var txt = $(this).text();
-    $("#dropdown p").html(txt);
-    var value = $(this).attr("rel");
-    $("#dropdown ul").hide();
-    $("#result").html("您选择了" + txt + "，值为：" + value);
-  });
-});
-$("#dropdown2 p").click(function () {
-  var ul = $("#dropdown2 ul");
-  if (ul.css("display") == "none") {
-    ul.slideDown("fast");
-  } else {
-    ul.slideUp("fast");
-  }
-  $("#dropdown2 ul li a").click(function () {
-    var txt = $(this).text();
-    $("#dropdown2 p").html(txt);
-    var value = $(this).attr("rel");
-    $("#dropdown2 ul").hide();
-    $("#result").html("您选择了" + txt + "，值为：" + value);
-  });
-});
- 
-});
+    $("#dropdown p").click(function () {
+      var ul = $("#dropdown ul");
+      if (ul.css("display") == "none") {
+        ul.slideDown("fast");
+      } else {
+        ul.slideUp("fast");
+      }
+      $("#dropdown ul li a").click(function () {
+        var txt = $(this).text();
+        $("#dropdown p").html(txt);
+        var value = $(this).attr("rel");
+        $("#dropdown ul").hide();
+        $("#result").html("您选择了" + txt + "，值为：" + value);
+      });
+    });
+    $("#dropdown2 p").click(function () {
+      var ul = $("#dropdown2 ul");
+      if (ul.css("display") == "none") {
+        ul.slideDown("fast");
+      } else {
+        ul.slideUp("fast");
+      }
+      $("#dropdown2 ul li a").click(function () {
+        var txt = $(this).text();
+        $("#dropdown2 p").html(txt);
+        var value = $(this).attr("rel");
+        $("#dropdown2 ul").hide();
+        $("#result").html("您选择了" + txt + "，值为：" + value);
+      });
+    });
+    
+    });
 
 </script>
 <script>

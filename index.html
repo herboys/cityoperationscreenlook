@@ -45,17 +45,17 @@
   </script>
   <!-- 热力图 -->
   <!-- <script src="//a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script> -->
-  <script src="js/map2.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/map.js" type="text/javascript" charset="utf-8"></script>
   <!-- <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script> -->
-  <script src="Modal/Js/Maps.js" type="text/javascript" charset="utf-8"></script>
 
   <link rel="stylesheet" type="text/css" href="./css/banner.css" />
   <!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
   <script type="text/javascript" src="./js/banner.js"></script>
+  <!-- <script type="text/javascript" src="./Modal/Js/intercity-map.js"></script> -->
   <script type="text/javascript">
     setFont();
   </script>
+  	
 </head>
 
 <body>
@@ -219,11 +219,11 @@
                 <div class="bottom-border border-box"></div>
               </div>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                <ul class="card-front"></ul>
                <ul class="card-back"></ul>
-            </div>
-            <!-- <ul></ul> -->
+            </div> -->
+            <ul></ul>
           </div>
           <div class="zygy-warp card-warp">
             <div class="title-box" style="margin-bottom: 0.5rem">
@@ -825,7 +825,7 @@
 
 <script>
   function ModalClick() {
-    //document.getElementById("ModalBox").style.display = "block";
+    document.getElementById("ModalBox").style.display = "block";
   }
   //生活垃圾
   function openGarbageClassification() {
@@ -897,7 +897,6 @@
         map.setZoomAndCenter(15, lineArr1);
         this.changeIndex1 = index
 
-
         this.list1[index].isShow = !this.list1[index].isShow;
         if (this.list1[index].isShow) {
           let lineArr = [];
@@ -947,9 +946,10 @@
           for(var j=0;j<curPolylineList.length;j++){
             map.remove(curPolylineList[j]);
           }
-        //  map.remove(this.polylines1.get(index));
+         // map.remove(this.polylines1.get(index));
           this.polylines1.delete(index);
         }
+
 
       },
       clickLocus2(item, index) {
@@ -1000,15 +1000,16 @@
 
           this.polylines2.set(index, polylineList2);
         } else {
-          // var curPolylineList=this.polylines2.get(index)
-          // console.log("+++++++")
-          // console.log(curPolylineList)
-          // for(var j=0;j<curPolylineList.length;j++){
-          //   map.remove(curPolylineList[j]);
-          // }
-          map.remove(this.polylines2.get(index));
+          var curPolylineList=this.polylines2.get(index)
+          console.log("+++++++")
+          console.log(curPolylineList)
+          for(var j=0;j<curPolylineList.length;j++){
+            map.remove(curPolylineList[j]);
+          }
+          // map.remove(this.polylines1.get(index));
           this.polylines2.delete(index);
         }
+
 
       },
       clickLocus3(item, index) {
@@ -1061,13 +1062,15 @@
           var curPolylineList=this.polylines3.get(index)
          // alert(curPolylineList.length)
           for(var j=0;j<curPolylineList.length;j++){
-            console.log(123344677)
+            console.log(curPolylineList)
+            console.log(j)
             console.log(curPolylineList[j])
             map.remove(curPolylineList[j]);
           }
           // map.remove(this.polylines1.get(index));
         //  this.polylines3.delete(index);
         }
+
 
 
       },

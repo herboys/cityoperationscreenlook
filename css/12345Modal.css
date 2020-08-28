@@ -302,6 +302,7 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     justify-content: space-between;
+    padding: 0rem 1.667rem;
     /*margin-right: 2.5rem;*/
 
 }

@@ -152,8 +152,9 @@ var MyEcharts2 = {
                     show: false
                 },
                 grid: {
-                    left: 180,
-                    right: 80
+                    left: 120,
+                    right: 65
+              
                 },
                 // dataZoom: [{
                 //     type: 'slider',
@@ -217,7 +218,7 @@ var MyEcharts2 = {
                     },
                     data: attackSourcesName,
                     axisLabel: {
-                        margin: 160,
+                        margin: 90,
                         fontSize: 16,
                         align: 'left',
                         color: '#333',
@@ -257,32 +258,32 @@ var MyEcharts2 = {
                             title1: {
 
                                 color: '#fff',
-                                width: 90,
-                                align: 'center',
+                                width: 30,
+                                align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
                             },
                             title2: {
 
                                 color: '#fff',
-                                width: 90,
-                                align: 'center',
+                                width: 30,
+                                align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
                             },
                             title3: {
 
                                 color: '#fff',
-                                width: 90,
-                                align: 'center',
+                                width: 30,
+                                align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
                             },
                             title: {
 
                                 color: '#fff',
-                                width: 90,
-                                align: 'center',
+                                width: 30,
+                                align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
                             }
@@ -374,18 +375,7 @@ var MyEcharts2 = {
             var dataArr = [
                 {
                     value: [4300, 10000, 24000, 30000, 50000, 19000],
-                    // name: legendData[2],
-                    itemStyle: {
-                        normal: {
-                            lineStyle: {
-                                color: '#00FFB4',
-                                // shadowColor: '#4BFFFC',
-                                // shadowBlur: 10,
-                            },
-                            shadowColor: '#00FFB4',
-                            shadowBlur: 10,
-                        },
-                    },
+                  
                      areaStyle: {
                             normal: { // 单项区域填充样式
                                 color: {
@@ -416,23 +406,23 @@ var MyEcharts2 = {
             ];
             var colorArr = ['#00D7FF','#C000FF', '#00FFB4']; //颜色
             option = {
-                backgroundColor: '#101736',
-                "title": {
-                    "text": "",
-                    x: "4%",
-                    width: 173,
-                    height: 163,
-                    fontSize: 22,
-                    textStyle: {
-                        color: '#fff',
-                        fontSize: '22'
-                    },
-                    subtextStyle: {
-                        color: '#90979c',
-                        fontSize: '16',
+                // backgroundColor: '#101736',
+                // "title": {
+                //     "text": "",
+                //     x: "4%",
+                //     width: 173,
+                //     height: 163,
+                //     fontSize: 22,
+                //     textStyle: {
+                //         color: '#fff',
+                //         fontSize: '22'
+                //     },
+                //     subtextStyle: {
+                //         color: '#90979c',
+                //         fontSize: '16',
             
-                    },
-                },
+                //     },
+                // },
                 color: colorArr,
                 legend: {
                     orient:'vertical',
@@ -446,16 +436,42 @@ var MyEcharts2 = {
                     textStyle: {
                         fontSize: 14,
                         color: '#fff',
+                        padding: [2,2]
                     },
                 },
                 radar: {
                     // shape: 'circle',
                     name: {
+                        formatter:function(value)  
+                        {  
+                         
+                            var ret = "";//拼接加\n返回的类目项  
+                            var maxLength = 2;//每项显示文字个数  
+                            var valLength = value.length;//X轴类目项的文字个数  
+                            var rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数  
+                            if (rowN > 1)//如果类目项的文字大于3,  
+                            {  
+                                for (var i = 0; i < rowN; i++) {  
+                                    var temp = "";//每次截取的字符串  
+                                    var start = i * maxLength;//开始截取的位置  
+                                    var end = start + maxLength;//结束截取的位置  
+                                    //这里也可以加一个是否是最后一行的判断，但是不加也没有影响，那就不加吧  
+                                    temp = value.substring(start, end) + "\n";  
+                                    ret += temp; //凭借最终的字符串  
+                                }  
+                                return ret;  
+                            }  
+                            else {  
+                                return value;  
+                            }  
+                        } ,
+
                         textStyle: {
                             color: '#fff',
-                            fontSize: 16
+                            fontSize: 8,
                         },
                     },
+                    nameGap: '4',
                     indicator: indicator,
                     splitArea: { // 坐标轴在 grid 区域中的分隔区域，默认不显示。
                         show: true,
@@ -474,6 +490,7 @@ var MyEcharts2 = {
                             width: 1, // 分隔线线宽
                         }
                     },
+                    radius: 50
                 },
                 series: [{
                     type: 'radar',
@@ -508,9 +525,9 @@ var MyEcharts2 = {
                     }
                 },
                 grid: {
-                    left: 80,
+                    left: 40,
                     top: 20, //设置条形图的边距
-                    right: 80,
+                    right: 40,
                     bottom: 20
                 },
                 yAxis: [{
@@ -563,7 +580,7 @@ var MyEcharts2 = {
                                 formatter: "{b}",
                                 textStyle: {
                                     color: "#fff",
-                                    fontSize: 14
+                                    fontSize: 10    
                                 }
                             }
                         },

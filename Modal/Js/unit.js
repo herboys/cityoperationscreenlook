@@ -1,40 +1,41 @@
 function ToOnload() {
-
-
-    // countWork('日')
     GongDan(1)
-    // findbcName()
-    // findproblemFun()
-    initMap()
-    init1()
     TabsFun(3)
     TabsFun(6)
     findbcNameType()
     findscName('年').then(res => {
-
-        let List = res.slice(0, 10).sort(function (a, b) {
-            return b.COUNTATNAME - a.COUNTATNAME;
-        });
-
-        let attackSourcesData = []
-        let attackSourcesName = []
-        let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-        List.map(item => {
-            attackSourcesName.push(item.ATNAME)
-            attackSourcesData.push(item.COUNTATNAME)
+        para=''
+        res.slice(0, 40).map(item=>{
+            para +=`<a target="_blank">${item.ATNAME}</a>`
         })
-        let HostOption = MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
-        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
+        document.getElementById("rotate").innerHTML=para
+        radius = 100;
+        dtr = Math.PI / 200;
+        d = 300;
 
-        var HostChart = echarts.init(document.getElementById("SmallECharts4"));
-        HostChart.setOption(HostOption);
-        HostChart.on("click", function (param) {
-            console.log(param.name, param.data.value)
-            HostSteetFun(ModelTime, param.name, param.data.value)
+        mcList = [];
+        active = false;
+        lasta = 1;
+        lastb = 1;
+        distr = true;
+        tspeed = 2;
+        size = 250;
 
-        })
+        mouseX = 0;
+        mouseY = 0;
 
+        howElliptical = 1;
+
+        aA = null;
+        oDiv = null;
+        active = false;
+        var i = 0;
+        var oTag = null;
+        rotateFun()
     })
+    console.log(document.getElementById("mapContainer"))
+    initMap()
+    init1()
 
 }
 
@@ -88,11 +89,11 @@ function TabsFun(num) {
             findTypeMsg('年', "街镇").then(res => {
                 res.map(item => {
                     xData.push(item.STREETNAME)
-                    yData.push(item.COUNTNAME)
-                    zData.push(item.PROPORTION)
+                    zData.push(item.COUNTNAME)
+                    yData.push(item.PROPORTION)
                 })
-                legend=[]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                legend=["满意度","案件数量"]
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
 
             break;
@@ -105,11 +106,11 @@ function TabsFun(num) {
                 console.log(res, '区委办')
                 res.map(item => {
                     xData.push(item.DEPTNAME)
-                    yData.push(item.COUNTNAME)
-                    zData.push(item.PROPORTION)
+                    zData.push(item.COUNTNAME)
+                    yData.push(item.PROPORTION)
                 })
-                legend=[]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                legend=["满意度","案件数量"]
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
             break;
         case 5:
@@ -119,11 +120,11 @@ function TabsFun(num) {
             findTypeMsg('年', "公司").then(res => {
                 res.map(item => {
                     xData.push(item.DEPTNAME)
-                    yData.push(item.COUNTNAME)
-                    zData.push(item.PROPORTION)
+                    zData.push(item.COUNTNAME)
+                    yData.push(item.PROPORTION)
                 })
-                legend=[]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                legend=["满意度","案件数量"]
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
             break;
             break;
@@ -182,29 +183,27 @@ function GongDan(num) {
             document.getElementById("GongDanIDCopy").innerHTML = ""
 
         } else {
-
             para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>案例来源</li>
-                                        <li>截至日期</li>
-                                        <li>最后期限</li>
-                                        <li>工单状态</li>
+                                        <li>街镇名</li>
+                                        <li>主责部门</li>
+                                        <li>管理要点</li>
+                                        <li>问题内容</li>
                                     </ul>`
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
             for (let i = 0; i < res.length; i++) {
 
-                    para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].LASTSOLVINGTIME + '</li>'
-                        + '<li>' + res[i].ALLENDTIME + '</li>'
-                        + '<li>' + res[i].STATUSNAME + '</li>'
-                        + '</ul>'
+                para += '<ul class="work-older-list-ul ul-line ">'
+                    + '<li>' + res[i].TASKID + '</li>'
+                    + '<li>' + res[i].DISCOVERTIME + '</li>'
+                    + '<li>' + res[i].STREETNAME + '</li>'
+                    + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '</ul>'
             }
-
             document.getElementById("GongDanID").innerHTML = para
             let ul1 = document.getElementById("GongDanID");
             let ul2 = document.getElementById("GongDanIDCopy");
@@ -228,8 +227,8 @@ function rolls(t, ul1, ul2, rollbox) {
 }
 
 function rollStarts() {
-     ul1 = document.getElementById("GongDanID");
-     rollbox = document.getElementById("GongDanIDBox");
+    ul1 = document.getElementById("GongDanID");
+    rollbox = document.getElementById("GongDanIDBox");
     if (rollbox.scrollTop >= ul1.scrollHeight) {
         rollbox.scrollTop = 0;
     } else {
@@ -257,24 +256,24 @@ function GongDanfanhu(num) {
 
 
             para = `  <ul class="work-older-list-ul">
-                                        <li>工单编号</li>
-                                        <li>发生时间</li>
-                                        <li>案例来源</li>
-                                        <li>退单次数</li>
-                                        <li>最后期限</li>
-                                        <li>工单状态</li>
+            <li>工单编号</li>
+            <li>发生时间</li>
+            <li>街镇名</li>
+            <li>主责部门</li>
+            <li>管理要点</li>
+            <li>问题内容</li>
                                     </ul>`
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
             for (let i = 0; i < res.length; i++) {
-                    para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].BACKCOUNT + '</li>'
-                        + '<li>' + res[i].ALLENDTIME + '</li>'
-                        + '<li>' + res[i].STATUSNAME + '</li>'
-                        + '</ul>'
+                para += '<ul class="work-older-list-ul ul-line ">'
+                    + '<li>' + res[i].TASKID + '</li>'
+                    + '<li>' + res[i].DISCOVERTIME + '</li>'
+                    + '<li>' + res[i].STREETNAME + '</li>'
+                    + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '</ul>'
             }
 
             document.getElementById("GongDanID").innerHTML = para
@@ -356,9 +355,9 @@ function HostSteetFun(ModelTime, name) {
         })
         heatmapData = ''
         heatmapData = LastHeatmMapData
-        console.log(heatmapData, '查看')
         initMap()
         init1()
+
 
     })
 }
@@ -400,7 +399,6 @@ function findbcNameType() {
 }
 
 function backBtn() {
-    console.log(111)
     document.getElementById("backBtnclass").style.display = "none"
     document.getElementById("SmallECharts3").style.display = "block"
     document.getElementById("SmallECharts3copy").style.display = "none"
@@ -549,27 +547,54 @@ function findbcNamesc(name) {
     }
     ajaxPromise(para).then(res => {
 
-        let List = res.slice(0, 10).sort(function (a, b) {
-            return b.COUNTATNAME - a.COUNTATNAME;
-        });
-
-        let attackSourcesData = []
-        let attackSourcesName = []
-        let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-        List.map(item => {
-            attackSourcesName.push(item.ATNAME)
-            attackSourcesData.push(item.COUNTATNAME)
+        // let List = res.slice(0, 10).sort(function (a, b) {
+        //     return b.COUNTATNAME - a.COUNTATNAME;
+        // });
+        //
+        // let attackSourcesData = []
+        // let attackSourcesName = []
+        // let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
+        // List.map(item => {
+        //     attackSourcesName.push(item.ATNAME)
+        //     attackSourcesData.push(item.COUNTATNAME)
+        // })
+        // let HostOption = MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
+        // MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
+        para=''
+        res.slice(0, 40).map(item=>{
+            para +=`<a target="_blank">${item.ATNAME}</a>`
         })
-        let HostOption = MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
-        MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
+        document.getElementById("rotate").innerHTML=para
+        radius = 100;
+        dtr = Math.PI / 200;
+        d = 300;
 
-        var HostChart = echarts.init(document.getElementById("SmallECharts4"));
-        HostChart.setOption(HostOption);
-        HostChart.on("click", function (param) {
-            console.log(param.name, param.data.value)
-            HostSteetFun(ModelTime, param.name, param.data.value)
+        mcList = [];
+        active = false;
+        lasta = 1;
+        lastb = 1;
+        distr = true;
+        tspeed = 2;
+        size = 250;
 
-        })
+        mouseX = 0;
+        mouseY = 0;
+
+        howElliptical = 1;
+
+        aA = null;
+        oDiv = null;
+        active = false;
+        var i = 0;
+        var oTag = null;
+        rotateFun()
+        // var HostChart = echarts.init(document.getElementById("SmallECharts4"));
+        // HostChart.setOption(HostOption);
+        // HostChart.on("click", function (param) {
+        //     console.log(param.name, param.data.value)
+        //     HostSteetFun(ModelTime, param.name, param.data.value)
+        //
+        // })
     })
 }
 
@@ -599,6 +624,25 @@ var aA = null;
 var oDiv = null;
 
 function   rotateFun() {
+    radius = 100;
+    dtr = Math.PI / 200;
+    d = 300;
+
+    mcList = [];
+    active = false;
+    lasta = 1;
+    lastb = 1;
+    distr = true;
+    tspeed = 2;
+    size = 250;
+
+    mouseX = 0;
+    mouseY = 0;
+
+    howElliptical = 1;
+
+    aA = null;
+    oDiv = null;
     active = false;
     var i = 0;
     var oTag = null;

@@ -1,0 +1,30 @@
+.Modal-warp {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: inherit;
+    padding: 0rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+}
+#clearid {
+    position: fixed;
+    pointer-events: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 999;
+    cursor: pointer;
+    right: 0.833rem;
+    top: 0.667rem;
+    color: white;
+
+}
+.Modal-left {
+    flex: 1;
+}
+.Modal-right {
+    flex: 1;
+    background-color: yellow;
+}

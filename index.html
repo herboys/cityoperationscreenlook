@@ -39,6 +39,7 @@
   <script src="js/interval.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/rest-scroll.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/iframe.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/syncJs.js" type="text/javascript" charset="utf-8"></script>
   <!--地图-->
   <script
     src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale">
@@ -1120,8 +1121,8 @@
         //发送get请求
         this.$http.get(
             // "http://127.0.0.1:5500/map/mock_data.json"
-            "http://127.0.0.1:5500/map/congrestion.json"
-            // FIRE_URL+"/cityBrain/getSession"
+           // "http://127.0.0.1:5500/map/congrestion.json"
+             FIRE_URL+"/cityBrain/getSession"
           ).then(
             function (res) {
               this.list1 = [];

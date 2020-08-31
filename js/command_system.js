@@ -338,12 +338,14 @@ function addTableList1(name, arr) {
 			setTimeout(function () {
 				var html = $(name).find(".list-box").html();
 				$(name).find(".list-box").append(html);
-				linkageInt();
+				//linkageInt();
 				$(name).mouseenter(function () {
-					clearInterval(linkageTime);
+					//clearInterval(linkageTime);
+					dutyFlag=false
 				});
 				$(name).mouseleave(function () {
-					linkageInt();
+				//	linkageInt();
+					dutyFlag=true;
 				});
 			}, 200 * i + 200);
 		}
@@ -381,12 +383,14 @@ function addTableList2(name, arr) {
 			setTimeout(function () {
 				var html = $(name).find(".list-box").html();
 				$(name).find(".list-box").append(html);
-				linkageIntScroll();
+				//linkageIntScroll();
 				$(name).mouseenter(function () {
-					clearInterval(linkageScrollTime);
+					//clearInterval(linkageScrollTime);
+					emergencyFlag=false;
 				});
 				$(name).mouseleave(function () {
-					linkageIntScroll();
+					//linkageIntScroll();
+					emergencyFlag=true;
 				});
 			}, 200 * i + 200);
 		}

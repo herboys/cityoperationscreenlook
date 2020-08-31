@@ -8,8 +8,8 @@
 //let ORACLE_URL = "http://10.237.206.140:8089/oracleConnection";
 
 let STATIC_URL = "http://10.237.115.83:8089/citysituation";
-//let ORACLE_URL = "http://10.237.115.83:8089/oracleConnection";
-let ORACLE_URL = "http://localhost:8091";
+let ORACLE_URL = "http://10.237.115.83:8089/oracleConnection";
+//let ORACLE_URL = "http://localhost:8091";
 //let ORACLE_URL = "http://10.237.115.83:8090";
 //let STATIC_URL="http://10.237.200.190:8085";
 //let STATIC_URL = "http://localhost:8085";
@@ -19,3 +19,12 @@ let FIRE_URL = "http://10.237.115.83:8089/city-operation";
 let GarBage_URl= "http://180.167.35.167:7085";
 //let FIRE_URL="http://10.237.206.140:8091";
 //let FIRE_URL="http://localhost:8091";
+
+
+let dutyFlag=true;
+let emergencyFlag=true
+
+let zygyFlag=true
+let shbzFlag=true
+let jtklFlag=true;
+let sthjFlag=true;

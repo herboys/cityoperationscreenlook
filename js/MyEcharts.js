@@ -771,6 +771,163 @@ var MyEcharts = {
             return option;
 
         },
+        /*
+        * @name:Busline
+        * */
+        BusLine:function (name,RGB){
+            console.log(RGB)
+        let     option = {
+                title: {
+                    text: '',
+                    textStyle: {
+                        align: 'center',
+                        color: '#fff',
+                        fontSize: 20,
+                    },
+                    top: '5%',
+                    left: 'center',
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        lineStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }, {
+                                    offset: 0.5,
+                                    color: 'rgba(255, 255, 255,1)',
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }],
+                                global: false
+                            }
+                        },
+                    },
+                },
+                grid: {
+                    top: '15%',
+                    left: '5%',
+                    right: '3%',
+                    bottom: '15%',
+                    // containLabel: true
+                },
+                xAxis: [{
+                    type: 'category',
+                    axisLine: {
+                        show: true
+                    },
+                    splitArea: {
+                        // show: true,
+                        color: `rgb(${RGB})`,
+                        lineStyle: {
+                            color: `rgb(${RGB})`,
+                        },
+                    },
+                    axisLabel: {
+                        color: '#fff'
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                    boundaryGap: false,
+                    data: ['A', 'B', 'C', 'D', 'E', 'F'],
+
+                }],
+
+                yAxis: [{
+                    type: 'value',
+                    min: 0,
+                  //  max: 140,
+                    splitNumber: 4,
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: 'rgba(255,255,255,0.1)'
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                    },
+                    axisLabel: {
+                        show: true,
+                        margin: 20,
+                        textStyle: {
+                            color: '#d1e6eb',
+
+                        },
+                    },
+                    axisTick: {
+                        show: false,
+                    },
+                }],
+                series: [
+                    {
+                        name: '注册总量',
+                        type: 'line',
+                        smooth: true, //是否平滑
+                        showAllSymbol: true,
+                        // symbol: 'image://./static/images/guang-circle.png',
+                        symbol: 'circle',
+                        symbolSize: 15,
+                        lineStyle: {
+                            normal: {
+                                color: `rgb(${RGB})`,
+                                shadowColor: 'rgba(0, 0, 0, .3)',
+                                shadowBlur: 0,
+                                shadowOffsetY: 5,
+                                shadowOffsetX: 5,
+                            },
+                        },
+                        label: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: `rgb(${RGB})`,
+                            }
+                        },
+
+                        itemStyle: {
+                            color: `rgb(${RGB})`,
+                            borderColor: "#fff",
+                            borderWidth: 3,
+                            shadowColor: 'rgba(0, 0, 0, .3)',
+                            shadowBlur: 0,
+                            shadowOffsetY: 2,
+                            shadowOffsetX: 2,
+                        },
+                        tooltip: {
+                            show: false
+                        },
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: `rgba(${RGB},0.3)`
+                                },
+                                    {
+                                        offset: 1,
+                                        color: `rgba(${RGB},0)`
+                                    }
+                                ], false),
+                                shadowColor: `rgba(${RGB}, 0.9)`,
+                                shadowBlur: 20
+                            }
+                        },
+                        data: [61,62,63,64,65,66,],
+                    },
+                ]
+            };
+            console.log(option)
+        return option
+        },
         /**
          *wordCloud
          *@param color : 颜色 数据

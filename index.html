@@ -39,6 +39,7 @@
   <script src="js/interval.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/rest-scroll.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/iframe.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/syncJs.js" type="text/javascript" charset="utf-8"></script>
   <!--地图-->
   <script
     src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale">
@@ -265,7 +266,7 @@
                 <div class="center-border border-box"></div>
                 <div class="bottom-border border-box"></div>
               </div>
-              <h3>交通客流</h3>
+              <h3 onclick="BusModalBoxFun()">交通客流</h3>
               <div class="title-border-box title-border-right">
                 <div class="top-border border-box"></div>
                 <div class="center-border border-box"></div>
@@ -759,6 +760,9 @@
       <div class="ModalBox" id="GarBageModal">
         <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%"
           frameborder="0"></iframe>
+      </div> <div class="Child_ModalBox " id="BusModalBox">
+        <object id="openiframeBusModalBox" data="Modal/BusModalBox.html" width="100%" height="100%"
+         ></object>
       </div>
       <div class="rest-box" id="GridModal"  v-show="gridShow" >
         <a class="rescue-close" @click="gridShow=false" >
@@ -832,6 +836,10 @@
   //生活垃圾
   function openGarbageClassification() {
     document.getElementById("GarBageModal").style.display = "block";
+  }
+  /*公交车*/
+  function BusModalBoxFun(){
+    document.getElementById("BusModalBox").style.display = "block";
   }
   //网格化
   function GridModalShow() {
@@ -1116,8 +1124,8 @@
         //发送get请求
         this.$http.get(
             // "http://127.0.0.1:5500/map/mock_data.json"
-            // "http://127.0.0.1:5500/map/congrestion.json"
-            FIRE_URL+"/cityBrain/getSession"
+           // "http://127.0.0.1:5500/map/congrestion.json"
+             FIRE_URL+"/cityBrain/getSession"
           ).then(
             function (res) {
               this.list1 = [];

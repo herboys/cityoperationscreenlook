@@ -333,6 +333,20 @@ function SprinkleIt(){
         map.add([Marker]);
         AMap.event.addListener(Marker, 'click', function(e) {
             alert(JSON.stringify(i))
+            var name=NewList[i].name
+            var url=NewList[i].url
+            if(videoOne==false){
+                insertOneVideo(name,url);
+                videoOne=true;
+            }else if(videoTwo==false){
+                insertSecondVideo(name,url);
+                videoTwo=true;
+            }else{
+                insertOneVideo(name,url);
+                videoOne=true;
+            }
+            GarBageVideo++;
+
         });
     }
 

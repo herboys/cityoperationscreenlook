@@ -55,35 +55,50 @@
               <div v-show="switchShow1" class="Satisfaction-warp-item-echarts">
                 <div id="SmallECharts3" style="width: 575px; height: 255px;display: none;"></div>
                 <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
-                  <p style="font-size: 1.5rem;margin-bottom: 6px;">发现事件<span style="color: #56D0E3;">46364</span>件</p>
-                  <div style="display: flex;height: 3rem;margin-bottom: 1rem;">
+                  <p style="font-size: 1.5rem;margin-bottom: 2rem;margin-top: 2rem;">发现事件<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>件</p>
+                  <div style="display: flex;height: 3rem;margin-bottom: 2rem;">
                     <div style="padding-left: 1.5rem;width: 50%;">
-                      <p style="margin-bottom: 6px;">主动发现<progress value='70' max='100' class="progress"></progress><span>40990</span></p>
-                      <p>被动发现<progress value='30' max='100' class="progress2"></progress><span>4379</span></p>
+                      <p style="margin-bottom: 4px;">主动发现<progress value='70' max='100' class="progress"></progress><span style="margin-left: 1rem;color: rgb(32, 209, 128);font-weight: bold;">40990</span></p>
+                      <p style="margin-bottom: 4px;">被动发现<progress value='30' max='100' class="progress2"></progress><span style="margin-left: 1rem;color: rgb(0, 147, 255);font-weight: bold;">4379</span></p>
                     </div>
                     <div style="width: 50%;">
-                      <span class="echarts-info">同比 <span style="color: #20d180;">+16%</span></span>
-                      <span class="echarts-info">环比 <span style="color: #20d180;">-1%</span></span>
+                      <span class="echarts-info">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></span>
+                      <span class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></span>
                     </div>
                   </div>
-                  <div style="display: flex;">
-                    <div style="width: 50%;">
+                  <div style="height: 1px;background-color: rgba(32, 209, 128, 0.2);margin-left: 10px;margin-right: 10px;"></div>
+                  <div style="display: flex;margin-top: 1rem;">
+                    <div style="width: 50%;padding-right: 25px;">
                       <p>
                         <span style="font-size: 1.5rem;margin-bottom: 6px;">协调事件<span
-                            style="color: #56D0E3;">51</span>件</span>
+                            style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
                         <span style="color: #20d180;">某某总量</span>
                         <span style="color: #0093ff;">某某总量</span>
                       </p>
-                      <div id="ecPie1" style="width: 260px;height: 160px;"></div>
+                      <div style="display: flex;">
+                        <div id="ecPie1" style="width: 120px;height: 120px;"></div>
+                        <div style="margin: auto 0;">
+                          <div class="echarts-info" style="margin-bottom: 12px;">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></div>
+                          <div class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></div>
+                        </div>
+                        <div style="height: 90px;;width: 1px;background-color: rgba(32, 209, 128, 0.2);margin-top: 10px;"></div>
+                      </div>
+                     
                     </div>
                     <div style="width: 50%;">
                       <p>
-                        <span style="font-size: 1.5rem;margin-bottom: 6px;">协调事件<span
-                            style="color: #56D0E3;">51</span>件</span>
+                        <span style="font-size: 1.5rem;margin-bottom: 6px;">处置事件<span
+                            style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
                         <span style="color: #20d180;">某某总量</span>
                         <span style="color: #0093ff;">某某总量</span>
                       </p>
-                      <div id="ecPie2" style="width: 260px;height: 160px;"></div>
+                      <div style="display: flex;">
+                        <div id="ecPie2" style="width: 120px;height: 120px;"></div>
+                        <div style="margin: auto 0;">
+                          <div class="echarts-info" style="margin-bottom: 12px;">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></div>
+                          <div class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -220,7 +235,7 @@
               </div>
               <div class="Satisfaction-warp-item-echarts">
                 <div style="display: flex;">
-                  <div id="SmallECharts4" style="width: 275px; height: 255px;"></div>
+                  <div id="SmallECharts4" style="width: 260px; height: 255px;"></div>
                   <div class="echarts-bg-box" style="display: flex;">
                     <div id="ecRadar1" style="width: 150px;height: 200px;"></div>
                     <div id="ecbar3" style="width: 150px;height: 200px;"></div>
@@ -255,8 +270,11 @@
               <div class="Satisfaction-warp-item-echarts">
                 <!-- <div id="SmallECharts22" style="width: 617px; height: 255px;"></div> -->
                 <div style="display: flex;">
-                  <div id="SmallECharts44" style="width: 300px; height: 255px;"></div>
-                  <div id="ecRadar2" class="echarts-bg-box"></div>
+                  <div id="SmallECharts44" style="width: 260px; height: 255px;"></div>
+                  <div class="echarts-bg-box" style="display: flex;">
+                    <div id="ecRadar2" style="width: 150px;height: 200px;"></div>
+                    <div id="ecbar4" style="width: 150px;height: 200px;"></div>
+                  </div>
                 </div>
               </div>
 
@@ -432,6 +450,10 @@
     MyEcharts2.initChart(
       MyEcharts2.EchartsOption.progress("name", category),
       "ecbar3"
+    );
+    MyEcharts2.initChart(
+      MyEcharts2.EchartsOption.progress("name", category),
+      "ecbar4"
     );
     MyEcharts2.initChart(
       MyEcharts2.EchartsOption.PieChart("name", pieData),

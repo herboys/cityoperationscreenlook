@@ -297,7 +297,7 @@ ul li {
 }
 
 .echarts-bg-box{
-    width: 290px;height: 205px;
+    width: 302px;height: 205px;
     background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
     background-repeat: no-repeat;
     background-size: 3px 20px, 20px 3px;

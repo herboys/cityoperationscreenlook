@@ -93,7 +93,7 @@ function TabsFun(num) {
                     yData.push(item.PROPORTION)
                 })
                 legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
 
             break;
@@ -110,7 +110,7 @@ function TabsFun(num) {
                     yData.push(item.PROPORTION)
                 })
                 legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
             break;
         case 5:
@@ -124,7 +124,7 @@ function TabsFun(num) {
                     yData.push(item.PROPORTION)
                 })
                 legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"件"), "SmallECharts")
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
             })
             break;
             break;
@@ -195,14 +195,14 @@ function GongDan(num) {
             para = ''
             for (let i = 0; i < res.length; i++) {
 
-                    para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
-                        + '<li>' + res[i].ATNAME + '</li>'
-                        + '<li>' + res[i].ATNAME + '</li>'
-                        + '</ul>'
+                para += '<ul class="work-older-list-ul ul-line ">'
+                    + '<li>' + res[i].TASKID + '</li>'
+                    + '<li>' + res[i].DISCOVERTIME + '</li>'
+                    + '<li>' + res[i].STREETNAME + '</li>'
+                    + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '</ul>'
             }
             document.getElementById("GongDanID").innerHTML = para
             let ul1 = document.getElementById("GongDanID");
@@ -227,8 +227,8 @@ function rolls(t, ul1, ul2, rollbox) {
 }
 
 function rollStarts() {
-     ul1 = document.getElementById("GongDanID");
-     rollbox = document.getElementById("GongDanIDBox");
+    ul1 = document.getElementById("GongDanID");
+    rollbox = document.getElementById("GongDanIDBox");
     if (rollbox.scrollTop >= ul1.scrollHeight) {
         rollbox.scrollTop = 0;
     } else {
@@ -256,24 +256,24 @@ function GongDanfanhu(num) {
 
 
             para = `  <ul class="work-older-list-ul">
-                                        <li>工单编号</li>
-                                        <li>发生时间</li>
-                                        <li>案例来源</li>
-                                        <li>退单次数</li>
-                                        <li>最后期限</li>
-                                        <li>工单状态</li>
+            <li>工单编号</li>
+            <li>发生时间</li>
+            <li>街镇名</li>
+            <li>主责部门</li>
+            <li>管理要点</li>
+            <li>问题内容</li>
                                     </ul>`
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
             for (let i = 0; i < res.length; i++) {
-                    para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].BACKCOUNT + '</li>'
-                        + '<li>' + res[i].ALLENDTIME + '</li>'
-                        + '<li>' + res[i].STATUSNAME + '</li>'
-                        + '</ul>'
+                para += '<ul class="work-older-list-ul ul-line ">'
+                    + '<li>' + res[i].TASKID + '</li>'
+                    + '<li>' + res[i].DISCOVERTIME + '</li>'
+                    + '<li>' + res[i].STREETNAME + '</li>'
+                    + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '</ul>'
             }
 
             document.getElementById("GongDanID").innerHTML = para
@@ -625,24 +625,24 @@ var oDiv = null;
 
 function   rotateFun() {
     radius = 100;
-     dtr = Math.PI / 200;
+    dtr = Math.PI / 200;
     d = 300;
 
-     mcList = [];
-     active = false;
-     lasta = 1;
-     lastb = 1;
-     distr = true;
+    mcList = [];
+    active = false;
+    lasta = 1;
+    lastb = 1;
+    distr = true;
     tspeed = 2;
     size = 250;
 
     mouseX = 0;
     mouseY = 0;
 
-     howElliptical = 1;
+    howElliptical = 1;
 
-     aA = null;
-     oDiv = null;
+    aA = null;
+    oDiv = null;
     active = false;
     var i = 0;
     var oTag = null;

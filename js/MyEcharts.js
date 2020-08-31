@@ -970,7 +970,7 @@ var MyEcharts = {
                 },
                     {
                         type: "value",
-                        name: "%",
+                        name: "件",
                         nameTextStyle: {
                             color: normalColor,
                             fontSize: 12

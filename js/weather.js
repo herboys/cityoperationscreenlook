@@ -16,7 +16,7 @@ $(function () {
 
     var w="阵雨"
     var tem=30
-    showWeather(w, tem);
+    //showWeather(w, tem);
 
     changeWeather();
 

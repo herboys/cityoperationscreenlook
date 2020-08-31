@@ -9,4 +9,7 @@ $(function () {
     setInterval(changeWeather,60000*15);
     //每小时检查一次
     setInterval(clearAlarm,1*60*60*1000)
+
+    //5s动态变换一次
+    setInterval(syncInit,5*1000);
 })

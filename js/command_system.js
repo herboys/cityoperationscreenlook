@@ -187,7 +187,7 @@ function getDutyList() {
 	coreArr = linkageArr;
 	var linkageArrScroll =[]
 	$.ajax({
-		url:STATIC_URL+"/jdcyemergency/findTopByNumber/6",
+		url:STATIC_URL+"/jdcyemergency/findTopByNumber/9",
 		type:"get",
 		async:true,
 		success:function (data) {

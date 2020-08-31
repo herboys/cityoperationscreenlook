@@ -61,30 +61,23 @@ function initMap() {
     addTraffic();           /*添加实时路况情况*/
     addPoiMarker();         /*添加嘉定区主要监控点*/
     //  map.addControl(new AMap.Scale());
+    canvaslineFun()
 
-        var heatmap;
-    map.plugin(["AMap.Heatmap"], function () {
+}
+function canvaslineFun(){
+    var heatmap;
+    map.plugin(["AMap.Heatmap"],function(){
         //初始化heatmap对象
-        heatmap = new AMap.Heatmap(map, {
-            radius: 70, //给定半径
-            opacity: [0, 0.8]
-            /*,
-                        gradient:{
-                            0.5: 'blue',
-                            0.65: 'rgb(117,211,248)',
-                            0.7: 'rgb(0, 255, 0)',
-                            0.9: '#ffea00',
-                            1.0: 'red'
-                        }
-                         */
+        heatmap=new AMap.Heatmap(map,{
+            radius:70,//给定半径
+            opacity:[0,0.8]
         });
         //设置数据集：该数据为北京部分“公园”数据
         heatmap.setDataSet({
-            data: heatmapData,
-            max: 100
+            data:heatmapData,
+            max:100
         });
     });
-
 }
 
 /*设置地图风格*/

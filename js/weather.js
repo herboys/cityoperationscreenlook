@@ -14,7 +14,9 @@ $(function () {
         window.localStorage.setItem("date",date)
     }
 
-
+    var w="阵雨"
+    var tem=30
+    showWeather(w, tem);
 
     changeWeather();
 
@@ -230,7 +232,7 @@ function changeWeather(){
             }
         },
         error:function () {
-            alert("无预警信息")
+            //alert("无预警信息")
         }
     })
 }
@@ -238,6 +240,7 @@ function changeWeather(){
 
 // showWarningDefault();
 function showWeather(weather, temperature){
+
     var xyIndex = weatherIndex[weather];
 
     if(xyIndex == null){

@@ -761,7 +761,9 @@
         <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%"
           frameborder="0"></iframe>
       </div>
-      <div class="ModalBox" id="GridModal" style="display: none">
+      <div class="rest-box" id="GridModal"  v-show="gridShow" >
+        <a class="rescue-close" @click="gridShow=false" >
+          x</a>
         <iframe id="openiframeGridModal" src="Modal/GridModal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
       <div class="rest-box" id="RestModal" style="display: none" v-show="restShow">
@@ -849,7 +851,7 @@
         list2: [],
         list3: [],
         showDialog: true,
-        rescueShow: true,
+        gridShow: false,
         restShow: false,
         convenientShow: false,
        
@@ -1075,13 +1077,7 @@
 
 
       },
-      colorClick1() {
-        (this.isActive = true), (this.isUnactive = false);
-      },
-      colorClick2() {
-        (this.isActive = false), (this.isUnactive = true);
-      },
-   
+      
       showClick() {
         this.showDialog = !this.showDialog;
       },

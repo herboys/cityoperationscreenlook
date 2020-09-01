@@ -33,10 +33,7 @@ function ToOnload() {
         var oTag = null;
         rotateFun()
     })
-    console.log(document.getElementById("mapContainer"))
     initMap()
-    init1()
-
 }
 
 
@@ -356,7 +353,6 @@ function HostSteetFun(ModelTime, name) {
         heatmapData = ''
         heatmapData = LastHeatmMapData
         initMap()
-        init1()
 
 
     })
@@ -461,7 +457,8 @@ function JiBenXinXiReLiability(ModelTime, name) {
         heatmapData = LastHeatmMapData
         console.log(heatmapData, '查看')
         initMap()
-        init1()
+
+
 
 
     })

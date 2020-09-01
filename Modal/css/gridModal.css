@@ -191,7 +191,7 @@ body {
 .Satisfaction-warp {
     display: flex;
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
     justify-content: space-between;
     margin-right: 30px;
 
@@ -199,8 +199,7 @@ body {
 
 .Satisfaction-warp-item {
     width: 575px;
-    height: 398px;
-
+    /* height: 298px; */
     box-sizing: border-box;
 }
 
@@ -251,10 +250,23 @@ body {
     font-size: 12px;
     letter-spacing: 1px;
 }
+.banner3 {
+    width: 117px;
+    height: 25px;
+    background-image: url(../../Modal/images/banner2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    line-height: 25px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
 
 .Satisfaction-warp-item-echarts {
     width: inherit;
-    height: 455px;
+    height: 255px;
     background-image: url(../../Modal/images/12345icon.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -268,7 +280,7 @@ body {
 }
 .FX_header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -297,7 +309,7 @@ ul li {
 }
 
 .echarts-bg-box{
-    width: 315px;height: 405px;
+    width: 315px;height: 205px;
     background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
     background-repeat: no-repeat;
     background-size: 3px 20px, 20px 3px;

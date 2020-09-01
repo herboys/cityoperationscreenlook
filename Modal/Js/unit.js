@@ -543,60 +543,93 @@ function findbcNamesc(name) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-
-        // let List = res.slice(0, 10).sort(function (a, b) {
-        //     return b.COUNTATNAME - a.COUNTATNAME;
-        // });
-        //
-        // let attackSourcesData = []
-        // let attackSourcesName = []
-        // let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-        // List.map(item => {
-        //     attackSourcesName.push(item.ATNAME)
-        //     attackSourcesData.push(item.COUNTATNAME)
-        // })
-        // let HostOption = MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次')
-        // MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '次'), "SmallECharts4")
-        para=''
-        res.slice(0, 40).map(item=>{
-            para +=`<a target="_blank">${item.ATNAME}</a>`
-        })
-        document.getElementById("rotate").innerHTML=para
-        radius = 100;
-        dtr = Math.PI / 200;
-        d = 300;
-
-        mcList = [];
-        active = false;
-        lasta = 1;
-        lastb = 1;
-        distr = true;
-        tspeed = 2;
-        size = 250;
-
-        mouseX = 0;
-        mouseY = 0;
-
-        howElliptical = 1;
-
-        aA = null;
-        oDiv = null;
-        active = false;
-        var i = 0;
-        var oTag = null;
-        rotateFun()
-        // var HostChart = echarts.init(document.getElementById("SmallECharts4"));
-        // HostChart.setOption(HostOption);
-        // HostChart.on("click", function (param) {
-        //     console.log(param.name, param.data.value)
-        //     HostSteetFun(ModelTime, param.name, param.data.value)
-        //
-        // })
+        BulletChat()
     })
 }
 
 
+function BulletChat(){
+    let newList = [{name: '微信', value: 3328}, {name: '南方+', value: 1045}, {
+        name: '东莞时间网',
+        value: 834
+    },]
+    count(newList.length,newList)
+}
 
+
+
+var count = (function () {
+    var timers;
+    var i = 0;
+    function change(tar,newList) {
+        if (i==tar) {
+            i=0
+        }
+        init(newList[i].name)
+        i++;
+        timers = setTimeout(function () {
+            change(newList.length,newList)
+        }, Math.floor(Math.random()*(1000 - 500) + 500))
+    }
+    return change;
+})()
+
+function init(newText) {
+    clearInterval(timer);
+    let text = newText;
+    addBarrage(text)
+}
+
+let timer;
+let colors = ['#2C3E50', '#FF0000', '#1E87F0', '#7AC84B', '#FF7F00', '#9B39F4', '#FF69B4']
+
+function addBarrage(text) {
+    let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
+    let screenW = window.innerWidth;
+    let screenH = dm.offsetHeight;
+    let max = Math.floor(screenH / 40);
+    let height = 10 + 40 * (parseInt(Math.random() * (max + 1)) - 1);
+    let span = document.createElement('span');
+    span.style.left = screenW + 'px';
+    span.style.top = height + 'px';
+    span.style.color = colors[index];
+    span.innerHTML = text;
+    span.SetType = true;
+    let dmDom = document.getElementById('dm');
+    dmDom.appendChild(span);
+    timer = setInterval(move, 10);
+}
+
+function move() {
+    let arr = [];
+    let oSpan = document.getElementsByTagName('span');
+    for (let i = 0; i < oSpan.length; i++) {
+        oSpan[i].onmouseover = function () {
+            oSpan[i].style.zIndex = '9999'
+            oSpan[i].SetType = false
+            console.log(oSpan[0].SetType, oSpan[1].SetType, oSpan[2].SetType)
+            console.log(oSpan[i].innerHTML, '9999')
+        }
+        oSpan[i].onmouseout = function () {
+            oSpan[i].SetType = true
+            oSpan[i].style.zIndex = '1'
+        }
+    }
+    for (let i = 0; i < oSpan.length; i++) {
+        arr.push(oSpan[i].offsetLeft);
+        if (oSpan[i].SetType == true) {
+
+            arr[i] -= 1;
+        } else {
+            arr[i] = arr[i]
+        }
+        oSpan[i].style.left = arr[i] + 'px';
+        if (arr[i] < -oSpan[i].offsetWidth) {
+            var dmDom = document.getElementById('dm');
+            dmDom.removeChild(dmDom.childNodes[0]);
+        }
+    }
+}
 
 
 /**3D球**/

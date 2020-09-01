@@ -4,34 +4,8 @@ function ToOnload() {
     TabsFun(6)
     findbcNameType()
     findscName('年').then(res => {
-        para=''
-        res.slice(0, 40).map(item=>{
-            para +=`<a target="_blank">${item.ATNAME}</a>`
-        })
-        document.getElementById("rotate").innerHTML=para
-        radius = 100;
-        dtr = Math.PI / 200;
-        d = 300;
 
-        mcList = [];
-        active = false;
-        lasta = 1;
-        lastb = 1;
-        distr = true;
-        tspeed = 2;
-        size = 250;
-
-        mouseX = 0;
-        mouseY = 0;
-
-        howElliptical = 1;
-
-        aA = null;
-        oDiv = null;
-        active = false;
-        var i = 0;
-        var oTag = null;
-        rotateFun()
+        BulletChat(res)
     })
     initMap()
 }
@@ -128,21 +102,31 @@ function TabsFun(num) {
         case 6:
             para[3].innerHTML = `     <div class="banner1" onclick="TabsFun(6)">紧急工单</div>
                                 <div class="banner2" onclick="TabsFun(7)">重复工单</div>
-                                <div class="banner2" onclick="TabsFun(8)">反复退单</div>`
+                                <div class="banner2" onclick="TabsFun(8)">反复退单</div>
+                                <div class="banner2" onclick="TabsFun(8)">超期事件</div>`
             GongDan(1)
             break;
         case 7:
             para[3].innerHTML = `     <div class="banner2" onclick="TabsFun(6)">紧急工单</div>
                                 <div class="banner1" onclick="TabsFun(7)">重复工单</div>
-                                <div class="banner2" onclick="TabsFun(8)">反复退单</div>`
+                                <div class="banner2" onclick="TabsFun(8)">反复退单</div>
+                                    <div class="banner2" onclick="TabsFun(8)">超期事件</div>`
             GongDan(0)
             break;
             break;
         case 8:
             para[3].innerHTML = `     <div class="banner2" onclick="TabsFun(6)">紧急工单</div>
                                 <div class="banner2" onclick="TabsFun(7)">重复工单</div>
-                                <div class="banner1" onclick="TabsFun(8)">反复退单</div>`
+                                <div class="banner1" onclick="TabsFun(8)">反复退单</div>
+                <div class="banner2" onclick="TabsFun(8)">超期事件</div>`
             GongDanfanhu()
+            break;
+            case 11:
+            para[3].innerHTML = `     <div class="banner2" onclick="TabsFun(6)">紧急工单</div>
+                                <div class="banner2" onclick="TabsFun(7)">重复工单</div>
+                                <div class="banner2" onclick="TabsFun(8)">反复退单</div>
+                <div class="banner1" onclick="TabsFun(11)">超期事件</div>`
+                OverDueFun()
             break;
         case 9:
             document.getElementsByClassName("work-older-header")[0].innerHTML = ' <button onclick="TabsFun(9)">' + '紧急工单' + '</button>'
@@ -159,7 +143,47 @@ function TabsFun(num) {
     }
 
 }
+/*超期事件*/
+function OverDueFun(){
+    let para={
+        url:ORACLE_URL+'/taskInfo/findInfooverdue',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "urgent": num,
+            "date": ModelTime
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res=>{
+        para = `  <ul class="work-older-list-ul">
+                                        <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>街镇名</li>
+                                        <li>主责部门</li>
+                                        <li>管理要点</li>
+                                        <li>问题内容</li>
+                                    </ul>`
+        document.getElementById("GongDanTitleID").innerHTML = para
+        para = ''
+        for (let i = 0; i < res.length; i++) {
 
+            para += '<ul class="work-older-list-ul ul-line ">'
+                + '<li>' + res[i].TASKID + '</li>'
+                + '<li>' + res[i].DISCOVERTIME + '</li>'
+                + '<li>' + res[i].STREETNAME + '</li>'
+                + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
+                + '<li>' + res[i].ATNAME + '</li>'
+                + '<li>' + res[i].ATNAME + '</li>'
+                + '</ul>'
+        }
+        document.getElementById("GongDanID").innerHTML = para
+        let ul1 = document.getElementById("GongDanID");
+        let ul2 = document.getElementById("GongDanIDCopy");
+        let rollbox = document.getElementById("GongDanIDBox");
+        rolls(50, ul1, ul2, rollbox)
+    })
+}
 /**获取工单列表*/
 function GongDan(num) {
     let para = {
@@ -543,21 +567,15 @@ function findbcNamesc(name) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        BulletChat()
+        BulletChat(res)
     })
 }
 
 
-function BulletChat(){
-    let newList = [{name: '微信', value: 3328}, {name: '南方+', value: 1045}, {
-        name: '东莞时间网',
-        value: 834
-    },]
+function BulletChat(list){
+    let newList =list
     count(newList.length,newList)
 }
-
-
-
 var count = (function () {
     var timers;
     var i = 0;
@@ -565,7 +583,7 @@ var count = (function () {
         if (i==tar) {
             i=0
         }
-        init(newList[i].name)
+        init(newList[i].ATNAME)
         i++;
         timers = setTimeout(function () {
             change(newList.length,newList)
@@ -573,7 +591,6 @@ var count = (function () {
     }
     return change;
 })()
-
 function init(newText) {
     clearInterval(timer);
     let text = newText;
@@ -585,7 +602,7 @@ let colors = ['#2C3E50', '#FF0000', '#1E87F0', '#7AC84B', '#FF7F00', '#9B39F4', 
 
 function addBarrage(text) {
     let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
-    let screenW = window.innerWidth;
+    let screenW = 500;
     let screenH = dm.offsetHeight;
     let max = Math.floor(screenH / 40);
     let height = 10 + 40 * (parseInt(Math.random() * (max + 1)) - 1);

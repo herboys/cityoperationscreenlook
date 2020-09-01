@@ -288,10 +288,10 @@ ul li {
     list-style: none;
 }
 #dropdown{font-size:16px;z-index: 99999}
-#dropdown p{width:80px; height:32px; line-height:32px; padding-left:10px; padding-right:30px;
+#dropdown p{width:40px; height:32px; line-height:32px; padding-left:10px; padding-right:30px;
     border:1px solid #a9c9e2; background:inherit url('V') no-repeat right 4px;
     color: #ffffff; cursor:pointer}
-#dropdown ul{width:119px; background-color: #061839;; margin-top:2px; border:2px solid #50657D;
+#dropdown ul{width:50px; background-color: #061839;; margin-top:2px; border:2px solid #50657D;
     position:absolute; display:none}
 #dropdown ul li{height:24px; line-height:24px; text-indent:10px}
 #dropdown ul li a{display:block; height:24px; color: #ffffff; text-decoration:none}

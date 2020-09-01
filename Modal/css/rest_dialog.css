@@ -470,3 +470,7 @@ body {
   background-color: #226CD2;
   opacity: 0.28;
 }
+
+.vital-signs .title-box h3 {
+  font-size: 1rem;
+}

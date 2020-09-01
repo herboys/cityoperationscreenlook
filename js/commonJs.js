@@ -21,10 +21,15 @@ let GarBage_URl= "http://180.167.35.167:7085";
 //let FIRE_URL="http://localhost:8091";
 
 
-let dutyFlag=true;
-let emergencyFlag=true
+let dutyFlag=true;  //部门表格翻屏标志
+let emergencyFlag=true //突发事件翻屏标志
 
-let zygyFlag=true
-let shbzFlag=true
-let jtklFlag=true;
-let sthjFlag=true;
+let zygyFlag=true //资源供应滚动标志
+let shbzFlag=true //社会保障滚动标志
+let jtklFlag=true; //交通客流滚动标志
+let sthjFlag=true; //生态环境滚动标志
+
+let videoOne=false; //垃圾分类第一个视频位置是否占用
+let videoTwo=false;//垃圾分类第二个视频位置是否占用
+
+let GarBageVideo=0; //垃圾分类一共开启了几个视频

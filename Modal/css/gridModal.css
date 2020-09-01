@@ -199,7 +199,7 @@ body {
 
 .Satisfaction-warp-item {
     width: 575px;
-    height: 298px;
+    height: 398px;
 
     box-sizing: border-box;
 }
@@ -254,7 +254,7 @@ body {
 
 .Satisfaction-warp-item-echarts {
     width: inherit;
-    height: 255px;
+    height: 455px;
     background-image: url(../../Modal/images/12345icon.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -297,7 +297,7 @@ ul li {
 }
 
 .echarts-bg-box{
-    width: 315px;height: 205px;
+    width: 315px;height: 405px;
     background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
     background-repeat: no-repeat;
     background-size: 3px 20px, 20px 3px;

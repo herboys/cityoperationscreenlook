@@ -332,8 +332,105 @@ function SprinkleIt(){
         });
         map.add([Marker]);
         AMap.event.addListener(Marker, 'click', function(e) {
-            alert(JSON.stringify(i))
+
+            var name=NewList[i].name
+            var url=NewList[i].url
+            if(videoOne===false){
+                iframeInsertOneVideo(name,url);
+                videoOne=true;
+            }else if(videoTwo===false){
+                iframeInsertSecondVideo(name,url);
+                videoTwo=true;
+            }else{
+                iframeInsertOneVideo(name,url);
+                videoOne=true;
+            }
+            GarBageVideo++;
+
         });
     }
 
+    function iframeInsertOneVideo(name,url){
+        //clearInterval(videoTimeOne)
+
+
+       /* var removeVideo= $("#slider1 video")[0]
+        removeVideo.pause()
+        hlsListMap["slideOne"].destroy();
+        hlsListMap["slideOne"]=null
+        delete hlsListMap["slideOne"]*/
+
+       name=name.replace(" ","_").replace(" ","_").replace(" ","_")
+
+        console.log(1)
+        console.log(parent.$('#slider1').children().eq(0));
+        var str=""
+        parent.$('#slider1').html('');
+
+        str += '<div class="slide1">'
+            +'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+name+'</span>'
+            + "<img class='fullscreenImg' onclick=openLargeVideo('"+name+"','"+url+"') src='images/fullscreen1.png'/>"
+            +'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
+
+        str +='<div class="jrwlzsjCont1">'
+
+        str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
+
+        str	+= '  </video>'
+            +'</div>'
+            +'</div>'
+            +'</div>'
+
+
+
+
+        parent.$('#slider1').append(str)
+
+        var hls = new Hls();
+        var video = parent.$("#slider1 video")[0];
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+        })
+
+       // hlsListMap["slideOne"]=hls
+      //  videoFlagOne=1;
+    }
+
+    function iframeInsertSecondVideo(name,url){
+
+       /* var removeVideo= $("#slider2 video")[0]
+        removeVideo.pause()
+        hlsListMap["slideTwo"].destroy();
+        hlsListMap["slideTwo"]=null
+        delete hlsListMap["slideTwo"]*/
+        name=name.replace(" ","_").replace(" ","_").replace(" ","_")
+        parent.$('#slider2').html('');
+        var str=''
+        str += '<div class="slide1">'
+            +'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+name+'</span>'
+            + "<img class='fullscreenImg' onclick=openLargeVideo('"+name+"','"+url+"') src='images/fullscreen1.png'/>"
+            +'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo()>关闭</span>'
+        str +='<div class="jrwlzsjCont1">'
+
+        str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
+
+        str	+= '  </video>'
+            +'</div>'
+            +'</div>'
+            +'</div>'
+
+        parent.$('#slider2').append(str)
+
+        var hls = new Hls();
+        var video =  parent.$("#slider2 video")[0];
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+        })
+
+       // hlsListMap["slideTwo"]=hls
+    }
 }

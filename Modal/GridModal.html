@@ -19,16 +19,8 @@
       <div style="padding: 0px 20px;">
         <div class="Modal-left-item">
           <div class="FX_header">
-            <div class="header">
-              <a class="line"></a>
-              <span>街镇概况</span>
-              <a class="line1"></a>
-            </div>
-            <div class="header" style="margin-left: 15rem;">
-              <a class="line"></a>
-              <span>网络排名</span>
-              <a class="line1"></a>
-            </div>
+      
+          
             <div id="dropdown">
               <p style="border: 1px solid #1dd6df; color: #1dd6df;width: 170px;padding-right: 0;">
                 7月1日-8月31日<span>></span></p>
@@ -44,66 +36,19 @@
 
           <div class="Satisfaction-warp">
             <div class="Satisfaction-warp-item">
+              <div class="header">
+                <a class="line"></a>
+                <span>全区概况</span>
+                <a class="line1"></a>
+              </div>
               <div class="Satisfaction-warp-item-header">
                 <div class="Satisfaction-warp-item-header-left">
-                  <div v-show="switchShow1" @click="switchClick1" class="banner1">基本情况</div>
-                  <div v-show="switchShow2" @click="switchClick1" class="banner2">基本情况</div>
-                  <div v-show="switchShow1" @click="switchClick2" class="banner2">队伍配置</div>
-                  <div v-show="switchShow2" @click="switchClick2" class="banner1">队伍配置</div>
+                  <div  class="banner1">力量配置</div>
+
                 </div>
               </div>
-              <div v-show="switchShow1" class="Satisfaction-warp-item-echarts">
-                <div id="SmallECharts3" style="width: 575px; height: 255px;display: none;"></div>
-                <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
-                  <p style="font-size: 1.5rem;margin-bottom: 1rem;">发现事件<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>件</p>
-                  <div style="display: flex;height: 3rem;margin-bottom: 0.6rem;">
-                    <div style="padding-left: 1.5rem;width: 50%;">
-                      <p style="margin-bottom: 4px;">主动发现<progress value='70' max='100' class="progress"></progress><span style="margin-left: 1rem;color: rgb(32, 209, 128);font-weight: bold;">40990</span></p>
-                      <p style="margin-bottom: 4px;">被动发现<progress value='30' max='100' class="progress2"></progress><span style="margin-left: 1rem;color: rgb(0, 147, 255);font-weight: bold;">4379</span></p>
-                    </div>
-                    <div style="width: 50%;">
-                      <span class="echarts-info">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></span>
-                      <span class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></span>
-                    </div>
-                  </div>
-                  <div style="height: 1px;background-color: rgba(32, 209, 128, 0.2);margin-left: 10px;margin-right: 10px;"></div>
-                  <div style="display: flex;margin-top: 0.5rem;">
-                    <div style="width: 50%;padding-right: 25px;">
-                      <p>
-                        <span style="font-size: 1.5rem;margin-bottom: 6px;">协调事件<span
-                            style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
-                        <span style="color: #20d180;">某某总量</span>
-                        <span style="color: #0093ff;">某某总量</span>
-                      </p>
-                      <div style="display: flex;">
-                        <div id="ecPie1" style="width: 120px;height: 120px;"></div>
-                        <div style="margin: auto 0;">
-                          <div class="echarts-info" style="margin-bottom: 12px;">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></div>
-                          <div class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></div>
-                        </div>
-                        <div style="height: 90px;;width: 1px;background-color: rgba(32, 209, 128, 0.2);margin-top: 10px;"></div>
-                      </div>
-                     
-                    </div>
-                    <div style="width: 50%;">
-                      <p>
-                        <span style="font-size: 1.5rem;margin-bottom: 6px;">处置事件<span
-                            style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
-                        <span style="color: #20d180;">某某总量</span>
-                        <span style="color: #0093ff;">某某总量</span>
-                      </p>
-                      <div style="display: flex;">
-                        <div id="ecPie2" style="width: 120px;height: 120px;"></div>
-                        <div style="margin: auto 0;">
-                          <div class="echarts-info" style="margin-bottom: 12px;">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></div>
-                          <div class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div v-show="switchShow2" class="Satisfaction-warp-item-echarts">
+
+              <div  class="Satisfaction-warp-item-echarts">
                 <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
                   <p style="font-size: 1.5rem;margin-bottom: 6px;">队伍配置总数<span style="color: #56D0E3;">46364</span>人</p>
                   <div class="Municipal-level">
@@ -225,61 +170,136 @@
                   </div>
                 </div>
               </div>
+            
             </div>
             <div class="Satisfaction-warp-item">
-              <div class="Satisfaction-warp-item-header">
+              <div style="display: flex;">
+                
+                <div  @click="switchClick1" class="header" >
+                  <a class="line"></a>
+                  <span>街镇排名</span>
+                  <a class="line1"></a>
+                </div>
+                <div  @click="switchClick2" class="header" >
+                  <a class="line"></a>
+                  <span>部门排名</span>
+                  <a class="line1"></a>
+                </div>
+                <div  @click="switchClick3" class="header" >
+                  <a class="line"></a>
+                  <span>网格排名</span>
+                  <a class="line1"></a>
+                </div>
+              </div>
+        
+              <div  class="Satisfaction-warp-item-header">
                 <div class="Satisfaction-warp-item-header-left">
                   <div class="banner1">查看前五名</div>
                   <!-- <div class="banner2">趋势分析</div> -->
                 </div>
               </div>
-              <div class="Satisfaction-warp-item-echarts">
+              <div  v-show="switchShow1" class="Satisfaction-warp-item-echarts">
                 <div style="display: flex;">
-                  <div id="SmallECharts4" style="width: 260px; height: 255px;"></div>
+                  <div id="SmallECharts4" style="width: 260px; height: 380px;"></div>
                   <div class="echarts-bg-box" style="display: flex;">
-                    <div id="ecRadar1" style="width: 150px;height: 200px;"></div>
-                    <div id="ecbar3" style="width: 150px;height: 200px;"></div>
+                    <div id="ecRadar1" style="width: 150px;height: 400px;"></div>
+                    <div id="ecbar3" style="width: 150px;height: 400px;"></div>
                   </div>
                 </div>
               </div>
+              <div  v-show="switchShow2" class="Satisfaction-warp-item-echarts">
+                <!-- <div id="SmallECharts22" style="width: 617px; height: 255px;"></div> -->
+                <div style="display: flex;">
+                  <div id="SmallECharts44" style="width: 260px; height: 380px;"></div>
+                  <div class="echarts-bg-box" style="display: flex;">
+                    <div id="ecRadar2" style="width: 150px;height: 400px;"></div>
+                    <div id="ecbar4" style="width: 150px;height: 400px;"></div>
+                  </div>
+                </div>
+              </div>
+              <div style="color: #fff;">
+                <h1>哈哈哈哈哈哈哈哈哈</h1>
+              </div>
+
+
             </div>
           </div>
         </div>
         <div class="Modal-left-item">
-          <div style="display: flex;">
-            <div class="header">
-              <a class="line"></a>
-              <span>部门排名</span>
-              <a class="line1"></a>
-            </div>
-            <div class="header" style="margin-left: 38rem;">
-              <a class="line"></a>
-              <span>优秀网络长</span>
-              <a class="line1"></a>
-            </div>
-          </div>
+     
 
           <div class="Satisfaction-warp">
             <div class="Satisfaction-warp-item">
+              <div class="header">
+                <a class="line"></a>
+                <span>基本情况</span>
+                <a class="line1"></a>
+              </div>
               <div class="Satisfaction-warp-item-header">
                 <div class="Satisfaction-warp-item-header-left">
                   <div class="banner1">查看前五名</div>
                   <!-- <div class="banner2">趋势分析</div> -->
                 </div>
               </div>
-              <div class="Satisfaction-warp-item-echarts">
-                <!-- <div id="SmallECharts22" style="width: 617px; height: 255px;"></div> -->
-                <div style="display: flex;">
-                  <div id="SmallECharts44" style="width: 260px; height: 255px;"></div>
-                  <div class="echarts-bg-box" style="display: flex;">
-                    <div id="ecRadar2" style="width: 150px;height: 200px;"></div>
-                    <div id="ecbar4" style="width: 150px;height: 200px;"></div>
+                <div class="Satisfaction-warp-item-echarts">
+                <div id="SmallECharts3" style="width: 575px; height: 380px;display: none;"></div>
+                <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
+                  <p style="font-size: 1.5rem;margin-bottom: 1rem;">发现事件<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>件</p>
+                  <div style="display: flex;height: 3rem;margin-bottom: 0.6rem;">
+                    <div style="padding-left: 1.5rem;width: 50%;">
+                      <p style="margin-bottom: 4px;">主动发现<progress value='70' max='100' class="progress"></progress><span style="margin-left: 1rem;color: rgb(32, 209, 128);font-weight: bold;">40990</span></p>
+                      <p style="margin-bottom: 4px;">被动发现<progress value='30' max='100' class="progress2"></progress><span style="margin-left: 1rem;color: rgb(0, 147, 255);font-weight: bold;">4379</span></p>
+                    </div>
+                    <div style="width: 50%;">
+                      <span class="echarts-info">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></span>
+                      <span class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></span>
+                    </div>
+                  </div>
+                  <div style="height: 1px;background-color: rgba(32, 209, 128, 0.2);margin-left: 10px;margin-right: 10px;"></div>
+                  <div style="display: flex;margin-top: 0.5rem;">
+                    <div style="width: 50%;padding-right: 25px;">
+                      <p>
+                        <span style="font-size: 1.5rem;margin-bottom: 6px;">协调事件<span
+                            style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
+                        <span style="color: #20d180;">某某总量</span>
+                        <span style="color: #0093ff;">某某总量</span>
+                      </p>
+                      <div style="display: flex;">
+                        <div id="ecPie1" style="width: 120px;height: 120px;"></div>
+                        <div style="margin: auto 0;">
+                          <div class="echarts-info" style="margin-bottom: 12px;">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></div>
+                          <div class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></div>
+                        </div>
+                        <div style="height: 90px;;width: 1px;background-color: rgba(32, 209, 128, 0.2);margin-top: 10px;"></div>
+                      </div>
+                     
+                    </div>
+                    <div style="width: 50%;">
+                      <p>
+                        <span style="font-size: 1.5rem;margin-bottom: 6px;">处置事件<span
+                            style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
+                        <span style="color: #20d180;">某某总量</span>
+                        <span style="color: #0093ff;">某某总量</span>
+                      </p>
+                      <div style="display: flex;">
+                        <div id="ecPie2" style="width: 120px;height: 120px;"></div>
+                        <div style="margin: auto 0;">
+                          <div class="echarts-info" style="margin-bottom: 12px;">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></div>
+                          <div class="echarts-info">环比 <span style="color: #20d180;font-weight: bold;">-1%</span></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </div> 
 
             </div>
             <div class="Satisfaction-warp-item">
+              <div class="header" >
+                <a class="line"></a>
+                <span>优秀网络长</span>
+                <a class="line1"></a>
+              </div>
               <div class="Satisfaction-warp-item-header">
                 <div class="Satisfaction-warp-item-header-left">
                   <div class="banner1">查看前五名</div>
@@ -314,47 +334,7 @@
           </div>
         </div>
 
-        <!-- <div class="Modal-left-item">
-          <div class="work-older">
-            <div class="header">
-              <a class="line"></a>
-              <span>优秀网络员</span>
-              <a class="line1"></a>
-            </div>
-            <div class="footer">
-              <div style="display: flex;height: 100%;color:#fff;padding: 0 10px;">
-                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                  <div class="ranking-public ranking-6">94分</div>
-                  <p>邵明杰</p>
-                </div>
-                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                  <div class="ranking-public ranking-fourth">94分</div>
-                  <p>邵明杰</p>
-                </div>
-                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                  <div class="ranking-public ranking-second">94分</div>
-                  <p>邵明杰</p>
-                </div>
-                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                  <div class="ranking-public ranking-first">94分</div>
-                  <p>邵明杰</p>
-                </div>
-                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                  <div class="ranking-public ranking-third">94分</div>
-                  <p>邵明杰</p>
-                </div>
-                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                  <div class="ranking-public ranking-fifth">94分</div>
-                  <p>邵明杰</p>
-                </div>
-                <div style="width: 20%;margin: auto 7.5px;text-align: center;">
-                  <div class="ranking-public ranking-7">94分</div>
-                  <p>邵明杰</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
+      
       </div>
     </div>
     <!-- <div class="Modal-right" style="flex: 1;">
@@ -472,14 +452,18 @@
       return {
         switchShow1: true,
         switchShow2: false,
+        switchShow3: false,
       };
     },
     methods: {
       switchClick1() {
-        (this.switchShow1 = true), (this.switchShow2 = false);
+        (this.switchShow1 = true), (this.switchShow2 = false),(this.switchShow3 = false);
       },
       switchClick2() {
-        (this.switchShow1 = false), (this.switchShow2 = true);
+        (this.switchShow1 = false), (this.switchShow2 = true),(this.switchShow3 = false);
+      }, 
+       switchClick3() {
+        (this.switchShow1 = false), (this.switchShow2 = false),(this.switchShow3 = true);
       },
     },
   });

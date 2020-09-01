@@ -25,12 +25,12 @@ body {
 #clearid {
     position: fixed;
     pointer-events: auto;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     z-index: 999;
     cursor: pointer;
     right: 0.833rem;
-    top: 0.667rem;
+    top: 0rem;
     color: white;
 
 }

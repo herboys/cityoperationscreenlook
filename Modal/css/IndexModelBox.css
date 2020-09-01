@@ -176,6 +176,15 @@ p{
 }
 .banner-box{
     box-sizing: border-box;
-    height: 29%;
+    height: 28%;
     margin: 0rem 1.667rem;
+}
+
+.Modal-left-header{
+    font-size: 2.917rem;
+    color: #1fe0e9;
+    font-weight: 500;
+    padding: 0.833rem;
+    padding-bottom: 0px;
+    text-align: center;
 }

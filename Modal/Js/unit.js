@@ -4,8 +4,13 @@ function ToOnload() {
     TabsFun(6)
     findbcNameType()
     findscName('年').then(res => {
-
-        BulletChat(res)
+        let keys=Object.keys(res)
+        let values=Object.values(res)
+        let list=[]
+        keys.map((item,index)=>{
+            list.push({name:item,value:values[index]})
+        })
+        BulletChat(list)
     })
     initMap()
 }
@@ -538,7 +543,7 @@ function findTypeMsg(time, name) {
 function findscName(time) {
     return new Promise((resolve, reject) => {
         let para = {
-            url: ORACLE_URL + '/taskInfo/findscName',
+            url: ORACLE_URL + '/taskInfohots/findhotsName',
             async: true,
             type: 'post',
             data: JSON.stringify({
@@ -555,18 +560,25 @@ function findscName(time) {
 /***
  * 根据大类获取热词的数量
  */
-function findbcNamesc(name) {
+function findbcNamesc(name,scname) {
     let para = {
-        url: ORACLE_URL + '/taskInfo/findbcNamesc',
+        url: ORACLE_URL + '/taskInfohots/findbcscHotsName',
         async: true,
         type: 'post',
         data: JSON.stringify({
             "date": ModelTime,
-            "typeName": name
+            "bcname": name,
+            scname:scname
         }),
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
+        let keys=Object.keys(res)
+        let values=Object.values(res)
+        let list=[]
+        keys.map((item,index)=>{
+            list.push({name:item,value:values[index]})
+        })
         BulletChat(res)
     })
 }
@@ -583,7 +595,7 @@ var count = (function () {
         if (i==tar) {
             i=0
         }
-        init(newList[i].ATNAME)
+        init(newList[i].name)
         i++;
         timers = setTimeout(function () {
             change(newList.length,newList)

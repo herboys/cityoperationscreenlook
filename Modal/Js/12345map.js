@@ -1,4 +1,18 @@
 function initMap(){
+    let para={
+        url:ORACLE_URL+"taskInfo/findbcsclnglatName",
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": ModelTime,
+            "scname": name,
+
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res=>{
+        console.log(res,'获取经纬度')
+    })
     var bridge1 = null;
     $(function () {
         bridge1 = new CityGis.Bridge({

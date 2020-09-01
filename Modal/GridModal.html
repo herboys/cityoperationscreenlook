@@ -22,13 +22,11 @@
           <div class="FX_header">
             <div id="dropdown">
               <p style="border: 1px solid #1dd6df; color: #1dd6df;width: 170px;padding-right: 0;">
-                7月1日-8月31日<span>></span></p>
+               日<span>></span></p>
               <ul style="border: 1px solid #1dd6df; color: #1dd6df;">
-                <li><a href="#" rel="1">7月1日</a></li>
-                <li><a href="#" rel="2">7月2日</a></li>
-                <li><a href="#" rel="3">7月3日</a></li>
-                <li><a href="#" rel="4">7月4日</a></li>
-                <li><a href="#" rel="5">7月5日</a></li>
+                <li><a href="#" rel="1">年</a></li>
+                <li><a href="#" rel="2">月</a></li>
+                <li><a href="#" rel="3">日</a></li>
               </ul>
             </div>
           </div>
@@ -320,7 +318,40 @@
 <script src="Js/intercity-map.js" type="text/javascript" charset="utf-8"></script>
 <script src="Js/intercitymap-package.js" type="text/javascript" charset="utf-8"></script>
 <script>
-  
+   $(function () {
+
+$("#dropdown p").click(function () {
+  var ul = $("#dropdown ul");
+  if (ul.css("display") == "none") {
+    ul.slideDown("fast");
+  } else {
+    ul.slideUp("fast");
+  }
+  $("#dropdown ul li a").click(function () {
+    var txt = $(this).text();
+    $("#dropdown p").html(txt);
+    var value = $(this).attr("rel");
+    $("#dropdown ul").hide();
+    $("#result").html("您选择了" + txt + "，值为：" + value);
+  });
+});
+$("#dropdown2 p").click(function () {
+  var ul = $("#dropdown2 ul");
+  if (ul.css("display") == "none") {
+    ul.slideDown("fast");
+  } else {
+    ul.slideUp("fast");
+  }
+  $("#dropdown2 ul li a").click(function () {
+    var txt = $(this).text();
+    $("#dropdown2 p").html(txt);
+    var value = $(this).attr("rel");
+    $("#dropdown2 ul").hide();
+    $("#result").html("您选择了" + txt + "，值为：" + value);
+  });
+});
+
+});
   window.onload = function () {
     let indicator = [{
         name: '发现得分',

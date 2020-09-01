@@ -1,20 +1,35 @@
 function ToOnload() {
+    var gongdanlist=[]
+    var farstlist=''
     GongDan(1)
     TabsFun(3)
     TabsFun(6)
     findbcNameType()
     findscName('年').then(res => {
-        let keys=Object.keys(res)
-        let values=Object.values(res)
-        let list=[]
-        keys.map((item,index)=>{
-            list.push({name:item,value:values[index]})
-        })
-        BulletChat(list)
+        if (res.data.length>0){
+            let list = []
+            res.data.map(item=>{
+                list.push({name:item.hotwords,value:item.counthot})
+            })
+            farstlist=res
+
+            BulletChat(list,res.median)
+        }
+
     })
-    initMap()
+    initMap(date, bcname, scname)
 }
 
+/*前六后六*/
+function TopSixFun(num) {
+    switch (num) {
+        case 1:
+
+            break;
+        case 2:
+            break
+    }
+}
 
 function TabsFun(num) {
     let para = document.getElementsByClassName("Satisfaction-warp-item-header-left")
@@ -47,7 +62,8 @@ function TabsFun(num) {
                 },
 
             ];
-            color = ["#fec101", "#b5b8cd ", "#ff6226", "#f60000", "#2cc78f", "#2ca7f9"]
+
+            color = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
             MyEcharts.initChart(MyEcharts.EchartsOption.pie('工单问题', color, data), "SmallECharts3")
             break;
         case 2:
@@ -68,10 +84,10 @@ function TabsFun(num) {
                     zData.push(item.COUNTNAME)
                     yData.push(item.PROPORTION)
                 })
-                legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
+                legend = ["满意度", "案件数量"]
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
             })
-
+            document.getElementById("BureauId").style.display = "none"
             break;
             break;
         case 4:
@@ -85,8 +101,12 @@ function TabsFun(num) {
                     zData.push(item.COUNTNAME)
                     yData.push(item.PROPORTION)
                 })
-                legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
+                xData = xData.slice(0, 6).concat(xData.slice(xData.length - 6, xData.length))
+                zData = zData.slice(0, 6).concat(zData.slice(zData.length - 6, zData.length))
+                yData = yData.slice(0, 6).concat(yData.slice(yData.length - 6, yData.length))
+                legend = ["满意度", "案件数量"]
+                document.getElementById("BureauId").style.display = "flex"
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
             })
             break;
         case 5:
@@ -99,8 +119,9 @@ function TabsFun(num) {
                     zData.push(item.COUNTNAME)
                     yData.push(item.PROPORTION)
                 })
-                legend=["满意度","案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D",legend,"%"), "SmallECharts")
+                document.getElementById("BureauId").style.display = "none"
+                legend = ["满意度", "案件数量"]
+                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
             })
             break;
             break;
@@ -108,14 +129,14 @@ function TabsFun(num) {
             para[3].innerHTML = `     <div class="banner1" onclick="TabsFun(6)">紧急工单</div>
                                 <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
-                                <div class="banner2" onclick="TabsFun(8)">超期事件</div>`
+                                <div class="banner2" onclick="TabsFun(11)">超期工单</div>`
             GongDan(1)
             break;
         case 7:
             para[3].innerHTML = `     <div class="banner2" onclick="TabsFun(6)">紧急工单</div>
                                 <div class="banner1" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
-                                    <div class="banner2" onclick="TabsFun(8)">超期事件</div>`
+                                    <div class="banner2" onclick="TabsFun(11)">超期工单</div>`
             GongDan(0)
             break;
             break;
@@ -123,21 +144,20 @@ function TabsFun(num) {
             para[3].innerHTML = `     <div class="banner2" onclick="TabsFun(6)">紧急工单</div>
                                 <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner1" onclick="TabsFun(8)">反复退单</div>
-                <div class="banner2" onclick="TabsFun(8)">超期事件</div>`
+                <div class="banner2" onclick="TabsFun(11)">超期工单</div>`
             GongDanfanhu()
             break;
-            case 11:
-            para[3].innerHTML = `     <div class="banner2" onclick="TabsFun(6)">紧急工单</div>
+        case 11:
+            para[3].innerHTML = `<div class="banner2" onclick="TabsFun(6)">紧急工单</div>
                                 <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
-                <div class="banner1" onclick="TabsFun(11)">超期事件</div>`
-                OverDueFun()
+                <div class="banner1" onclick="TabsFun(11)">超期工单</div>`
+            OverDueFun()
             break;
         case 9:
             document.getElementsByClassName("work-older-header")[0].innerHTML = ' <button onclick="TabsFun(9)">' + '紧急工单' + '</button>'
                 + '<span onclick="TabsFun(10)">' + '次紧急工单' + '</span>'
             GongDan(1)
-
             break;
             break;
         case 10:
@@ -148,52 +168,11 @@ function TabsFun(num) {
     }
 
 }
-/*超期事件*/
-function OverDueFun(){
-    let para={
-        url:ORACLE_URL+'/taskInfo/findInfooverdue',
-        async: true,
-        type: 'post',
-        data: JSON.stringify({
-            "urgent": num,
-            "date": ModelTime
-        }),
-        dataType: 'JSON',
-    }
-    ajaxPromise(para).then(res=>{
-        para = `  <ul class="work-older-list-ul">
-                                        <li>工单编号</li>
-                                        <li>发生时间</li>
-                                        <li>街镇名</li>
-                                        <li>主责部门</li>
-                                        <li>管理要点</li>
-                                        <li>问题内容</li>
-                                    </ul>`
-        document.getElementById("GongDanTitleID").innerHTML = para
-        para = ''
-        for (let i = 0; i < res.length; i++) {
 
-            para += '<ul class="work-older-list-ul ul-line ">'
-                + '<li>' + res[i].TASKID + '</li>'
-                + '<li>' + res[i].DISCOVERTIME + '</li>'
-                + '<li>' + res[i].STREETNAME + '</li>'
-                + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
-                + '<li>' + res[i].ATNAME + '</li>'
-                + '<li>' + res[i].ATNAME + '</li>'
-                + '</ul>'
-        }
-        document.getElementById("GongDanID").innerHTML = para
-        let ul1 = document.getElementById("GongDanID");
-        let ul2 = document.getElementById("GongDanIDCopy");
-        let rollbox = document.getElementById("GongDanIDBox");
-        rolls(50, ul1, ul2, rollbox)
-    })
-}
-/**获取工单列表*/
-function GongDan(num) {
+/*超期事件*/
+function OverDueFun(num) {
     let para = {
-        // url: 'http://localhost:8090/taskInfo/findInfoUrgent',
-        url: ORACLE_URL + '/taskInfo/findInfoUrgent',
+        url: ORACLE_URL + '/taskInfo/findInfooverdue',
         async: true,
         type: 'post',
         data: JSON.stringify({
@@ -203,6 +182,45 @@ function GongDan(num) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
+        para = `  <ul class="work-older-list-ul">
+                                        <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>街镇名</li>
+                                        <li>主责部门</li>
+                                        <li>管理要点</li>
+                                        <li>诉求内容</li>
+                                    </ul>`
+        document.getElementById("GongDanTitleID").innerHTML = para
+        para = ''
+        for (let i = 0; i < res.length; i++) {
+            para += '<ul class="work-older-list-ul ul-line ">'
+                + '<li>' + res[i].TASKID + '</li>'
+                + '<li>' + res[i].DISCOVERTIME + '</li>'
+                + '<li>' + res[i].STREETNAME + '</li>'
+                + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
+                + '<li>' + res[i].ATNAME + '</li>'
+                + '<li>' + res[i].DESCRIPTION + '</li>'
+                + '</ul>'
+        }
+        document.getElementById("GongDanID").innerHTML = para
+        rollsFun()
+        gongdanlist=res
+    })
+}
+
+/**获取工单列表*/
+function GongDan(num) {
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findInfoUrgent',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "urgent": num,
+            "date": ModelTime
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then((res)=> {
         if (res[0].count !== undefined && res[0].count == "0") {
             para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
             document.getElementById("GongDanID").innerHTML = para
@@ -215,56 +233,31 @@ function GongDan(num) {
                                         <li>街镇名</li>
                                         <li>主责部门</li>
                                         <li>管理要点</li>
-                                        <li>问题内容</li>
+                                        <li>诉求内容</li>
                                     </ul>`
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
             for (let i = 0; i < res.length; i++) {
-
                 para += '<ul class="work-older-list-ul ul-line ">'
                     + '<li>' + res[i].TASKID + '</li>'
                     + '<li>' + res[i].DISCOVERTIME + '</li>'
                     + '<li>' + res[i].STREETNAME + '</li>'
                     + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
-                    + '<li>' + res[i].ATNAME + '</li>'
-                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li>' + res[i].ATNAME  + '</li>'
+                    + '<li >' + res[i].DESCRIPTION+ '</li>'
                     + '</ul>'
             }
             document.getElementById("GongDanID").innerHTML = para
-            let ul1 = document.getElementById("GongDanID");
-            let ul2 = document.getElementById("GongDanIDCopy");
-            let rollbox = document.getElementById("GongDanIDBox");
-            rolls(50, ul1, ul2, rollbox)
+            rollsFun()
+            gongdanlist=res
+
         }
     })
 }
 
-function rolls(t, ul1, ul2, rollbox) {
-    console.log(t,'+++++')
-    ul2.innerHTML = ul1.innerHTML;
-    rollbox.scrollTop = 0;
-    let timer = setInterval(rollStarts, t);
-    rollbox.onmouseover = function () {
-        clearInterval(timer);
-    }
-    rollbox.onmouseout = function () {
-        timer = setInterval(rollStarts, t);
-    }
-}
-
-function rollStarts() {
-    ul1 = document.getElementById("GongDanID");
-    rollbox = document.getElementById("GongDanIDBox");
-    if (rollbox.scrollTop >= ul1.scrollHeight) {
-        rollbox.scrollTop = 0;
-    } else {
-        rollbox.scrollTop++;
-    }
-}
-
+/*反复工单*/
 function GongDanfanhu(num) {
     let para = {
-        // url: 'http://localhost:8090/taskInfo/findInfoUrgent',
         url: ORACLE_URL + '/taskInfo/findInfoback',
         async: true,
         type: 'post',
@@ -279,8 +272,6 @@ function GongDanfanhu(num) {
             para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
             document.getElementById("GongDanID").innerHTML = para
         } else {
-
-
             para = `  <ul class="work-older-list-ul">
             <li>工单编号</li>
             <li>发生时间</li>
@@ -288,7 +279,7 @@ function GongDanfanhu(num) {
             <li>主责部门</li>
             <li>管理要点</li>
             <li>问题内容</li>
-                                    </ul>`
+            </ul>`
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
             for (let i = 0; i < res.length; i++) {
@@ -298,19 +289,82 @@ function GongDanfanhu(num) {
                     + '<li>' + res[i].STREETNAME + '</li>'
                     + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
                     + '<li>' + res[i].ATNAME + '</li>'
-                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li>' + res[i].DESCRIPTION + '</li>'
                     + '</ul>'
             }
 
             document.getElementById("GongDanID").innerHTML = para
-            let ul1 = document.getElementById("GongDanID");
-            let ul2 = document.getElementById("GongDanIDCopy");
-            let rollbox = document.getElementById("GongDanIDBox");
-            rolls(50, ul1, ul2, rollbox)
+            rollsFun()
+            gongdanlist=res
         }
     })
 }
 
+function rollsFun() {
+    let ul1 = document.getElementById("GongDanID");
+    let ul2 = document.getElementById("GongDanIDCopy");
+    let rollbox = document.getElementById("GongDanIDBox");
+    rolls(50, ul1, ul2, rollbox)
+
+}
+function claerFuns(){
+    document.getElementById("ModalsmallID").style.display="none"
+}
+
+function rolls(t, ul1, ul2, rollbox) {
+    ul2.innerHTML = ul1.innerHTML;
+    let lis=document.querySelectorAll("#GongDanID ul")
+    console.log(lis,')))++++')
+    for (let i = 0; i <lis.length ; i++) {
+        lis[i].onclick=function (){
+            console.log(lis[i],'21321321')
+            let  childLI=document.querySelectorAll(".work-older-list-ul .ul-line")
+            console.log(childLI)
+            let para=`
+              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
+                                            <div style="padding: 1.667rem 3.333rem;color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+            `
+            document.getElementById("ModalsmallID").style.display="block"
+            document.getElementById("ModalsmallRoomID").innerHTML=para
+        }
+    }
+    let liscopy=document.querySelectorAll("#GongDanIDCopy ul")
+    for (let i = 0; i <liscopy.length ; i++) {
+        liscopy[i].onclick=function (){
+            let para=`
+       <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
+                                            <div style="padding: 1.667rem 3.333rem;color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+            `
+            document.getElementById("ModalsmallID").style.display="block"
+            document.getElementById("ModalsmallRoomID").innerHTML=para
+        }
+    }
+
+
+
+
+
+    rollbox.scrollTop = 0;
+    let timer = setInterval(rollStarts, t);
+    rollbox.onmouseover = function () {
+        clearInterval(timer);
+    }
+    rollbox.onmouseout = function () {
+        timer = setInterval(rollStarts, t);
+    }
+}
+
+function rollStarts() {
+
+  let  ul1 = document.getElementById("GongDanID");
+  let  rollbox = document.getElementById("GongDanIDBox");
+    if (rollbox.scrollTop >= ul1.scrollHeight) {
+
+        rollbox.scrollTop = 0;
+    } else {
+        rollbox.scrollTop++;
+    }
+}
 
 function findproblemFun() {
     let para = {
@@ -381,7 +435,7 @@ function HostSteetFun(ModelTime, name) {
         })
         heatmapData = ''
         heatmapData = LastHeatmMapData
-        initMap()
+        initMap(date, bcname, scname)
 
 
     })
@@ -416,17 +470,30 @@ function findbcNameType() {
         FindbcNameTypeChart.setOption(option);
         FindbcNameTypeChart.on("click", function (param) {
             console.log(param.name, param.data.value)
+            document.getElementById("headId").innerHTML = param.name
             JiBenXinXi(ModelTime, param.name, param.data.value)
             JiBenXinXiReLiability(ModelTime, param.name)
-            findbcNamesc( param.name)
+            findbcNamesc(param.name)
         })
     })
 }
-
+/*返回上一级*/
 function backBtn() {
     document.getElementById("backBtnclass").style.display = "none"
     document.getElementById("SmallECharts3").style.display = "block"
     document.getElementById("SmallECharts3copy").style.display = "none"
+    findscName('年').then(res => {
+        if (res.data.length>0){
+            console.log(res,'===')
+            let list = []
+            res.data.map(item=>{
+                list.push({name:item.hotwords,value:item.counthot})
+            })
+
+            BulletChat(list,res.median)
+        }
+
+    })
 }
 
 /**获取基本信息下钻数据*/
@@ -445,7 +512,7 @@ function JiBenXinXi(ModelTime, name, value) {
 
     ajaxPromise(para).then(res => {
         document.getElementById("SmallECharts3copy").style.display = "block"
-        document.getElementById("backBtnclass").style.display = "block"
+        document.getElementById("backBtnclass").style.display = "flex"
         document.getElementById("SmallECharts3").style.display = "none"
         console.log(res, '下钻数据', document.getElementById("SmallECharts3copy"))
         let attackSourcesData2 = []
@@ -484,10 +551,9 @@ function JiBenXinXiReLiability(ModelTime, name) {
         })
         heatmapData = ''
         heatmapData = LastHeatmMapData
-        console.log(heatmapData, '查看')
-        initMap()
+        console.log(ModelTime, name, '查看')
 
-
+        initMap(ModelTime, name, "物业")
 
 
     })
@@ -557,10 +623,11 @@ function findscName(time) {
         })
     })
 }
+
 /***
  * 根据大类获取热词的数量
  */
-function findbcNamesc(name,scname) {
+function findbcNamesc(name, scname) {
     let para = {
         url: ORACLE_URL + '/taskInfohots/findbcscHotsName',
         async: true,
@@ -568,52 +635,55 @@ function findbcNamesc(name,scname) {
         data: JSON.stringify({
             "date": ModelTime,
             "bcname": name,
-            scname:scname
+            scname: scname
         }),
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        let keys=Object.keys(res)
-        let values=Object.values(res)
-        let list=[]
-        keys.map((item,index)=>{
-            list.push({name:item,value:values[index]})
-        })
-        BulletChat(res)
+        if (res.data.length>0){
+            let list = []
+            res.data.map(item=>{
+                list.push({name:item.hotwords,value:item.counthot})
+            })
+            BulletChat(list,res.median)
+        }
     })
 }
 
 
-function BulletChat(list){
-    let newList =list
-    count(newList.length,newList)
+function BulletChat(list,median) {
+    let newList = list
+    count(newList.length, newList,median)
 }
+
 var count = (function () {
     var timers;
     var i = 0;
-    function change(tar,newList) {
-        if (i==tar) {
-            i=0
+    function change(tar, newList,median) {
+        if (i == tar) {
+            i = 0
         }
-        init(newList[i].name)
+        init(newList[i].name,newList[i].value,median)
         i++;
         timers = setTimeout(function () {
-            change(newList.length,newList)
-        }, Math.floor(Math.random()*(1000 - 500) + 500))
+            change(newList.length, newList,median)
+        }, Math.floor(Math.random() * (1000 - 500) + 500))
     }
+
     return change;
 })()
-function init(newText) {
+
+function init(newText,value,median) {
     clearInterval(timer);
     let text = newText;
-    addBarrage(text)
+    addBarrage(text,value,median)
 }
 
 let timer;
-let colors = ['#2C3E50', '#FF0000', '#1E87F0', '#7AC84B', '#FF7F00', '#9B39F4', '#FF69B4']
+let colors = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
 
-function addBarrage(text) {
-    let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
+function addBarrage(text,value,median) {
+   // let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
     let screenW = 500;
     let screenH = dm.offsetHeight;
     let max = Math.floor(screenH / 40);
@@ -621,8 +691,17 @@ function addBarrage(text) {
     let span = document.createElement('span');
     span.style.left = screenW + 'px';
     span.style.top = height + 'px';
-    span.style.color = colors[index];
-    span.innerHTML = text;
+    if (value>(median/2)*3){
+        span.style.color = colors[2];
+    }else if (value>median){
+        span.style.color = colors[0];
+    }else if (value>median/2){
+        span.style.color = colors[3];
+    }else {
+        span.style.color = colors[1];
+    }
+    span.innerHTML = text+' x'+value;
+    span.style.fontSize=16+'px'
     span.SetType = true;
     let dmDom = document.getElementById('dm');
     dmDom.appendChild(span);
@@ -636,8 +715,6 @@ function move() {
         oSpan[i].onmouseover = function () {
             oSpan[i].style.zIndex = '9999'
             oSpan[i].SetType = false
-            console.log(oSpan[0].SetType, oSpan[1].SetType, oSpan[2].SetType)
-            console.log(oSpan[i].innerHTML, '9999')
         }
         oSpan[i].onmouseout = function () {
             oSpan[i].SetType = true
@@ -647,15 +724,16 @@ function move() {
     for (let i = 0; i < oSpan.length; i++) {
         arr.push(oSpan[i].offsetLeft);
         if (oSpan[i].SetType == true) {
-
             arr[i] -= 1;
         } else {
             arr[i] = arr[i]
         }
         oSpan[i].style.left = arr[i] + 'px';
-        if (arr[i] < -oSpan[i].offsetWidth) {
-            var dmDom = document.getElementById('dm');
+        if (arr[i] < -1000) {
+            let dmDom = document.getElementById('dm');
+            if (dmDom.childNodes.length>0){
             dmDom.removeChild(dmDom.childNodes[0]);
+            }
         }
     }
 }
@@ -682,7 +760,7 @@ var howElliptical = 1;
 var aA = null;
 var oDiv = null;
 
-function   rotateFun() {
+function rotateFun() {
     radius = 100;
     dtr = Math.PI / 200;
     d = 300;

@@ -56,6 +56,8 @@
 </div>
 </body>
 <script type="text/javascript" src="Js/GarBageMap.js"></script>
+<script type="text/javascript" src="../js/commonJs.js"></script>
+<script type="text/javascript" src="Js/ajaxPromise.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
@@ -68,10 +70,38 @@
         BusLineFun()
     }
     async function BusLineFun(){
-        console.log(window.innerWidth,document.getElementsByClassName("banner")[0].offsetWidth)
-        MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('工单问题',"249,15,17"), "SmallECharts1")
-        MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('工单问题',"50,128,210"), "SmallECharts2")
-        window.onresize=MyEcharts.resize
+        let para={
+            url:Bus_URL+"/jdcycarmessage/findbusEfficiency",
+            async: true,
+            type: 'post',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+           let   xData=[]
+           let   yData=[]
+            res.map(item=>{
+                xData.push(item.time)
+                yData.push(item.bczxl)
+            })
+            MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('工单问题',"249,15,17",xData,yData), "SmallECharts1")
+            window.onresize=MyEcharts.resize
+        })
+        para={
+            url:Bus_URL+"/jdcycarmessage/findbusPunctuality",
+            async: true,
+            type: 'post',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+           let   xData=[]
+           let   yData=[]
+            res.map(item=>{
+                xData.push(item.time)
+                yData.push(item.smbczdlz)
+            })
+            MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('工单问题',"50,128,210",xData,yData), "SmallECharts2")
+            window.onresize=MyEcharts.resize
+        })
     }
 
     async function HeaderFun() {
@@ -80,7 +110,7 @@
             {name: '路线总数', value: '87', unit: '条'},
             {name: '在线车辆', value: '777', unit: '辆'},
             {name: '当日计划班次', value: '9146', unit: '辆'},
-            {name: '当日完成班次', value: '4954', unit: '%'},
+            {name: '当日完成班次', value: '4954', unit: '辆'},
             {name: '昨日班次执行率', value: '99.81', unit: '%'},
             {name: '昨日首末班车准确率', value: '99.44', unit: '%'},
         ]

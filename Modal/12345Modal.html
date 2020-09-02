@@ -79,6 +79,22 @@
         position: absolute;
         white-space: nowrap;
     }
+    .notice {
+        width: 300px;/*单行显示，超出隐藏*/
+        height: 35px;/*固定公告栏显示区域的高度*/
+        padding: 0 30px;
+        background-color: #b3effe;
+        overflow: hidden;
+    }
+    .notice ul li {
+        list-style: none;
+        line-height: 35px;
+        /*以下为了单行显示，超出隐藏*/
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 </style>
 <link rel="stylesheet" type="text/css" href="../css/12345Modal.css"/>
 <link rel="stylesheet" type="text/css" href="../css/pubilic.css"/>
@@ -304,6 +320,7 @@
 <script type="text/javascript" src="Js/unit.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="Js/jquery.barrager.min.js"></script>
+<script src="Js/noticeUp.js">  </script>
 <script>
     var ModelTime = "年"
 

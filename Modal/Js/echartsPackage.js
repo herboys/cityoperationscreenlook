@@ -756,9 +756,9 @@ var MyEcharts2 = {
             return option
         },
 
-        BarChart: function (name, xAxisData, yAxisData) {
-            var xAxisData = xAxisData;
-            var yAxisData = yAxisData;
+        BarChart: function (name, xAxisData, yAxisData,yAxisData2) {
+            // var xAxisData = xAxisData;
+            // var yAxisData = yAxisData;
             option = {
                 /*  grid: {
                     top: "20%",
@@ -784,14 +784,7 @@ var MyEcharts2 = {
                     }
                   },
                   xAxis: {
-                    data: [
-                      "区域1",
-                      "区域2",
-                      "区域3",
-                      "区域4",
-                      "区域5",
-                      "区域6"
-                    ],
+                    data: xAxisData,
                     axisLine: {
                       show: true, //隐藏X轴轴线
                       lineStyle: {
@@ -934,7 +927,7 @@ var MyEcharts2 = {
                           borderWidth: 2
                         }
                       },
-                      data: [4, 3, 2, 8, 3, 5]
+                      data: yAxisData.sort(function(a,b){return b-a})
                     },
                     {
                       name: "业务2",
@@ -947,7 +940,7 @@ var MyEcharts2 = {
                           borderWidth: 2
                         }
                       },
-                      data: [3, 2, 3, 5, 4, 3]
+                      data: yAxisData2.sort(function(a,b){return b-a})
                     }
                   ]
                 };
@@ -965,8 +958,17 @@ var MyEcharts2 = {
     initChart: function (option, echartId) {
         var container = eval("document.getElementById('" + echartId + "')");
         var myChart = echarts.init(container);
+            // //showLoading遮盖层显示
+            // myChart.showLoading({
+            //     text: '数据正在努力加载...',
+            //     textStyle: { fontSize : 30 , color: '#444' },
+            //     effectOption: {backgroundColor: 'rgba(0, 0, 0, 0)'}
+            // });
         myChart.setOption(option, true); // 为echarts对象加载数据
+    
         return myChart;
+        //showLoading遮盖层隐藏
+        myChart.hideLoading();
     }
 
 

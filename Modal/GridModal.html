@@ -22,11 +22,11 @@
           <div class="FX_header">
             <div id="dropdown">
               <p style="border: 1px solid #1dd6df; color: #1dd6df;padding-right: 0;">
-               日<span>></span></p>
+               今日<span>></span></p>
               <ul style="border: 1px solid #1dd6df; color: #1dd6df;">
-                <li><a href="#" rel="1">年</a></li>
-                <li><a href="#" rel="2">月</a></li>
-                <li><a href="#" rel="3">日</a></li>
+                <li><a href="#" rel="1">今年</a></li>
+                <li><a href="#" rel="2">今月</a></li>
+                <li><a href="#" rel="3">今日</a></li>
               </ul>
             </div>
           </div>
@@ -46,11 +46,11 @@
               </div>
               <div class="Satisfaction-warp-item-echarts">
                 <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
-                  <p style="font-size: 1.5rem;margin-bottom: 1rem;">发现事件<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>件</p>
+                  <p style="font-size: 1.5rem;margin-bottom: 1rem;">案件总量<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>件</p>
                   <div style="display: flex;height: 3rem;margin-bottom: 0.6rem;">
                     <div style="padding-left: 1.5rem;width: 50%;">
                       <p style="margin-bottom: 4px;">主动发现<progress value='70' max='100' class="progress"></progress><span style="margin-left: 1rem;color: rgb(32, 209, 128);font-weight: bold;">40990</span></p>
-                      <p style="margin-bottom: 4px;">被动发现<progress value='30' max='100' class="progress2"></progress><span style="margin-left: 1rem;color: rgb(0, 147, 255);font-weight: bold;">4379</span></p>
+                      <p style="margin-bottom: 4px;">其他发现<progress value='30' max='100' class="progress2"></progress><span style="margin-left: 1rem;color: rgb(0, 147, 255);font-weight: bold;">4379</span></p>
                     </div>
                     <div style="width: 50%;">
                       <span class="echarts-info">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></span>
@@ -61,7 +61,7 @@
                   <div style="display: flex;margin-top: 0.5rem;">
                     <div style="width: 50%;padding-right: 25px;">
                       <p>
-                        <span style="font-size: 1.5rem;margin-bottom: 6px;">协调事件<span
+                        <span style="font-size: 1.2rem;margin-bottom: 6px;">结案案件<span
                             style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
                         <span style="color: #20d180;">某某总量</span>
                         <span style="color: #0093ff;">某某总量</span>
@@ -78,7 +78,7 @@
                     </div>
                     <div style="width: 50%;">
                       <p>
-                        <span style="font-size: 1.5rem;margin-bottom: 6px;">处置事件<span
+                        <span style="font-size: 1.2rem;margin-bottom: 6px;">处置中案件<span
                             style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
                         <span style="color: #20d180;">某某总量</span>
                         <span style="color: #0093ff;">某某总量</span>
@@ -116,6 +116,15 @@
                   <p style="font-size: 1.5rem;margin-bottom: 6px;">队伍配置总数<span style="color: #56D0E3;">46364</span>人</p>
                   <div class="Municipal-level">
                     <div>
+                      <img src="../Modal/images/icons/联勤.png" />
+                      <li>
+                        <p>联勤</p>
+                        <p>
+                          <span>125</span>人
+                        </p>
+                      </li>
+                    </div>
+                    <div>
                       <img src="../Modal/images/icons/公安.png" />
                       <li>
                         <p>公安</p>
@@ -125,32 +134,24 @@
                       </li>
                     </div>
                     <div>
-                      <img src="../Modal/images/icons/民政.png" />
+                      <img src="../Modal/images/icons/城管.png" />
                       <li>
-                        <p>民政</p>
+                        <p>城管</p>
                         <p>
-                          <span>39</span>人
+                          <span>19</span>人
                         </p>
                       </li>
                     </div>
                     <div>
-                      <img src="../Modal/images/icons/司法.png" />
+                      <img src="../Modal/images/icons/市场监管.png" />
                       <li>
-                        <p>司法</p>
+                        <p>市场监管</p>
                         <p>
-                          <span>23</span>人
+                          <span>27</span>人
                         </p>
                       </li>
                     </div>
-                    <div>
-                      <img src="../Modal/images/icons/人社.png" />
-                      <li>
-                        <p>人社</p>
-                        <p>
-                          <span>366</span>人
-                        </p>
-                      </li>
-                    </div>
+                 
 
                   </div>
                   <div class="Municipal-level">
@@ -182,35 +183,37 @@
                       </li>
                     </div>
                     <div>
-                      <img src="../Modal/images/icons/市场监管.png" />
+                      <img src="../Modal/images/icons/民政.png" />
                       <li>
-                        <p>市场监管</p>
+                        <p>民政</p>
                         <p>
-                          <span>27</span>人
+                          <span>39</span>人
                         </p>
                       </li>
                     </div>
+                    
 
                   </div>
                   <div class="Municipal-level">
                     <div>
-                      <img src="../Modal/images/icons/城管.png" />
+                      <img src="../Modal/images/icons/司法.png" />
                       <li>
-                        <p>城管</p>
+                        <p>司法</p>
                         <p>
-                          <span>19</span>人
+                          <span>23</span>人
                         </p>
                       </li>
                     </div>
                     <div>
-                      <img src="../Modal/images/icons/联勤.png" />
+                      <img src="../Modal/images/icons/人社.png" />
                       <li>
-                        <p>联勤</p>
+                        <p>人社</p>
                         <p>
-                          <span>125</span>人
+                          <span>366</span>人
                         </p>
                       </li>
                     </div>
+                 
                     <div>
                       <img src="../Modal/images/icons/水务.png" />
                       <li>
@@ -244,7 +247,7 @@
             <div class="Satisfaction-warp-item">
               <div class="header">
                 <a class="line"></a>
-                <span>排名</span>
+                <span>绩效考核</span>
                 <a class="line1"></a>
               </div>
               <div class="Satisfaction-warp-item-header">
@@ -289,17 +292,17 @@
             <div class="Satisfaction-warp-item">
               <div class="header" >
                 <a class="line"></a>
-                <span>处置率情况表</span>
+                <span>处置情况</span>
                 <a class="line1"></a>
               </div>
               <div class="Satisfaction-warp-item-header">
                 <div class="Satisfaction-warp-item-header-left">
-                  <div class="banner1">查看前五名</div>
+                  <!-- <div class="banner1"></div> -->
                 </div>
               </div>
-              <div class="Satisfaction-warp-item-echarts">
-                <div style="display: flex;height: 100%;color:#fff;padding: 20px 20px;">
-                    <div id="ecBar111" style="width: 100%;height: 100%;"></div>
+              <div class="Satisfaction-warp-item-echarts" style="margin-top: 37px;">
+                <div style="display: flex;height: 100%;color:#fff;padding: 20px 0 0 10px;">
+                    <div id="ecBar111" style="width: 565px;height: 255px"></div>
                 </div>
               </div>
             </div>
@@ -412,8 +415,14 @@ $("#dropdown2 p").click(function () {
         value: 611
       },
     ];
-    let xAxisData =  ['制造业', '建筑业', '农林牧渔', '房地产', '金融业', '居民服务及其他'];
-    let yAxisData = [5000, 2600, 1300, 1300, 1250, 1500]
+        this.xAxisData =  ['区域一', '区域二', '区域三', '区域四', '区域五', '区域六'];
+        this.yAxisData = [1100, 1600, 1300, 1300, 1250, 1500];
+        this.yAxisData2 = [1500, 1600, 1300, 1030, 1250, 1000]
+
+    MyEcharts2.initChart(
+      MyEcharts2.EchartsOption.BarChart("name", this.xAxisData, this.yAxisData,this.yAxisData2),
+      "ecBar111"
+    );
     MyEcharts2.initChart(
       MyEcharts2.EchartsOption.Ranking("name", attackSourcesName, attackSourcesData),
       "SmallECharts4"
@@ -458,13 +467,9 @@ $("#dropdown2 p").click(function () {
       MyEcharts2.EchartsOption.PieChart("name", pieData),
       "ecPie2"
     );
-    MyEcharts2.initChart(
-      MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData),
-      "ecBar111"
-    );
+ 
   };
-</script>
-<script>
+
   var app = new Vue({
     el: "#app2",
     data() {
@@ -472,19 +477,37 @@ $("#dropdown2 p").click(function () {
         switchShow1: true,
         switchShow2: false,
         switchShow3: false,
+        xAxisData:[],
+        yAxisData:[],
+        yAxisData2:[],
+        attackSourcesName:[],
+        attackSourcesName2:[]
       };
     },
     methods: {
       switchClick1() {
-        (this.switchShow1 = true), (this.switchShow2 = false),(this.switchShow3 = false);
+        (this.switchShow1 = true), (this.switchShow2 = false),(this.switchShow3 = false)
+        this.xAxisData =  ['区域一一', '区域一二', '区域一三', '区域一四', '区域一五', '区域一六'];
+        this.yAxisData = [1100, 1600, 1300, 1300, 1250, 1500];
+        this.yAxisData2 = [1500, 1600, 1300, 1030, 1250, 1000]
       },
       switchClick2() {
-        (this.switchShow2 = true), (this.switchShow1 = false), (this.switchShow3 = false);
+        (this.switchShow2 = true), (this.switchShow1 = false), (this.switchShow3 = false)
+        this.xAxisData =  ['区域二一', '区域二二', '区域二三', '区域二四', '区域二五', '区域二六']
+        this.yAxisData = [2000, 2600, 2300, 2300, 2250, 2500]
+        this.yAxisData2 = [2200, 2300, 2500, 2030, 2900, 2100]
+        this.attackSourcesName2 = ['公安', '城管', '司法', '民政', '水务']
       }, 
        switchClick3() {
-        (this.switchShow3 = true), (this.switchShow2 = false),(this.switchShow1 = false);
+        (this.switchShow3 = true), (this.switchShow2 = false),(this.switchShow1 = false)
+        this.xAxisData =  ['区域三一', '区域三二', '区域三三', '区域三四', '区域三五', '区域三六']
+        this.yAxisData = [3000, 3600, 3300, 3500, 3250, 3800]
+        this.yAxisData2 = [3200, 3100, 3300, 3030, 3250, 3500]
       },
     },
+    created(){
+      
+    }
   });
 </script>
 

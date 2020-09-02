@@ -13,7 +13,7 @@ function ToOnload() {
             })
             farstlist=res
 
-            BulletChat(list,res.median)
+           BulletChat(list,res.median)
         }
 
     })
@@ -469,6 +469,8 @@ function findbcNameType() {
         var FindbcNameTypeChart = echarts.init(document.getElementById("SmallECharts3"));
         FindbcNameTypeChart.setOption(option);
         FindbcNameTypeChart.on("click", function (param) {
+            document.getElementById("dm").style.display="none"
+            document.getElementById("dmcopy").style.display="block"
             console.log(param.name, param.data.value)
             document.getElementById("headId").innerHTML = param.name
             JiBenXinXi(ModelTime, param.name, param.data.value)
@@ -482,18 +484,10 @@ function backBtn() {
     document.getElementById("backBtnclass").style.display = "none"
     document.getElementById("SmallECharts3").style.display = "block"
     document.getElementById("SmallECharts3copy").style.display = "none"
-    findscName('年').then(res => {
-        if (res.data.length>0){
-            console.log(res,'===')
-            let list = []
-            res.data.map(item=>{
-                list.push({name:item.hotwords,value:item.counthot})
-            })
+    document.getElementById("dm").style.display="block"
+    document.getElementById("dmcopy").style.display="none"
 
-            BulletChat(list,res.median)
-        }
 
-    })
 }
 
 /**获取基本信息下钻数据*/
@@ -619,7 +613,6 @@ function findscName(time) {
         }
         ajaxPromise(para).then(res => {
             resolve(res)
-
         })
     })
 }
@@ -640,15 +633,76 @@ function findbcNamesc(name, scname) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
+       // document.getElementById("dmcopy").style.display="block"
+
         if (res.data.length>0){
             let list = []
             res.data.map(item=>{
                 list.push({name:item.hotwords,value:item.counthot})
             })
-            BulletChat(list,res.median)
+            BulletChatcopy(list,res.median)
         }
     })
 }
+
+
+function BulletChatcopy(list,median) {
+    let newList = list
+    countcopy(newList.length, newList,median)
+}
+
+var countcopy = (function () {
+    var timers;
+    var i = 0;
+    function change(tar, newList,median) {
+        if (i == tar) {
+            i = 0
+        }
+        initcopy(newList[i].name,newList[i].value,median)
+        i++;
+        timers = setTimeout(function () {
+            change(newList.length, newList,median)
+        }, Math.floor(Math.random() * (1000 - 500) + 500))
+    }
+
+    return change;
+})()
+
+function initcopy(newText,value,median) {
+    clearInterval(timer);
+    let text = newText;
+    addBarragecopy(text,value,median)
+}
+
+var timer;
+var colors = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
+
+function addBarragecopy(text,value,median) {
+   // let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
+    let screenW = 500;
+    let screenH = dmcopy.offsetHeight;
+    let max = Math.floor(screenH / 40);
+    let height = 10 + 40 * (parseInt(Math.random() * (max + 1)) - 1);
+    let span = document.createElement('span');
+    span.style.left = screenW + 'px';
+    span.style.top = height + 'px';
+    if (value>(median/2)*3){
+        span.style.color = colors[2];
+    }else if (value>median){
+        span.style.color = colors[0];
+    }else if (value>median/2){
+        span.style.color = colors[3];
+    }else {
+        span.style.color = colors[1];
+    }
+    span.innerHTML = text+' x'+value;
+    span.style.fontSize=16+'px'
+    span.SetType = true;
+    let dmDom = document.getElementById('dmcopy');
+    dmDom.appendChild(span);
+    timer = setInterval(movecopy, 10);
+}
+
 
 
 function BulletChat(list,median) {
@@ -679,8 +733,8 @@ function init(newText,value,median) {
     addBarrage(text,value,median)
 }
 
-let timer;
-let colors = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
+var timer;
+var colors = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
 
 function addBarrage(text,value,median) {
    // let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
@@ -724,16 +778,43 @@ function move() {
     for (let i = 0; i < oSpan.length; i++) {
         arr.push(oSpan[i].offsetLeft);
         if (oSpan[i].SetType == true) {
+
             arr[i] -= 1;
         } else {
             arr[i] = arr[i]
         }
         oSpan[i].style.left = arr[i] + 'px';
-        if (arr[i] < -1000) {
+        if (arr[i] < -oSpan[i].offsetWidth) {
             let dmDom = document.getElementById('dm');
-            if (dmDom.childNodes.length>0){
             dmDom.removeChild(dmDom.childNodes[0]);
-            }
+        }
+    }
+}
+function movecopy() {
+    let arr = [];
+    let oSpan = document.getElementsByTagName('span');
+    for (let i = 0; i < oSpan.length; i++) {
+        oSpan[i].onmouseover = function () {
+            oSpan[i].style.zIndex = '9999'
+            oSpan[i].SetType = false
+        }
+        oSpan[i].onmouseout = function () {
+            oSpan[i].SetType = true
+            oSpan[i].style.zIndex = '1'
+        }
+    }
+    for (let i = 0; i < oSpan.length; i++) {
+        arr.push(oSpan[i].offsetLeft);
+        if (oSpan[i].SetType == true) {
+
+            arr[i] -= 1;
+        } else {
+            arr[i] = arr[i]
+        }
+        oSpan[i].style.left = arr[i] + 'px';
+        if (arr[i] < -oSpan[i].offsetWidth) {
+            let dmDom = document.getElementById('dmcopy');
+            dmDom.removeChild(dmDom.childNodes[0]);
         }
     }
 }

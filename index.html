@@ -923,12 +923,11 @@
             if (this.list1[index].listLinkInfoState[i].lngLats) {
               str = this.list1[index].listLinkInfoState[i].lngLats;
             }
-            console.log(str,'===str');
             let arr = str.split(";");
             arr.forEach((items) => {
               let singleArr = items.split(",");
             lineArr.push(singleArr);
-
+              console.log(lineArr, 'lineArr');
           });
             var polyline1 = new AMap.Polyline({
               map: map,
@@ -943,24 +942,14 @@
             polylineList1[i]=polyline1
 
           }
-
           this.polylines1.set(index, polylineList1);
-
-
-
-
         } else {
           var curPolylineList=this.polylines1.get(index)
-          console.log("+++++++")
-          console.log(curPolylineList)
           for(var j=0;j<curPolylineList.length;j++){
             map.remove(curPolylineList[j]);
           }
-         // map.remove(this.polylines1.get(index));
           this.polylines1.delete(index);
         }
-
-
       },
       clickLocus2(item, index) {
         let str = "";
@@ -976,10 +965,7 @@
           let lineArr = [];
           let Arr = [];
           let str = "";
-
-
           var polylineList2=[]
-
           for(var i=0;i<this.list2[index].listLinkInfoState.length;i++){
             lineArr = [];
             if(this.list2[index].listLinkInfoState[i].state<3)
@@ -987,7 +973,6 @@
             if (this.list2[index].listLinkInfoState[i].lngLats) {
               str = this.list2[index].listLinkInfoState[i].lngLats;
             }
-            console.log(str,'===str');
             let arr = str.split(";");
             arr.forEach((items) => {
               let singleArr = items.split(",");
@@ -1005,22 +990,17 @@
             });
             // this.polylines1.set(index, polyline1);
             polylineList2[i]=polyline2
-
           }
-
           this.polylines2.set(index, polylineList2);
         } else {
           var curPolylineList=this.polylines2.get(index)
-          console.log("+++++++")
-          console.log(curPolylineList)
+      
           for(var j=0;j<curPolylineList.length;j++){
             map.remove(curPolylineList[j]);
           }
           // map.remove(this.polylines1.get(index));
           this.polylines2.delete(index);
         }
-
-
       },
       clickLocus3(item, index) {
         let str = "";
@@ -1030,15 +1010,12 @@
         let arr = str.split(",");
         map.setZoomAndCenter(15, arr);
         this.changeIndex3 = index
-
         this.list3[index].isShow = !this.list3[index].isShow;
         if (this.list3[index].isShow) {
           let lineArr = [];
           let Arr = [];
           let str = "";
-
           var polylineList3=[]
-
           for(var i=0;i<this.list3[index].listLinkInfoState.length;i++){
             lineArr = [];
             if(this.list3[index].listLinkInfoState[i].state<3)
@@ -1046,12 +1023,10 @@
             if (this.list3[index].listLinkInfoState[i].lngLats) {
               str = this.list3[index].listLinkInfoState[i].lngLats;
             }
-            console.log(str,'===str');
             let arr = str.split(";");
             arr.forEach((items) => {
               let singleArr = items.split(",");
               lineArr.push(singleArr);
-
             });
             var polyline3 = new AMap.Polyline({
               map: map,
@@ -1062,33 +1037,22 @@
               strokeWeight: 12, //线宽
               strokeStyle: "solid", //线样式
             });
-            // this.polylines1.set(index, polyline1);
             polylineList3[i]=polyline3
-
           }
-
           this.polylines3.set(index, polylineList3);
         } else {
           var curPolylineList=this.polylines3.get(index)
          // alert(curPolylineList.length)
           for(var j=0;j<curPolylineList.length;j++){
-            console.log(curPolylineList)
-            console.log(j)
-            console.log(curPolylineList[j])
             map.remove(curPolylineList[j]);
           }
-          // map.remove(this.polylines1.get(index));
-        //  this.polylines3.delete(index);
+          this.polylines2.delete(index);
         }
-
-
-
       },
       
       showClick() {
         this.showDialog = !this.showDialog;
       },
-
       mapCenter() {
         map.setZoomAndCenter(12, [121.238825, 31.364284]);
       },
@@ -1109,23 +1073,20 @@
         for(var i=0;i<this.list1.length;i++){
           this.list1[i].isShow=false;
         }
-        console.log(this.list1)
         for(var i=0;i<this.list1.length;i++){
           this.list2[i].isShow=false;
         }
-        console.log(this.list2)
         for(var i=0;i<this.list1.length;i++){
           this.list3[i].isShow=false;
         }
-        console.log(this.list3)
 
       },
       getHttp() {
         //发送get请求
         this.$http.get(
             // "http://127.0.0.1:5500/map/mock_data.json"
-           // "http://127.0.0.1:5500/map/congrestion.json"
-             FIRE_URL+"/cityBrain/getSession"
+           "http://127.0.0.1:5500/map/congrestion.json"
+            //  FIRE_URL+"/cityBrain/getSession"
           ).then(
             function (res) {
               this.list1 = [];
@@ -1160,7 +1121,7 @@
       this.getHttp();
     },
     mounted() {
-      this.timer = setInterval(this.getHttp, 1000 * 3);
+      this.timer = setInterval(this.getHttp, 1000 * 60 * 10);
     },
     beforeDestroy() {
       clearInterval(this.timer);

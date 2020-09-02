@@ -1,23 +1,13 @@
 function ToOnload() {
+    document.getElementById("DmMainId").innerHTML=''
     var gongdanlist=[]
     var farstlist=''
     GongDan(1)
     TabsFun(3)
     TabsFun(6)
     findbcNameType()
-    findscName('年').then(res => {
-        if (res.data.length>0){
-            let list = []
-            res.data.map(item=>{
-                list.push({name:item.hotwords,value:item.counthot})
-            })
-            farstlist=res
-
-           BulletChat(list,res.median)
-        }
-
-    })
-    initMap(date, bcname, scname)
+    findscName()
+    //initMap(date, bcname, scname)
 }
 
 /*前六后六*/
@@ -469,23 +459,23 @@ function findbcNameType() {
         var FindbcNameTypeChart = echarts.init(document.getElementById("SmallECharts3"));
         FindbcNameTypeChart.setOption(option);
         FindbcNameTypeChart.on("click", function (param) {
-            document.getElementById("dm").style.display="none"
-            document.getElementById("dmcopy").style.display="block"
             console.log(param.name, param.data.value)
             document.getElementById("headId").innerHTML = param.name
+            document.getElementById("DmMainId").innerHTML=''
+            findbcNamesc(param.name)
             JiBenXinXi(ModelTime, param.name, param.data.value)
             JiBenXinXiReLiability(ModelTime, param.name)
-            findbcNamesc(param.name)
+
         })
     })
 }
 /*返回上一级*/
 function backBtn() {
+    document.getElementById("DmMainId").innerHTML=''
     document.getElementById("backBtnclass").style.display = "none"
     document.getElementById("SmallECharts3").style.display = "block"
     document.getElementById("SmallECharts3copy").style.display = "none"
-    document.getElementById("dm").style.display="block"
-    document.getElementById("dmcopy").style.display="none"
+    findscName()
 
 
 }
@@ -600,8 +590,8 @@ function findTypeMsg(time, name) {
 }
 
 /**获取热词*/
-function findscName(time) {
-    return new Promise((resolve, reject) => {
+function findscName() {
+ new Promise((resolve, reject) => {
         let para = {
             url: ORACLE_URL + '/taskInfohots/findhotsName',
             async: true,
@@ -612,7 +602,16 @@ function findscName(time) {
             dataType: 'JSON',
         }
         ajaxPromise(para).then(res => {
-            resolve(res)
+            document.getElementById("DmMainId").innerHTML=''
+            if (res.data.length>0){
+                let list = []
+                res.data.map(item=>{
+                    list.push({name:item.hotwords,value:item.counthot})
+                })
+                document.getElementById("DmMainId").innerHTML=`<div id="dm"></div>`
+                BulletChat(list,res.median)
+
+            }
         })
     })
 }
@@ -633,86 +632,26 @@ function findbcNamesc(name, scname) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-       // document.getElementById("dmcopy").style.display="block"
-
+        console.log('123123')
         if (res.data.length>0){
             let list = []
             res.data.map(item=>{
                 list.push({name:item.hotwords,value:item.counthot})
             })
-            BulletChatcopy(list,res.median)
+            document.getElementById("DmMainId").innerHTML=`
+                                <div id="dm"></div>`
+            BulletChat(list,res.median)
         }
     })
 }
-
-
-function BulletChatcopy(list,median) {
-    let newList = list
-    countcopy(newList.length, newList,median)
-}
-
-var countcopy = (function () {
-    var timers;
-    var i = 0;
-    function change(tar, newList,median) {
-        if (i == tar) {
-            i = 0
-        }
-        initcopy(newList[i].name,newList[i].value,median)
-        i++;
-        timers = setTimeout(function () {
-            change(newList.length, newList,median)
-        }, Math.floor(Math.random() * (1000 - 500) + 500))
-    }
-
-    return change;
-})()
-
-function initcopy(newText,value,median) {
-    clearInterval(timer);
-    let text = newText;
-    addBarragecopy(text,value,median)
-}
-
-var timer;
-var colors = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
-
-function addBarragecopy(text,value,median) {
-   // let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
-    let screenW = 500;
-    let screenH = dmcopy.offsetHeight;
-    let max = Math.floor(screenH / 40);
-    let height = 10 + 40 * (parseInt(Math.random() * (max + 1)) - 1);
-    let span = document.createElement('span');
-    span.style.left = screenW + 'px';
-    span.style.top = height + 'px';
-    if (value>(median/2)*3){
-        span.style.color = colors[2];
-    }else if (value>median){
-        span.style.color = colors[0];
-    }else if (value>median/2){
-        span.style.color = colors[3];
-    }else {
-        span.style.color = colors[1];
-    }
-    span.innerHTML = text+' x'+value;
-    span.style.fontSize=16+'px'
-    span.SetType = true;
-    let dmDom = document.getElementById('dmcopy');
-    dmDom.appendChild(span);
-    timer = setInterval(movecopy, 10);
-}
-
-
-
 function BulletChat(list,median) {
     let newList = list
     count(newList.length, newList,median)
 }
 
 var count = (function () {
-    var timers;
-    var i = 0;
+    let timers;
+    let i = 0;
     function change(tar, newList,median) {
         if (i == tar) {
             i = 0
@@ -721,7 +660,7 @@ var count = (function () {
         i++;
         timers = setTimeout(function () {
             change(newList.length, newList,median)
-        }, Math.floor(Math.random() * (1000 - 500) + 500))
+        }, 2000)
     }
 
     return change;
@@ -758,8 +697,13 @@ function addBarrage(text,value,median) {
     span.style.fontSize=16+'px'
     span.SetType = true;
     let dmDom = document.getElementById('dm');
-    dmDom.appendChild(span);
+    console.log(dmDom.getElementsByTagName("span").length)
+    if(dmDom.getElementsByTagName("span").length<10){
+        dmDom.appendChild(span);
+    }
+
     timer = setInterval(move, 10);
+
 }
 
 function move() {
@@ -775,50 +719,22 @@ function move() {
             oSpan[i].style.zIndex = '1'
         }
     }
-    for (let i = 0; i < oSpan.length; i++) {
+    for (var i = 0; i < oSpan.length; i++) {
         arr.push(oSpan[i].offsetLeft);
         if (oSpan[i].SetType == true) {
-
             arr[i] -= 1;
         } else {
             arr[i] = arr[i]
         }
         oSpan[i].style.left = arr[i] + 'px';
-        if (arr[i] < -oSpan[i].offsetWidth) {
-            let dmDom = document.getElementById('dm');
+        let dmDom = document.getElementById('dm');
+        if (arr[i] < 0) {
+
+
             dmDom.removeChild(dmDom.childNodes[0]);
         }
     }
 }
-function movecopy() {
-    let arr = [];
-    let oSpan = document.getElementsByTagName('span');
-    for (let i = 0; i < oSpan.length; i++) {
-        oSpan[i].onmouseover = function () {
-            oSpan[i].style.zIndex = '9999'
-            oSpan[i].SetType = false
-        }
-        oSpan[i].onmouseout = function () {
-            oSpan[i].SetType = true
-            oSpan[i].style.zIndex = '1'
-        }
-    }
-    for (let i = 0; i < oSpan.length; i++) {
-        arr.push(oSpan[i].offsetLeft);
-        if (oSpan[i].SetType == true) {
-
-            arr[i] -= 1;
-        } else {
-            arr[i] = arr[i]
-        }
-        oSpan[i].style.left = arr[i] + 'px';
-        if (arr[i] < -oSpan[i].offsetWidth) {
-            let dmDom = document.getElementById('dmcopy');
-            dmDom.removeChild(dmDom.childNodes[0]);
-        }
-    }
-}
-
 
 /**3D球**/
 var radius = 100;

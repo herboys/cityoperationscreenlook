@@ -67,6 +67,7 @@
     }    #dmcopy {
         width: 100%;
         height: 100%;
+        display: none;
 
     }
 
@@ -213,9 +214,9 @@
                         </div>
                         <div class="Satisfaction-warp-item-echarts"
                              style="padding: 1rem 3rem 2.5rem 1rem;;box-sizing: border-box;overflow: hidden">
-                            <div  style="margin: 1rem;overflow: hidden;width: 100%;height: 100%;position: relative">
+                            <div id="DmMainId" style="margin: 1rem;overflow: hidden;width: 100%;height: 100%;position: relative">
                                 <div id="dm"></div>
-                                <div id="dmcopy"  style="display: none"></div>
+                                <div id="dmcopy"></div>
                             </div>
                         </div>
                     </div>
@@ -286,11 +287,9 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
-    <div class="Modal-right">
+    <div class="Modal-right" style="position: relative">
         <iframe id="mapContainer99" width="100%" height="100%" frameborder="0"></iframe>
         <div class="Modal-right-title">嘉定区12345事件热力图</div>
     </div>

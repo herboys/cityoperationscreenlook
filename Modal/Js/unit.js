@@ -2,7 +2,7 @@ function ToOnload() {
     document.getElementById("DmMainId").innerHTML = ''
     var gongdanlist = []
     var farstlist = ''
-    GongDan(2)
+    GongDan(1)
     TabsFun(3)
     TabsFun(6)
     findbcNameType()

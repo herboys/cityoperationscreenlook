@@ -990,19 +990,7 @@ var MyEcharts = {
                             }
                         }
                     };
-                    // obj2 = {
-                    //     name: "",
-                    //     type: "bar",
-                    //     stack: legend[index],
-                    //     itemStyle: {
-                    //         normal: {
-                    //             color: colorArr[index].start + "1)"
-                    //         }
-                    //     },
-                    //     data: borderData
-                    // };
                     seriesData.push(obj1);
-                    // seriesData.push(obj2);
                 } else {
                     var obj3 = {
                         name: legend[index],

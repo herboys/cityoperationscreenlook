@@ -9,8 +9,8 @@
 
 let STATIC_URL = "http://10.237.115.83:8089/citysituation";
 //let ORACLE_URL = "http://10.237.115.83:8089/oracleConnection";
-// let ORACLE_URL = "http://localhost:8091";
-let ORACLE_URL = "http://10.237.115.83:8091";
+let ORACLE_URL = "http://localhost:8091";
+// let ORACLE_URL = "http://10.237.115.83:8091";
 //let STATIC_URL="http://10.237.200.190:8085";
 //let STATIC_URL = "http://localhost:8085";
 let FIRE_URL = "http://10.237.115.83:8089/city-operation";

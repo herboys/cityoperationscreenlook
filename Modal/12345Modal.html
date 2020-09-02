@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
 </head>
 <style>
     #backBtnclass {
         position: absolute;
         top: 3.333rem;
+
+        width: 100%;
+        padding-left: 1.667rem;
         right: 1.667rem;
         color: #fff;
         font-size: 1.167rem;
         cursor: pointer;
         display: none;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #backBtnclass span {
+
     }
 
     #rotate {
@@ -42,13 +50,27 @@
         background: #000;
         border-radius: 0.417rem;
     }
+
     #dm {
         width: 100%;
         height: 100%;
-      
+
     }
 
     #dm span {
+        width: auto;
+        height: 3rem;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        position: absolute;
+        white-space: nowrap;
+    }    #dmcopy {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    #dmcopy span {
         width: auto;
         height: 3rem;
         font-size: 1.2rem;
@@ -154,7 +176,7 @@
                         <a class="line1"></a>
                     </div>
                     <div id="dropdown">
-                        <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">本月</p>
+                        <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
                         <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
                             <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
                             <li><a href="#" rel="2" onclick="dropdownFun('月')">本月</a></li>
@@ -173,11 +195,14 @@
                             </div>
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
+                            <div id="backBtnclass">
+                                <span id="headId" style="margin-left: 4.167rem;"></span><span
+                                    onclick="backBtn()" style="z-index: 999">返回上一级</span></div>
                             <div id="SmallECharts3" class="SmallECharts3"
                                  style="width: 530px;height:320px;margin-right: 20px;padding-top:-40px"></div>
                             <div id="SmallECharts3copy" class="SmallECharts3copy"
                                  style="width: 530px;height:320px;margin-right: 20px;padding-top:-40px"></div>
-                            <div id="backBtnclass" onclick="backBtn()">返回上一级</div>
+
                         </div>
                     </div>
                     <div class="Satisfaction-warp-item">
@@ -186,9 +211,11 @@
                                 <div class="banner1">热词</div>
                             </div>
                         </div>
-                        <div class="Satisfaction-warp-item-echarts" style="padding: 1rem 3rem 2.5rem 1rem;;box-sizing: border-box;overflow: hidden">
-                            <div style="margin: 1rem;overflow: hidden;width: 100%;height: 100%;position: relative" >
-                            <div id="dm"></div>
+                        <div class="Satisfaction-warp-item-echarts"
+                             style="padding: 1rem 3rem 2.5rem 1rem;;box-sizing: border-box;overflow: hidden">
+                            <div  style="margin: 1rem;overflow: hidden;width: 100%;height: 100%;position: relative">
+                                <div id="dm"></div>
+                                <div id="dmcopy"  style="display: none"></div>
                             </div>
                         </div>
                     </div>
@@ -214,6 +241,7 @@
                         <div class="Satisfaction-warp-item-echarts">
                             <div id="SmallECharts"
                                  style="width:530px;height:260px;position: absolute;left: 1.667rem;top: 2.5rem"></div>
+                            <div id="BureauId"  style="position: absolute;top: 2.5rem;left: 3.333rem;display: flex;justify-content: space-between;color: white;font-size: 1rem;"><span style="padding: 0rem 2.5rem" onclick="TopSixFun(1)"></span><span  onclick="TopSixFun(1)" style="padding: 0rem 2.5rem"></span></div>
                         </div>
                     </div>
                     <div class="Satisfaction-warp-item">
@@ -227,7 +255,7 @@
                                 <div class="banner1" onclick="TabsFun(6)">紧急工单</div>
                                 <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
-                                <div class="banner2" onclick="TabsFun(11)">超期事件</div>
+                                <div class="banner2" onclick="TabsFun(11)">超期工单</div>
                             </div>
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
@@ -239,6 +267,19 @@
                                         <div id="GongDanID"></div>
                                         <div id="GongDanIDCopy"></div>
                                     </div>
+                                    <div id="ModalsmallID" style="width: 93%;
+    height: 81%;
+    position: absolute;
+    top: 3.333rem;
+    background: #082443;
+    margin-right: 2.667rem;
+    z-index: 999;display: none;overflow: hidden">
+                                        <div onclick="claerFuns()" style="color: white;font-size: 15px;position: absolute;top: 0px;right: 10px" >x</div>
+                                        <div id="ModalsmallRoomID">
+                                            <p style="font-size: 18px;color: white">qwewqewqe</p>
+                                            <div style="padding: 20px 40px;color: #d0c7c7;line-height:.4rem "></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </ul>
                         </div>
@@ -249,7 +290,7 @@
 
         </div>
     </div>
-    <div class="Modal-right" >
+    <div class="Modal-right">
         <iframe id="mapContainer99" width="100%" height="100%" frameborder="0"></iframe>
         <div class="Modal-right-title">嘉定区12345事件热力图</div>
     </div>
@@ -257,16 +298,17 @@
 </body>
 <script src="Js/intercity-map.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="../js/commonJs.js"></script>
+<script type="text/javascript" src="Js/ajaxPromise.js"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="Js/12345map.js"></script>
 
-<script type="text/javascript" src="Js/ajaxPromise.js"></script>
+
 <script type="text/javascript" src="Js/unit.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="Js/jquery.barrager.min.js"></script>
 <script>
-    var ModelTime = "月"
+    var ModelTime = "年"
 
     window.onload = function () {
         initMap()
@@ -333,6 +375,7 @@
 
         });
     })
+
     /**下拉选择*/
     function dropdownFun(value) {
         console.log('++++++++++++++++++++++++++++++++++++++')

@@ -193,7 +193,6 @@ function OverDueFun(num) {
                 + '</ul>'
         }
         document.getElementById("GongDanID").innerHTML = para
-        rollsFun()
         gongdanlist = res
     })
 }
@@ -243,8 +242,8 @@ function GongDan(num) {
             let ul1 = document.getElementById("GongDanID");
             let ul2 = document.getElementById("GongDanIDCopy");
             let rollbox = document.getElementById("GongDanIDBox");
-            roll(13, ul1, ul2, rollbox)
             gongdanlist = res
+            roll(50, ul1, ul2, rollbox)
 
         }
     })
@@ -289,16 +288,11 @@ function GongDanfanhu(num) {
             }
 
             document.getElementById("GongDanID").innerHTML = para
-            rollsFun()
             gongdanlist = res
         }
     })
 }
 
-function rollsFun() {
-    rolls(50)
-
-}
 
 function claerFuns() {
     document.getElementById("ModalsmallID").style.display = "none"
@@ -325,18 +319,19 @@ function roll(t, ul1, ul2, rollbox) {
         liscopy[i].onclick = function () {
             let para = `
        <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
-                          <div style="padding: 1.667rem 3.333rem;color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+                          <div style="padding: 1.667rem 3.333rem;
+                          color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
             `
             document.getElementById("ModalsmallID").style.display = "block"
             document.getElementById("ModalsmallRoomID").innerHTML = para
         }
     }
-    let timer = setInterval(rollStarts, t);
+    let timer = setInterval(rollStart, t);
     rollbox.onmouseover = function () {
         clearInterval(timer);
     }
     rollbox.onmouseout = function () {
-        timer = setInterval(rollStarts, t);
+        timer = setInterval(rollStart, t);
     }
 }
 

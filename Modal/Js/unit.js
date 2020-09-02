@@ -1,23 +1,13 @@
 function ToOnload() {
-    var gongdanlist=[]
-    var farstlist=''
+    document.getElementById("DmMainId").innerHTML = ''
+    var gongdanlist = []
+    var farstlist = ''
     GongDan(1)
     TabsFun(3)
     TabsFun(6)
     findbcNameType()
-    findscName('年').then(res => {
-        if (res.data.length>0){
-            let list = []
-            res.data.map(item=>{
-                list.push({name:item.hotwords,value:item.counthot})
-            })
-            farstlist=res
-
-           BulletChat(list,res.median)
-        }
-
-    })
-    initMap(date, bcname, scname)
+    findscName()
+    //initMap(date, bcname, scname)
 }
 
 /*前六后六*/
@@ -203,13 +193,14 @@ function OverDueFun(num) {
                 + '</ul>'
         }
         document.getElementById("GongDanID").innerHTML = para
-        rollsFun()
-        gongdanlist=res
+        gongdanlist = res
     })
 }
 
 /**获取工单列表*/
 function GongDan(num) {
+    document.getElementById("GongDanID").innerHTML=''
+    document.getElementById("GongDanIDCopy").innerHTML=''
     let para = {
         url: ORACLE_URL + '/taskInfo/findInfoUrgent',
         async: true,
@@ -220,7 +211,7 @@ function GongDan(num) {
         }),
         dataType: 'JSON',
     }
-    ajaxPromise(para).then((res)=> {
+    ajaxPromise(para).then((res) => {
         if (res[0].count !== undefined && res[0].count == "0") {
             para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
             document.getElementById("GongDanID").innerHTML = para
@@ -243,13 +234,16 @@ function GongDan(num) {
                     + '<li>' + res[i].DISCOVERTIME + '</li>'
                     + '<li>' + res[i].STREETNAME + '</li>'
                     + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
-                    + '<li>' + res[i].ATNAME  + '</li>'
-                    + '<li >' + res[i].DESCRIPTION+ '</li>'
+                    + '<li>' + res[i].ATNAME + '</li>'
+                    + '<li >' + res[i].DESCRIPTION + '</li>'
                     + '</ul>'
             }
             document.getElementById("GongDanID").innerHTML = para
-            rollsFun()
-            gongdanlist=res
+            let ul1 = document.getElementById("GongDanID");
+            let ul2 = document.getElementById("GongDanIDCopy");
+            let rollbox = document.getElementById("GongDanIDBox");
+            gongdanlist = res
+            roll(50, ul1, ul2, rollbox)
 
         }
     })
@@ -273,12 +267,12 @@ function GongDanfanhu(num) {
             document.getElementById("GongDanID").innerHTML = para
         } else {
             para = `  <ul class="work-older-list-ul">
-            <li>工单编号</li>
-            <li>发生时间</li>
-            <li>街镇名</li>
-            <li>主责部门</li>
-            <li>管理要点</li>
-            <li>问题内容</li>
+      <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>街镇名</li>
+                                        <li>主责部门</li>
+                                        <li>管理要点</li>
+                                        <li>诉求内容</li>
             </ul>`
             document.getElementById("GongDanTitleID").innerHTML = para
             para = ''
@@ -294,77 +288,63 @@ function GongDanfanhu(num) {
             }
 
             document.getElementById("GongDanID").innerHTML = para
-            rollsFun()
-            gongdanlist=res
+            gongdanlist = res
         }
     })
 }
 
-function rollsFun() {
-    let ul1 = document.getElementById("GongDanID");
-    let ul2 = document.getElementById("GongDanIDCopy");
-    let rollbox = document.getElementById("GongDanIDBox");
-    rolls(50, ul1, ul2, rollbox)
 
-}
-function claerFuns(){
-    document.getElementById("ModalsmallID").style.display="none"
+function claerFuns() {
+    document.getElementById("ModalsmallID").style.display = "none"
 }
 
-function rolls(t, ul1, ul2, rollbox) {
+
+function roll(t, ul1, ul2, rollbox) {
     ul2.innerHTML = ul1.innerHTML;
-    let lis=document.querySelectorAll("#GongDanID ul")
-    console.log(lis,')))++++')
-    for (let i = 0; i <lis.length ; i++) {
-        lis[i].onclick=function (){
-            console.log(lis[i],'21321321')
-            let  childLI=document.querySelectorAll(".work-older-list-ul .ul-line")
-            console.log(childLI)
-            let para=`
+    rollbox.scrollTop = 0;
+    let lis = document.querySelectorAll("#GongDanID ul")
+    for (let i = 0; i < lis.length; i++) {
+        lis[i].onclick = function () {
+            let childLI = document.querySelectorAll(".work-older-list-ul .ul-line")
+            let para = `
               <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
                                             <div style="padding: 1.667rem 3.333rem;color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
             `
-            document.getElementById("ModalsmallID").style.display="block"
-            document.getElementById("ModalsmallRoomID").innerHTML=para
+            document.getElementById("ModalsmallID").style.display = "block"
+            document.getElementById("ModalsmallRoomID").innerHTML = para
         }
     }
-    let liscopy=document.querySelectorAll("#GongDanIDCopy ul")
-    for (let i = 0; i <liscopy.length ; i++) {
-        liscopy[i].onclick=function (){
-            let para=`
+    let liscopy = document.querySelectorAll("#GongDanIDCopy ul")
+    for (let i = 0; i < liscopy.length; i++) {
+        liscopy[i].onclick = function () {
+            let para = `
        <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
-                                            <div style="padding: 1.667rem 3.333rem;color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+                          <div style="padding: 1.667rem 3.333rem;
+                          color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
             `
-            document.getElementById("ModalsmallID").style.display="block"
-            document.getElementById("ModalsmallRoomID").innerHTML=para
+            document.getElementById("ModalsmallID").style.display = "block"
+            document.getElementById("ModalsmallRoomID").innerHTML = para
         }
     }
-
-
-
-
-
-    rollbox.scrollTop = 0;
-    let timer = setInterval(rollStarts, t);
+    let timer = setInterval(rollStart, t);
     rollbox.onmouseover = function () {
         clearInterval(timer);
     }
     rollbox.onmouseout = function () {
-        timer = setInterval(rollStarts, t);
+        timer = setInterval(rollStart, t);
     }
 }
 
-function rollStarts() {
-
-  let  ul1 = document.getElementById("GongDanID");
-  let  rollbox = document.getElementById("GongDanIDBox");
+function rollStart() {
+    let ul1 = document.getElementById("GongDanID");
+    let rollbox = document.getElementById("GongDanIDBox");
     if (rollbox.scrollTop >= ul1.scrollHeight) {
-
         rollbox.scrollTop = 0;
     } else {
         rollbox.scrollTop++;
     }
 }
+
 
 function findproblemFun() {
     let para = {
@@ -469,23 +449,24 @@ function findbcNameType() {
         var FindbcNameTypeChart = echarts.init(document.getElementById("SmallECharts3"));
         FindbcNameTypeChart.setOption(option);
         FindbcNameTypeChart.on("click", function (param) {
-            document.getElementById("dm").style.display="none"
-            document.getElementById("dmcopy").style.display="block"
             console.log(param.name, param.data.value)
             document.getElementById("headId").innerHTML = param.name
+            document.getElementById("DmMainId").innerHTML = ''
+            findbcNamesc(param.name)
             JiBenXinXi(ModelTime, param.name, param.data.value)
             JiBenXinXiReLiability(ModelTime, param.name)
-            findbcNamesc(param.name)
+
         })
     })
 }
+
 /*返回上一级*/
 function backBtn() {
+    document.getElementById("DmMainId").innerHTML = ''
     document.getElementById("backBtnclass").style.display = "none"
     document.getElementById("SmallECharts3").style.display = "block"
     document.getElementById("SmallECharts3copy").style.display = "none"
-    document.getElementById("dm").style.display="block"
-    document.getElementById("dmcopy").style.display="none"
+    findscName()
 
 
 }
@@ -554,29 +535,29 @@ function JiBenXinXiReLiability(ModelTime, name) {
 }
 
 /**获取紧急工单非紧急工单的数量*/
-function countWork(type) {
-    let para = {
-        // url: 'http://localhost:8090/taskInfo/countWork',
-        url: ORACLE_URL + '/taskInfo/countWork',
-        async: true,
-        type: 'post',
-        data: JSON.stringify({
-            "date": ModelTime,
-        }),
-        dataType: 'JSON',
-    }
-    ajaxPromise(para).then(res => {
-
-        para = `      <li><p>紧急工单</p>
-                                <div>${res.counturgentMsg}次</div>
-                                </li><li><p>重复工单</p>
-                                <div>${res.countNullurgentMsg}次</div>
-                                </li><li><p>反复退单</p>
-                                <div>${res.countInfoBack}次</div>
-                                </li>`
-        document.getElementById("GongDanTitleID").innerHTML = para
-    })
-}
+// function countWork(type) {
+//     let para = {
+//         // url: 'http://localhost:8090/taskInfo/countWork',
+//         url: ORACLE_URL + '/taskInfo/countWork',
+//         async: true,
+//         type: 'post',
+//         data: JSON.stringify({
+//             "date": ModelTime,
+//         }),
+//         dataType: 'JSON',
+//     }
+//     ajaxPromise(para).then(res => {
+//
+//         para = `      <li><p>紧急工单</p>
+//                                 <div>${res.counturgentMsg}次</div>
+//                                 </li><li><p>重复工单</p>
+//                                 <div>${res.countNullurgentMsg}次</div>
+//                                 </li><li><p>反复退单</p>
+//                                 <div>${res.countInfoBack}次</div>
+//                                 </li>`
+//         document.getElementById("GongDanTitleID").innerHTML = para
+//     })
+// }
 
 /**获取街镇委办局公司的数据*/
 function findTypeMsg(time, name) {
@@ -600,8 +581,8 @@ function findTypeMsg(time, name) {
 }
 
 /**获取热词*/
-function findscName(time) {
-    return new Promise((resolve, reject) => {
+function findscName() {
+    new Promise((resolve, reject) => {
         let para = {
             url: ORACLE_URL + '/taskInfohots/findhotsName',
             async: true,
@@ -612,7 +593,16 @@ function findscName(time) {
             dataType: 'JSON',
         }
         ajaxPromise(para).then(res => {
-            resolve(res)
+            document.getElementById("DmMainId").innerHTML = ''
+            if (res.data.length > 0) {
+                let list = []
+                res.data.map(item => {
+                    list.push({name: item.hotwords, value: item.counthot})
+                })
+                document.getElementById("DmMainId").innerHTML = `<div id="dm"></div>`
+                BulletChat(list, res.median)
+
+            }
         })
     })
 }
@@ -633,111 +623,53 @@ function findbcNamesc(name, scname) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-       // document.getElementById("dmcopy").style.display="block"
-
-        if (res.data.length>0){
+        console.log('123123')
+        if (res.data.length > 0) {
             let list = []
-            res.data.map(item=>{
-                list.push({name:item.hotwords,value:item.counthot})
+            res.data.map(item => {
+                list.push({name: item.hotwords, value: item.counthot})
             })
-            BulletChatcopy(list,res.median)
+            document.getElementById("DmMainId").innerHTML = `
+                                <div id="dm"></div>`
+            BulletChat(list, res.median)
         }
     })
 }
 
-
-function BulletChatcopy(list,median) {
+function BulletChat(list, median) {
     let newList = list
-    countcopy(newList.length, newList,median)
-}
-
-var countcopy = (function () {
-    var timers;
-    var i = 0;
-    function change(tar, newList,median) {
-        if (i == tar) {
-            i = 0
-        }
-        initcopy(newList[i].name,newList[i].value,median)
-        i++;
-        timers = setTimeout(function () {
-            change(newList.length, newList,median)
-        }, Math.floor(Math.random() * (1000 - 500) + 500))
-    }
-
-    return change;
-})()
-
-function initcopy(newText,value,median) {
-    clearInterval(timer);
-    let text = newText;
-    addBarragecopy(text,value,median)
-}
-
-var timer;
-var colors = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
-
-function addBarragecopy(text,value,median) {
-   // let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
-    let screenW = 500;
-    let screenH = dmcopy.offsetHeight;
-    let max = Math.floor(screenH / 40);
-    let height = 10 + 40 * (parseInt(Math.random() * (max + 1)) - 1);
-    let span = document.createElement('span');
-    span.style.left = screenW + 'px';
-    span.style.top = height + 'px';
-    if (value>(median/2)*3){
-        span.style.color = colors[2];
-    }else if (value>median){
-        span.style.color = colors[0];
-    }else if (value>median/2){
-        span.style.color = colors[3];
-    }else {
-        span.style.color = colors[1];
-    }
-    span.innerHTML = text+' x'+value;
-    span.style.fontSize=16+'px'
-    span.SetType = true;
-    let dmDom = document.getElementById('dmcopy');
-    dmDom.appendChild(span);
-    timer = setInterval(movecopy, 10);
-}
-
-
-
-function BulletChat(list,median) {
-    let newList = list
-    count(newList.length, newList,median)
+    count(newList.length, newList, median)
 }
 
 var count = (function () {
-    var timers;
-    var i = 0;
-    function change(tar, newList,median) {
+    let timers;
+    let i = 0;
+
+    function change(tar, newList, median) {
         if (i == tar) {
             i = 0
         }
-        init(newList[i].name,newList[i].value,median)
+        init(newList[i].name, newList[i].value, median)
         i++;
         timers = setTimeout(function () {
-            change(newList.length, newList,median)
-        }, Math.floor(Math.random() * (1000 - 500) + 500))
+            change(newList.length, newList, median)
+        }, 2000)
     }
 
     return change;
 })()
 
-function init(newText,value,median) {
+function init(newText, value, median) {
     clearInterval(timer);
     let text = newText;
-    addBarrage(text,value,median)
+    addBarrage(text, value, median)
 }
 
 var timer;
 var colors = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
 
-function addBarrage(text,value,median) {
-   // let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
+function addBarrage(text, value, median) {
+    // let index = parseInt(Math.random() * colors.length); //随机弹幕颜色
     let screenW = 500;
     let screenH = dm.offsetHeight;
     let max = Math.floor(screenH / 40);
@@ -745,21 +677,26 @@ function addBarrage(text,value,median) {
     let span = document.createElement('span');
     span.style.left = screenW + 'px';
     span.style.top = height + 'px';
-    if (value>(median/2)*3){
+    if (value > (median / 2) * 3) {
         span.style.color = colors[2];
-    }else if (value>median){
+    } else if (value > median) {
         span.style.color = colors[0];
-    }else if (value>median/2){
+    } else if (value > median / 2) {
         span.style.color = colors[3];
-    }else {
+    } else {
         span.style.color = colors[1];
     }
-    span.innerHTML = text+' x'+value;
-    span.style.fontSize=16+'px'
+    span.innerHTML = text + ' x' + value;
+    span.style.fontSize = 16 + 'px'
     span.SetType = true;
     let dmDom = document.getElementById('dm');
-    dmDom.appendChild(span);
+    console.log(dmDom.getElementsByTagName("span").length)
+    if (dmDom.getElementsByTagName("span").length < 10) {
+        dmDom.appendChild(span);
+    }
+
     timer = setInterval(move, 10);
+
 }
 
 function move() {
@@ -775,50 +712,22 @@ function move() {
             oSpan[i].style.zIndex = '1'
         }
     }
-    for (let i = 0; i < oSpan.length; i++) {
+    for (var i = 0; i < oSpan.length; i++) {
         arr.push(oSpan[i].offsetLeft);
         if (oSpan[i].SetType == true) {
-
             arr[i] -= 1;
         } else {
             arr[i] = arr[i]
         }
         oSpan[i].style.left = arr[i] + 'px';
-        if (arr[i] < -oSpan[i].offsetWidth) {
-            let dmDom = document.getElementById('dm');
+        let dmDom = document.getElementById('dm');
+        if (arr[i] < 0) {
+
+
             dmDom.removeChild(dmDom.childNodes[0]);
         }
     }
 }
-function movecopy() {
-    let arr = [];
-    let oSpan = document.getElementsByTagName('span');
-    for (let i = 0; i < oSpan.length; i++) {
-        oSpan[i].onmouseover = function () {
-            oSpan[i].style.zIndex = '9999'
-            oSpan[i].SetType = false
-        }
-        oSpan[i].onmouseout = function () {
-            oSpan[i].SetType = true
-            oSpan[i].style.zIndex = '1'
-        }
-    }
-    for (let i = 0; i < oSpan.length; i++) {
-        arr.push(oSpan[i].offsetLeft);
-        if (oSpan[i].SetType == true) {
-
-            arr[i] -= 1;
-        } else {
-            arr[i] = arr[i]
-        }
-        oSpan[i].style.left = arr[i] + 'px';
-        if (arr[i] < -oSpan[i].offsetWidth) {
-            let dmDom = document.getElementById('dmcopy');
-            dmDom.removeChild(dmDom.childNodes[0]);
-        }
-    }
-}
-
 
 /**3D球**/
 var radius = 100;

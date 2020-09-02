@@ -774,7 +774,7 @@ var MyEcharts = {
         /*
         * @name:Busline
         * */
-        BusLine:function (name,RGB){
+        BusLine:function (name,RGB,xData,yData){
             console.log(RGB)
         let     option = {
                 title: {
@@ -838,7 +838,7 @@ var MyEcharts = {
                         show: false
                     },
                     boundaryGap: false,
-                    data: ['A', 'B', 'C', 'D', 'E', 'F'],
+                    data:xData,
 
                 }],
 
@@ -921,7 +921,7 @@ var MyEcharts = {
                                 shadowBlur: 20
                             }
                         },
-                        data: [61,62,63,64,65,66,],
+                        data:yData,
                     },
                 ]
             };

@@ -136,7 +136,14 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
+.Modal-left-header{
+  font-size: 1.917rem;
+  color: #1fe0e9;
+  font-weight: 500;
+  /* padding: 0.833rem; */
+  padding-bottom: 0px;
+  text-align: center;
+}
 .rest-box-left{
   width: 50%;
   height: 100%;
@@ -185,7 +192,7 @@ body {
   margin-top: 0.98rem;
 }
 .rest-top-box,.rest-foot-box,.rest-foot-box2{
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
 }
 .rest-info-lists {
   width: 35%;

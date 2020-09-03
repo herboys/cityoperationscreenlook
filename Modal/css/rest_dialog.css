@@ -328,7 +328,7 @@ body {
 }
 .z-prev{
   position:absolute;
-  top:22%;
+  top:26%;
   left:2%;
   /* box-shadow:0px 0px 5px yellow; */
   z-index:66;
@@ -338,7 +338,7 @@ body {
 }
 .z-next{
   position:absolute;
-  top:22%;
+  top:26%;
   left: 47%;
   z-index:66;
   cursor:pointer;
@@ -417,7 +417,7 @@ body {
   background-repeat: no-repeat;
   padding-top: 0.8rem;
 }
-.switchShow1 {
+.switchShow1,.switchShow3 {
   width: 8rem;
   height: 2.35rem;
   margin-top: 0.68rem; 
@@ -426,9 +426,9 @@ body {
   background-repeat: no-repeat;
   z-index: 99;
   text-align: center;
-  line-height: 1.75rem;
+  line-height: 2.15rem;
 }
-.switchShow2 {
+.switchShow2,.switchShow4 {
   width: 8rem;
   height: 2.35rem;
   margin-top: 0.68rem; 
@@ -437,7 +437,7 @@ body {
   background-repeat: no-repeat;
   z-index: 99;
   text-align: center;
-  line-height: 1.75rem;
+  line-height: 2.15rem;
 }
 
 .mapListActive {

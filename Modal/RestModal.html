@@ -45,10 +45,10 @@
             养老信息一览
         </div>
         <div class="main-title">
-          <div class="title-bg title-bg1"></div>
+          <!-- <div class="title-bg title-bg1"></div>
           <div class="title-bg title-bg2"></div>
           <div class="title-bg title-bg3"></div>
-          <div class="title-border"></div>
+          <div class="title-border"></div> -->
           <div style="display: flex; justify-content: flex-end;padding-right: 2rem;">
             <div v-show="switchShow1" @click="switchClick1" class="switchShow1">
               <span style="font-size: 1rem;color: #fff;">基本概况</span>
@@ -343,17 +343,20 @@
                   style="color: #33ffff;">134</span> 单</span>
             </div>
             <div style="color: #fff; display: flex; padding-left: 2rem;">
-              <div @click="switchClick3">
-                <img class="top-img1" v-show="switchShow3" src="../images/imgs/rest-top-left.png" />
-                <img class="top-img1" v-show="switchShow4" src="../images/imgs/rest-top-right.png" />
-                <div class="top-title3">区域分布</div>
+              <div v-show="switchShow3" @click="switchClick3" class="switchShow3">
+                <span style="font-size: 1rem;color: #fff;">区域分布</span>
               </div>
-              <div @click="switchClick4">
-                <img class="top-img1" v-show="switchShow3" src="../images/imgs/rest-top-right.png" />
-                <img class="top-img1" v-show="switchShow4" src="../images/imgs/rest-top-left.png" />
-                <div class="top-title4">种类分布</div>
+              <div v-show="switchShow4" @click="switchClick3" class="switchShow4">
+                <span style="font-size: 1rem;color: #fff;">区域分布</span>
               </div>
-              <div style="margin-left: 38.5rem; margin-top: 1.8rem;">
+              <div v-show="switchShow3" @click="switchClick4" class="switchShow4">
+                <span style="font-size: 1rem;color: #fff;">种类分布</span>
+              </div>
+              <div v-show="switchShow4" @click="switchClick4" class="switchShow3">
+                <span style="font-size: 1rem;color: #fff;">种类分布</span>
+              </div>
+            </div>
+              <!-- <div style="margin-left: 38.5rem; margin-top: 1.8rem;">
                 <div id="dropdown">
                   <p>日<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
                   <ul>
@@ -362,8 +365,8 @@
                     <li><a href="#" rel="3">日</a></li>
                   </ul>
                 </div>
-              </div>
-            </div>
+              </div> -->
+         
             <div style="display: flex; height: 5.3rem;" v-show="switchShow3">
               <div class="z-box">
                 <ul class="u-box">
@@ -516,11 +519,11 @@
                 <div>本月服务人次：<span style="color: #33ffff;">171469</span></div>
                 <div style=" margin-left: 13.25rem;">
                   <div id="dropdown2">
-                    <p>日<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
+                    <p>今日<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
                     <ul>
-                      <li><a href="#" rel="1">年</a></li>
-                      <li><a href="#" rel="2">月</a></li>
-                      <li><a href="#" rel="3">日</a></li>
+                      <li><a href="#" rel="1">今年</a></li>
+                      <li><a href="#" rel="2">今月</a></li>
+                      <li><a href="#" rel="3">今日</a></li>
                     </ul>
                   </div>
                 </div>

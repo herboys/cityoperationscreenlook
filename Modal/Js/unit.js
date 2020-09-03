@@ -32,6 +32,7 @@ function TabsFun(num) {
     let attackSourcesData = ''
     let attackSourcesName = ''
     let attackSourcesColor = ''
+    let myChart=''
     switch (num) {
         case 1:
             para[0].innerHTML = ' <div class="banner1" onclick="TabsFun(1)">' + '基本情况' + '</div>' +
@@ -96,7 +97,21 @@ function TabsFun(num) {
                 yData = yData.slice(0, 6).concat(yData.slice(yData.length - 6, yData.length))
                 legend = ["满意度", "案件数量"]
                 document.getElementById("BureauId").style.display = "flex"
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
+                let  container =  document.getElementById("SmallECharts")
+                myChart = echarts.init(container);
+                option =   MyEcharts.EchartsOption.newbar2(xData, yData, zData, "#F9392D", legend, "%")
+                setInterval(function () {
+                    // 每次向后滚动一个，最后一个从头开始。
+                    if (option.dataZoom[0].endValue == yData.length ) {
+                        option.dataZoom[0].endValue = 6; 
+                        option.dataZoom[0].startValue = 0;
+                    }
+                    else {
+                        option.dataZoom[0].endValue = option.dataZoom[0].endValue + 1;
+                        option.dataZoom[0].startValue = option.dataZoom[0].startValue + 1;
+                    }
+                    myChart.setOption(option, true);
+                }, 2000);
             })
             break;
         case 5:
@@ -449,7 +464,6 @@ function findbcNameType() {
         var FindbcNameTypeChart = echarts.init(document.getElementById("SmallECharts3"));
         FindbcNameTypeChart.setOption(option);
         FindbcNameTypeChart.on("click", function (param) {
-            console.log(param.name, param.data.value)
             document.getElementById("headId").innerHTML = param.name
             document.getElementById("DmMainId").innerHTML = ''
             findbcNamesc(param.name)
@@ -489,7 +503,6 @@ function JiBenXinXi(ModelTime, name, value) {
         document.getElementById("SmallECharts3copy").style.display = "block"
         document.getElementById("backBtnclass").style.display = "flex"
         document.getElementById("SmallECharts3").style.display = "none"
-        console.log(res, '下钻数据', document.getElementById("SmallECharts3copy"))
         let attackSourcesData2 = []
         let attackSourcesName2 = []
         let attackSourcesColor2 = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
@@ -526,7 +539,6 @@ function JiBenXinXiReLiability(ModelTime, name) {
         })
         heatmapData = ''
         heatmapData = LastHeatmMapData
-        console.log(ModelTime, name, '查看')
 
         initMap(ModelTime, name, "物业")
 
@@ -623,7 +635,6 @@ function findbcNamesc(name, scname) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        console.log('123123')
         if (res.data.length > 0) {
             let list = []
             res.data.map(item => {
@@ -690,7 +701,6 @@ function addBarrage(text, value, median) {
     span.style.fontSize = 16 + 'px'
     span.SetType = true;
     let dmDom = document.getElementById('dm');
-    console.log(dmDom.getElementsByTagName("span").length)
     if (dmDom.getElementsByTagName("span").length < 10) {
         dmDom.appendChild(span);
     }

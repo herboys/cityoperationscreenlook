@@ -126,48 +126,11 @@ var mapData={
         }
     ]};
 var bridge1;
-function initMap(date,bcname,scname){
-    date="年",
-        bcname="建设交通类",
-        scname="住宅"
-    console.log(date,bcname,scname,'+++++++++++++++++++++++++++=')
-    let para={
-        url:ORACLE_URL+"/taskInfo/findbcschotslnglat",
-        async: true,
-        type: 'post',
-        data: JSON.stringify({
-            "date": date,
-            "scname": bcname,
-            "hots": scname,
-        }),
-        dataType: 'JSON',
-    }
-    ajaxPromise(para).then(res=>{
-        bridge1 = new CityGis.Bridge({
-            id: "mapContainer99",
-            url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
-            onReady: function () {
-                createMenu(res)
-            }
-        });
-    })
-    function createMenu(res) {
+function findbcsclnglatNameFun(res){
+    createMenucopy(res)
+    function createMenucopy(res) {
         bridge1.Invoke([
             //地图主题切换消息
-            {
-                "ActionName": "changeTheme",
-                "Parameters": {
-                    "id": "Home"
-                }
-            },
-            // 功能菜单
-            {
-                "ActionName": "userMenu",
-                "Parameters": {
-                    "url": "http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14",
-                    "visible": true
-                }
-            },
             // 撒点
             {
                 "ActionName": "ShowData",
@@ -223,6 +186,52 @@ function initMap(date,bcname,scname){
                     }]
                 }
             }
+        ])
+        console.log(bridge1,'987654321')
+    }
+}
+function initMap(date,bcname,scname){
+    date="年",
+        bcname="建设交通类",
+        scname="住宅"
+    console.log(date,bcname,scname,'+++++++++++++++++++++++++++=')
+    let para={
+        url:ORACLE_URL+"/taskInfo/findbcschotslnglat",
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": date,
+            "scname": bcname,
+            "hots": scname,
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res=>{
+        bridge1 = new CityGis.Bridge({
+            id: "mapContainer99",
+            url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
+            onReady: function () {
+                createMenu(res)
+            }
+        });
+    })
+    function createMenu(res) {
+        bridge1.Invoke([
+            //地图主题切换消息
+            {
+                "ActionName": "changeTheme",
+                "Parameters": {
+                    "id": "Home"
+                }
+            },
+            // 功能菜单
+            {
+                "ActionName": "userMenu",
+                "Parameters": {
+                    "url": "http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14",
+                    "visible": true
+                }
+            },
         ])
         console.log(bridge1,'987654321')
     }

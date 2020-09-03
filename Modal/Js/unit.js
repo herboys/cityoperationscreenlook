@@ -8,7 +8,6 @@ function ToOnload() {
     findbcNameType()
     findscName()
     rollInit()
-    //initMap(date, bcname, scname)
 }
 
 /*前六后六*/
@@ -183,7 +182,7 @@ function OverDueFun(num) {
         type: 'post',
         data: JSON.stringify({
             "urgent": num,
-            "date": ModelTime
+            "date": dropdownFunTime
         }),
         dataType: 'JSON',
     }
@@ -224,7 +223,7 @@ function GongDan(num) {
         type: 'post',
         data: JSON.stringify({
             "urgent": num,
-            "date": ModelTime
+            "date": dropdownFunTime
         }),
         dataType: 'JSON',
     }
@@ -300,7 +299,7 @@ function GongDanfanhu(num) {
         type: 'post',
         data: JSON.stringify({
             "urgent": num,
-            "date": ModelTime
+            "date": dropdownFunTime
         }),
         dataType: 'JSON',
     }
@@ -434,35 +433,6 @@ function findbcName() {
     })
 }
 
-/**热词下钻数据*/
-function HostSteetFun(ModelTime, name) {
-    let para = {
-        url: ORACLE_URL + '/taskInfo/findscNameStreet',
-        async: true,
-        type: 'post',
-        data: JSON.stringify({
-            "date": ModelTime,
-            "scname": name,
-
-        }),
-        dataType: 'JSON',
-    }
-    ajaxPromise(para).then(res => {
-        res.map(item => {
-            LastHeatmMapData.map(child => {
-                if (child.name == item.STREETNAME) {
-                    child.count = item.COUNTSCNAME
-                }
-            })
-        })
-        heatmapData = ''
-        heatmapData = LastHeatmMapData
-        initMap(date, bcname, scname)
-
-
-    })
-}
-
 /**统计分析-基本情况*/
 function findbcNameType() {
     let para = {
@@ -470,7 +440,7 @@ function findbcNameType() {
         async: true,
         type: 'post',
         data: JSON.stringify({
-            "date": ModelTime,
+            "date": basicFunTime,
         }),
         dataType: 'JSON',
     }
@@ -494,12 +464,35 @@ function findbcNameType() {
             document.getElementById("headId").innerHTML = param.name
             document.getElementById("DmMainId").innerHTML = ''
             findbcNamesc(param.name)
-            JiBenXinXi(ModelTime, param.name, param.data.value)
-            JiBenXinXiReLiability(ModelTime, param.name)
+            JiBenXinXi(basicFunTime, param.name, param.data.value)
+           // JiBenXinXiReLiability(ModelTime, param.name)
+            findbcsclnglatName(basicFunTime,param.name,"")
+
+
 
         })
     })
 }
+/*根据大类和小类获取所有经纬度*/
+function findbcsclnglatName(basicFunTime,name,scname){
+    let para={
+        url: ORACLE_URL + '/taskInfo/findbcsclnglatName',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": basicFunTime,
+            "bcname":name,
+            "scname": scname,
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res=>{
+        console.log(res)
+        findbcsclnglatNameFun(res)
+
+    })
+}
+
 
 /**返回上一级**/
 function backBtn() {
@@ -538,6 +531,14 @@ function JiBenXinXi(ModelTime, name, value) {
         let option2 = MyEcharts.EchartsOption.Ranking('name', attackSourcesName2, attackSourcesData2, attackSourcesColor2, '次')
         let FindbcNameTypeChart2 = echarts.init(document.getElementById("SmallECharts3copy"));
         FindbcNameTypeChart2.setOption(option2);
+        FindbcNameTypeChart2.on("click", function (param) {
+            //document.getElementById("headId").innerHTML = param.name
+            // document.getElementById("DmMainId").innerHTML = ''
+            // findbcNamesc(param.name)
+            // JiBenXinXi(ModelTime, param.name, param.data.value)
+            // JiBenXinXiReLiability(ModelTime, param.name)
+            findbcsclnglatName(document.getElementById("headId").innerHTML,param.name)
+        })
     })
 }
 
@@ -565,7 +566,6 @@ function JiBenXinXiReLiability(ModelTime, name) {
         heatmapData = ''
         heatmapData = LastHeatmMapData
 
-        initMap(ModelTime, name, "物业")
 
 
     })
@@ -600,7 +600,7 @@ function findscName() {
             async: true,
             type: 'post',
             data: JSON.stringify({
-                "date": ModelTime,
+                "date": basicFunTime,
             }),
             dataType: 'JSON',
         }
@@ -628,7 +628,7 @@ function findbcNamesc(name, scname) {
         async: true,
         type: 'post',
         data: JSON.stringify({
-            "date": ModelTime,
+            "date": basicFunTime,
             "bcname": name,
             scname: scname
         }),
@@ -713,6 +713,10 @@ function move() {
     let arr = [];
     let oSpan = document.getElementsByTagName('span');
     for (let i = 0; i < oSpan.length; i++) {
+        oSpan[i].onclick=function (){
+          let hots=document.getElementsByTagName('span')[i].innerHTML.split("x")[0].trim()
+            findbcschotslnglatName(hots)
+        }
         oSpan[i].onmouseover = function () {
             oSpan[i].style.zIndex = '9999'
             oSpan[i].SetType = false
@@ -739,7 +743,23 @@ function move() {
         }
     }
 }
-
+function  findbcschotslnglatName(hots){
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findbcschotslnglat',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": "年",
+            "bcname": "",
+            scname: "",
+            hots:hots
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res=>{
+        findbcsclnglatNameFun(res)
+    })
+}
 /**3D球**/
 var radius = 100;
 var dtr = Math.PI / 200;

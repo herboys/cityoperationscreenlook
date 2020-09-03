@@ -206,9 +206,9 @@
                             <div id="dropdown">
                                 <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
                                 <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
-                                    <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
-                                    <li><a href="#" rel="2" onclick="dropdownFun('月')">本月</a></li>
-                                    <li><a href="#" rel="3" onclick="dropdownFun('年')">今年</a></li>
+                                    <li><a href="#" rel="1" onclick="basicFun('日')"> 今日</a></li>
+                                    <li><a href="#" rel="2" onclick="basicFun('月')">本月</a></li>
+                                    <li><a href="#" rel="3" onclick="basicFun('年')">今年</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -254,12 +254,12 @@
                                 <div class="banner2" onclick="TabsFun(4)">委办局</div>
                                 <div class="banner2" onclick="TabsFun(5)">公司</div>
                             </div>
-                            <div id="dropdown">
+                            <div id="dropdown1">
                                 <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
                                 <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
-                                    <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
-                                    <li><a href="#" rel="2" onclick="dropdownFun('月')">本月</a></li>
-                                    <li><a href="#" rel="3" onclick="dropdownFun('年')">今年</a></li>
+                                    <li><a href="#" rel="1" onclick="satisfiedFun('日')"> 今日</a></li>
+                                    <li><a href="#" rel="2" onclick="satisfiedFun('月')">本月</a></li>
+                                    <li><a href="#" rel="3" onclick="satisfiedFun('年')">今年</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -282,7 +282,7 @@
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
                                 <div class="banner2" onclick="TabsFun(11)">超期工单</div>
                             </div>
-                            <div id="dropdown">
+                            <div id="dropdown2">
                                 <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
                                 <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
                                     <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
@@ -337,7 +337,9 @@
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="Js/jquery.barrager.min.js"></script>
 <script>
+    var basicFunTime = "年"
     var ModelTime = "年"
+    var dropdownFunTime = "年"
 
     window.onload = function () {
         initMap()
@@ -386,6 +388,9 @@
             $("#result").html("您选择了" + txt + "，值为：" + value);
         });
     })
+
+
+
     $("#dropdown p").click(function () {
         $("#dropdown1 ul").hide();
         $("#dropdown2 ul").hide();
@@ -405,11 +410,27 @@
         });
     })
 
-    /**下拉选择*/
-    function dropdownFun(value) {
+    /**基本情况下拉选择*/
+    function basicFun(value) {
+        console.log('++++++++++++++++++++++++++++++++++++++')
+        basicFunTime = value
+        findbcNameType()
+    }
+
+    /**满意下拉选择*/
+    function satisfiedFun(value) {
         console.log('++++++++++++++++++++++++++++++++++++++')
         ModelTime = value
-        ToOnload()
+        TabsFun(3)
     }
+    /**工单下拉选择*/
+    function dropdownFun(value) {
+        console.log('++++++++++++++++++++++++++++++++++++++')
+        dropdownFunTime = value
+        TabsFun(6)
+    }
+
+
+
 </script>
 </html>

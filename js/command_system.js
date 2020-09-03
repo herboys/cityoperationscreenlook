@@ -253,6 +253,15 @@ function getDutyList() {
 			content: "为老人送上了牛奶和慰问金",
 		},
 		{
+			date: "8月12日",
+			time: "13时20分许",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "关怀慰问",
+			content: "为老人送去节日食品，开展联欢活动",
+		},
+		
+		{
 			date: "8月16日",
 			time: "8时55分许",
 			street: "徐行镇",
@@ -279,17 +288,25 @@ function getDutyList() {
 		{
 			date: "8月22日",
 			time: "13时20分许",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
+			street: "菊园新区",
+			address: "翔方公路2368号",
 			type: "关怀慰问",
-			content: "组织辖区56位老人前往植物园参观精品花展",
-		},	{
-			date: "8月22日",
+			content: "为老年人提供健康体检、保健咨询和常见病治疗",
+		},
+		{
+			date: "8月23日",
 			time: "13时20分许",
 			street: "南翔镇",
 			address: "蕴北路1755弄",
 			type: "关怀慰问",
-			content: "组织辖区56位老人前往植物园参观精品花展",
+			content: "开展形式多样的节日民俗活动和文化娱乐活动，活跃老年人的节日生活",
+		},	{
+			date: "8月26日",
+			time: "13时20分许",
+			street: "菊园新区",
+			address: "翔方公路2368号",
+			type: "关怀慰问",
+			content: "为空巢老人理发7次，清扫卫生19次，聊天、测量血压60余人",
 		},
 		{
 			date: "8月30日",
@@ -297,7 +314,7 @@ function getDutyList() {
 			street: "南翔镇",
 			address: "蕴北路1755弄",
 			type: "关怀慰问",
-			content: "组织辖区56位老人前往植物园参观精品花展",
+			content: "社区和养老中心为老人们准备了蛋糕和水果",
 		},
 		
 	];

@@ -137,7 +137,7 @@ body {
   justify-content: space-between;
 }
 .Modal-left-header{
-  font-size: 1.917rem;
+  font-size: 1.517rem;
   color: #1fe0e9;
   font-weight: 500;
   /* padding: 0.833rem; */
@@ -415,6 +415,7 @@ body {
   background-image: url(../../images/imgs/echarts-bg.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  padding-top: 0.8rem;
 }
 .switchShow1 {
   width: 8rem;

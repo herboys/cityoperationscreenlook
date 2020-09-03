@@ -186,6 +186,122 @@ function getDutyList() {
 	];
 	coreArr = linkageArr;
 	var linkageArrScroll =[]
+	var linkageArrScroll22 = [
+		{
+			date: "8月1日",
+			time: "14时30分",
+			street: "菊园新区",
+			address: "翔方公路2368号",
+			type: "养生讲座",
+			content: "开展了一堂生动的养生讲座",
+		},
+
+		{
+			date: "8月2日",
+			time: "12时38分",
+			street: "工业区",
+			address: "叶城路沪宜公路口",
+			type: "关怀慰问",
+			content: "红十字会开展尊老爱老慰问活动",
+		},
+		{
+			date: "8月2日",
+			time: "19时",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "关怀慰问",
+			content: "领导走访慰问高龄老人",
+		},
+		{
+			date: "8月3日",
+			time: "11时16分",
+			street: "江桥镇",
+			address: "黄家花园路靖远路口",
+			type: "访惠聚",
+			content: "900多人齐聚一堂，向老年朋友们致以最诚挚的问候",
+		},
+		{
+			date: "8月7日",
+			time: "13时20分许",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "关怀慰问",
+			content: "组织辖区56位老人前往植物园参观精品花展",
+		},
+		{
+			date: "8月7日",
+			time: "13时20分许",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "茶话会",
+			content: "畅谈祖国61年的辉煌成就，畅谈社会的和谐进步",
+		},
+		{
+			date: "8月10日",
+			time: "19时07分许",
+			street: "菊园新区",
+			address: "翔方公路2368号",
+			type: "关怀慰问",
+			content: "开展“幸福步步高”登山活动",
+		},
+		{
+			date: "8月10日",
+			time: "13时20分许",
+			street: "菊园新区",
+			address: "翔方公路2368号",
+			type: "关怀慰问",
+			content: "为老人送上了牛奶和慰问金",
+		},
+		{
+			date: "8月16日",
+			time: "8时55分许",
+			street: "徐行镇",
+			address: "徐行镇宝钱公路、前曹公路路口",
+			type: "关怀慰问",
+			content: "开展一次心理辅导",
+		},
+		{
+			date: "8月17日",
+			time: "19时07分许",
+			street: "工业区",
+			address: "工业区朱戴路50弄136号",
+			type: "上门关怀",
+			content: "为老人打扫清洁",
+		},
+		{
+			date: "8月22日",
+			time: "13时20分许",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "关怀慰问",
+			content: "组织辖区56位老人前往植物园参观精品花展",
+		},
+		{
+			date: "8月22日",
+			time: "13时20分许",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "关怀慰问",
+			content: "组织辖区56位老人前往植物园参观精品花展",
+		},	{
+			date: "8月22日",
+			time: "13时20分许",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "关怀慰问",
+			content: "组织辖区56位老人前往植物园参观精品花展",
+		},
+		{
+			date: "8月30日",
+			time: "8时55分许",
+			street: "南翔镇",
+			address: "蕴北路1755弄",
+			type: "关怀慰问",
+			content: "组织辖区56位老人前往植物园参观精品花展",
+		},
+		
+	];
+	addTableList3(".linkage-table2", linkageArrScroll22);
 	$.ajax({
 		url:STATIC_URL+"/jdcyemergency/findTopByNumber/9",
 		type:"get",
@@ -205,7 +321,7 @@ function getDutyList() {
 			}
 
 			addTableList2(".linkage-scroll-table", linkageArrScroll);
-		//	addTableList3(".linkage-table2", linkageArrScroll);
+			
 		}
 	})
 
@@ -442,6 +558,78 @@ function linkageIntScroll() {
 		$(".linkage-scroll-table .list-box").stop(true, true).animate({
 				top: -(moveT + 1) * linkageNumScroll * 5.75,
 
+			},
+			1000,
+			// function () {
+			// 	if(linkageNum>=linkageMax/6)
+			// 	{
+			// 		linkageNum=0;
+			// 		$('.linkage-table .list-box').css({top:-moveT*linkageNum});
+			// 		$('.linkage-table .list-box').css({top:-0});
+			// 	}
+			// }
+		);
+	}, 5000);
+}
+
+//  养老工单table滚动
+function addTableList3(name, arr) {
+	$(name).find(".list-box").html("");
+	for (let i = 0; i < arr.length; i++) {
+		setTimeout(function () {
+			$(name)
+				.find(".list-box")
+				.append(
+					'<div class="table-list"><p style="width: 12%;  overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem">' +
+					arr[i].date +
+					'</p><p style="width: 10%;  overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem">' +
+					arr[i].time +
+					'</p><p style="width: 15%;  overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem">' +
+					arr[i].street +
+					'</p><p style="width: 16%; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem;padding-left: 0.8rem;">' +
+					arr[i].address +
+					'</p><p style="width: 15%; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem;padding-left: 0rem;">' +
+					arr[i].type +
+					'</p><p style="width: 26%; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;height: 1.1rem;padding-left: 0.8rem;"  title="' +
+					arr[i].content +
+					'">' +
+					arr[i].content +
+					"</p></div>"
+				);
+		}, 200 * i);
+
+		if (name == ".linkage-table2" && i == arr.length - 1 && arr.length > 6) {
+			linkageMax = arr.length;
+			linkageNum = 0;
+			setTimeout(function () {
+				var html = $(name).find(".list-box").html();
+				$(name).find(".list-box").append(html);
+				linkageInt2();
+				$(name).mouseenter(function () {
+					clearInterval(linkageTime);
+				});
+				$(name).mouseleave(function () {
+					linkageInt2();
+				});
+			}, 200 * i + 200);
+		}
+	}
+}
+// 养老工单table滚动
+function linkageInt2() {
+	var moveT = $(".linkage-table2").find(".table-list").eq(0).height() + 14;
+	// alert(moveT+ 200)
+	linkageTime = setInterval(() => {
+		if (linkageNum >= linkageMax / 6) {
+			linkageNum = -1;
+			$(".linkage-table2 .list-box").css({
+				top: -moveT * linkageNum
+			});
+		}
+		linkageNum++;
+
+		$(".linkage-table2 .list-box").animate({
+				top: -(moveT + 1) * linkageNum * 5.82,
 			},
 			1000,
 			// function () {

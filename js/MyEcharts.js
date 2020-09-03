@@ -945,7 +945,7 @@ var MyEcharts = {
                         end: "rgba(18, 58, 86,0.5)"
                     },
                     {
-                        color: "#00EAFF"
+                        color: "#ccc"
                     }
                 ];
             var normalColor = "rgba(255,255,255,0.5)";
@@ -963,7 +963,7 @@ var MyEcharts = {
                         type: "bar",
                         stack: legend[index],
                         data: item,
-                        barWidth: "15%",
+                        barWidth: "35%",
                         itemStyle: {
                             normal: {
                                 color: {
@@ -988,7 +988,17 @@ var MyEcharts = {
                                     globalCoord: false
                                 }
                             }
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                fontSize: 10,
+                                fontWeight: 'bold',
+                                color: '#fff',
+                                position: 'top',
+                            }
                         }
+                    
                     };
                     seriesData.push(obj1);
                 } else {
@@ -997,7 +1007,7 @@ var MyEcharts = {
                         type: "line",
                         yAxisIndex: 1,
                         smooth: false,
-                        symbol: "circle",
+                        symbol: "none",
                         symbolSize: 10,
                         lineStyle: {
                             normal: {
@@ -1317,7 +1327,7 @@ var MyEcharts = {
     initChart: function (option, echartId) {
         var container = eval("document.getElementById('" + echartId + "')");
         var myChart = echarts.init(container);
-
+    
         myChart.setOption(option, true);	// 为echarts对象加载数据
         return myChart;
     }

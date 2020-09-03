@@ -844,7 +844,7 @@ var MyEcharts = {
 
                 yAxis: [{
                     type: 'value',
-                    min: 0,
+                    min: Math.min(...yData)-1,
                   //  max: 140,
                     splitNumber: 4,
                     splitLine: {

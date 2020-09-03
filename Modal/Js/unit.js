@@ -722,7 +722,7 @@ function move() {
         oSpan[i].style.left = arr[i] + 'px';
         let dmDom = document.getElementById('dm');
         if (arr[i] < 0) {
-            if (dmDom.childNodes>0){
+            if (dmDom.childNodes.length>0){
                 dmDom.removeChild(dmDom.childNodes[0]);
             }
 

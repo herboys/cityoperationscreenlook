@@ -175,7 +175,7 @@ function TabsFun(num) {
 /*超期事件*/
 function OverDueFun(num) {
     let para = {
-        url: ORACLE_URL + '/taskInfo/findInfooverdue',
+        url: ORACLE_URL + '/taskinfowork/findInfooverdue',
         async: true,
         type: 'post',
         data: JSON.stringify({
@@ -216,7 +216,7 @@ function GongDan(num) {
     document.getElementById("GongDanID").innerHTML = ''
     document.getElementById("GongDanIDCopy").innerHTML = ''
     let para = {
-        url: ORACLE_URL + '/taskInfo/findInfoUrgent',
+        url: ORACLE_URL + '/taskinfowork/findInfourgent',
         async: true,
         type: 'post',
         data: JSON.stringify({
@@ -293,8 +293,10 @@ function onclickModelBoxFun() {
         lis[i].onclick = function () {
             let childLI = document.querySelectorAll(".work-older-list-ul .ul-line")
             let para = `
-              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
-                                            <div style="padding: 1.667rem 3.333rem;color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">地址信息:<p style="color: #d0c7c7;">${gongdanlist[i].ADDRESS}</p></p>      
+              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">来电信息:<p style="color: #d0c7c7;">${gongdanlist[i].CONTACTINFO}</p></p>      
+              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容:</p>      
+              <div style="padding: 1.667rem 3.333rem;padding-top:0px;color: #d0c7c7;line-height:2rem;height: 17rem;overflow: hidden ">${gongdanlist[i].DESCRIPTION}</div>
             `
             document.getElementById("ModalsmallID").style.display = "block"
             document.getElementById("ModalsmallRoomID").innerHTML = para
@@ -317,7 +319,7 @@ function onclickModelBoxFun() {
 /*反复工单*/
 function GongDanfanhu(num) {
     let para = {
-        url: ORACLE_URL + '/taskInfo/findInfoback',
+        url: ORACLE_URL + '/taskinfowork/findInfoback',
         async: true,
         type: 'post',
         data: JSON.stringify({
@@ -492,51 +494,34 @@ function findbcNameType() {
         console.log(res)
         res.forEach((item, index) => {
             para += `
-                 <ul style=" height: 2.5rem;width: 100%;display: flex;align-items: center">
+                 <ul class="BasicFunIditemul" style=" height: 2.5rem;width: 100%;display: flex;align-items: center">
              <li class="BasicFunIditemtitle" style="display: inline-block;min-width: 1.667rem;height: 1.667rem;background: #2cc78f;border-radius: 50%;color:white;text-align: center;line-height:1.667rem">${index + 1}</li>
-             <li style="display: inline-block;color: white;text-align:center;min-width: 6.667rem">${item.ATNAME}</li>
+             <li class="BasicFunIditemname"  style="display: inline-block;color: white;text-align:center;min-width: 6.667rem">${item.ATNAME}</li>
              <li  style="  cursor: pointer;display:inline-block;height: 1rem;border-radius: 1.667rem;width: 100%;background-color:#4e638b">
              <div class="BasicFunIditem" style="height: 1rem;border-radius: 1.667rem;width: 100%;"></div>
 </li>
                      <li style="display: inline-block;color: white;text-align:center;min-width: 6.667rem">${item.COUNTATNAME}件</li>
             </ul>
-            
-            `
+          
+           `
         })
-
         document.getElementById("BasicFunId").innerHTML = para
-
         para= document.querySelectorAll("#BasicFunId .BasicFunIditem")
        let para1= document.querySelectorAll("#BasicFunId .BasicFunIditemtitle")
+       let para2= document.querySelectorAll("#BasicFunId .BasicFunIditemname")
+       let paraul= document.querySelectorAll("#BasicFunId .BasicFunIditemul")
         res.forEach((item,index)=>{
-
             para[index].style.width=((item.COUNTATNAME /res[0].COUNTATNAME).toFixed(2))*100+"%"
             para[index].style.backgroundColor=color[index]
             para1[index].style.backgroundColor=color[index]
 
         })
-        console.log(para,'000')
-        // let newres = ''
-        // newres = res.sort(function (a, b) {
-        //     return b.COUNTATNAME - a.COUNTATNAME;
-        // });
-        // let attackSourcesData = []
-        // let attackSourcesName = []
-        // let attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
-        // newres.map(item => {
-        //     attackSourcesName.push(item.ATNAME)
-        //     attackSourcesData.push(item.COUNTATNAME)
-        // })
-        // let option = MyEcharts.EchartsOption.Rankingno('name', attackSourcesName, attackSourcesData, attackSourcesColor, '件')
-        // var FindbcNameTypeChart = echarts.init(document.getElementById("SmallECharts3"));
-        // FindbcNameTypeChart.setOption(option);
-        // FindbcNameTypeChart.on("click", function (param) {
-        //     document.getElementById("headId").innerHTML = param.name
-        //     findbcNamesc(param.name)
-        //   //  JiBenXinXi(basicFunTime, param.name, param.data.value)
-        //    // JiBenXinXiReLiability(ModelTime, param.name)
-        //     findbcsclnglatName(basicFunTime,param.name,"")
-        // })
+        for (let i = 0; i < paraul.length; i++) {
+            paraul[i].onclick=function (){
+                findbcsclnglatName(basicFunTime,para2[i].innerHTML,"")
+                findbcNamesc(para2[i].innerHTML)
+            }
+        }
     })
 }
 

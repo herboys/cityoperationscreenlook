@@ -198,7 +198,7 @@ function shbz(arr){
     }
 }
 
-function sthj(arr){
+function sthj(arr,num){
     if (arr.length > 3) {
         var distance = $(".hjbz-warp .text-list").height();
 
@@ -208,7 +208,7 @@ function sthj(arr){
                     '<div style="left:15%;top:0%;opacity:0" class="text-list">' +
                     ' <img style="cursor:pointer;margin-top: 0.5rem;width:6rem" onclick="openGarbageClassification()" src="images/shlj.png" />'+
                     '<p><span class="num-font">' +
-                    arr[hjbzNum].num +
+                    num +
                     "</span>" +
                     arr[hjbzNum].unit +
                     "</p></div>"
@@ -335,7 +335,28 @@ function syncInit(){
         shbz(shbzArr);
     }
     if(sthjFlag==true){
-        sthj(hjbzArr);
+        let para={
+            url: GarBage_URl + '/sh/garbageSort/getGarbageStreetProduce',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res=>{
+            if (res.status === 'OK') {
+                para = ''
+            let dryGarbage = []
+            let recoverable = []
+            res.data.map(item => {
+                dryGarbage.push(item.dryGarbage.split(item.unit)[0].trim())
+                recoverable.push(parseInt(item.wetGarbageDwe.split(item.unit)[0].trim()) + parseInt(item.wetGarbageKit.split(item.unit)[0].trim()))
+            })
+
+            let recoverable1 =eval(dryGarbage.join("+")) / dryGarbage.length +eval(recoverable.join("+")) / recoverable.length+403
+           let Ganlanumber = recoverable1.toFixed(2)
+                sthj(hjbzArr,Ganlanumber);
+        }
+
+    })
     }
 
 }

@@ -1198,7 +1198,7 @@ var MyEcharts = {
          *@param color : 颜色 数据
          * */
         newbar: function (xData, yData, zData, color, legend, yAxisname) {
-
+            console.log(xData,yData)
             var xData = xData,
                 yData2 = yData,
                 yData4 = zData,

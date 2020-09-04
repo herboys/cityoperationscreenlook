@@ -1,4 +1,6 @@
+var JWBsetInterval;
 function ToOnload() {
+
     var gongdanlist = []
     var basicFunTimeName = ''
     var farstlist = ''
@@ -69,64 +71,20 @@ function TabsFun(num) {
             para[2].innerHTML = '<div class="banner1" onclick="TabsFun(3)">' + '街镇' + '</div>' +
                 '<div class="banner2" onclick="TabsFun(4)">' + '委办局' + '</div>'
                 + '<div class="banner2" onclick="TabsFun(5)">' + '公司' + '</div>'
-            findTypeMsg('年', "街镇").then(res => {
-                res.map(item => {
-                    xData.push(item.STREETNAME)
-                    zData.push(item.COUNTNAME)
-                    yData.push(item.PROPORTION)
-                })
-                legend = ["满意度", "案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
-            })
-            document.getElementById("BureauId").style.display = "none"
+            findTypeStreetName()
             break;
             break;
         case 4:
             para[2].innerHTML = '<div class="banner2" onclick="TabsFun(3)">' + '街镇' + '</div>' +
                 '<div class="banner1" onclick="TabsFun(4)">' + '委办局' + '</div>'
                 + '<div class="banner2" onclick="TabsFun(5)">' + '公司' + '</div>'
-            findTypeMsg('年', "区委办").then(res => {
-                console.log(res, '区委办')
-                res.map(item => {
-                    xData.push(item.DEPTNAME)
-                    zData.push(item.COUNTNAME)
-                    yData.push(item.PROPORTION)
-                })
-                xData = xData.slice(0, 6).concat(xData.slice(xData.length - 6, xData.length))
-                zData = zData.slice(0, 6).concat(zData.slice(zData.length - 6, zData.length))
-                yData = yData.slice(0, 6).concat(yData.slice(yData.length - 6, yData.length))
-                legend = ["满意度", "案件数量"]
-                document.getElementById("BureauId").style.display = "flex"
-                let container = document.getElementById("SmallECharts")
-                myChart = echarts.init(container);
-                option = MyEcharts.EchartsOption.newbar2(xData, yData, zData, "#F9392D", legend, "%")
-                setInterval(function () {
-                    // 每次向后滚动一个，最后一个从头开始。
-                    if (option.dataZoom[0].endValue == yData.length) {
-                        option.dataZoom[0].endValue = 6;
-                        option.dataZoom[0].startValue = 0;
-                    } else {
-                        option.dataZoom[0].endValue = option.dataZoom[0].endValue + 1;
-                        option.dataZoom[0].startValue = option.dataZoom[0].startValue + 1;
-                    }
-                    myChart.setOption(option, true);
-                }, 2000);
-            })
+            findTypedeptName()
             break;
         case 5:
             para[2].innerHTML = '<div class="banner2" onclick="TabsFun(3)">' + '街镇' + '</div>' +
                 '<div class="banner2" onclick="TabsFun(4)">' + '委办局' + '</div>'
                 + '<div class="banner1" onclick="TabsFun(5)">' + '公司' + '</div>'
-            findTypeMsg('年', "公司").then(res => {
-                res.map(item => {
-                    xData.push(item.DEPTNAME)
-                    zData.push(item.COUNTNAME)
-                    yData.push(item.PROPORTION)
-                })
-                document.getElementById("BureauId").style.display = "none"
-                legend = ["满意度", "案件数量"]
-                MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
-            })
+            findTypeeDeptPart()
             break;
             break;
         case 6:
@@ -654,7 +612,111 @@ function findTypeMsg(time, name) {
         })
     })
 }
+/*街镇*/
+function findTypeStreetName() {
 
+    let para = {
+        url: ORACLE_URL + '/taskInfostatis/findTypeStreetName',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": ModelTime,
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        let xData = []
+        let yData = []
+        let zData = []
+        let legend = []
+
+        res.map(item => {
+            xData.push(item.STREETNAME)
+            zData.push(item.COUNTNAME)
+            yData.push(item.PROPORTION)
+        })
+        legend = ["满意度", "案件数量"]
+        document.getElementById("SmallEChartscopy").style.display='none'
+        document.getElementById("SmallECharts").style.display='flex'
+        MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
+    })
+}
+/*委办局*/
+let yData = []
+function findTypedeptName() {
+    let para = {
+        url: ORACLE_URL + '/taskInfostatis/findTypedeptName',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": ModelTime,
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        document.getElementById("SmallECharts").style.display='none'
+        document.getElementById("SmallEChartscopy").style.display='flex'
+        let xData = []
+
+        let zData = []
+        let legend = []
+        res.map(item => {
+            xData.push(item.DEPTNAME)
+            zData.push(item.COUNTNAME)
+            yData.push(item.PROPORTION)
+        })
+        xData = xData.slice(0, 6).concat(xData.slice(xData.length - 6, xData.length))
+        zData = zData.slice(0, 6).concat(zData.slice(zData.length - 6, zData.length))
+        yData = yData.slice(0, 6).concat(yData.slice(yData.length - 6, yData.length))
+        legend = ["满意度", "案件数量"]
+        document.getElementById("BureauId").style.display = "flex"
+        let container = document.getElementById("SmallEChartscopy")
+        myChart = echarts.init(container);
+        option = MyEcharts.EchartsOption.newbar2(xData, yData, zData, "#F9392D", legend, "%")
+
+     JWBsetInterval=setInterval( aaaa,2000);
+    })
+}
+function aaaa () {
+    if (option.dataZoom[0].endValue == yData.length) {
+        option.dataZoom[0].endValue = 6;
+        option.dataZoom[0].startValue = 0;
+    } else {
+        option.dataZoom[0].endValue = option.dataZoom[0].endValue + 1;
+        option.dataZoom[0].startValue = option.dataZoom[0].startValue + 1;
+    }
+     myChart.setOption(option, true);
+}
+function findTypeeDeptPart() {
+    let para = {
+        url: ORACLE_URL + '/taskInfostatis/findTypeeDeptPart',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": ModelTime,
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        document.getElementById("SmallEChartscopy").style.display='none'
+        let xData = []
+        let yData = []
+        let zData = []
+        let legend = []
+        let attackSourcesData = ''
+        let attackSourcesName = ''
+        let attackSourcesColor = ''
+        res.map(item => {
+            xData.push(item.DEPTNAME)
+            zData.push(item.COUNTNAME)
+            yData.push(item.PROPORTION)
+        })
+        document.getElementById("BureauId").style.display = "none"
+        document.getElementById("SmallECharts").style.display='flex'
+        legend = ["满意度", "案件数量"]
+        MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
+    })
+}
 /**获取热词*/
 function findscName() {
     new Promise((resolve, reject) => {

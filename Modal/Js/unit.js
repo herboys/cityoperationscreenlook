@@ -500,7 +500,7 @@ function findbcNameType() {
              <li  style="  cursor: pointer;display:inline-block;height: 1rem;border-radius: 1.667rem;width: 100%;background-color:#4e638b">
              <div class="BasicFunIditem" style="height: 1rem;border-radius: 1.667rem;width: 100%;"></div>
 </li>
-                     <li style="display: inline-block;color: white;text-align:center;min-width: 6.667rem">${item.COUNTATNAME}件</li>
+                     <li  style="display: inline-block;color: white;text-align:center;min-width: 6.667rem">${item.COUNTATNAME}件</li>
             </ul>
           
            `
@@ -518,6 +518,18 @@ function findbcNameType() {
         })
         for (let i = 0; i < paraul.length; i++) {
             paraul[i].onclick=function (){
+                para[i].style.boxShadow=`0px 0px 10px 1px ${color[i]}`
+                para1[i].style.boxShadow=`0px 0px 10px 1px ${color[i]}`
+                para2[i].style.textBackgroundColor=`0px 0px 10px 1px ${color[i]}`
+                para.forEach((item,index)=>{
+                    if (i==index){
+                    }else {
+                        para[index].style.boxShadow=""
+                        para1[index].style.boxShadow=""
+                        para2[index].style.boxShadow=""
+                    }
+                })
+                console.log(para[i].boxShadow)
                 findbcsclnglatName(basicFunTime,para2[i].innerHTML,"")
                 findbcNamesc(para2[i].innerHTML)
             }

@@ -293,10 +293,10 @@ function onclickModelBoxFun() {
         lis[i].onclick = function () {
             let childLI = document.querySelectorAll(".work-older-list-ul .ul-line")
             let para = `
-              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">地址信息:<p style="color: #d0c7c7;">${gongdanlist[i].ADDRESS}</p></p>      
-              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">来电信息:<p style="color: #d0c7c7;">${gongdanlist[i].CONTACTINFO}</p></p>      
-              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容:</p>      
-              <div style="padding: 1.667rem 3.333rem;padding-top:0px;color: #d0c7c7;line-height:2rem;height: 17rem;overflow: hidden ">${gongdanlist[i].DESCRIPTION}</div>
+              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">地址信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].ADDRESS}</p></p>      
+              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">来电信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].CONTACTINFO}</p></p>      
+              <p style="font-size: 1rem;color: white;padding-left1.667rem:">诉求内容:</p>      
+              <div style="padding: 1.667rem 3.333rem;padding-top:0px;color: #d0c7c7;line-height:2rem;height: 16rem;overflow: scroll ">${gongdanlist[i].DESCRIPTION}</div>
             `
             document.getElementById("ModalsmallID").style.display = "block"
             document.getElementById("ModalsmallRoomID").innerHTML = para

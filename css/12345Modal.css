@@ -693,6 +693,7 @@ ul li {
     /*border:0.167rem solid pink; */
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .Municipal-level-warp-header ul {

@@ -59,7 +59,7 @@ function initMap() {
     addJiadingBoundary();  /*添加嘉定区和街道边界*/
     addJiadingZhenText();
     addTraffic();           /*添加实时路况情况*/
-    addPoiMarker();         /*添加嘉定区主要监控点*/
+    //addPoiMarker();         /*添加嘉定区主要监控点*/
     //  map.addControl(new AMap.Scale());
     SprinkleIt()
 }
@@ -305,6 +305,7 @@ function playVideo(e) {
 
 
 function SprinkleIt(){
+    //map.clearMap();
     let NewList=[
         {name:"嘉城 桃园小区 桃园新村87号东 HG",pumpStationX:"121.239575",pumpStationY:"31.391606",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011429001310015505&subStream=0&protocol=0"},
         {name:"嘉城 桃园小区 桃园新村104东 HG",pumpStationX:"121.239503",pumpStationY:"31.390868",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321146003&subStream=0&protocol=0"},
@@ -319,9 +320,10 @@ function SprinkleIt(){
 // 创建一个 icon
         let Icon = new AMap.Icon({
             size: new AMap.Size(25, 34),
-            image: '//a.amap.com/jsapi_demos/static/demo-center/icons/dir-marker.png',
-            imageSize: new AMap.Size(135, 40),
-            imageOffset: new AMap.Pixel(-95, -3)
+            image: './../images/map/icon_qiakou.png',
+            // imageSize: new AMap.Size(135, 40),
+            // imageOffset: new AMap.Pixel(-95, -3)
+            imageSize: new AMap.Size(22, 32),
         });
 
 // 将 icon 传入 marker
@@ -351,15 +353,6 @@ function SprinkleIt(){
     }
 
     function iframeInsertOneVideo(name,url){
-        //clearInterval(videoTimeOne)
-
-
-       /* var removeVideo= $("#slider1 video")[0]
-        removeVideo.pause()
-        hlsListMap["slideOne"].destroy();
-        hlsListMap["slideOne"]=null
-        delete hlsListMap["slideOne"]*/
-
        name=name.replace(" ","_").replace(" ","_").replace(" ","_")
 
         console.log(1)

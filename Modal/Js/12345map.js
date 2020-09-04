@@ -218,12 +218,12 @@ function initMap(date,bcname,scname){
     function createMenu(res) {
         bridge1.Invoke([
             //地图主题切换消息
-            {
-                "ActionName": "changeTheme",
-                "Parameters": {
-                    "id": "Home"
-                }
-            },
+            // {
+            //     "ActionName": "changeTheme",
+            //     "Parameters": {
+            //         "id": "Home"
+            //     }
+            // },
             // 功能菜单
             {
                 "ActionName": "userMenu",

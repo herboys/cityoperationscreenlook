@@ -589,6 +589,9 @@ function linkageIntScroll() {
 	}, 5000);
 }
 
+var linkYLNum=0;
+var linkYLMax=0;
+var linkageYLTime;
 //  养老工单table滚动
 function addTableList3(name, arr) {
 	$(name).find(".list-box").html("");
@@ -616,14 +619,14 @@ function addTableList3(name, arr) {
 		}, 200 * i);
 
 		if (name == ".linkage-table2" && i == arr.length - 1 && arr.length > 6) {
-			linkageMax = arr.length;
-			linkageNum = 0;
+			linkYLMax = arr.length;
+			linkYLNum = 0;
 			setTimeout(function () {
 				var html = $(name).find(".list-box").html();
 				$(name).find(".list-box").append(html);
 				linkageInt2();
 				$(name).mouseenter(function () {
-					clearInterval(linkageTime);
+					clearInterval(linkageYLTime);
 				});
 				$(name).mouseleave(function () {
 					linkageInt2();
@@ -632,21 +635,24 @@ function addTableList3(name, arr) {
 		}
 	}
 }
+
+
+
 // 养老工单table滚动
 function linkageInt2() {
 	var moveT = $(".linkage-table2").find(".table-list").eq(0).height() + 14;
 	// alert(moveT+ 200)
-	linkageTime = setInterval(() => {
-		if (linkageNum >= linkageMax / 6) {
-			linkageNum = -1;
+	linkageYLTime = setInterval(() => {
+		if (linkYLNum >= linkYLMax / 6) {
+			linkYLNum = -1;
 			$(".linkage-table2 .list-box").css({
-				top: -moveT * linkageNum
+				top: -moveT * linkYLNum
 			});
 		}
-		linkageNum++;
+		linkYLNum++;
 
 		$(".linkage-table2 .list-box").animate({
-				top: -(moveT + 1) * linkageNum * 5.82,
+				top: -(moveT + 1) * linkYLNum * 5.82,
 			},
 			1000,
 			// function () {

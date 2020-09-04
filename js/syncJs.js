@@ -109,6 +109,7 @@ function bumenInit(){
         }
         linkageNum++;
 
+     //   alert(linkageNum)
         $(".linkage-table .list-box").stop(true, true).animate({
                 top: -(moveT + 1) * linkageNum * 5.82,
             },

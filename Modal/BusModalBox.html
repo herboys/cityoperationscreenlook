@@ -71,7 +71,7 @@
     }
     async function BusLineFun(){
         let para={
-            url:Bus_URL+"/jdcycarmessage/findbusEfficiency",
+            url:FIRE_URL+"/jdcycarmessage/findbusEfficiency",
             async: true,
             type: 'post',
             dataType: 'JSON',
@@ -87,7 +87,7 @@
             window.onresize=MyEcharts.resize
         })
         para={
-            url:Bus_URL+"/jdcycarmessage/findbusPunctuality",
+            url:FIRE_URL+"/jdcycarmessage/findbusPunctuality",
             async: true,
             type: 'post',
             dataType: 'JSON',

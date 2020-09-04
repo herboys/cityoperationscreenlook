@@ -644,6 +644,25 @@ function getGongJiaoData() {
     type: "get",
     async: false,
     success: function (data) {
+      console.log(data,"公交+++++++++")
+      if( data.xlnum==null){
+        data.xlnum="--"
+      }
+      if( data.carnum==null){
+        data.carnum="--"
+      }
+      if( data.jhnum==null){
+        data.jhnum="--"
+      }
+      if( data.sjnum==null){
+        data.sjnum="--"
+      }
+      if( data.bczxl==null){
+        data.bczxl="--"
+      }
+      if( data.smbczdlz==null){
+        data.smbczdlz="--"
+      }
       jtzkArr[0].xlnum = data.xlnum;
       jtzkArr[0].carnum = data.carnum;
       jtzkArr[0].jhnum = data.jhnum;
@@ -653,6 +672,12 @@ function getGongJiaoData() {
       addCard(jtzkArr, ".jtqk-warp"); //交通情况
     },
     error: function () {
+      jtzkArr[0].xlnum = "--";
+      jtzkArr[0].carnum = "--";
+      jtzkArr[0].jhnum = "--";
+      jtzkArr[0].sjnum = "--";
+      jtzkArr[0].bczxl = "--";
+      jtzkArr[0].smbczdl = "--";
       addCard(jtzkArr, ".jtqk-warp"); //交通情况
     },
   });

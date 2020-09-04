@@ -1,5 +1,6 @@
 function ToOnload() {
     var gongdanlist = []
+    var basicFunTimeName = ''
     var farstlist = ''
     GongDan(1)
     TabsFun(3)
@@ -529,7 +530,7 @@ function findbcNameType() {
                         para2[index].style.boxShadow=""
                     }
                 })
-                console.log(para[i].boxShadow)
+                basicFunTimeName=para2[i].innerHTML
                 findbcsclnglatName(basicFunTime,para2[i].innerHTML,"")
                 findbcNamesc(para2[i].innerHTML)
             }
@@ -546,7 +547,6 @@ function findbcsclnglatName(basicFunTime, name, scname) {
         data: JSON.stringify({
             "date": basicFunTime,
             "bcname": name,
-            "scname": scname,
         }),
         dataType: 'JSON',
     }
@@ -810,12 +810,12 @@ function move() {
 
 function findbcschotslnglatName(hots) {
     let para = {
-        url: ORACLE_URL + '/taskInfo/findbcschotslnglat',
+        url: ORACLE_URL + '/taskInfo/findbcAtlnglatName',
         async: true,
         type: 'post',
         data: JSON.stringify({
-            "date": "年",
-            "bcname": "",
+            "date": basicFunTime,
+            "bcname": basicFunTimeName,
             scname: "",
             hots: hots
         }),

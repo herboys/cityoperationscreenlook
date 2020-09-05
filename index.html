@@ -822,6 +822,7 @@
     </div>
   </div>
 </body>
+<script src="Modal/Js/ajaxPromise.js"></script>
 <script type="text/javascript">
   $(function () {
     $("header img").ready(function () {
@@ -1110,8 +1111,8 @@
         //发送get请求
         this.$http.get(
             // "http://127.0.0.1:5500/map/mock_data.json"
-           "http://127.0.0.1:5500/map/congrestion.json"
-            //  FIRE_URL+"/cityBrain/getSession"
+           //"http://127.0.0.1:5500/map/congrestion.json"
+             FIRE_URL+"/cityBrain/getSession"
           ).then(
             function (res) {
               this.list1 = [];

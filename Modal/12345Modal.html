@@ -37,12 +37,16 @@
         position: absolute;
         top: 0px;
         left: 0px;
-        color: #04FDF5;
-        font-weight: bold;
+        color: white;
+        /*font-weight: bold;*/
         padding: 0.25rem 0.5rem;
-        font-size: .6rem;
-        width: 5rem;
+        font-size: .5rem;
+        width: 6rem;
         overflow: hidden;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 10px;
     }
 
     #rotate a:hover {
@@ -64,7 +68,9 @@
         line-height: 2rem;
         position: absolute;
         white-space: nowrap;
-    }    #dmcopy {
+    }
+
+    #dmcopy {
         width: 100%;
         height: 100%;
         display: none;
@@ -79,13 +85,15 @@
         position: absolute;
         white-space: nowrap;
     }
+
     .notice {
-        width: 300px;/*单行显示，超出隐藏*/
-        height: 35px;/*固定公告栏显示区域的高度*/
+        width: 300px; /*单行显示，超出隐藏*/
+        height: 35px; /*固定公告栏显示区域的高度*/
         padding: 0 30px;
         background-color: #b3effe;
         overflow: hidden;
     }
+
     .notice ul li {
         list-style: none;
         line-height: 35px;
@@ -186,40 +194,44 @@
                 12345市民服务热线
             </div>
             <div class="Modal-left-item">
-                <div class="FX_header" style="padding: 0rem 1.667rem">
+                <!--                <div style="padding: 0rem 1.667rem">-->
+                <div class="flex-between paddingright-20px paddingleft-20px ">
                     <div class="header">
                         <a class="line"></a>
                         <span>统计分析</span>
                         <a class="line1"></a>
                     </div>
-               
+                    <div id="dropdown">
+                        <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
+                        <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
+                            <li><a href="#" rel="1" onclick="basicFun('日')"> 今日</a></li>
+                            <li><a href="#" rel="2" onclick="basicFun('月')">本月</a></li>
+                            <li><a href="#" rel="3" onclick="basicFun('年')">今年</a></li>
+                        </ul>
+                    </div>
+                    <!--                    </div>-->
                 </div>
-
                 <div class="Satisfaction-warp">
                     <div class="Satisfaction-warp-item">
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
                                 <div class="banner1" onclick="TabsFun(1)">基本情况</div>
                             </div>
-                            <!-- <div id="dropdown1">
-                            </div> -->
-                            <div id="dropdown">
-                                <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
-                                <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
-                                    <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
-                                    <li><a href="#" rel="2" onclick="dropdownFun('月')">本月</a></li>
-                                    <li><a href="#" rel="3" onclick="dropdownFun('年')">今年</a></li>
-                                </ul>
-                            </div>
+
                         </div>
-                        <div class="Satisfaction-warp-item-echarts">
+                        <div class="Satisfaction-warp-item-echarts" style="box-sizing: border-box">
+                            <div style="width: 100%;height: 100%;padding:2.5rem 1.667rem 1.667rem 1.667rem;box-sizing: border-box">
+                                <div id="BasicFunId"
+                                     style="display:flex;flex-flow: column;justify-content:space-between;width: 100%;height: 100%;padding: 1.667rem;box-sizing: border-box">
+
+                                </div>
+                            </div>
                             <div id="backBtnclass">
                                 <span id="headId" style="margin-left: 4.167rem;"></span><span
                                     onclick="backBtn()" style="z-index: 999">返回上一级</span></div>
-                            <div id="SmallECharts3" class="SmallECharts3"
-                                 style="width: 530px;height:320px;margin-right: 20px;padding-top:-40px"></div>
-                            <div id="SmallECharts3copy" class="SmallECharts3copy"
-                                 style="width: 530px;height:320px;margin-right: 20px;padding-top:-40px"></div>
+                            <div id="SmallECharts3"
+                                 ></div>
+                            <div id="SmallECharts3copy" class="SmallECharts3copy"></div>
 
                         </div>
                     </div>
@@ -231,7 +243,8 @@
                         </div>
                         <div class="Satisfaction-warp-item-echarts"
                              style="padding: 1rem 3rem 2.5rem 1rem;;box-sizing: border-box;overflow: hidden">
-                            <div id="DmMainId" style="margin: 1rem;overflow: hidden;width: 100%;height: 100%;position: relative">
+                            <div id="DmMainId"
+                                 style="margin: 1rem;overflow: hidden;width: 100%;height: 100%;position: relative">
                                 <div id="dm"></div>
                                 <div id="dmcopy"></div>
                             </div>
@@ -243,18 +256,49 @@
 
                 <div class="Satisfaction-warp">
                     <div class="Satisfaction-warp-item">
-                        <div class="header">
-                            <a class="line"></a>
-                            <span>满意度评价</span>
-                            <a class="line1"></a>
+                        <div class="flex-between paddingright-20px">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>满意度评价</span>
+                                <a class="line1"></a>
+                            </div>
+                            <div id="dropdown1">
+                                <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
+                                <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
+                                    <li><a href="#" rel="1" onclick="satisfiedFun('日')"> 今日</a></li>
+                                    <li><a href="#" rel="2" onclick="satisfiedFun('月')">本月</a></li>
+                                    <li><a href="#" rel="3" onclick="satisfiedFun('年')">今年</a></li>
+                                </ul>
+                            </div>
                         </div>
+
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
                                 <div class="banner1" onclick="TabsFun(3)">街镇</div>
                                 <div class="banner2" onclick="TabsFun(4)">委办局</div>
                                 <div class="banner2" onclick="TabsFun(5)">公司</div>
                             </div>
-                            <div id="dropdown">
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts"
+                             style="padding: 1rem 3rem 2.5rem 1rem;;box-sizing: border-box;overflow: hidden">
+                            <div id="SmallECharts"
+                                 style="width:44.167rem;height:21.667rem;position: absolute;left: 1.667rem;top: 2.5rem"></div>
+                            <div id="SmallEChartscopy"
+                                 style="width:44.167rem;height:21.667rem;position: absolute;left: 1.667rem;top: 2.5rem"></div>
+                            <div id="BureauId"
+                                 style="position: absolute;top: 2.5rem;left: 3.333rem;display: flex;justify-content: space-between;color: white;font-size: 1rem;">
+                                <span style="padding: 0rem 2.5rem" onclick="TopSixFun(1)"></span><span
+                                    onclick="TopSixFun(1)" style="padding: 0rem 2.5rem"></span></div>
+                        </div>
+                    </div>
+                    <div class="Satisfaction-warp-item">
+                        <div class="flex-between paddingright-20px">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>重点工单一览</span>
+                                <a class="line1"></a>
+                            </div>
+                            <div id="dropdown2">
                                 <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
                                 <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
                                     <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
@@ -262,18 +306,6 @@
                                     <li><a href="#" rel="3" onclick="dropdownFun('年')">今年</a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="Satisfaction-warp-item-echarts">
-                            <div id="SmallECharts"
-                                 style="width:530px;height:260px;position: absolute;left: 1.667rem;top: 2.5rem"></div>
-                            <div id="BureauId"  style="position: absolute;top: 2.5rem;left: 3.333rem;display: flex;justify-content: space-between;color: white;font-size: 1rem;"><span style="padding: 0rem 2.5rem" onclick="TopSixFun(1)"></span><span  onclick="TopSixFun(1)" style="padding: 0rem 2.5rem"></span></div>
-                        </div>
-                    </div>
-                    <div class="Satisfaction-warp-item">
-                        <div class="header">
-                            <a class="line"></a>
-                            <span>重点工单一览</span>
-                            <a class="line1"></a>
                         </div>
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
@@ -282,14 +314,7 @@
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
                                 <div class="banner2" onclick="TabsFun(11)">超期工单</div>
                             </div>
-                            <div id="dropdown">
-                                <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
-                                <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
-                                    <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
-                                    <li><a href="#" rel="2" onclick="dropdownFun('月')">本月</a></li>
-                                    <li><a href="#" rel="3" onclick="dropdownFun('年')">今年</a></li>
-                                </ul>
-                            </div>
+
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
 
@@ -307,7 +332,10 @@
     background: #082443;
     margin-right: 2.667rem;
     z-index: 999;display: none;overflow: hidden">
-                                        <div onclick="claerFuns()" style="color: white;font-size: 15px;position: absolute;top: 0px;right: 10px" >x</div>
+                                        <div onclick="claerFuns()"
+                                             style="color: white;font-size: 15px;position: absolute;top: 0px;right: 10px">
+                                            x
+                                        </div>
                                         <div id="ModalsmallRoomID">
                                             <p style="font-size: 18px;color: white">qwewqewqe</p>
                                             <div style="padding: 20px 40px;color: #d0c7c7;line-height:.4rem "></div>
@@ -337,7 +365,9 @@
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="Js/jquery.barrager.min.js"></script>
 <script>
+    var basicFunTime = "年"
     var ModelTime = "年"
+    var dropdownFunTime = "年"
 
     window.onload = function () {
         initMap()
@@ -386,6 +416,8 @@
             $("#result").html("您选择了" + txt + "，值为：" + value);
         });
     })
+
+
     $("#dropdown p").click(function () {
         $("#dropdown1 ul").hide();
         $("#dropdown2 ul").hide();
@@ -405,11 +437,27 @@
         });
     })
 
-    /**下拉选择*/
-    function dropdownFun(value) {
+    /**基本情况下拉选择*/
+    function basicFun(value) {
+        console.log('++++++++++++++++++++++++++++++++++++++')
+        basicFunTime = value
+        findbcNameType()
+    }
+
+    /**满意下拉选择*/
+    function satisfiedFun(value) {
         console.log('++++++++++++++++++++++++++++++++++++++')
         ModelTime = value
-        ToOnload()
+        TabsFun(3)
     }
+
+    /**工单下拉选择*/
+    function dropdownFun(value) {
+        console.log('++++++++++++++++++++++++++++++++++++++')
+        dropdownFunTime = value
+        TabsFun(6)
+    }
+
+
 </script>
 </html>

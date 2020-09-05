@@ -152,35 +152,35 @@ var MyEcharts2 = {
                     show: false
                 },
                 grid: {
-                    left: 120,
+                    left: 110,
                     right: 65
               
                 },
-                // dataZoom: [{
-                //     type: 'slider',
-                //     yAxisIndex: [0,1],
-                //     zoomLock: true,
-                //     width: 10,
-                //     handleSize: 0,
-                //     showDetail: false,
-                //     start: 0,
-                //     end: 50,
-                //     handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
-                //     handleSize: '110%',
-                //     handleStyle: {
-                //         color: "#d3dee5",
-                //     },
-                //     borderColor: "#90979c"
-                // }, {
-                //     type: 'inside',
-                //     id: 'insideY',
-                //     yAxisIndex: 0,
-                //     start: 0,
-                //     end: 50,
-                //     zoomOnMouseWheel: false,
-                //     moveOnMouseMove: true,
-                //     moveOnMouseWheel: true
-                // }],
+                dataZoom: [{
+                    type: 'slider',
+                    yAxisIndex: [0,1],
+                    zoomLock: true,
+                    width: 10,
+                    handleSize: 0,
+                    showDetail: false,
+                    start: 0,
+                    end: 50,
+                    handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                    handleSize: '110%',
+                    handleStyle: {
+                        color: "#d3dee5",
+                    },
+                    borderColor: "#90979c"
+                }, {
+                    type: 'inside',
+                    id: 'insideY',
+                    yAxisIndex: 0,
+                    start: 0,
+                    end: 50,
+                    zoomOnMouseWheel: false,
+                    moveOnMouseMove: true,
+                    moveOnMouseWheel: true
+                }],
                 xAxis: {
                     type: 'value',
 
@@ -218,6 +218,7 @@ var MyEcharts2 = {
                     },
                     data: attackSourcesName,
                     axisLabel: {
+                        interval:0 ,  //控制是否全部显示
                         margin: 90,
                         fontSize: 16,
                         align: 'left',
@@ -775,7 +776,7 @@ var MyEcharts2 = {
                     }
                   },
                   legend: {
-                    data: ["销售量", "业务1", "业务2"],
+                    data: ["处置率", "上报量", "未处置"],
                     top: "2%",
                     right:'10',
                     textStyle: {
@@ -866,7 +867,7 @@ var MyEcharts2 = {
                     }
                   ],
                   series: [{
-                    name: "销售量",
+                    name: "处置率",
                     type: "line",
                     yAxisIndex: 1, //使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用
                     smooth: true, //平滑曲线显示
@@ -901,7 +902,7 @@ var MyEcharts2 = {
                     data: [4.2, 3.5, 2.9, 7.8, 5, 3]
                   },
                     {
-                      name: "业务1",
+                      name: "上报量",
                       type: "bar",
                       barWidth: 15,
                       itemStyle: {
@@ -930,7 +931,7 @@ var MyEcharts2 = {
                       data: yAxisData.sort(function(a,b){return b-a})
                     },
                     {
-                      name: "业务2",
+                      name: "未处置",
                       type: "bar",
                       barWidth: 15,
                       itemStyle: {
@@ -945,7 +946,161 @@ var MyEcharts2 = {
                   ]
                 };
             return option
-        }
+        },
+
+        LineChartPhone:function (name,RGB,xData,yData){
+            let option = {
+                // backgroundColor: '#080b30',
+                title: {
+                    text: '',
+                    textStyle: {
+                        align: 'center',
+                        color: '#fff',
+                        fontSize: 20,
+                    },
+                    top: '2%',
+                    left: 'center',
+                },
+              
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        lineStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }, {
+                                    offset: 0.5,
+                                    color: 'rgba(255, 255, 255,1)',
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }],
+                                global: false
+                            }
+                        },
+                    },
+                },
+                grid: {
+                    top: '15%',
+                    left: '5%',
+                    right: '5%',
+                    bottom: '15%',
+                    // containLabel: true
+                },
+                xAxis: [{
+                    type: 'category',
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: `rgb(${RGB})`
+                        },
+                    },
+                    splitArea: {
+                        // show: true,
+                        color: '#f00',
+                        lineStyle: {
+                            color: '#f00'
+                        },
+                    },
+                    axisLabel: {
+                        color: '#fff',
+                        rotate: 30, // 旋转角度
+                        interval: 0  //设置X轴数据间隔几个显示一个，为0表示都显示
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                    boundaryGap: false,
+                    data: xData,
+            
+                }],
+            
+                yAxis: [{
+                    type: 'value',
+                    min: 0,
+                    // max: 140,
+                    splitNumber: 4,
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: 'rgba(255,255,255,0.1)'
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: `rgb(${RGB})`
+                        },
+                    },
+                    axisLabel: {
+                        show: true,
+                        margin: 20,
+                        textStyle: {
+                            color: '#d1e6eb',
+            
+                        },
+                    },
+                    axisTick: {
+                        show: true,
+                    },
+                }],
+                series: [{
+                        name: '接听总时长',
+                        type: 'line',
+                        smooth: true, //是否平滑
+                        showAllSymbol: true,
+                        // symbol: 'image://./static/images/guang-circle.png',
+                        symbol: 'none',
+                        symbolSize: 25,
+                        
+                        lineStyle: {
+                            normal: {
+                                color: `rgb(${RGB})`,
+                            },
+                        },
+                        label: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: `rgb(${RGB})`,
+                            }
+                        },
+                        itemStyle: {
+                            color: `rgb(${RGB})`,
+                            borderColor: "#fff",
+                            borderWidth: 3,
+                        },
+                        tooltip: {
+                            show: true
+                        },
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: `rgb(${RGB})`
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(108,80,243,0)'
+                                    }
+                                ], false),
+                            
+                            }
+                        },
+                        data: yData
+                    },
+                    
+                ]
+            };
+             return option
+        },
 
 
     },

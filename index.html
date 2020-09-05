@@ -229,17 +229,17 @@
                 <li><div class="text-centered"><p>引进外资
                 </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">16.75</span><p>亿美元</p>
                 </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>商品房销售
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">67.20</span><p>万平方米</p>
+                <li><div class="text-centered"><p>财政总收入
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">442.3</span><p>亿元</p>
                 </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>"千百十亿"企业
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">325</span><p>个</p>
+                <li><div class="text-centered"><p>固定资产投资
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">237.6</span><p>亿元</p>
                 </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>1-2季度农业
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">2.30</span><p>亿元</p>
+                <li><div class="text-centered"><p>商品销售总额
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">2523.7</span><p>亿元</p>
                 </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>新增就业岗位
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">13835</span><p>个</p>
+                <li><div class="text-centered"><p>社会消费零售
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">808.8</span><p>亿元</p>
                 </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
                </div>
             </div>
@@ -505,7 +505,7 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-              <div class="main-list" >
+              <div class="main-list"  @click="rescueShow=true">
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -793,6 +793,12 @@
           x</a>
         <iframe id="openiframe3" src="Modal/RestModal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
+      <div class="rest-box" id="rescueModal"  v-show="rescueShow" >
+        <a class="rescue-close" @click="rescueShow=false" >
+          x</a>
+        <iframe id="openiframeGridModal" src="Modal/RescueModal.html" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+      
       <div v-show="httpShow" class="rest-www">
         <div class="httpShow-close" @click="httpShow=false">x</div>
         <div style="width: 140%; height: 140%">
@@ -879,7 +885,7 @@
         showDialog: true,
         gridShow: false,
         restShow: false,
-        convenientShow: false,
+        rescueShow: false,
        
         polylines1: new Map(),
         polylines2: new Map(),

@@ -6,6 +6,7 @@
 
 </head>
 <link rel="stylesheet" type="text/css" href="css/IndexModelBox.css">
+<link rel="stylesheet" type="text/css" href="../css/index.css">
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
 <style>
@@ -22,12 +23,64 @@
         <div class="FX_header">
             <div class="header">
                 <a class="line"></a>
-                <span>分类工作基础信息</span>
+                <span>基础信息</span>
                 <a class="line1"></a>
             </div>
         </div>
-        <div class="header" id="TitleTyoeID">
+    
+        <div  class="header" style="padding-right: 480px;">
+                <div class="rest-infos" style="height: 84px;">
+                        <div class="info-box">
+                            <p>在线车辆</p>
+                            <div class="bottom-text">
+                                <span class="num-font" style="color: #ff9933;">777</span>
+                                <p>辆</p>
+                            </div>
+                        </div>
+                        <div class="rest-border-box rest-border-right"></div>
+                        <div class="rest-border-box rest-border-bottom"></div>
+                    </div>
+                        <div class="rest-infos" style="height: 84px;">
+                            <div class="info-box">
+                                <p>路线总数</p>
+                                <div class="bottom-text">
+                                    <span class="num-font" style="color: #ff9933;">87</span>
+                                    <p>条</p>
+                                </div>
+                            </div>
+                            <div class="rest-border-box rest-border-right"></div>
+                            <div class="rest-border-box rest-border-bottom"></div>
+                        </div>
+                        <div class="rest-infos" style="height: 84px;">
+                            <div class="info-box">
+                                <p>当日计划班次</p>
+                                <div class="bottom-text">
+                                    <span class="num-font" style="color: #ff9933;">9146</span>
+                                    <p>辆</p>
+                                </div>
+                            </div>
+                            <div class="rest-border-box rest-border-right"></div>
+                            <div class="rest-border-box rest-border-bottom"></div>
+                        </div>
+
+               
+
+             
+                        <!-- <div style="color: #fff;text-align: center;font-size: 0.2rem;font-weight: bold;"><div id="ecTraffic3"  style="width: 150px;height: 120px;"></div><div style="margin-top: -2.5rem;font-size: 1rem;">当日完成班次</div></div> -->
+
+                  
+            <div style="color: #fff;text-align: center;font-size: 0.2rem;font-weight: bold;position: absolute;right: 40px;">
+                <div id="ecTraffic1"  style="width: 420px;height: 200px;"></div>
+                <!-- <div style="margin-top: -6.5rem;font-size: 1rem;"></div> -->
+                <div style="display: flex;justify-content: space-evenly;margin-top: -6.5rem;"><span>昨日班次执行率</span><span>当日完成班次</span><span>昨日首末班车准确率</span> </div> </div>
+
+                  
+                        <!-- <div style="color: #fff;text-align: center;font-size: 0.2rem;font-weight: bold;"><div id="ecTraffic2"  style="width: 150px;height: 120px;"></div><div style="margin-top: -2.5rem;font-size: 1rem;">昨日首末班车准确率</div></div> -->
+
         </div>
+   
+           
+    
         <div class="FX_header">
             <div class="header">
                 <a class="line"></a>
@@ -61,17 +114,21 @@
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
+
 <script>
     document.getElementById("clearid").onclick = function () {
         window.parent.document.getElementById("BusModalBox").style.display = "none";
     }
     window.onload = function () {
-        HeaderFun()
+        // HeaderFun()
         BusLineFun()
+        MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",4954,99.81,99.44,), "ecTraffic1")
+        // MyEcharts.initChart(MyEcharts.EchartsOption.JTKL("昨日首末班车准确率",99.44), "ecTraffic2")
+        // MyEcharts.initChart(MyEcharts.EchartsOption.JTKL("当日完成班次",4954), "ecTraffic3")
     }
     async function BusLineFun(){
         let para={
-            url:Bus_URL+"/jdcycarmessage/findbusEfficiency",
+            url:FIRE_URL+"/jdcycarmessage/findbusEfficiency",
             async: true,
             type: 'post',
             dataType: 'JSON',
@@ -87,7 +144,7 @@
             window.onresize=MyEcharts.resize
         })
         para={
-            url:Bus_URL+"/jdcycarmessage/findbusPunctuality",
+            url:FIRE_URL+"/jdcycarmessage/findbusPunctuality",
             async: true,
             type: 'post',
             dataType: 'JSON',
@@ -110,9 +167,9 @@
             {name: '路线总数', value: '87', unit: '条'},
             {name: '在线车辆', value: '777', unit: '辆'},
             {name: '当日计划班次', value: '9146', unit: '辆'},
-            {name: '当日完成班次', value: '4954', unit: '辆'},
-            {name: '昨日班次执行率', value: '99.81', unit: '%'},
-            {name: '昨日首末班车准确率', value: '99.44', unit: '%'},
+            // {name: '当日完成班次', value: '4954', unit: '辆'},
+            // {name: '昨日班次执行率', value: '99.81', unit: '%'},
+            // {name: '昨日首末班车准确率', value: '99.44', unit: '%'},
         ]
         NewList.forEach(item => {
             para += `<div class="rest-infos">
@@ -127,7 +184,7 @@
             <div class="rest-border-box rest-border-bottom"></div>
         </div>`
         })
-        document.getElementById('TitleTyoeID').innerHTML=para
+        // document.getElementById('TitleTyoeID').innerHTML=para
 
     }
 </script>

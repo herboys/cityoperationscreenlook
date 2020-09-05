@@ -313,7 +313,7 @@ body {
 }
 
 .Satisfaction-warp-item {
-    /*width: 47.917rem;*/
+    width: 47.917rem;
     /*height: 24.833rem;*/
 flex: 1;
     box-sizing: border-box;

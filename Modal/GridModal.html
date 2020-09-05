@@ -17,7 +17,7 @@
   <div id="app2" class="Modal-warp">
     <div class="Modal-left">
       <div style="padding: 0px 20px;">
-        <h1 style="margin: 3rem 0 1rem 0 ;color: #fff;text-align: center;">全区网格化信息汇总</h1>
+        <h1 style="margin: 1.5rem 0 1rem 0 ;color: #fff;text-align: center;">全区网格化信息汇总</h1>
         <div class="Modal-left-item">
           <div class="FX_header">
             <div id="dropdown">
@@ -46,11 +46,12 @@
               </div>
               <div class="Satisfaction-warp-item-echarts">
                 <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
-                  <p style="font-size: 1.5rem;margin-bottom: 1rem;">案件总量<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>件</p>
-                  <div style="display: flex;height: 3rem;margin-bottom: 0.6rem;">
+                  <p style="font-size: 1.5rem;margin-bottom: 0.4rem;">案件总量<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>件</p>
+                  <div style="display: flex;height: 4rem;margin-bottom: 0.6rem;">
                     <div style="padding-left: 1.5rem;width: 50%;">
                       <p style="margin-bottom: 4px;">主动发现<progress value='70' max='100' class="progress"></progress><span style="margin-left: 1rem;color: rgb(32, 209, 128);font-weight: bold;">40990</span></p>
-                      <p style="margin-bottom: 4px;">其他发现<progress value='30' max='100' class="progress2"></progress><span style="margin-left: 1rem;color: rgb(0, 147, 255);font-weight: bold;">4379</span></p>
+                      <p style="margin-bottom: 4px;">被动发现<progress value='30' max='100' class="progress2"></progress><span style="margin-left: 1rem;color: rgb(0, 147, 255);font-weight: bold;">4379</span></p>
+                      <p style="margin-bottom: 4px;">自动发现<progress value='30' max='100' class="progress3"></progress><span style="margin-left: 1rem;color: #F7FE2E;font-weight: bold;">4379</span></p>
                     </div>
                     <div style="width: 50%;">
                       <span class="echarts-info">同比 <span style="color: #20d180;font-weight: bold;">+16%</span></span>
@@ -113,7 +114,7 @@
               </div>
               <div  class="Satisfaction-warp-item-echarts">
                 <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
-                  <p style="font-size: 1.5rem;margin-bottom: 6px;">队伍配置总数<span style="color: #56D0E3;">46364</span>人</p>
+                  <p style="font-size: 1.5rem;margin-bottom: 6px;">队伍配置总数<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>人</p>
                   <div class="Municipal-level">
                     <div>
                       <img src="../Modal/images/icons/联勤.png" />
@@ -242,7 +243,7 @@
             </div>
           </div>
         </div>
-        <div class="Modal-left-item" style="margin-top: 6rem;">
+        <div class="Modal-left-item" style="margin-top: 3rem;">
           <div class="Satisfaction-warp">
             <div class="Satisfaction-warp-item">
               <div class="header">
@@ -390,8 +391,8 @@ $("#dropdown2 p").click(function () {
         max: 38000
       },
     ];
-    let attackSourcesData = [80, 34, 60, 70, 34];
-    let attackSourcesName = ['区网络一', '区网络二', '区网络三', '区网络四', '区网络五'];
+    let attackSourcesData = [80, 34, 60, 70, 34,80, 34, 60, 70, 34,80, 34];
+    let attackSourcesName = ['菊园新区', '安亭镇','嘉定新城', '南翔镇', '江桥镇', '徐行镇', '外冈镇', '华亭镇', '新成路街道', '嘉定镇街道', '真新街道', '工业区'];
     let attackSourcesName2 = ['公安', '城管', '司法', '民政', '水务'];
     let category = [{
         name: "管控",

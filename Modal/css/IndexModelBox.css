@@ -41,7 +41,7 @@ p{
     -webkit-box-sizing:border-box; /* Safari */
 }
 .Modal-left .header{
-    padding:1.667rem 3.333rem;
+    padding:1.667rem 3.333rem 0 3.333rem;
     display: flex;
     justify-content: space-between;
 }
@@ -57,6 +57,7 @@ p{
     color: #fff;
     font-size: 1.4rem;
     position: relative;
+    height: 71px;
 }
 .info-box::after {
     content: '.';

@@ -775,7 +775,6 @@ var MyEcharts = {
         * @name:Busline
         * */
         BusLine:function (name,RGB,xData,yData){
-            console.log(RGB)
         let     option = {
                 title: {
                     text: '',
@@ -844,7 +843,7 @@ var MyEcharts = {
 
                 yAxis: [{
                     type: 'value',
-                    min: Math.min(...yData)-1,
+                    min: 90,
                   //  max: 140,
                     splitNumber: 4,
                     splitLine: {
@@ -1160,6 +1159,7 @@ var MyEcharts = {
             };
             return option
         },
+        // 12345 委办局
         newbar2: function (xData, yData, zData, color, legend, yAxisname) {
 
             var xData = xData,
@@ -1553,7 +1553,231 @@ var MyEcharts = {
             };
             return option
 
-        }
+        },
+        // 交通客流 仪表盘
+        JTKL: function (name, data, info) {
+          let option = {
+            // backgroundColor: '#fff',
+            tooltip: {
+                formatter: "{a} {b} : {c}%"
+            },
+            toolbox: {  //工具栏小图标
+                show:false,
+                feature: {
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            series: [{
+                name: name,
+                type: 'gauge',
+                detail: { //仪表盘详情，用于显示数据
+                    formatter: '{value}',
+                    color: '#ff8989',
+                    fontSize: 12,
+                    fontWeight: 'bolder',
+                },
+                center: ['50%', '38%'],
+                data: [{
+                    value: data,
+                    name: ''
+                }],
+                axisLine: { //表盘样式
+                    show: true,
+                    lineStyle: {
+                        width: 5, //表盘粗细
+                        color: [
+                            [1, '#2d82ff']
+                        ],
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(0, 103, 255, 0.2)',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 8,
+
+                    }
+                },
+                axisLabel: {            // 刻度标签。
+                    show: false,
+                },
+                axisTick: {
+                    show: false, // 是否显示坐标轴小标记，这里不显示
+                    length: 10, // 属性length控制线长
+                    lineStyle: { // 属性lineStyle控制线条样式
+                        color: '#fff'
+                    }
+                },
+                splitLine: { // 分隔线
+                    length: 15, // 属性length控制线长
+                    lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'rgba(255, 255, 255, 0.2)',
+                    }
+                },
+                pointer: { //指针样式
+                    width: 2,
+
+                },
+                itemStyle: { //指针阴影
+
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(0, 103, 255, 0.2)',
+                    shadowOffsetX: 0,
+                    shadowOffsetY: 8,
+                },
+              
+
+            }]
+        };
+        
+           return option
+        },
+        JTKL2: function (name1,name2,name3, data1,data2, data3) {
+            // ("当日完成班次","昨日班次执行率","昨日首末班车准确率",4954,99.81,99.44,)
+            option = {
+                tooltip: {},
+             
+                series: [{
+                        name: name1,
+                        type: 'gauge',
+                        z: 3,
+                        min: 0,
+                        max: 100,
+                        splitNumber: 10,
+                        radius: '60%',
+                        center: ['50%', '30%'],
+                        axisLine: {
+                            lineStyle: {
+                                width: 3
+                            }
+                        },
+                        axisTick: {
+                            length: 1,
+                            lineStyle: {
+                                color: 'auto'
+                            }
+                        },
+                        splitLine: {
+                            length: 10,
+                            lineStyle: {
+                                color: 'auto'
+                            }
+                        },
+                       axisLabel: {            // 刻度标签。
+                                    show: false,
+                                },
+                        title: {
+                            fontWeight: 'bolder',
+                            fontSize: 15,
+                        },
+                        pointer: {
+                            width: 3
+                        },
+                        detail: {
+                            fontSize: 15,
+                        },
+                        data: [{
+                            value: data1,
+                            name: ''
+                        }]
+                    },
+                    {
+                        name: name2,
+                        type: 'gauge',
+                        center: ['20%', '35%'],
+                        radius: '40%',
+                        min: 0,
+                        max: 100,
+                        endAngle: 45,
+                        splitNumber: 5,
+                        axisLine: {
+                            lineStyle: {
+                                width: 2
+                            }
+                        },
+                        axisTick: {
+                            length: 1,
+                            lineStyle: {
+                                color: 'auto'
+                            }
+                        },
+                          axisLabel: {            // 刻度标签。
+                                    show: false,
+                                },
+                        splitLine: {
+                            length: 8,
+                            lineStyle: {
+                                color: 'auto'
+                            }
+                        },
+                        pointer: {
+                            width: 2
+                        },
+                        title: {
+                            fontSize: 15,
+                        },
+                        detail: {
+                            // fontWeight: 'bolder',
+                            fontSize: 15,
+                        },
+                        data: [{
+                            value: data2,
+                            name: '',
+            
+                        }]
+                    },
+                    {
+                        name: name3,
+                        type: 'gauge',
+                        center: ['80%', '35%'],
+                        radius: '40%',
+                        min: 0,
+                        max: 100,
+                        startAngle: 135,
+                        endAngle: -45,
+                        splitNumber: 5,
+                        axisLine: {
+                            lineStyle: {
+                                width: 2
+                            }
+                        },
+                          axisLabel: {            // 刻度标签。
+                                    show: false,
+                                },
+                        axisTick: {
+                            splitNumber: 1,
+                            length: 2,
+                            lineStyle: {
+                                color: 'auto'
+                            }
+                        },
+                   
+                        splitLine: {
+                            length: 8,
+                            lineStyle: {
+                                color: 'auto'
+                            }
+                        },
+                        pointer: {
+                            width: 2
+                        },
+                        title: {
+                            show: true,
+                            fontSize: 15,
+            
+                        },
+                        detail: {
+                            show: true,
+                            fontSize: 15,
+                        },
+                        data: [{
+                            value: data3,
+                            name: '',
+                        }]
+                    }
+                ]
+            };
+          
+             return option
+          }
     },
 
     /**

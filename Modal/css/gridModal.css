@@ -265,8 +265,16 @@ body {
 }
 
 .Satisfaction-warp-item-echarts {
-    width: inherit;
+    width: 600px;
     height: 255px;
+    background-image: url(../../Modal/images/12345icon.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+.Satisfaction-warp-item-echarts-phone {
+    width: inherit;
+    height: 325px;
     background-image: url(../../Modal/images/12345icon.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -314,7 +322,6 @@ ul li {
     background-repeat: no-repeat;
     background-size: 3px 20px, 20px 3px;
     margin: auto 0;
-    margin-left: -20px;
     border: solid 1px rgb(35, 80, 121);
 }
 
@@ -423,3 +430,139 @@ ul li {
              background: #0093ff;
              border-radius: 0.2rem; 
        }
+
+       .progress3{
+        width: 120px;
+        height: 8px;
+        border-radius: 0.5rem;
+        margin-left: 1rem;
+        vertical-align: baseline;
+    }
+    /* 表示总长度背景色 */
+    .progress3::-webkit-progress-bar{     
+           background-color: rgb(21, 55, 95);
+           border-radius: 0.2rem;
+       }
+       /* 表示已完成进度背景色 */
+       .progress3::-webkit-progress-value{
+             background: #F7FE2E;
+             border-radius: 0.2rem; 
+       }
+
+
+       /* 120 */
+    .Satisfaction-warp-item-all {
+        width: 100%;
+        /* height: 298px; */
+        box-sizing: border-box;
+    }
+     .table-box
+{
+	width: calc(100% - 3.16rem);
+	margin: auto;
+	/*margin-top: 0.8rem;*/
+	margin-top: 0.4rem;
+	overflow: hidden;
+}
+
+ .table-box .list-box
+{
+	/*height: calc(6px + 18rem);*/
+	height: calc(6px + 18rem);
+	overflow: hidden;
+}
+ .table-box .table-list
+{
+	padding: 0 0.5rem;
+	border-bottom: 1px dashed #2B52C9;
+	line-height: 1.5rem;
+	font-size: 0.8rem;
+	color: #D8D8D8;
+}
+ .table-scroll
+{
+	line-height: 1.4rem!important;
+}
+ .table-box .list-box .table-list
+{
+	width: 102%;
+    animation: anm3 1s ease-out;
+    animation-fill-mode: backwards;
+}
+ .table-box .table-list p
+{
+	display: inline-block;
+	width: 17%;
+	text-align: center;
+}
+ .table-box .table-list .num
+{
+	color: #53A2FF;
+	width: 15%;
+}
+ .table-box .table-list p:nth-child(1)
+{
+	width: 25%;
+	text-align: left;
+}
+ .table-box .list-box .table-list p:nth-child(1)
+{
+	width: 24%;
+}
+ .table-box .table-title
+{
+	background-color: rgba(6,221,250,0.17);
+	line-height: 2rem;
+    font-size: 0.9rem;
+    height: 2rem;
+}
+ .table-box:nth-child(3) .table-title
+{
+	background: rgba(6,250,130,0.19);
+}
+ .linkage-table .list-warp
+{
+	/*height: calc(2px + 8.5rem);*/
+	height: calc(2px + 9rem);
+	position: relative;
+	overflow: hidden;
+}
+ .linkage-table .list-box
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+}
+ .linkage-table2 .list-warp
+{
+	/*height: calc(2px + 8.5rem);*/
+	height: calc(2px + 24rem);
+	position: relative;
+	overflow: hidden;
+}
+ .linkage-table2 .list-box
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+}
+
+ .linkage-scroll-table .list-warp
+{
+	/* height: calc(2px + 8.5rem); */
+	height: calc(2px + 9rem);
+	position: relative;
+	overflow: hidden;
+}
+ .linkage-scroll-table .list-box
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+}

@@ -85,7 +85,18 @@
               </div>
           
               <div class="Satisfaction-warp-item-echarts" >
-              
+                <div style="padding: 2rem 3rem 1rem 3rem;overflow-y: auto;color: #fff;">
+                  <div class="table-box linkage-scroll-table2">
+                    <div class="table-list table-title ">
+                      <p style="width: 35%;padding-left: 5%;">车辆位置</p>
+                      <p style="width: 35%">车辆编号</p>
+                      <p style="width: 20%">任务状态</p>
+                    </div>
+                    <div class="list-warp">
+                      <div class="list-box"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -167,25 +178,7 @@
       };
     },
     methods: {
-      switchClick1() {
-        (this.switchShow1 = true), (this.switchShow2 = false),(this.switchShow3 = false)
-        this.xAxisData =  ['区域一一', '区域一二', '区域一三', '区域一四', '区域一五', '区域一六'];
-        this.yAxisData = [1100, 1600, 1300, 1300, 1250, 1500];
-        this.yAxisData2 = [1500, 1600, 1300, 1030, 1250, 1000]
-      },
-      switchClick2() {
-        (this.switchShow2 = true), (this.switchShow1 = false), (this.switchShow3 = false)
-        this.xAxisData =  ['区域二一', '区域二二', '区域二三', '区域二四', '区域二五', '区域二六']
-        this.yAxisData = [2000, 2600, 2300, 2300, 2250, 2500]
-        this.yAxisData2 = [2200, 2300, 2500, 2030, 2900, 2100]
-        this.attackSourcesName2 = ['公安', '城管', '司法', '民政', '水务']
-      }, 
-       switchClick3() {
-        (this.switchShow3 = true), (this.switchShow2 = false),(this.switchShow1 = false)
-        this.xAxisData =  ['区域三一', '区域三二', '区域三三', '区域三四', '区域三五', '区域三六']
-        this.yAxisData = [3000, 3600, 3300, 3500, 3250, 3800]
-        this.yAxisData2 = [3200, 3100, 3300, 3030, 3250, 3500]
-      },
+      
     },
     created(){
       

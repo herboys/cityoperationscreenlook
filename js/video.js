@@ -89,7 +89,7 @@ function createVideoSlide(){
 		},
 		error:function (data) {
 			console.log(data)
-			alert('失败')
+			//alert('失败')
 		}
 	})
 
@@ -167,7 +167,7 @@ function createVideoSlideOne(){
 			$('#slider1').html('');
 			for (var i = 0; i < 1; i++) {
 				var name=jrwlzsjListOne[i].name
-				name=name.replace("","_");
+				name=name.replaceAll(" ","_");
 				var url=jrwlzsjListOne[i].src
 				str=''
 				str += '<div class="slide1">'
@@ -256,19 +256,19 @@ function openVideo(urlList,urlName){
 		alert("该点位无视频数据")
 		return
 	}else if(videoList.length==1){//只有一个视频点位，在大框中显示
-		insertOneVideo()
+		insertOneVideo(videoName[0],videoList[0])
 		//alert($('#slider1').children().eq(0)[0].innerHTML)
 		clearInterval(videoInterval) //原先清除缓存的定时器取消，重新计时
 		videoInterval=setInterval(removeVideoCache,15*60*1000) //每15分钟清空一次缓存
 	}else{//两个视频，显示在下边两个框中
-		insertOneVideo()
-		insertSecondVideo()
+		insertOneVideo(videoName[0],videoList[0])
+		insertSecondVideo(videoName[1],videoList[1])
 		clearInterval(videoInterval) //原先清除缓存的定时器取消，重新计时
 		videoInterval=setInterval(removeVideoCache,15*60*1000) //每15分钟清空一次缓存
 	}
 }
 
-function insertOneVideo(){
+function insertOneVideo(name,url){
 	//clearInterval(videoTimeOne)
 
 
@@ -286,7 +286,7 @@ function insertOneVideo(){
 	var name=videoName[0]
 	var url=videoList[0]
 	str += '<div class="slide1">'
-		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[0]+'</span>'
+		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+name+'</span>'
 		+ "<img class='fullscreenImg' onclick=openLargeVideo('"+name+"','"+url+"') src='images/fullscreen1.png'/>"
 		+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
 
@@ -306,7 +306,7 @@ function insertOneVideo(){
 
 	var hls = new Hls();
 	var video = $("#slider1 video")[0];
-	hls.loadSource(videoList[0]);
+	hls.loadSource(url);
 	hls.attachMedia(video);
 	hls.on(Hls.Events.MANIFEST_PARSED, function () {
 		video.play();
@@ -316,7 +316,7 @@ function insertOneVideo(){
 	videoFlagOne=1;
 }
 
-function insertSecondVideo(){
+function insertSecondVideo(name,url){
 
 	var removeVideo= $("#slider2 video")[0]
 	removeVideo.pause()
@@ -329,7 +329,7 @@ function insertSecondVideo(){
 	var url=videoList[1]
 	var str=''
 	str += '<div class="slide1">'
-		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+videoName[1]+'</span>'
+		+'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+name+'</span>'
 		+ "<img class='fullscreenImg' onclick=openLargeVideo('"+name+"','"+url+"') src='images/fullscreen1.png'/>"
 		+'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo()>关闭</span>'
 	str +='<div class="jrwlzsjCont1">'
@@ -345,7 +345,7 @@ function insertSecondVideo(){
 
 	var hls = new Hls();
 	var video = $("#slider2 video")[0];
-	hls.loadSource(videoList[1]);
+	hls.loadSource(url);
 	hls.attachMedia(video);
 	hls.on(Hls.Events.MANIFEST_PARSED, function () {
 		video.play();
@@ -415,12 +415,20 @@ function insertTwoVideo(first,second){
 function closeVideoOne(){
 	removeVideoOne()
 	createVideoSlideOne()
+	if(GarBageVideo>0&&videoOne==true){//垃圾分类的视频在第一个视频里被关闭
+		videoOne=false;
+		GarBageVideo--;
+	}
 }
 
 
 function closeVideoTwo() {
 	removeVideoTwo()
 	createVideoSlide()
+	if(GarBageVideo>0&&videoTwo==true){ //垃圾分类的视频在第二个视频里被关闭
+		videoTwo=false;
+		GarBageVideo--;
+	}
 }
 
 function closeVideoTwo1(closeIndex){

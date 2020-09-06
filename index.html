@@ -28,7 +28,9 @@
 
   <script src="js/time.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
-   <script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
+
   <script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
@@ -39,23 +41,24 @@
   <script src="js/interval.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/rest-scroll.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/iframe.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/syncJs.js" type="text/javascript" charset="utf-8"></script>
   <!--地图-->
   <script
     src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale">
   </script>
   <!-- 热力图 -->
   <!-- <script src="//a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script> -->
-  <script src="js/map2.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/map.js" type="text/javascript" charset="utf-8"></script>
   <!-- <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script> -->
-  <script src="Modal/Js/Maps.js" type="text/javascript" charset="utf-8"></script>
 
   <link rel="stylesheet" type="text/css" href="./css/banner.css" />
   <!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
   <script type="text/javascript" src="./js/banner.js"></script>
+  <!-- <script type="text/javascript" src="./Modal/Js/intercity-map.js"></script> -->
   <script type="text/javascript">
     setFont();
   </script>
+  	
 </head>
 
 <body>
@@ -63,7 +66,7 @@
     <div class="header">
       <img src="images/head2.png" />
       <div class="main-box left-box">
-        <div class="weather-icon left" style="width: 3.9rem; height: 3.9rem;" id="weatherIcon">
+        <div class="weather-icon left" style="width: 3.9rem; height: 3.9rem" id="weatherIcon">
           <div></div>
         </div>
         <div class="weather-text left" id="weatherText"></div>
@@ -91,8 +94,8 @@
         <p class="text-title">人民城市为人民</p>
       </div>
     </div>
-    <div class="main-warp" style="margin-top: -1%; height: 994px;">
-      <div class="main-box main-box-min" style="margin-left: 0.9%;">
+    <div class="main-warp" style="margin-top: -1%; height: 994px">
+      <div class="main-box main-box-min" style="margin-left: 0.9%">
         <div class="main-title">
           <div class="title-bg title-bg1"></div>
           <div class="title-bg title-bg2"></div>
@@ -206,7 +209,7 @@
         <div class="content-bg vital-signs-bg"></div>
         <div class="content-box vital-signs">
           <div class="top-box">
-            <div class="title-box" style="margin-bottom: 0.5rem;">
+            <div class="title-box" style="margin-bottom: 0.5rem">
               <div class="title-border-box">
                 <div class="top-border border-box"></div>
                 <div class="center-border border-box"></div>
@@ -219,10 +222,33 @@
                 <div class="bottom-border border-box"></div>
               </div>
             </div>
-               <ul></ul>
+            <div class="card">
+               <ul class="card-front"></ul>
+               <div class="card-back">
+                <li><div class="text-centered"><p>税收总计
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">408.40</span><p>亿元</p>
+                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
+                <li><div class="text-centered"><p>引进外资
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">16.75</span><p>亿美元</p>
+                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
+                <li><div class="text-centered"><p>财政总收入
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">442.3</span><p>亿元</p>
+                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
+                <li><div class="text-centered"><p>固定资产投资
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">237.6</span><p>亿元</p>
+                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
+                <li><div class="text-centered"><p>商品销售总额
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">2523.7</span><p>亿元</p>
+                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
+                <li><div class="text-centered"><p>社会消费零售
+                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">808.8</span><p>亿元</p>
+                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
+               </div>
+            </div>
+            <!-- <ul></ul> -->
           </div>
           <div class="zygy-warp card-warp">
-            <div class="title-box" style="margin-bottom: 0.5rem;">
+            <div class="title-box" style="margin-bottom: 0.5rem">
               <div class="title-border-box">
                 <div class="top-border border-box"></div>
                 <div class="center-border border-box"></div>
@@ -242,26 +268,26 @@
                 </div>
                 <div class="card-text">
                   <p>
-                    昨日<span class="num-font" style="font-size: 0.8rem; alignment: center;">20</span>万/立方米
+                    昨日<span class="num-font" style="font-size: 0.8rem; alignment: center">20</span>万/立方米
                   </p>
                   <p>
-                    本周<span class="num-font" style="font-size: 0.8rem; alignment: center;">189</span>万/立方米
+                    本周<span class="num-font" style="font-size: 0.8rem; alignment: center">189</span>万/立方米
                   </p>
                   <p>
-                    当月<span class="num-font" style="font-size: 0.8rem; alignment: center;">3482</span>万/立方米
+                    当月<span class="num-font" style="font-size: 0.8rem; alignment: center">3482</span>万/立方米
                   </p>
                 </div>
               </div>
             </div>
           </div>
           <div class="jtqk-warp card-warp">
-            <div class="title-box" style="margin-bottom: 0.5rem;">
+            <div class="title-box" style="margin-bottom: 0.5rem">
               <div class="title-border-box">
                 <div class="top-border border-box"></div>
                 <div class="center-border border-box"></div>
                 <div class="bottom-border border-box"></div>
               </div>
-              <h3>交通客流</h3>
+              <h3 onclick="BusModalBoxFun()">交通客流</h3>
               <div class="title-border-box title-border-right">
                 <div class="top-border border-box"></div>
                 <div class="center-border border-box"></div>
@@ -275,13 +301,13 @@
                 </div>
                 <div class="card-text">
                   <p>
-                    昨日<span class="num-font" style="font-size: 0.8rem; alignment: center;">20</span>万/立方米
+                    昨日<span class="num-font" style="font-size: 0.8rem; alignment: center">20</span>万/立方米
                   </p>
                   <p>
-                    本周<span class="num-font" style="font-size: 0.8rem; alignment: center;">189</span>万/立方米
+                    本周<span class="num-font" style="font-size: 0.8rem; alignment: center">189</span>万/立方米
                   </p>
                   <p>
-                    当月<span class="num-font" style="font-size: 0.8rem; alignment: center;">3482</span>万/立方米
+                    当月<span class="num-font" style="font-size: 0.8rem; alignment: center">3482</span>万/立方米
                   </p>
                 </div>
               </div>
@@ -388,15 +414,15 @@
                 <div class="slant"></div>
               </div>
               <div class="text-box">
-                <div class="text-list" style="left: 10%; top: 0%;">
+                <div class="text-list" style="left: 10%; top: 0%">
                   <p>城镇登记失业率</p>
                   <p><span class="num-font"></span>%</p>
                 </div>
-                <div class="text-list" style="left: 5%; top: 50%;">
+                <div class="text-list" style="left: 5%; top: 50%">
                   <p>社保综合参保率</p>
                   <p><span class="num-font"></span>%</p>
                 </div>
-                <div class="text-list" style="left: 0%; top: 95%;">
+                <div class="text-list" style="left: 0%; top: 95%">
                   <p>在线建设工程</p>
                   <p><span class="num-font"></span>%</p>
                 </div>
@@ -404,7 +430,7 @@
             </div>
           </div>
           <div class="roll-table command-system">
-            <div class="title-box" style="margin-bottom: 0rem;">
+            <div class="title-box" style="margin-bottom: 0rem">
               <div class="title-border-box">
                 <div class="top-border border-box"></div>
                 <div class="center-border border-box"></div>
@@ -423,12 +449,12 @@
 
             <div class="table-box linkage-scroll-table">
               <div class="table-list table-title table-scroll">
-                <p style="width: 8rem;">日期</p>
-                <p style="width: 8rem;">时间</p>
-                <p style="width: 10rem;">街道</p>
-                <p style="width: 15rem;">详细地址</p>
-                <p style="width: 8rem;">事件类型</p>
-                <p style="width: 10rem;">内容</p>
+                <p style="width: 8rem">日期</p>
+                <p style="width: 8rem">时间</p>
+                <p style="width: 10rem">街道</p>
+                <p style="width: 15rem">详细地址</p>
+                <p style="width: 8rem">事件类型</p>
+                <p style="width: 10rem">内容</p>
               </div>
               <div class="list-warp">
                 <div class="list-box"></div>
@@ -437,7 +463,7 @@
           </div>
 
           <div class="bottom-box">
-            <div class="title-box" style="margin-bottom: 0rem;">
+            <div class="title-box" style="margin-bottom: 0rem">
               <div class="title-border-box">
                 <div class="top-border border-box"></div>
                 <div class="center-border border-box"></div>
@@ -481,7 +507,7 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-              <div class="main-list">
+              <div class="main-list"  @click="rescueShow=true">
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -494,8 +520,8 @@
                   <p>当月<span class="num-font">3482</span>起</p>
                 </div>
               </div>
-             <!-- <div class="main-list" onclick="ModalClick()">-->
-              <div class="main-list">
+              <div class="main-list" onclick="ModalClick()">
+              <!--   <div class="main-list">-->
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -510,7 +536,7 @@
                 </div>
               </div>
 
-              <div class="main-list"  >
+              <div class="main-list" @click="gridShow=true">
                 <div class="main-left">
                   <img src="images/manage.png" />
                   <div class="text-centered">
@@ -542,691 +568,41 @@
         </div>
       </div>
 
-      <div v-show="restShow" id="restShow" style="display: none;" class="rest-box">
-        <a class="rescue-close" onclick="closeOldPeopleHome()" @click="restClose"> x</a>
-        <div class="rest-box-big">
-          <div class="rest-box-left">
-            <div class="main-title">
-              <div class="title-bg title-bg1"></div>
-              <div class="title-bg title-bg2"></div>
-              <div class="title-bg title-bg3"></div>
-              <div class="title-border"></div>
-              <div style="display: flex; justify-content: flex-end;padding-right: 2rem;">
-                <div v-show="switchShow1" @click="switchClick1" class="switchShow1">
-                  <span style="font-size: 1rem;color: #fff;">基本概况</span>
-                </div>
-                <div v-show="switchShow2" @click="switchClick1" class="switchShow2">
-                   <span style="font-size: 1rem;color: #fff;">基本概况</span>
-                </div>
-                <div v-show="switchShow1" @click="switchClick2" class="switchShow2">
-                   <span style="font-size: 1rem;color: #fff;">服务概况</span>
-                </div>
-                <div v-show="switchShow2" @click="switchClick2" class="switchShow1">
-                   <span style="font-size: 1rem;color: #fff;">服务概况</span>
-                </div>
-              </div>
-            </div>
-            <div class="vital-signs" v-show="switchShow1">
-              <div class=" rest-top-box">
-                <div class="title-box" style="margin-bottom: 0.2rem;padding-left: 2rem;">
-                  <div class="title-border-box">
-                    <div class="top-border border-box"></div>
-                    <div class="center-border border-box"></div>
-                    <div class="bottom-border border-box"></div>
-                  </div>
-                  <h3>基本老龄化信息</h3>
-                  <div class="title-border-box title-border-right">
-                    <div class="top-border border-box"></div>
-                    <div class="center-border border-box"></div>
-                    <div class="bottom-border border-box"></div>
-                  </div>
-                </div>
-                <div style="display: flex; height: 12rem;">
-                  <div class="rest-info-lists">
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <p>户籍人口数</p>
-                        <div class="bottom-text">
-                          <span class="num-font" style="color: #33ffff;">62.5</span>
-                          <p>万人</p>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="top: 3rem; width: 8rem;">
-                      <div class="info-box">
-                        <p>老龄人口占比</p>
-                        <div class="bottom-text">
-                          <span class="num-font" style="color: #ff9933;">32.66</span>
-                          <p>%</p>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <p>老龄人口数</p>
-                        <div class="bottom-text">
-                          <span class="num-font" style="color: #33ffff;">20.4</span>
-                          <p>万人</p>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                  </div>
-                  <div style="
-                        width: 55%;
-                        height: 100%;
-                        padding-right: 2%;
-                        margin-left: 2%;
-                      ">
-                    <div id="ec1"  class="echarts1"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="rest-foot-box">
-                <div class="title-box" style="margin-bottom: 0.2rem; padding-left: 2rem;">
-                  <div class="title-border-box">
-                    <div class="top-border border-box"></div>
-                    <div class="center-border border-box"></div>
-                    <div class="bottom-border border-box"></div>
-                  </div>
-                  <h3>入住老年人年龄及性别分布</h3>
-                  <div class="title-border-box title-border-right">
-                    <div class="top-border border-box"></div>
-                    <div class="center-border border-box"></div>
-                    <div class="bottom-border border-box"></div>
-                  </div>
-                </div>
-                <div style="display: flex; height: 12rem;">
-                  <div class="rest-info-lists">
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <p>男性人数</p>
-                        <div class="bottom-text">
-                          <span class="num-font" style="color: #33ffff;">10258</span>
-                          <p>人</p>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <p>男性占比</p>
-                        <div class="bottom-text">
-                          <span class="num-font" style="color: #ff9933;">20.4</span>
-                          <p>%</p>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <p>女性人数</p>
-                        <div class="bottom-text">
-                          <span class="num-font" style="color: #33ffff;">10334</span>
-                          <p>人</p>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <p>女性占比</p>
-                        <div class="bottom-text">
-                          <span class="num-font" style="color: #ff9933;">20.4</span>
-                          <p>%</p>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                  </div>
-                  <div style="
-                        width: 55%;
-                        height: 100%;
-                        padding-right: 2%;
-                        margin-left: 2%;
-                      ">
-                    <div id="ec2" class="echarts2"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="rest-foot-box2">
-                <div class="title-box" style="margin-bottom: 1rem; padding-left: 2rem;">
-                  <div class="title-border-box">
-                    <div class="top-border border-box"></div>
-                    <div class="center-border border-box"></div>
-                    <div class="bottom-border border-box"></div>
-                  </div>
-                  <h3>养老机构总体服务情况</h3>
-                  <div class="title-border-box title-border-right">
-                    <div class="top-border border-box"></div>
-                    <div class="center-border border-box"></div>
-                    <div class="bottom-border border-box"></div>
-                  </div>
-                </div>
-                <div style="display: flex;">
-                  <div class="infos-box">
-                    <h3 style="text-align: left; margin-left: 1rem;">
-                      床位信息
-                    </h3>
-                    <div>
-                      <div style="display: flex; margin-top: 1rem;">
-                        <div style="width: 40%;">
-                          <span class="first-info">总床位(张)</span>
-                          <span style="color: #ffff00;">9494</span>
-                        </div>
-                        <div style="width: 30%;">
-                          <span class="second-info">入住老人数(张)</span>
-                          <span style="color: #ffff00;">5597</span>
-                        </div>
-                        <div style="width: 30%;">
-                          <span class="third-info">入住率(%)</span>
-                          <span style="color: #ffff00;">59</span>
-                        </div>
-                      </div>
-                      <div style="display: flex; margin-top: 1rem;">
-                        <div style="width: 40%;">
-                          <span class="first-info">保基本床位数(张)</span>
-                          <span style="color: #33ffff;">5645</span>
-                        </div>
-                        <div style="width: 30%;">
-                          <span class="second-info">入住老人数(张)</span>
-                          <span style="color: #33ffff;">5597</span>
-                        </div>
-                        <div style="width: 30%;">
-                          <span class="third-info">入住率(%)</span>
-                          <span style="color: #33ffff;">59</span>
-                        </div>
-                      </div>
-                      <div style="display: flex; margin-top: 1rem;">
-                        <div style="width: 40%;">
-                          <span class="first-info">民办床位数(张)</span>
-                          <span style="color: #cc0033;">2250</span>
-                        </div>
-                        <div style="width: 30%;">
-                          <span class="second-info">入住老人数(张)</span>
-                          <span style="color: #cc0033;">1241</span>
-                        </div>
-                        <div style="width: 30%;">
-                          <span class="third-info">入住率(%)</span>
-                          <span style="color: #cc0033;">55.10</span>
-                        </div>
-                      </div>
-                      <div style="
-                            display: flex;
-                            margin-top: 1rem;
-                            margin-bottom: 1rem;
-                          ">
-                        <div style="width: 40%;">
-                          <span class="first-info">长者照护之家床位数(张)</span>
-                          <span style="color: #66ff99;">271</span>
-                        </div>
-                        <div style="width: 30%;">
-                          <span class="second-info">入住老人数(张)</span>
-                          <span style="color: #66ff99;">153</span>
-                        </div>
-                        <div style="width: 30%;">
-                          <span class="third-info">入住率(%)</span>
-                          <span style="color: #66ff99;">56.50</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div style="width: 36%; display: flex; padding-top: 3%;">
-                    <div style="height: 5rem; margin-left: 1rem;">
-                      <div class="rest-infos" style="width: 9rem;">
-                        <div :class="{'info-active': isActive}" @click="colorClick1">
-                          <div class="info-box" style="display: flex;">
-                            <div>
-                              <img src="images/imgs/rest-bottom-left.png" style="width: 40%; height: 62.18px;" />
-                            </div>
-                            <div style="
-                                  width: 4rem;
-                                  position: absolute;
-                                  right: 6%;
-                                ">
-                              养老机构位置信息
-                            </div>
-                          </div>
-                        </div>
-                        <div class="rest-border-box rest-border-right"></div>
-                        <div class="rest-border-box rest-border-bottom"></div>
-                      </div>
-                    </div>
-                    <div style="height: 5rem; margin-left: 0.2rem;">
-                      <div class="rest-infos" style="width: 9rem;">
-                        <div :class="{'info-active': isUnactive}" @click="colorClick2">
-                          <div class="info-box" style="display: flex;">
-                            <div>
-                              <img src="images/imgs/rest-bottom-right.png" style="width: 40%;" />
-                            </div>
-                            <div style="
-                                  width: 4rem;
-                                  position: absolute;
-                                  right: 6%;
-                                ">
-                              养老机构统计信息
-                            </div>
-                          </div>
-                        </div>
-                        <div class="rest-border-box rest-border-right"></div>
-                        <div class="rest-border-box rest-border-bottom"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="vital-signs" v-show="switchShow2">
-              <div class=" rest-top-box">
-                <div class="title-box" style="margin-bottom: 0.2rem;padding-left: 2rem;">
-                  <div class="title-border-box">
-                    <div class="top-border border-box"></div>
-                    <div class="center-border border-box"></div>
-                    <div class="bottom-border border-box"></div>
-                  </div>
-                  <h3>服务工单统计</h3>
-                  <div class="title-border-box title-border-right">
-                    <div class="top-border border-box"></div>
-                    <div class="center-border border-box"></div>
-                    <div class="bottom-border border-box"></div>
-                  </div>
-                  <span style="float: right; color: #fff;margin-right:2rem;margin-top: 1rem;">工单总数 <span style="color: #33ffff;">76878</span> 单</span>
-                  <span style="float: right; color: #fff; margin-right: 3rem;margin-top: 1rem;">今日工单数 <span style="color: #33ffff;">134</span> 单</span>
-                </div>
-                <div style="color: #fff; display: flex; padding-left: 2rem;">
-                  <div @click="switchClick3">
-                    <img class="top-img1" v-show="switchShow3" src="images/imgs/rest-top-left.png" />
-                    <img class="top-img1" v-show="switchShow4" src="images/imgs/rest-top-right.png" />
-                    <div class="top-title3">区域分布</div>
-                  </div>
-                  <div @click="switchClick4">
-                    <img class="top-img1" v-show="switchShow3" src="images/imgs/rest-top-right.png" />
-                    <img class="top-img1" v-show="switchShow4" src="images/imgs/rest-top-left.png" />
-                    <div class="top-title4">种类分布</div>
-                  </div>
-                  <div style="margin-left: 38.5rem; margin-top: 1.8rem;">
-                  <div id="dropdown">
-                    <p>累计<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
-                    <ul>
-                        <li><a href="#" rel="1">一月</a></li>
-                        <li><a href="#" rel="2">二月</a></li>
-                        <li><a href="#" rel="3">三月</a></li>
-                        <li><a href="#" rel="4">四月</a></li>
-                        <li><a href="#" rel="5">五月</a></li>
-                    </ul>
-                </div>
-                  </div>
-                </div>
-                <div style="display: flex; height: 5.3rem;" v-show="switchShow3">
-                  <div class="z-box">
-                    <ul class="u-box">
-                      <li>
-                        <div class="rest-infos" style="width: 8rem;">
-                          <div class="info-box">
-                            <div style="display: flex;">
-                                <div class="bottom-text">
-                                  <p>南翔镇</p>
-                                  <span class="num-font" style="color: #33ffff;">1111</span>
-                                 </div>
-                                 <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                            </div>
-                          </div>
-                          <div class="rest-border-box rest-border-right"></div>
-                          <div class="rest-border-box rest-border-bottom"></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="rest-infos" style="width: 8rem;">
-                          <div class="info-box">
-                            <div style="display: flex;">
-                                <div class="bottom-text">
-                                  <p>南翔镇</p>
-                                  <span class="num-font" style="color: #33ffff;">2222</span>
-                                 </div>
-                                 <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                            </div>
-                          </div>
-                          <div class="rest-border-box rest-border-right"></div>
-                          <div class="rest-border-box rest-border-bottom"></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="rest-infos" style="width: 8rem;">
-                          <div class="info-box">
-                            <div style="display: flex;">
-                                <div class="bottom-text">
-                                  <p>南翔镇</p>
-                                  <span class="num-font" style="color: #33ffff;">3333</span>
-                                 </div>
-                                 <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                            </div>
-                          </div>
-                          <div class="rest-border-box rest-border-right"></div>
-                          <div class="rest-border-box rest-border-bottom"></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="rest-infos" style="width: 8rem;">
-                          <div class="info-box">
-                            <div style="display: flex;">
-                                <div class="bottom-text">
-                                  <p>南翔镇</p>
-                                  <span class="num-font" style="color: #33ffff;">4444</span>
-                                 </div>
-                                 <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                            </div>
-                          </div>
-                          <div class="rest-border-box rest-border-right"></div>
-                          <div class="rest-border-box rest-border-bottom"></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="rest-infos" style="width: 8rem;">
-                          <div class="info-box">
-                            <div style="display: flex;">
-                                <div class="bottom-text">
-                                  <p>南翔镇</p>
-                                  <span class="num-font" style="color: #33ffff;">5555</span>
-                                 </div>
-                                 <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                            </div>
-                          </div>
-                          <div class="rest-border-box rest-border-right"></div>
-                          <div class="rest-border-box rest-border-bottom"></div>
-                        </div>
-                      </li>
-                      
-                    </ul>
-                   
-                  </div>
-                  <span class="z-prev"> < </span>
-                  <span class="z-next"> > </span>
-                 
-                </div>
-                <div style="color: #fff; height: 5.3rem;" v-show="switchShow4">
-                  <div style="padding-top: 1.5rem;padding-left: 2rem;padding-right: 2.5rem;">
-                    <div  class="ecLists">
-                    <div id="ec3" class="echarts3"></div>
-                    <div id="ec4" class="echarts3"></div>
-                    <div id="ec5" class="echarts3"></div>
-                    <div id="ec6" class="echarts3"></div>
-                    <div id="ec7" class="echarts3" style="padding-right: 2rem;margin-right: 2rem;"></div>
-                    <div id="ec8" class="echarts3"></div>
-                  </div>
-                </div>
-                  
-                </div>
-              </div>
-              <div style="margin-top: 3rem; display: flex;">
-                <div style="width: 50%;">
-                  <div class="title-box" style="margin-bottom: 0.2rem; padding-left: 2rem;">
-                    <div class="title-border-box">
-                      <div class="top-border border-box"></div>
-                      <div class="center-border border-box"></div>
-                      <div class="bottom-border border-box"></div>
-                    </div>
-                    <h3>工单列表(牵线搭桥)</h3>
-                    <div class="title-border-box title-border-right">
-                      <div class="top-border border-box"></div>
-                      <div class="center-border border-box"></div>
-                      <div class="bottom-border border-box"></div>
-                    </div>
-                  </div>
-                  <!-- 列表轮播 -->
-                  <div class="roll-table2 command-system">
-                    <div class="table-box linkage-table2">
-                      <div class="table-list table-title">
-                        <p style="width: 8%;">日期</p>
-                        <p style="width: 10%;">时间</p>
-                        <p style="width: 15%;">街道</p>
-                        <p style="width: 20%;">详细地址</p>
-                        <p style="width: 15%;">事件类型</p>
-                        <p style="width: 27%;">内容</p>
-                      </div>
-                      <div class="list-warp">
-                        <div class="list-box"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div style="width: 50%; color: #fff;">
-                  <div class="title-box" style="margin-bottom: 0.2rem; padding-left: 2rem;">
-                    <div class="title-border-box">
-                      <div class="top-border border-box"></div>
-                      <div class="center-border border-box"></div>
-                      <div class="bottom-border border-box"></div>
-                    </div>
-                    <h3>居家服务人次统计</h3>
-                    <div class="title-border-box title-border-right">
-                      <div class="top-border border-box"></div>
-                      <div class="center-border border-box"></div>
-                      <div class="bottom-border border-box"></div>
-                    </div>
-                    <span style="float: right; margin-right: 2rem;">服务总人次： <span style="color: #33ffff;">171469</span></span>
-                  </div>
-                  <div style="display: flex;margin: 0.5rem 0;">
-                    <div>本月服务人次：<span style="color: #33ffff;">171469</span></div>
-                    <div style=" margin-left: 13.25rem;">   
-                      <div id="dropdown2">
-                        <p>累计<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
-                        <ul>
-                            <li><a href="#" rel="1">一月</a></li>
-                            <li><a href="#" rel="2">二月</a></li>
-                            <li><a href="#" rel="3">三月</a></li>
-                            <li><a href="#" rel="4">四月</a></li>
-                            <li><a href="#" rel="5">五月</a></li>
-                        </ul>
-                    </div>
-                  </div>
-                  </div>
-                  <div style="display: flex;">
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                  </div>
-                  <div style="display: flex;">
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                  </div>
-
-                  <div style="margin: 0.5rem 0;">
-                    <span>本月服务人数：<span style="color: #33ffff;">171469</span></span><span style="float: right; margin-right: 2rem;">服务总人数:<span style="color: #33ffff;">171469</span></span>
-                  </div>
-                  <div style="display: flex;">
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div> 
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>南翔镇</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                  </div>
-                  <div style="display: flex;">
-                    <div class="rest-infos" style="width: 8rem;">
-                      <div class="info-box">
-                        <div style="display: flex;">
-                            <div class="bottom-text">
-                              <p>长期助养</p>
-                              <span class="num-font" style="color: #33ffff;">46756</span>
-                             </div>
-                             <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                  </div>
-                  <div style="height: 5rem; float: right; margin-right: 1.5rem;">
-                    <div class="rest-infos" style="width: 10rem;">
-                      <div class="info-box" style="display: flex; background-color: #21f9ff;">
-                        <div>
-                          <img src="images/imgs/rest-bottom-user.png" style="width: 40%;" />
-                        </div>
-                        <div style="width: 4rem; position: absolute; right: 6%;">
-                          各街道老龄化程度
-                        </div>
-                      </div>
-                      <div class="rest-border-box rest-border-right"></div>
-                      <div class="rest-border-box rest-border-bottom"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="flex: 1;" id="mapContainer2"></div>
-        </div>
-      </div>
       <div class="main-box main-box-big">
         <div class="map-box" id="mapContainer"></div>
         <div class="map-center" @click="mapCenter" title="回到行政区域中心">
           <img src="images/refresh-left.png" alt="" />
         </div>
-        <!-- <div class="map-delete" @click="mapDeletePolyline" title="消除全部划线">
+        <div class="map-delete" @click="mapDeletePolyline" title="消除全部划线">
           <img src="images/icon-delete.png" alt="" />
-        </div> -->
+        </div>
         <div class="dialog-toggle" @click="showClick">
           <span v-show="showDialog">折叠</span>
           <span v-show="!showDialog">展开堵点信息</span>
         </div>
         <div class="dialog-box" v-show="showDialog">
           <div class="dialog-con">
-            <div style="font-weight: bold;">拥堵路段统计:</div>
-            <div style="margin: 0.4rem 0; cursor: pointer;" @click="visibleClick1">
+            <div style="font-weight: bold">拥堵路段统计:</div>
+            <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick1">
               <span class="bot1">500M-1000M</span><span>{{list1.length}} 段</span>
             </div>
-            <div style="margin: 0.4rem 0; cursor: pointer;" @click="visibleClick2() ">
+            <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick2() ">
               <span class="bot2">1000M-2000M</span><span>{{list2.length}} 段</span>
             </div>
-            <div style="margin: 0.4rem 0; cursor: pointer;" @click="visibleClick3()">
+            <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick3()">
               <span class="bot3">2000M以上</span><span>{{list3.length}} 段</span>
             </div>
             <div v-show="visible1" class="dialog-box2">
               <a class="dialog-close" @click="closeClick"> x</a>
               <div class="dialog-con2">
-                <div style="font-weight: bold;">
-                  500M-1000M拥堵路:
-                </div>
+                <div style="font-weight: bold">500M-1000M拥堵路:</div>
                 <div v-if="list1.length>0">
-                  <div v-for="(item,index) in list1" style="margin: 0.4rem 0;" @click="clickLocus1(item,index)" > 
-                    <span class="sub-bot1" :class="{ mapListActive: index == changeIndex1 }">{{item.roadName}}-{{item.direction}}</span>
+                  <div v-for="(item,index) in list1" style="margin: 0.4rem 0" @click="clickLocus1(item,index)">
+                    <span class="sub-bot1"
+                      :class="{ mapListActive: index == changeIndex1 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
-                <div v-else style="margin: 0.4rem 0;">
+                <div v-else style="margin: 0.4rem 0">
                   <span class="sub-bot1">暂无</span>
                 </div>
               </div>
@@ -1234,15 +610,14 @@
             <div v-show="visible2" class="dialog-box2">
               <a class="dialog-close" @click="closeClick"> x</a>
               <div class="dialog-con2">
-                <div style="font-weight: bold;">
-                  1000M-2000M拥堵路:
-                </div>
+                <div style="font-weight: bold">1000M-2000M拥堵路:</div>
                 <div v-if="list2.length>0">
-                  <div v-for="(item, index) in list2" style="margin: 0.4rem 0;" @click="clickLocus2(item, index)" >
-                    <span class="sub-bot2" :class="{ mapListActive: index == changeIndex2 }">{{item.roadName}}-{{item.direction}}</span>
+                  <div v-for="(item, index) in list2" style="margin: 0.4rem 0" @click="clickLocus2(item, index)">
+                    <span class="sub-bot2"
+                      :class="{ mapListActive: index == changeIndex2 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
-                <div v-else style="margin: 0.4rem 0;">
+                <div v-else style="margin: 0.4rem 0">
                   <span class="sub-bot2">暂无</span>
                 </div>
               </div>
@@ -1250,15 +625,14 @@
             <div v-show="visible3" class="dialog-box2">
               <a class="dialog-close" @click="closeClick"> x</a>
               <div class="dialog-con2">
-                <div style="font-weight: bold;">
-                  2000M以上拥堵路:
-                </div>
+                <div style="font-weight: bold">2000M以上拥堵路:</div>
                 <div v-if="list3.length>0">
-                  <div v-for="(item, index) in list3" style="margin: 0.4rem 0;" @click="clickLocus3(item, index)"  >
-                    <span class="sub-bot3" :class="{ mapListActive: index == changeIndex3 }">{{item.roadName}}-{{item.direction}}</span>
+                  <div v-for="(item, index) in list3" style="margin: 0.4rem 0" @click="clickLocus3(item, index)">
+                    <span class="sub-bot3"
+                      :class="{ mapListActive: index == changeIndex3 }">{{item.roadName}}-{{item.direction}}</span>
                   </div>
                 </div>
-                <div v-else style="margin: 0.4rem 0;">
+                <div v-else style="margin: 0.4rem 0">
                   <span class="sub-bot3">暂无</span>
                 </div>
               </div>
@@ -1276,7 +650,7 @@
             <h3>视频轮巡</h3>
           </div>
           <div class="content-bg"></div>
-              <div class="content-box">
+          <div class="content-box">
             <div class="jrwlzsj_box1">
               <div class="slider" id="slider1"></div>
             </div>
@@ -1287,7 +661,7 @@
                   border: 1px dashed #aaa;
                 " />
 
-            <div class="jrwlzsj_box1" style="margin-top: 0.2rem;">
+            <div class="jrwlzsj_box1" style="margin-top: 0.2rem">
               <div class="slider" id="slider2">
                 <!--<div style="width: 13.8rem;height:7.9rem;margin-top: 1.37rem;;margin-left: 1.6rem;background-color: aliceblue; float: left;">
 								</div>
@@ -1295,14 +669,13 @@
 								</div> -->
               </div>
             </div>
-                  <div class="openVideo" id="slider3" style="display: none">
-                     <!-- <span style="left:0px;top:0px;font-size:1.5rem;position:absolute;color:#00fff6;z-index:10000">监控视频1</span>
+            <div class="openVideo" id="slider3" style="display: none">
+              <!-- <span style="left:0px;top:0px;font-size:1.5rem;position:absolute;color:#00fff6;z-index:10000">监控视频1</span>
                       <span style="right:0px;top:0px;font-size:1.5rem;position:absolute;color:#999;z-index:10000" onclick="removeLargeVideo()">关闭</span>
                       <div class="largeVideoDiv">
                          <video controls="" autoplay preload muted name="media" class="largeVideo"  muted="muted"></video>
                       </div>-->
-                  </div>
-
+            </div>
           </div>
         </div>
         <div class="special-box">
@@ -1315,7 +688,7 @@
           </div>
           <div class="content-bg"></div>
           <div class="content-box">
-            <div style="height: 4rem; width: 33rem; margin-top: 0rem;">
+            <div style="height: 4rem; width: 33rem; margin-top: 0rem">
               <div style="
                     float: left;
                     margin-left: 1.5rem;
@@ -1325,7 +698,7 @@
                     color: white;
                     display: inline;
                   ">
-                <img style="height: 2rem; width: 4rem;" src="images/zhihui.png" />
+                <img style="height: 2rem; width: 4rem" src="images/zhihui.png" />
               </div>
               <div style="
                     height: 3.8rem;
@@ -1334,7 +707,7 @@
                     margin-left: 0.5rem;
                     position: relative;
                   " id="zhihuiBox"></div>
-              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer;"
+              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
                 onclick="moreZhihui()" id="zhihuiAdd">
                 ^
               </div>
@@ -1355,7 +728,7 @@
                     color: white;
                     display: inline;
                   ">
-                <img style="height: 2rem; width: 4rem;" src="images/anquan.png" />
+                <img style="height: 2rem; width: 4rem" src="images/anquan.png" />
               </div>
               <div style="
                     height: 3.8rem;
@@ -1364,7 +737,7 @@
                     margin-left: 0.5rem;
                     position: relative;
                   " id="anquanBox"></div>
-              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer;"
+              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
                 onclick="moreAnquan()" id="anquanAdd">
                 ^
               </div>
@@ -1385,7 +758,7 @@
                     color: white;
                     display: inline;
                   ">
-                <img style="height: 1.7rem; width: 3.9rem;" src="images/gaoxiao.png" />
+                <img style="height: 1.7rem; width: 3.9rem" src="images/gaoxiao.png" />
               </div>
               <div style="
                     height: 3.8rem;
@@ -1394,7 +767,7 @@
                     margin-left: 0.5rem;
                     position: relative;
                   " id="gaoxiaoBox"></div>
-              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer;"
+              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
                 onclick="moreGaoxiao()" id="gaoxiaoAdd">
                 ^
               </div>
@@ -1402,32 +775,56 @@
           </div>
         </div>
       </div>
-      <div class="ModalBox" id="ModalBox">
-        <iframe id="openiframe" src="Modal/12345Modal.html" width="100%" height="100%" frameborder="0"></iframe>
+      <div class="ModalBox" id="ModalBox" onclick="ModalClick()">
+        <object id="openiframe" data="Modal/12345Modal.html" width="100%" height="100%"></object>
       </div>
-      <div class="ModalBox" id="GarBageModal" >
-        <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%" frameborder="0"></iframe>
+      <div class="ModalBox" id="GarBageModal">
+        <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%"
+          frameborder="0"></iframe>
+      </div> <div class="Child_ModalBox " id="BusModalBox">
+        <object id="openiframeBusModalBox" data="Modal/BusModalBox.html" width="100%" height="100%"
+         ></object>
       </div>
-      <div class="ModalBox" id="GridModal" style="display: none;">
+      <div class="rest-box" id="GridModal"  v-show="gridShow" >
+        <a class="rescue-close" @click="gridShow=false" >
+          x</a>
         <iframe id="openiframeGridModal" src="Modal/GridModal.html" width="100%" height="100%" frameborder="0"></iframe>
       </div>
+      <div class="rest-box" id="RestModal" style="display: none" v-show="restShow">
+        <a class="rescue-close" onclick="closeOldPeopleHome()" >
+          x</a>
+        <iframe id="openiframe3" src="Modal/RestModal.html" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+      <div class="rest-box" id="rescueModal"  v-show="rescueShow" >
+        <a class="rescue-close" @click="rescueShow=false" >
+          x</a>
+        <iframe id="openiframeGridModal" src="Modal/RescueModal.html" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+      
       <div v-show="httpShow" class="rest-www">
-        <div class="httpShow-close" @click="httpShow=false"> x</div>
-        <div style="width: 140%;height: 140%;">
-          <iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf"  width="160%" height="160%" frameborder="0"  style="transform: scale(0.45);margin-left:-44%;margin-top:-12.5%"></iframe>
+        <div class="httpShow-close" @click="httpShow=false">x</div>
+        <div style="width: 140%; height: 140%">
+          <iframe id="openiframe1"
+            src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf"
+            width="160%" height="160%" frameborder="0" style="
+                transform: scale(0.45);
+                margin-left: -44%;
+                margin-top: -12.5%;
+              "></iframe>
         </div>
       </div>
 
-      <div style="display: none;" class="rest-www" id="publicIframe">
-        <div class="httpShow-close" onclick="closeIframe()"> x</div>
-        <div style="width: 140%;height: 140%;" id="iframeDiv">
+      <div style="display: none" class="rest-www" id="publicIframe">
+        <div class="httpShow-close" onclick="closeIframe()">x</div>
+        <div style="width: 140%; height: 140%" id="iframeDiv">
           <!--<iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" width="100%" height="100%" frameborder="0"></iframe>-->
-         <!-- <iframe src="https://www.baidu.com" width="100%" height="100%" frameborder="0"></iframe>-->
+          <!-- <iframe src="https://www.baidu.com" width="100%" height="100%" frameborder="0"></iframe>-->
         </div>
       </div>
     </div>
   </div>
 </body>
+<script src="Modal/Js/ajaxPromise.js"></script>
 <script type="text/javascript">
   $(function () {
     $("header img").ready(function () {
@@ -1438,46 +835,8 @@
       setFont();
       $(".main-warp").height($("html").height() - $(".header").height());
     });
-    $("#dropdown p").click(function() {
-        var ul = $("#dropdown ul");
-        if (ul.css("display") == "none") {
-            ul.slideDown("fast");
-        } else {
-            ul.slideUp("fast");
-        }
-        $("#dropdown ul li a").click(function () {
-            var txt = $(this).text();
-            $("#dropdown p").html(txt);
-            var value = $(this).attr("rel");
-            $("#dropdown ul").hide();
-            $("#result").html("您选择了" + txt + "，值为：" + value);
-        });
-    })
-    $("#dropdown2 p").click(function() {
-        var ul = $("#dropdown2 ul");
-        if (ul.css("display") == "none") {
-            ul.slideDown("fast");
-        } else {
-            ul.slideUp("fast");
-        }
-        $("#dropdown2 ul li a").click(function () {
-            var txt = $(this).text();
-            $("#dropdown2 p").html(txt);
-            var value = $(this).attr("rel");
-            $("#dropdown2 ul").hide();
-            $("#result").html("您选择了" + txt + "，值为：" + value);
-        });
-    })
-  });
-  // createVideoSlideOne();
-  // createVideoSlide();
-  //openVideo();
-</script>
-<script>
-  $(function () {
     flip();
   });
-
   function flip() {
     var timer = null;
     var i = 0;
@@ -1485,27 +844,37 @@
     var aFlip = $(".card");
 
     function flipFn(arg1, arg2) {
-      aFlip.eq(i).toggleClass('card-flipped');
+      aFlip.eq(i).toggleClass("card-flipped");
       i++;
-      if (i == 5) {
+      if (i == 2) {
         i = 0;
       }
-
     }
-    timer = setInterval(flipFn, 1000);
+    timer = setInterval(flipFn, 3000);
   }
+  // createVideoSlideOne();
+  // createVideoSlide();
+  //openVideo();
 </script>
+
 <script>
   function ModalClick() {
     document.getElementById("ModalBox").style.display = "block";
   }
   //生活垃圾
-  function openGarbageClassification(){
+  function openGarbageClassification() {
     document.getElementById("GarBageModal").style.display = "block";
   }
-  // function GridModalShow(){
-  //   $("#GridModal").show();
-  // }
+  /*公交车*/
+  function BusModalBoxFun(){
+    document.getElementById("BusModalBox").style.display = "block";
+  }
+  //网格化
+  function GridModalShow() {
+    $("#GridModal").show();
+  }
+
+
   var app = new Vue({
     el: "#app",
     data() {
@@ -1517,13 +886,10 @@
         list2: [],
         list3: [],
         showDialog: true,
-        rescueShow: false,
+        gridShow: false,
         restShow: false,
-        convenientShow: false,
-        switchShow1: true,
-        switchShow2: false,
-        switchShow3: true,
-        switchShow4: false,
+        rescueShow: false,
+       
         polylines1: new Map(),
         polylines2: new Map(),
         polylines3: new Map(),
@@ -1540,47 +906,26 @@
         this.visible1 = true;
         this.visible2 = false;
         this.visible3 = false;
-        this.changeIndex1 = -1
+        this.changeIndex1 = -1;
       },
       visibleClick2() {
         this.visible1 = false;
         this.visible2 = true;
         this.visible3 = false;
-        this.changeIndex2 = -1
+        this.changeIndex2 = -1;
       },
       visibleClick3() {
         this.visible1 = false;
         this.visible2 = false;
         this.visible3 = true;
-        this.changeIndex3 = -1
+        this.changeIndex3 = -1;
       },
       closeClick() {
         this.visible1 = false;
         this.visible2 = false;
         this.visible3 = false;
       },
-      switchClick1() {
-        (this.switchShow1 = true), (this.switchShow2 = false);
-      },
-      switchClick2() {
-        (this.switchShow1 = false), (this.switchShow2 = true);
-      },
-      switchClick3() {
-        (this.switchShow3 = true), (this.switchShow4 = false);
-      },
-      switchClick4() {
-        (this.switchShow3 = false), (this.switchShow4 = true);
-      },
-      restClose() {
-        (this.restShow = false),
-        (this.switchShow1 = true),
-        (this.switchShow2 = false),
-        (this.switchShow3 = true),
-        (this.switchShow4 = false);
-        (this.isActive = true),
-        (this.isUnactive = false),
-        (this.httpShow = false);
-      },
+    
       clickLocus1(item, index) {
         let str = "";
         if (this.list1[index].listLinkInfoState[0].lastPoint) {
@@ -1589,6 +934,50 @@
         let lineArr1 = str.split(",");
         map.setZoomAndCenter(15, lineArr1);
         this.changeIndex1 = index
+
+        this.list1[index].isShow = !this.list1[index].isShow;
+        if (this.list1[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+
+
+          var polylineList1=[]
+
+          for(var i=0;i<this.list1[index].listLinkInfoState.length;i++){
+            lineArr = [];
+            if(this.list1[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list1[index].listLinkInfoState[i].lngLats) {
+              str = this.list1[index].listLinkInfoState[i].lngLats;
+            }
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+            lineArr.push(singleArr);
+              console.log(lineArr, 'lineArr');
+          });
+            var polyline1 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.5,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+           // this.polylines1.set(index, polyline1);
+            polylineList1[i]=polyline1
+
+          }
+          this.polylines1.set(index, polylineList1);
+        } else {
+          var curPolylineList=this.polylines1.get(index)
+          for(var j=0;j<curPolylineList.length;j++){
+            map.remove(curPolylineList[j]);
+          }
+          this.polylines1.delete(index);
+        }
       },
       clickLocus2(item, index) {
         let str = "";
@@ -1596,9 +985,50 @@
           str = this.list2[index].listLinkInfoState[0].lastPoint;
         }
         let lineArr = str.split(",");
-        console.log(lineArr, "===lineArr");
         map.setZoomAndCenter(15, lineArr);
         this.changeIndex2 = index
+
+        this.list2[index].isShow = !this.list2[index].isShow;
+        if (this.list2[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+          var polylineList2=[]
+          for(var i=0;i<this.list2[index].listLinkInfoState.length;i++){
+            lineArr = [];
+            if(this.list2[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list2[index].listLinkInfoState[i].lngLats) {
+              str = this.list2[index].listLinkInfoState[i].lngLats;
+            }
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+              lineArr.push(singleArr);
+
+            });
+            var polyline2 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.5,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+            // this.polylines1.set(index, polyline1);
+            polylineList2[i]=polyline2
+          }
+          this.polylines2.set(index, polylineList2);
+        } else {
+          var curPolylineList=this.polylines2.get(index)
+      
+          for(var j=0;j<curPolylineList.length;j++){
+            map.remove(curPolylineList[j]);
+          }
+          // map.remove(this.polylines1.get(index));
+          this.polylines2.delete(index);
+        }
       },
       clickLocus3(item, index) {
         let str = "";
@@ -1606,29 +1036,51 @@
           str = this.list3[index].listLinkInfoState[0].lastPoint;
         }
         let arr = str.split(",");
-        console.log(arr, "===arr");
         map.setZoomAndCenter(15, arr);
         this.changeIndex3 = index
+        this.list3[index].isShow = !this.list3[index].isShow;
+        if (this.list3[index].isShow) {
+          let lineArr = [];
+          let Arr = [];
+          let str = "";
+          var polylineList3=[]
+          for(var i=0;i<this.list3[index].listLinkInfoState.length;i++){
+            lineArr = [];
+            if(this.list3[index].listLinkInfoState[i].state<3)
+              continue;
+            if (this.list3[index].listLinkInfoState[i].lngLats) {
+              str = this.list3[index].listLinkInfoState[i].lngLats;
+            }
+            let arr = str.split(";");
+            arr.forEach((items) => {
+              let singleArr = items.split(",");
+              lineArr.push(singleArr);
+            });
+            var polyline3 = new AMap.Polyline({
+              map: map,
+              path: lineArr,
+              showDir: true,
+              strokeColor: "red", //线颜色
+              strokeOpacity: 0.5,     //线透明度
+              strokeWeight: 12, //线宽
+              strokeStyle: "solid", //线样式
+            });
+            polylineList3[i]=polyline3
+          }
+          this.polylines3.set(index, polylineList3);
+        } else {
+          var curPolylineList=this.polylines3.get(index)
+         // alert(curPolylineList.length)
+          for(var j=0;j<curPolylineList.length;j++){
+            map.remove(curPolylineList[j]);
+          }
+          this.polylines2.delete(index);
+        }
       },
-      colorClick1() {
-        (this.isActive = true), (this.isUnactive = false);
-      },
-      colorClick2() {
-        (this.isActive = false), (this.isUnactive = true);
-      },
+      
       showClick() {
-     
         this.showDialog = !this.showDialog;
       },
-      // rescueClick() {
-      //   this.rescueShow = true;
-      // },
-      restClick() {
-        this.restShow = true;
-      },
-      // convenientClick(){
-      //   this.convenientShow = true
-      // },
       mapCenter() {
         map.setZoomAndCenter(12, [121.238825, 31.364284]);
       },
@@ -1642,29 +1094,47 @@
         this.polylines3.forEach((item) => {
           map.remove(item);
         });
-        // this.polylines1.clear()
-        // this.polylines2.clear()
-        // this.polylines3.clear()
+        this.polylines1.clear()
+        this.polylines2.clear()
+        this.polylines3.clear()
+
+        for(var i=0;i<this.list1.length;i++){
+          this.list1[i].isShow=false;
+        }
+        for(var i=0;i<this.list1.length;i++){
+          this.list2[i].isShow=false;
+        }
+        for(var i=0;i<this.list1.length;i++){
+          this.list3[i].isShow=false;
+        }
+
       },
       getHttp() {
         //发送get请求
-        this.$http
-          .get(
+        this.$http.get(
             // "http://127.0.0.1:5500/map/mock_data.json"
-            // "http://127.0.0.1:5500/map/congrestion.json"
-                FIRE_URL+"/cityBrain/getSession"
-          )
-          .then(
+           //"http://127.0.0.1:5500/map/congrestion.json"
+             FIRE_URL+"/cityBrain/getSession"
+          ).then(
             function (res) {
-              console.log(res.data, "res111");
+              this.list1 = [];
+              this.list2 = [];
+              this.list3 = [];
               res.data.forEach((item) => {
                 item.isShow = false;
-                if (item.distance <= 1000 && item.listLinkInfoState !=='') {
-                  return this.list1.push(item);
-                } else if (item.distance > 1000 && item.distance <= 2000 && item.listLinkInfoState !=='') {
-                  return this.list2.push(item);
-                } else if (item.distance > 2000 && item.listLinkInfoState !=='') {
 
+                if (item.distance <= 1000 && item.listLinkInfoState !== "") {
+                  return this.list1.push(item);
+                } else if (
+                  item.distance > 1000 &&
+                  item.distance <= 2000 &&
+                  item.listLinkInfoState !== ""
+                ) {
+                  return this.list2.push(item);
+                } else if (
+                  item.distance > 2000 &&
+                  item.listLinkInfoState !== ""
+                ) {
                   return this.list3.push(item);
                 }
               });
@@ -1679,10 +1149,7 @@
       this.getHttp();
     },
     mounted() {
-      this.list1.clear()
-      this.list2.clear()
-      this.list3.clear()
-      this.timer = setInterval(this.getHttp, 1000*60*15);
+      this.timer = setInterval(this.getHttp, 1000 * 60 * 10);
     },
     beforeDestroy() {
       clearInterval(this.timer);

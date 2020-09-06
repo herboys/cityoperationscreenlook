@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 19.2px;">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<link rel="stylesheet" type="text/css" href="../css/vital_signs.css" />
+<link rel="stylesheet" type="text/css" href="css/rest_dialog.css" />
+<link rel="stylesheet" type="text/css" href="../css/command_system.css" />
+<link rel="stylesheet" type="text/css" href="../css/rescus_dialog.css" />
+<link rel="stylesheet" type="text/css" href="../css/banner.css" />
+
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
+<script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+<script src="../js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/resource.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/rest-echarts.js" type="text/javascript" charset="utf-8"></script>
+<script src="Js/intercity-map.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="Js/intercitymap-package.js" type="text/javascript" charset="utf-8"></script> -->
+<script type="text/javascript" src="../js/rest-scroll.js"></script>
+<script type="text/javascript" src="../js/command_system.js"></script>
+
+
+<script type="text/javascript" src="../js/banner.js"></script>
+
+<body>
+  <div id="app" class="Modal-warp">
+
+    <div class="rest-box-big">
+      <div class="rest-box-left">
+        <div class="Modal-left-header">
+            养老信息一览
+        </div>
+        <div class="main-title">
+          <!-- <div class="title-bg title-bg1"></div>
+          <div class="title-bg title-bg2"></div>
+          <div class="title-bg title-bg3"></div>
+          <div class="title-border"></div> -->
+          <div style="display: flex; justify-content: flex-end;padding-right: 2rem;">
+            <div v-show="switchShow1" @click="switchClick1" class="switchShow1">
+              <span style="font-size: 1rem;color: #fff;">基本概况</span>
+            </div>
+            <div v-show="switchShow2" @click="switchClick1" class="switchShow2">
+              <span style="font-size: 1rem;color: #fff;">基本概况</span>
+            </div>
+            <div v-show="switchShow1" @click="switchClick2" class="switchShow2">
+              <span style="font-size: 1rem;color: #fff;">服务概况</span>
+            </div>
+            <div v-show="switchShow2" @click="switchClick2" class="switchShow1">
+              <span style="font-size: 1rem;color: #fff;">服务概况</span>
+            </div>
+          </div>
+        </div>
+        <div class="vital-signs" v-show="switchShow1">
+          <div class=" rest-top-box">
+            <div class="title-box" style="margin-bottom: 0.2rem;padding-left: 2rem;">
+              <div class="title-border-box">
+                <div class="top-border border-box"></div>
+                <div class="center-border border-box"></div>
+                <div class="bottom-border border-box"></div>
+              </div>
+              <h3 style="font-size: 1rem;">基本老龄化信息</h3>
+              <div class="title-border-box title-border-right">
+                <div class="top-border border-box"></div>
+                <div class="center-border border-box"></div>
+                <div class="bottom-border border-box"></div>
+              </div>
+            </div>
+            <div style="display: flex; height: 12rem;">
+              <div class="rest-info-lists">
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <p>户籍人口数</p>
+                    <div class="bottom-text">
+                      <span class="num-font" style="color: #33ffff;">62.5</span>
+                      <p>万人</p>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="top: 3rem; width: 8rem;">
+                  <div class="info-box">
+                    <p>老龄人口占比</p>
+                    <div class="bottom-text">
+                      <span class="num-font" style="color: #ff9933;">32.66</span>
+                      <p>%</p>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <p>老龄人口数</p>
+                    <div class="bottom-text">
+                      <span class="num-font" style="color: #33ffff;">20.4</span>
+                      <p>万人</p>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+              </div>
+              <div style="
+                      width: 55%;
+                      height: 100%;
+                      padding-right: 2%;
+                      margin-left: 2%;
+                    ">
+                <div id="ec1" class="echarts1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="rest-foot-box">
+            <div class="title-box" style="margin-bottom: 0.2rem; padding-left: 2rem;">
+              <div class="title-border-box">
+                <div class="top-border border-box"></div>
+                <div class="center-border border-box"></div>
+                <div class="bottom-border border-box"></div>
+              </div>
+              <h3 style="font-size: 1rem">入住老年人年龄及性别分布</h3>
+              <div class="title-border-box title-border-right">
+                <div class="top-border border-box"></div>
+                <div class="center-border border-box"></div>
+                <div class="bottom-border border-box"></div>
+              </div>
+            </div>
+            <div style="display: flex; height: 12rem;">
+              <div class="rest-info-lists">
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <p>男性人数</p>
+                    <div class="bottom-text">
+                      <span class="num-font" style="color: #33ffff;">10258</span>
+                      <p>人</p>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <p>男性占比</p>
+                    <div class="bottom-text">
+                      <span class="num-font" style="color: #ff9933;">20.4</span>
+                      <p>%</p>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <p>女性人数</p>
+                    <div class="bottom-text">
+                      <span class="num-font" style="color: #33ffff;">10334</span>
+                      <p>人</p>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <p>女性占比</p>
+                    <div class="bottom-text">
+                      <span class="num-font" style="color: #ff9933;">20.4</span>
+                      <p>%</p>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+              </div>
+              <div style="
+                      width: 55%;
+                      height: 100%;
+                      padding-right: 2%;
+                      margin-left: 2%;
+                    ">
+                <div id="ec2" class="echarts2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="rest-foot-box2">
+            <div class="title-box" style="margin-bottom: 0.2rem; padding-left: 2rem;">
+              <div class="title-border-box">
+                <div class="top-border border-box"></div>
+                <div class="center-border border-box"></div>
+                <div class="bottom-border border-box"></div>
+              </div>
+              <h3 style="font-size: 1rem;">养老机构总体服务情况</h3>
+              <div class="title-border-box title-border-right">
+                <div class="top-border border-box"></div>
+                <div class="center-border border-box"></div>
+                <div class="bottom-border border-box"></div>
+              </div>
+            </div>
+            <div style="display: flex;">
+              <div class="infos-box">
+                <h3 style="text-align: left; margin-left: 1rem;">
+                  床位信息
+                </h3>
+                <div>
+                  <div style="display: flex; margin-top: 0.5rem;">
+                    <div style="width: 40%;">
+                      <span class="first-info">总床位(张)</span>
+                      <span style="color: #ffff00;">9494</span>
+                    </div>
+                    <div style="width: 30%;">
+                      <span class="second-info">入住老人数(张)</span>
+                      <span style="color: #ffff00;">5597</span>
+                    </div>
+                    <div style="width: 30%;">
+                      <span class="third-info">入住率(%)</span>
+                      <span style="color: #ffff00;">59</span>
+                    </div>
+                  </div>
+                  <div style="display: flex; margin-top: 1rem;">
+                    <div style="width: 40%;">
+                      <span class="first-info">保基本床位数(张)</span>
+                      <span style="color: #33ffff;">5645</span>
+                    </div>
+                    <div style="width: 30%;">
+                      <span class="second-info">入住老人数(张)</span>
+                      <span style="color: #33ffff;">5597</span>
+                    </div>
+                    <div style="width: 30%;">
+                      <span class="third-info">入住率(%)</span>
+                      <span style="color: #33ffff;">59</span>
+                    </div>
+                  </div>
+                  <div style="display: flex; margin-top: 1rem;">
+                    <div style="width: 40%;">
+                      <span class="first-info">民办床位数(张)</span>
+                      <span style="color: #cc0033;">2250</span>
+                    </div>
+                    <div style="width: 30%;">
+                      <span class="second-info">入住老人数(张)</span>
+                      <span style="color: #cc0033;">1241</span>
+                    </div>
+                    <div style="width: 30%;">
+                      <span class="third-info">入住率(%)</span>
+                      <span style="color: #cc0033;">55.10</span>
+                    </div>
+                  </div>
+                  <div style="
+                          display: flex;
+                          margin-top: 1rem;
+                          margin-bottom: 1rem;
+                        ">
+                    <div style="width: 40%;">
+                      <span class="first-info">长者照护之家床位数(张)</span>
+                      <span style="color: #66ff99;">271</span>
+                    </div>
+                    <div style="width: 30%;">
+                      <span class="second-info">入住老人数(张)</span>
+                      <span style="color: #66ff99;">153</span>
+                    </div>
+                    <div style="width: 30%;">
+                      <span class="third-info">入住率(%)</span>
+                      <span style="color: #66ff99;">56.50</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="width: 36%; display: flex; padding-top: 3%;">
+                <div style="height: 5rem; margin-left: 1rem;">
+                  <div class="rest-infos" style="width: 9rem;">
+                    <div :class="{'info-active': isActive}" @click="colorClick1">
+                      <div class="info-box" style="display: flex;">
+                        <div>
+                          <img src="../images/imgs/rest-bottom-left.png" style="width: 40%; height: 62.18px;" />
+                        </div>
+                        <div style="
+                                width: 4rem;
+                                position: absolute;
+                                right: 6%;
+                              ">
+                          养老机构位置信息
+                        </div>
+                      </div>
+                    </div>
+                    <div class="rest-border-box rest-border-right"></div>
+                    <div class="rest-border-box rest-border-bottom"></div>
+                  </div>
+                </div>
+                <div style="height: 5rem; margin-left: 0.2rem;">
+                  <div class="rest-infos" style="width: 9rem;">
+                    <div :class="{'info-active': isUnactive}" @click="colorClick2">
+                      <div class="info-box" style="display: flex;">
+                        <div>
+                          <img src="../images/imgs/rest-bottom-right.png" style="width: 40%;" />
+                        </div>
+                        <div style="
+                                width: 4rem;
+                                position: absolute;
+                                right: 6%;
+                              ">
+                          养老机构统计信息
+                        </div>
+                      </div>
+                    </div>
+                    <div class="rest-border-box rest-border-right"></div>
+                    <div class="rest-border-box rest-border-bottom"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vital-signs" v-show="switchShow2">
+          <div class=" rest-top-box">
+            <div class="title-box" style="margin-bottom: 0.2rem;padding-left: 2rem;">
+              <div class="title-border-box">
+                <div class="top-border border-box"></div>
+                <div class="center-border border-box"></div>
+                <div class="bottom-border border-box"></div>
+              </div>
+              <h3 style="font-size: 1rem;">服务工单统计</h3>
+              <div class="title-border-box title-border-right">
+                <div class="top-border border-box"></div>
+                <div class="center-border border-box"></div>
+                <div class="bottom-border border-box"></div>
+              </div>
+              <span style="float: right; color: #fff;margin-right:2rem;margin-top: 1rem;">工单总数 <span
+                  style="color: #33ffff;">76878</span> 单</span>
+              <span style="float: right; color: #fff; margin-right: 3rem;margin-top: 1rem;">今日工单数 <span
+                  style="color: #33ffff;">134</span> 单</span>
+            </div>
+            <div style="color: #fff; display: flex; padding-left: 2rem;">
+              <div v-show="switchShow3" @click="switchClick3" class="switchShow3">
+                <span style="font-size: 1rem;color: #fff;">区域分布</span>
+              </div>
+              <div v-show="switchShow4" @click="switchClick3" class="switchShow4">
+                <span style="font-size: 1rem;color: #fff;">区域分布</span>
+              </div>
+              <div v-show="switchShow3" @click="switchClick4" class="switchShow4">
+                <span style="font-size: 1rem;color: #fff;">种类分布</span>
+              </div>
+              <div v-show="switchShow4" @click="switchClick4" class="switchShow3">
+                <span style="font-size: 1rem;color: #fff;">种类分布</span>
+              </div>
+            </div>
+              <!-- <div style="margin-left: 38.5rem; margin-top: 1.8rem;">
+                <div id="dropdown">
+                  <p>日<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
+                  <ul>
+                    <li><a href="#" rel="1">年</a></li>
+                    <li><a href="#" rel="2">月</a></li>
+                    <li><a href="#" rel="3">日</a></li>
+                  </ul>
+                </div>
+              </div> -->
+         
+            <div style="display: flex; height: 5.3rem;" v-show="switchShow3">
+              <div class="z-box">
+                <ul class="u-box">
+                  <li>
+                    <div class="rest-infos" style="width: 8rem;">
+                      <div class="info-box">
+                        <div style="display: flex;">
+                          <div class="bottom-text">
+                            <p>南翔镇</p>
+                            <p class="num-font" style="color: #33ffff;">1111</p>
+                          </div>
+                          <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                        </div>
+                      </div>
+                      <div class="rest-border-box rest-border-right"></div>
+                      <div class="rest-border-box rest-border-bottom"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="rest-infos" style="width: 8rem;">
+                      <div class="info-box">
+                        <div style="display: flex;">
+                          <div class="bottom-text">
+                            <p>南翔镇</p>
+                            <p class="num-font" style="color: #33ffff;">2222</p>
+                          </div>
+                          <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                        </div>
+                      </div>
+                      <div class="rest-border-box rest-border-right"></div>
+                      <div class="rest-border-box rest-border-bottom"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="rest-infos" style="width: 8rem;">
+                      <div class="info-box">
+                        <div style="display: flex;">
+                          <div class="bottom-text">
+                            <p>南翔镇</p>
+                            <p class="num-font" style="color: #33ffff;">3333</p>
+                          </div>
+                          <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                        </div>
+                      </div>
+                      <div class="rest-border-box rest-border-right"></div>
+                      <div class="rest-border-box rest-border-bottom"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="rest-infos" style="width: 8rem;">
+                      <div class="info-box">
+                        <div style="display: flex;">
+                          <div class="bottom-text">
+                            <p>南翔镇</p>
+                            <p class="num-font" style="color: #33ffff;">4444</p>
+                          </div>
+                          <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                        </div>
+                      </div>
+                      <div class="rest-border-box rest-border-right"></div>
+                      <div class="rest-border-box rest-border-bottom"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="rest-infos" style="width: 8rem;">
+                      <div class="info-box">
+                        <div style="display: flex;">
+                          <div class="bottom-text">
+                            <p>南翔镇</p>
+                            <p class="num-font" style="color: #33ffff;">5555</p>
+                          </div>
+                          <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                        </div>
+                      </div>
+                      <div class="rest-border-box rest-border-right"></div>
+                      <div class="rest-border-box rest-border-bottom"></div>
+                    </div>
+                  </li>
+
+                </ul>
+
+              </div>
+              <span class="z-prev">
+                < </span> <span class="z-next"> >
+              </span>
+
+            </div>
+            <div style="color: #fff; height: 5.3rem;" v-show="switchShow4">
+              <div style="padding-top: 1.5rem;padding-left: 2rem;padding-right: 2.5rem;">
+                <div class="ecLists">
+                  <div id="ec3" class="echarts3"></div>
+                  <div id="ec4" class="echarts3"></div>
+                  <div id="ec5" class="echarts3"></div>
+                  <div id="ec6" class="echarts3"></div>
+                  <div id="ec7" class="echarts3" style="padding-right: 2rem;margin-right: 2rem;"></div>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+          <div style="margin-top: 3rem; display: flex;">
+            <div style="width: 50%;">
+              <div class="title-box" style="margin-bottom: 0.2rem; padding-left: 2rem;">
+                <div class="title-border-box">
+                  <div class="top-border border-box"></div>
+                  <div class="center-border border-box"></div>
+                  <div class="bottom-border border-box"></div>
+                </div>
+                <h3 style="font-size: 1rem;">工单列表(牵线搭桥)</h3>
+                <div class="title-border-box title-border-right">
+                  <div class="top-border border-box"></div>
+                  <div class="center-border border-box"></div>
+                  <div class="bottom-border border-box"></div>
+                </div>
+              </div>
+              <!-- 列表轮播 -->
+              <div class="roll-table2 command-system">
+                <div class="table-box linkage-table2">
+                  <div class="table-list table-title">
+                    <p style="width: 8%;">日期</p>
+                    <p style="width: 10%;">时间</p>
+                    <p style="width: 15%;">街道</p>
+                    <p style="width: 20%;">详细地址</p>
+                    <p style="width: 15%;">事件类型</p>
+                    <p style="width: 27%;">内容</p>
+                  </div>
+                  <div class="list-warp">
+                    <div class="list-box"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="width: 50%; color: #fff;">
+              <div class="title-box" style="margin-bottom: 0.2rem; padding-left: 2rem;">
+                <div class="title-border-box">
+                  <div class="top-border border-box"></div>
+                  <div class="center-border border-box"></div>
+                  <div class="bottom-border border-box"></div>
+                </div>
+                <h3 style="font-size: 1rem;">居家服务人次统计</h3>
+                <div class="title-border-box title-border-right">
+                  <div class="top-border border-box"></div>
+                  <div class="center-border border-box"></div>
+                  <div class="bottom-border border-box"></div>
+                </div>
+                <span style="float: right; margin-right: 2rem;">服务总人次： <span
+                    style="color: #33ffff;">171469</span></span>
+              </div>
+              <div style="display: flex;margin: 0.5rem 0;">
+                <div>本月服务人次：<span style="color: #33ffff;">171469</span></div>
+                <div style=" margin-left: 13.25rem;">
+                  <div id="dropdown2">
+                    <p>今日<span style="margin-left: 2rem;display: inline-block;transform: rotate(90deg);">></span></p>
+                    <ul>
+                      <li><a href="#" rel="1">今年</a></li>
+                      <li><a href="#" rel="2">今月</a></li>
+                      <li><a href="#" rel="3">今日</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex;">
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <p class="num-font" style="color: #33ffff;">46756</p>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <p class="num-font" style="color: #33ffff;">46756</p>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <p class="num-font" style="color: #33ffff;">46756</p>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+              </div>
+              <div style="display: flex;">
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <p class="num-font" style="color: #33ffff;">46756</p>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <p class="num-font" style="color: #33ffff;">46756</p>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <p class="num-font" style="color: #33ffff;">46756</p>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+              </div>
+
+              <div style="margin: 0.5rem 0;">
+                <span>本月服务人数：<span style="color: #33ffff;">171469</span></span><span
+                  style="float: right; margin-right: 2rem;">服务总人数:<span style="color: #33ffff;">171469</span></span>
+              </div>
+              <div style="display: flex;">
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <span class="num-font" style="color: #33ffff;">46756</span>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <p class="num-font" style="color: #33ffff;">46756</p>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>南翔镇</p>
+                        <p class="num-font" style="color: #33ffff;">46756</p>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+              </div>
+              <div style="display: flex;">
+                <div class="rest-infos" style="width: 8rem;">
+                  <div class="info-box">
+                    <div style="display: flex;">
+                      <div class="bottom-text">
+                        <p>长期助养</p>
+                        <span class="num-font" style="color: #33ffff;">46756</span>
+                      </div>
+                      <div style="margin: auto;"><span style="color: #ff9933;">20.4</span>%</div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+              </div>
+              <div style="height: 5rem; float: right; margin-right: 1.5rem;">
+                <div class="rest-infos" style="width: 10rem;">
+                  <div class="info-box" style="display: flex; background-color: #21f9ff;">
+                    <div>
+                      <img src="../images/imgs/rest-bottom-user.png" style="width: 40%;" />
+                    </div>
+                    <div style="width: 4rem; position: absolute; right: 6%;">
+                      各街道老龄化程度
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <iframe id="mapContainer1" class="map-box" frameborder="no" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+      <!-- <div class="mapiframe" id="map">
+					<iframe id="mapContainer" class="mapiframe" frameborder="no" scrolling="no" allowtransparency="true" width="496.13px" height="711.2px"></iframe>
+				</div> -->
+    </div>
+  </div>
+</body>
+<script>
+  var bridge1 = null;
+  $(function () {
+    bridge1 = new CityGis.Bridge({
+      id: "mapContainer1",
+      url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
+      onReady: function () {
+        createMenu();
+      }
+    });
+  })
+
+  function createMenu() {
+    bridge1.Invoke([
+      //地图主题切换消息
+      {
+        "ActionName": "changeTheme",
+        "Parameters": {
+          "id": "Home"
+        }
+      },
+      // 功能菜单
+      {
+        "ActionName": "userMenu",
+        "Parameters": {
+          "url": "http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14",
+          "visible": true
+        }
+      },
+      // 撒点
+      {
+        "ActionName": "ShowData",
+        "Parameters": {
+          "name": "car_dian",
+          "isMouseHoverInfo": true,
+          "data": {
+            "url": "http://127.0.0.1:5500/Modal/Js/intercity-point.json",
+            "parsedata": "function(d){return d.features}",
+            "parsegeometry": "function(item){return item.geometry}"
+          },
+          "popupTemplate": {
+            "content": [{
+              "type": "fields",
+              "fieldInfos": [{
+                  "fieldName": "名称",
+                  "label": "名称"
+                },
+                {
+                  "fieldName": "地址"
+                }
+              ]
+            }]
+          },
+          "legendVisible": true,
+          "popupEnabled": true,
+          "isLocate": true,
+          "renderer": {
+            "type": "simple",
+            "label": "",
+            "visualVariables": [],
+            "symbol": {
+              "type": "simple-marker",
+              "size": 10,
+              "color": "red",
+              "outline": {
+                "width": 0.5,
+                "color": "white"
+              }
+            }
+          },
+          "labels": [{
+            "fields": [
+              "#.名称",
+              "#.地址"
+            ],
+            "color": [
+              255,
+              255,
+              0,
+              0.5
+            ],
+            "size": 18
+          }]
+        }
+      }
+    ])
+  }
+</script>
+<script type="text/javascript">
+  $(function () {
+
+    $("#dropdown p").click(function () {
+      var ul = $("#dropdown ul");
+      if (ul.css("display") == "none") {
+        ul.slideDown("fast");
+      } else {
+        ul.slideUp("fast");
+      }
+      $("#dropdown ul li a").click(function () {
+        var txt = $(this).text();
+        $("#dropdown p").html(txt);
+        var value = $(this).attr("rel");
+        $("#dropdown ul").hide();
+        $("#result").html("您选择了" + txt + "，值为：" + value);
+      });
+    });
+    $("#dropdown2 p").click(function () {
+      var ul = $("#dropdown2 ul");
+      if (ul.css("display") == "none") {
+        ul.slideDown("fast");
+      } else {
+        ul.slideUp("fast");
+      }
+      $("#dropdown2 ul li a").click(function () {
+        var txt = $(this).text();
+        $("#dropdown2 p").html(txt);
+        var value = $(this).attr("rel");
+        $("#dropdown2 ul").hide();
+        $("#result").html("您选择了" + txt + "，值为：" + value);
+      });
+    });
+
+  });
+</script>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        restShow: false,
+        switchShow1: true,
+        switchShow2: false,
+        switchShow3: true,
+        switchShow4: false,
+
+        isActive: true,
+        isUnactive: false,
+
+      };
+    },
+    methods: {
+
+      switchClick1() {
+        (this.switchShow1 = true), (this.switchShow2 = false);
+      },
+      switchClick2() {
+        (this.switchShow1 = false), (this.switchShow2 = true);
+      },
+      switchClick3() {
+        (this.switchShow3 = true), (this.switchShow4 = false);
+      },
+      switchClick4() {
+        (this.switchShow3 = false), (this.switchShow4 = true);
+      },
+
+      colorClick1() {
+        (this.isActive = true), (this.isUnactive = false);
+      },
+      colorClick2() {
+        (this.isActive = false), (this.isUnactive = true);
+      },
+
+
+
+
+    },
+
+
+
+  });
+</script>
+
+</html>

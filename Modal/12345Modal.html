@@ -3,1004 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
 </head>
 <style>
+    #backBtnclass {
+        position: absolute;
+        top: 3.333rem;
+
+        width: 100%;
+        padding-left: 1.667rem;
+        right: 1.667rem;
+        color: #fff;
+        font-size: 1.167rem;
+        cursor: pointer;
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #backBtnclass span {
+
+    }
+
     #rotate {
-        height: 400px;
-        width: 450px;
+        height: 26rem;
+        width: 37.5rem;
+        padding: .2rem;
         position: relative;
-        margin: 10px auto;
-        top: 3px;
+        margin: 0.833rem auto;
+        top: -1rem;
     }
 
     #rotate a {
         position: absolute;
         top: 0px;
         left: 0px;
-        color: #04FDF5;
-        font-weight: bold;
-        padding: 3px 6px;
-        font-size: 14px;
-
+        color: white;
+        /*font-weight: bold;*/
+        padding: 0.25rem 0.5rem;
+        font-size: .5rem;
+        width: 6rem;
+        overflow: hidden;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 10px;
     }
 
     #rotate a:hover {
         border: 1px solid #eee;
         background: #000;
-        border-radius: 5px;
+        border-radius: 0.417rem;
+    }
+
+    #dm {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    #dm span {
+        width: auto;
+        height: 3rem;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        position: absolute;
+        white-space: nowrap;
+    }
+
+    #dmcopy {
+        width: 100%;
+        height: 100%;
+        display: none;
+
+    }
+
+    #dmcopy span {
+        width: auto;
+        height: 3rem;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        position: absolute;
+        white-space: nowrap;
+    }
+
+    .notice {
+        width: 300px; /*单行显示，超出隐藏*/
+        height: 35px; /*固定公告栏显示区域的高度*/
+        padding: 0 30px;
+        background-color: #b3effe;
+        overflow: hidden;
+    }
+
+    .notice ul li {
+        list-style: none;
+        line-height: 35px;
+        /*以下为了单行显示，超出隐藏*/
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 </style>
 <link rel="stylesheet" type="text/css" href="../css/12345Modal.css"/>
 <link rel="stylesheet" type="text/css" href="../css/pubilic.css"/>
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+<script src="../js/video.js"></script>
+<script src="../js/commonJs.js"></script>
 <script>
+    let LastHeatmMapData = [
+        {
+            name: '安亭镇',
+            lng: 121.164061,
+            lat: 31.294312,
+            count: ""
+        }, {
+            name: '马陆镇',
+            lng: 121.283332,
+            lat: 31.333119,
+            count: ""
+        }, {
+            name: '南翔镇',
+            lng: 121.320331,
+            lat: 31.294436,
+            count: ""
+        }, {
+            name: '江桥镇',
+            lng: 121.331696,
+            lat: 31.238858,
+            count: ""
+        }, {
+            name: '徐行镇',
+            lng: 121.280687,
+            lat: 31.416167,
+            count: ""
+        }, {
+            name: '外冈镇',
+            lng: 121.162302,
+            lat: 31.362788,
+            count: ""
+        }, {
+            name: '华亭镇',
+            lng: 121.242686,
+            lat: 31.468279,
+            count: ""
+        }, {
+            name: '新成路街道',
+            lng: 121.269643,
+            lat: 31.386835,
+            count: ""
+        }, {
+            name: '嘉定镇',
+            lng: 121.239343,
+            lat: 31.372602,
+            count: ""
+        }, {
+            name: '真新街道',
+            lng: 121.360212,
+            lat: 31.244405,
+            count: ""
+        }, {
+            name: '工业区',
+            lng: 121.206181,
+            lat: 31.417779,
+            count: ""
+        }, {
+            name: '菊园新区管委会',
+            lng: 121.245581,
+            lat: 31.392629,
+            count: ""
+        },
+    ]
     let heatmapData = [
         {
             "lng": 121.26710,
             "lat": 31.47022,
             "count": 10
-        },
-        {
-            "lng": 121.26710,
-            "lat": 31.47022,
-            "count": 10
-        },  {
-            "lng": 121.26710,
-            "lat": 31.47022,
-            "count": 10
-        },  {
-            "lng": 121.26710,
-            "lat": 31.47022,
-            "count": 10
-        },  {
-            "lng": 121.26710,
-            "lat": 31.47022,
-            "count": 10
-        },  {
-            "lng": 121.26710,
-            "lat": 31.47022,
-            "count": 10
-        },  {
-            "lng": 121.26710,
-            "lat": 31.47022,
-            "count": 10
-        },  {
-            "lng": 121.26710,
-            "lat": 31.47022,
-            "count": 10
-        },
-
-
-        {
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },
-        {
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },{
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },{
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },{
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },{
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },{
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },{
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },{
-            "lng": 121.2047,
-            "lat": 31.2987,
-            "count": 10
-        },
-        {
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },
-        {
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },{
-            "lng": 121.2024,
-            "lat": 31.4245,
-            "count": 20
-        },
-
-
-        {
-            "lng": 121.2490,
-            "lat": 31.3839,
-            "count": 10
-        },{
-            "lng": 121.2490,
-            "lat": 31.3839,
-            "count": 10
-        },{
-            "lng": 121.2490,
-            "lat": 31.3839,
-            "count": 10
-        },{
-            "lng": 121.2490,
-            "lat": 31.3839,
-            "count": 10
-        },{
-            "lng": 121.2490,
-            "lat": 31.3839,
-            "count": 10
-        },{
-            "lng": 121.2490,
-            "lat": 31.3839,
-            "count": 10
-        },{
-            "lng": 121.2490,
-            "lat": 31.3839,
-            "count": 10
-        },{
-            "lng": 121.2490,
-            "lat": 31.3839,
-            "count": 10
-        },
-
-        {
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },{
-            "lng": 121.3075,
-            "lat": 31.2611,
-            "count": 10
-        },
-
-
-        {
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },{
-            "lng": 121.2142,
-            "lat": 31.3755,
-            "count": 10
-        },
-
-
-
-        {
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },{
-            "lng": 121.2787,
-            "lat": 31.3518,
-            "count": 10
-        },
-
-
-        {
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },{
-            "lng": 121.3052,
-            "lat": 31.3057,
-            "count": 10
-        },
-
-
-        {
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },{
-            "lng": 121.1568,
-            "lat": 31.3622,
-            "count": 10
-        },
-
-
-        {
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },{
-            "lng": 121.2655,
-            "lat": 31.3906,
-            "count": 10
-        },
-
-
-        {
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },{
-            "lng": 121.28994,
-            "lat": 31.42887,
-            "count": 10
-        },
-
-
-
-        {
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },{
-            "lng": 121.35715,
-            "lat": 31.25199,
-            "count": 10
-        },
-
-        {
-            "lng": 121.164061,
-            "lat": 31.294312,
-            "count": 10
-        },{
-            "lng": 121.164061,
-            "lat": 31.294312,
-            "count": 10
-        },{
-            "lng": 121.164061,
-            "lat": 31.294312,
-            "count": 10
-        },{
-            "lng": 121.164061,
-            "lat": 31.294312,
-            "count": 10
-        },{
-            "lng": 121.164061,
-            "lat": 31.294312,
-            "count": 10
-        },{
-            "lng": 121.164061,
-            "lat": 31.294312,
-            "count": 10
-        },{
-            "lng": 121.283332,
-            "lat": 31.333119,
-            "count": 10
-        },
-        {
-            "lng": 121.283332,
-            "lat": 31.333119,
-            "count": 10
-        },{
-            "lng": 121.283332,
-            "lat": 31.333119,
-            "count": 10
-        },{
-            "lng": 121.283332,
-            "lat": 31.333119,
-            "count": 10
-        },{
-            "lng": 121.283332,
-            "lat": 31.333119,
-            "count": 10
-        },{
-            "lng": 121.283332,
-            "lat": 31.333119,
-            "count": 10
-        },{
-            "lng": 121.283332,
-            "lat": 31.333119,
-            "count": 10
-        },{
-            "lng": 121.283332,
-            "lat": 31.333119,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.245581,
-            "lat": 31.392629,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.206181,
-            "lat": 31.417779,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.360212,
-            "lat": 31.244405,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.239343,
-            "lat": 31.372602,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },
-        {
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.269643,
-            "lat": 31.386835,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },{
-            "lng": 121.242686,
-            "lat": 31.468279,
-            "count": 10
-        },
+        }
 
     ]
 
@@ -1010,60 +189,64 @@
 <div class="Modal-warp">
     <div id="clearid">x</div>
     <div class="Modal-left">
-        <div style="  padding: 0px 20px;">
+        <div>
             <div class="Modal-left-header">
                 12345市民服务热线
             </div>
             <div class="Modal-left-item">
-                <div class="FX_header">
+                <!--                <div style="padding: 0rem 1.667rem">-->
+                <div class="flex-between paddingright-20px paddingleft-20px ">
                     <div class="header">
                         <a class="line"></a>
                         <span>统计分析</span>
                         <a class="line1"></a>
                     </div>
                     <div id="dropdown">
-                        <p style="border:1px solid #1DD6DF;color: #1DD6DF">今年</p>
-                        <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
-                            <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
-                            <li><a href="#" rel="2" onclick="dropdownFun('月')">本月</a></li>
-                            <li><a href="#" rel="3" onclick="dropdownFun('年')">今年</a></li>
+                        <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
+                        <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
+                            <li><a href="#" rel="1" onclick="basicFun('日')"> 今日</a></li>
+                            <li><a href="#" rel="2" onclick="basicFun('月')">本月</a></li>
+                            <li><a href="#" rel="3" onclick="basicFun('年')">今年</a></li>
                         </ul>
                     </div>
+                    <!--                    </div>-->
                 </div>
-
                 <div class="Satisfaction-warp">
-                    <div class="Satisfaction-warp-item" >
+                    <div class="Satisfaction-warp-item">
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
                                 <div class="banner1" onclick="TabsFun(1)">基本情况</div>
-                                <!--                                <div class="banner2" onclick="TabsFun(2)">趋势分析</div>-->
                             </div>
-                            <div id="dropdown1">
-                                <p>问题类型</p>
-                                <ul>
-                                    <li><a href="#" rel="1">问题来源</a></li>
-                                    <li><a href="#" rel="2">问题类型</a></li>
-                                    <li><a href="#" rel="3">诉求情况</a></li>
-                                </ul>
+
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts" style="box-sizing: border-box">
+                            <div style="width: 100%;height: 100%;padding:2.5rem 1.667rem 1.667rem 1.667rem;box-sizing: border-box">
+                                <div id="BasicFunId"
+                                     style="display:flex;flex-flow: column;justify-content:space-between;width: 100%;height: 100%;padding: 1.667rem;box-sizing: border-box">
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="Satisfaction-warp-item-echarts"  style="height:400px">
-                            <div id="SmallECharts3" class="SmallECharts3" style="width: 575px;height:400px;margin-right: 20px;padding-top:-40px"></div>
-                            <div id="SmallECharts3copy" class="SmallECharts3copy" style="width: 575px;height:400px;margin-right: 20px;padding-top:-40px"></div>
-                            <div style="position: absolute;top: 40px;right: 20px;color: #fff;font-size: 14px;cursor: pointer;" onclick="backBtn()">返回上一级</div>
-                        </div>
+                            <div id="backBtnclass">
+                                <span id="headId" style="margin-left: 4.167rem;"></span><span
+                                    onclick="backBtn()" style="z-index: 999">返回上一级</span></div>
+                            <div id="SmallECharts3"
+                                 ></div>
+                            <div id="SmallECharts3copy" class="SmallECharts3copy"></div>
 
-
+                        </div>
                     </div>
-                    <div class="Satisfaction-warp-item" >
+                    <div class="Satisfaction-warp-item">
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
-                                <div class="banner1" >热词</div>
+                                <div class="banner1">热词</div>
                             </div>
-
                         </div>
-                        <div class="Satisfaction-warp-item-echarts" style="margin-top: 40px;height: 400px">
-                            <div id="SmallECharts4" style="width: 575px;height:400px;margin-right: 20px;margin-top: -20px;padding-top:20px ">
+                        <div class="Satisfaction-warp-item-echarts"
+                             style="padding: 1rem 3rem 2.5rem 1rem;;box-sizing: border-box;overflow: hidden">
+                            <div id="DmMainId"
+                                 style="margin: 1rem;overflow: hidden;width: 100%;height: 100%;position: relative">
+                                <div id="dm"></div>
+                                <div id="dmcopy"></div>
                             </div>
                         </div>
                     </div>
@@ -1073,69 +256,127 @@
 
                 <div class="Satisfaction-warp">
                     <div class="Satisfaction-warp-item">
-                        <div class="header">
-                            <a class="line"></a>
-                            <span>满意度评价</span>
-                            <a class="line1"></a>
+                        <div class="flex-between paddingright-20px">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>满意度评价</span>
+                                <a class="line1"></a>
+                            </div>
+                            <div id="dropdown1">
+                                <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
+                                <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
+                                    <li><a href="#" rel="1" onclick="satisfiedFun('日')"> 今日</a></li>
+                                    <li><a href="#" rel="2" onclick="satisfiedFun('月')">本月</a></li>
+                                    <li><a href="#" rel="3" onclick="satisfiedFun('年')">今年</a></li>
+                                </ul>
+                            </div>
                         </div>
+
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
                                 <div class="banner1" onclick="TabsFun(3)">街镇</div>
                                 <div class="banner2" onclick="TabsFun(4)">委办局</div>
                                 <div class="banner2" onclick="TabsFun(5)">公司</div>
                             </div>
-
                         </div>
-                        <div class="Satisfaction-warp-item-echarts">
-                            <div id="SmallECharts" style="width: 550px;height:255px"></div>
+                        <div class="Satisfaction-warp-item-echarts"
+                             style="padding: 1rem 3rem 2.5rem 1rem;;box-sizing: border-box;overflow: hidden">
+                            <div id="SmallECharts"
+                                 style="width:44.167rem;height:21.667rem;position: absolute;left: 1.667rem;top: 2.5rem"></div>
+                            <div id="SmallEChartscopy"
+                                 style="width:44.167rem;height:21.667rem;position: absolute;left: 1.667rem;top: 2.5rem"></div>
+                            <div id="BureauId"
+                                 style="position: absolute;top: 2.5rem;left: 3.333rem;display: flex;justify-content: space-between;color: white;font-size: 1rem;">
+                                <span style="padding: 0rem 2.5rem" onclick="TopSixFun(1)"></span><span
+                                    onclick="TopSixFun(1)" style="padding: 0rem 2.5rem"></span></div>
                         </div>
                     </div>
                     <div class="Satisfaction-warp-item">
-                        <div class="header">
-                            <a class="line"></a>
-                            <span>重点工单提示</span>
-                            <a class="line1"></a>
+                        <div class="flex-between paddingright-20px">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>重点工单一览</span>
+                                <a class="line1"></a>
+                            </div>
+                            <div id="dropdown2">
+                                <p style="border:0.083rem solid #1DD6DF;color: #1DD6DF">今年</p>
+                                <ul style="border:0.083rem solid #1DD6DF;color: #1DD6DF">
+                                    <li><a href="#" rel="1" onclick="dropdownFun('日')"> 今日</a></li>
+                                    <li><a href="#" rel="2" onclick="dropdownFun('月')">本月</a></li>
+                                    <li><a href="#" rel="3" onclick="dropdownFun('年')">今年</a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="Satisfaction-warp-item-header">
                             <div class="Satisfaction-warp-item-header-left">
                                 <div class="banner1" onclick="TabsFun(6)">紧急工单</div>
-                                <div class="banner2" onclick="TabsFun(7)">非紧急工单</div>
+                                <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
+                                <div class="banner2" onclick="TabsFun(11)">超期工单</div>
                             </div>
+
                         </div>
                         <div class="Satisfaction-warp-item-echarts">
 
                             <ul class="Workorder " id="WorkorderID">
-                                <div class="work-older-list" >
-                                    <div id="GongDanID"></div>
+                                <div class="work-older-list">
+                                    <div id="GongDanTitleID"></div>
+                                    <div id="GongDanIDBox" style="height: 200px;overflow: hidden">
+                                        <div id="GongDanID"></div>
+                                        <div id="GongDanIDCopy"></div>
+                                    </div>
+                                    <div id="ModalsmallID" style="width: 93%;
+    height: 81%;
+    position: absolute;
+    top: 3.333rem;
+    background: #082443;
+    margin-right: 2.667rem;
+    z-index: 999;display: none;overflow: hidden">
+                                        <div onclick="claerFuns()"
+                                             style="color: white;font-size: 15px;position: absolute;top: 0px;right: 10px">
+                                            x
+                                        </div>
+                                        <div id="ModalsmallRoomID">
+                                            <p style="font-size: 18px;color: white">qwewqewqe</p>
+                                            <div style="padding: 20px 40px;color: #d0c7c7;line-height:.4rem "></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
-    <div class="Modal-right" id="mapContainer">
+    <div class="Modal-right" style="position: relative">
+        <iframe id="mapContainer99" width="100%" height="100%" frameborder="0"></iframe>
         <div class="Modal-right-title">嘉定区12345事件热力图</div>
     </div>
 </div>
 </body>
+<script src="Js/intercity-map.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="../js/commonJs.js"></script>
+<script type="text/javascript" src="Js/ajaxPromise.js"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="Js/12345map.js"></script>
-
-<script type="text/javascript" src="Js/ajaxPromise.js"></script>
 <script type="text/javascript" src="Js/unit.js"></script>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="Js/jquery.barrager.min.js"></script>
 <script>
-    var ModelTime="月"
+    var basicFunTime = "年"
+    var ModelTime = "年"
+    var dropdownFunTime = "年"
+
+    window.onload = function () {
+        initMap()
+        ToOnload()
+        // canvaslineFun()
+    }
     document.getElementById("clearid").onclick = function () {
         window.parent.document.getElementById("ModalBox").style.display = "none";
+        console.log(window.parent.document.getElementById("ModalBox"))
     }
     $("#dropdown1 p").click(function () {
         $("#dropdown2 ul").hide();
@@ -1175,6 +416,8 @@
             $("#result").html("您选择了" + txt + "，值为：" + value);
         });
     })
+
+
     $("#dropdown p").click(function () {
         $("#dropdown1 ul").hide();
         $("#dropdown2 ul").hide();
@@ -1193,14 +436,26 @@
 
         });
     })
-    function  dropdownFun(value){
-        console.log('++++++++++++++++++++++++++++++++++++++')
 
-        ModelTime=value
-        ToOnload()
+    /**基本情况下拉选择*/
+    function basicFun(value) {
+        console.log('++++++++++++++++++++++++++++++++++++++')
+        basicFunTime = value
+        findbcNameType()
     }
-    window.onload = function () {
-        ToOnload()
+
+    /**满意下拉选择*/
+    function satisfiedFun(value) {
+        console.log('++++++++++++++++++++++++++++++++++++++')
+        ModelTime = value
+        TabsFun(3)
+    }
+
+    /**工单下拉选择*/
+    function dropdownFun(value) {
+        console.log('++++++++++++++++++++++++++++++++++++++')
+        dropdownFunTime = value
+        TabsFun(6)
     }
 
 

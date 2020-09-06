@@ -136,36 +136,6 @@ function getCardData() {
           jtzkArr[sct - 4].week = data[i].timeWeek;
           jtzkArr[sct - 4].month = data[i].timeMonth;
         }
-        /*if(sct==1){
-					zygyArr[0].today=data[i].timeDay;
-					zygyArr[0].week=data[i].timeWeek;
-					zygyArr[0].month=data[i].timeMonth;
-
-				}else if(sct==2){
-					zygyArr[1].today=data[i].timeDay;
-					zygyArr[1].week=data[i].timeWeek;
-					zygyArr[1].month=data[i].timeMonth;
-				}else if(sct==3){
-					zygyArr[2].today=data[i].timeDay;
-					zygyArr[2].week=data[i].timeWeek;
-					zygyArr[2].month=data[i].timeMonth;
-				}else if(sct==4){
-					/!*jtzkArr[0].today=data[i].timeDay;
-					jtzkArr[0].week=data[i].timeWeek;
-					jtzkArr[0].month=data[i].timeMonth;*!/
-				}else if(sct==5){
-					jtzkArr[1].today=data[i].timeDay;
-					jtzkArr[1].week=data[i].timeWeek;
-					jtzkArr[1].month=data[i].timeMonth;
-				}else if(sct==6){
-					jtzkArr[2].today=data[i].timeDay;
-					jtzkArr[2].week=data[i].timeWeek;
-					jtzkArr[2].month=data[i].timeMonth;
-				}else if(sct==7){
-					jtzkArr[3].today=data[i].timeDay;
-					jtzkArr[3].week=data[i].timeWeek;
-					jtzkArr[3].month=data[i].timeMonth;
-				}*/
       }
       addCard(zygyArr, ".zygy-warp"); //资源供应
       getGongJiaoData(); //获取公交数据
@@ -321,7 +291,8 @@ function getHjbzData() {
           hjbzArr[2].num = data.todayNum;
           hjbzArr[5].num = data.weekNum;
           hjbzArr[8].num = data.monthNum;
-          addHjbz(hjbzArr); //环境保障
+          shlj();
+         // addHjbz(hjbzArr); //环境保障
           hjbzFlag = true;
         },
         error: function () {
@@ -463,7 +434,8 @@ function addCard(arr, classStr) {
   var ListObj = $(classStr).find(".card-box");
   //var distanceH=boxObj.height()-ListObj.height();
   var distanceH = 50;
-  var distanceW = boxObj.width() - ListObj.width();
+ // var distanceW = boxObj.width() - ListObj.width();
+  var distanceW =100;
   var apartH = Math.floor(distanceH / (arr.length - 1));
   var apartW = Math.floor(distanceW / (arr.length - 1));
   var opacity =
@@ -474,6 +446,32 @@ function addCard(arr, classStr) {
     for (; i < 1; i++) {
       console.log(arr[0]);
       boxObj.append(
+          '<div class="card-box" style="opacity:' +
+          (1 - (arr.length - 1 - i) * 0.1 < opacity
+              ? opacity
+              : 1 - (arr.length - 1 - i) * 0.1) +
+          ";left:" +
+          apartW * i +
+          "px;top:" +
+          apartH * i +
+          'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">' +
+          arr[i].title +
+          '</div></div><div class="card-text"><p>线路总数<span class="num-font">' +
+          arr[i].xlnum +
+          "</span>" +
+          "条" +
+          '</p><p>当日计划班次<span class="num-font">' +
+          arr[i].jhnum +
+          "</span>" +
+          "个" +
+          '</p><p>当日完成班次<span class="num-font">' +
+          arr[i].sjnum +
+          "</span>" +
+          "个" +
+          "</p></div></div>"
+      );
+
+     /* boxObj.append(
         '<div class="card-box" style="width:20rem" style="opacity:' +
           (1 - (arr.length - 1 - i) * 0.1 < opacity
             ? opacity
@@ -507,7 +505,7 @@ function addCard(arr, classStr) {
           arr[i].smbczdl +
           "</span>%" +
           "</p></div></div>"
-      );
+      );*/
     }
   }
 
@@ -538,120 +536,28 @@ function addCard(arr, classStr) {
         "</p></div></div>"
     );
   }
-  var cardTime = "";
-  var cardTime1 = "";
-  timeInt();
+
   $(classStr).mouseenter(function () {
-    clearInterval(cardTime1);
-    clearInterval(cardTime);
+    if(classStr===".zygy-warp"){
+      zygyFlag=false;
+    }else if(classStr===".jtqk-warp"){
+      jtklFlag=false;
+    }
+   // clearInterval(cardTime);
   });
   $(classStr).mouseleave(function () {
     $(classStr).find(".card-box").removeClass("card-box-ac");
-    cardTime1 = setTimeout(function () {
-      timeInt();
-    }, 1000);
+    if(classStr===".zygy-warp"){
+      zygyFlag=true
+    }else if(classStr===".jtqk-warp"){
+      jtklFlag=true
+    }
   });
   $(classStr).on("click", ".card-box", function () {
     opacityNum = $(classStr).find(".card-box").index($(this));
     $(classStr).find(".card-box").removeClass("card-box-ac");
     $(this).addClass("card-box-ac");
   });
-  function timeInt() {
-    clearInterval(cardTime);
-    cardTime = setInterval(function () {
-      var aniList = $(classStr).find(".card-box");
-      if (aniList.length == arr.length) {
-        for (let i = aniList.length - 1; i > -1; i--) {
-          if (i == aniList.length - 1) {
-            aniList
-              .eq(i)
-              .animate(
-                { top: distanceH - aniList.height() + "px", opacity: 0 },
-                1000,
-                function () {
-                  aniList.eq(aniList.length - 1).remove();
-                }
-              );
-          } else {
-            aniList
-              .eq(i)
-              .animate(
-                {
-                  left: apartW * (i + 1),
-                  top: apartH * (i + 1),
-                  opacity: opacity + (i + 1) * 0.1,
-                },
-                1000
-              );
-          }
-        }
-        arr.unshift(arr.splice(arr.length - 1, 1)[0]);
-        if (arr[0].title === "公交车辆") {
-          /*boxObj.prepend('<div class="card-box" style="opacity:'+opacity+';left: 0px;' +
-						'top:0px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">'+arr[0].title+'</div></div>' +
-						'<div class="card-text"><p style="float:left;width: 8rem;">线路总数<span class="num-font">'+arr[0].xlnum+'</span>条'+'</p><p style="float:left;width:8rem">在线车辆<span class="num-font">'+arr[0].carnum+'</span>辆'+
-						'</p><p>当日计划班次<span class="num-font">'+arr[0].jhnum+'</span>辆'+'</p></div></div>')*/
-          boxObj.prepend(
-            '<div class="card-box" style="width:20rem" style="opacity:' +
-              (1 - (arr.length - 1 - i) * 0.1 < opacity
-                ? opacity
-                : 1 - (arr.length - 1 - i) * 0.1) +
-              ";left:" +
-              apartW * i +
-              "px;" +
-              "top:" +
-              apartH * i +
-              'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered" style="height:5.8rem">' +
-              arr[0].title +
-              "</div></div>" +
-              '<div class="card-text" style="height:6.5rem">' +
-              '<p style="float:left;padding-left: 0.5rem">线路总数<span class="num-font" style="width:3.5rem;margin-right: 0px">' +
-              arr[0].xlnum +
-              "</span>条 &nbsp;&nbsp;在线车辆" +
-              '<span class="num-font" style="width:2rem;margin-right: 0px">' +
-              arr[0].carnum +
-              "</span>辆" +
-              "</p>" +
-              '<p style="float:left;padding-left: 0.5rem">当日计划班次<span class="num-font" style="width:2rem;margin-right: 0px">' +
-              arr[0].jhnum +
-              '</span>个 &nbsp;&nbsp;当日完成班次<span class="num-font" style="width:2rem;margin-right: 0px">' +
-              arr[0].sjnum +
-              "</span>个 </p>" +
-              '<p style="float:left;padding-left: 0.5rem">昨日班次执行率<span class="num-font" style="width:3rem;margin-right: 0px">' +
-              arr[0].bczxl +
-              "</span>%" +
-              "</p>" +
-              '<p style="float:left;padding-left: 0.5rem">昨日首末班车准点率<span class="num-font" style="width:3rem;margin-right: 0px">' +
-              arr[0].smbczdl +
-              "</span>%" +
-              "</p></div></div>"
-          );
-        } else {
-          boxObj.prepend(
-            '<div class="card-box" style="opacity:' +
-              opacity +
-              ';left:0px;top:0px"><div class="card-title"><div class="text-centered">' +
-              arr[0].title +
-              '</div></div><div class="card-text"><p>昨日<span class="num-font">' +
-              arr[0].today +
-              "</span>" +
-              arr[0].unit +
-              '</p><p>本周<span class="num-font">' +
-              arr[0].week +
-              "</span>" +
-              arr[0].unit +
-              '</p><p>当月<span class="num-font">' +
-              arr[0].month +
-              "</span>" +
-              arr[0].unit +
-              "</p></div></div>"
-          );
-        }
-      } else {
-        // window.location.reload()
-      }
-    }, 5000);
-  }
 }
 var time = "";
 function addShbz(arr) {
@@ -691,101 +597,26 @@ function addShbz(arr) {
 
   $(".shbz-warp .text-box").mouseenter(function () {
     //alert(1)
-    clearInterval(time);
+    //clearInterval(time);
+    shbzFlag=false
   });
   $(".shbz-warp .text-box").mouseleave(function () {
     //alert(4)
-    time = setTimeout(function () {
+   /* time = setTimeout(function () {
       shbzInit(arr);
-    }, 5000);
+    }, 5000);*/
+   shbzFlag=true
   });
   //动态效果
-  shbzInit(arr);
+ // shbzInit(arr);
 }
 var startNum = 5;
-function shbzInit(arr) {
-  //alert("arr,length "+arr.length+" "+startNum)
-  if (arr.length > 5) {
-    var distance = $(".shbz-warp .text-list").height();
-    clearInterval(time);
-    time = setInterval(function () {
-      //alert($('.shbz-warp .text-list').length)
-      if ($(".shbz-warp .text-list").length == 5) {
-        if (arr[startNum].title === "养老机构") {
-          $(".shbz-warp .text-box").append(
-            '<div style="cursor: pointer;left:40%;top:100%;opacity:0;" class="text-list" onclick="oldPeopleHomePage()"><p>' +
-              arr[startNum].title +
-              '</p><p><span class="num-font">' +
-              arr[startNum].num +
-              "</span>" +
-              arr[startNum].unit +
-              "</p></div>"
-          );
-        } else {
-          $(".shbz-warp .text-box").append(
-            '<div style="left:40%;top:100%;opacity:0" class="text-list"><p>' +
-              arr[startNum].title +
-              '</p><p><span class="num-font">' +
-              arr[startNum].num +
-              "</span>" +
-              arr[startNum].unit +
-              "</p></div>"
-          );
-        }
 
-        for (let i = 0; i < $(".shbz-warp .text-list").length; i++) {
-          if (i == 0) {
-            $(".shbz-warp .text-list")
-              .eq(i)
-              .animate({ top: -distance, opacity: 0 }, 1000, function () {
-                $(".shbz-warp .text-list").eq(i).remove();
-              });
-          } else if (i == $(".shbz-warp .text-list").length - 1) {
-            $(".shbz-warp .text-list")
-              .eq(i)
-              .animate({ top: (i - 1) * 20 + "%", opacity: 1 }, 900);
-          } else {
-            $(".shbz-warp .text-list")
-              .eq(i)
-              .animate(
-                { left: (i - 1) * 10 + "%", top: (i - 1) * 20 + "%" },
-                900
-              );
-          }
-        }
-        startNum++;
-        //alert(arr.length+" "+startNum)
-        if (startNum >= arr.length) {
-          startNum = 0;
-        }
-      } else {
-        // window.location.reload()
-      }
-    }, 5000);
-  }
-}
-var hjbzTime;
 function addHjbz(arr) {
   $(".hjbz-warp .text-box").html("");
   var maxNum = arr.length > 3 ? 3 : arr.length;
   for (var i = 0; i < maxNum; i++) {
     if(arr[i].title==="生活垃圾处理"){
-     /* $(".hjbz-warp .text-box").append(
-          '<div style="left:' +
-          (10 - i * 5) +
-          "%;top:" +
-          i * 50 +
-          '%" class="text-list"><p style="cursor:pointer;" onclick="openGarbageClassification()" style="text-shadow: text-shadow: 0px 1px 0px #c0c0c0,  ' +
-          '            0.11rem 0.11rem 0px #b0b0b0,  '  +
-          '           0px 3px 0px #a0a0a0,    '  +
-          '             0px 4px 0px #909090,    '  +
-          '          0px 5px 10px rgba(0, 0, 0, 0.9);">' +
-          arr[i].title +
-          '</p><p><span class="num-font">' +
-          arr[i].num +
-          "</span>" +
-          arr[i].unit +
-          "</p></div>"*/
 
       $(".hjbz-warp .text-box").append(
           '<div style="left:' +
@@ -819,16 +650,18 @@ function addHjbz(arr) {
   }
 
   $(".hjbz-warp .text-box").mouseenter(function () {
-    clearInterval(hjbzTime);
+   // clearInterval(hjbzTime);
+    sthjFlag=false
   });
   $(".hjbz-warp .text-box").mouseleave(function () {
-    hjbzTime = setTimeout(function () {
+    sthjFlag=true
+   /* hjbzTime = setTimeout(function () {
       hjbzInit(arr);
-    }, 5000);
+    }, 5000);*/
   });
 
   //设置动态效果
-  hjbzInit(arr);
+ // hjbzInit(arr);
 }
 
 function getGongJiaoData() {
@@ -838,156 +671,87 @@ function getGongJiaoData() {
     type: "get",
     async: false,
     success: function (data) {
+      console.log(data,"公交+++++++++")
+      if( data.xlnum==null){
+        data.xlnum="--"
+      }
+      if( data.carnum==null){
+        data.carnum="--"
+      }
+      if( data.jhnum==null){
+        data.jhnum="--"
+      }
+      if( data.sjnum==null){
+        data.sjnum="--"
+      }
+      if( data.bczxl==null){
+        data.bczxl="--"
+      }
+      if( data.smbczdlz==null){
+        data.smbczdlz="--"
+      }
       jtzkArr[0].xlnum = data.xlnum;
-      jtzkArr[0].carnum = data.carnum;
+      //jtzkArr[0].carnum = data.carnum;
       jtzkArr[0].jhnum = data.jhnum;
       jtzkArr[0].sjnum = data.sjnum;
-      jtzkArr[0].bczxl = data.bczxl;
-      jtzkArr[0].smbczdl = data.smbczdlz;
+     // jtzkArr[0].bczxl = data.bczxl;
+     // jtzkArr[0].smbczdl = data.smbczdlz;
       addCard(jtzkArr, ".jtqk-warp"); //交通情况
     },
     error: function () {
+      jtzkArr[0].xlnum = "--";
+      jtzkArr[0].carnum = "--";
+      jtzkArr[0].jhnum = "--";
+      jtzkArr[0].sjnum = "--";
+      jtzkArr[0].bczxl = "--";
+      jtzkArr[0].smbczdl = "--";
       addCard(jtzkArr, ".jtqk-warp"); //交通情况
     },
   });
 }
 
-//环境保障动画效果
-var hjbzNum = 3;
-function hjbzInit(arr) {
-  if (arr.length > 3) {
-    var distance = $(".hjbz-warp .text-list").height();
-    clearInterval(hjbzTime);
-    hjbzTime = setInterval(function () {
-      if ($(".hjbz-warp .text-list").length == 3) {
-       /* $(".hjbz-warp .text-box").append(
-          '<div style="left:15%;top:0%;opacity:0" class="text-list"><p style="cursor:pointer;" onclick="openGarbageClassification()" style="text-shadow: 0px 1px 0px #c0c0c0,  ' +
-            '0.11rem 0.11rem 0px #b0b0b0,   ' +
-            ' 0px 3px 0px #a0a0a0,    ' +
-            ' 0px 4px 0px #909090,    ' +
-            ' 0px 5px 10px rgba(0, 0, 0, 0.9);">' +
-            arr[hjbzNum].title +
-            '</p><p><span class="num-font">' +
-            arr[hjbzNum].num +
-            "</span>" +
-            arr[hjbzNum].unit +
-            "</p></div>"
-        );*/
+//生活垃圾实时获取
+function shlj(){
 
-        $(".hjbz-warp .text-box").append(
-            '<div style="left:15%;top:0%;opacity:0" class="text-list">' +
-            ' <img style="cursor:pointer;margin-top: 0.5rem;width:6rem" onclick="openGarbageClassification()" src="images/shlj.png" />'+
-            '<p><span class="num-font">' +
-            arr[hjbzNum].num +
-            "</span>" +
-            arr[hjbzNum].unit +
-            "</p></div>"
-        );
-        $(".hjbz-warp .text-box").append(
-          '<div style="left:10%;top:50%;opacity:0" class="text-list"><p>' +
-            arr[hjbzNum + 1].title +
-            '</p><p><span class="num-font">' +
-            arr[hjbzNum + 1].num +
-            "</span>" +
-            arr[hjbzNum + 1].unit +
-            "</p></div>"
-        );
-        $(".hjbz-warp .text-box").append(
-          '<div style="left:5%;top:100%;opacity:0" class="text-list"><p>' +
-            arr[hjbzNum + 2].title +
-            '</p><p><span class="num-font">' +
-            arr[hjbzNum + 2].num +
-            "</span>" +
-            arr[hjbzNum + 2].unit +
-            "</p></div>"
-        );
-        for (let i = 0; i < $(".hjbz-warp .text-list").length; i++) {
-          if (i == 0) {
-            let num = i;
-            $(".hjbz-warp .text-list")
-              .eq(num)
-              .animate({ top: -distance, opacity: 0 }, 500, function () {
-                $(this).remove();
-              });
-            //alert(0)
-          }
-          if (i == 1) {
-            let num = i;
-            $(".hjbz-warp .text-list")
-              .eq(num)
-              .animate({ top: -distance * 2, opacity: 0 }, 500, function () {
-                $(this).remove();
-              });
-            //alert(1)
-          }
-
-          if (i == 2) {
-            let num = i;
-            $(".hjbz-warp .text-list")
-              .eq(num)
-              .animate(
-                {
-                  left: 10 - (num - 2) * 15 + "%",
-                  top: (num - 2) * 50 + "%",
-                  opacity: 1,
-                },
-                300,
-                function () {
-                  $(this).animate(
-                    { top: -distance * 2, opacity: 0 },
-                    500,
-                    function () {
-                      $(this).remove();
-                    }
-                  );
-                }
-              );
-          } /*else if(i==1){
-						let num=i;
-						$('.hjbz-warp .text-list').eq(num).animate({left:(10-(num-1)*10)+'%',top:100+'%',opacity:1},500,function(){
-							$(this).animate({left:(10-(num-2)*5)+'%',top:(num-1)*0+'%',opacity:1},500)
-						})
-					}*/ else {
-            let num = i;
-            $(".hjbz-warp .text-list")
-              .eq(num)
-              .animate(
-                {
-                  left: 20 - (num - 1) * 5 + "%",
-                  top: (num - 2) * 50 + "%",
-                  opacity: 1,
-                },
-                500,
-                function () {
-                  $(this).animate(
-                    {
-                      left: 25 - (num - 1) * 6 + "%",
-                      top: (num - 3) * 50 + "%",
-                      opacity: 1,
-                    },
-                    500
-                  );
-                }
-              );
-          }
-        }
-        hjbzNum += 3;
-        if (hjbzNum >= arr.length) {
-          hjbzNum = 0;
-        }
-      } else {
-        // window.location.reload()
-      }
-    }, 5000);
+  let para={
+    url: GarBage_URl + '/sh/garbageSort/getGarbageStreetProduce',
+    async: true,
+    type: 'get',
+    dataType: 'JSON',
   }
+  ajaxPromise(para).then(res=>{
+    if (res.status === 'OK') {
+      para = ''
+      let dryGarbage = []
+      let recoverable = []
+      res.data.map(item => {
+        dryGarbage.push(item.dryGarbage.split(item.unit)[0].trim())
+        recoverable.push(parseInt(item.wetGarbageDwe.split(item.unit)[0].trim()) + parseInt(item.wetGarbageKit.split(item.unit)[0].trim()))
+      })
+
+      let recoverable1 =eval(dryGarbage.join("+")) / dryGarbage.length +eval(recoverable.join("+")) / recoverable.length+403
+      let Ganlanumber = recoverable1.toFixed(2)
+      //sthj(hjbzArr,Ganlanumber);
+      hjbzArr[0].num=Ganlanumber
+      addHjbz(hjbzArr);
+
+    }
+  }).catch(err => {
+    addHjbz(hjbzArr);
+    //console.log("第一个请求失败");
+  })
 }
 
+//环境保障动画效果
+var hjbzNum = 3;
+
+//养老大屏
 function oldPeopleHomePage() {
-  $("#restShow").show();
+  $("#RestModal").show();
 }
 
 function closeOldPeopleHome() {
-  $("#restShow").hide();
+  $("#RestModal").hide();
 }
 
 

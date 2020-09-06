@@ -1,3 +1,95 @@
+*
+{
+	padding: 0;
+	margin: 0;
+}
+html,body
+{
+	height: 100%;
+}
+ul,li
+{
+    text-decoration: none;
+    list-style-type: none;
+}
+a
+{
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+i
+{
+    font-style: normal;
+}
+.clear:after
+{
+  	content: ".";
+  	display: block;
+  	font-size: 0;
+  	height: 0;
+  	clear: both;
+}
+.left
+{
+    float: left;
+}
+.right
+{
+    float: right;
+}
+.text-centered
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:2.3rem;
+    alignment: center;
+}
+img
+{
+    width: 100%;
+    display: block;
+}
+/*修改 滚动条 下面 的 宽度*/
+*::-webkit-scrollbar {
+  	width: 10px;
+  	height: 10px;
+	float: left;
+}
+/*修改 滚动条的 下面 的 样式*/
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+/*修改 滑块*/ 
+*::-webkit-scrollbar-thumb {
+  	background-color: #071037;
+  	border-radius: 7px;
+}
+
+.clear::after{
+    content: ".";
+    display: block;
+    font-size: 0;
+    height:0;
+    clear:both;
+}
+.clear{
+    float: left;
+    width:5.6rem;
+    height:2.1rem;
+    margin-left: 2rem;
+}
+
+.rest-h3-info{
+  font-size: 1rem;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #061839;
+  z-index: 999999;
+}
 .rest-www{
 	position: absolute;
   background-color: #1D2B56;
@@ -27,7 +119,7 @@
 .rest-box{
 	position: absolute;
   background-color: #1D2B56;
-  top: 5.8rem;
+  top: 5.1rem;
   left: 34.6rem;
   width: 130.8rem;
   height: 49.35rem;
@@ -44,7 +136,14 @@
   display: flex;
   justify-content: space-between;
 }
-
+.Modal-left-header{
+  font-size: 1.517rem;
+  color: #1fe0e9;
+  font-weight: 500;
+  /* padding: 0.833rem; */
+  padding-bottom: 0px;
+  text-align: center;
+}
 .rest-box-left{
   width: 50%;
   height: 100%;
@@ -93,7 +192,7 @@
   margin-top: 0.98rem;
 }
 .rest-top-box,.rest-foot-box,.rest-foot-box2{
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
 }
 .rest-info-lists {
   width: 35%;
@@ -166,7 +265,7 @@
   width: 130.8rem;
   height: 49.35rem;
   z-index: 11;
-  /* background: url(../images/imgs/bg-img.png) no-repeat; */
+  /* background: url(../../images/imgs/bg-img.png) no-repeat; */
 }
 
 .fade-transition {
@@ -229,7 +328,7 @@
 }
 .z-prev{
   position:absolute;
-  top:22%;
+  top:26%;
   left:2%;
   /* box-shadow:0px 0px 5px yellow; */
   z-index:66;
@@ -239,7 +338,7 @@
 }
 .z-next{
   position:absolute;
-  top:22%;
+  top:26%;
   left: 47%;
   z-index:66;
   cursor:pointer;
@@ -284,14 +383,14 @@
 .echarts1 {
   height: 230px;
   width: 680px;
-  background-image: url(../images/imgs/echarts-bg.png);
+  background-image: url(../../images/imgs/echarts-bg.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .echarts2 {
   height: 230px;
   width: 680px;
-  background-image: url(../images/imgs/echarts-bg.png);
+  background-image: url(../../images/imgs/echarts-bg.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -302,7 +401,7 @@
 }
 .ecLists{
   display: flex;
-  background-image: url(../images/imgs/echarts-bg.png);
+  background-image: url(../../images/imgs/echarts-bg.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -313,31 +412,32 @@
   text-align: right;
   width: 62%;
   padding-right: 1rem;
-  background-image: url(../images/imgs/echarts-bg.png);
+  background-image: url(../../images/imgs/echarts-bg.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  padding-top: 0.8rem;
 }
-.switchShow1 {
+.switchShow1,.switchShow3 {
   width: 8rem;
   height: 2.35rem;
   margin-top: 0.68rem; 
-   background-image: url(../images/imgs/rest-top-left.png);
+   background-image: url(../../images/imgs/rest-top-left.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: 99;
   text-align: center;
-  line-height: 1.75rem;
+  line-height: 2.15rem;
 }
-.switchShow2 {
+.switchShow2,.switchShow4 {
   width: 8rem;
   height: 2.35rem;
   margin-top: 0.68rem; 
-   background-image: url(../images/imgs/rest-top-right.png);
+   background-image: url(../../images/imgs/rest-top-right.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: 99;
   text-align: center;
-  line-height: 1.75rem;
+  line-height: 2.15rem;
 }
 
 .mapListActive {
@@ -364,4 +464,21 @@
 #dropdown2 ul li{height:24px; line-height:24px; text-indent:10px}
 #dropdown2 ul li a{display:block; height:24px; color: #ffffff; text-decoration:none}
 #dropdown2 ul li a:hover{background:#c6dbfc; color: #ffffff
+}
+
+
+.main-title .rest-title-bg {
+  height: 2rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #226CD2;
+  opacity: 0.28;
+}
+
+.vital-signs .title-box h3 {
+  font-size: 1rem;
 }

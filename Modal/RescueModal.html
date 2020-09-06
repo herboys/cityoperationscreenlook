@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../css/pubilic.css" />
+<link rel="stylesheet" type="text/css" href="css/gridModal.css" />
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
+<script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+
+<body>
+  <div id="app2" class="Modal-warp">
+    <div class="Modal-left">
+      <div style="padding: 0px 20px;">
+        <h1 style="margin: 1rem 0 1rem 0 ;color: #fff;text-align: center;">全区120医疗信息汇总</h1>
+        <div class="Modal-left-item">
+          <div class="FX_header">
+            <div id="dropdown">
+              <p style="border: 1px solid #1dd6df; color: #1dd6df;padding-right: 0;">
+               七月<span>></span></p>
+              <ul style="border: 1px solid #1dd6df; color: #1dd6df;">
+                <li><a href="#" rel="1">今年</a></li>
+                <li><a href="#" rel="2">今月</a></li>
+                <li><a href="#" rel="3">今日</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="Satisfaction-warp">
+            <div class="Satisfaction-warp-item-all">
+              <div class="header" style="margin-top: 0px;">
+                <a class="line"></a>
+                <span>话务量</span>
+                <a class="line1"></a>
+              </div>
+              <!-- <div class="Satisfaction-warp-item-header">
+                <div class="Satisfaction-warp-item-header-left">
+                </div>
+              </div> -->
+              <div class="Satisfaction-warp-item-echarts-phone">
+                <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
+                  <div id="ecLivePhone" style="width: 1112px;height: 295px"></div>
+                </div>
+              </div> 
+          
+            
+            </div>
+         
+          </div>
+        </div>
+        <div class="Modal-left-item" >
+          <div class="Satisfaction-warp">
+            <div class="Satisfaction-warp-item">
+              <div class="header">
+                <a class="line"></a>
+                <span>救护车出车信息</span>
+                <a class="line1"></a>
+              </div>
+            
+              <div class="Satisfaction-warp-item-echarts" >
+                <div style="padding: 2rem 3rem 1rem 3rem;overflow-y: auto;color: #fff;">
+                  <div class="table-box linkage-scroll-table">
+                    <div class="table-list table-title ">
+                      <p style="width: 35%;padding-left: 5%;">出车时间</p>
+                      <p style="width: 35%">车辆编号</p>
+                    </div>
+                    <div class="list-warp">
+                      <div class="list-box"></div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+          
+            
+
+            </div>
+            <div class="Satisfaction-warp-item">
+              <div class="header" >
+                <a class="line"></a>
+                <span>救护车信息状态</span>
+                <a class="line1"></a>
+              </div>
+          
+              <div class="Satisfaction-warp-item-echarts" >
+                <div style="padding: 2rem 3rem 1rem 3rem;overflow-y: auto;color: #fff;">
+                  <div class="table-box linkage-scroll-table2">
+                    <div class="table-list table-title ">
+                      <p style="width: 35%;padding-left: 5%;">车辆位置</p>
+                      <p style="width: 35%">车辆编号</p>
+                      <p style="width: 20%">任务状态</p>
+                    </div>
+                    <div class="list-warp">
+                      <div class="list-box"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <iframe id="mapContainer2" class="map-box" frameborder="no" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+  </div>
+</body>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="Js/echartsPackage.js"></script>
+<script src="Js/intercity-map.js" type="text/javascript" charset="utf-8"></script>
+<script src="Js/intercitymap-package.js" type="text/javascript" charset="utf-8"></script>
+<script src="Js/rescueModal.js" type="text/javascript" charset="utf-8"></script>
+<script>
+  $(function () {
+
+          $("#dropdown p").click(function () {
+            var ul = $("#dropdown ul");
+            if (ul.css("display") == "none") {
+              ul.slideDown("fast");
+            } else {
+              ul.slideUp("fast");
+            }
+            $("#dropdown ul li a").click(function () {
+              var txt = $(this).text();
+              $("#dropdown p").html(txt);
+              var value = $(this).attr("rel");
+              $("#dropdown ul").hide();
+              $("#result").html("您选择了" + txt + "，值为：" + value);
+            });
+          });
+          $("#dropdown2 p").click(function () {
+            var ul = $("#dropdown2 ul");
+            if (ul.css("display") == "none") {
+              ul.slideDown("fast");
+            } else {
+              ul.slideUp("fast");
+            }
+            $("#dropdown2 ul li a").click(function () {
+              var txt = $(this).text();
+              $("#dropdown2 p").html(txt);
+              var value = $(this).attr("rel");
+              $("#dropdown2 ul").hide();
+              $("#result").html("您选择了" + txt + "，值为：" + value);
+            });
+          });
+
+      });
+  window.onload = function () {
+    let xData =  ['08-01', '08-02', '08-03', '08-04', '08-05', '08-06','08-07', '08-08', '08-09', '08-10',
+     '08-11', '08-12', '08-13', '08-14', '08-15', '08-16','08-17', '08-18', '08-19', '08-20',
+     '08-21', '08-22', '08-23', '08-24', '08-25', '08-26','08-27', '08-28', '08-29', '08-30','08-31'];
+    let yData = [4800, 4400, 4600, 4800, 4200, 3900,4800, 4400, 4600, 4800, 4200, 3900,4800, 4400, 4600, 4800, 4200, 3900,4800, 4400, 4600, 4800, 4200, 3900,4800, 4400, 4600, 4800, 4200, 3900,4600];
+    MyEcharts2.initChart(
+      MyEcharts2.EchartsOption.LineChartPhone('话务量',"16, 90, 113",xData,yData),
+      "ecLivePhone"
+    );
+ 
+  };
+
+  var app = new Vue({
+    el: "#app2",
+    data() {
+      return {
+        switchShow1: true,
+        switchShow2: false,
+        switchShow3: false,
+        xAxisData:[],
+        yAxisData:[],
+        yAxisData2:[],
+        attackSourcesName:[],
+        attackSourcesName2:[]
+      };
+    },
+    methods: {
+      
+    },
+    created(){
+      
+    }
+  });
+</script>
+
+</html>

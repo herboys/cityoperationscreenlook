@@ -36,8 +36,8 @@ function EndFacilities() {
                 para += ' <div class="GarBage-child-item GarBage-child-end">'
                     + '<img src="../Modal/images/icon_.png ">'
                     + '   <div>'
-                    + '  <p style="font-size: 14px">' + res.data[i].pointName + '</p>'
-                    + '<span style="font-size: 14px">' + res.data[i].connts + '</span>'
+                    + '  <p style="font-size: 1.167rem">' + res.data[i].pointName + '</p>'
+                    + '<span style="font-size: 1.167rem">' + res.data[i].connts + '</span>'
                     + '</div>'
                     + ' </div>'
             }
@@ -231,7 +231,7 @@ function getGarbageCarLoading() {
                 let ul1 = document.getElementById("OnDutyToday");
                 let ul2 = document.getElementById("OnDutyTodayCopy");
                 let rollbox = document.getElementById("OnDutyToday_box");
-                rolls(20, ul1, ul2, rollbox)
+                rolls(50, ul1, ul2, rollbox)
                 para = ''
                 res.data[0].garbageCarLoading.forEach(e => {
                     para += `<ul style="color: white">
@@ -247,7 +247,7 @@ function getGarbageCarLoading() {
                 ul1 = document.getElementById("OnDutyToday1");
                  ul2 = document.getElementById("OnDutyTodayCopy1");
                  rollbox = document.getElementById("OnDutyToday_box1");
-                rolls1(20, ul1, ul2, rollbox)
+                rolls1(50, ul1, ul2, rollbox)
 
 
             }

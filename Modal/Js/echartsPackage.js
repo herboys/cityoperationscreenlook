@@ -152,34 +152,35 @@ var MyEcharts2 = {
                     show: false
                 },
                 grid: {
-                    left: 180,
-                    right: 80
+                    left: 110,
+                    right: 65
+              
                 },
-                // dataZoom: [{
-                //     type: 'slider',
-                //     yAxisIndex: [0,1],
-                //     zoomLock: true,
-                //     width: 10,
-                //     handleSize: 0,
-                //     showDetail: false,
-                //     start: 0,
-                //     end: 50,
-                //     handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
-                //     handleSize: '110%',
-                //     handleStyle: {
-                //         color: "#d3dee5",
-                //     },
-                //     borderColor: "#90979c"
-                // }, {
-                //     type: 'inside',
-                //     id: 'insideY',
-                //     yAxisIndex: 0,
-                //     start: 0,
-                //     end: 50,
-                //     zoomOnMouseWheel: false,
-                //     moveOnMouseMove: true,
-                //     moveOnMouseWheel: true
-                // }],
+                dataZoom: [{
+                    type: 'slider',
+                    yAxisIndex: [0,1],
+                    zoomLock: true,
+                    width: 10,
+                    handleSize: 0,
+                    showDetail: false,
+                    start: 0,
+                    end: 50,
+                    handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                    handleSize: '110%',
+                    handleStyle: {
+                        color: "#d3dee5",
+                    },
+                    borderColor: "#90979c"
+                }, {
+                    type: 'inside',
+                    id: 'insideY',
+                    yAxisIndex: 0,
+                    start: 0,
+                    end: 50,
+                    zoomOnMouseWheel: false,
+                    moveOnMouseMove: true,
+                    moveOnMouseWheel: true
+                }],
                 xAxis: {
                     type: 'value',
 
@@ -217,7 +218,8 @@ var MyEcharts2 = {
                     },
                     data: attackSourcesName,
                     axisLabel: {
-                        margin: 160,
+                        interval:0 ,  //控制是否全部显示
+                        margin: 90,
                         fontSize: 16,
                         align: 'left',
                         color: '#333',
@@ -257,32 +259,32 @@ var MyEcharts2 = {
                             title1: {
 
                                 color: '#fff',
-                                width: 90,
-                                align: 'center',
+                                width: 30,
+                                align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
                             },
                             title2: {
 
                                 color: '#fff',
-                                width: 90,
-                                align: 'center',
+                                width: 30,
+                                align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
                             },
                             title3: {
 
                                 color: '#fff',
-                                width: 90,
-                                align: 'center',
+                                width: 30,
+                                align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
                             },
                             title: {
 
                                 color: '#fff',
-                                width: 90,
-                                align: 'center',
+                                width: 30,
+                                align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
                             }
@@ -374,18 +376,7 @@ var MyEcharts2 = {
             var dataArr = [
                 {
                     value: [4300, 10000, 24000, 30000, 50000, 19000],
-                    // name: legendData[2],
-                    itemStyle: {
-                        normal: {
-                            lineStyle: {
-                                color: '#00FFB4',
-                                // shadowColor: '#4BFFFC',
-                                // shadowBlur: 10,
-                            },
-                            shadowColor: '#00FFB4',
-                            shadowBlur: 10,
-                        },
-                    },
+                  
                      areaStyle: {
                             normal: { // 单项区域填充样式
                                 color: {
@@ -416,23 +407,23 @@ var MyEcharts2 = {
             ];
             var colorArr = ['#00D7FF','#C000FF', '#00FFB4']; //颜色
             option = {
-                backgroundColor: '#101736',
-                "title": {
-                    "text": "",
-                    x: "4%",
-                    width: 173,
-                    height: 163,
-                    fontSize: 22,
-                    textStyle: {
-                        color: '#fff',
-                        fontSize: '22'
-                    },
-                    subtextStyle: {
-                        color: '#90979c',
-                        fontSize: '16',
+                // backgroundColor: '#101736',
+                // "title": {
+                //     "text": "",
+                //     x: "4%",
+                //     width: 173,
+                //     height: 163,
+                //     fontSize: 22,
+                //     textStyle: {
+                //         color: '#fff',
+                //         fontSize: '22'
+                //     },
+                //     subtextStyle: {
+                //         color: '#90979c',
+                //         fontSize: '16',
             
-                    },
-                },
+                //     },
+                // },
                 color: colorArr,
                 legend: {
                     orient:'vertical',
@@ -446,16 +437,42 @@ var MyEcharts2 = {
                     textStyle: {
                         fontSize: 14,
                         color: '#fff',
+                        padding: [2,2]
                     },
                 },
                 radar: {
                     // shape: 'circle',
                     name: {
+                        formatter:function(value)  
+                        {  
+                         
+                            var ret = "";//拼接加\n返回的类目项  
+                            var maxLength = 2;//每项显示文字个数  
+                            var valLength = value.length;//X轴类目项的文字个数  
+                            var rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数  
+                            if (rowN > 1)//如果类目项的文字大于3,  
+                            {  
+                                for (var i = 0; i < rowN; i++) {  
+                                    var temp = "";//每次截取的字符串  
+                                    var start = i * maxLength;//开始截取的位置  
+                                    var end = start + maxLength;//结束截取的位置  
+                                    //这里也可以加一个是否是最后一行的判断，但是不加也没有影响，那就不加吧  
+                                    temp = value.substring(start, end) + "\n";  
+                                    ret += temp; //凭借最终的字符串  
+                                }  
+                                return ret;  
+                            }  
+                            else {  
+                                return value;  
+                            }  
+                        } ,
+
                         textStyle: {
                             color: '#fff',
-                            fontSize: 16
+                            fontSize: 8,
                         },
                     },
+                    nameGap: '4',
                     indicator: indicator,
                     splitArea: { // 坐标轴在 grid 区域中的分隔区域，默认不显示。
                         show: true,
@@ -474,6 +491,7 @@ var MyEcharts2 = {
                             width: 1, // 分隔线线宽
                         }
                     },
+                    radius: 50
                 },
                 series: [{
                     type: 'radar',
@@ -508,9 +526,9 @@ var MyEcharts2 = {
                     }
                 },
                 grid: {
-                    left: 80,
+                    left: 40,
                     top: 20, //设置条形图的边距
-                    right: 80,
+                    right: 40,
                     bottom: 20
                 },
                 yAxis: [{
@@ -563,7 +581,7 @@ var MyEcharts2 = {
                                 formatter: "{b}",
                                 textStyle: {
                                     color: "#fff",
-                                    fontSize: 14
+                                    fontSize: 10    
                                 }
                             }
                         },
@@ -641,228 +659,450 @@ var MyEcharts2 = {
             return option
         },
         PieChart: function (name, pieData) {
-            var data = pieData
-            arrName = getArrayValue(data, "name");
-            arrValue = getArrayValue(data, "value");
-            sumValue = 1000;
-            objData = array2obj(data, "name");
-            optionData = getData(data)
-
-            function getArrayValue(array, key) {
-                var key = key || "value";
-                var res = [];
-                if (array) {
-                    array.forEach(function (t) {
-                        res.push(t[key]);
-                    });
-                }
-                return res;
-            }
-
-            function array2obj(array, key) {
-                var resObj = {};
-                for (var i = 0; i < array.length; i++) {
-                    resObj[array[i][key]] = array[i];
-                }
-                return resObj;
-            }
-
-            function getData(data) {
-                var res = {
-                    series: [{
-                            name: "大环",
-                            type: 'gauge',
-                            splitNumber: 15,
-                            radius: '82%',
-                            center: ['50%', '55%'],
-                            startAngle: 90,
-                            endAngle: -269.9999,
-                            axisLine: {
-                                show: false,
-                                lineStyle: {
-                                    color: [
-                                        [1, '#1f59a7']
-                                    ]
-                                }
-                            },
-                            axisTick: {
-                                show: false
-                            },
-                            splitLine: {
-                                show: true,
-                                length: 32,
-                                lineStyle: {
-                                    color: 'auto',
-                                    width: 3.5
-                                }
-                            },
-                            axisLabel: {
-                                show: false
-                            },
-                            detail: {
-                                show: false
-                            }
-                        },
-                        {
-                            name: '小环',
-                            type: 'gauge',
-                            splitNumber: 15,
-                            radius: '78%',
-                            center: ['50%', '55%'],
-                            startAngle: 90,
-                            endAngle: -269.9999,
-                            axisLine: {
-                                show: false
-                            },
-                            axisTick: {
-                                show: true,
-                                lineStyle: {
-                                    color: '#1f59a7',
-                                    width: 3
-                                },
-                                length: 20,
-                                splitNumber: 5
-                            },
-                            splitLine: {
-                                show: false
-                            },
-                            axisLabel: {
-                                show: false
-                            },
-                            detail: {
-                                show: false
-                            }
-                        },
-                    ],
-                    yAxis: []
-                };
-                for (let i = 0; i < data.length; i++) {
-                    res.series.push({
-                        name: '学历',
-                        type: 'pie',
-                        clockWise: true,
-                        z: 2,
-                        hoverAnimation: false,
-                        radius: [73 - i * 15 + '%', 68 - i * 15 + '%'],
-                        center: ["50%", "55%"],
-                        label: {
-                            show: true,
-                            formatter: '{d}%',
-                            color: 'RGB(246,175,101)',
-                            fontSize: 25,
-                            position: 'inside'
-                        },
-                        labelLine: {
-                            show: false
-                        },
-                        data: [{
-                            value: data[i].value,
-                            name: data[i].name
-                        }, {
-                            value: sumValue - data[i].value,
-                            name: '',
-                            itemStyle: {
-                                color: "rgba(0,0,0,0)",
-                                borderWidth: 0
-                            },
-                            tooltip: {
-                                show: false
-                            },
-                            label: {
-                                show: false
-                            },
-                            hoverAnimation: false
-                        }]
-                    });
-                    res.series.push({
-                        name: '背景线',
-                        type: 'pie',
-                        silent: true,
-                        z: 1,
-                        clockWise: true,
-                        hoverAnimation: false,
-                        radius: [71 - i * 15 + '%', 69 - i * 15 + '%'],
-                        center: ["50%", "55%"],
-                        label: {
-                            show: false
-                        },
-                        itemStyle: {
-                            label: {
-                                show: false,
-                            },
-                            labelLine: {
-                                show: false
-                            },
-                            borderWidth: 5,
-                        },
-                        data: [{
-                            value: 100,
-                            itemStyle: {
-                                color: "RGB(12,64,128)",
-                                borderWidth: 0
-                            },
-                            tooltip: {
-                                show: false
-                            },
-                            hoverAnimation: false
-                        }]
-                    });
-                    res.yAxis.push(data[i].name);
-                }
-                return res;
-            }
-
-            option = {
-                backgroundColor: 'RGB(8,20,67)',
-                color: [{
-                    type: 'linear',
-                    x: 0,
-                    y: 0,
-                    x2: 1,
-                    y2: 1,
-                    colorStops: [{
-                        offset: 0,
-                        color: 'rgba(10,31,95,1)'
-                    }, {
-                        offset: 1,
-                        color: 'rgba(1,232,254,1)'
-                    }],
-                    global: false
-                }],
-                grid: {
-                    top: '16%',
-                    bottom: '54%',
-                    left: "50%",
-                    containLabel: false
+            var placeHolderStyle = {
+                normal: {
+                    color: 'rgba(124,228,245,0.2)',
                 },
-                yAxis: [{
-                    type: 'category',
-                    inverse: true,
-                    z: 3,
-                    axisLine: {
-                        show: false
+            };
+            option = {
+                // backgroundColor:'rgba(2, 120, 200, 1)',
+                title: {
+                    text: '',
+                    textStyle: {
+                        fontWeight: 'bold',
+                        fontSize: 14,
+                        color: '#0ab7ff'
                     },
-                    axisTick: {
-                        show: false
+                    left: '20%',
+                    top: '25'
+                },
+                tooltip: {
+                    show: true,
+                    formatter: "{a}：{d}%"
+                },
+                legend: {
+                    orient: '',
+                    itemGap: 12,
+                    left: '5%',
+                    top: 'center',
+                    textStyle: {
+                        color: "#fff",
                     },
-                    axisLabel: {
-                        interval: 0,
-                        inside: false,
-                        textStyle: {
-                            color: "RGB(78,184,252)",
-                            fontSize: 25,
+                    data: ['', '', '']
+                },
+            
+                series: [{
+                        name: '销量2',
+                        type: 'pie',
+                        clockWise: true,
+                        hoverAnimation: false, //鼠标移入变大
+                        radius: ['50%', '60%'],
+                        center:['35%', '50%'],
+                        itemStyle: {
+                            normal: {
+                                color: 'rgb(32, 209, 128)',
+                                label: {
+                                    show: false
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            }
                         },
-                        show: true
+            
+                        data: [{
+                                value: 60,
+                                name: 'invisible',
+                                itemStyle: placeHolderStyle
+                            },
+                            {
+                                value: 40,
+                                name: '销量2'
+                            }
+                        ]
                     },
-                    data: optionData.yAxis
-                }],
-                xAxis: [{
-                    show: false
-                }],
-                series: optionData.series
+                    {
+                        name: '销量1',
+                        type: 'pie',
+                        clockWise: true,
+                        hoverAnimation: false, //鼠标移入变大
+                        radius: ['35%', '45%'],
+                        center:['35%', '50%'],
+                        itemStyle: {
+                            normal: {
+                                color: 'rgb(0, 147, 255)',
+                                label: {
+                                    show: false
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            }
+                        },
+            
+                        data: [{
+                                value: 70,
+                                name: 'invisible',
+                                itemStyle: placeHolderStyle
+                            },
+                            {
+                                value: 10,
+                                name: '销量1'
+                            }
+                        ]
+                    }
+            
+                ]
             };
             return option
-        }
+        },
+
+        BarChart: function (name, xAxisData, yAxisData,yAxisData2) {
+            // var xAxisData = xAxisData;
+            // var yAxisData = yAxisData;
+            option = {
+                /*  grid: {
+                    top: "20%",
+                    bottom: "12%"
+                  },*/
+                //   backgroundColor:"#0f375f",
+                  tooltip: {
+                    trigger: "axis",
+                    axisPointer: {
+                      type: "shadow",
+                      label: {
+                        show: true
+                      }
+                    }
+                  },
+                  legend: {
+                    data: ["处置率", "上报量", "未处置"],
+                    top: "2%",
+                    right:'10',
+                    textStyle: {
+                      color: "rgba(250,250,250,0.6)",
+                      fontSize: 16
+                    }
+                  },
+                  xAxis: {
+                    data: xAxisData,
+                    axisLine: {
+                      show: true, //隐藏X轴轴线
+                      lineStyle: {
+                        color: '#26D9FF',
+                        width:2
+                      }
+                    },
+                    axisTick: {
+                      show: true //隐藏X轴刻度
+                    },
+                    axisLabel: {
+                      show: true,
+                      textStyle: {
+                        color: "rgba(250,250,250,0.6)", //X轴文字颜色
+                        fontSize: 16
+                      }
+                    },
+                    splitArea: {
+                      show: true,
+                      areaStyle: {
+                        color: ["rgba(250,250,250,0.1)", "rgba(250,250,250,0)"]
+                      }
+                    }
+                  },
+                  yAxis: [{
+                    type: "value",
+                    /*name: "亿元",*/
+                    nameTextStyle: {
+                      color: "#ebf8ac",
+                      fontSize: 16
+                    },
+                    splitLine: {
+                      show: false
+                    },
+                    axisTick: {
+                      show: true
+                    },
+                    axisLine: {
+                      show: true,
+                      lineStyle: {
+                        color: '#26D9FF',
+                        width:2
+                      }
+                    },
+                    axisLabel: {
+                      show: true,
+                      textStyle: {
+                        color: "rgba(250,250,250,0.6)",
+                        fontSize: 16
+                      }
+                    },
+                
+                  },
+                    {
+                      type: "value",
+                      /*name: "同比",*/
+                      nameTextStyle: {
+                        color: "#ebf8ac",
+                        fontSize: 16
+                      },
+                      position: "right",
+                      splitLine: {
+                        show: false
+                      },
+                      axisTick: {
+                        show: false
+                      },
+                      axisLine: {
+                        show: false
+                      },
+                      axisLabel: {
+                        show: true,
+                        formatter: "{value} %", //右侧Y轴文字显示
+                        textStyle: {
+                          color: "rgba(250,250,250,0.6)",
+                          fontSize: 16
+                        }
+                      }
+                    }
+                  ],
+                  series: [{
+                    name: "处置率",
+                    type: "line",
+                    yAxisIndex: 1, //使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用
+                    smooth: true, //平滑曲线显示
+                    showAllSymbol: true, //显示所有图形。
+                    symbol: "circle", //标记的图形为实心圆
+                    symbolSize: 8, //标记的大小
+                    itemStyle: {
+                      //折线拐点标志的样式
+                      color: "#1045A0",
+                      borderColor: "#3D7EEB",
+                      width: 2,
+                      shadowColor: "#3D7EEB",
+                      shadowBlur: 4
+                    },
+                    lineStyle: {
+                      color: "#3D7EEB",
+                      width:2,
+                      shadowColor: "#3D7EEB",
+                      shadowBlur: 4
+                    },
+                    areaStyle: {
+                      color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: "rgba(61,126,235, 0.5)"
+                      },
+                        {
+                          offset: 1,
+                          color: "rgba(61,126,235, 0)"
+                        }
+                      ])
+                    },
+                    data: [4.2, 3.5, 2.9, 7.8, 5, 3]
+                  },
+                    {
+                      name: "上报量",
+                      type: "bar",
+                      barWidth: 15,
+                      itemStyle: {
+                        normal: {
+                          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: "rgba(61,126,235, 1)"
+                          },
+                            {
+                              offset: 1,
+                              color: "rgba(61,126,235, 0)"
+                            }
+                          ]),
+                          borderColor:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: "rgba(160,196,225, 1)"
+                          },
+                            {
+                              offset: 1,
+                              color: "rgba(61,126,235, 1)"
+                            }
+                          ]),
+                          borderWidth: 2
+                        }
+                      },
+                      data: yAxisData.sort(function(a,b){return b-a})
+                    },
+                    {
+                      name: "未处置",
+                      type: "bar",
+                      barWidth: 15,
+                      itemStyle: {
+                        normal: {
+                          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(15,197,243,1)'}, {offset: 1, color: 'rgba(15,197,243,0)'}]),
+                          borderColor:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(180,240,255,1)'}, {offset: 1, color: 'rgba(15,197,243,1)'}]),
+                          borderWidth: 2
+                        }
+                      },
+                      data: yAxisData2.sort(function(a,b){return b-a})
+                    }
+                  ]
+                };
+            return option
+        },
+
+        LineChartPhone:function (name,RGB,xData,yData){
+            let option = {
+                // backgroundColor: '#080b30',
+                title: {
+                    text: '',
+                    textStyle: {
+                        align: 'center',
+                        color: '#fff',
+                        fontSize: 20,
+                    },
+                    top: '2%',
+                    left: 'center',
+                },
+              
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        lineStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }, {
+                                    offset: 0.5,
+                                    color: 'rgba(255, 255, 255,1)',
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }],
+                                global: false
+                            }
+                        },
+                    },
+                },
+                grid: {
+                    top: '15%',
+                    left: '5%',
+                    right: '5%',
+                    bottom: '15%',
+                    // containLabel: true
+                },
+                xAxis: [{
+                    type: 'category',
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: `rgb(${RGB})`
+                        },
+                    },
+                    splitArea: {
+                        // show: true,
+                        color: '#f00',
+                        lineStyle: {
+                            color: '#f00'
+                        },
+                    },
+                    axisLabel: {
+                        color: '#fff',
+                        rotate: 30, // 旋转角度
+                        interval: 0  //设置X轴数据间隔几个显示一个，为0表示都显示
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                    boundaryGap: false,
+                    data: xData,
+            
+                }],
+            
+                yAxis: [{
+                    type: 'value',
+                    min: 0,
+                    // max: 140,
+                    splitNumber: 4,
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: 'rgba(255,255,255,0.1)'
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: `rgb(${RGB})`
+                        },
+                    },
+                    axisLabel: {
+                        show: true,
+                        margin: 20,
+                        textStyle: {
+                            color: '#d1e6eb',
+            
+                        },
+                    },
+                    axisTick: {
+                        show: true,
+                    },
+                }],
+                series: [{
+                        name: '接听总时长',
+                        type: 'line',
+                        smooth: true, //是否平滑
+                        showAllSymbol: true,
+                        // symbol: 'image://./static/images/guang-circle.png',
+                        symbol: 'none',
+                        symbolSize: 25,
+                        
+                        lineStyle: {
+                            normal: {
+                                color: `rgb(${RGB})`,
+                            },
+                        },
+                        label: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                color: `rgb(${RGB})`,
+                            }
+                        },
+                        itemStyle: {
+                            color: `rgb(${RGB})`,
+                            borderColor: "#fff",
+                            borderWidth: 3,
+                        },
+                        tooltip: {
+                            show: true
+                        },
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: `rgb(${RGB})`
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(108,80,243,0)'
+                                    }
+                                ], false),
+                            
+                            }
+                        },
+                        data: yData
+                    },
+                    
+                ]
+            };
+             return option
+        },
+
+
     },
 
     /**
@@ -873,8 +1113,17 @@ var MyEcharts2 = {
     initChart: function (option, echartId) {
         var container = eval("document.getElementById('" + echartId + "')");
         var myChart = echarts.init(container);
+            // //showLoading遮盖层显示
+            // myChart.showLoading({
+            //     text: '数据正在努力加载...',
+            //     textStyle: { fontSize : 30 , color: '#444' },
+            //     effectOption: {backgroundColor: 'rgba(0, 0, 0, 0)'}
+            // });
         myChart.setOption(option, true); // 为echarts对象加载数据
+    
         return myChart;
+        //showLoading遮盖层隐藏
+        myChart.hideLoading();
     }
 
 

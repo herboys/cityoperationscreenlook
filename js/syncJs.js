@@ -41,7 +41,33 @@ function cardInt(arr,classStr) {
             arr.unshift(arr.splice(arr.length - 1, 1)[0]);
 
             if (arr[0].title === "公交车辆") {
-                boxObj.prepend(
+                boxObj.append(
+                    '<div class="card-box" style="opacity:' +
+                    (1 - (arr.length - 1 - i) * 0.1 < opacity
+                        ? opacity
+                        : 1 - (arr.length - 1 - i) * 0.1) +
+                    ";left:" +
+                    apartW * i +
+                    "px;top:" +
+                    apartH * i +
+                    'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">' +
+                    arr[0].title +
+                    '</div></div><div class="card-text"><p>线路总数<span class="num-font">' +
+                    arr[0].xlnum +
+                    "</span>" +
+                    "条" +
+                    '</p><p>当日计划班次<span class="num-font">' +
+                    arr[0].jhnum +
+                    "</span>" +
+                    "个" +
+                    '</p><p>当日完成班次<span class="num-font">' +
+                    arr[0].sjnum +
+                    "</span>" +
+                    "个" +
+                    "</p></div></div>"
+                );
+
+               /* boxObj.prepend(
                     '<div class="card-box" style="width:20rem" style="opacity:' +
                     opacity
                        +
@@ -71,7 +97,7 @@ function cardInt(arr,classStr) {
                     arr[0].smbczdl +
                     "</span>%" +
                     "</p></div></div>"
-                );
+                );*/
             } else {
                 boxObj.prepend(
                     '<div class="card-box" style="opacity:' +
@@ -336,31 +362,7 @@ function syncInit(){
         shbz(shbzArr);
     }
     if(sthjFlag==true){
-        let para={
-            url: GarBage_URl + '/sh/garbageSort/getGarbageStreetProduce',
-            async: true,
-            type: 'get',
-            dataType: 'JSON',
-        }
-        ajaxPromise(para).then(res=>{
-            if (res.status === 'OK') {
-                para = ''
-            let dryGarbage = []
-            let recoverable = []
-            res.data.map(item => {
-                dryGarbage.push(item.dryGarbage.split(item.unit)[0].trim())
-                recoverable.push(parseInt(item.wetGarbageDwe.split(item.unit)[0].trim()) + parseInt(item.wetGarbageKit.split(item.unit)[0].trim()))
-            })
-
-            let recoverable1 =eval(dryGarbage.join("+")) / dryGarbage.length +eval(recoverable.join("+")) / recoverable.length+403
-           let Ganlanumber = recoverable1.toFixed(2)
-                //sthj(hjbzArr,Ganlanumber);
-                hjbzArr[0].num=Ganlanumber
-                sthj(hjbzArr);
-
-        }
-
-    })
+        sthj(hjbzArr);
     }
 
 }

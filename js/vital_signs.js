@@ -291,7 +291,8 @@ function getHjbzData() {
           hjbzArr[2].num = data.todayNum;
           hjbzArr[5].num = data.weekNum;
           hjbzArr[8].num = data.monthNum;
-          addHjbz(hjbzArr); //环境保障
+          shlj();
+         // addHjbz(hjbzArr); //环境保障
           hjbzFlag = true;
         },
         error: function () {
@@ -445,6 +446,32 @@ function addCard(arr, classStr) {
     for (; i < 1; i++) {
       console.log(arr[0]);
       boxObj.append(
+          '<div class="card-box" style="opacity:' +
+          (1 - (arr.length - 1 - i) * 0.1 < opacity
+              ? opacity
+              : 1 - (arr.length - 1 - i) * 0.1) +
+          ";left:" +
+          apartW * i +
+          "px;top:" +
+          apartH * i +
+          'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">' +
+          arr[i].title +
+          '</div></div><div class="card-text"><p>线路总数<span class="num-font">' +
+          arr[i].xlnum +
+          "</span>" +
+          "条" +
+          '</p><p>当日计划班次<span class="num-font">' +
+          arr[i].jhnum +
+          "</span>" +
+          "个" +
+          '</p><p>当日完成班次<span class="num-font">' +
+          arr[i].sjnum +
+          "</span>" +
+          "个" +
+          "</p></div></div>"
+      );
+
+     /* boxObj.append(
         '<div class="card-box" style="width:20rem" style="opacity:' +
           (1 - (arr.length - 1 - i) * 0.1 < opacity
             ? opacity
@@ -478,7 +505,7 @@ function addCard(arr, classStr) {
           arr[i].smbczdl +
           "</span>%" +
           "</p></div></div>"
-      );
+      );*/
     }
   }
 
@@ -664,11 +691,11 @@ function getGongJiaoData() {
         data.smbczdlz="--"
       }
       jtzkArr[0].xlnum = data.xlnum;
-      jtzkArr[0].carnum = data.carnum;
+      //jtzkArr[0].carnum = data.carnum;
       jtzkArr[0].jhnum = data.jhnum;
       jtzkArr[0].sjnum = data.sjnum;
-      jtzkArr[0].bczxl = data.bczxl;
-      jtzkArr[0].smbczdl = data.smbczdlz;
+     // jtzkArr[0].bczxl = data.bczxl;
+     // jtzkArr[0].smbczdl = data.smbczdlz;
       addCard(jtzkArr, ".jtqk-warp"); //交通情况
     },
     error: function () {
@@ -681,6 +708,38 @@ function getGongJiaoData() {
       addCard(jtzkArr, ".jtqk-warp"); //交通情况
     },
   });
+}
+
+//生活垃圾实时获取
+function shlj(){
+
+  let para={
+    url: GarBage_URl + '/sh/garbageSort/getGarbageStreetProduce',
+    async: true,
+    type: 'get',
+    dataType: 'JSON',
+  }
+  ajaxPromise(para).then(res=>{
+    if (res.status === 'OK') {
+      para = ''
+      let dryGarbage = []
+      let recoverable = []
+      res.data.map(item => {
+        dryGarbage.push(item.dryGarbage.split(item.unit)[0].trim())
+        recoverable.push(parseInt(item.wetGarbageDwe.split(item.unit)[0].trim()) + parseInt(item.wetGarbageKit.split(item.unit)[0].trim()))
+      })
+
+      let recoverable1 =eval(dryGarbage.join("+")) / dryGarbage.length +eval(recoverable.join("+")) / recoverable.length+403
+      let Ganlanumber = recoverable1.toFixed(2)
+      //sthj(hjbzArr,Ganlanumber);
+      hjbzArr[0].num=Ganlanumber
+      addHjbz(hjbzArr);
+
+    }
+  }).catch(err => {
+    addHjbz(hjbzArr);
+    //console.log("第一个请求失败");
+  })
 }
 
 //环境保障动画效果

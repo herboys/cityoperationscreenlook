@@ -39,18 +39,15 @@ function cardInt(arr,classStr) {
                 }
             }
             arr.unshift(arr.splice(arr.length - 1, 1)[0]);
-
+            //alert(opacity+" aaa")
+           // alert(arr[0].title)
             if (arr[0].title === "公交车辆") {
-                boxObj.append(
+                //alert(opacity)
+
+                boxObj.prepend(
                     '<div class="card-box" style="opacity:' +
-                    (1 - (arr.length - 1 - i) * 0.1 < opacity
-                        ? opacity
-                        : 1 - (arr.length - 1 - i) * 0.1) +
-                    ";left:" +
-                    apartW * i +
-                    "px;top:" +
-                    apartH * i +
-                    'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">' +
+                    opacity +
+                    ';left:0px;top:0px"><div class="card-title"><div class="text-centered">' +
                     arr[0].title +
                     '</div></div><div class="card-text"><p>线路总数<span class="num-font">' +
                     arr[0].xlnum +
@@ -66,6 +63,32 @@ function cardInt(arr,classStr) {
                     "个" +
                     "</p></div></div>"
                 );
+
+          /*      boxObj.append(
+                    '<div class="card-box" style="opacity:' +
+
+                        opacity
+                       +
+                    ";left:0" +
+
+                    "px;top:0" +
+                    +
+                    'px"><div class="card-title" style="font-size:1.1rem;alignment: center"><div class="text-centered">' +
+                    arr[0].title +
+                    '</div></div><div class="card-text"><p>线路总数<span class="num-font">' +
+                    arr[0].xlnum +
+                    "</span>" +
+                    "条" +
+                    '</p><p>当日计划班次<span class="num-font">' +
+                    arr[0].jhnum +
+                    "</span>" +
+                    "个" +
+                    '</p><p>当日完成班次<span class="num-font">' +
+                    arr[0].sjnum +
+                    "</span>" +
+                    "个" +
+                    "</p></div></div>"
+                );*/
 
                /* boxObj.prepend(
                     '<div class="card-box" style="width:20rem" style="opacity:' +

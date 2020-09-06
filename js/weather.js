@@ -55,7 +55,7 @@ function changeWeather(){
                 }
             }
         })*/
-    $.ajax({
+   /* $.ajax({
         url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=zdz',
         dataType : 'json',
         type : 'get',
@@ -103,7 +103,95 @@ function changeWeather(){
             // clearWarning();
             //  showWarningMulti(tem_waring,rain_warning,wind_warning,curTime)
         }
+    })*/
+
+    var curDate=getNowFormatDate1()
+
+    var time = new Date();
+    var curHour=time.getHours()
+
+   // alert(321)
+    $.ajax({
+        url:'http://smb.soweather.com:5678/smb/Home/StationListAction/58365',
+        dataType:'json',
+        type:'get',
+        async:true,
+        success:function (data) {
+            w="-1"
+
+            var flag=0;
+            for(var i=0;i<data.length;i++){
+                var data_time=data[i].datatime
+
+                var data_hour= data[i].datatime_hour
+                data_time=toFormatDate(data_time)
+               // alert(data_time+" "+data_hour)
+                if(data_time===curDate){
+
+                    if(data_hour==curHour){
+                        flag=1;
+                        tem=data[i].temperature
+                        var rain=data[i].raintotal
+                        if(rain!=""){
+                            if(rain>0&&rain<10)
+                                w="小雨";
+                            else if(rain>10&&rain<24.9)
+                                w="中雨";
+                            else if(rain>25&&rain<49.9)
+                                w="大雨";
+                            else  if(rain>50&&rain<99.9)
+                                w="暴雨";
+                            else  if(rain>100&&rain<249)
+                                w="大暴雨";
+                            else  if(rain>250)
+                                w="特大暴雨";
+                        }
+
+
+                        if(w!="-1" ){
+                            $('#weatherIcon').show()
+                            $('.weather-text').removeClass('leftTxt')
+                            showWeather(w, tem);
+                        }
+                        break;
+                    }
+                }
+            }
+
+            if(flag==0){
+
+                var index=data.length-1
+                tem=data[index].temperature
+                var rain=data[index].raintotal
+                if(rain!=""){
+                    if(rain>0&&rain<10)
+                        w="小雨";
+                    else if(rain>10&&rain<24.9)
+                        w="中雨";
+                    else if(rain>25&&rain<49.9)
+                        w="大雨";
+                    else  if(rain>50&&rain<99.9)
+                        w="暴雨";
+                    else  if(rain>100&&rain<249)
+                        w="大暴雨";
+                    else  if(rain>250)
+                        w="特大暴雨";
+                }
+            }
+            if(w==="-1"){
+                $('#weatherIcon').hide()
+                $('.weather-text').addClass('leftTxt')
+                //$(".weather-icon > div").css({"background-position":“”});
+                $(".weather-text").html("降水量：0mm");
+                let unit = "<span style='font-size:1.6rem'>℃</span>"
+                $(".temperature-text").html(tem + unit);
+            }
+        },
+        error:function (data) {
+
+        }
     })
+
 
     /*   var curDate=getNowFormatDate1()
 
@@ -179,7 +267,7 @@ function changeWeather(){
       })*/
 
 
-    $.ajax({
+    /*$.ajax({
         url : 'http://61.152.122.122/JDData/JDDataForm.aspx?action=Warning',
         //dataType : 'json',
         dataType :'json',
@@ -230,9 +318,66 @@ function changeWeather(){
             }
         },
         error:function () {
-            alert("无预警信息")
+           // alert("无预警信息")
         }
     })
+*/
+
+    $.ajax({
+        url : 'http://smb.soweather.com:5678/smb/Home/GetAlertListByType?type=jd',
+        //dataType : 'json',
+        dataType :'json',
+        type : 'get',
+        async : true,
+        success : function(data) {
+            clearWarning();
+
+            var grayAlarm=[];
+            var index=0;
+            var alarm=window.localStorage.getItem("alarm")
+            var alarmList=alarm.split(" ");
+            for(var i=0;i<alarmList.length;i++){
+                var tmpAlarm=alarmList[i];
+                if(tmpAlarm==="")
+                    continue;
+                var findFlag=false;
+                for(var j = 0; j < data.length; j++) {
+                    var y=data[j].alertname;
+                    if(y===tmpAlarm){
+                        findFlag=true
+                        break;
+                    }
+                }
+                if(findFlag==false){
+                    grayAlarm[index++]=tmpAlarm
+                }
+            }
+            alarm=window.localStorage.getItem("alarm")
+            for(var i = 0; i < data.length; i++) {
+                var y=data[i].alertname;
+                var z=data[i].alertlevel;
+
+                showWarning(y,z,hour + "时"+min+"分")
+                if(alarm.indexOf(y)==-1){
+                    alarm=alarm+" "+y;
+                    window.localStorage.setItem("alarm",alarm);
+                }
+            }
+
+            for(var i=0;i<grayAlarm.length;i++){
+                showWarning(grayAlarm[i],"灰","")
+            }
+
+
+            if(data==null || data.length==0){
+                // $(".early-warning-text").html("无预警");
+            }
+        },
+        error:function () {
+            // alert("无预警信息")
+        }
+    })
+
 }
 
 

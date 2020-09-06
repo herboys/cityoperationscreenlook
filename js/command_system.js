@@ -256,6 +256,35 @@ function getNowFormatDate() {
 	return currentdate;
 }
 
+function toFormatDate(str) {
+
+	var strs=str.split(" ")
+
+	str=strs[0]
+ 	var times=str.split("-")
+
+
+	var seperator1 = "-";
+	var year = times[0];
+	var month = times[1];
+	var strDate = times[2];
+
+	if (month >= 1 && month <= 9) {
+		month = "0" + month;
+	}
+	if (strDate >= 0 && strDate <= 9) {
+		strDate = "0" + strDate;
+	}
+	var currentdate = year + seperator1 + month + seperator1 + strDate;
+	return currentdate;
+}
+
+function  getHourFromTime(str) {
+	str=str.split(" ")[1];
+	return str.split(":")[0];
+}
+
+
 function getNowFormatDate1() {
 	var date = new Date();
 	var seperator1 = "/";

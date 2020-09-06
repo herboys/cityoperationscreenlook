@@ -198,7 +198,7 @@ function shbz(arr){
     }
 }
 
-function sthj(arr,num){
+function sthj(arr){
     if (arr.length > 3) {
         var distance = $(".hjbz-warp .text-list").height();
 
@@ -208,7 +208,8 @@ function sthj(arr,num){
                     '<div style="left:15%;top:0%;opacity:0" class="text-list">' +
                     ' <img style="cursor:pointer;margin-top: 0.5rem;width:6rem" onclick="openGarbageClassification()" src="images/shlj.png" />'+
                     '<p><span class="num-font">' +
-                    num +
+                    arr[hjbzNum].num
+                    +
                     "</span>" +
                     arr[hjbzNum].unit +
                     "</p></div>"
@@ -353,7 +354,10 @@ function syncInit(){
 
             let recoverable1 =eval(dryGarbage.join("+")) / dryGarbage.length +eval(recoverable.join("+")) / recoverable.length+403
            let Ganlanumber = recoverable1.toFixed(2)
-                sthj(hjbzArr,Ganlanumber);
+                //sthj(hjbzArr,Ganlanumber);
+                hjbzArr[0].num=Ganlanumber
+                sthj(hjbzArr);
+
         }
 
     })

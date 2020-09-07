@@ -194,8 +194,8 @@ function findbcsclnglatNameFun(res) {
                     },
                     "labels": [{
                         "fields": [
-                            "#.名称",
-                            "#.地址"
+                           /* "#.名称",
+                            "#.地址"*/
                         ],
                         "color": [
                             255,

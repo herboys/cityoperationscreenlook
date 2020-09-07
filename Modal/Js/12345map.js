@@ -165,13 +165,34 @@ function findbcsclnglatNameFun(res) {
                     "popupTemplate": {
                         "content": [{
                             "type": "fields",
-                            "fieldInfos": [{
-                                "fieldName": "名称",
-                                "label": "名称"
-                            },
+                            "fieldInfos": [
                                 {
-                                    "fieldName": "地址"
+                                    "fieldName": "TASKID",
+                                    "label":"工单编号"
+                                },
+                                {
+                                    //EXECUTEDEPTNAME
+                                    "fieldName": "DISCOVERTIME",
+                                    "label":"发生时间"
+                                },
+                                {
+                                    //EXECUTEDEPTNAME
+                                    "fieldName": "STREETNAME",
+                                    "label":"所属街镇"
+                                },
+                                {
+                                //EXECUTEDEPTNAME
+                                    "fieldName": "EXECUTEDEPTNAME",
+                                    "label":"主责部门"
+                                },
+                                {
+                                    "fieldName": "ATNAME",
+                                    "label":"管理要点"
+                                },{
+                                    "fieldName": "名称",
+                                    "label": "发生地址"
                                 }
+
                             ]
                         }]
                     },

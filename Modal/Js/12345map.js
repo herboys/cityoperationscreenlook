@@ -125,21 +125,21 @@ var mapData = {
     //         }
     //     }
     // ]
-    // "datasource":[{x: 0, y: 0, count: 10}, {x: 1000, y: 0, count: 100}, {x: 0, y: 1000, count: 50}],
-    // postUrl:'http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14',
-    // weightFied :"count",
-    // gradient:{
-    //      '.90':'#4ef1b2',
-    //      '.95':'#7cd346',
-    //      '.97':'#f3f12c',
-    //      '.99':'#fd2f02'
-    // },
-    // radius:35,
-    // geofield:{
-    //     xfield:"X",
-    //     yfield:"Y",
-    //     zfield:"Z"
-    // }
+    "datasource":[{x: 0, y: 0, count: 10}, {x: 1000, y: 0, count: 100}, {x: 0, y: 1000, count: 50}],
+    postUrl:'http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14',
+    weightFied :"count",
+    gradient:{
+        '.90':'#4ef1b2',
+        '.95':'#7cd346',
+        '.97':'#f3f12c',
+        '.99':'#fd2f02'
+    },
+    radius:35,
+    geofield:{
+        xfield:"X",
+        yfield:"Y",
+        zfield:"Z"
+    }
 };
 
 
@@ -147,7 +147,7 @@ var bridge1;
 
 function findbcsclnglatNameFun(res) {
     createMenucopy(res)
-    ThermodynamicFun('')
+
     function createMenucopy(res) {
         bridge1.Invoke([
 
@@ -165,13 +165,34 @@ function findbcsclnglatNameFun(res) {
                     "popupTemplate": {
                         "content": [{
                             "type": "fields",
-                            "fieldInfos": [{
-                                "fieldName": "名称",
-                                "label": "名称"
-                            },
+                            "fieldInfos": [
                                 {
-                                    "fieldName": "地址"
+                                    "fieldName": "TASKID",
+                                    "label":"工单编号"
+                                },
+                                {
+                                    //EXECUTEDEPTNAME
+                                    "fieldName": "DISCOVERTIME",
+                                    "label":"发生时间"
+                                },
+                                {
+                                    //EXECUTEDEPTNAME
+                                    "fieldName": "STREETNAME",
+                                    "label":"所属街镇"
+                                },
+                                {
+                                    //EXECUTEDEPTNAME
+                                    "fieldName": "EXECUTEDEPTNAME",
+                                    "label":"主责部门"
+                                },
+                                {
+                                    "fieldName": "ATNAME",
+                                    "label":"管理要点"
+                                },{
+                                    "fieldName": "名称",
+                                    "label": "发生地址"
                                 }
+
                             ]
                         }]
                     },
@@ -194,8 +215,8 @@ function findbcsclnglatNameFun(res) {
                     },
                     "labels": [{
                         "fields": [
-                           /* "#.名称",
-                            "#.地址"*/
+                            /* "#.名称",
+                             "#.地址"*/
                         ],
                         "color": [
                             255,
@@ -205,45 +226,6 @@ function findbcsclnglatNameFun(res) {
                         ],
                         "size": 12
                     }]
-                }
-            },
-        ])
-        console.log(bridge1, '987654321')
-    }
-}
-function ThermodynamicFun(res) {
-    res= [
-        {"x": -20930.538719612465,
-            "y": 17086.261464678915,"count":10},
-        {
-            "x": -19050.232781863655,
-            "y": 20063.462534029037,
-            "count":50
-        }
-    ],
-    createMenucopyFun(res)
-
-    function createMenucopyFun(res) {
-
-        bridge1.Invoke([
-
-            {
-                "ActionName": "doShowHeat",
-                "Parameters": {
-                    "datasource":res,
-
-                    "weightFied": "count",
-                    "gradient": {
-                        ".25": "#4ef1b2",
-                        ".50": "#7cd346",
-                        ".75": "#f3f12c",
-                        ".95": "#fd2f02"
-                    },
-                    "radius": 35,
-                    "geofield": {
-                        "xfield": "x",
-                        "yfield": "y"
-                    }
                 }
             }
         ])
@@ -295,7 +277,6 @@ function initMap(date, bcname, scname) {
                     "visible": true
                 }
             },
-
         ])
         console.log(bridge1, '987654321')
     }

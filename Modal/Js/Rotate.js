@@ -108,9 +108,7 @@ function initRotate(list, median, number) {
     list = document.querySelectorAll("#rotate a")
     for (let j = 0; j < list.length; j++) {
         list[j].onclick = function () {
-            console.log(list[j])
-            let hots = document.getElementsByTagName('a')[i].innerHTML.split("x")[0].trim()
-            findbcschotslnglatName(hots)
+            findbcschotslnglatName(list[j].innerHTML)
         }
     }
     var i = 0;

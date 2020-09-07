@@ -160,7 +160,7 @@ function bumenInit(){
 
      //   alert(linkageNum)
         $(".linkage-table .list-box").stop(true, true).animate({
-                top: -(moveT + 1) * linkageNum * 5.82,
+                top: -(moveT + 1) * linkageNum * 5.62,
             },
             1000,
         );
@@ -180,7 +180,7 @@ function tfsjInit(){
         linkageNumScroll++;
 
         $(".linkage-scroll-table .list-box").stop(true, true).animate({
-                top: -(moveT + 1) * linkageNumScroll * 6.02,
+                top: -(moveT + 1) * linkageNumScroll * 5.72,
 
             },
             1000,

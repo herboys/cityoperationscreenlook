@@ -184,7 +184,7 @@ function findbcsclnglatNameFun(res) {
                         "visualVariables": [],
                         "symbol": {
                             "type": "simple-marker",
-                            "size": 10,
+                            "size": 7,
                             "color": "red",
                             "outline": {
                                 "width": 0.5,
@@ -203,7 +203,7 @@ function findbcsclnglatNameFun(res) {
                             0,
                             0.5
                         ],
-                        "size": 18
+                        "size": 12
                     }]
                 }
             }

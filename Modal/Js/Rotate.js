@@ -117,7 +117,7 @@ function initRotate(list, median, number) {
     list = document.querySelectorAll("#rotate a")
     for (let j = 0; j < list.length; j++) {
         list[j].onclick = function () {
-            findbcschotslnglatName(list[j].innerHTML)
+            findbcschotslnglatNames(list[j].innerHTML)
             document.getElementById("RightBannerNameId").innerText='热词【'+list[j].innerHTML+'】热力图'
         }
     }

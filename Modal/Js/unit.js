@@ -11,6 +11,20 @@ function ToOnload() {
     findbcNameType()
     findscName()
     rollInit()
+
+}
+
+function findAtlnglats(){
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findAtlnglat',
+        async: true,
+        type: 'get',
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res=>{
+        console.log(res,'21312321+++++++++++++++++++++==')
+        ThermodynamicFun(res)
+    })
 }
 
 /*前六后六*/
@@ -155,19 +169,23 @@ function OverDueFun(num) {
                                     </ul>`
         document.getElementById("GongDanTitleID").innerHTML = para
         para = ''
+         findbcsclnglat=[]
         for (let i = 0; i < res.length; i++) {
             para += '<ul class="work-older-list-ul ul-line ">'
-                + '<li>' + res[i].TASKID + '</li>'
-                + '<li>' + res[i].DISCOVERTIME + '</li>'
-                + '<li>' + res[i].STREETNAME + '</li>'
-                + '<li>' + res[i].LASTSOLVINGTIME + '</li>'
-                + '<li>' + res[i].ATNAME + '</li>'
-                + '<li>' + res[i].DESCRIPTION + '</li>'
+                + '<li>' + res[i].attributes.TASKID + '</li>'
+                + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                + '<li>' + res[i].attributes.LASTSOLVINGTIME + '</li>'
+                + '<li>' + res[i].attributes.ATNAME + '</li>'
+                + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
                 + '</ul>'
+
         }
+        document.getElementById("RightBannerNameId").innerText='【超期工单】分布图'
         document.getElementById("GongDanID").innerHTML = para
         gongdanlist = res
         onclickModelBoxFun()
+        findbcsclnglatNameFun(res)
     })
 }
 
@@ -205,17 +223,19 @@ function GongDan(num) {
                 para = ''
                 for (let i = 0; i < res.length; i++) {
                     para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].COUNTSIMILARCASESN + '</li>'
-                        + '<li>' + res[i].ATNAME + '</li>'
-                        + '<li >' + res[i].DESCRIPTION + '</li>'
+                        + '<li>' + res[i].attributes.TASKID + '</li>'
+                        + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                        + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                        + '<li>' + res[i].attributes.COUNTSIMILARCASESN + '</li>'
+                        + '<li>' + res[i].attributes.ATNAME + '</li>'
+                        + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
                         + '</ul>'
                 }
+                document.getElementById("RightBannerNameId").innerText='【重复工单】分布图'
                 document.getElementById("GongDanID").innerHTML = para
                 gongdanlist = res
                 onclickModelBoxFun()
+                findbcsclnglatNameFun(res)
             }else {
                 para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
@@ -229,17 +249,19 @@ function GongDan(num) {
                 para = ''
                 for (let i = 0; i < res.length; i++) {
                     para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
-                        + '<li>' + res[i].ATNAME + '</li>'
-                        + '<li >' + res[i].DESCRIPTION + '</li>'
+                        + '<li>' + res[i].attributes.TASKID + '</li>'
+                        + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                        + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                        + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                        + '<li>' + res[i].attributes.ATNAME + '</li>'
+                        + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
                         + '</ul>'
                 }
+                document.getElementById("RightBannerNameId").innerText='【紧急工单】分布图'
                 document.getElementById("GongDanID").innerHTML = para
                 gongdanlist = res
                 onclickModelBoxFun()
+                findbcsclnglatNameFun(res)
             }
 
         }
@@ -301,17 +323,19 @@ function GongDanfanhu(num) {
         para = ''
         for (let i = 0; i < res.length; i++) {
             para += '<ul class="work-older-list-ul ul-line ">'
-                + '<li>' + res[i].TASKID + '</li>'
-                + '<li>' + res[i].DISCOVERTIME + '</li>'
-                + '<li>' + res[i].STREETNAME + '</li>'
-                + '<li>' + res[i].BACKCOUNT + '</li>'
-                + '<li>' + res[i].ATNAME + '</li>'
-                + '<li>' + res[i].DESCRIPTION + '</li>'
+                + '<li>' + res[i].attributes.TASKID + '</li>'
+                + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                + '<li>' + res[i].attributes.BACKCOUNT + '</li>'
+                + '<li>' + res[i].attributes.ATNAME + '</li>'
+                + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
                 + '</ul>'
         }
+        document.getElementById("RightBannerNameId").innerText='【反复工单】分布图'
         document.getElementById("GongDanID").innerHTML = para
         gongdanlist = res
         onclickModelBoxFun()
+        findbcsclnglatNameFun(res)
     })
 }
 
@@ -491,7 +515,7 @@ function findbcNameType() {
                 })
                 document.getElementById("RightBannerNameId").innerText='管理要点【'+para2[i].innerHTML+'】热力图'
                 basicFunTimeName=para2[i].innerHTML
-                findbcsclnglatName(basicFunTime,para2[i].innerHTML,"")
+                findbcsclnglatNames(basicFunTime,para2[i].innerHTML,"")
                 findbcNamesc(para2[i].innerHTML)
             }
         }
@@ -513,6 +537,23 @@ function findbcsclnglatName(basicFunTime, name, scname) {
     ajaxPromise(para).then(res => {
         console.log(res)
         findbcsclnglatNameFun(res)
+
+    })
+}
+function findbcsclnglatNames(basicFunTime, name, scname) {
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findbcAtlnglatNames',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": basicFunTime,
+            "bcname": name,
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        console.log(res)
+        ThermodynamicFun(res)
 
     })
 }
@@ -561,7 +602,7 @@ function JiBenXinXi(ModelTime, name, value) {
             // findbcNamesc(param.name)
             // JiBenXinXi(ModelTime, param.name, param.data.value)
             // JiBenXinXiReLiability(ModelTime, param.name)
-            findbcsclnglatName(document.getElementById("headId").innerHTML, param.name)
+            findbcsclnglatNames(document.getElementById("headId").innerHTML, param.name)
         })
     })
 }
@@ -743,7 +784,7 @@ function findscName() {
 
                 document.getElementById("DmMainId").innerHTML = `<div id="dm"></div>`
                 initRotate(list,res.median,0)
-                BulletChat(list, res.median)
+                // BulletChat(list, res.median)
 
             }
         })
@@ -774,7 +815,7 @@ function findbcNamesc(name, scname) {
             document.getElementById("DmMainId").innerHTML = `
                                 <div id="dm"></div>`
             initRotate(list, res.median,0)
-            BulletChat(list, res.median)
+            // BulletChat(list, res.median)
         }
     })
 }
@@ -848,7 +889,7 @@ function move() {
     for (let i = 0; i < oSpan.length; i++) {
         oSpan[i].onclick = function () {
             let hots = document.getElementsByTagName('span')[i].innerHTML.split("x")[0].trim()
-            findbcschotslnglatName(hots)
+            findbcschotslnglatNames(hots)
         }
         oSpan[i].onmouseover = function () {
             oSpan[i].style.zIndex = '9999'
@@ -896,5 +937,26 @@ function findbcschotslnglatName(hots) {
     }
     ajaxPromise(para).then(res => {
         findbcsclnglatNameFun(res)
+    })
+}
+function findbcschotslnglatNames(hots) {
+    console.log(basicFunTimeName)
+    // if (basicFunTimeName==undefined){
+    //     basicFunTimeName:''
+    // }
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findbcAtlnglatNames',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": basicFunTime,
+            "bcname": basicFunTimeName,
+            scname: "",
+            hots: hots
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        ThermodynamicFun(res)
     })
 }

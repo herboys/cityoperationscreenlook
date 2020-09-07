@@ -117,7 +117,7 @@ function findbcsclnglatNameFun(res) {
                                     "fieldName": "ATNAME",
                                     "label":"管理要点"
                                 },{
-                                    "fieldName": "名称",
+                                    "fieldName": "ADDRESS",
                                     "label": "发生地址"
                                 }
 
@@ -161,15 +161,7 @@ function findbcsclnglatNameFun(res) {
     }
 }
 function ThermodynamicFun(res) {
-    res= [
-        {"x": -20930.538719612465,
-            "y": 17086.261464678915,"count":10},
-        {
-            "x": -19050.232781863655,
-            "y": 20063.462534029037,
-            "count":50
-        }
-    ],
+    console.log(res,'12312')
         createMenucopyFun(res)
 
     function createMenucopyFun(res) {
@@ -298,6 +290,7 @@ function initMap(date, bcname, scname) {
             url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
             onReady: function () {
                 createMenu(res)
+                findAtlnglats()
             }
         });
     })
@@ -333,6 +326,7 @@ function initMap(date, bcname, scname) {
         ])
         console.log(bridge1, '987654321')
     }
+
 
 
 }

@@ -69,8 +69,8 @@ function TownLifeGarbage() {
                 dryGarbage.push(item.dryGarbage.split(item.unit)[0].trim())
                 recoverable.push(parseInt(item.wetGarbageDwe.split(item.unit)[0].trim()) + parseInt(item.wetGarbageKit.split(item.unit)[0].trim()))
             })
-            let Ganlaji = eval(dryGarbage.join("+")) / dryGarbage.length
-            let recoverable1 = eval(recoverable.join("+")) / recoverable.length
+            let Ganlaji = eval(dryGarbage.join("+"))
+            let recoverable1 = eval(recoverable.join("+"))
             Ganlaji = Ganlaji.toFixed(2)
             recoverable1 = recoverable1.toFixed(2)
             console.log(Ganlaji, '干垃圾数量总数')

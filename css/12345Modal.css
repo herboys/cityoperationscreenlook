@@ -324,7 +324,7 @@ body {
 }
 
 .Satisfaction-warp-item {
-    width: 47.917rem;
+    /*width: 47.917rem;*/
     /*height: 24.833rem;*/
 flex: 1;
     box-sizing: border-box;
@@ -983,3 +983,31 @@ position: absolute;
         transform: rotate(360deg)
     }
 }
+
+
+.classtype{
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    color: white;
+}
+.classtype div{
+    margin: .4rem 0rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.classtype div span{
+    display: inline-block;
+    min-width: 1rem;
+    min-height: 1rem;
+    margin-right: .8rem;
+}
+
+
+ .caise{
+     background-image:-webkit-linear-gradient(top,#f36c6c,#e6cf4e, #20d180,#0093ff);
+     background-image:-o-linear-gradient(top,#f36c6c,#e6cf4e, #20d180,#0093ff);
+     background-image:-ms-linear-gradient(top,#f36c6c,#e6cf4e, #20d180,#0093ff);
+     background-image:linear-gradient(top,#f36c6c,#e6cf4e, #20d180,#0093ff);
+ }

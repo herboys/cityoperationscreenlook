@@ -1243,16 +1243,11 @@ var MyEcharts = {
                 tooltip: {
                     trigger: "axis",
                     formatter: function (params) {
-                        console.log(params)
                         var str = `<div> ${params[0].name}</div>`
 
                         for (var i = 0; i < params.length; i++) {
-                            if (params[i].seriesName !== "") {
-                                str += `
-<div>${params[i].seriesName}:${params[i].value}</div>
-<div>${'案件数量'}:${zData[i]}</div>
-`
-                            }
+                            str += `<div>${'满意度'}:${params[i].value}%</div>
+                                   <div>${'案件数量'}:${zData[i]}件</div>`
                         }
                         return str;
                     }
@@ -1490,7 +1485,7 @@ var MyEcharts = {
 
                             for (var i = 0; i < params.length; i++) {
                                 if (params[i].seriesName !== "") {
-                                    str += `<div>${params[i].seriesName}:${params[i].value}</div>
+                                    str += `<div>${params[i].seriesName}:${params[i].value}%</div>
                                    <div>${'案件数量'}:${zData[i]}件</div>`
                                 }
                             }

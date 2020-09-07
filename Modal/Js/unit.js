@@ -674,9 +674,10 @@ function findTypedeptName() {
         let container = document.getElementById("SmallEChartscopy")
         myChart = echarts.init(container);
         option = MyEcharts.EchartsOption.newbar2(xData, yData, zData, "#F9392D", legend, "%")
-        clearInterval(JWBsetInterval)
-        JWBsetInterval=null
-     JWBsetInterval=setInterval( JWBsetIntervalFun,3000);
+        myChart.setOption(option, true);
+     //    clearInterval(JWBsetInterval)
+     //    JWBsetInterval=null
+     // JWBsetInterval=setInterval( JWBsetIntervalFun,3000);
     })
 }
 function JWBsetIntervalFun () {

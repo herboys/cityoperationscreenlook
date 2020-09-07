@@ -1325,7 +1325,7 @@ var MyEcharts = {
                                 textStyle: { //数值样式
                                     color: "#fff",
                                     fontWeight:"bold",
-                                    fontSize: 16
+                                    fontSize: 12
                                 }
                             },
                             color: {

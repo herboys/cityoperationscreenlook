@@ -489,6 +489,7 @@ function findbcNameType() {
                         para2[index].style.boxShadow=""
                     }
                 })
+                document.getElementById("RightBannerNameId").innerText='管理要点【'+para2[i].innerHTML+'】热力图'
                 basicFunTimeName=para2[i].innerHTML
                 findbcsclnglatName(basicFunTime,para2[i].innerHTML,"")
                 findbcNamesc(para2[i].innerHTML)

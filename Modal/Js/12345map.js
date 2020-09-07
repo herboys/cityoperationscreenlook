@@ -129,10 +129,10 @@ var mapData = {
     postUrl:'http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14',
     weightFied :"count",
     gradient:{
-        '.90':'#4ef1b2',
-        '.95':'#7cd346',
-        '.97':'#f3f12c',
-        '.99':'#fd2f02'
+         '.90':'#4ef1b2',
+         '.95':'#7cd346',
+         '.97':'#f3f12c',
+         '.99':'#fd2f02'
     },
     radius:35,
     geofield:{
@@ -181,7 +181,7 @@ function findbcsclnglatNameFun(res) {
                                     "label":"所属街镇"
                                 },
                                 {
-                                    //EXECUTEDEPTNAME
+                                //EXECUTEDEPTNAME
                                     "fieldName": "EXECUTEDEPTNAME",
                                     "label":"主责部门"
                                 },
@@ -215,8 +215,8 @@ function findbcsclnglatNameFun(res) {
                     },
                     "labels": [{
                         "fields": [
-                            /* "#.名称",
-                             "#.地址"*/
+                           /* "#.名称",
+                            "#.地址"*/
                         ],
                         "color": [
                             255,

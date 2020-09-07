@@ -370,12 +370,12 @@ var MyEcharts2 = {
 
         },
 
-        radar: function (name, indicator) {
+        radar: function (name, indicator, value) {
             var legendData = ['收入/万元','班次', '里程/万公里']; //图例
 
             var dataArr = [
                 {
-                    value: [4300, 10000, 24000, 30000, 50000, 19000],
+                    value: value,
                   
                      areaStyle: {
                             normal: { // 单项区域填充样式
@@ -798,9 +798,12 @@ var MyEcharts2 = {
                     },
                     axisLabel: {
                       show: true,
+                      interval:0 ,  //控制是否全部显示
+                      rotate: 20,//控制字体倾斜
                       textStyle: {
                         color: "rgba(250,250,250,0.6)", //X轴文字颜色
-                        fontSize: 16
+                        fontSize: 12,
+                     
                       }
                     },
                     splitArea: {

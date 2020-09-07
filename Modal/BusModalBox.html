@@ -30,22 +30,8 @@
     
         <div  id="countRestNumFunId" class="header" style="padding-right: 520px;">
 
-               
-
-             
-                        <!-- <div style="color: #fff;text-align: center;font-size: 0.2rem;font-weight: bold;"><div id="ecTraffic3"  style="width: 150px;height: 120px;"></div><div style="margin-top: -2.5rem;font-size: 1rem;">当日完成班次</div></div> -->
-
-<!--                  -->
-<!--            <div style="color: #fff;text-align: center;font-size: 0.2rem;font-weight: bold;position: absolute;right: 40px;">-->
-<!--                <div id="ecTraffic1"  style="width: 420px;height: 200px;"></div>-->
-<!--                <div style="display: flex;justify-content: space-evenly;margin-top: -6.5rem;"><span>昨日班次执行率</span><span>当日完成班次</span><span>昨日首末班车准确率</span> </div> </div>-->
-
-                  
-
         </div>
    
-           
-    
         <div class="FX_header">
             <div class="header">
                 <a class="line"></a>
@@ -88,7 +74,6 @@
         // HeaderFun()
         BusLineFun()
         countRestNumFun()
-        // MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",4954,99.81,99.44,), "ecTraffic1")
 
     }
     function countRestNumFun(){
@@ -101,10 +86,10 @@
         ajaxPromise(para).then(res=>{
             para=`<div class="rest-infos" style="height: 84px;width: 160px">
                         <div class="info-box">
-                            <p>在线车辆</p>
+                            <p>路线总数</p>
                             <div class="bottom-text">
-                                <span class="num-font" style="color: #ff9933;">${res.carnum}</span>
-                                <p>辆</p>
+                                <span class="num-font" style="color: #ff9933;">${res.xlnum}</span>
+                                <p>条</p>
                             </div>
                         </div>
                         <div class="rest-border-box rest-border-right"></div>
@@ -112,10 +97,10 @@
                     </div>
                         <div class="rest-infos" style="height: 84px;width: 160px">
                             <div class="info-box">
-                                <p>路线总数</p>
+                                <p>在线车辆</p>
                                 <div class="bottom-text">
-                                    <span class="num-font" style="color: #ff9933;">${res.xlnum}</span>
-                                    <p>条</p>
+                                    <span class="num-font" style="color: #ff9933;">${res.carnum}</span>
+                                    <p>辆</p>
                                 </div>
                             </div>
                             <div class="rest-border-box rest-border-right"></div>
@@ -141,7 +126,7 @@
             document.getElementById("countRestNumFunId").innerHTML=para
             console.log(para, 'paraparaparaparapara')
             // MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",4954,99.81,99.44,), "ecTraffic1")
-            MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",res.sjnum,res.bczxl,res.smbczdlz,), "ecTraffic1")
+            MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",res.sjnum,res.bczxl,res.smbczdlz,res.jhnum), "ecTraffic1")
 
         })
     }
@@ -159,7 +144,7 @@
                 xData.push(item.time)
                 yData.push(item.bczxl)
             })
-            MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('工单问题',"249,15,17",xData,yData), "SmallECharts1")
+            MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('工单问题',"50,128,210",xData,yData), "SmallECharts1")
             window.onresize=MyEcharts.resize
         })
         para={

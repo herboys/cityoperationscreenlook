@@ -3,42 +3,70 @@ window.onload = function () {
  
 
 let indicator = [{
-  name: '发现得分',
+  name: '监督发现',
   max: 6500
 },
 {
-  name: '协调得分',
+  name: '指挥协调',
   max: 16000
 },
 {
-  name: '办结得分',
+  name: '综合监督',
   max: 30000
 },
 {
-  name: '基础得分',
+  name: '案件质量',
+  max: 38000
+},
+{
+  name: '机制及专项工作',
   max: 38000
 },
 ];
 let indicator2 = [{
-  name: '响应得分',
+  name: '指挥协调',
   max: 6500
 },
 {
-  name: '办结得分',
+  name: '案件质量',
   max: 30000
 },
 {
-  name: '基础得分',
+  name: '机制及专项工作',
   max: 38000
 },
 ];
+let indicator3 = [{
+  name: '监督发现',
+  max: 6500
+},
+{
+  name: '指挥协调',
+  max: 16000
+},
+{
+  name: '综合监督',
+  max: 30000
+},
+{
+  name: '案件质量',
+  max: 38000
+},
+{
+  name: '机制及专项工作',
+  max: 38000
+},
+];
+value1 = [4300, 10000, 24000, 30000, 30000, 19000];
+value2 = [4300, 10000, 24000, 30000, 30000, 19000];
+value3 = [4300, 10000, 24000, 30000, 30000, 19000];
 let attackSourcesData = [80, 34, 60, 70, 34,80, 34, 60, 70, 34,80, 34];
-let attackSourcesData2 = [80, 34, 60, 70, 34];
-let attackSourcesData3 = [90, 84, 50, 70, 45];
+let attackSourcesData2 = [80, 34, 60, 70, 34,80, 34, 60, 70, 34];
+let attackSourcesData3 = [90, 84, 50, 70, 45,80, 34, 60, 70, 34,90, 84, 50, 70, 45];
 
 let attackSourcesName = ['菊园新区', '安亭镇','嘉定新城', '南翔镇', '江桥镇', '徐行镇', '外冈镇', '华亭镇', '新成路街道', '嘉定镇街道', '真新街道', '工业区'];
-let attackSourcesName2 = ['公安', '城管', '司法', '民政', '水务'];
-let attackSourcesName3 = ['网格一', '网格二', '网格三', '网格四', '网格五'];
+let attackSourcesName2 = ['城发', '电信', '东方有线', '公安', '嘉定供电', '建管委', '交通委', '联通', '绿化市容', '水务'];
+let attackSourcesName3 = ['墨玉社区', '向阳村', '新源社区', '沁富社区', '沁乐社区','玉兰第二社区','紫荆社区','红梅社区','金桂社区','南安村','迎春社区', '六泉桥社区', '西元村', '新安社区', '龚闵村'];
 let category = [{
   name: "管控",
   value: 2500
@@ -61,7 +89,7 @@ let pieData = [{
   value: 611
 },
 ];
-  let xAxisData =  ['区域一', '区域二', '区域三', '区域四', '区域五', '区域六'];
+  let xAxisData =  ['路灯', '上水井盖', '废弃车辆', '道路保洁', '暴露垃圾', '交通信号灯'];
   let yAxisData = [1100, 1600, 1300, 1300, 1250, 1500];
   let yAxisData2 = [1500, 1600, 1300, 1030, 1250, 1000];
 
@@ -82,15 +110,15 @@ MyEcharts2.EchartsOption.Ranking("name", attackSourcesName3, attackSourcesData3)
 "SmallECharts444"
 );
 MyEcharts2.initChart(
-MyEcharts2.EchartsOption.radar("name", indicator),
+MyEcharts2.EchartsOption.radar("name", indicator, value1),
 "ecRadar1"
 );
 MyEcharts2.initChart(
-MyEcharts2.EchartsOption.radar("name", indicator2),
+MyEcharts2.EchartsOption.radar("name", indicator2, value2),
 "ecRadar2"
 );
 MyEcharts2.initChart(
-MyEcharts2.EchartsOption.radar("name", indicator2),
+MyEcharts2.EchartsOption.radar("name", indicator3, value3),
 "ecRadar3"
 );
 MyEcharts2.initChart(
@@ -126,7 +154,7 @@ MyEcharts2.initChart(
   FindbcNameTypeChart2.on("click", function (param) {
     console.log(param, 'paramparamparam');
 
-   xAxisData =  ['11', '22', '33', '44', '55', '66'];
+   xAxisData =  ['交通信号灯', '上水井盖', '废弃车辆', '道路保洁', '暴露垃圾', '路灯'];
    yAxisData = [100, 600, 300, 300, 250, 500];
    yAxisData2 = [500, 900, 300, 030, 550, 300]
    let option1 = MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2)

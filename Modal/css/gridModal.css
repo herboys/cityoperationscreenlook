@@ -265,7 +265,8 @@ body {
 }
 
 .Satisfaction-warp-item-echarts {
-    width: 600px;
+    /* width: 600px; */
+    width: 590px;
     height: 255px;
     background-image: url(../../Modal/images/12345icon.png);
     background-size: 100% 100%;

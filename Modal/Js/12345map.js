@@ -207,6 +207,7 @@ function findbcsclnglatNameFun(res) {
                     }]
                 }
             }
+         
         ])
         console.log(bridge1, '987654321')
     }
@@ -249,13 +250,24 @@ function initMap(date, bcname, scname) {
             //     }
             // },
             // 功能菜单
+          
             {
                 "ActionName": "userMenu",
                 "Parameters": {
-                    "url": "http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14",
-                    "visible": true
+                  "url": "http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14",
+                  "visible": true
                 }
-            },
+              },
+              {
+                "ActionName": "LayerVisible",
+                "Parameters": [
+                  {
+                    "name": "街道乡镇",
+                    "visible": true,
+                    "where": "区代码='14'"
+                  }
+                ]
+              }
         ])
         console.log(bridge1, '987654321')
     }

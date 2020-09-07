@@ -1,6 +1,9 @@
 window.onload = function () {
-  
- 
+  init()
+  initJZdata()
+}
+function init(){
+
 
 let indicator = [{
   name: '监督发现',
@@ -64,7 +67,8 @@ let attackSourcesData = [80, 34, 60, 70, 34,80, 34, 60, 70, 34,80, 34];
 let attackSourcesData2 = [80, 34, 60, 70, 34,80, 34, 60, 70, 34];
 let attackSourcesData3 = [90, 84, 50, 70, 45,80, 34, 60, 70, 34,90, 84, 50, 70, 45];
 
-let attackSourcesName = ['菊园新区', '安亭镇','嘉定新城', '南翔镇', '江桥镇', '徐行镇', '外冈镇', '华亭镇', '新成路街道', '嘉定镇街道', '真新街道', '工业区'];
+
+// let attackSourcesName = ['菊园新区', '安亭镇','嘉定新城', '南翔镇', '江桥镇', '徐行镇', '外冈镇', '华亭镇', '新成路街道', '嘉定镇街道', '真新街道', '工业区'];
 let attackSourcesName2 = ['城发', '电信', '东方有线', '公安', '嘉定供电', '建管委', '交通委', '联通', '绿化市容', '水务'];
 let attackSourcesName3 = ['墨玉社区', '向阳村', '新源社区', '沁富社区', '沁乐社区','玉兰第二社区','紫荆社区','红梅社区','金桂社区','南安村','迎春社区', '六泉桥社区', '西元村', '新安社区', '龚闵村'];
 let category = [{
@@ -147,19 +151,39 @@ MyEcharts2.initChart(
   "ecBar111"
 );      
 
-
+  
+};
+function initJZdata(){
+  let attackSourcesName = ['菊园新区', '安亭镇','嘉定新城', '南翔镇', '江桥镇', '徐行镇', '外冈镇', '华亭镇', '新成路街道', '嘉定镇街道', '真新街道', '工业区'];
+  let attackSourcesData = [80, 34, 60, 70, 34,80, 34, 60, 70, 34,80, 34];
+ 
   let option2 = MyEcharts2.EchartsOption.Ranking("name", attackSourcesName, attackSourcesData)
   let JZPM = echarts.init(document.getElementById("SmallECharts4"));
   JZPM.setOption(option2);
   JZPM.on("click", function (param) {
     console.log(param, 'paramparamparam');
+    $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByStreet",{"street":param.name},function(res){
+        alert(res)
+        console.log(res,respostrespostrespost);
+     });
+    //  $.ajax({
+    //   url:"http://10.237.115.83:8092/tcasemsg/findSmallClassNumByStreet",
+    //   async:false,
+    //   type:"post",
+    //   data:{'street':param.name},
+    //   dataType:"json",
+    //   success:function(data){
+    //      alert(res)
+    //   }
+    // });
 
-   xAxisData =  ['交通信号灯', '上水井盖', '废弃车辆', '道路保洁', '暴露垃圾', '路灯'];
-   yAxisData = [100, 600, 300, 300, 250, 500];
-   yAxisData2 = [500, 900, 300, 030, 550, 300]
-   let option1 = MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2)
-  let FindbcNameTypeChart1 = echarts.init(document.getElementById("ecBar111"));
-  FindbcNameTypeChart1.setOption(option1);
+  //  xAxisData =  ['交通信号灯', '上水井盖', '废弃车辆', '道路保洁', '暴露垃圾', '路灯'];
+  //  yAxisData = [100, 600, 300, 300, 250, 500];
+  //  yAxisData2 = [500, 900, 300, 030, 550, 300]
+  //  let option1 = MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2)
+  // let FindbcNameTypeChart1 = echarts.init(document.getElementById("ecBar111"));
+  // FindbcNameTypeChart1.setOption(option1);
   })
   
-};
+
+}

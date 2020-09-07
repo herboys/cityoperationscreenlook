@@ -134,30 +134,17 @@
               $("#result").html("您选择了" + txt + "，值为：" + value);
             });
           });
-          $("#dropdown2 p").click(function () {
-            var ul = $("#dropdown2 ul");
-            if (ul.css("display") == "none") {
-              ul.slideDown("fast");
-            } else {
-              ul.slideUp("fast");
-            }
-            $("#dropdown2 ul li a").click(function () {
-              var txt = $(this).text();
-              $("#dropdown2 p").html(txt);
-              var value = $(this).attr("rel");
-              $("#dropdown2 ul").hide();
-              $("#result").html("您选择了" + txt + "，值为：" + value);
-            });
-          });
 
       });
   window.onload = function () {
-    let xData =  ['08-01', '08-02', '08-03', '08-04', '08-05', '08-06','08-07', '08-08', '08-09', '08-10',
+    let xData8 =  ['08-01', '08-02', '08-03', '08-04', '08-05', '08-06','08-07', '08-08', '08-09', '08-10',
      '08-11', '08-12', '08-13', '08-14', '08-15', '08-16','08-17', '08-18', '08-19', '08-20',
      '08-21', '08-22', '08-23', '08-24', '08-25', '08-26','08-27', '08-28', '08-29', '08-30','08-31'];
-    let yData = [4800, 4400, 4600, 4800, 4200, 3900,4800, 4400, 4600, 4800, 4200, 3900,4800, 4400, 4600, 4800, 4200, 3900,4800, 4400, 4600, 4800, 4200, 3900,4800, 4400, 4600, 4800, 4200, 3900,4600];
+    let yData8 = [507, 344, 554, 538, 462, 524,494, 498, 508, 682,
+                 568, 509,434, 454, 574, 461, 529, 524,485, 361,
+                 480, 459, 439, 480,492, 561, 503, 550, 383, 484,565];
     MyEcharts2.initChart(
-      MyEcharts2.EchartsOption.LineChartPhone('话务量',"16, 90, 113",xData,yData),
+      MyEcharts2.EchartsOption.LineChartPhone('话务量',"16, 90, 113",xData8,yData8),
       "ecLivePhone"
     );
  

@@ -12,7 +12,8 @@
 <link rel="stylesheet" type="text/css" href="../css/rescus_dialog.css" />
 <link rel="stylesheet" type="text/css" href="../css/banner.css" />
 
-<script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale"></script>
+<!-- <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab&plugin=AMap.DistrictSearch,AMap.Scale"></script> -->
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
 <script src="../js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
@@ -20,11 +21,10 @@
 <script src="../js/resource.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/rest-echarts.js" type="text/javascript" charset="utf-8"></script>
-<!-- <script src="Js/intercity-map.js" type="text/javascript" charset="utf-8"></script> -->
-<!-- <script src="Js/intercitymap-package.js" type="text/javascript" charset="utf-8"></script> -->
+
 <script type="text/javascript" src="../js/rest-scroll.js"></script>
 <script type="text/javascript" src="../js/command_system.js"></script>
-<script type="text/javascript" src="../js/map2.js"></script>
+
 
 <script type="text/javascript" src="../js/banner.js"></script>
 
@@ -690,94 +690,10 @@
     </div>
   </div>
 </body>
-<script>
-  var bridge1 = null;
-  $(function () {
-    bridge1 = new CityGis.Bridge({
-      id: "mapContainer1",
-      url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
-      onReady: function () {
-        createMenu();
-      }
-    });
-  })
-
-  function createMenu() {
-    bridge1.Invoke([
-      //地图主题切换消息
-      {
-        "ActionName": "changeTheme",
-        "Parameters": {
-          "id": "Home"
-        }
-      },
-      // 功能菜单
-      {
-        "ActionName": "userMenu",
-        "Parameters": {
-          "url": "http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14",
-          "visible": true
-        }
-      },
-      // 撒点
-      {
-        "ActionName": "ShowData",
-        "Parameters": {
-          "name": "car_dian",
-          "isMouseHoverInfo": true,
-          "data": {
-            "url": "http://127.0.0.1:5500/Modal/Js/intercity-point.json",
-            "parsedata": "function(d){return d.features}",
-            "parsegeometry": "function(item){return item.geometry}"
-          },
-          "popupTemplate": {
-            "content": [{
-              "type": "fields",
-              "fieldInfos": [{
-                  "fieldName": "名称",
-                  "label": "名称"
-                },
-                {
-                  "fieldName": "地址"
-                }
-              ]
-            }]
-          },
-          "legendVisible": true,
-          "popupEnabled": true,
-          "isLocate": true,
-          "renderer": {
-            "type": "simple",
-            "label": "",
-            "visualVariables": [],
-            "symbol": {
-              "type": "simple-marker",
-              "size": 10,
-              "color": "red",
-              "outline": {
-                "width": 0.5,
-                "color": "white"
-              }
-            }
-          },
-          "labels": [{
-            "fields": [
-              "#.名称",
-              "#.地址"
-            ],
-            "color": [
-              255,
-              255,
-              0,
-              0.5
-            ],
-            "size": 18
-          }]
-        }
-      }
-    ])
-  }
-</script>
+<script type="text/javascript" src="../js/map2.js"></script>
+<script type="text/javascript" src="Js/RestMap.js"></script>
+<script type="text/javascript" src="../js/commonJs.js"></script>
+<script type="text/javascript" src="Js/ajaxPromise.js"></script>
 <script type="text/javascript">
   $(function () {
 
@@ -830,6 +746,7 @@
 
       };
     },
+    
     methods: {
 
       switchClick1() {
@@ -856,6 +773,10 @@
 
 
     },
+    mounted(){
+      initMap2();
+      init1()
+    }
 
 
 

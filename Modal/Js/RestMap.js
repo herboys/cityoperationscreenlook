@@ -47,7 +47,7 @@ var jiading_district = [{ name: "安亭镇", lon: 121.2047, lat: 31.2987 },
 
 
 function initMap() {
-    map = new AMap.Map('mapContainer1', {
+    map = new AMap.Map('mapContainer11', {
         center: [121.238825, 31.364284],
         zoom: 12,
         zooms: [11, 18],  //设置地图缩放级别

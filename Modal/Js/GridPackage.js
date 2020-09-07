@@ -3,35 +3,63 @@ window.onload = function () {
  
 
 let indicator = [{
-  name: '发现得分',
+  name: '监督发现',
   max: 6500
 },
 {
-  name: '协调得分',
+  name: '指挥协调',
   max: 16000
 },
 {
-  name: '办结得分',
+  name: '综合监督',
   max: 30000
 },
 {
-  name: '基础得分',
+  name: '案件质量',
+  max: 38000
+},
+{
+  name: '机制及专项工作',
   max: 38000
 },
 ];
 let indicator2 = [{
-  name: '响应得分',
+  name: '指挥协调',
   max: 6500
 },
 {
-  name: '办结得分',
+  name: '案件质量',
   max: 30000
 },
 {
-  name: '基础得分',
+  name: '机制及专项工作',
   max: 38000
 },
 ];
+let indicator3 = [{
+  name: '监督发现',
+  max: 6500
+},
+{
+  name: '指挥协调',
+  max: 16000
+},
+{
+  name: '综合监督',
+  max: 30000
+},
+{
+  name: '案件质量',
+  max: 38000
+},
+{
+  name: '机制及专项工作',
+  max: 38000
+},
+];
+value1 = [4300, 10000, 24000, 30000, 30000, 19000];
+value2 = [4300, 10000, 24000, 30000, 30000, 19000];
+value3 = [4300, 10000, 24000, 30000, 30000, 19000];
 let attackSourcesData = [80, 34, 60, 70, 34,80, 34, 60, 70, 34,80, 34];
 let attackSourcesData2 = [80, 34, 60, 70, 34];
 let attackSourcesData3 = [90, 84, 50, 70, 45];
@@ -82,15 +110,15 @@ MyEcharts2.EchartsOption.Ranking("name", attackSourcesName3, attackSourcesData3)
 "SmallECharts444"
 );
 MyEcharts2.initChart(
-MyEcharts2.EchartsOption.radar("name", indicator),
+MyEcharts2.EchartsOption.radar("name", indicator, value1),
 "ecRadar1"
 );
 MyEcharts2.initChart(
-MyEcharts2.EchartsOption.radar("name", indicator2),
+MyEcharts2.EchartsOption.radar("name", indicator2, value2),
 "ecRadar2"
 );
 MyEcharts2.initChart(
-MyEcharts2.EchartsOption.radar("name", indicator2),
+MyEcharts2.EchartsOption.radar("name", indicator3, value3),
 "ecRadar3"
 );
 MyEcharts2.initChart(

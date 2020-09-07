@@ -370,12 +370,12 @@ var MyEcharts2 = {
 
         },
 
-        radar: function (name, indicator) {
+        radar: function (name, indicator, value) {
             var legendData = ['收入/万元','班次', '里程/万公里']; //图例
 
             var dataArr = [
                 {
-                    value: [4300, 10000, 24000, 30000, 50000, 19000],
+                    value: value,
                   
                      areaStyle: {
                             normal: { // 单项区域填充样式

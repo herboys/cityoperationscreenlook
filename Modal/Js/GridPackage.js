@@ -149,9 +149,9 @@ MyEcharts2.initChart(
 
 
   let option2 = MyEcharts2.EchartsOption.Ranking("name", attackSourcesName, attackSourcesData)
-  let FindbcNameTypeChart2 = echarts.init(document.getElementById("SmallECharts4"));
-  FindbcNameTypeChart2.setOption(option2);
-  FindbcNameTypeChart2.on("click", function (param) {
+  let JZPM = echarts.init(document.getElementById("SmallECharts4"));
+  JZPM.setOption(option2);
+  JZPM.on("click", function (param) {
     console.log(param, 'paramparamparam');
 
    xAxisData =  ['交通信号灯', '上水井盖', '废弃车辆', '道路保洁', '暴露垃圾', '路灯'];

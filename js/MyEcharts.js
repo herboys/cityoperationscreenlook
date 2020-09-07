@@ -1102,7 +1102,7 @@ var MyEcharts = {
                         show: false
                     },
                     boundaryGap: false,
-                    data:xData,
+                    data: xData.reverse(),
 
                 }],
 
@@ -1185,7 +1185,7 @@ var MyEcharts = {
                                 shadowBlur: 20
                             }
                         },
-                        data:yData,
+                        data:yData.reverse(),
                     },
                 ]
             };

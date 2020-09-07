@@ -105,7 +105,7 @@ p{
     align-items: center;
 }
 .FX_header .header{
-    padding:1.667rem 3.333rem 0rem 3.333rem;
+    padding:0.667rem 3.333rem 0rem 3.333rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

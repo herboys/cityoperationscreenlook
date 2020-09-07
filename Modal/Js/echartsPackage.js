@@ -798,9 +798,12 @@ var MyEcharts2 = {
                     },
                     axisLabel: {
                       show: true,
+                      interval:0 ,  //控制是否全部显示
+                      rotate: 20,//控制字体倾斜
                       textStyle: {
                         color: "rgba(250,250,250,0.6)", //X轴文字颜色
-                        fontSize: 16
+                        fontSize: 12,
+                     
                       }
                     },
                     splitArea: {

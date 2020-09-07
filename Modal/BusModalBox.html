@@ -86,10 +86,10 @@
         ajaxPromise(para).then(res=>{
             para=`<div class="rest-infos" style="height: 84px;width: 160px">
                         <div class="info-box">
-                            <p>在线车辆</p>
+                            <p>路线总数</p>
                             <div class="bottom-text">
-                                <span class="num-font" style="color: #ff9933;">${res.carnum}</span>
-                                <p>辆</p>
+                                <span class="num-font" style="color: #ff9933;">${res.xlnum}</span>
+                                <p>条</p>
                             </div>
                         </div>
                         <div class="rest-border-box rest-border-right"></div>
@@ -97,10 +97,10 @@
                     </div>
                         <div class="rest-infos" style="height: 84px;width: 160px">
                             <div class="info-box">
-                                <p>路线总数</p>
+                                <p>在线车辆</p>
                                 <div class="bottom-text">
-                                    <span class="num-font" style="color: #ff9933;">${res.xlnum}</span>
-                                    <p>条</p>
+                                    <span class="num-font" style="color: #ff9933;">${res.carnum}</span>
+                                    <p>辆</p>
                                 </div>
                             </div>
                             <div class="rest-border-box rest-border-right"></div>

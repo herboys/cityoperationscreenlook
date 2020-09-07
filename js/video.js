@@ -167,7 +167,7 @@ function createVideoSlideOne(){
 			$('#slider1').html('');
 			for (var i = 0; i < 1; i++) {
 				var name=jrwlzsjListOne[i].name
-				name=name.replaceAll(" ","_");
+				name=name.replace(" ","_");
 				var url=jrwlzsjListOne[i].src
 				str=''
 				str += '<div class="slide1">'

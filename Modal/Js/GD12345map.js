@@ -176,7 +176,7 @@ function addJiadingZhenText() {
         // 图标尺寸
         size: new AMap.Size(0, 0),
         // 图标的取图地址
-       // image: '../../images/map/icon_car.png',
+        // image: '../../images/map/icon_car.png',
         // 图标所用图片大小
         imageSize: new AMap.Size(22, 32),
         // 图标取图偏移量
@@ -238,7 +238,7 @@ function addPoiMarker() {
             // 图标尺寸
             size: new AMap.Size(22, 32),
             // 图标的取图地址
-          //  image: './images/map/icon_' + mapMarker[i].type + '.png',
+            //  image: './images/map/icon_' + mapMarker[i].type + '.png',
             // 图标所用图片大小
             imageSize: new AMap.Size(22, 32),
             // 图标取图偏移量
@@ -306,25 +306,15 @@ function playVideo(e) {
 
 function SprinkleIt(){
     //map.clearMap();
-  /* let NewList=[
+    let NewList=[
         {name:"嘉城 桃园小区 桃园新村87号东 HG",pumpStationX:"121.239575",pumpStationY:"31.391606",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011429001310015505&subStream=0&protocol=0"},
         {name:"嘉城 桃园小区 桃园新村104东 HG",pumpStationX:"121.239503",pumpStationY:"31.390868",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321146003&subStream=0&protocol=0"},
-         {name:"嘉城 高昌路105弄 5号垃圾投放 HG",pumpStationX:"121.238272",pumpStationY:"31.37534",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321159013&subStream=0&protocol=0"},
-         {name:"嘉城 桃园小区 桃园新村62号东 HG",pumpStationX:"121.240479",pumpStationY:"31.391997",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321168016&subStream=0&protocol=0"},
+        {name:"嘉城 高昌路105弄 5号垃圾投放 HG",pumpStationX:"121.238272",pumpStationY:"31.37534",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321159013&subStream=0&protocol=0"},
+        {name:"嘉城 桃园小区 桃园新村62号东 HG",pumpStationX:"121.240479",pumpStationY:"31.391997",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321168016&subStream=0&protocol=0"},
         {name:"嘉城 沪宜公路3668弄 车辆 进 HG",pumpStationX: "121.238379", pumpStationY: "31.374618",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321140013&subStream=0&protocol=0"},
         {name:"嘉城 嘉宏公寓 大门北侧人脸 进 HG",pumpStationX: "121.248514", pumpStationY: "31.382049",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321146003&subStream=0&protocol=0"},
         {name:"嘉城 金沙小区 东大门人脸1 HG",pumpStationX: "121.251695", pumpStationY: "31.3888604",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321159013&subStream=0&protocol=0"},
         {name:"嘉城 丽景公寓 北出入口车辆 进 HG",pumpStationX: "121.238027", pumpStationY: "31.377266",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321168016&subStream=0&protocol=0"},
-    ]*/
-    let NewList=[
-        {name:"嘉城 桃园小区 桃园新村87号东 HG",pumpStationX:"121.239575",pumpStationY:"31.391606",url:"31011429001310015505"},
-        {name:"嘉城 桃园小区 桃园新村104东 HG",pumpStationX:"121.239503",pumpStationY:"31.390868",url:"31011411011321146003"},
-        {name:"嘉城 高昌路105弄 5号垃圾投放 HG",pumpStationX:"121.238272",pumpStationY:"31.37534",url:"31011411011321159013"},
-        {name:"嘉城 桃园小区 桃园新村62号东 HG",pumpStationX:"121.240479",pumpStationY:"31.391997",url:"31011411011321168016"},
-        {name:"嘉城 沪宜公路3668弄 车辆 进 HG",pumpStationX: "121.238379", pumpStationY: "31.374618",url:"31011411011321140013"},
-        {name:"嘉城 嘉宏公寓 大门北侧人脸 进 HG",pumpStationX: "121.248514", pumpStationY: "31.382049",url:"31011411011321146003"},
-        {name:"嘉城 金沙小区 东大门人脸1 HG",pumpStationX: "121.251695", pumpStationY: "31.3888604",url:"31011411011321159013"},
-        {name:"嘉城 丽景公寓 北出入口车辆 进 HG",pumpStationX: "121.238027", pumpStationY: "31.377266",url:"31011411011321168016"},
     ]
     for (let i = 0; i < NewList.length; i++) {
 // 创建一个 icon
@@ -363,47 +353,7 @@ function SprinkleIt(){
     }
 
     function iframeInsertOneVideo(name,url){
-
-        $.ajax({
-            url:"http://localhost:8092/video/getVideoByCode?videoCode="+url,
-            type:"get",
-            success:function(data){
-                url=data;
-                name=name.replace(" ","_").replace(" ","_").replace(" ","_").replace(" ","_")
-
-                console.log(1)
-                console.log(parent.$('#slider1').children().eq(0));
-                var str=""
-                parent.$('#slider1').html('');
-
-                str += '<div class="slide1">'
-                    +'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+name+'</span>'
-                    + "<img class='fullscreenImg' onclick=openLargeVideo('"+name+"','"+url+"') src='images/fullscreen1.png'/>"
-                    +'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
-
-                str +='<div class="jrwlzsjCont1">'
-
-                str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
-
-                str	+= '  </video>'
-                    +'</div>'
-                    +'</div>'
-                    +'</div>'
-
-                parent.$('#slider1').append(str)
-
-
-                var hls = new Hls();
-                var video = parent.$("#slider1 video")[0];
-                hls.loadSource(url);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                    video.play();
-                })
-            }
-        })
-
-     /* name=name.replace(" ","_").replace(" ","_").replace(" ","_")
+        name=name.replace(" ","_").replace(" ","_").replace(" ","_")
 
         console.log(1)
         console.log(parent.$('#slider1').children().eq(0));
@@ -424,6 +374,9 @@ function SprinkleIt(){
             +'</div>'
             +'</div>'
 
+
+
+
         parent.$('#slider1').append(str)
 
         var hls = new Hls();
@@ -432,54 +385,20 @@ function SprinkleIt(){
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
             video.play();
-        })*/
-       // hlsListMap["slideOne"]=hls
-      //  videoFlagOne=1;
+        })
+
+        // hlsListMap["slideOne"]=hls
+        //  videoFlagOne=1;
     }
 
     function iframeInsertSecondVideo(name,url){
 
-       /* var removeVideo= $("#slider2 video")[0]
-        removeVideo.pause()
-        hlsListMap["slideTwo"].destroy();
-        hlsListMap["slideTwo"]=null
-        delete hlsListMap["slideTwo"]*/
-
-       $.ajax({
-            url:"http://localhost:8092/video/getVideoByCode?videoCode="+url,
-            type:"get",
-            success:function(data){
-                url=data;
-
-                name=name.replace(" ","_").replace(" ","_").replace(" ","_")
-                parent.$('#slider2').html('');
-                var str=''
-                str += '<div class="slide1">'
-                    +'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+name+'</span>'
-                    + "<img class='fullscreenImg' onclick=openLargeVideo('"+name+"','"+url+"') src='images/fullscreen1.png'/>"
-                    +'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo()>关闭</span>'
-                str +='<div class="jrwlzsjCont1">'
-
-                str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
-
-                str	+= '  </video>'
-                    +'</div>'
-                    +'</div>'
-                    +'</div>'
-
-                parent.$('#slider2').append(str)
-
-                var hls = new Hls();
-                var video =  parent.$("#slider2 video")[0];
-                hls.loadSource(url);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                    video.play();
-                })
-            }
-        })
-
-       /*name=name.replace(" ","_").replace(" ","_").replace(" ","_")
+        /* var removeVideo= $("#slider2 video")[0]
+         removeVideo.pause()
+         hlsListMap["slideTwo"].destroy();
+         hlsListMap["slideTwo"]=null
+         delete hlsListMap["slideTwo"]*/
+        name=name.replace(" ","_").replace(" ","_").replace(" ","_")
         parent.$('#slider2').html('');
         var str=''
         str += '<div class="slide1">'
@@ -497,8 +416,6 @@ function SprinkleIt(){
 
         parent.$('#slider2').append(str)
 
-
-
         var hls = new Hls();
         var video =  parent.$("#slider2 video")[0];
         hls.loadSource(url);
@@ -506,7 +423,7 @@ function SprinkleIt(){
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
             video.play();
         })
-*/
-       // hlsListMap["slideTwo"]=hls
+
+        // hlsListMap["slideTwo"]=hls
     }
 }

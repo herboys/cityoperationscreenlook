@@ -1185,7 +1185,7 @@ var MyEcharts = {
                                 shadowBlur: 20
                             }
                         },
-                        data:yData.reverse(),
+                        data: yData.reverse(),
                     },
                 ]
             };

@@ -449,7 +449,7 @@ function findbcNameType() {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        let color = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474']
+        let color = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff']
         para = ''
         console.log(res)
         res.forEach((item, index) => {
@@ -489,6 +489,7 @@ function findbcNameType() {
                         para2[index].style.boxShadow=""
                     }
                 })
+                document.getElementById("RightBannerNameId").innerText='管理要点【'+para2[i].innerHTML+'】热力图'
                 basicFunTimeName=para2[i].innerHTML
                 findbcsclnglatName(basicFunTime,para2[i].innerHTML,"")
                 findbcNamesc(para2[i].innerHTML)
@@ -674,9 +675,10 @@ function findTypedeptName() {
         let container = document.getElementById("SmallEChartscopy")
         myChart = echarts.init(container);
         option = MyEcharts.EchartsOption.newbar2(xData, yData, zData, "#F9392D", legend, "%")
-        clearInterval(JWBsetInterval)
-        JWBsetInterval=null
-     JWBsetInterval=setInterval( JWBsetIntervalFun,3000);
+        myChart.setOption(option, true);
+     //    clearInterval(JWBsetInterval)
+     //    JWBsetInterval=null
+     // JWBsetInterval=setInterval( JWBsetIntervalFun,3000);
     })
 }
 function JWBsetIntervalFun () {

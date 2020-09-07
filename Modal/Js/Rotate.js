@@ -25,8 +25,16 @@ var lists = null;
 function TyPeOnclick(num) {
     initRotate(lists, medians, num)
 }
-
+function RightBoxFun(median){
+    let newpara=`<div onclick="TyPeOnclick(0)"><span class="caise"></span>全部</div>
+                                <div onclick="TyPeOnclick(1)"><span style="background: #f36c6c"></span>>${(median/2)*3}</div>
+                                <div  onclick="TyPeOnclick(2)"><span style="background-color:#e6cf4e"></span>>${median}</div>
+                                <div  onclick="TyPeOnclick(3)"><span style="background-color:#20d180"></span>>${median/2}</div>
+                                <div  onclick="TyPeOnclick(4)"> <span style="background-color:#0093ff"></span><${(median/2)}</div>`
+    document.getElementById("TyPeOnclickId").innerHTML=newpara
+}
 function initRotate(list, median, number) {
+    RightBoxFun(median)
     console.log(list, median, number)
     clearInterval(timeRotate)
     radius = 120;
@@ -56,20 +64,20 @@ function initRotate(list, median, number) {
         case 0:
             list.forEach((item, index) => {
                 if (item.value > (median / 2) * 3) {
-                    para += `<a  target="_blank" style="color:#f36c6c">${item.name}</a>`
+                    para +=`<a  target="_blank" style="color:#f36c6c;font-family:宋体;font-size: 24px;font-weight: bold">${item.name}</a>`
                 } else if (item.value > median) {
-                    para += `<a  target="_blank"  style="color: #e6cf4e">${item.name}</a>`
+                    para += `<a  target="_blank"  style="color: #e6cf4e;font-size: 18px;">${item.name}</a>`
                 } else if (item.value > median / 2) {
-                    para += `<a  target="_blank" style="color: #20d180">${item.name}</a>`
+                    para += `<a  target="_blank" style="color: #20d180;font-size: 14px;">${item.name}</a>`
                 } else {
-                    para += `<a  target="_blank"  style="color: #0093ff">${item.name}</a>`
+                    para += `<a  target="_blank"  style="color: #0093ff;font-size: 12px;">${item.name}</a>`
                 }
             })
             break;
         case 1:
             list.forEach((item, index) => {
                 if (item.value > (median / 2) * 3) {
-                    para += `<a  target="_blank" style="color:#f36c6c">${item.name}</a>`
+                    para += `<a  target="_blank" style="color:#f36c6c ;font-size: 18px;">${item.name}</a>`
                 }
             })
             break;
@@ -77,7 +85,7 @@ function initRotate(list, median, number) {
             list.forEach((item, index) => {
                 if (item.value > (median / 2) * 3) {
                 } else if (item.value > median) {
-                    para += `<a  target="_blank"  style="color: #e6cf4e">${item.name}</a>`
+                    para += `<a  target="_blank"  style="color: #e6cf4e;font-size: 18px;">${item.name}</a>`
                 } else if (item.value > median / 2) {
                 } else {
                 }
@@ -88,7 +96,7 @@ function initRotate(list, median, number) {
                 if (item.value > (median / 2) * 3) {
                 } else if (item.value > median) {
                 } else if (item.value > median / 2) {
-                    para += `<a  target="_blank" style="color: #20d180">${item.name}</a>`
+                    para += `<a  target="_blank" style="color: #20d180;font-size: 18px;">${item.name}</a>`
                 } else {
                 }
             })
@@ -99,16 +107,18 @@ function initRotate(list, median, number) {
                 } else if (item.value > median) {
                 } else if (item.value > median / 2) {
                 } else {
-                    para += `<a  target="_blank"  style="color: #0093ff">${item.name}</a>`
+                    para += `<a  target="_blank"  style="color: #0093ff; font-size: 18px;">${item.name}</a>`
                 }
             })
             break;
     }
-    document.getElementById("rotate").innerHTML = para
+    console.log(para.slice(9),'213123')
+    document.getElementById("rotate").innerHTML = para.slice(9)
     list = document.querySelectorAll("#rotate a")
     for (let j = 0; j < list.length; j++) {
         list[j].onclick = function () {
             findbcschotslnglatName(list[j].innerHTML)
+            document.getElementById("RightBannerNameId").innerText='热词【'+list[j].innerHTML+'】热力图'
         }
     }
     var i = 0;
@@ -287,7 +297,7 @@ function doPosition() {
     for (var i = 0; i < mcList.length; i++) {
         aA[i].style.left = mcList[i].cx + l - mcList[i].offsetWidth / 2 + 'px';
         aA[i].style.top = mcList[i].cy + t - mcList[i].offsetHeight / 2 + 'px';
-        aA[i].style.fontSize = Math.ceil(12 * mcList[i].scale / 2) + 8 + 'px';
+        // aA[i].style.fontSize = Math.ceil(12 * mcList[i].scale / 2) + 8 + 'px';
         aA[i].style.filter = "alpha(opacity=" + 100 * mcList[i].alpha + ")";
         aA[i].style.opacity = mcList[i].alpha;
     }

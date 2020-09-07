@@ -107,7 +107,7 @@ var MyEcharts2 = {
          * @param attackSourcesColor : color
          */
         Ranking: function (name, attackSourcesName, attackSourcesData, attackSourcesColor) {
-
+            console.log(attackSourcesName,attackSourcesData,212121);
             function contains(arr, dst) {
                 var i = arr.length;
                 while (i -= 1) {

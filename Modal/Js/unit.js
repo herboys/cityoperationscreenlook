@@ -1,8 +1,9 @@
 var JWBsetInterval=null;
+var basicFunTimeName = ''
 function ToOnload() {
 
     var gongdanlist = []
-    var basicFunTimeName = ''
+
     var farstlist = ''
     GongDan(1)
     TabsFun(3)
@@ -875,6 +876,10 @@ function move() {
 }
 
 function findbcschotslnglatName(hots) {
+    console.log(basicFunTimeName)
+    // if (basicFunTimeName==undefined){
+    //     basicFunTimeName:''
+    // }
     let para = {
         url: ORACLE_URL + '/taskInfo/findbcAtlnglatName',
         async: true,

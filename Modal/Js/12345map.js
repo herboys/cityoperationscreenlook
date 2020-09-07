@@ -192,8 +192,8 @@ function findbcsclnglatNameFun(res){
 }
 function initMap(date,bcname,scname){
     date="年",
-        bcname="建设交通类",
-        scname="住宅"
+        bcname="",
+        scname=""
     console.log(date,bcname,scname,'+++++++++++++++++++++++++++=')
     let para={
         url:ORACLE_URL+"/taskInfo/findbcschotslnglat",

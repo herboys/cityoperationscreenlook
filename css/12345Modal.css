@@ -447,7 +447,7 @@ ul li {
     z-index: 99999;
     text-align: center;
 }#dropdown1 {
-    font-size: 1.667rem;
+     font-size: 1.333rem;
     z-index: 99999
 }#dropdown2 {
     font-size: 1.333rem;
@@ -455,21 +455,24 @@ ul li {
 }
 
 #dropdown p {
+    border-radius: .1rem;
     width: 6.667rem;
     height: 2.667rem;
     line-height: 2.667rem;
     padding-left: 0.833rem;
-    padding-right: 2.5rem;
+    padding-right: .833rem;
     border: 0.083rem solid #a9c9e2;
     /*background: inherit url('V') no-repeat right 0.333rem;*/
     color: #ffffff;
     cursor: pointer
 }#dropdown1 p {
+    border-radius: .1rem;
+    text-align: center;
     width: 6.667rem;
     height: 2.667rem;
     line-height: 2.667rem;
-    padding-left: 0.833rem;
-    padding-right: 2.5rem;
+     padding-left: 0.833rem;
+     padding-right: .833rem;
     border: 0.083rem solid #a9c9e2;
     /*background: inherit url('V') no-repeat right 0.333rem;*/
     color: #ffffff;
@@ -487,14 +490,18 @@ ul li {
 }
 
 #dropdown ul {
-    width: 9.917rem;
+    padding-left: 0.833rem;
+    padding-right: .833rem;
+    width: 6.667rem;
     background-color: #061839;;
     margin-top: 0.167rem;
     border: 0.167rem solid #50657D;
     position: absolute;
     display: none
 }#dropdown1 ul {
-    width: 9.917rem;
+     padding-left: 0.833rem;
+     padding-right: .833rem;
+     width: 6.667rem;
     background-color: #061839;;
     margin-top: 0.167rem;
     border: 0.167rem solid #50657D;
@@ -510,13 +517,15 @@ ul li {
 }
 
 #dropdown ul li {
+    text-align: center;
     height: 2rem;
     line-height: 2rem;
-    text-indent: 0.833rem
+    /*text-indent: 0.833rem*/
 }#dropdown1 ul li {
+     text-align: center;
     height: 2rem;
     line-height: 2rem;
-    text-indent: 0.833rem
+    /*text-indent: 0.833rem*/
 }#dropdown2 ul li {
     height: 2rem;
     line-height: 2rem;

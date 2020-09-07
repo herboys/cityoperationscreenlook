@@ -1,8 +1,9 @@
-var JWBsetInterval;
+var JWBsetInterval=null;
+var basicFunTimeName = ''
 function ToOnload() {
 
     var gongdanlist = []
-    var basicFunTimeName = ''
+
     var farstlist = ''
     GongDan(1)
     TabsFun(3)
@@ -673,11 +674,12 @@ function findTypedeptName() {
         let container = document.getElementById("SmallEChartscopy")
         myChart = echarts.init(container);
         option = MyEcharts.EchartsOption.newbar2(xData, yData, zData, "#F9392D", legend, "%")
-
-     JWBsetInterval=setInterval( aaaa,2000);
+        clearInterval(JWBsetInterval)
+        JWBsetInterval=null
+     JWBsetInterval=setInterval( JWBsetIntervalFun,3000);
     })
 }
-function aaaa () {
+function JWBsetIntervalFun () {
     if (option.dataZoom[0].endValue == yData.length) {
         option.dataZoom[0].endValue = 6;
         option.dataZoom[0].startValue = 0;
@@ -874,6 +876,10 @@ function move() {
 }
 
 function findbcschotslnglatName(hots) {
+    console.log(basicFunTimeName)
+    // if (basicFunTimeName==undefined){
+    //     basicFunTimeName:''
+    // }
     let para = {
         url: ORACLE_URL + '/taskInfo/findbcAtlnglatName',
         async: true,

@@ -12,12 +12,12 @@ var bridge1 = null;
   function createMenu() {
     bridge1.Invoke([
       //地图主题切换消息
-      {
-        "ActionName": "changeTheme",
-        "Parameters": {
-          "id": "Home"
-        }
-      },
+      // {
+      //   "ActionName": "changeTheme",
+      //   "Parameters": {
+      //     "id": "Home"
+      //   }
+      // },
       // 功能菜单
       {
         "ActionName": "userMenu",
@@ -26,61 +26,16 @@ var bridge1 = null;
           "visible": true
         }
       },
-      // 撒点
-      // {
-      //   "ActionName": "ShowData",
-      //   "Parameters": {
-      //     "name": "car_dian",
-      //     "isMouseHoverInfo": true,
-      //     "data": {
-      //       "url": "http://127.0.0.1:5500/Modal/Js/intercity-point.json",
-      //       "parsedata": "function(d){return d.features}",
-      //       "parsegeometry": "function(item){return item.geometry}"
-      //     },
-      //     "popupTemplate": {
-      //       "content": [{
-      //         "type": "fields",
-      //         "fieldInfos": [{
-      //             "fieldName": "名称",
-      //             "label": "名称"
-      //           },
-      //           {
-      //             "fieldName": "地址"
-      //           }
-      //         ]
-      //       }]
-      //     },
-      //     "legendVisible": true,
-      //     "popupEnabled": true,
-      //     "isLocate": true,
-      //     "renderer": {
-      //       "type": "simple",
-      //       "label": "",
-      //       "visualVariables": [],
-      //       "symbol": {
-      //         "type": "simple-marker",
-      //         "size": 10,
-      //         "color": "red",
-      //         "outline": {
-      //           "width": 0.5,
-      //           "color": "white"
-      //         }
-      //       }
-      //     },
-      //     "labels": [{
-      //       "fields": [
-      //         "#.名称",
-      //         "#.地址"
-      //       ],
-      //       "color": [
-      //         255,
-      //         255,
-      //         0,
-      //         0.5
-      //       ],
-      //       "size": 18
-      //     }]
-      //   }
-      // }
+      {
+        "ActionName": "LayerVisible",
+        "Parameters": [
+          {
+            "name": "街道乡镇",
+            "visible": true,
+            "where": "区代码='14'"
+          }
+        ]
+      }
+
     ])
   }

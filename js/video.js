@@ -413,22 +413,28 @@ function insertTwoVideo(first,second){
 }
 
 function closeVideoOne(){
-	removeVideoOne()
-	createVideoSlideOne()
+
 	if(GarBageVideo>0&&videoOne==true){//垃圾分类的视频在第一个视频里被关闭
 		videoOne=false;
 		GarBageVideo--;
 	}
+	removeVideoOne()
+	createVideoSlideOne()
+
 }
 
 
+
+
 function closeVideoTwo() {
-	removeVideoTwo()
-	createVideoSlide()
+
 	if(GarBageVideo>0&&videoTwo==true){ //垃圾分类的视频在第二个视频里被关闭
 		videoTwo=false;
 		GarBageVideo--;
 	}
+	removeVideoTwo()
+	createVideoSlide()
+
 }
 
 function closeVideoTwo1(closeIndex){

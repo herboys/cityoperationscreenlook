@@ -106,7 +106,6 @@ function TabsFun(num) {
                                 <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
                                 <div class="banner2" onclick="TabsFun(11)">超期工单</div>`
-            alert('213213')
             GongDan(1)
             break;
         case 7:
@@ -162,7 +161,7 @@ function OverDueFun(num) {
         para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>街镇名</li>
+                                        <li>主责部门</li>
                                         <li>截至时间</li>
                                         <li>管理要点</li>
                                         <li>诉求内容</li>
@@ -174,7 +173,7 @@ function OverDueFun(num) {
             para += '<ul class="work-older-list-ul ul-line ">'
                 + '<li>' + res[i].attributes.TASKID + '</li>'
                 + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
-                + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
                 + '<li>' + res[i].attributes.LASTSOLVINGTIME + '</li>'
                 + '<li>' + res[i].attributes.ATNAME + '</li>'
                 + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
@@ -214,7 +213,7 @@ function GongDan(num) {
                 para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>街镇名</li>
+                                        <li>主责部门</li>
                                         <li>重复次数</li>
                                         <li>管理要点</li>
                                         <li>诉求内容</li>
@@ -225,7 +224,7 @@ function GongDan(num) {
                     para += '<ul class="work-older-list-ul ul-line ">'
                         + '<li>' + res[i].attributes.TASKID + '</li>'
                         + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                        + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
                         + '<li>' + res[i].attributes.COUNTSIMILARCASESN + '</li>'
                         + '<li>' + res[i].attributes.ATNAME + '</li>'
                         + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
@@ -291,7 +290,7 @@ function GongDantwo(num) {
                 para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>街镇名</li>
+                                        <li>主责部门</li>
                                         <li>重复次数</li>
                                         <li>管理要点</li>
                                         <li>诉求内容</li>
@@ -302,7 +301,7 @@ function GongDantwo(num) {
                     para += '<ul class="work-older-list-ul ul-line ">'
                         + '<li>' + res[i].attributes.TASKID + '</li>'
                         + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                        + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
                         + '<li>' + res[i].attributes.COUNTSIMILARCASESN + '</li>'
                         + '<li>' + res[i].attributes.ATNAME + '</li>'
                         + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
@@ -352,10 +351,10 @@ function onclickModelBoxFun() {
         lis[i].onclick = function () {
             let childLI = document.querySelectorAll(".work-older-list-ul .ul-line")
             let para = `
-              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">地址信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].ADDRESS}</p></p>      
-              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">来电信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].CONTACTINFO}</p></p>      
+              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">地址信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].attributes.ADDRESS}</p></p>      
+              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">来电信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].attributes.CONTACTINFO}</p></p>      
               <p style="font-size: 1rem;color: white;padding-left1.667rem:">诉求内容:</p>      
-              <div style="padding: 1.667rem 3.333rem;padding-top:0px;color: #d0c7c7;line-height:2rem;height: 16rem;overflow: scroll ">${gongdanlist[i].DESCRIPTION}</div>
+              <div style="padding: 1.667rem 3.333rem;padding-top:0px;color: #d0c7c7;line-height:2rem;height: 16rem;overflow: scroll ">${gongdanlist[i].attributes.DESCRIPTION}</div>
             `
             document.getElementById("ModalsmallID").style.display = "block"
             document.getElementById("ModalsmallRoomID").innerHTML = para
@@ -367,7 +366,7 @@ function onclickModelBoxFun() {
             let para = `
        <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
                           <div style="padding: 1.667rem 3.333rem;
-                          color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+                          color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].attributes.DESCRIPTION}</div>
             `
             document.getElementById("ModalsmallID").style.display = "block"
             document.getElementById("ModalsmallRoomID").innerHTML = para
@@ -391,8 +390,8 @@ function GongDanfanhu(num) {
         para = `  <ul class="work-older-list-ul">
       <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>街镇名</li>
-                                        <li>反复退单</li>
+                                        <li>主责部门</li>
+                                        <li>退单次数</li>
                                         <li>管理要点</li>
                                         <li>诉求内容</li>
             </ul>`
@@ -402,7 +401,7 @@ function GongDanfanhu(num) {
             para += '<ul class="work-older-list-ul ul-line ">'
                 + '<li>' + res[i].attributes.TASKID + '</li>'
                 + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
-                + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
                 + '<li>' + res[i].attributes.BACKCOUNT + '</li>'
                 + '<li>' + res[i].attributes.ATNAME + '</li>'
                 + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
@@ -758,6 +757,7 @@ function findTypeStreetName() {
         legend = ["满意度", "案件数量"]
         document.getElementById("SmallEChartscopy").style.display='none'
         document.getElementById("SmallECharts").style.display='flex'
+        console.log(xData,yData,zData,'9')
         MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
     })
 }
@@ -785,9 +785,9 @@ function findTypedeptName() {
             zData.push(item.COUNTNAME)
             yData.push(item.PROPORTION)
         })
-        xData = xData.slice(0, 6).concat(xData.slice(xData.length - 6, xData.length))
-        zData = zData.slice(0, 6).concat(zData.slice(zData.length - 6, zData.length))
-        yData = yData.slice(0, 6).concat(yData.slice(yData.length - 6, yData.length))
+        // xData = xData.slice(0, 6).concat(xData.slice(xData.length - 6, xData.length))
+        // zData = zData.slice(0, 6).concat(zData.slice(zData.length - 6, zData.length))
+        // yData = yData.slice(0, 6).concat(yData.slice(yData.length - 6, yData.length))
         legend = ["满意度", "案件数量"]
         document.getElementById("BureauId").style.display = "flex"
         let container = document.getElementById("SmallEChartscopy")

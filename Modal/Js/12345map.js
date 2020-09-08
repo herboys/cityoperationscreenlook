@@ -179,7 +179,7 @@ function ThermodynamicFun(res) {
                         ".75": "#f3f12c",
                         ".95": "#fd2f02"
                     },
-                    "radius": 35,
+                    "radius": 50,
                     "geofield": {
                         "xfield": "x",
                         "yfield": "y"

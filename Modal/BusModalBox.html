@@ -119,14 +119,14 @@
                         </div>
                         <div style="color: #fff;text-align: center;font-size: 0.2rem;font-weight: bold;position: absolute;right: 40px;">
                               <div id="ecTraffic1"  style="width: 420px;height: 200px;"></div>
-                              <div style="display: flex;justify-content: space-evenly;margin-top: -6.2rem;"><span>昨日班次执行率</span><span>当日完成班次</span><span>昨日首末班车准确率</span> </div>
+                              <div style="display: flex;justify-content: space-evenly;margin-top: -6.2rem;"><span>昨日班次执行率</span><span>当日完成班次</span><span>昨日首末班车准点率</span> </div>
                        </div>
 `
 
             document.getElementById("countRestNumFunId").innerHTML=para
             console.log(para, 'paraparaparaparapara')
-            // MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",4954,99.81,99.44,), "ecTraffic1")
-            MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",res.sjnum,res.bczxl,res.smbczdlz,res.jhnum), "ecTraffic1")
+            // MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准点率",4954,99.81,99.44,), "ecTraffic1")
+            MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准点率",res.sjnum,res.bczxl,res.smbczdlz,res.jhnum), "ecTraffic1")
 
         })
     }
@@ -173,7 +173,7 @@
             {name: '当日计划班次', value: '9146', unit: '辆'},
             // {name: '当日完成班次', value: '4954', unit: '辆'},
             // {name: '昨日班次执行率', value: '99.81', unit: '%'},
-            // {name: '昨日首末班车准确率', value: '99.44', unit: '%'},
+            // {name: '昨日首末班车准点率', value: '99.44', unit: '%'},
         ]
         NewList.forEach(item => {
             para += `<div class="rest-infos">

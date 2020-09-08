@@ -5,12 +5,29 @@ function ToOnload() {
     var gongdanlist = []
 
     var farstlist = ''
-    GongDan(1)
+    GongDantwo(1)
     TabsFun(3)
-    TabsFun(6)
     findbcNameType()
     findscName()
     rollInit()
+    findAtlnglats()
+
+}
+function faultFun(){
+    document.getElementById("RightBannerNameId").innerText='12345事件热力图'
+    findAtlnglats()
+}
+function findAtlnglats(){
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findAtlnglat',
+        async: true,
+        type: 'get',
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res=>{
+        console.log(res,'21312321+++++++++++++++++++++==')
+        ThermodynamicFun(res)
+    })
 }
 
 /*前六后六*/
@@ -38,8 +55,7 @@ function TabsFun(num) {
     let myChart = ''
     switch (num) {
         case 1:
-            para[0].innerHTML = ' <div class="banner1" onclick="TabsFun(1)">' + '基本情况' + '</div>' +
-                '<div class="banner2" onclick="TabsFun(2)">' + '趋势分析' + '</div>'
+            para[0].innerHTML = ' <div class="banner1" onclick="TabsFun(1)">' + '基本情况' + '</div>'
             data = [{
                 "name": "电话",
                 "value": 10
@@ -56,9 +72,10 @@ function TabsFun(num) {
                 },
 
             ];
-
-            color = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
-            MyEcharts.initChart(MyEcharts.EchartsOption.pie('工单问题', color, data), "SmallECharts3")
+            //
+            // color = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
+            // MyEcharts.initChart(MyEcharts.EchartsOption.pie('工单问题', color, data), "SmallECharts3")
+            faultFun()
             break;
         case 2:
             para[0].innerHTML = ' <div class="banner2" onclick="TabsFun(1)">' + '基本情况' + '</div>' +
@@ -148,26 +165,30 @@ function OverDueFun(num) {
         para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>街镇名</li>
+                                        <li>主责部门</li>
                                         <li>截至时间</li>
                                         <li>管理要点</li>
                                         <li>诉求内容</li>
                                     </ul>`
         document.getElementById("GongDanTitleID").innerHTML = para
         para = ''
+         findbcsclnglat=[]
         for (let i = 0; i < res.length; i++) {
             para += '<ul class="work-older-list-ul ul-line ">'
-                + '<li>' + res[i].TASKID + '</li>'
-                + '<li>' + res[i].DISCOVERTIME + '</li>'
-                + '<li>' + res[i].STREETNAME + '</li>'
-                + '<li>' + res[i].LASTSOLVINGTIME + '</li>'
-                + '<li>' + res[i].ATNAME + '</li>'
-                + '<li>' + res[i].DESCRIPTION + '</li>'
+                + '<li>' + res[i].attributes.TASKID + '</li>'
+                + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                + '<li>' + res[i].attributes.LASTSOLVINGTIME + '</li>'
+                + '<li>' + res[i].attributes.ATNAME + '</li>'
+                + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
                 + '</ul>'
+
         }
+        document.getElementById("RightBannerNameId").innerText='【超期工单】分布图'
         document.getElementById("GongDanID").innerHTML = para
         gongdanlist = res
         onclickModelBoxFun()
+        findbcsclnglatNameFun(res)
     })
 }
 
@@ -196,7 +217,7 @@ function GongDan(num) {
                 para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>街镇名</li>
+                                        <li>主责部门</li>
                                         <li>重复次数</li>
                                         <li>管理要点</li>
                                         <li>诉求内容</li>
@@ -205,17 +226,19 @@ function GongDan(num) {
                 para = ''
                 for (let i = 0; i < res.length; i++) {
                     para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].COUNTSIMILARCASESN + '</li>'
-                        + '<li>' + res[i].ATNAME + '</li>'
-                        + '<li >' + res[i].DESCRIPTION + '</li>'
+                        + '<li>' + res[i].attributes.TASKID + '</li>'
+                        + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                        + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                        + '<li>' + res[i].attributes.COUNTSIMILARCASESN + '</li>'
+                        + '<li>' + res[i].attributes.ATNAME + '</li>'
+                        + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
                         + '</ul>'
                 }
+                document.getElementById("RightBannerNameId").innerText='【重复工单】分布图'
                 document.getElementById("GongDanID").innerHTML = para
                 gongdanlist = res
                 onclickModelBoxFun()
+                findbcsclnglatNameFun(res)
             }else {
                 para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
@@ -229,17 +252,96 @@ function GongDan(num) {
                 para = ''
                 for (let i = 0; i < res.length; i++) {
                     para += '<ul class="work-older-list-ul ul-line ">'
-                        + '<li>' + res[i].TASKID + '</li>'
-                        + '<li>' + res[i].DISCOVERTIME + '</li>'
-                        + '<li>' + res[i].STREETNAME + '</li>'
-                        + '<li>' + res[i].EXECUTEDEPTNAME + '</li>'
-                        + '<li>' + res[i].ATNAME + '</li>'
-                        + '<li >' + res[i].DESCRIPTION + '</li>'
+                        + '<li>' + res[i].attributes.TASKID + '</li>'
+                        + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                        + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                        + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                        + '<li>' + res[i].attributes.ATNAME + '</li>'
+                        + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
                         + '</ul>'
                 }
+                document.getElementById("RightBannerNameId").innerText='【紧急工单】分布图'
                 document.getElementById("GongDanID").innerHTML = para
                 gongdanlist = res
                 onclickModelBoxFun()
+                findbcsclnglatNameFun(res)
+            }
+
+        }
+    })
+}
+function GongDantwo(num) {
+    document.getElementById("GongDanID").innerHTML = ''
+    document.getElementById("GongDanIDCopy").innerHTML = ''
+    let para = {
+        url: ORACLE_URL + '/taskinfowork/findInfourgent',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "urgent": num,
+            "date": dropdownFunTime
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then((res) => {
+        if (res[0].count !== undefined && res[0].count == "0") {
+            para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
+            document.getElementById("GongDanID").innerHTML = para
+            document.getElementById("GongDanIDCopy").innerHTML = ""
+
+        } else {
+            if (num==0) {
+                para = `  <ul class="work-older-list-ul">
+                                        <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>主责部门</li>
+                                        <li>重复次数</li>
+                                        <li>管理要点</li>
+                                        <li>诉求内容</li>
+                                    </ul>`
+                document.getElementById("GongDanTitleID").innerHTML = para
+                para = ''
+                for (let i = 0; i < res.length; i++) {
+                    para += '<ul class="work-older-list-ul ul-line ">'
+                        + '<li>' + res[i].attributes.TASKID + '</li>'
+                        + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                        + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                        + '<li>' + res[i].attributes.COUNTSIMILARCASESN + '</li>'
+                        + '<li>' + res[i].attributes.ATNAME + '</li>'
+                        + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
+                        + '</ul>'
+                }
+                document.getElementById("RightBannerNameId").innerText='【重复工单】分布图'
+                document.getElementById("GongDanID").innerHTML = para
+                gongdanlist = res
+                onclickModelBoxFun()
+                findbcsclnglatNameFun(res)
+            }else {
+                para = `  <ul class="work-older-list-ul">
+                                        <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>街镇名</li>
+                                        <li>主责部门</li>
+                                        <li>管理要点</li>
+                                        <li>诉求内容</li>
+                                    </ul>`
+                document.getElementById("GongDanTitleID").innerHTML = para
+                para = ''
+                for (let i = 0; i < res.length; i++) {
+                    para += '<ul class="work-older-list-ul ul-line ">'
+                        + '<li>' + res[i].attributes.TASKID + '</li>'
+                        + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                        + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                        + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                        + '<li>' + res[i].attributes.ATNAME + '</li>'
+                        + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
+                        + '</ul>'
+                }
+            //    document.getElementById("RightBannerNameId").innerText='【紧急工单】分布图'
+                document.getElementById("GongDanID").innerHTML = para
+                gongdanlist = res
+                 onclickModelBoxFun()
+                // findbcsclnglatNameFun(res)
             }
 
         }
@@ -253,10 +355,10 @@ function onclickModelBoxFun() {
         lis[i].onclick = function () {
             let childLI = document.querySelectorAll(".work-older-list-ul .ul-line")
             let para = `
-              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">地址信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].ADDRESS}</p></p>      
-              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">来电信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].CONTACTINFO}</p></p>      
+              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">地址信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].attributes.ADDRESS}</p></p>      
+              <p style="display: inline-block;font-size: 1rem;color: white;padding-left1.667rem:">来电信息:<p style="color: #d0c7c7;display: inline-block;margin-left: 1.667rem">${gongdanlist[i].attributes.CONTACTINFO}</p></p>      
               <p style="font-size: 1rem;color: white;padding-left1.667rem:">诉求内容:</p>      
-              <div style="padding: 1.667rem 3.333rem;padding-top:0px;color: #d0c7c7;line-height:2rem;height: 16rem;overflow: scroll ">${gongdanlist[i].DESCRIPTION}</div>
+              <div style="padding: 1.667rem 3.333rem;padding-top:0px;color: #d0c7c7;line-height:2rem;height: 16rem;overflow: scroll ">${gongdanlist[i].attributes.DESCRIPTION}</div>
             `
             document.getElementById("ModalsmallID").style.display = "block"
             document.getElementById("ModalsmallRoomID").innerHTML = para
@@ -268,7 +370,7 @@ function onclickModelBoxFun() {
             let para = `
        <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
                           <div style="padding: 1.667rem 3.333rem;
-                          color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+                          color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].attributes.DESCRIPTION}</div>
             `
             document.getElementById("ModalsmallID").style.display = "block"
             document.getElementById("ModalsmallRoomID").innerHTML = para
@@ -292,8 +394,8 @@ function GongDanfanhu(num) {
         para = `  <ul class="work-older-list-ul">
       <li>工单编号</li>
                                         <li>发生时间</li>
-                                        <li>街镇名</li>
-                                        <li>反复退单</li>
+                                        <li>主责部门</li>
+                                        <li>退单次数</li>
                                         <li>管理要点</li>
                                         <li>诉求内容</li>
             </ul>`
@@ -301,17 +403,19 @@ function GongDanfanhu(num) {
         para = ''
         for (let i = 0; i < res.length; i++) {
             para += '<ul class="work-older-list-ul ul-line ">'
-                + '<li>' + res[i].TASKID + '</li>'
-                + '<li>' + res[i].DISCOVERTIME + '</li>'
-                + '<li>' + res[i].STREETNAME + '</li>'
-                + '<li>' + res[i].BACKCOUNT + '</li>'
-                + '<li>' + res[i].ATNAME + '</li>'
-                + '<li>' + res[i].DESCRIPTION + '</li>'
+                + '<li>' + res[i].attributes.TASKID + '</li>'
+                + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                + '<li>' + res[i].attributes.BACKCOUNT + '</li>'
+                + '<li>' + res[i].attributes.ATNAME + '</li>'
+                + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
                 + '</ul>'
         }
+        document.getElementById("RightBannerNameId").innerText='【反复退单】分布图'
         document.getElementById("GongDanID").innerHTML = para
         gongdanlist = res
         onclickModelBoxFun()
+        findbcsclnglatNameFun(res)
     })
 }
 
@@ -491,7 +595,7 @@ function findbcNameType() {
                 })
                 document.getElementById("RightBannerNameId").innerText='管理要点【'+para2[i].innerHTML+'】热力图'
                 basicFunTimeName=para2[i].innerHTML
-                findbcsclnglatName(basicFunTime,para2[i].innerHTML,"")
+                findbcsclnglatNames(basicFunTime,para2[i].innerHTML,"")
                 findbcNamesc(para2[i].innerHTML)
             }
         }
@@ -513,6 +617,23 @@ function findbcsclnglatName(basicFunTime, name, scname) {
     ajaxPromise(para).then(res => {
         console.log(res)
         findbcsclnglatNameFun(res)
+
+    })
+}
+function findbcsclnglatNames(basicFunTime, name, scname) {
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findbcAtlnglatNames',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": basicFunTime,
+            "bcname": name,
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        console.log(res)
+        ThermodynamicFun(res)
 
     })
 }
@@ -561,7 +682,7 @@ function JiBenXinXi(ModelTime, name, value) {
             // findbcNamesc(param.name)
             // JiBenXinXi(ModelTime, param.name, param.data.value)
             // JiBenXinXiReLiability(ModelTime, param.name)
-            findbcsclnglatName(document.getElementById("headId").innerHTML, param.name)
+            findbcsclnglatNames(document.getElementById("headId").innerHTML, param.name)
         })
     })
 }
@@ -640,6 +761,7 @@ function findTypeStreetName() {
         legend = ["满意度", "案件数量"]
         document.getElementById("SmallEChartscopy").style.display='none'
         document.getElementById("SmallECharts").style.display='flex'
+        console.log(xData,yData,zData,'9')
         MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
     })
 }
@@ -667,9 +789,9 @@ function findTypedeptName() {
             zData.push(item.COUNTNAME)
             yData.push(item.PROPORTION)
         })
-        xData = xData.slice(0, 6).concat(xData.slice(xData.length - 6, xData.length))
-        zData = zData.slice(0, 6).concat(zData.slice(zData.length - 6, zData.length))
-        yData = yData.slice(0, 6).concat(yData.slice(yData.length - 6, yData.length))
+        // xData = xData.slice(0, 6).concat(xData.slice(xData.length - 6, xData.length))
+        // zData = zData.slice(0, 6).concat(zData.slice(zData.length - 6, zData.length))
+        // yData = yData.slice(0, 6).concat(yData.slice(yData.length - 6, yData.length))
         legend = ["满意度", "案件数量"]
         document.getElementById("BureauId").style.display = "flex"
         let container = document.getElementById("SmallEChartscopy")
@@ -743,7 +865,7 @@ function findscName() {
 
                 document.getElementById("DmMainId").innerHTML = `<div id="dm"></div>`
                 initRotate(list,res.median,0)
-                BulletChat(list, res.median)
+                // BulletChat(list, res.median)
 
             }
         })
@@ -774,7 +896,7 @@ function findbcNamesc(name, scname) {
             document.getElementById("DmMainId").innerHTML = `
                                 <div id="dm"></div>`
             initRotate(list, res.median,0)
-            BulletChat(list, res.median)
+            // BulletChat(list, res.median)
         }
     })
 }
@@ -848,7 +970,7 @@ function move() {
     for (let i = 0; i < oSpan.length; i++) {
         oSpan[i].onclick = function () {
             let hots = document.getElementsByTagName('span')[i].innerHTML.split("x")[0].trim()
-            findbcschotslnglatName(hots)
+            findbcschotslnglatNames(hots)
         }
         oSpan[i].onmouseover = function () {
             oSpan[i].style.zIndex = '9999'
@@ -896,5 +1018,26 @@ function findbcschotslnglatName(hots) {
     }
     ajaxPromise(para).then(res => {
         findbcsclnglatNameFun(res)
+    })
+}
+function findbcschotslnglatNames(hots) {
+    console.log(basicFunTimeName)
+    // if (basicFunTimeName==undefined){
+    //     basicFunTimeName:''
+    // }
+    let para = {
+        url: ORACLE_URL + '/taskInfo/findbcAtlnglatNames',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "date": basicFunTime,
+            "bcname": basicFunTimeName,
+            scname: "",
+            hots: hots
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then(res => {
+        ThermodynamicFun(res)
     })
 }

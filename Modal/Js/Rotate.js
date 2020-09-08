@@ -27,10 +27,10 @@ function TyPeOnclick(num) {
 }
 function RightBoxFun(median){
     let newpara=`<div onclick="TyPeOnclick(0)"><span class="caise"></span>全部</div>
-                                <div onclick="TyPeOnclick(1)"><span style="background: #f36c6c"></span>>${(median/2)*3}</div>
-                                <div  onclick="TyPeOnclick(2)"><span style="background-color:#e6cf4e"></span>>${median}</div>
-                                <div  onclick="TyPeOnclick(3)"><span style="background-color:#20d180"></span>>${median/2}</div>
-                                <div  onclick="TyPeOnclick(4)"> <span style="background-color:#0093ff"></span><${(median/2)}</div>`
+                                <div onclick="TyPeOnclick(1)"><span style="background: #f36c6c"></span>>75%</div>
+                                <div  onclick="TyPeOnclick(2)"><span style="background-color:#e6cf4e"></span>>50%</div>
+                                <div  onclick="TyPeOnclick(3)"><span style="background-color:#20d180"></span>>25%</div>
+                                <div  onclick="TyPeOnclick(4)"> <span style="background-color:#0093ff"></span><25%</div>`
     document.getElementById("TyPeOnclickId").innerHTML=newpara
 }
 function initRotate(list, median, number) {
@@ -117,7 +117,7 @@ function initRotate(list, median, number) {
     list = document.querySelectorAll("#rotate a")
     for (let j = 0; j < list.length; j++) {
         list[j].onclick = function () {
-            findbcschotslnglatName(list[j].innerHTML)
+            findbcschotslnglatNames(list[j].innerHTML)
             document.getElementById("RightBannerNameId").innerText='热词【'+list[j].innerHTML+'】热力图'
         }
     }

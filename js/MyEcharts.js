@@ -1197,8 +1197,8 @@ var MyEcharts = {
          *wordCloud
          *@param color : 颜色 数据
          * */
-        newbar: function (xData, yData, zData, color, legend, yAxisname) {
-            console.log(xData, yData)
+        newbar3: function (xData, yData, zData, color, legend, yAxisname) {
+
             var xData = xData,
                 yData2 = yData,
                 yData4 = zData,
@@ -1244,12 +1244,13 @@ var MyEcharts = {
                 tooltip: {
                     trigger: "axis",
                     formatter: function (params) {
+                        console.log(params)
                         var str = `<div> ${params[0].name}</div>`
 
-                        for (var i = 0; i < params.length; i++) {
-                            str += `<div>${'满意度'}:${params[i].value}%</div>
-                                   <div>${'案件数量'}:${zData[i]}件</div>`
-                        }
+
+                        str += `<div>${params[0].seriesName}:${params[0].value}%</div>
+                                    <div>${params[1].seriesName}:${params[1].value}件</div>
+                                `
                         return str;
                     }
                 },
@@ -1352,14 +1353,39 @@ var MyEcharts = {
                             }
                         }
                     }
+                },{
+                    type: "line",
+                    yAxisIndex: 1,
+                    smooth: false,
+                    symbol: "none",
+                    symbolSize: 10,
+                    lineStyle: {
+                        normal: {
+                            width: 2
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: "rgba(225,225,225,0)",
+                            borderColor: "#fff",
+                            borderWidth: 1
+                        }
+                    },
+                    data: zData,
+                    label: {
+                        normal: {
+                            show: false
+                        }
+                    }
                 }
+
                 ]
             };
             return option
         },
             // 12345 委办局
-            newbar2: function (xData, yData, zData, color, legend, yAxisname) {
-
+            newbar: function (xData, yData, zData, color, legend, yAxisname) {
+                console.log(xData, yData, zData)
                 var xData = xData,
                     yData2 = yData,
                     yData4 = zData,
@@ -1380,7 +1406,7 @@ var MyEcharts = {
                 xData.forEach(element => {
                     borderData.push(borderHeight);
                 });
-                [yData2].forEach((item, index) => {
+                [yData2,yData4].forEach((item, index) => {
                     var obj1 = {};
                     var obj2 = {};
                     if (index < 1) {
@@ -1429,6 +1455,7 @@ var MyEcharts = {
                         seriesData.push(obj1);
                     } else {
                         var obj3 = {
+                            //name: legend[index],
                             name: legend[index],
                             type: "line",
                             yAxisIndex: 1,
@@ -1463,16 +1490,16 @@ var MyEcharts = {
                     grid: {
                         left: "3%",
                         top: "16%",
-                        right: "3%",
+                        right: "0%",
                         bottom: 0,
                         containLabel: true
                     },
                     legend: {
-                        show: true,
+                        show: false,
                         icon: "rect",
                         itemWidth: 20,
                         itemHeight: 3,
-                        right: "-10%",
+                        right: "-20%",
                         top: "0%",
                         textStyle: {
                             color: "#fff"
@@ -1483,13 +1510,14 @@ var MyEcharts = {
                         trigger: "axis",
                         formatter: function (params) {
                             var str = `<div> ${params[0].name}</div>`
+                            console.log(params,'1231')
 
-                            for (var i = 0; i < params.length; i++) {
-                                if (params[i].seriesName !== "") {
-                                    str += `<div>${params[i].seriesName}:${params[i].value}%</div>
-                                   <div>${'案件数量'}:${zData[i]}件</div>`
-                                }
-                            }
+
+                                    str += `<div>${params[0].seriesName}:${params[0].value}%</div>
+                                    <div>${params[1].seriesName}:${params[1].value}件</div>
+                                `
+
+
                             return str;
                         }
                     },
@@ -1583,16 +1611,286 @@ var MyEcharts = {
                                 }
                             }
                         }
-                    ],
-                    dataZoom: [//滑动条
+                        ],
+                    // dataZoom: [//滑动条
+                    //     {
+                    //         xAxisIndex: 0,//这里是从X轴的0刻度开始
+                    //         show: false,//是否显示滑动条，不影响使用
+                    //         type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+                    //         startValue: 0, // 从头开始。
+                    //         endValue: 9  // 一次性展示6个。
+                    //     }
+                    // ],
+                    series: seriesData
+                };
+                return option
+            },
+            newbar2: function (xData, yData, zData, color, legend, yAxisname) {
+                console.log(xData, yData, zData)
+                var xData = xData,
+                    yData2 = yData,
+                    yData4 = zData,
+                    borderData = [],
+                    legend = legend,
+                    colorArr = [
                         {
-                            xAxisIndex: 0,//这里是从X轴的0刻度开始
-                            show: false,//是否显示滑动条，不影响使用
-                            type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-                            startValue: 0, // 从头开始。
-                            endValue: 9  // 一次性展示6个。
+                            start: "rgba(71, 173, 245,0.5)",
+                            end: "rgba(18, 58, 86,0.5)"
+                        },
+                        {
+                            color: "#ccc"
+                        }
+                    ];
+                var normalColor = "rgba(255,255,255,0.5)";
+                let seriesData = [];
+                var borderHeight = 4;
+                xData.forEach(element => {
+                    borderData.push(borderHeight);
+                });
+                [yData2,yData4].forEach((item, index) => {
+                    var obj1 = {};
+                    var obj2 = {};
+                    if (index < 1) {
+                        obj1 = {
+                            name: legend[index],
+                            type: "bar",
+                            stack: legend[index],
+                            data: item,
+                            barWidth: "35%",
+                            itemStyle: {
+                                normal: {
+                                    color: {
+                                        type: "linear",
+                                        x: 0,
+                                        y: 0,
+                                        x2: 0,
+                                        y2: 1,
+                                        colorStops: [{
+                                            offset: 0,
+                                            color: colorArr[index].start + "0.7)"
+                                        },
+                                            {
+                                                offset: 0.5,
+                                                color: colorArr[index].start + "0.3)"
+                                            },
+                                            {
+                                                offset: 1,
+                                                color: colorArr[index].end
+                                            }
+                                        ],
+                                        globalCoord: false
+                                    }
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    fontSize: 12,
+                                    fontWeight: 'bold',
+                                    color: '#fff',
+                                    position: 'top',
+                                }
+                            }
+
+                        };
+                        seriesData.push(obj1);
+                    } else {
+                        var obj3 = {
+                            //name: legend[index],
+                            name: legend[index],
+                            type: "line",
+                            yAxisIndex: 1,
+                            smooth: false,
+                            symbol: "none",
+                            symbolSize: 10,
+                            lineStyle: {
+                                normal: {
+                                    width: 2
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: "rgba(225,225,225,0)",
+                                    borderColor: "#fff",
+                                    borderWidth: 1
+                                }
+                            },
+                            data: item,
+                            label: {
+                                normal: {
+                                    show: false
+                                }
+                            }
+                        };
+                        seriesData.push(obj3);
+                    }
+                });
+                console.log(seriesData, 'seriesDataseriesDataseriesData');
+                var option = {
+                    // backgroundColor: "#000",
+                    grid: {
+                        left: "3%",
+                        top: "16%",
+                        right: "0%",
+                        bottom: 0,
+                        containLabel: true
+                    },
+                    legend: {
+                        show: true,
+                        icon: "rect",
+                        itemWidth: 20,
+                        itemHeight: 3,
+                        right: "-20%",
+                        top: "0%",
+                        textStyle: {
+                            color: "#fff"
+                        },
+                        show: false,
+                        data: legend
+                    },
+                    tooltip: {
+                        trigger: "axis",
+                        formatter: function (params) {
+                            var str = `<div> ${params[0].name}</div>`
+                            console.log(params,'1231')
+
+
+                                    str += `<div>${params[0].seriesName}:${params[0].value}%</div>
+                                    <div>${params[1].seriesName}:${params[1].value}件</div>
+                                `
+
+
+                            return str;
+                        }
+                    },
+
+                    dataZoom: [
+                        {
+
+                            "height": 12,
+                            type: 'slider',
+                            show: true,
+                            xAxisIndex: [0],
+                            left: '10%',
+                            start: 0, //数据窗口范围的起始百分比
+                            end: 36,
+                            bottom:-5,
+                            borderColor:"rgba(225,225,225,0)",
+                            textStyle:{
+                                color:'rgba(225,225,225,0)'
+                            }
+                        },
+                        {
+                            type: 'inside',
+                            xAxisIndex: [0],
+                            start: 0,
+                            end: 36,
+                            show: false,
+                            textStyle:{
+                                color:'rgba(225,225,225,0)'
+                            }
                         }
                     ],
+                    xAxis: [{
+                        type: "category",
+                        data: xData,
+                        axisPointer: {
+                            type: "shadow"
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: normalColor,
+                                fontSize: 12
+                            },
+                            rotate: 50,
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: normalColor
+                            }
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        splitLine: {
+                            show: false
+                        }
+                    }],
+                    yAxis: [{
+                        type: "value",
+                        name: '',
+                        //name: yAxisname,
+                        nameTextStyle: {
+                            color: "rgba(225,225,225,0)",
+                            fontSize: 12
+                        },
+                        "min": 40,
+                        // "max": 50,
+                        axisLabel: {
+                            formatter: "{value}",
+                            textStyle: {
+                                color: normalColor,
+                                fontSize: 12
+                            }
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: normalColor
+                            }
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        splitLine: {
+                            show: false,
+                            lineStyle: {
+                                type: "dashed",
+                                color: normalColor
+                            }
+                        }
+                    },
+                        {
+                            // type: "value",
+                            // name: "件",
+                            nameTextStyle: {
+                                color: normalColor,
+                                fontSize: 12
+                            },
+                            // min: 0,
+                            // max: 100,
+                            axisLabel: {
+                                formatter: "{value}",
+                                textStyle: {
+                                    color: "rgba(225,225,225,0)",
+                                    fontSize: 12
+                                }
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: "rgba(225,225,225,0)",
+                                }
+                            },
+                            axisTick: {
+                                show: false
+                            },
+                            splitLine: {
+                                show: true,
+                                lineStyle: {
+                                    type: "dashed",
+                                    color: "rgba(225,225,225,0)",
+                                }
+                            }
+                        }
+                        ],
+                    // dataZoom: [//滑动条
+                    //     {
+                    //         xAxisIndex: 0,//这里是从X轴的0刻度开始
+                    //         show: false,//是否显示滑动条，不影响使用
+                    //         type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+                    //         startValue: 0, // 从头开始。
+                    //         endValue: 9  // 一次性展示6个。
+                    //     }
+                    // ],
                     series: seriesData
                 };
                 return option

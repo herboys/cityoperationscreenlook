@@ -5,9 +5,8 @@ function ToOnload() {
     var gongdanlist = []
 
     var farstlist = ''
-    GongDan(1)
+    GongDantwo(1)
     TabsFun(3)
-    TabsFun(6)
     findbcNameType()
     findscName()
     rollInit()
@@ -107,6 +106,7 @@ function TabsFun(num) {
                                 <div class="banner2" onclick="TabsFun(7)">重复工单</div>
                                 <div class="banner2" onclick="TabsFun(8)">反复退单</div>
                                 <div class="banner2" onclick="TabsFun(11)">超期工单</div>`
+            alert('213213')
             GongDan(1)
             break;
         case 7:
@@ -262,6 +262,83 @@ function GongDan(num) {
                 gongdanlist = res
                 onclickModelBoxFun()
                 findbcsclnglatNameFun(res)
+            }
+
+        }
+    })
+}
+function GongDantwo(num) {
+    document.getElementById("GongDanID").innerHTML = ''
+    document.getElementById("GongDanIDCopy").innerHTML = ''
+    let para = {
+        url: ORACLE_URL + '/taskinfowork/findInfourgent',
+        async: true,
+        type: 'post',
+        data: JSON.stringify({
+            "urgent": num,
+            "date": dropdownFunTime
+        }),
+        dataType: 'JSON',
+    }
+    ajaxPromise(para).then((res) => {
+        if (res[0].count !== undefined && res[0].count == "0") {
+            para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
+            document.getElementById("GongDanID").innerHTML = para
+            document.getElementById("GongDanIDCopy").innerHTML = ""
+
+        } else {
+            if (num==0) {
+                para = `  <ul class="work-older-list-ul">
+                                        <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>街镇名</li>
+                                        <li>重复次数</li>
+                                        <li>管理要点</li>
+                                        <li>诉求内容</li>
+                                    </ul>`
+                document.getElementById("GongDanTitleID").innerHTML = para
+                para = ''
+                for (let i = 0; i < res.length; i++) {
+                    para += '<ul class="work-older-list-ul ul-line ">'
+                        + '<li>' + res[i].attributes.TASKID + '</li>'
+                        + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                        + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                        + '<li>' + res[i].attributes.COUNTSIMILARCASESN + '</li>'
+                        + '<li>' + res[i].attributes.ATNAME + '</li>'
+                        + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
+                        + '</ul>'
+                }
+                document.getElementById("RightBannerNameId").innerText='【重复工单】分布图'
+                document.getElementById("GongDanID").innerHTML = para
+                gongdanlist = res
+                onclickModelBoxFun()
+                findbcsclnglatNameFun(res)
+            }else {
+                para = `  <ul class="work-older-list-ul">
+                                        <li>工单编号</li>
+                                        <li>发生时间</li>
+                                        <li>街镇名</li>
+                                        <li>主责部门</li>
+                                        <li>管理要点</li>
+                                        <li>诉求内容</li>
+                                    </ul>`
+                document.getElementById("GongDanTitleID").innerHTML = para
+                para = ''
+                for (let i = 0; i < res.length; i++) {
+                    para += '<ul class="work-older-list-ul ul-line ">'
+                        + '<li>' + res[i].attributes.TASKID + '</li>'
+                        + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                        + '<li>' + res[i].attributes.STREETNAME + '</li>'
+                        + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                        + '<li>' + res[i].attributes.ATNAME + '</li>'
+                        + '<li >' + res[i].attributes.DESCRIPTION + '</li>'
+                        + '</ul>'
+                }
+            //    document.getElementById("RightBannerNameId").innerText='【紧急工单】分布图'
+                document.getElementById("GongDanID").innerHTML = para
+                gongdanlist = res
+                 onclickModelBoxFun()
+                // findbcsclnglatNameFun(res)
             }
 
         }

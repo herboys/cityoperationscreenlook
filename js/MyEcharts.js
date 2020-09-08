@@ -1764,6 +1764,7 @@ var MyEcharts = {
 
                     dataZoom: [
                         {
+
                             "height": 12,
                             type: 'slider',
                             show: true,
@@ -1771,13 +1772,21 @@ var MyEcharts = {
                             left: '10%',
                             start: 0, //数据窗口范围的起始百分比
                             end: 36,
-                            bottom:"0px"
+                            bottom:-5,
+                            borderColor:"rgba(225,225,225,0)",
+                            textStyle:{
+                                color:'rgba(225,225,225,0)'
+                            }
                         },
                         {
                             type: 'inside',
                             xAxisIndex: [0],
                             start: 0,
-                            end: 36
+                            end: 36,
+                            show: false,
+                            textStyle:{
+                                color:'rgba(225,225,225,0)'
+                            }
                         }
                     ],
                     xAxis: [{

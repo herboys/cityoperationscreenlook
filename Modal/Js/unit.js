@@ -411,7 +411,7 @@ function GongDanfanhu(num) {
                 + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
                 + '</ul>'
         }
-        document.getElementById("RightBannerNameId").innerText='【反复工单】分布图'
+        document.getElementById("RightBannerNameId").innerText='【反复退单】分布图'
         document.getElementById("GongDanID").innerHTML = para
         gongdanlist = res
         onclickModelBoxFun()

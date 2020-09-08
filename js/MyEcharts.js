@@ -1494,7 +1494,7 @@ var MyEcharts = {
                         containLabel: true
                     },
                     legend: {
-                        show: true,
+                        show: false,
                         icon: "rect",
                         itemWidth: 20,
                         itemHeight: 3,
@@ -1744,6 +1744,7 @@ var MyEcharts = {
                         textStyle: {
                             color: "#fff"
                         },
+                        show: false,
                         data: legend
                     },
                     tooltip: {

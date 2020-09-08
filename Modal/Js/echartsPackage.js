@@ -758,6 +758,7 @@ var MyEcharts2 = {
         },
 
         BarChart: function (name, xAxisData, yAxisData,yAxisData2) {
+            console.log(xAxisData, yAxisData,yAxisData2,'barbarbar');
             // var xAxisData = xAxisData;
             // var yAxisData = yAxisData;
             option = {
@@ -902,10 +903,10 @@ var MyEcharts2 = {
                         }
                       ])
                     },
-                    data: [4.2, 3.5, 2.9, 7.8, 5, 3]
+                    data: [4.2, 3.5, 2.9, 7.8, 5,4.2, 3.5, 2.9, 7.8, 5,4.2, 3.5, 2.9, 7.8, 5,4.2, 3.5, 2.9, 7.8, 5, ]
                   },
                     {
-                      name: "上报量",
+                      name: "总上报数",
                       type: "bar",
                       barWidth: 15,
                       itemStyle: {
@@ -931,10 +932,11 @@ var MyEcharts2 = {
                           borderWidth: 2
                         }
                       },
-                      data: yAxisData.sort(function(a,b){return b-a})
+                    //   data: yAxisData.sort(function(a,b){return b-a})
+                      data: yAxisData
                     },
                     {
-                      name: "未处置",
+                      name: "已上报数",
                       type: "bar",
                       barWidth: 15,
                       itemStyle: {
@@ -944,9 +946,34 @@ var MyEcharts2 = {
                           borderWidth: 2
                         }
                       },
-                      data: yAxisData2.sort(function(a,b){return b-a})
+                      data: yAxisData2
                     }
-                  ]
+                  ],
+                  "dataZoom": [{
+                    "show": true,
+                    "height": 12,
+                    "xAxisIndex": [
+                      0
+                    ],
+                    bottom:'8%',
+                    "start": 10,
+                    "end": 90,
+                    handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                    handleSize: '110%',
+                    handleStyle:{
+                      color:"#d3dee5",
+          
+                    },
+                    textStyle:{
+                      color:"#fff"},
+                    borderColor:"#90979c"
+                  }, {
+                    "type": "inside",
+                    "show": true,
+                    "height": 15,
+                    "start": 1,
+                    "end": 35
+                  }],
                 };
             return option
         },

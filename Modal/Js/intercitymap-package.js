@@ -11,14 +11,6 @@ var bridge1 = null;
 
   function createMenu() {
     bridge1.Invoke([
-      //地图主题切换消息
-      // {
-      //   "ActionName": "changeTheme",
-      //   "Parameters": {
-      //     "id": "Home"
-      //   }
-      // },
-      // 功能菜单
       {
         "ActionName": "userMenu",
         "Parameters": {
@@ -39,3 +31,4 @@ var bridge1 = null;
 
     ])
   }
+ 

@@ -119,14 +119,13 @@
                         </div>
                         <div style="color: #fff;text-align: center;font-size: 0.2rem;font-weight: bold;position: absolute;right: 40px;">
                               <div id="ecTraffic1"  style="width: 420px;height: 200px;"></div>
-                              <div style="display: flex;justify-content: space-evenly;margin-top: -6.2rem;"><span>昨日班次执行率</span><span>当日完成班次</span><span>昨日首末班车准确率</span> </div>
+                              <div style="display: flex;justify-content: space-evenly;margin-top: -6.2rem;"><span>昨日班次执行率</span><span>当日完成班次</span><span>昨日首末班车准点率</span> </div>
                        </div>
 `
 
             document.getElementById("countRestNumFunId").innerHTML=para
             console.log(para, 'paraparaparaparapara')
-            // MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",4954,99.81,99.44,), "ecTraffic1")
-            MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准确率",res.sjnum,res.bczxl,res.smbczdlz,res.jhnum), "ecTraffic1")
+            MyEcharts.initChart(MyEcharts.EchartsOption.JTKL2("当日完成班次","昨日班次执行率","昨日首末班车准点率",res.sjnum,res.bczxl,res.smbczdlz,res.jhnum), "ecTraffic1")
 
         })
     }
@@ -144,7 +143,7 @@
                 xData.push(item.time)
                 yData.push(item.bczxl)
             })
-            MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('工单问题',"50,128,210",xData,yData), "SmallECharts1")
+            MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('公交班次执行率',"50,128,210",xData,yData), "SmallECharts1")
             window.onresize=MyEcharts.resize
         })
         para={
@@ -160,7 +159,7 @@
                 xData.push(item.time)
                 yData.push(item.smbczdlz)
             })
-            MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('工单问题',"50,128,210",xData,yData), "SmallECharts2")
+            MyEcharts.initChart(MyEcharts.EchartsOption.BusLine('首末班车准点率',"50,128,210",xData,yData), "SmallECharts2")
             window.onresize=MyEcharts.resize
         })
     }

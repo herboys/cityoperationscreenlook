@@ -1134,7 +1134,7 @@ var MyEcharts = {
                 }],
                 series: [
                     {
-                        name: '注册总量',
+                        name: name,
                         type: 'line',
                         smooth: true, //是否平滑
                         showAllSymbol: true,
@@ -1168,7 +1168,8 @@ var MyEcharts = {
                             shadowOffsetX: 2,
                         },
                         tooltip: {
-                            show: false
+                            show: true
+
                         },
                         areaStyle: {
                             normal: {

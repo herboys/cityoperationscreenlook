@@ -1770,7 +1770,8 @@ var MyEcharts = {
                             xAxisIndex: [0],
                             left: '10%',
                             start: 0, //数据窗口范围的起始百分比
-                            end: 36
+                            end: 36,
+                            bottom:"0px"
                         },
                         {
                             type: 'inside',

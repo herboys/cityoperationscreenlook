@@ -10,9 +10,13 @@ function ToOnload() {
     findbcNameType()
     findscName()
     rollInit()
+    findAtlnglats()
 
 }
-
+function faultFun(){
+    document.getElementById("RightBannerNameId").innerText='12345事件热力图'
+    findAtlnglats()
+}
 function findAtlnglats(){
     let para = {
         url: ORACLE_URL + '/taskInfo/findAtlnglat',
@@ -51,8 +55,7 @@ function TabsFun(num) {
     let myChart = ''
     switch (num) {
         case 1:
-            para[0].innerHTML = ' <div class="banner1" onclick="TabsFun(1)">' + '基本情况' + '</div>' +
-                '<div class="banner2" onclick="TabsFun(2)">' + '趋势分析' + '</div>'
+            para[0].innerHTML = ' <div class="banner1" onclick="TabsFun(1)">' + '基本情况' + '</div>'
             data = [{
                 "name": "电话",
                 "value": 10
@@ -69,9 +72,10 @@ function TabsFun(num) {
                 },
 
             ];
-
-            color = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
-            MyEcharts.initChart(MyEcharts.EchartsOption.pie('工单问题', color, data), "SmallECharts3")
+            //
+            // color = ["#fec101", "#b5b8cd", "#ff6226", "#2cc78f"]
+            // MyEcharts.initChart(MyEcharts.EchartsOption.pie('工单问题', color, data), "SmallECharts3")
+            faultFun()
             break;
         case 2:
             para[0].innerHTML = ' <div class="banner2" onclick="TabsFun(1)">' + '基本情况' + '</div>' +

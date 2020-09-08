@@ -167,7 +167,6 @@ function ThermodynamicFun(res) {
     function createMenucopyFun(res) {
 
         bridge1.Invoke([
-
             {
                 "ActionName": "doShowHeat",
                 "Parameters": {

@@ -728,8 +728,7 @@ function shlj(){
         dryGarbage.push(item.dryGarbage.split(item.unit)[0].trim())
         recoverable.push(parseInt(item.wetGarbageDwe.split(item.unit)[0].trim()) + parseInt(item.wetGarbageKit.split(item.unit)[0].trim()))
       })
-
-      let recoverable1 =eval(dryGarbage.join("+")) / dryGarbage.length +eval(recoverable.join("+")) / recoverable.length+403
+      let recoverable1 =eval(dryGarbage.join("+"))  +eval(recoverable.join("+")) +403
       let Ganlanumber = recoverable1.toFixed(2)
       //sthj(hjbzArr,Ganlanumber);
       hjbzArr[0].num=Ganlanumber

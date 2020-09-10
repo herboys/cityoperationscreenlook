@@ -17,15 +17,15 @@
         <h1  class="Modal-left-header">全区120医疗信息汇总</h1>
         <div class="Modal-left-item">
           <div class="FX_header">
-            <div id="dropdown">
+            <!-- <div id="dropdown">
               <p style="border: 1px solid #1dd6df; color: #1dd6df;padding-right: 0;">
-               七月<span>></span></p>
+               八月<span>></span></p>
               <ul style="border: 1px solid #1dd6df; color: #1dd6df;">
                 <li><a href="#" rel="1">今年</a></li>
                 <li><a href="#" rel="2">今月</a></li>
                 <li><a href="#" rel="3">今日</a></li>
               </ul>
-            </div>
+            </div> -->
           </div>
 
           <div class="Satisfaction-warp">
@@ -136,17 +136,26 @@
           });
 
       });
+      let xData8 = []
+      let yData8 = []
   window.onload = function () {
-    let xData8 =  ['08-01', '08-02', '08-03', '08-04', '08-05', '08-06','08-07', '08-08', '08-09', '08-10',
-                   '08-11', '08-12', '08-13', '08-14', '08-15', '08-16','08-17', '08-18', '08-19', '08-20',
-                   '08-21', '08-22', '08-23', '08-24', '08-25', '08-26','08-27', '08-28', '08-29', '08-30','08-31'];
-    let yData8 = [507, 344, 554, 538, 462, 524,494, 498, 508, 682,
-                 568, 509,434, 454, 574, 461, 529, 524,485, 361,
-                 480, 459, 439, 480,492, 561, 503, 550, 383, 484,565];
-    MyEcharts2.initChart(
-      MyEcharts2.EchartsOption.LineChartPhone('话务量',"16, 90, 113",xData8,yData8),
-      "ecLivePhone"
-    );
+    // let xData8 =  ['08-01', '08-02', '08-03', '08-04', '08-05', '08-06','08-07', '08-08', '08-09', '08-10',
+    //                '08-11', '08-12', '08-13', '08-14', '08-15', '08-16','08-17', '08-18', '08-19', '08-20',
+    //                '08-21', '08-22', '08-23', '08-24', '08-25', '08-26','08-27', '08-28', '08-29', '08-30','08-31'];
+    // let yData8 = [507, 344, 554, 538, 462, 524,494, 498, 508, 682,
+    //              568, 509,434, 454, 574, 461, 529, 524,485, 361,
+    //              480, 459, 439, 480,492, 561, 503, 550, 383, 484,565];
+    $.get("http://10.237.115.83:8092/t120msg/monthTelphoneNow", function(res){
+        for (let index = 0; index < res.length; index++) {
+          xData8.push(res[index].record_time)
+          yData8.push(res[index].telephone_num)
+        }
+        MyEcharts2.initChart(
+        MyEcharts2.EchartsOption.LineChartPhone('话务量',"16, 90, 113",xData8,yData8),
+        "ecLivePhone"
+        );
+    })
+   
  
   };
 

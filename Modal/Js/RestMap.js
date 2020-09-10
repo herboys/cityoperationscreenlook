@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    initMap();
+    init1()
+})
 var map;
 var mapStyle = ["normal",       //0-标准
     "dark",         //1-幻影黑
@@ -60,8 +64,8 @@ function initMap() {
     addJiadingZhenText();
     addTraffic();           /*添加实时路况情况*/
     //addPoiMarker();         /*添加嘉定区主要监控点*/
-    //  map.addControl(new AMap.Scale());
-    SprinkleIt()
+     map.addControl(new AMap.Scale());
+     Sprinkle()
 }
 
 /*设置地图风格*/
@@ -213,217 +217,294 @@ function addTraffic() {
     map.add(traffic); //通过add方法添加图层
 }
 
-/*添加嘉定区主要poi点*/
-function addPoiMarker() {
-    //嘉定区政府 121.2653,31.375602
-    //南翔老街 121.308554,31.292458
-    //安亭汽车城 121.16929,31.281836
-    var p1 = { pointId: -1, name: "嘉定区政府", lng: 121.2653, lat: 31.375602, type: "gov" };
-    var p2 = { pointId: -2, name: "南翔老街", lng: 121.308554, lat: 31.292458, type: "scene" };
-    var p3 = { pointId: -3, name: "安亭汽车城", lng: 121.16929, lat: 31.281836, type: "car" };
-    var p4 = { pointId: 1, name: "G15朱桥", lng: 121.188198, lat: 31.405467, type: "qiakou" };
-    var p5 = { pointId: 2, name: "G2京沪", lng: 121.145693, lat: 31.284744, type: "qiakou" };
-    var p6 = { pointId: 4, name: "安亭站", lng: 121.161985, lat: 31.28849, type: "qiakou" };
-    var p7 = { pointId: 7, name: "华亭站", lng: 121.242686, lat: 31.468279, type: "qiakou" };
-    var p8 = { pointId: 12, name: "外冈站（水路）", lng: 121.171181, lat: 31.360180, type: "qiakou" };
-    var p9 = { pointId: 91, name: "南翔北站", lng: 121.30875, lat: 31.281473, type: "qiakou" };
-    var p10 = { pointId: 6, name: "陆渡站", lng: 121.194994, lat: 31.467135, type: "qiakou" };
-    var p11 = { pointId: 90, name: "安亭北站", lng: 121.158416, lat: 31.314374, type: "qiakou" };//lng: 121.164746, lat: 31.320193
-    var mapMarker = [p1, p2, p3, p4, p6, p7, p8, p9, p10, p11, p5];
+var overlayGroups=[]
 
-    for (var i = 0; i < mapMarker.length; i++) {
-        // console.log(JSON.stringify(mapMarker[i]));
-        // 创建一个 Icon
+// 养老撒点
+function Sprinkle() {
+    
+    let lnglats = [
+        [121.195438, 31.342265],
+        [121.214011, 31.385809],
+        [121.203888, 31.347582],
+        [121.166171, 31.278715],
+        [121.202184, 31.400928],
+        [121.205338, 31.291744],
+      ];
+      let markers = [];
+      for (var i = 0; i < lnglats.length; i++) {
+        let lnglat = lnglats[i];
         var icon = new AMap.Icon({
-            // 图标尺寸
-            size: new AMap.Size(22, 32),
-            // 图标的取图地址
-          //  image: './images/map/icon_' + mapMarker[i].type + '.png',
-            // 图标所用图片大小
-            imageSize: new AMap.Size(22, 32),
-            // 图标取图偏移量
-            // imageOffset: new AMap.Pixel(-9, -3)
+          // 图标尺寸
+          size: new AMap.Size(22, 32),
+          // 图标的取图地址
+          image: "../../images/map-center.png",
+          // 图标所用图片大小
+          imageSize: new AMap.Size(22, 32),
+          // 图标取图偏移量
+          // imageOffset: new AMap.Pixel(-9, -3)
+        });
+        // 创建点实例
+        let marker = new AMap.Marker({
+          position: new AMap.LngLat(lnglat[0], lnglat[1]),
+          icon: icon,
+          extData: {
+            id: i + 1,
+          },
+        });
+        AMap.event.addListener(marker, "click", function () {
+          infoWindow.open(map, marker.getPosition());
+        });
+        //实例化信息窗体
+        var title =
+            '<span style="color:#07ECEB;">景南山养老院</span>',
+          content = [];
+        content.push(
+          "地址：菊园新区翔方公路2368号",
+          "电话：021-64733333",
+          "员工人数：20",
+          "床位数：30"
+        );
+        content.push("电话：021-64733333");
+        var infoWindow = new AMap.InfoWindow({
+          isCustom: true, //使用自定义窗体
+          content: createInfoWindow(title, content.join("<br/>")),
+          offset: new AMap.Pixel(16, -45),
         });
 
-        // 将 icon 传入 marker
-        var marker = new AMap.Marker({
-            position: new AMap.LngLat(mapMarker[i].lng, mapMarker[i].lat),
-            icon: icon,
-            // offset: new AMap.Pixel(-13, -30)，
-            title: mapMarker[i].name,
-            markId: mapMarker[i].pointId
-        });
-        if (mapMarker[i].pointId > 0) {
-            marker.on('click', playVideo)
+        //构建自定义信息窗体
+        function createInfoWindow(title, content) {
+          var info = document.createElement("div");
+          info.className = "custom-info input-card content-window-card";
+
+          //可以通过下面的方式修改自定义窗体的宽高
+          //info.style.width = "400px";
+          // 定义顶部标题
+          var top = document.createElement("div");
+          var titleD = document.createElement("div");
+          var closeX = document.createElement("img");
+          top.className = "info-top";
+          titleD.innerHTML = title;
+          closeX.src = "https://webapi.amap.com/images/close2.gif";
+          closeX.onclick = closeInfoWindow;
+
+          top.appendChild(titleD);
+          top.appendChild(closeX);
+          info.appendChild(top);
+
+          // 定义中部内容
+          var middle = document.createElement("div");
+          middle.className = "info-middle";
+          middle.style.backgroundColor = "white";
+          middle.innerHTML = content;
+          info.appendChild(middle);
+
+          // 定义底部内容
+          var bottom = document.createElement("div");
+          bottom.className = "info-bottom";
+          bottom.style.position = "relative";
+          bottom.style.top = "0px";
+          bottom.style.margin = "0 auto";
+          var sharp = document.createElement("img");
+          sharp.src = "https://webapi.amap.com/images/sharp.png";
+          bottom.appendChild(sharp);
+          info.appendChild(bottom);
+          return info;
         }
-        map.add(marker);
+
+        //关闭信息窗体
+        function closeInfoWindow() {
+          map.clearInfoWindow();
+        }
+        markers.push(marker);
+      }
+
+      // 创建覆盖物群组，并将 marker 传给 OverlayGroup
+       overlayGroups = new AMap.OverlayGroup(markers);
+
+      // 添加覆盖物群组
+
+      map.add(overlayGroups);
+          // 移除覆盖物群组
+   
+} 
+function removeOverlayGroup() {
+    map.remove(overlayGroups);
+}
+
+var overlayGroups2=[]
+
+// 养老撒点
+function Sprinkle2() {
+    console.log(111);
+    let lnglats = [
+        [121.195438, 31.342265],
+        [121.214011, 31.385809],
+        [121.203888, 31.347582],
+        [121.166171, 31.278715],
+        [121.202184, 31.400928],
+        [121.205338, 31.291744],
+      ];
+      let markers = [];
+      for (var i = 0; i < lnglats.length; i++) {
+        let lnglat = lnglats[i];
+        var icon = new AMap.Icon({
+          // 图标尺寸
+          size: new AMap.Size(22, 32),
+          // 图标的取图地址
+          image: "../../images/icon2.png",
+          // 图标所用图片大小
+          imageSize: new AMap.Size(22, 32),
+          // 图标取图偏移量
+          // imageOffset: new AMap.Pixel(-9, -3)
+        });
+        // 创建点实例
+        let marker = new AMap.Marker({
+          position: new AMap.LngLat(lnglat[0], lnglat[1]),
+          icon: icon,
+          extData: {
+            id: i + 1,
+          },
+        });
+        AMap.event.addListener(marker, "click", function () {
+          infoWindow.open(map, marker.getPosition());
+        });
+        //实例化信息窗体
+        var title =
+            '<span style="color:#07ECEB;">景南山养老院</span>',
+          content = [];
+        content.push(
+          "地址：菊园新区翔方公路2368号",
+          "电话：021-64733333",
+          "员工人数：20",
+          "床位数：30"
+        );
+        content.push("电话：021-64733333");
+        var infoWindow = new AMap.InfoWindow({
+          isCustom: true, //使用自定义窗体
+          content: createInfoWindow(title, content.join("<br/>")),
+          offset: new AMap.Pixel(16, -45),
+        });
+
+        //构建自定义信息窗体
+        function createInfoWindow(title, content) {
+          var info = document.createElement("div");
+          info.className = "custom-info input-card content-window-card";
+
+          //可以通过下面的方式修改自定义窗体的宽高
+          //info.style.width = "400px";
+          // 定义顶部标题
+          var top = document.createElement("div");
+          var titleD = document.createElement("div");
+          var closeX = document.createElement("img");
+          top.className = "info-top";
+          titleD.innerHTML = title;
+          closeX.src = "https://webapi.amap.com/images/close2.gif";
+          closeX.onclick = closeInfoWindow;
+
+          top.appendChild(titleD);
+          top.appendChild(closeX);
+          info.appendChild(top);
+
+          // 定义中部内容
+          var middle = document.createElement("div");
+          middle.className = "info-middle";
+          middle.style.backgroundColor = "white";
+          middle.innerHTML = content;
+          info.appendChild(middle);
+
+          // 定义底部内容
+          var bottom = document.createElement("div");
+          bottom.className = "info-bottom";
+          bottom.style.position = "relative";
+          bottom.style.top = "0px";
+          bottom.style.margin = "0 auto";
+          var sharp = document.createElement("img");
+          sharp.src = "https://webapi.amap.com/images/sharp.png";
+          bottom.appendChild(sharp);
+          info.appendChild(bottom);
+          return info;
+        }
+
+        //关闭信息窗体
+        function closeInfoWindow() {
+          map.clearInfoWindow();
+        }
+        markers.push(marker);
+      }
+
+      // 创建覆盖物群组，并将 marker 传给 OverlayGroup
+       overlayGroups2 = new AMap.OverlayGroup(markers);
+
+      // 添加覆盖物群组
+
+      map.add(overlayGroups2);
+          // 移除覆盖物群组
+   
+} 
+function removeOverlayGroup2() {
+    map.remove(overlayGroups2);
+}
+
+
+
+var heatmap;
+function Heatmap() {
+   
+    let  heatmapData = [{
+        "lng": 121.195438,
+        "lat": 31.342265,
+        "count": 80
+    }, {
+        "lng": 121.214011,
+        "lat": 31.385809,
+        "count": 71
+    }, {
+        "lng": 121.203888,
+        "lat": 31.347582,
+        "count": 92
+    }, {
+        "lng": 121.166171,
+        "lat": 31.278715,
+        "count": 93
+    }, {
+        "lng": 121.202184,
+        "lat": 31.400928,
+        "count": 93
+    }, {
+        "lng": 121.205338,
+        "lat": 31.291744,
+        "count": 63
     }
-}
 
-function playVideo(e) {
-    //alert("播放视频"+e.target.Ce.markId);
-    //console.log("播放视频"+e.target.Ce.markId)
-    var stationId = e.target.Ce.markId;
-    $.ajax({
-        url: STATIC_URL + '/videoStream/getVideoSource/' + stationId,
-        type: 'get',
-        dataType: "json",
-        success: function (data) {
-            var resData = data.data;
-            // alert("播放视频"+e.target.Ce.markId);
-            //播放视频函数
-            /* "monitorPoint": "630013108嘉定G2京沪一级出沪车检 东HG",
-                 "url": "http://10.237.221.178:8050/cam/realmonitor/31011401001320205008?subtype=0&streamType=0&token=1592793106_0d12f011d9ba7ee06dd327f764a41f46dfabbf96&mediatype=HLS.m3u8"
- */
-            console.log(1)
-
-            console.log(resData)
-            var urlList = []
-            var urlName = []
-            var index = 0;
-            for (var i = 0; i < resData.length; i++) {
-                if (resData[i].url != null && resData[i].url != '') {
-                    urlList[index] = resData[i].url
-                    urlName[index++] = resData[i].monitorPoint.substr(9)
-                }
-            }
-            // alert(JSON.stringify(urlName))
-            if (urlList.length > 0)
-                openVideo(urlList, urlName)
-            else
-                alert('该点位无可用视频')
-        },
-        error: function (data) {
-            console.log(data)
-            alert('失败')
-        }
-
-    })
-
-
-}
-
-
-function SprinkleIt(){
-    //map.clearMap();
-    let NewList=[
-        {name:"嘉城 桃园小区 桃园新村87号东 HG",pumpStationX:"121.239575",pumpStationY:"31.391606",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011429001310015505&subStream=0&protocol=0"},
-        {name:"嘉城 桃园小区 桃园新村104东 HG",pumpStationX:"121.239503",pumpStationY:"31.390868",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321146003&subStream=0&protocol=0"},
-         {name:"嘉城 高昌路105弄 5号垃圾投放 HG",pumpStationX:"121.238272",pumpStationY:"31.37534",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321159013&subStream=0&protocol=0"},
-         {name:"嘉城 桃园小区 桃园新村62号东 HG",pumpStationX:"121.240479",pumpStationY:"31.391997",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321168016&subStream=0&protocol=0"},
-        {name:"嘉城 沪宜公路3668弄 车辆 进 HG",pumpStationX: "121.238379", pumpStationY: "31.374618",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321140013&subStream=0&protocol=0"},
-        {name:"嘉城 嘉宏公寓 大门北侧人脸 进 HG",pumpStationX: "121.248514", pumpStationY: "31.382049",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321146003&subStream=0&protocol=0"},
-        {name:"嘉城 金沙小区 东大门人脸1 HG",pumpStationX: "121.251695", pumpStationY: "31.3888604",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321159013&subStream=0&protocol=0"},
-        {name:"嘉城 丽景公寓 北出入口车辆 进 HG",pumpStationX: "121.238027", pumpStationY: "31.377266",url:"http://10.237.202.28:8086/SHIoT/8200/getPreviewURL?cameraIndexCode=31011411011321168016&subStream=0&protocol=0"},
     ]
-    for (let i = 0; i < NewList.length; i++) {
-// 创建一个 icon
-        let Icon = new AMap.Icon({
-            size: new AMap.Size(25, 34),
-            image: './../images/map/icon_qiakou.png',
-            // imageSize: new AMap.Size(135, 40),
-            // imageOffset: new AMap.Pixel(-95, -3)
-            imageSize: new AMap.Size(22, 32),
-        });
-
-// 将 icon 传入 marker
-        let Marker = new AMap.Marker({
-            position: new AMap.LngLat(NewList[i].pumpStationX, NewList[i].pumpStationY),
-            icon: Icon,
-            offset: new AMap.Pixel(-13, -30)
-        });
-        map.add([Marker]);
-        AMap.event.addListener(Marker, 'click', function(e) {
-
-            var name=NewList[i].name
-            var url=NewList[i].url
-            if(videoOne===false){
-                iframeInsertOneVideo(name,url);
-                videoOne=true;
-            }else if(videoTwo===false){
-                iframeInsertSecondVideo(name,url);
-                videoTwo=true;
-            }else{
-                iframeInsertOneVideo(name,url);
-                videoOne=true;
+  
+    map.plugin(["AMap.Heatmap"], function () {
+        //初始化heatmap对象
+        heatmap = new AMap.Heatmap(map, {
+            radius: 25, //给定半径
+            opacity: [0, 1],
+            gradient:{
+                0.5: 'blue',
+                0.65: 'rgb(117,211,248)',
+                0.7: 'rgb(0, 255, 0)',
+                0.9: '#ffea00',
+                1.0: 'red'
             }
-            GarBageVideo++;
-
+          
         });
+        //设置数据集：该数据为北京部分“公园”数据
+        heatmap.setDataSet({
+            data: heatmapData,
+            max: 100
+        });
+    });
+
+    //判断浏览区是否支持canvas
+    function isSupportCanvas() {
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
     }
-
-    function iframeInsertOneVideo(name,url){
-       name=name.replace(" ","_").replace(" ","_").replace(" ","_")
-
-        console.log(1)
-        console.log(parent.$('#slider1').children().eq(0));
-        var str=""
-        parent.$('#slider1').html('');
-
-        str += '<div class="slide1">'
-            +'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+name+'</span>'
-            + "<img class='fullscreenImg' onclick=openLargeVideo('"+name+"','"+url+"') src='images/fullscreen1.png'/>"
-            +'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoOne()>关闭</span>'
-
-        str +='<div class="jrwlzsjCont1">'
-
-        str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
-
-        str	+= '  </video>'
-            +'</div>'
-            +'</div>'
-            +'</div>'
-
-
-
-
-        parent.$('#slider1').append(str)
-
-        var hls = new Hls();
-        var video = parent.$("#slider1 video")[0];
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play();
-        })
-
-       // hlsListMap["slideOne"]=hls
-      //  videoFlagOne=1;
-    }
-
-    function iframeInsertSecondVideo(name,url){
-
-       /* var removeVideo= $("#slider2 video")[0]
-        removeVideo.pause()
-        hlsListMap["slideTwo"].destroy();
-        hlsListMap["slideTwo"]=null
-        delete hlsListMap["slideTwo"]*/
-        name=name.replace(" ","_").replace(" ","_").replace(" ","_")
-        parent.$('#slider2').html('');
-        var str=''
-        str += '<div class="slide1">'
-            +'<div class="jrwlzsjTxt1"><span style="left:0.5rem;top:0px;font-size:1.1rem;position:absolute;color:#00fff6;z-index:999">'+name+'</span>'
-            + "<img class='fullscreenImg' onclick=openLargeVideo('"+name+"','"+url+"') src='images/fullscreen1.png'/>"
-            +'<span style="right:0px;top:0px;font-size:1.1rem;position:absolute;color:#999;z-index:999" onclick=closeVideoTwo()>关闭</span>'
-        str +='<div class="jrwlzsjCont1">'
-
-        str	+='<video controls="" autoplay preload muted name="media" style="width:29.2rem;height:16rem" muted="muted">'
-
-        str	+= '  </video>'
-            +'</div>'
-            +'</div>'
-            +'</div>'
-
-        parent.$('#slider2').append(str)
-
-        var hls = new Hls();
-        var video =  parent.$("#slider2 video")[0];
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play();
-        })
-
-       // hlsListMap["slideTwo"]=hls
-    }
+}
+function heatmaphide() {
+    heatmap.hide()
 }

@@ -262,28 +262,28 @@
 
               <div  v-show="switchShow1" class="Satisfaction-warp-item-echarts">
                 <div style="display: flex;">
-                  <div id="SmallECharts4" style="width: 260px; height: 255px;"></div>
+                  <div id="SmallECharts4" style="width: 380px; height: 255px;"></div>
                   <div class="echarts-bg-box" style="display: flex;">
                     <div id="ecRadar1" style="width: 150px;height: 200px;"></div>
-                    <div id="ecbar3" style="width: 150px;height: 200px;"></div>
+                    <div id="ecbar3" style="width: 150px;height: 200px;display: none;"></div>
                   </div>
                 </div>
               </div>
               <div  v-show="switchShow2" class="Satisfaction-warp-item-echarts">
                 <div style="display: flex;">
-                  <div id="SmallECharts44" style="width: 260px; height: 255px;"></div>
+                  <div id="SmallECharts44" style="width: 380px; height: 255px;"></div>
                   <div class="echarts-bg-box" style="display: flex;">
                     <div id="ecRadar2" style="width: 150px;height: 200px;"></div>
-                    <div id="ecbar4" style="width: 150px;height: 200px;"></div>
+                    <div id="ecbar4" style="width: 150px;height: 200px;display: none;"></div>
                   </div>
                 </div>
               </div>
               <div v-show="switchShow3" class="Satisfaction-warp-item-echarts">
                 <div style="display: flex;">
-                  <div id="SmallECharts444" style="width: 260px; height: 255px;"></div>
+                  <div id="SmallECharts444" style="width: 380px; height: 255px;"></div>
                   <div class="echarts-bg-box" style="display: flex;">
                     <div id="ecRadar3" style="width: 150px;height: 200px;"></div>
-                    <div id="ecbar5" style="width: 150px;height: 200px;"></div>
+                    <div id="ecbar5" style="width: 150px;height: 200px;display: none;"></div>
                   </div>
                 </div>
               </div>
@@ -399,8 +399,7 @@
       
       },
       mapCenter() {
-        alert(12)
-            bridge1 = new CityGis.Bridge({
+          bridge1 = new CityGis.Bridge({
           id: "mapContainer2",
           url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
           onReady: function () {

@@ -334,12 +334,14 @@ ul li {
 }
 
 .echarts-bg-box{
-    width: 315px;height: 205px;
+    /* width: 315px; */
+    height: 205px;
     background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
     background-repeat: no-repeat;
     background-size: 3px 20px, 20px 3px;
     margin: auto 0;
     border: solid 1px rgb(35, 80, 121);
+    margin-left: 20px;
 }
 
 .ranking-public{

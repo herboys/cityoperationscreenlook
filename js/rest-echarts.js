@@ -32,23 +32,27 @@ function initEcharts() {
   var data = [
     {
       name: "60-64岁",
-      value: 65800,
+      value: 64755,
     },
     {
       name: "65-69岁",
-      value: 61700,
+      value: 61340,
     },
     {
       name: "70-79岁",
-      value: 64000,
+      value: 64848,
     },
     {
       name: "80-89岁",
-      value: 28300,
+      value: 28653,
     },
     {
         name: "90-99岁",
-        value: 4500,
+        value: 5574,
+    },
+      {
+        name: "100以上人数",
+        value: 101,
       },
   ];
 

@@ -152,8 +152,8 @@ var MyEcharts2 = {
                     show: false
                 },
                 grid: {
-                    left: 110,
-                    right: 65
+                    left: 140,
+                    right: 95
               
                 },
                 dataZoom: [{
@@ -219,8 +219,8 @@ var MyEcharts2 = {
                     data: attackSourcesName,
                     axisLabel: {
                         interval:0 ,  //控制是否全部显示
-                        margin: 90,
-                        fontSize: 16,
+                        margin: 120,
+                        fontSize: 12,
                         align: 'left',
                         color: '#333',
                         rich: {
@@ -259,7 +259,7 @@ var MyEcharts2 = {
                             title1: {
 
                                 color: '#fff',
-                                width: 30,
+                                width: 80,
                                 align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
@@ -267,7 +267,7 @@ var MyEcharts2 = {
                             title2: {
 
                                 color: '#fff',
-                                width: 30,
+                                width: 80,
                                 align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
@@ -275,7 +275,7 @@ var MyEcharts2 = {
                             title3: {
 
                                 color: '#fff',
-                                width: 30,
+                                width: 80,
                                 align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
@@ -283,7 +283,7 @@ var MyEcharts2 = {
                             title: {
 
                                 color: '#fff',
-                                width: 30,
+                                width: 80,
                                 align: 'left',
                                 borderRadius: 5,
                                 padding: 5,
@@ -369,8 +369,272 @@ var MyEcharts2 = {
             return option;
 
         },
+        Ranking2: function (name, attackSourcesName, attackSourcesData, attackSourcesColor) {
+            console.log(attackSourcesName,attackSourcesData,212121);
+            function contains(arr, dst) {
+                var i = arr.length;
+                while (i -= 1) {
+                    if (arr[i] == dst) {
+                        return i;
+                    }
+                }
+                return false;
+            }
 
+            var attackSourcesData = attackSourcesData;
+            var attackSourcesName = attackSourcesName
+            var attackSourcesColor = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#1089E7', '#F57474', '#56D0E3', '#1089E7', '#F57474', '#1089E7', '#F57474', '#F57474'];
+
+            function attackSourcesDataFmt(sData) {
+                var sss = [];
+                sData.forEach(function (item, i) {
+                    itemStyle = {
+                        color: i > 3 ? attackSourcesColor[3] : attackSourcesColor[i]
+                    }
+                    sss.push({
+                        value: item,
+                        // itemStyle: itemStyle
+                    });
+                });
+                return sss;
+            }
+
+            var option = {
+                tooltip: {
+                    show: true,
+                    // backgroundColor: 'rgba(3,169,244, 0.5)',//背景颜色（此时为默认色）
+                    textStyle: {
+                        fontSize: 12
+                    },
+                    // trigger: 'axis',
+                    // axisPointer: {
+                    //    type: 'shadow'
+                    // }
+                },
+                legend: {
+                    show: false
+                },
+                grid: {
+                    left: 140,
+                    right: 95
+              
+                },
+                dataZoom: [{
+                    type: 'slider',
+                    yAxisIndex: [0,1],
+                    zoomLock: true,
+                    width: 10,
+                    handleSize: 0,
+                    showDetail: false,
+                    start: 0,
+                    end: 2,
+                    handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                    handleSize: '110%',
+                    handleStyle: {
+                        color: "#d3dee5",
+                    },
+                    borderColor: "#90979c"
+                }, {
+                    type: 'inside',
+                    id: 'insideY',
+                    yAxisIndex: 0,
+                    start: 0,
+                    end: 2,
+                    zoomOnMouseWheel: false,
+                    moveOnMouseMove: true,
+                    moveOnMouseWheel: true
+                }],
+                xAxis: {
+                    type: 'value',
+
+                    splitLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    }
+
+                },
+                yAxis: [{
+                    type: 'category',
+                    inverse: true,
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    axisPointer: {
+                        label: {
+                            show: true,
+                            margin: 30
+                        }
+                    },
+                    data: attackSourcesName,
+                    axisLabel: {
+                        interval:0 ,  //控制是否全部显示
+                        margin: 120,
+                        fontSize: 12,
+                        align: 'left',
+                        color: '#333',
+                        rich: {
+                            nt1: {
+                                color: '#fff',
+                                backgroundColor: attackSourcesColor[0],
+                                width: 20,
+                                height: 20,
+                                align: 'center',
+                                borderRadius: 100
+                            },
+                            nt2: {
+                                color: '#fff',
+                                backgroundColor: attackSourcesColor[1],
+                                width: 20,
+                                height: 20,
+                                align: 'center',
+                                borderRadius: 100
+                            },
+                            nt3: {
+                                color: '#fff',
+                                backgroundColor: attackSourcesColor[2],
+                                width: 20,
+                                height: 20,
+                                align: 'center',
+                                borderRadius: 100
+                            },
+                            nt: {
+                                color: '#fff',
+                                backgroundColor: attackSourcesColor[3],
+                                width: 20,
+                                height: 20,
+                                align: 'center',
+                                borderRadius: 100
+                            },
+                            title1: {
+
+                                color: '#fff',
+                                width: 80,
+                                align: 'left',
+                                borderRadius: 5,
+                                padding: 5,
+                            },
+                            title2: {
+
+                                color: '#fff',
+                                width: 80,
+                                align: 'left',
+                                borderRadius: 5,
+                                padding: 5,
+                            },
+                            title3: {
+
+                                color: '#fff',
+                                width: 80,
+                                align: 'left',
+                                borderRadius: 5,
+                                padding: 5,
+                            },
+                            title: {
+
+                                color: '#fff',
+                                width: 80,
+                                align: 'left',
+                                borderRadius: 5,
+                                padding: 5,
+                            }
+                        },
+
+                        formatter: function (value, index) {
+                            index = contains(attackSourcesName, value) + 1
+                            if (index - 1 < 3) {
+                                return [
+                                    '{nt' + index + '|' + index + '}' + '  {title' + index + '|' + value + '}'
+                                ].join('\n')
+                            } else {
+                                return [
+                                    '{nt|' + index + '}' + '  {title|' + value + '}'
+                                ].join('\n')
+                            }
+                        }
+                    },
+
+                }, {
+                    type: 'category',
+                    inverse: true,
+                    axisTick: 'none',
+                    axisLine: 'none',
+                    show: true,
+                    axisLabel: {
+                        textStyle: {
+                            color: '#ffffff',
+                            fontSize: '12'
+                        },
+                        formatter: function (value) {
+
+
+                            return (value).toLocaleString() + '分';
+
+                        },
+                    },
+                    data: attackSourcesData
+                }],
+                series: [{
+                        z: 3,
+                        //name: 'value',
+                        type: 'bar',
+                        barWidth: '10',
+                        animationDuration: 1500,
+                        data: attackSourcesDataFmt(attackSourcesData),
+                        itemStyle: {
+                            normal: {
+                                color: function (params) {
+                                    return attackSourcesColor[params.dataIndex > 3 ? 3 : params.dataIndex]
+                                },
+                                barBorderRadius: 5,
+                            }
+                        },
+                        label: {
+                            show: false,
+                            position: 'right',
+                            color: '#fff',
+                            fontSize: 14,
+                            offset: [10, 0]
+                        },
+
+                    }, {
+                        name: '背景',
+                        type: 'bar',
+                        barWidth: 10,
+                        barGap: '-100%',
+                        z: 1,
+                        animationDuration: 1500,
+                        data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1],
+                        itemStyle: {
+                            normal: {
+                                color: '#15345D',
+                                barBorderRadius: 30,
+                            }
+                        },
+
+                    },
+
+                ]
+            };
+            return option;
+
+        },
+        // 雷达图
         radar: function (name, indicator, value) {
+            console.log(indicator,value,'indicatorindicatorindicator');
             var legendData = ['收入/万元','班次', '里程/万公里']; //图例
 
             var dataArr = [
@@ -757,8 +1021,8 @@ var MyEcharts2 = {
             return option
         },
 
-        BarChart: function (name, xAxisData, yAxisData,yAxisData2) {
-            console.log(xAxisData, yAxisData,yAxisData2,'barbarbar');
+        BarChart: function (name, xAxisData, yAxisData,yAxisData2,percentage) {
+            console.log(xAxisData, yAxisData,yAxisData2,percentage,'barbarbar');
             // var xAxisData = xAxisData;
             // var yAxisData = yAxisData;
             option = {
@@ -777,7 +1041,7 @@ var MyEcharts2 = {
                     }
                   },
                   legend: {
-                    data: ["处置率", "上报量", "未处置"],
+                    data: ["处置率", "总上报数", "已上报数"],
                     top: "2%",
                     right:'10',
                     textStyle: {
@@ -903,7 +1167,7 @@ var MyEcharts2 = {
                         }
                       ])
                     },
-                    data: [4.2, 3.5, 2.9, 7.8, 5,4.2, 3.5, 2.9, 7.8, 5,4.2, 3.5, 2.9, 7.8, 5,4.2, 3.5, 2.9, 7.8, 5, ]
+                    data: percentage
                   },
                     {
                       name: "总上报数",
@@ -933,7 +1197,7 @@ var MyEcharts2 = {
                         }
                       },
                     //   data: yAxisData.sort(function(a,b){return b-a})
-                      data: yAxisData
+                      data: yAxisData2
                     },
                     {
                       name: "已上报数",
@@ -946,7 +1210,7 @@ var MyEcharts2 = {
                           borderWidth: 2
                         }
                       },
-                      data: yAxisData2
+                      data: yAxisData
                     }
                   ],
                   "dataZoom": [{

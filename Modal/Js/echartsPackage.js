@@ -1076,7 +1076,8 @@ var MyEcharts2 = {
                       areaStyle: {
                         color: ["rgba(250,250,250,0.1)", "rgba(250,250,250,0)"]
                       }
-                    }
+                    },
+                    max:20
                   },
                   yAxis: [{
                     type: "value",
@@ -1134,7 +1135,8 @@ var MyEcharts2 = {
                       }
                     }
                   ],
-                  series: [{
+                  series: [
+                    {
                     name: "处置率",
                     type: "line",
                     yAxisIndex: 1, //使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用
@@ -1168,11 +1170,11 @@ var MyEcharts2 = {
                       ])
                     },
                     data: percentage
-                  },
+                    },
                     {
                       name: "总上报数",
                       type: "bar",
-                      barWidth: 15,
+                      barWidth: 8,
                       itemStyle: {
                         normal: {
                           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -1202,7 +1204,7 @@ var MyEcharts2 = {
                     {
                       name: "已上报数",
                       type: "bar",
-                      barWidth: 15,
+                      barWidth: 8,
                       itemStyle: {
                         normal: {
                           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(15,197,243,1)'}, {offset: 1, color: 'rgba(15,197,243,0)'}]),
@@ -1211,19 +1213,23 @@ var MyEcharts2 = {
                         }
                       },
                       data: yAxisData
-                    }
+                    },
+                    
+                    //  { barCategoryGap:20}
+                    
                   ],
+                  // 柱状图滚动条旧版
                   "dataZoom": [{
                     "show": true,
                     "height": 12,
                     "xAxisIndex": [
                       0
                     ],
-                    bottom:'8%',
-                    "start": 10,
-                    "end": 90,
+                    bottom:-7,
+                    "start": 0,
+                    "end": 60,
                     handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
-                    handleSize: '110%',
+                    handleSize: '100%',
                     handleStyle:{
                       color:"#d3dee5",
           
@@ -1235,9 +1241,36 @@ var MyEcharts2 = {
                     "type": "inside",
                     "show": true,
                     "height": 15,
-                    "start": 1,
-                    "end": 35
+                    "start": 0,
+                    "end": 60
                   }],
+                //   dataZoom: [
+                //     {
+
+                //         "height": 12,
+                //         type: 'slider',
+                //         show: true,
+                //         xAxisIndex: [0],
+                //         left: '10%',
+                //         start: 0, //数据窗口范围的起始百分比
+                //         end: 36,
+                //         bottom:-5,
+                //         borderColor:"rgba(225,225,225,0)",
+                //         textStyle:{
+                //             color:'rgba(225,225,225,0)'
+                //         }
+                //     },
+                //     {
+                //         type: 'inside',
+                //         xAxisIndex: [0],
+                //         start: 0,
+                //         end: 36,
+                //         show: false,
+                //         textStyle:{
+                //             color:'rgba(225,225,225,0)'
+                //         }
+                //     }
+                // ],
                 };
             return option
         },

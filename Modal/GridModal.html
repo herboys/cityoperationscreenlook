@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../css/pubilic.css" />
 <link rel="stylesheet" type="text/css" href="css/gridModal.css" />
 <!-- <script src="../js/map3.js" type="text/javascript" charset="utf-8"></script> -->
-<script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
 <!-- <script type="text/javascript" src="../js/map3.js"></script> -->
 
@@ -17,10 +17,10 @@
   <div id="app2" class="Modal-warp">
     <div class="Modal-left">
       <div style="padding: 0px 20px;">
-        <h1 style="margin: 1.5rem 0 1rem 0 ;color: #fff;text-align: center;">全区网格化信息汇总</h1>
+        <h1  class="Modal-left-header">全区网格化信息汇总</h1>
         <div class="Modal-left-item">
           <div class="FX_header">
-            <div id="dropdown">
+            <!-- <div id="dropdown">
               <p style="border: 1px solid #1dd6df; color: #1dd6df;padding-right: 0;">
                今日<span>></span></p>
               <ul style="border: 1px solid #1dd6df; color: #1dd6df;">
@@ -28,7 +28,7 @@
                 <li><a href="#" rel="2">今月</a></li>
                 <li><a href="#" rel="3">今日</a></li>
               </ul>
-            </div>
+            </div> -->
           </div>
 
           <div class="Satisfaction-warp">
@@ -64,8 +64,8 @@
                       <p>
                         <span style="font-size: 1.2rem;margin-bottom: 6px;">结案案件<span
                             style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
-                        <span style="color: #20d180;">某某总量</span>
-                        <span style="color: #0093ff;">某某总量</span>
+                        <!-- <span style="color: #20d180;">某某总量</span>
+                        <span style="color: #0093ff;">某某总量</span> -->
                       </p>
                       <div style="display: flex;">
                         <div id="ecPie1" style="width: 120px;height: 120px;"></div>
@@ -81,8 +81,8 @@
                       <p>
                         <span style="font-size: 1.2rem;margin-bottom: 6px;">处置中案件<span
                             style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">51</span>件</span>
-                        <span style="color: #20d180;">某某总量</span>
-                        <span style="color: #0093ff;">某某总量</span>
+                        <!-- <span style="color: #20d180;">某某总量</span>
+                        <span style="color: #0093ff;">某某总量</span> -->
                       </p>
                       <div style="display: flex;">
                         <div id="ecPie2" style="width: 120px;height: 120px;"></div>
@@ -116,7 +116,7 @@
                 <div style="padding: 2rem 2rem 1rem 3rem;color: #fff;margin-bottom: 0.2rem;">
                   <p style="font-size: 1.5rem;margin-bottom: 6px;">队伍配置总数<span style="color: #56D0E3;margin: 0 0.5rem;font-weight: bold;">46364</span>人</p>
                   <div class="Municipal-level">
-                    <div>
+                    <div @click="GridGDshowClick">
                       <img src="../Modal/images/icons/联勤.png" />
                       <li>
                         <p>联勤</p>
@@ -243,7 +243,7 @@
             </div>
           </div>
         </div>
-        <div class="Modal-left-item" style="margin-top: 3rem;">
+        <div class="Modal-left-item" style="margin-top: 1rem;">
           <div class="Satisfaction-warp">
             <div class="Satisfaction-warp-item">
               <div class="header">
@@ -260,27 +260,27 @@
                 </div>
               </div>
 
-              <div  v-show="switchShow1" class="Satisfaction-warp-item-echarts">
+              <div  v-show="switchShow1" class="Satisfaction-warp-item-gridecharts">
                 <div style="display: flex;">
-                  <div id="SmallECharts4" style="width: 380px; height: 255px;"></div>
+                  <div id="SmallECharts4" style="width: 380px; height: 355px;"></div>
                   <div class="echarts-bg-box" style="display: flex;">
                     <div id="ecRadar1" style="width: 150px;height: 200px;"></div>
                     <div id="ecbar3" style="width: 150px;height: 200px;display: none;"></div>
                   </div>
                 </div>
               </div>
-              <div  v-show="switchShow2" class="Satisfaction-warp-item-echarts">
+              <div  v-show="switchShow2" class="Satisfaction-warp-item-gridecharts">
                 <div style="display: flex;">
-                  <div id="SmallECharts44" style="width: 380px; height: 255px;"></div>
+                  <div id="SmallECharts44" style="width: 380px; height: 355px;"></div>
                   <div class="echarts-bg-box" style="display: flex;">
                     <div id="ecRadar2" style="width: 150px;height: 200px;"></div>
                     <div id="ecbar4" style="width: 150px;height: 200px;display: none;"></div>
                   </div>
                 </div>
               </div>
-              <div v-show="switchShow3" class="Satisfaction-warp-item-echarts">
+              <div v-show="switchShow3" class="Satisfaction-warp-item-gridecharts">
                 <div style="display: flex;">
-                  <div id="SmallECharts444" style="width: 380px; height: 255px;"></div>
+                  <div id="SmallECharts444" style="width: 380px; height: 355px;"></div>
                   <div class="echarts-bg-box" style="display: flex;">
                     <div id="ecRadar3" style="width: 150px;height: 200px;"></div>
                     <div id="ecbar5" style="width: 150px;height: 200px;display: none;"></div>
@@ -301,9 +301,9 @@
                   <!-- <div class="banner1"></div> -->
                 </div>
               </div>
-              <div class="Satisfaction-warp-item-echarts" style="margin-top: 37px;">
+              <div class="Satisfaction-warp-item-gridecharts" style="margin-top: 37px;">
                 <div style="display: flex;height: 100%;color:#fff;padding: 20px 0 0 10px;">
-                    <div id="ecBar111" style="width: 565px;height: 255px"></div>
+                    <div id="ecBar111" style="width: 565px;height: 310px"></div>
                 </div>
               </div>
             </div>
@@ -312,13 +312,17 @@
       
       </div>
     </div>
-    <div style="flex: 1;">
+    <div style="flex: 1;" v-show="GridCJshow">
+      <!-- <div class="Modal-right-title" id="RightBannerNameId"></div> -->
       <div class="map-center" @click="mapCenter()" title="回到行政区域中心" >
         <img src="../images/refresh-left.png" alt="" />
       </div>
       <iframe id="mapContainer2" class="map-box" frameborder="no" width="100%" height="100%" frameborder="0">
      
       </iframe>
+    </div>
+    <div style="flex: 1;z-index: 999;" id="GridmapContainer" v-show="GridGDshow">
+      <!-- <div class="Modal-right-title" id="RightBannerNameId">{{message}}</div> -->
     </div>
   </div>
 </body>
@@ -331,6 +335,7 @@
 <script src="Js/intercity-map.js" type="text/javascript" charset="utf-8"></script>
 <script src="Js/intercitymap-package.js" type="text/javascript" charset="utf-8"></script>
 <script src="Js/GridPackage.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="Js/GridMap.js"></script>
 <script>
    $(function () {
 
@@ -378,57 +383,39 @@
         switchShow1: true,
         switchShow2: false,
         switchShow3: false,
-        // xAxisData:[],
-        // yAxisData:[],
-        // yAxisData2:[],
-        // attackSourcesName:[],
-        // attackSourcesName2:[]
+        GridCJshow:true,
+        GridGDshow:false,
       };
     },
     methods: {
       switchClick1() {
         (this.switchShow1 = true), (this.switchShow2 = false),(this.switchShow3 = false)
-     
+        mapReset()
+        // createMenu()
       },
       switchClick2() {
         (this.switchShow2 = true), (this.switchShow1 = false), (this.switchShow3 = false)
-      
+        mapReset()
+        // createMenu()
       }, 
        switchClick3() {
         (this.switchShow3 = true), (this.switchShow2 = false),(this.switchShow1 = false)
-      
+        mapReset()
+        // createMenu()
+      },
+      GridGDshowClick(){
+        (this.GridGDshow = !this.GridGDshow), (this.GridCJshow = !this.GridCJshow)
       },
       mapCenter() {
-          bridge1 = new CityGis.Bridge({
+        bridge1 = new CityGis.Bridge({
           id: "mapContainer2",
           url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
           onReady: function () {
             createMenu();
           }
         });
-        bridge1.Invoke([
-     
-          // 功能菜单
-          {
-            "ActionName": "userMenu",
-            "Parameters": {
-              "url": "http://10.81.71.51/citygis/areamap/MapUI/mapmeun/mapmeun.html?code=14",
-              "visible": true
-            }
-          },
-          {
-            "ActionName": "LayerVisible",
-            "Parameters": [
-              {
-                "name": "街道乡镇",
-                "visible": true,
-                "where": "区代码='14'"
-              }
-            ]
-          }
-
-        ]) 
       },
+ 
     },
     created(){
       

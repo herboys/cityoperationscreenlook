@@ -583,3 +583,26 @@ span {
 .num-font {
   font-family: ''!important;
 }
+
+.map-dialog-info{
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: #EFD7F9;
+  z-index: 99;
+}
+.map-dialog-info span{
+  display: inline-block;
+  min-width: 1rem;
+  min-height: 1rem;
+  margin-right: 0.8rem;
+}
+
+.restmaptext {
+  position: relative;
+  top: 0;
+  right: 0;
+  min-width: 0;
+  color: #e6e6e6;
+  opacity: 0.2;
+}

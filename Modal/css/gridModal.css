@@ -267,7 +267,16 @@ body {
 .Satisfaction-warp-item-echarts {
     /* width: 600px; */
     width: 590px;
-    height: 255px;
+    height: 295px;
+    background-image: url(../../Modal/images/12345icon.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+.Satisfaction-warp-item-gridecharts {
+    /* width: 600px; */
+    width: 590px;
+    height: 355px;
     background-image: url(../../Modal/images/12345icon.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -610,6 +619,7 @@ ul li {
     padding-bottom: 0px;
     text-align: center;
 }
+/* 城际地图一键初始 */
 .map-center{
 	position: absolute;
 	top: 1.3rem;
@@ -617,3 +627,23 @@ ul li {
 	cursor: pointer;
 	padding:  0.3rem;
 }
+
+ /* 地图 标题 */
+ .Modal-right-title {
+    position: absolute;
+    /* top: 2.5rem; */
+    /* left: 1.667rem; */
+    /*left: 52%;*/
+    /*display: inline-block;*/
+    /*position: fixed;*/
+    /*top: 2.5rem;*/
+    /*left: 52%;*/
+  
+    background-color: #050C0F;
+    color: #1ABCC3;
+    padding: 0.333rem 1rem 0.5rem 1rem;
+    font-size: 1.5rem;
+    z-index: 999;
+    /*font-size:0.833rem;-webkit-transform:scale(0.7);*/
+  
+  }

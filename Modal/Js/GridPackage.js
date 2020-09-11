@@ -38,9 +38,9 @@ let pieData = [{
   value: 611
 },
 ];
-  let xAxisData =  ['路灯', '上水井盖', '废弃车辆', '道路保洁', '暴露垃圾', '交通信号灯'];
-  let yAxisData = [1100, 1600, 1300, 1300, 1250, 1500];
-  let yAxisData2 = [1500, 1600, 1300, 1030, 1250, 1000];
+  // let xAxisData =  ['路灯', '上水井盖', '废弃车辆', '道路保洁', '暴露垃圾', '交通信号灯'];
+  // let yAxisData = [1100, 1600, 1300, 1300, 1250, 1500];
+  // let yAxisData2 = [1500, 1600, 1300, 1030, 1250, 1000];
 
 // MyEcharts2.initChart(
 // MyEcharts2.EchartsOption.radar("name", indicator1, value1),
@@ -153,9 +153,32 @@ let indicator3 = [{
 var res =[]
 var res2 =[]
 var res3 =[]
-function initJZdata(){ 
+var bridge1
 
+function initJZdata(){ 
+      //  初始进来默认  菊园新区管委会 处置率柱状图
+    // http://10.237.115.83:8089/city-operation/tcasemsg/findSmallClassNumByStreet?disposeStreet=菊园新区管委会
+  $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByStreet",{"disposeStreet":"菊园新区"},function(res){
+    console.log(res,'菊园新区管委会菊园新区管委会');
+     
+   for (let index = 0; index < res.length; index++) {
+     xAxisData.push(res[index].case_smallclass)  
+     yAxisData.push(res[index].processNum)  
+     yAxisData2.push(res[index].totalNum)  
+     percentage.push(Math.round(res[index].processNum/res[index].totalNum * 10000) / 100.00)
+   }
+   console.log(xAxisData,'xAxisDataxAxisDataxAxisData');
+   MyEcharts2.initChart(
+    MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2,percentage),
+    "ecBar111"
+    );
+ });
+ xAxisData =[]
+ yAxisData =[]
+ yAxisData2 =[]
+ percentage=[]
   $.get("http://10.237.115.83:8092/tcasemsg/findScore",{"type":1},function(res){
+    console.log(res,'resresres11');
     for (let i = 0; i < res.length; i++) {
       attackSourcesName.push(res[i].street)
       attackSourcesData.push(res[i].score)
@@ -174,9 +197,12 @@ function initJZdata(){
      MyEcharts2.EchartsOption.radar("name", indicator1, value1),
      "ecRadar1"
      );
+
+  
+ 
  
   JZPM.on("click", function (param,index) {
-    $.get("http://10.237.115.83:8089/city-operation/tcasemsg/findSmallClassNumByStreet",{"disposeStreet":param.name},function(res){
+    $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByStreet",{"disposeStreet":param.name},function(res){
             xAxisData =[]
             yAxisData =[]
             yAxisData2 =[]
@@ -210,6 +236,14 @@ function initJZdata(){
      MyEcharts2.EchartsOption.radar("name", indicator1, value1),
      "ecRadar1"
      );
+
+      //  街镇城际热力图 http://10.237.115.83:8092/tcasemsg/findNumPerGridByStreet?street=安亭镇
+      $.get("http://10.237.115.83:8092/tcasemsg/findNumPerGridByStreet",{"street":param.name},function(res){
+        heatMap(res)
+      })
+     
+      
+      // document.getElementById("RightBannerNameId").innerText='【街镇】热力分布图'
  
   })
   
@@ -237,23 +271,26 @@ function initBMdata(){
    );
     BMPM.on("click", function (param) {
       console.log(param,param.name,'paramparam22');
-      // $.get("http://10.237.115.83:8089/city-operation/tcasemsg/findSmallClassNumByDepartment",{"disposeDepartment":param.name},function(res){
-      //   console.log(res, 'resresres22');
-      //         xAxisData =[]
-      //         yAxisData =[]
-      //         yAxisData2 =[]
-      //     for (let index = 0; index < res.length; index++) {
-            
-      //       xAxisData.push(res[index].case_smallclass)  
-      //       yAxisData.push(res[index].processNum)  
-      //       yAxisData2.push(res[index].totalNum)  
-      //     }
-      //  });
-   
-      //  MyEcharts2.initChart(
-      //   MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2),
-      //   "ecBar111"
-      // );  
+      // 柱状图
+      $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByDepartment",{"disposeDepartment":param.name},function(res){
+                xAxisData =[]
+                yAxisData =[]
+                yAxisData2 =[]
+                percentage=[]
+            for (let index = 0; index < res.length; index++) {
+              
+              xAxisData.push(res[index].case_smallclass)  
+              yAxisData.push(res[index].processNum)  
+              yAxisData2.push(res[index].totalNum)  
+              percentage.push(Math.round(res[index].processNum/res[index].totalNum * 10000) / 100.00)
+            }
+        });
+        MyEcharts2.initChart(
+          MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2,percentage),
+          "ecBar111"
+        );  
+
+
     
       value2 = [];
       res2.forEach(item => {
@@ -262,13 +299,18 @@ function initBMdata(){
         value2.push(item.casequality)
         value2.push(item.mechanism)
         }
-        
       });
-     
       MyEcharts2.initChart(
        MyEcharts2.EchartsOption.radar("name", indicator2, value2),
        "ecRadar2"
        );
+
+      //  部门城际热力图
+      $.get("http://10.237.115.83:8092/tcasemsg/findDeptmentGridMsg",{"department":param.name},function(res){
+        heatMap(res)
+      })
+     
+
     })
   })
 }
@@ -290,27 +332,29 @@ function initWGdata(){
   value3.push(res3[0].comsuper)
   value3.push(res3[0].casequality)
   value3.push(res3[0].mechanism)
-MyEcharts2.initChart(
- MyEcharts2.EchartsOption.radar("name", indicator3, value3),
- "ecRadar3"
- );
+  MyEcharts2.initChart(
+  MyEcharts2.EchartsOption.radar("name", indicator3, value3),
+  "ecRadar3"
+  );
   WGPM.on("click", function (param) {
-    $.get("http://10.237.115.83:8089/city-operation/tcasemsg/findSmallClassNumByGridCode",{"gridCode":14625},function(res){
-            xAxisData =[]
-            yAxisData =[]
-            yAxisData2 =[]
-        for (let index = 0; index < res.length; index++) {
-          
-          xAxisData.push(res[index].case_smallclass)  
-          yAxisData.push(res[index].processNum)  
-          yAxisData2.push(res[index].totalNum)  
-        }
-     });
- 
-     MyEcharts2.initChart(
-      MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2,percentage),
-      "ecBar111"
-    );  
+    $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByGridCode",{"gridCode":param.name},function(res){
+          xAxisData =[]
+          yAxisData =[]
+          yAxisData2 =[]
+          percentage=[]
+      for (let index = 0; index < res.length; index++) {
+        
+        xAxisData.push(res[index].case_smallclass)  
+        yAxisData.push(res[index].processNum)  
+        yAxisData2.push(res[index].totalNum)  
+        percentage.push(Math.round(res[index].processNum/res[index].totalNum * 10000) / 100.00)
+      }
+    });
+
+    MyEcharts2.initChart(
+    MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2,percentage),
+    "ecBar111"
+    ); 
 
     value3 = [];
     res3.forEach(item => {
@@ -328,6 +372,12 @@ MyEcharts2.initChart(
      MyEcharts2.EchartsOption.radar("name", indicator3, value3),
      "ecRadar3"
      );
+     // 网格撒点
+     $.get("http://10.237.115.83:8092/tcasemsg/findMsgByGridCode",{"gridCode":param.name},function(res){
+       console.log(res, 'WGresWGresWGresWGres');
+      sprinkle(res)
+    })
+   
   })
   
   })

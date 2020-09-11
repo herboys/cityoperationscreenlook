@@ -51,7 +51,7 @@ var jiading_district = [{ name: "安亭镇", lon: 121.2047, lat: 31.2987 },
 
 
 function initMap() {
-    map = new AMap.Map('mapContainer11', {
+    map = new AMap.Map('GridmapContainer', {
         center: [121.238825, 31.364284],
         zoom: 12,
         zooms: [11, 18],  //设置地图缩放级别
@@ -62,7 +62,7 @@ function initMap() {
     drawJiadingBounds();   //加载行政区划插件
     addJiadingBoundary();  /*添加嘉定区和街道边界*/
     addJiadingZhenText();
-    // addTraffic();           /*添加实时路况情况*/
+    addTraffic();           /*添加实时路况情况*/
     //addPoiMarker();         /*添加嘉定区主要监控点*/
      map.addControl(new AMap.Scale());
      Sprinkle()
@@ -72,7 +72,6 @@ function initMap() {
 function setMapStyle() {
 
     var myStyle = "amap://styles/5078b8edf11b4b3f9ab4b0e45c45e8fe";
-    // var myStyle = "amap://styles/darkblue";
     map.setMapStyle(myStyle);
 }
 
@@ -84,8 +83,7 @@ var mapFeatures = ["bg",       //背景
 ];
 
 function setMapFeatures() {
-    // var features = [mapFeatures[0]];
-    var features = [];
+    var features = [mapFeatures[0], mapFeatures[1], mapFeatures[2]];
     map.setFeatures(features);
 }
 function init1 () {//区域遮盖
@@ -198,7 +196,7 @@ function addJiadingZhenText() {
         // label默认蓝框白底左上角显示，样式className为：amap-marker-label
         marker.setLabel({
             offset: new AMap.Pixel(0, 0),  //设置文本标注偏移量
-            content: "<div class='restmaptext'>" + jiading_district[i].name + "</div>", //设置文本标注内容
+            content: "<div class='info'>" + jiading_district[i].name + "</div>", //设置文本标注内容
             direction: 'center' //设置文本标注方位
         });
         // //菊园设置角度
@@ -333,12 +331,11 @@ function removeOverlayGroup() {
     map.remove(overlayGroups);
 }
 
-
 var overlayGroups2=[]
 
 // 养老撒点
 function Sprinkle2() {
-    
+    console.log(111);
     let lnglats = [
         [121.195438, 31.342265],
         [121.214011, 31.385809],
@@ -347,18 +344,16 @@ function Sprinkle2() {
         [121.202184, 31.400928],
         [121.205338, 31.291744],
       ];
-      let older=[]
       let markers = [];
       for (var i = 0; i < lnglats.length; i++) {
         let lnglat = lnglats[i];
         var icon = new AMap.Icon({
           // 图标尺寸
-          size: new AMap.Size(64, 64),
+          size: new AMap.Size(22, 32),
           // 图标的取图地址
-        //   image: './images/map/icon_' + mapMarker[i].type + '.png',
-          image: "../../images/imgs/older" + i +".png",
+          image: "../../images/icon2.png",
           // 图标所用图片大小
-          imageSize: new AMap.Size(64, 64),
+          imageSize: new AMap.Size(22, 32),
           // 图标取图偏移量
           // imageOffset: new AMap.Pixel(-9, -3)
         });
@@ -449,7 +444,6 @@ function Sprinkle2() {
 function removeOverlayGroup2() {
     map.remove(overlayGroups2);
 }
-
 
 
 

@@ -1077,7 +1077,6 @@ var MyEcharts2 = {
                         color: ["rgba(250,250,250,0.1)", "rgba(250,250,250,0)"]
                       }
                     },
-                    max:20
                   },
                   yAxis: [{
                     type: "value",

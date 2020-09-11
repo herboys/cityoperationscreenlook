@@ -179,10 +179,10 @@ var bridge1 = null;
        
           "weightFied": "count",
           "gradient": {
-            ".25": "#4ef1b2",
-            ".50": "#7cd346",
-            ".75": "#f3f12c",
-            ".95": "#fd2f02"
+            ".20": "#4ef1b2",
+            ".35": "#7cd346",
+            ".60": "#f3f12c",
+            ".90": "#fd2f02"
           },
           "radius": 35,
           "geofield": {

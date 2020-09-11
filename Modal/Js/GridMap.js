@@ -61,7 +61,7 @@ function initMap() {
     setMapFeatures();   /*设置地图显示要素*/
     drawJiadingBounds();   //加载行政区划插件
     addJiadingBoundary();  /*添加嘉定区和街道边界*/
-    addJiadingZhenText();
+    addJiadingZhenText1();
     addTraffic();           /*添加实时路况情况*/
     //addPoiMarker();         /*添加嘉定区主要监控点*/
      map.addControl(new AMap.Scale());
@@ -175,7 +175,7 @@ function addJiadingBoundary() {
     });
     geojson1.setMap(map);
 }
-function addJiadingZhenText() {
+function addJiadingZhenText1() {
     var icon = new AMap.Icon({
         // 图标尺寸
         size: new AMap.Size(0, 0),
@@ -196,7 +196,7 @@ function addJiadingZhenText() {
         // label默认蓝框白底左上角显示，样式className为：amap-marker-label
         marker.setLabel({
             offset: new AMap.Pixel(0, 0),  //设置文本标注偏移量
-            content: "<div class='info'>" + jiading_district[i].name + "</div>", //设置文本标注内容
+            content: "<div class='restmaptext'>" + jiading_district[i].name + "</div>", //设置文本标注内容
             direction: 'center' //设置文本标注方位
         });
         // //菊园设置角度
@@ -217,9 +217,6 @@ function addTraffic() {
     map.add(traffic); //通过add方法添加图层
 }
 
-var overlayGroups=[]
-
-// 养老撒点
 function Sprinkle() {
     
     let lnglats = [
@@ -235,11 +232,11 @@ function Sprinkle() {
         let lnglat = lnglats[i];
         var icon = new AMap.Icon({
           // 图标尺寸
-          size: new AMap.Size(22, 32),
+          size: new AMap.Size(32, 32),
           // 图标的取图地址
-          image: "../../images/map-center.png",
+          image: "../../images/imgs/oldhome" + i +".png",
           // 图标所用图片大小
-          imageSize: new AMap.Size(22, 32),
+          imageSize: new AMap.Size(32, 32),
           // 图标取图偏移量
           // imageOffset: new AMap.Pixel(-9, -3)
         });
@@ -327,184 +324,4 @@ function Sprinkle() {
           // 移除覆盖物群组
    
 } 
-function removeOverlayGroup() {
-    map.remove(overlayGroups);
-}
 
-var overlayGroups2=[]
-
-// 养老撒点
-function Sprinkle2() {
-    console.log(111);
-    let lnglats = [
-        [121.195438, 31.342265],
-        [121.214011, 31.385809],
-        [121.203888, 31.347582],
-        [121.166171, 31.278715],
-        [121.202184, 31.400928],
-        [121.205338, 31.291744],
-      ];
-      let markers = [];
-      for (var i = 0; i < lnglats.length; i++) {
-        let lnglat = lnglats[i];
-        var icon = new AMap.Icon({
-          // 图标尺寸
-          size: new AMap.Size(22, 32),
-          // 图标的取图地址
-          image: "../../images/icon2.png",
-          // 图标所用图片大小
-          imageSize: new AMap.Size(22, 32),
-          // 图标取图偏移量
-          // imageOffset: new AMap.Pixel(-9, -3)
-        });
-        // 创建点实例
-        let marker = new AMap.Marker({
-          position: new AMap.LngLat(lnglat[0], lnglat[1]),
-          icon: icon,
-          extData: {
-            id: i + 1,
-          },
-        });
-        AMap.event.addListener(marker, "click", function () {
-          infoWindow.open(map, marker.getPosition());
-        });
-        //实例化信息窗体
-        var title =
-            '<span style="color:#07ECEB;">景南山养老院</span>',
-          content = [];
-        content.push(
-          "地址：菊园新区翔方公路2368号",
-          "电话：021-64733333",
-          "员工人数：20",
-          "床位数：30"
-        );
-        content.push("电话：021-64733333");
-        var infoWindow = new AMap.InfoWindow({
-          isCustom: true, //使用自定义窗体
-          content: createInfoWindow(title, content.join("<br/>")),
-          offset: new AMap.Pixel(16, -45),
-        });
-
-        //构建自定义信息窗体
-        function createInfoWindow(title, content) {
-          var info = document.createElement("div");
-          info.className = "custom-info input-card content-window-card";
-
-          //可以通过下面的方式修改自定义窗体的宽高
-          //info.style.width = "400px";
-          // 定义顶部标题
-          var top = document.createElement("div");
-          var titleD = document.createElement("div");
-          var closeX = document.createElement("img");
-          top.className = "info-top";
-          titleD.innerHTML = title;
-          closeX.src = "https://webapi.amap.com/images/close2.gif";
-          closeX.onclick = closeInfoWindow;
-
-          top.appendChild(titleD);
-          top.appendChild(closeX);
-          info.appendChild(top);
-
-          // 定义中部内容
-          var middle = document.createElement("div");
-          middle.className = "info-middle";
-          middle.style.backgroundColor = "white";
-          middle.innerHTML = content;
-          info.appendChild(middle);
-
-          // 定义底部内容
-          var bottom = document.createElement("div");
-          bottom.className = "info-bottom";
-          bottom.style.position = "relative";
-          bottom.style.top = "0px";
-          bottom.style.margin = "0 auto";
-          var sharp = document.createElement("img");
-          sharp.src = "https://webapi.amap.com/images/sharp.png";
-          bottom.appendChild(sharp);
-          info.appendChild(bottom);
-          return info;
-        }
-
-        //关闭信息窗体
-        function closeInfoWindow() {
-          map.clearInfoWindow();
-        }
-        markers.push(marker);
-      }
-
-      // 创建覆盖物群组，并将 marker 传给 OverlayGroup
-       overlayGroups2 = new AMap.OverlayGroup(markers);
-
-      // 添加覆盖物群组
-
-      map.add(overlayGroups2);
-          // 移除覆盖物群组
-   
-} 
-function removeOverlayGroup2() {
-    map.remove(overlayGroups2);
-}
-
-
-
-var heatmap;
-function Heatmap() {
-   
-    let  heatmapData = [{
-        "lng": 121.195438,
-        "lat": 31.342265,
-        "count": 80
-    }, {
-        "lng": 121.214011,
-        "lat": 31.385809,
-        "count": 71
-    }, {
-        "lng": 121.203888,
-        "lat": 31.347582,
-        "count": 92
-    }, {
-        "lng": 121.166171,
-        "lat": 31.278715,
-        "count": 93
-    }, {
-        "lng": 121.202184,
-        "lat": 31.400928,
-        "count": 93
-    }, {
-        "lng": 121.205338,
-        "lat": 31.291744,
-        "count": 63
-    }
-
-    ]
-  
-    map.plugin(["AMap.Heatmap"], function () {
-        //初始化heatmap对象
-        heatmap = new AMap.Heatmap(map, {
-            radius: 25, //给定半径
-            opacity: [0, 1],
-            gradient:{
-                0.5: 'blue',
-                0.65: 'rgb(117,211,248)',
-                0.7: 'rgb(0, 255, 0)',
-                0.9: '#ffea00',
-                1.0: 'red'
-            }
-          
-        });
-        //设置数据集：该数据为北京部分“公园”数据
-        heatmap.setDataSet({
-            data: heatmapData,
-            max: 100
-        });
-    });
-
-    //判断浏览区是否支持canvas
-    function isSupportCanvas() {
-        var elem = document.createElement('canvas');
-        return !!(elem.getContext && elem.getContext('2d'));
-    }
-}
-function heatmaphide() {
-    heatmap.hide()
-}

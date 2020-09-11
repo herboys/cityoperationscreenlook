@@ -3,13 +3,9 @@ window.onload = function () {
   initJZdata()
   initBMdata()
   initWGdata()
+  initQQdata()
 }
 function init(){
-
-
-
-
-
 
 let attackSourcesData = [80, 34, 60, 70, 34,80, 34, 60, 70, 34,80, 34];
 let attackSourcesData2 = [80, 34, 60, 70, 34,80, 34, 60, 70, 34];
@@ -241,9 +237,10 @@ function initJZdata(){
       $.get("http://10.237.115.83:8092/tcasemsg/findNumPerGridByStreet",{"street":param.name},function(res){
         heatMap(res)
       })
-     
-      
-      // document.getElementById("RightBannerNameId").innerText='【街镇】热力分布图'
+      document.getElementById("GridmapContainer").style.display= 'none'
+      document.getElementById("GridCJmap").style.display= 'block'
+      document.getElementById("RightBannerNameId").style.display= 'block'
+      document.getElementById("RightBannerNameId").innerText='【'+param.name+'】热力分布图'
  
   })
   
@@ -309,8 +306,10 @@ function initBMdata(){
       $.get("http://10.237.115.83:8092/tcasemsg/findDeptmentGridMsg",{"department":param.name},function(res){
         heatMap(res)
       })
-     
-
+      document.getElementById("RightBannerNameId").style.display= 'block'
+      document.getElementById("GridCJmap").style.display= 'block'
+      document.getElementById("GridmapContainer").style.display= 'none'
+      document.getElementById("RightBannerNameId").innerText='【'+param.name+'】热力分布图'
     })
   })
 }
@@ -377,9 +376,20 @@ function initWGdata(){
        console.log(res, 'WGresWGresWGresWGres');
       sprinkle(res)
     })
-   
+    document.getElementById("RightBannerNameId").style.display= 'block'
+    document.getElementById("GridmapContainer").style.display= 'none'
+    document.getElementById("GridCJmap").style.display= 'block'
+    document.getElementById("RightBannerNameId").innerText='【'+param.name+'】撒点分布图'
   })
   
   })
 }
 
+
+function initQQdata (){
+  $.get("http://10.237.115.83:8092/tcasemsg/findNumPerGrid",function(res){
+      console.log(res, 'qqres');
+      heatMap(res)
+})
+document.getElementById("RightBannerNameId").innerText='【嘉定区】热力分布图'
+}

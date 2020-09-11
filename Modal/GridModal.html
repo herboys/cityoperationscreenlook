@@ -33,7 +33,7 @@
 
           <div class="Satisfaction-warp">
             <div class="Satisfaction-warp-item">
-              <div class="header">
+              <div class="header" @click="initAllheatMap">
                 <a class="line"></a>
                 <span>基本情况</span>
                 <a class="line1"></a>
@@ -312,8 +312,8 @@
       
       </div>
     </div>
-    <div style="flex: 1;" v-show="GridCJshow">
-      <!-- <div class="Modal-right-title" id="RightBannerNameId"></div> -->
+    <div style="flex: 1;" v-show="GridCJshow" id="GridCJmap">
+      <div class="Modal-right-title" id="RightBannerNameId"></div>
       <div class="map-center" @click="mapCenter()" title="回到行政区域中心" >
         <img src="../images/refresh-left.png" alt="" />
       </div>
@@ -322,7 +322,6 @@
       </iframe>
     </div>
     <div style="flex: 1;z-index: 999;" id="GridmapContainer" v-show="GridGDshow">
-      <!-- <div class="Modal-right-title" id="RightBannerNameId">{{message}}</div> -->
     </div>
   </div>
 </body>
@@ -405,6 +404,7 @@
       },
       GridGDshowClick(){
         (this.GridGDshow = !this.GridGDshow), (this.GridCJshow = !this.GridCJshow)
+        // this.GridGDshow=true
       },
       mapCenter() {
         bridge1 = new CityGis.Bridge({
@@ -414,7 +414,14 @@
             createMenu();
           }
         });
+        document.getElementById("RightBannerNameId").style.display= 'none'
       },
+      initAllheatMap(){
+        initQQdata()
+        this.GridGDshow=false
+        this.GridCJshow=true
+        document.getElementById("RightBannerNameId").style.display= 'block'
+      }
  
     },
     created(){

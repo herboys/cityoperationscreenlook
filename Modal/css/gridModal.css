@@ -622,28 +622,56 @@ ul li {
 /* 城际地图一键初始 */
 .map-center{
 	position: absolute;
-	top: 1.3rem;
+    top: 6.8rem;
+    left: 51%;
 	color: #fff;
 	cursor: pointer;
-	padding:  0.3rem;
+    padding:  0.3rem;
+    width: 20px;
+    height: 20pz;
 }
 
  /* 地图 标题 */
- .Modal-right-title {
+ /* .Modal-right-title {
     position: absolute;
-    /* top: 2.5rem; */
-    /* left: 1.667rem; */
-    /*left: 52%;*/
-    /*display: inline-block;*/
-    /*position: fixed;*/
-    /*top: 2.5rem;*/
-    /*left: 52%;*/
-  
     background-color: #050C0F;
     color: #1ABCC3;
     padding: 0.333rem 1rem 0.5rem 1rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    z-index: 999;
+  } */
+
+  .Modal-right-title {
+    position: absolute;
+    top: 2.5rem;
+    /* left: 1.667rem; */
+    left: 51%;
+    background-color: rgba(15, 58, 125, 0.7);
+    /* fontFamily: "SimHei"; */
+    color: #1fe0e9;
+    padding: 0.333rem 1rem 0.5rem 1rem;
+    font-size: 2.5rem;
     z-index: 999;
     /*font-size:0.833rem;-webkit-transform:scale(0.7);*/
-  
+
+}
+
+
+.amap-copyright {
+    opacity: 0;
+}
+
+.amap-marker-label {
+    border: 0;
+    background-color: transparent;
+    color: #9CA09D;
+    font-size: large;
+}
+.restmaptext {
+    position: relative;
+    top: 0;
+    right: 0;
+    min-width: 0;
+    color: #e6e6e6;
+    opacity: 0.2;
   }

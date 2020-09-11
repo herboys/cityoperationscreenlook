@@ -84,8 +84,8 @@ var mapFeatures = ["bg",       //背景
 ];
 
 function setMapFeatures() {
-    // var features = [mapFeatures[0]];
-    var features = [];
+    var features = [mapFeatures[0]];
+    // var features = [];
     map.setFeatures(features);
 }
 function init1 () {//区域遮盖
@@ -237,11 +237,11 @@ function Sprinkle() {
         let lnglat = lnglats[i];
         var icon = new AMap.Icon({
           // 图标尺寸
-          size: new AMap.Size(22, 32),
+          size: new AMap.Size(32, 32),
           // 图标的取图地址
-          image: "../../images/map-center.png",
+          image: "../../images/imgs/oldhome" + i +".png",
           // 图标所用图片大小
-          imageSize: new AMap.Size(22, 32),
+          imageSize: new AMap.Size(32, 32),
           // 图标取图偏移量
           // imageOffset: new AMap.Pixel(-9, -3)
         });
@@ -338,14 +338,20 @@ var overlayGroups2=[]
 
 // 养老撒点
 function Sprinkle2() {
-    
     let lnglats = [
-        [121.195438, 31.342265],
-        [121.214011, 31.385809],
-        [121.203888, 31.347582],
-        [121.166171, 31.278715],
-        [121.202184, 31.400928],
-        [121.205338, 31.291744],
+        [121.164061,31.294312],
+        [121.283332,31.333119],
+        [121.320331,31.294436],
+        [121.331696,31.238858],
+        [121.280687,31.416167],
+        [121.162302,31.362788],
+
+        [121.242686,31.468279],
+        [121.269643,31.386835],
+        [121.239343,31.372602],
+        [121.360212,31.244405],
+        [121.206181,31.417779],
+        [121.245581,31.392629],
       ];
       let older=[]
       let markers = [];

@@ -431,12 +431,12 @@ var MyEcharts = {
                 dataZoom: [{
                     type: 'slider',
                     yAxisIndex: [0, 1],
-                    zoomLock: true,
+                    zoomLock: false,
                     width: 10,
                     handleSize: 20,
                     showDetail: false,
                     start: 0,
-                    end: 50,
+                    end: 49,
                     handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
                     handleSize: '110%',
                     handleStyle: {
@@ -448,10 +448,10 @@ var MyEcharts = {
                     id: 'insideY',
                     yAxisIndex: 0,
                     start: 0,
-                    end: 50,
+                    end: 100,
                     zoomOnMouseWheel: false,
-                    moveOnMouseMove: true,
-                    moveOnMouseWheel: true
+                    moveOnMouseMove: false,
+                    moveOnMouseWheel: false
                 }],
                 xAxis: {
                     type: 'value',

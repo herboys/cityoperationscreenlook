@@ -30,7 +30,7 @@
     #ActualOutputID {
         /*height: 190px;*/
         height: 10rem;
-        overflow: overlay;
+        overflow: hidden;
     }
 
     #lasttopicItemID p {
@@ -312,8 +312,8 @@
                                         <div id="dropdown1">
                                         </div>
                                     </div>
-                                    <div class="Satisfaction-warp-item-echarts" style="width: 47.5rem;height: 17rem">
-                                        <div id="SmallECharts4" style="width: 558px;height:280px; position: relative;   top: -3.333rem;left: -2.083rem"></div>
+                                    <div class="Satisfaction-warp-item-echarts" style="width: 47.5rem;height: 15rem">
+                                        <div id="SmallECharts4" style="width: 558px;height:260px; position: relative;   top: -3.333rem;left: -2.083rem"></div>
                                     </div>
                                 </div>
                             </div>
@@ -327,8 +327,9 @@
                                         </div>
 
                                     </div>
-                                    <div class="Satisfaction-warp-item-echarts" style="height: 17rem">
-                                        <div id="SmallECharts" style="width: 47.5rem;height:18.333rem">
+                                    <div class="Satisfaction-warp-item-echarts" style="height: 15rem">
+                                        <div  style="width: 47.5rem;height:18.333rem;padding: 1.5rem;
+    box-sizing: border-box;">
                                             <div class="GarBage-child-1" id="EndFacilitiesID">
                                                 <div class="GarBage-child-item GarBage-child-end">
                                                     <img src="../Modal/images/icon_.png ">
@@ -343,6 +344,93 @@
                                 </div>
                             </div>
                         </div>
+            <div class="GarBage-header">
+                <div class="Modal-left-item flex-item-1">
+                    <div class="item-left">
+                        <div class="FX_header">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>垃圾分类驳运在线监测</span>
+                                <a class="line1"></a>
+                            </div>
+
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts" style="width: 47.5rem;height: 16rem;box-sizing: border-box;padding-top:1.5rem;padding-left: 1rem;padding-right: 2rem">
+                            <div class="Satisfaction-warp-item-header">
+                                <div class="Satisfaction-warp-item-header-left">
+                                    <div  id="CarId">
+                                        <div class="banner-span" style="color: white" onclick="OperaTionBtn(1)">
+                                            当日投入运营车辆数
+                                        </div>
+                                        <div class="banner-span" onclick="OperaTionBtn(2)">
+                                            分类运输车辆在线监测
+                                        </div>
+                                        <div class="banner-span " onclick="OperaTionBtn(3)">
+                                            异常装载车辆在线监测<span id="BCName"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="getPopup1ID-box" style="height: 9rem;overflow: hidden">
+                                <div class="topicWrap"  id="getPopup1ID"></div>
+                                <div class="topicWrap"  id="getPopup1IDcopy"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Modal-left-item GarBage-between flex-item-1" style="flex:1;">
+                    <div class="item-right">
+                        <div class="FX_header">
+                            <div class="header">
+                                <a class="line"></a>
+                                <span>工单一览</span>
+                                <a class="line1"></a>
+                            </div>
+                        </div>
+                        <div class="Satisfaction-warp-item-echarts" style="height: 16rem;width: auto;box-sizing: border-box;padding-top:1.5rem;padding-left: 1.5rem;overflow: hidden">
+                            <div class="Satisfaction-warp-item-header">
+                                <div class="Satisfaction-warp-item-header-left">
+                                    <div class="flex"  id="FindId">
+                                        <div class="banner-span" style="margin-right: 2rem;color: white" onclick="OperaTionBtn(4)">
+                                            主动发现
+                                        </div>
+                                        <div class="banner-span" onclick="OperaTionBtn(5)">
+                                            被动发现
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Workorder" style="    padding: 0px;
+    padding-right: 1rem;">
+                                <div class="work-older-list">
+                                    <div id="GongDanTitleID"></div>
+                                    <div id="GongDanIDBox" style="height: 6.053rem;overflow: hidden">
+                                        <div id="GongDanID"></div>
+                                        <div id="GongDanIDCopy"></div>
+                                    </div>
+                                    <div id="ModalsmallID" style="width: 93%;
+    height: 81%;
+    position: absolute;
+    top: 3.333rem;
+    background: #082443;
+    margin-right: 2.667rem;
+    z-index: 999;display: none;overflow: hidden">
+                                        <div onclick="claerFuns()"
+                                             style="color: white;font-size: 15px;position: absolute;top: 0px;right: 10px">
+                                            x
+                                        </div>
+                                        <div id="ModalsmallRoomID">
+                                            <p style="font-size: 18px;color: white">qwewqewqe</p>
+                                            <div style="padding: 20px 40px;color: #d0c7c7;line-height:.4rem "></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                         <div class="GarBage-header">
                             <div class="Modal-left-item GarBage-between flex-item-1">
                                 <div>
@@ -359,8 +447,8 @@
                                                 <div class="banner-span">
                                                     当日投入运营车辆数
                                                 </div>
-                                                <div class="topicWrap"  id="getPopup1ID">
-                                                </div>
+<!--                                                <div class="topicWrap"  id="getPopup1ID">-->
+<!--                                                </div>-->
                                             </div>
                                             <div style="flex: 5;padding-right: 1.667rem;margin-top: 0.833rem">
                                                 <div class="banner-span">
@@ -454,7 +542,7 @@
 
     </div>
     <div class="Modal-right" id="mapContainer">
-        <div class="Modal-right-title">嘉定区垃圾分类图</div>
+        <div class="Modal-right-title">垃圾分类图</div>
     </div>
 </div>
 </body>

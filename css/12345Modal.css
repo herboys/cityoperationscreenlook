@@ -9,6 +9,10 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.flex{
+    display: flex;
+    width: 100%;
+}
 .paddingleft-20px{
     padding-left: 1.667rem;
 }
@@ -201,7 +205,7 @@ body {
 
 }
 .Modal-left-header{
-    font-size: 2.917rem;
+    font-size: 2.5rem;
     color: #1fe0e9;
     font-weight: 500;
     padding: 0.833rem;
@@ -357,7 +361,7 @@ position: absolute;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.833rem;
-    padding-right: 2rem;
+    //padding-right: 2rem;
     height: 2.833rem;
 }
 
@@ -371,6 +375,7 @@ position: absolute;
 
 .Satisfaction-warp-item-header-left {
     display: flex;
+    width: 100%;
 }
 
 .banner1 {
@@ -385,10 +390,36 @@ position: absolute;
     letter-spacing: 0.083rem;
     font-size: 1rem;
     color: #000000;
+}.banner3 {
+    width: 16rem;
+    height: 3rem;
+    background-image: url(../Modal/images/banner.png);
+    background-size: 100% 100%;
+     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+
+     text-align: center;
+    line-height: 2.083rem;
+    font-weight: 500;
+    letter-spacing: 0.083rem;
+    font-size: 1rem;
+    color: #000000;
+
 }
 
 .banner2 {
     width: 9.75rem;
+    height: 2.083rem;
+    background-image: url(../Modal/images/banner2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    line-height: 2.083rem;
+    font-size: 1rem;
+    letter-spacing: 0.083rem;
+}.banner4 {
+     width: 16rem;
     height: 2.083rem;
     background-image: url(../Modal/images/banner2.png);
     background-size: 100% 100%;
@@ -594,7 +625,7 @@ ul li {
     background-color: rgba(15, 58, 125, 0.7);
     fontFamily: "SimHei";
     color: #1fe0e9;
-    padding: 0.333rem 1rem 0.5rem 1rem;
+    padding: 0.333rem 0rem 0.5rem 1rem;
     font-size: 1.25rem;
     /*font-size:0.833rem;-webkit-transform:scale(0.7);*/
     border-left: 0.25rem solid #1fe0e9;
@@ -802,8 +833,9 @@ ul li {
     display: flex;
     justify-content: space-between;
     margin: 0.833rem 0rem;
-    padding: 0.333rem 0rem;
+    padding: 0.333rem .4rem;
     color: white;
+    box-sizing: border-box;
 }
 
 .topicItem span {
@@ -826,7 +858,7 @@ ul li {
     padding: 0.333rem 0.333rem;
     color: white;
     border-radius: 0.167rem;
-    width: 48%;
+    width: 47%;
 
 
     background-color: rgba(31, 224, 233, 0.2);

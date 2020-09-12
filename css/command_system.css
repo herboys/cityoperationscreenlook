@@ -334,7 +334,7 @@
 .command-system .linkage-table2 .list-warp
 {
 	/*height: calc(2px + 8.5rem);*/
-	height: calc(2px + 24rem);
+	height: calc(2px + 34rem);
 	position: relative;
 	overflow: hidden;
 }

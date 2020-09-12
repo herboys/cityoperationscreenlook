@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 19.2px">
+<html lang="en" >
+<!-- <html lang="en" style="font-size: 19.2px"> -->
 
 <head>
   <meta charset="UTF-8" />
@@ -72,7 +73,7 @@
                 <div class="bottom-border border-box"></div>
               </div>
             </div>
-            <div style="display: flex; height: 12rem">
+            <div style="display: flex; height: 15rem">
               <div class="rest-info-lists">
                 <div class="rest-infos" style="width: 8rem">
                   <div class="info-box">
@@ -132,7 +133,7 @@
                 <div class="bottom-border border-box"></div>
               </div>
             </div>
-            <div style="display: flex; height: 12rem">
+            <div style="display: flex; height: 15rem">
               <div class="rest-info-lists">
                 <div class="rest-infos" style="width: 8rem">
                   <div class="info-box">
@@ -291,7 +292,7 @@
                     <div :class="{'info-active': isUnactive}" @click="colorClick2">
                       <div class="info-box" style="display: flex">
                         <div>
-                          <img src="../images/imgs/rest-bottom-right.png" style="width: 40%" />
+                          <img src="../images/imgs/rest-bottom-right.png" style="  width: 52.95px; height: 62.17px;" />
                         </div>
                         <div style="width: 4rem; position: absolute; right: 6%">
                           养老机构统计信息
@@ -358,9 +359,9 @@
                 </div>
               </div> -->
 
-            <div style="display: flex; height: 5.3rem" v-show="switchShow3">
-              <div class="z-box">
-                <ul class="u-box">
+            <div style="display: flex; height: 4.8rem;padding-top: 1.5rem;" v-show="switchShow3">
+              <div class="card">
+                <div class="card-front">
                   <li>
                     <div class="rest-infos" style="width: 8rem">
                       <div class="info-box">
@@ -456,13 +457,109 @@
                       <div class="rest-border-box rest-border-bottom"></div>
                     </div>
                   </li>
-                </ul>
+                </div>
+                <div class="card-back">
+                
+                    <li>
+                      <div class="rest-infos" style="width: 8rem">
+                        <div class="info-box">
+                          <div style="display: flex">
+                            <div class="bottom-text">
+                              <p>南翔镇</p>
+                              <p class="num-font" style="color: #33ffff">
+                                46754
+                              </p>
+                            </div>
+                            <div style="margin: auto">
+                              <span style="color: #ff9933">12.3</span>%
+                            </div>
+                          </div>
+                        </div>
+                        <div class="rest-border-box rest-border-right"></div>
+                        <div class="rest-border-box rest-border-bottom"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="rest-infos" style="width: 8rem">
+                        <div class="info-box">
+                          <div style="display: flex">
+                            <div class="bottom-text">
+                              <p>安陆镇</p>
+                              <p class="num-font" style="color: #33ffff">
+                                12455
+                              </p>
+                            </div>
+                            <div style="margin: auto">
+                              <span style="color: #ff9933">16.3</span>%
+                            </div>
+                          </div>
+                        </div>
+                        <div class="rest-border-box rest-border-right"></div>
+                        <div class="rest-border-box rest-border-bottom"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="rest-infos" style="width: 8rem">
+                        <div class="info-box">
+                          <div style="display: flex">
+                            <div class="bottom-text">
+                              <p>菊园新区</p>
+                              <p class="num-font" style="color: #33ffff">
+                                23456
+                              </p>
+                            </div>
+                            <div style="margin: auto">
+                              <span style="color: #ff9933">15</span>%
+                            </div>
+                          </div>
+                        </div>
+                        <div class="rest-border-box rest-border-right"></div>
+                        <div class="rest-border-box rest-border-bottom"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="rest-infos" style="width: 8rem">
+                        <div class="info-box">
+                          <div style="display: flex">
+                            <div class="bottom-text">
+                              <p>华亭镇</p>
+                              <p class="num-font" style="color: #33ffff">
+                                121213
+                              </p>
+                            </div>
+                            <div style="margin: auto">
+                              <span style="color: #ff9933">14.3</span>%
+                            </div>
+                          </div>
+                        </div>
+                        <div class="rest-border-box rest-border-right"></div>
+                        <div class="rest-border-box rest-border-bottom"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="rest-infos" style="width: 8rem">
+                        <div class="info-box">
+                          <div style="display: flex">
+                            <div class="bottom-text">
+                              <p>真新街道</p>
+                              <p class="num-font" style="color: #33ffff">
+                                32434
+                              </p>
+                            </div>
+                            <div style="margin: auto">
+                              <span style="color: #ff9933">22</span>%
+                            </div>
+                          </div>
+                        </div>
+                        <div class="rest-border-box rest-border-right"></div>
+                        <div class="rest-border-box rest-border-bottom"></div>
+                      </div>
+                    </li>
+                </div>
               </div>
-              <span class="z-prev">
-                < </span> <span class="z-next"> >
-              </span>
+
             </div>
-            <div style="color: #fff; height: 5.3rem" v-show="switchShow4">
+            <div style="color: #fff; height: 6.3rem" v-show="switchShow4">
               <div style="
                     padding-top: 1.5rem;
                     padding-left: 2rem;
@@ -530,7 +627,7 @@
                 <div>
                   本月服务人次：<span style="color: #33ffff">5269</span>
                 </div>
-                <div style="margin-left: 13.25rem">
+                <!-- <div style="margin-left: 13.25rem">
                   <div id="dropdown2">
                     <p>
                       今日<span style="
@@ -545,7 +642,7 @@
                       <li><a href="#" rel="3">今日</a></li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div style="display: flex">
                 <div class="rest-infos" style="width: 8rem">
@@ -583,6 +680,21 @@
                     <div style="display: flex">
                       <div class="bottom-text">
                         <p>徐行镇</p>
+                        <p class="num-font" style="color: #33ffff">1756</p>
+                      </div>
+                      <div style="margin: auto">
+                        <span style="color: #ff9933">16.3</span>%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem">
+                  <div class="info-box">
+                    <div style="display: flex">
+                      <div class="bottom-text">
+                        <p>嘉定新城</p>
                         <p class="num-font" style="color: #33ffff">1756</p>
                       </div>
                       <div style="margin: auto">
@@ -640,6 +752,85 @@
                   <div class="rest-border-box rest-border-right"></div>
                   <div class="rest-border-box rest-border-bottom"></div>
                 </div>
+                <div class="rest-infos" style="width: 8rem">
+                  <div class="info-box">
+                    <div style="display: flex">
+                      <div class="bottom-text">
+                        <p>安亭镇</p>
+                        <p class="num-font" style="color: #33ffff">1746</p>
+                      </div>
+                      <div style="margin: auto">
+                        <span style="color: #ff9933">19.4</span>%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                
+              </div>
+              <div style="display: flex">
+                <div class="rest-infos" style="width: 8rem">
+                  <div class="info-box">
+                    <div style="display: flex">
+                      <div class="bottom-text">
+                        <p>外冈镇</p>
+                        <p class="num-font" style="color: #33ffff">2356</p>
+                      </div>
+                      <div style="margin: auto">
+                        <span style="color: #ff9933">13.6</span>%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem">
+                  <div class="info-box">
+                    <div style="display: flex">
+                      <div class="bottom-text">
+                        <p>工业区</p>
+                        <p class="num-font" style="color: #33ffff">3756</p>
+                      </div>
+                      <div style="margin: auto">
+                        <span style="color: #ff9933">16.6</span>%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem">
+                  <div class="info-box">
+                    <div style="display: flex">
+                      <div class="bottom-text">
+                        <p>真新街道</p>
+                        <p class="num-font" style="color: #33ffff">1746</p>
+                      </div>
+                      <div style="margin: auto">
+                        <span style="color: #ff9933">14.4</span>%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                <div class="rest-infos" style="width: 8rem">
+                  <div class="info-box">
+                    <div style="display: flex">
+                      <div class="bottom-text">
+                        <p>真新街道</p>
+                        <p class="num-font" style="color: #33ffff">1746</p>
+                      </div>
+                      <div style="margin: auto">
+                        <span style="color: #ff9933">14.4</span>%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rest-border-box rest-border-right"></div>
+                  <div class="rest-border-box rest-border-bottom"></div>
+                </div>
+                
               </div>
 
               <div style="margin: 0.5rem 0">
@@ -732,7 +923,7 @@
         <iframe id="mapContainer1" class="map-box" frameborder="no" width="100%" height="100%" frameborder="0"></iframe>
       </div> -->
       <div style="flex: 1" id="mapContainer11">
-        <!-- <div class="Modal-right-title" id="RightBannerNameId">{{message}}</div> -->
+        <div class="Modal-right-title"  v-show="mapswitchinfo">{{message}}</div>
         <div class="map-dialog-info" v-show="mapdialoginfo">
           <div><span style="background-color: #FAF58A;"></span>20-30%</div>
           <div><span style="background-color: #FBA48A;"></span>30-50%</div>
@@ -748,36 +939,20 @@
 <script type="text/javascript" src="Js/ajaxPromise.js"></script>
 <script type="text/javascript">
   $(function () {
-    $("#dropdown p").click(function () {
-      var ul = $("#dropdown ul");
-      if (ul.css("display") == "none") {
-        ul.slideDown("fast");
-      } else {
-        ul.slideUp("fast");
+  
+      var timer = null;
+      var i = 0;
+      var j = 0;
+      var aFlip = $(".card");
+
+      function flipFn(arg1, arg2) {
+        aFlip.eq(i).toggleClass("card-flipped");
+        i++;
+        if (i == 2) {
+          i = 0;
+        }
       }
-      $("#dropdown ul li a").click(function () {
-        var txt = $(this).text();
-        $("#dropdown p").html(txt);
-        var value = $(this).attr("rel");
-        $("#dropdown ul").hide();
-        $("#result").html("您选择了" + txt + "，值为：" + value);
-      });
-    });
-    $("#dropdown2 p").click(function () {
-      var ul = $("#dropdown2 ul");
-      if (ul.css("display") == "none") {
-        ul.slideDown("fast");
-      } else {
-        ul.slideUp("fast");
-      }
-      $("#dropdown2 ul li a").click(function () {
-        var txt = $(this).text();
-        $("#dropdown2 p").html(txt);
-        var value = $(this).attr("rel");
-        $("#dropdown2 ul").hide();
-        $("#result").html("您选择了" + txt + "，值为：" + value);
-      });
-    });
+      timer = setInterval(flipFn, 2000);
   });
 </script>
 <script>
@@ -794,21 +969,23 @@
         isActive: true,
         isUnactive: false,
         message: '养老机构位置信息',
-        firstType: true,
+        firstType1: true,
         firstType2: true,
         firstType3: true,
         firstType4: true,
-        mapdialoginfo:false
+        mapdialoginfo:false,
+        mapswitchinfo:true
       };
     },
 
     methods: {
       switchClick1() {
         (this.switchShow1 = true), (this.switchShow2 = false);
+        this.mapswitchinfo = false
         removeOverlayGroup2()
         this.mapdialoginfo = false
+     
         if (this.firstType4) {
-        
           this.firstType1=true
           this.firstType2=true
           this.firstType4=false
@@ -818,6 +995,8 @@
       },
       switchClick2() {
         (this.switchShow1 = false), (this.switchShow2 = true),(this.mapdialoginfo = true) ,(this.isActive = false), (this.isUnactive = false);
+        this.mapswitchinfo = true
+        this.message = "各街镇老龄化信息"
         if (this.firstType3) {
             Sprinkle2()  
           this.firstType3=false
@@ -835,25 +1014,30 @@
       },
 
       colorClick1() {
+        // alert(this.firstType)
         (this.isActive = true), (this.isUnactive = false);
-        if (this.firstType) {
+        this.mapswitchinfo = true
+        this.message = "养老机构位置信息"
+        if (this.firstType1) {
           Sprinkle()
           heatmaphide()
-          this.message = "养老机构位置信息"
-          this.firstType = false
+        
+          this.firstType1 = false
         }
         
         this.firstType2 = true
       },
       colorClick2() {
         (this.isActive = false), (this.isUnactive = true);
+        this.mapswitchinfo = true
+        this.message = "养老机构统计信息"
         if (this.firstType2) {
           Heatmap()
           removeOverlayGroup()
-          this.message = "养老机构统计信息"
+         
           this.firstType2 = false
         }
-        this.firstType = true
+        this.firstType1 = true
       },
     },
  

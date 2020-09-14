@@ -23,8 +23,8 @@ function addTableList(name, arr) {
 
 var streetUrl=new Object();
 var streetSelfUrl=new Object();
-streetSelfUrl["嘉定镇街道"]=""
-streetSelfUrl["嘉定新城（马陆镇）"]="http://211.95.105.68:8185/sh/user/socialBigScreen"
+streetSelfUrl["嘉定镇街道"]="http://211.95.105.68:8185/sh/user/socialBigScreen"
+streetSelfUrl["嘉定新城（马陆镇）"]="http://12.118.166.24:8914/oldMalu/#/gaikuang"
 function getDutyListReal() {
 	var coreArr = [];
 	var linkageArr = [];

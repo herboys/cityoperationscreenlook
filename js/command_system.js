@@ -22,11 +22,13 @@ function addTableList(name, arr) {
 }
 
 var streetUrl=new Object();
+var streetSelfUrl=new Object();
+streetSelfUrl["嘉定镇街道"]="http://211.95.105.68:8185/sh/user/socialBigScreen"
+streetSelfUrl["嘉定新城(马陆镇)"]="http://12.118.166.24:8914/oldMalu/#/gaikuang"
 function getDutyListReal() {
 	var coreArr = [];
 	var linkageArr = [];
 
-	//alert(321)
 	$.ajax({
 		url: ORACLE_URL + "/viewDuty/dutyList",
 		dataType: "json",
@@ -84,8 +86,6 @@ function getDutyListReal() {
 				}
 			})
 
-			//addTableList1(".core-table", coreArr);
-				// addTableList1('.core-table2',coreArr);
 			addTableList1(".linkage-table", linkageArr);
 		},
 		error: function () {
@@ -95,230 +95,10 @@ function getDutyListReal() {
 }
 
 function getDutyList() {
-	var coreArr = [];
-	// var linkageArr=[];
 
-	var linkageArr = [{
-			address: "工业区",
-			leaderName: "zs1",
-			dutyName: "zs1",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "江桥镇",
-			leaderName: "zs2",
-			dutyName: "zs2",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "外冈镇",
-			leaderName: "zs3",
-			dutyName: "zs3",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "华亭镇",
-			leaderName: "zs4",
-			dutyName: "zs4",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "徐行镇",
-			leaderName: "zs5",
-			dutyName: "zs5",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "嘉定新城(马陆镇)",
-			leaderName: "zs6",
-			dutyName: "zs6",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "安亭镇",
-			leaderName: "zs7",
-			dutyName: "zs7",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "南翔镇",
-			leaderName: "zs8",
-			dutyName: "zs8",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "嘉定镇街道",
-			leaderName: "zs9",
-			dutyName: "zs9",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "菊园新区",
-			leaderName: "zs10",
-			dutyName: "zs10",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "真新街道",
-			leaderName: "zs11",
-			dutyName: "zs11",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-		{
-			address: "新成路街道",
-			leaderName: "zs12",
-			dutyName: "zs12",
-			foremanName:"aaa",
-			dutyPhone:"11111"
-		},
-
-	];
-	coreArr = linkageArr;
 	var linkageArrScroll =[]
-	var linkageArrScroll22 = [
-		{
-			date: "8月1日",
-			time: "14时30分",
-			street: "菊园新区",
-			address: "翔方公路2368号",
-			type: "养生讲座",
-			content: "开展了一堂生动的养生讲座",
-		},
 
-		{
-			date: "8月2日",
-			time: "12时38分",
-			street: "工业区",
-			address: "叶城路沪宜公路口",
-			type: "关怀慰问",
-			content: "红十字会开展尊老爱老慰问活动",
-		},
-		{
-			date: "8月2日",
-			time: "19时",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
-			type: "关怀慰问",
-			content: "领导走访慰问高龄老人",
-		},
-		{
-			date: "8月3日",
-			time: "11时16分",
-			street: "江桥镇",
-			address: "黄家花园路靖远路口",
-			type: "访惠聚",
-			content: "900多人齐聚一堂，向老年朋友们致以最诚挚的问候",
-		},
-		{
-			date: "8月7日",
-			time: "13时20分许",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
-			type: "关怀慰问",
-			content: "组织辖区56位老人前往植物园参观精品花展",
-		},
-		{
-			date: "8月7日",
-			time: "13时20分许",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
-			type: "茶话会",
-			content: "畅谈祖国61年的辉煌成就，畅谈社会的和谐进步",
-		},
-		{
-			date: "8月10日",
-			time: "19时07分许",
-			street: "菊园新区",
-			address: "翔方公路2368号",
-			type: "关怀慰问",
-			content: "开展“幸福步步高”登山活动",
-		},
-		{
-			date: "8月10日",
-			time: "13时20分许",
-			street: "菊园新区",
-			address: "翔方公路2368号",
-			type: "关怀慰问",
-			content: "为老人送上了牛奶和慰问金",
-		},
-		{
-			date: "8月12日",
-			time: "13时20分许",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
-			type: "关怀慰问",
-			content: "为老人送去节日食品，开展联欢活动",
-		},
-		
-		{
-			date: "8月16日",
-			time: "8时55分许",
-			street: "徐行镇",
-			address: "徐行镇宝钱公路、前曹公路路口",
-			type: "关怀慰问",
-			content: "开展一次心理辅导",
-		},
-		{
-			date: "8月17日",
-			time: "19时07分许",
-			street: "工业区",
-			address: "工业区朱戴路50弄136号",
-			type: "上门关怀",
-			content: "为老人打扫清洁",
-		},
-		{
-			date: "8月22日",
-			time: "13时20分许",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
-			type: "关怀慰问",
-			content: "组织辖区56位老人前往植物园参观精品花展",
-		},
-		{
-			date: "8月22日",
-			time: "13时20分许",
-			street: "菊园新区",
-			address: "翔方公路2368号",
-			type: "关怀慰问",
-			content: "为老年人提供健康体检、保健咨询和常见病治疗",
-		},
-		{
-			date: "8月23日",
-			time: "13时20分许",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
-			type: "关怀慰问",
-			content: "开展形式多样的节日民俗活动和文化娱乐活动，活跃老年人的节日生活",
-		},	{
-			date: "8月26日",
-			time: "13时20分许",
-			street: "菊园新区",
-			address: "翔方公路2368号",
-			type: "关怀慰问",
-			content: "为空巢老人理发7次，清扫卫生19次，聊天、测量血压60余人",
-		},
-		{
-			date: "8月30日",
-			time: "8时55分许",
-			street: "南翔镇",
-			address: "蕴北路1755弄",
-			type: "关怀慰问",
-			content: "社区和养老中心为老人们准备了蛋糕和水果",
-		},
-		
-	];
-	addTableList3(".linkage-table2", linkageArrScroll22);
+	//addTableList3(".linkage-table2", linkageArrScroll22);
 	$.ajax({
 		url:STATIC_URL+"/jdcyemergency/findTopByNumber/9",
 		type:"get",
@@ -345,16 +125,6 @@ function getDutyList() {
 
 
 }
-
-$(function () {
-	//var STATIC_URL="http://localhost:8085";
-
-	//alert(JSON.stringify(coreArr))
-	//alert(JSON.stringify(linkageArr))
-	getDutyList();
-	 getDutyListReal();
-	 setInterval(getDutyListReal, 6 * 60 * 60 * 1000)
-});
 
 var linkageTime = "";
 var linkageScrollTime = "";
@@ -440,33 +210,14 @@ function addTableList1(name, arr) {
 
 	var index=0;
 	for (var i = 0; i < arr.length; i++) {
+
 		if(name===".core-table"){
-			setTimeout(function () {
 
-				$(name)
-					.find(".list-box")
-					.append(
-						'<div class="table-list"><p onclick=openIframe("'+streetUrl[arr[index].address]+'") style="cursor: pointer">' +
-						/*'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+*/
-						'<img src="images/point1.png" style="display: inline-block!important;width: 1.2rem;height: 1.2rem;vertical-align: middle;margin-left: -0.5rem"> '+
-						arr[index].address +
-						'</a>'+
-						'</p><p>' +
-						arr[index].leaderName +
-						"</p><p>" +
-						arr[index].foremanName +
-						"</p>" +
-						//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
-						//'<p class="num">'
-						"<p>" +
-						arr[index].dutyName +
-						"</p><p>" +
-						arr[index].dutyPhone +
-						"</p></div>"
-					);
-				index++;
-			}, 200 * i);
-
+			if(arr[i].address=="嘉定镇街道" || arr[i].address=="嘉定新城(马陆镇)"){
+				addStreetSelf(name,arr[i],i)
+			}else {
+				addStreet(name,arr[i],i)
+			}
 
 		}else{
 			setTimeout(function () {
@@ -557,6 +308,55 @@ function addTableList2(name, arr) {
 			}, 200 * i + 200);
 		}
 	}
+}
+
+function addStreetSelf(name,obj,i){
+	setTimeout(function () {
+		//alert(arr[index].address)
+		$(name)
+			.find(".list-box")
+			.append(
+				'<div class="table-list"><p onclick=openIframe("'+streetSelfUrl[obj.address]+'") style="cursor: pointer">' +
+				'<img src="images/point11_1.png" style="display: inline-block!important;width: 1.1rem;height: 1.1rem;vertical-align: middle;margin-left: -0.5rem"> '+
+				obj.address +
+				'</p><p>' +
+				obj.leaderName +
+				"</p><p>" +
+				obj.foremanName +
+				"</p>" +
+
+				"<p>" +
+				obj.dutyName +
+				"</p><p>" +
+				obj.dutyPhone +
+				"</p></div>"
+			);
+		index++;
+	}, 200 * i);
+}
+function addStreet(name,obj,i){
+	setTimeout(function () {
+		//alert(arr[index].address)
+		$(name)
+			.find(".list-box")
+			.append(
+				'<div class="table-list"><p onclick=openIframe("'+streetUrl[obj.address]+'") style="cursor: pointer">' +
+				'<img src="images/point1.png" style="display: inline-block!important;width: 1.2rem;height: 1.2rem;vertical-align: middle;margin-left: -0.5rem"> '+
+				obj.address +
+				'</p><p>' +
+				obj.leaderName +
+				"</p><p>" +
+				obj.foremanName +
+				"</p>" +
+
+				"<p>" +
+				obj.dutyName +
+				"</p><p>" +
+				obj.dutyPhone +
+				"</p></div>"
+			);
+		index++;
+	}, 200 * i);
 }
 
 // 部门table滚动

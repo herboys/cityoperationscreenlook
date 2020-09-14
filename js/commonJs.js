@@ -8,9 +8,9 @@
 //let ORACLE_URL = "http://10.237.206.140:8089/oracleConnection";
 
 let STATIC_URL = "http://10.237.115.83:8089/citysituation";
-//let ORACLE_URL = "http://10.237.115.83:8089/oracleConnection";
+let ORACLE_URL = "http://10.237.115.83:8089/oracleConnection";
 //let ORACLE_URL = "http://localhost:8091";
-let ORACLE_URL = "http://10.237.115.83:8091";
+//let ORACLE_URL = "http://10.237.115.83:8091";
  //let Bus_URL = "http://10.237.115.83:8092";
 //let STATIC_URL="http://10.237.200.190:8085";
 //let STATIC_URL = "http://localhost:8085";
@@ -35,3 +35,10 @@ let videoOne=false; //垃圾分类第一个视频位置是否占用
 let videoTwo=false;//垃圾分类第二个视频位置是否占用
 
 let GarBageVideo=0; //垃圾分类一共开启了几个视频
+
+var linkageTime = "";
+var linkageScrollTime = "";
+var linkageNum = 0;
+var linkageNumScroll = 0;
+var linkageMax = "";
+var linkScrollMax = "";

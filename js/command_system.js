@@ -22,6 +22,9 @@ function addTableList(name, arr) {
 }
 
 var streetUrl=new Object();
+var streetSelfUrl=new Object();
+streetSelfUrl["嘉定镇街道"]=""
+streetSelfUrl["嘉定新城（马陆镇）"]="http://211.95.105.68:8185/sh/user/socialBigScreen"
 function getDutyListReal() {
 	var coreArr = [];
 	var linkageArr = [];
@@ -441,8 +444,87 @@ function addTableList1(name, arr) {
 	var index=0;
 	for (var i = 0; i < arr.length; i++) {
 		if(name===".core-table"){
-			setTimeout(function () {
+			if(arr[index].address=="嘉定镇街道"){
 
+				setTimeout(function () {
+					$(name)
+						.find(".list-box")
+						.append(
+							'<div class="table-list"><p onclick=openIframe("'+streetSelfUrl[arr[index].address]+'") style="cursor: pointer">' +
+							/*'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+*/
+							'<img src="images/point11_1.png" style="display: inline-block!important;width: 1.2rem;height: 1.2rem;vertical-align: middle;margin-left: -0.5rem"> '+
+							arr[index].address +
+							''+
+							'</p><p>' +
+							arr[index].leaderName +
+							"</p><p>" +
+							arr[index].foremanName +
+							"</p>" +
+							//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
+							//'<p class="num">'
+							"<p>" +
+							arr[index].dutyName +
+							"</p><p>" +
+							arr[index].dutyPhone +
+							"</p></div>"
+						);
+					index++;
+				}, 200 * i);
+
+			}else if(arr[index].address=="嘉定新城（马陆镇）"){
+
+				setTimeout(function () {
+					$(name)
+						.find(".list-box")
+						.append(
+							'<div class="table-list"><p onclick=openIframe("'+streeSelftUrl[arr[index].address]+'") style="cursor: pointer">' +
+							/*'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+*/
+							'<img src="images/point11_1.png" style="display: inline-block!important;width: 1.2rem;height: 1.2rem;vertical-align: middle;margin-left: -0.5rem"> '+
+							arr[index].address +
+							''+
+							'</p><p>' +
+							arr[index].leaderName +
+							"</p><p>" +
+							arr[index].foremanName +
+							"</p>" +
+							//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
+							//'<p class="num">'
+							"<p>" +
+							arr[index].dutyName +
+							"</p><p>" +
+							arr[index].dutyPhone +
+							"</p></div>"
+						);
+					index++;
+				}, 200 * i);
+
+			}else {
+				setTimeout(function () {
+					$(name)
+						.find(".list-box")
+						.append(
+							'<div class="table-list"><p onclick=openIframe("'+streetUrl[arr[index].address]+'") style="cursor: pointer">' +
+							/*'<a href="'+streetUrl[arr[index].address]+'" target="_blank">'+*/
+							'<img src="images/point1.png" style="display: inline-block!important;width: 1.2rem;height: 1.2rem;vertical-align: middle;margin-left: -0.5rem"> '+
+							arr[index].address +
+							''+
+							'</p><p>' +
+							arr[index].leaderName +
+							"</p><p>" +
+							arr[index].foremanName +
+							"</p>" +
+							//$(name).find('.list-box').append('<div class="table-list"><p>'+arr[i].address+'</p><p>'+arr[i].leaderName+'</p><p>'+arr[i].commanderName+'</p><p>'+arr[i].foremanName+'</p>' +
+							//'<p class="num">'
+							"<p>" +
+							arr[index].dutyName +
+							"</p><p>" +
+							arr[index].dutyPhone +
+							"</p></div>"
+						);
+					index++;
+				}, 200 * i);
+			}
+			setTimeout(function () {
 				$(name)
 					.find(".list-box")
 					.append(

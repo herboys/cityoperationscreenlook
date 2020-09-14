@@ -776,5 +776,32 @@
 	cursor: pointer;
 	padding:  0.3rem;
 }
+/*突发事件*/
+.Emergency{
+	width: 100%;
+	height: 6.5rem;
+	display: flex;
+	/*flex-wrap: wrap;*/
+	align-items: center;
+	box-sizing: border-box;
+	padding: 0rem 2rem;
+	justify-content: space-between;
+}
 
+.Emergencyitem{
 
+	box-sizing: border-box;
+	text-align: center;
+
+}
+.Emergencyitem p{
+	margin-top: .4rem;
+	line-height: 1rem;
+	color: white;
+}
+.Emergencyicon{
+	width: 4.5rem;
+	height: 4.5rem;
+	border-radius: 50%;
+	background: #40cda6;
+}

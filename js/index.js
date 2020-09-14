@@ -5,6 +5,15 @@ $(document).ready(function(){
 	getLeaderZone();
 	getName();
 	setInterval(getName,12*60*60*1000)
+	let para=''
+	let EmergencyList=['突发事件','台风','交通拥堵','下立交','紧急工单','智能烟感','空气质量','水质监测','景点人流','公交准点率']
+	for (let i = 0; i < EmergencyList.length; i++) {
+		para +=	`<div class="Emergencyitem">
+			<img  class="Emergencyicon">
+				<p>${EmergencyList[i]}</p>
+		</div>`
+	}
+	document.getElementById("EmergencyId").innerHTML=para
 })
 
 

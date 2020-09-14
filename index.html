@@ -484,7 +484,7 @@
                             <div class="center-border border-box"></div>
                             <div class="bottom-border border-box"></div>
                         </div>
-                        <h3>突发事件</h3>
+                        <h3>预警预判</h3>
                         <div class="title-border-box title-border-right">
                             <div class="top-border border-box"></div>
                             <div class="center-border border-box"></div>
@@ -494,20 +494,22 @@
                             <div class="dividing-box"></div>
                         </div>
                     </div>
+                    <div class="Emergency" id="EmergencyId">
 
-                    <div class="table-box linkage-scroll-table">
-                        <div class="table-list table-title table-scroll">
-                            <p style="width: 8rem">日期</p>
-                            <p style="width: 8rem">时间</p>
-                            <p style="width: 10rem">街道</p>
-                            <p style="width: 15rem">详细地址</p>
-                            <p style="width: 8rem">事件类型</p>
-                            <p style="width: 10rem">内容</p>
-                        </div>
-                        <div class="list-warp">
-                            <div class="list-box"></div>
-                        </div>
                     </div>
+                    <!--                    <div class="table-box linkage-scroll-table">-->
+                    <!--                        <div class="table-list table-title table-scroll">-->
+                    <!--                            <p style="width: 8rem">日期</p>-->
+                    <!--                            <p style="width: 8rem">时间</p>-->
+                    <!--                            <p style="width: 10rem">街道</p>-->
+                    <!--                            <p style="width: 15rem">详细地址</p>-->
+                    <!--                            <p style="width: 8rem">事件类型</p>-->
+                    <!--                            <p style="width: 10rem">内容</p>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="list-warp">-->
+                    <!--                            <div class="list-box"></div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                 </div>
 
                 <div class="bottom-box">
@@ -889,7 +891,7 @@
             $(".main-warp").height($("html").height() - $(".header").height());
         });
         flip();
-
+        /*突发事件*/
         getDutyList();
         getDutyListReal();
     });
@@ -1024,12 +1026,12 @@
                             map: map,
                             path: lineArr,
                             showDir: true,
-                            strokeColor: "red", //线颜色
-                            strokeOpacity: 0.5,     //线透明度
-                            strokeWeight: 12, //线宽
-                            strokeStyle: "solid", //线样式
+                            strokeColor: "red", //线颜色
+                            strokeOpacity: 0.5,     //线透明度
+                            strokeWeight: 12, //线宽
+                            strokeStyle: "solid", //线样式
                         });
-                        // this.polylines1.set(index, polyline1);
+                        // this.polylines1.set(index, polyline1);
                         polylineList1[i] = polyline1
 
                     }
@@ -1074,12 +1076,12 @@
                             map: map,
                             path: lineArr,
                             showDir: true,
-                            strokeColor: "red", //线颜色
-                            strokeOpacity: 0.5,     //线透明度
-                            strokeWeight: 12, //线宽
-                            strokeStyle: "solid", //线样式
+                            strokeColor: "red", //线颜色
+                            strokeOpacity: 0.5,     //线透明度
+                            strokeWeight: 12, //线宽
+                            strokeStyle: "solid", //线样式
                         });
-                        // this.polylines1.set(index, polyline1);
+                        // this.polylines1.set(index, polyline1);
                         polylineList2[i] = polyline2
                     }
                     this.polylines2.set(index, polylineList2);
@@ -1123,10 +1125,10 @@
                             map: map,
                             path: lineArr,
                             showDir: true,
-                            strokeColor: "red", //线颜色
-                            strokeOpacity: 0.5,     //线透明度
-                            strokeWeight: 12, //线宽
-                            strokeStyle: "solid", //线样式
+                            strokeColor: "red", //线颜色
+                            strokeOpacity: 0.5,     //线透明度
+                            strokeWeight: 12, //线宽
+                            strokeStyle: "solid", //线样式
                         });
                         polylineList3[i] = polyline3
                     }
@@ -1207,10 +1209,10 @@
                                 return this.list3.push(item);
                             }
                         });
-                      document.getElementById("newsListP").style.display = 'block'
-                      document.getElementById("newsListP").innerHTML=
-                              `<span style="color:#40cda6">注意</span>地图点位已更新,目前拥堵路段总计${this.list1.length+this.list2.length+this.list3.length}段`
-                      this.newsListtime = setInterval(this.setIntervalclear, 6000)
+                        document.getElementById("newsListP").style.display = 'block'
+                        document.getElementById("newsListP").innerHTML =
+                            `<span style="color:#40cda6">注意</span>地图点位已更新,目前拥堵路段总计${this.list1.length + this.list2.length + this.list3.length}段`
+                        this.newsListtime = setInterval(this.setIntervalclear, 6000)
                     },
                     function () {
                         console.log("请求失败处理");
@@ -1222,7 +1224,7 @@
             this.getHttp();
         },
         mounted() {
-         this.timer = setInterval(this.getHttp, 1000 * 60 * 5);
+            this.timer = setInterval(this.getHttp, 1000 * 60 * 5);
         },
         beforeDestroy() {
             clearInterval(this.timer);

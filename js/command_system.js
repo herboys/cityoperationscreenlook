@@ -104,7 +104,6 @@ function getDutyList() {
 		type:"get",
 		async:true,
 		success:function (data) {
-
 			//"id":18,"date":"8月9日","time":"9时26分","streetName":"安亭镇","addr":"安亭老街618号","type":"安全生产","description":"四名男子在焊接作业中，气体钢瓶发生爆燃，2人死亡2人受伤"
 			for(var i=0;i<data.length;i++){
 				var obj=new Object()
@@ -116,7 +115,6 @@ function getDutyList() {
 				obj.content=data[i].description
 				linkageArrScroll[i]=obj
 			}
-
 			addTableList2(".linkage-scroll-table", linkageArrScroll);
 			
 		}

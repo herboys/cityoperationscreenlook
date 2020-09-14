@@ -7,6 +7,14 @@ function openIframe(iframeUrl){
     $("#publicIframe").show()
 }
 
+function openIframe1(iframeUrl){
+    // var str='<iframe src="'+iframeUrl+'" width="160%" height="160%" frameborder="0"  style="transform: scale(0.45);margin-left:-44%;margin-top:-12.5%"></iframe>'
+    var str='<iframe src="'+iframeUrl+'" width="100%" height="100%" frameborder="0"  style="transform: scale(1);margin-left:0%;margin-top:0%"></iframe>'
+    $("#iframeDiv").html("")
+    $("#iframeDiv").html(str)
+    $("#publicIframe").show()
+}
+
 function closeIframe(){
     $("#iframeDiv").html("")
     $("#publicIframe").hide()

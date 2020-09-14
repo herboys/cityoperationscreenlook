@@ -13,4 +13,6 @@ $(function () {
 
     //5s动态变换一次
     setInterval(syncInit,5*1000);
+
+    setInterval(getDutyListReal, 6 * 60 * 60 * 1000)//值班表，每6个小时更新一次
 })

@@ -349,10 +349,10 @@ function SprinkleIt(){
 
             var name=NewList[i].name
             var url=NewList[i].url
-            if(videoOne===false){
+            if(videoOne==false){
                 iframeInsertOneVideo(name,url);
                 videoOne=true;
-            }else if(videoTwo===false){
+            }else if(videoTwo==false){
                 iframeInsertSecondVideo(name,url);
                 videoTwo=true;
             }else{

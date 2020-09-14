@@ -1091,9 +1091,13 @@
         this.polylines3.forEach((item) => {
           map.remove(item);
         });
-        this.polylines1.clear()
+        /*this.polylines1.clear()
         this.polylines2.clear()
-        this.polylines3.clear()
+        this.polylines3.clear()*/
+
+        this.polylines1.length=0;
+        this.polylines2.length=0;
+        this.polylines3.length=0;
 
         for(var i=0;i<this.list1.length;i++){
           this.list1[i].isShow=false;
@@ -1146,7 +1150,7 @@
       this.getHttp();
     },
     mounted() {
-      this.timer = setInterval(this.getHttp, 1000 * 60 * 10);
+      this.timer = setInterval(this.getHttp, 1000 * 60 * 5);
     },
     beforeDestroy() {
       clearInterval(this.timer);

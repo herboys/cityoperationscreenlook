@@ -154,7 +154,6 @@ function FindAfter(){
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res=>{
-     console.log(res)
         para = `  <ul class="work-older-list-ul" >
                                         <li>工单编号</li>
                                         <li>发生时间</li>
@@ -232,7 +231,6 @@ function TownLifeGarbage() {
     ajaxPromise(para).then(res => {
         if (res.status === 'OK') {
             let para = ''
-            console.log(res, '123123')
             /**干垃圾*/
             let dryGarbage = []
             let recoverable = []
@@ -244,8 +242,6 @@ function TownLifeGarbage() {
             let recoverable1 = eval(recoverable.join("+"))
             Ganlaji = Ganlaji.toFixed(2)
             recoverable1 = recoverable1.toFixed(2)
-            console.log(Ganlaji, '干垃圾数量总数')
-            console.log(recoverable1, '干垃圾数量总数')
             para = `<p>干垃圾生产量</p><p >${Ganlaji}吨/日</p>`
             document.getElementById("dryGarbageID").innerHTML = para
             para = `<p>湿垃圾产生量</p><p >${recoverable1}吨/日</p>`
@@ -280,7 +276,6 @@ function TownLifeGarbage() {
                 attackSourcesData.push(item.total)
                 attackSourcesName.push(item.street)
             })
-            console.log(attackSourcesData, attackSourcesName)
             MyEcharts.initChart(MyEcharts.EchartsOption.Ranking('name', attackSourcesName, attackSourcesData, attackSourcesColor, '吨'), "SmallECharts4")
         } else {
             alert('街镇生活垃圾产生量TOP5接口发生错误')
@@ -305,7 +300,6 @@ function GetCarNewInfoFun() {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        console.log(res, 'xxxx ')
     })
     getGarbageRectify()
 }
@@ -354,7 +348,6 @@ function getGarbageRectify() {
             dataType: 'JSON',
         }
         ajaxPromise(para).then(res => {
-            console.log(res, '11111 ')
             resolve(res)
 
         })

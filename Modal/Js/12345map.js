@@ -157,13 +157,10 @@ function findbcsclnglatNameFun(res) {
                 }
             }
         ])
-        console.log(bridge1, '987654321')
     }
 }
 function ThermodynamicFun(res) {
-    console.log(res,'12312')
         createMenucopyFun(res)
-
     function createMenucopyFun(res) {
 
         bridge1.Invoke([
@@ -174,10 +171,10 @@ function ThermodynamicFun(res) {
 
                     "weightFied": "count",
                     "gradient": {
-                        ".25": "#4ef1b2",
-                        ".50": "#7cd346",
-                        ".75": "#f3f12c",
-                        ".95": "#fd2f02"
+                        ".2": "#4ef1b2",
+                        ".4": "#7cd346",
+                        ".6": "#f3f12c",
+                        ".8": "#fd2f02"
                     },
                     "radius": 50,
                     "geofield": {
@@ -262,7 +259,6 @@ function ThermodynamicFun(res) {
             }
          
         ])
-        console.log(bridge1, '987654321')
     }
 }
 
@@ -270,7 +266,6 @@ function initMap(date, bcname, scname) {
     date = "年",
         bcname = "",
         scname = ""
-    console.log(date, bcname, scname, '+++++++++++++++++++++++++++=')
     let para = {
         url: ORACLE_URL + "/taskInfo/findbcschotslnglat",
         async: true,
@@ -283,7 +278,6 @@ function initMap(date, bcname, scname) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        console.log(res, '地图')
         bridge1 = new CityGis.Bridge({
             id: "mapContainer99",
             url: "http://10.81.71.51/citygis/areamap/WidgetPages/WidgetGIS.html?code=14&themeid=Gis&devicetype=lg",
@@ -323,7 +317,6 @@ function initMap(date, bcname, scname) {
                 ]
               }
         ])
-        console.log(bridge1, '987654321')
     }
 
 

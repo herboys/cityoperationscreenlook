@@ -275,9 +275,7 @@ function playVideo(e) {
             /* "monitorPoint": "630013108嘉定G2京沪一级出沪车检 东HG",
                  "url": "http://10.237.221.178:8050/cam/realmonitor/31011401001320205008?subtype=0&streamType=0&token=1592793106_0d12f011d9ba7ee06dd327f764a41f46dfabbf96&mediatype=HLS.m3u8"
  */
-            console.log(1)
 
-            console.log(resData)
             var urlList = []
             var urlName = []
             var index = 0;
@@ -294,7 +292,6 @@ function playVideo(e) {
                 alert('该点位无可用视频')
         },
         error: function (data) {
-            console.log(data)
             alert('失败')
         }
 
@@ -373,8 +370,6 @@ function SprinkleIt(){
                 url=data;
                 name=name.replace(" ","_").replace(" ","_").replace(" ","_").replace(" ","_")
 
-                console.log(1)
-                console.log(parent.$('#slider1').children().eq(0));
                 var str=""
                 parent.$('#slider1').html('');
 

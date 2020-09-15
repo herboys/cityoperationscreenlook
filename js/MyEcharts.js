@@ -1196,7 +1196,7 @@ var MyEcharts = {
         /**
          * @name:OrdinaryBar 普通的柱状图
          * **/
-        OrdinaryBar:function (name){
+        OrdinaryBar:function (name,xData,yData){
             var option={
                 grid: {
                     left: '3%',
@@ -1207,7 +1207,7 @@ var MyEcharts = {
                 xAxis: [
                     {
                         type: 'category',
-                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        data: xData,
                         axisTick: {
                             alignWithLabel: true
                         }
@@ -1224,7 +1224,7 @@ var MyEcharts = {
                         name: '直接访问',
                         type: 'bar',
                         barWidth: '40%',
-                        data: [132, 324, 327, 452, 365, 145, 326]
+                        data:yData
                     }
                 ]
             }

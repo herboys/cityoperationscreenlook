@@ -204,7 +204,7 @@
                 <div class="title-bg title-bg2"></div>
                 <div class="title-bg title-bg3"></div>
                 <div class="title-border"></div>
-                <h3>城市运行生命体征</h3>
+                <h3 id="maincrtynammeid">城市运行生命体征</h3>
             </div>
             <div class="content-bg vital-signs-bg"></div>
             <div class="content-box vital-signs">
@@ -484,7 +484,7 @@
                             <div class="center-border border-box"></div>
                             <div class="bottom-border border-box"></div>
                         </div>
-                        <h3>预警预判</h3>
+                        <h3 onclick="SuddenModelBoxBtn()">预警预判</h3>
                         <div class="title-border-box title-border-right">
                             <div class="top-border border-box"></div>
                             <div class="center-border border-box"></div>
@@ -836,6 +836,10 @@
             <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%"
                     frameborder="0"></iframe>
         </div>
+        <div class="Child_ModalBox" id="SuddenModelBox">
+            <iframe id="openSuddenModelBox" src="Modal/SuddenModelBox.html" width="100%" height="100%"
+                    frameborder="0"></iframe>
+        </div>
         <div class="Child_ModalBox " id="BusModalBox">
             <object id="openiframeBusModalBox" data="Modal/BusModalBox.html" width="100%" height="100%"
             ></object>
@@ -931,6 +935,12 @@
     /*公交车*/
     function BusModalBoxFun() {
         document.getElementById("BusModalBox").style.display = "block";
+    }
+    /*紧急事件*/
+    function SuddenModelBoxBtn() {
+
+        // document.getElementById("SuddenModelBox").style.display = "block";
+        // document.getElementById("maincrtynammeid").style.display = "none";
     }
 
     //网格化

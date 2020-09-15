@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="../css/pubilic.css">
+    <style>
+        .headers {
+
+            align-items: center;
+        }
+
+        .headers span {
+            padding: 0rem 2rem;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .line {
+            border-left: .4rem solid #31FFFE;
+            height: 3rem;
+            position: relative;
+        }
+
+        .line:after {
+            content: "";
+            position: absolute;
+            border-left: .4rem solid #31FFFE;
+            height: 0.833rem;
+            top: -0.333rem;
+            transform: rotate(45deg);
+
+        }
+
+        .line:before {
+            content: "";
+            position: absolute;
+            border-left: .4rem solid #31FFFE;
+            height: 0.667rem;
+            bottom: -0.333rem;
+            transform: rotate(-45deg);
+
+        }
+
+        .line1 {
+            border-left: .4rem solid #31FFFE;
+            height: 3rem;
+            position: relative;
+        }
+
+        .line1:after {
+            content: "";
+            position: absolute;
+            border-left: .4rem solid #31FFFE;
+            height: 0.667rem;
+            top: -0.333rem;
+            right: 0.167rem;
+
+            transform: rotate(-45deg);
+
+        }
+
+        .line1:before {
+            content: "";
+            position: absolute;
+            border-left: .4rem solid #31FFFE;
+            height: 0.667rem;
+            bottom: -0.333rem;
+            right: 0.167rem;
+            transform: rotate(45deg);
+        }
+
+        .warp {
+            box-sizing: border-box;
+        / / padding: .2 rem;
+            background: rgb(6, 21, 53);
+
+        }
+
+        .warp-child {
+            border: .2rem solid rgb(17, 102, 165);
+            box-sizing: border-box;
+            padding: 1rem 1.053rem 0rem 1.053rem;
+        }
+
+        .border-bg-height {
+            height: 50rem;
+            box-sizing: border-box;
+            padding: 4rem 3rem;
+
+        }
+
+        .warp-item {
+            box-sizing: border-box;
+            padding: .2rem .5rem .2rem 0rem;
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <div class="warp-child">
+        <div class="flex">
+            <div class="flex_item_1">
+                <div class="flex flex-between warp-item">
+                    <div class="headers flex">
+                        <span>突发事件概况</span>
+                    </div>
+                    <!--                <div>月份</div>-->
+                </div>
+                <div class="border-bg border-bg-height">qwe</div>
+            </div>
+            <div class="flex_item_1">
+                <div class="flex flex-between warp-item">
+                    <div class="headers flex">
+                        <a class="line"></a>
+                        <span>突发事件数量统计</span>
+                        <a class="line1"></a>
+                    </div>
+                    <!--                <div>月份</div>-->
+                </div>
+                <div class="border-bg border-bg-height">qwe</div>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex_item_1">
+                <div class="flex flex-between warp-item">
+                    <div class="headers flex">
+                        <a class="line"></a>
+                        <span>突发事件发生街道分布</span>
+                        <a class="line1"></a>
+                    </div>
+                    <!--                <div>月份</div>-->
+                </div>
+                <div class="border-bg border-bg-height">qwe</div>
+            </div>
+            <div class="flex_item_1">
+                <div class="flex flex-between warp-item">
+                    <div class="headers flex">
+                        <a class="line"></a>
+                        <span> 经常发生突发事件路段统计</span>
+                        <a class="line1"></a>
+                    </div>
+                    <!--                <div>月份</div>-->
+                </div>
+                <div class="border-bg border-bg-height">
+                    <div id="BasicFunId"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex">
+            <div class="flex_item_1">
+                <div class="flex flex-between warp-item">
+                    <div class="headers flex">
+                        <a class="line"></a>
+                        <span>突发事件列表</span>
+                        <a class="line1"></a>
+                    </div>
+                    <!--                <div>月份</div>-->
+                </div>
+                <div class="border-bg border-bg-height" style="height: 32rem">qwe</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload=function (){
+        lineFun()
+        let para=''
+        let color = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff']
+        [1,2,3,4,5,67,7,8,9,0].forEach((item, index) => {
+            para += `
+                 <ul class="BasicFunIditemul" style=" height: 2.5rem;width: 100%;display: flex;align-items: center">
+             <li class="BasicFunIditemtitle" style="display: inline-block;min-width: 1.667rem;height: 1.667rem;background: #2cc78f;border-radius: 50%;color:white;text-align: center;line-height:1.667rem">${index + 1}</li>
+             <li class="BasicFunIditemname"  style="display: inline-block;color: white;text-align:center;min-width: 6.667rem">${item}</li>
+             <li  style="  cursor: pointer;display:inline-block;height: 1rem;border-radius: 1.667rem;width: 100%;background-color:#4e638b">
+             <div class="BasicFunIditem" style="height: 1rem;border-radius: 1.667rem;width: 100%;"></div>
+</li>
+                     <li  style="display: inline-block;color: white;text-align:center;min-width: 6.667rem">${item}件</li>
+            </ul>
+
+           `
+        })
+        document.getElementById("BasicFunId").innerHTML = para
+    }
+</script>
+</body>
+</html>

@@ -152,6 +152,37 @@ html {
     width: 32.3%;
 }
 
+.newsListP {
+    display: none;
+    position: absolute;
+    top: 2rem;
+    left: calc(50% - 10rem);
+    z-index: 9999;
+    background: #082058;
+    text-align: center;
+    border-radius: 1rem;
+    color: white;
+    padding: .3rem .6rem;
+    width: 20rem;
+    margin: auto;
+    -webkit-animation-name: fadeIn; /*动画名称*/
+    -webkit-animation-duration: 3s; /*动画持续时间*/
+    -webkit-animation-iteration-count: 1; /*动画次数*/
+    -webkit-animation-delay: 0s; /*延迟时间*/
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0; /*中间状态 透明度为0*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
 .main-warp .main-box-min {
     width: 16.1%;
 }
@@ -292,29 +323,31 @@ html {
     /*box-shadow: 10px 10px 10px red;*/
     /*-moz-box-shadow: 110px 10px 10px red;*/
     /*-webkit-box-shadow: 10px 10px 10px red;*/
-    box-shadow: -10px 10px 20px 10px rgba(255,255,255,0.2), 10px 10px 10px 10px rgba(255,255,255,0.5)
+    box-shadow: -10px 10px 20px 10px rgba(255, 255, 255, 0.2), 10px 10px 10px 10px rgba(255, 255, 255, 0.5)
 }
+
 .Child_ModalBox {
     position: fixed;
     display: none;
     z-index: 9999;
     margin: auto;
-    top: 5.8rem;
+    top: 6.21rem;
     left: 34.6rem;
     width: 65.4rem;
-    height: 48.3rem;
+    height: 48.2rem;
     animation: 0.6s;
     -webkit-animation: zoom 2s;
     /*box-shadow: 10px 10px 10px red;*/
     /*-moz-box-shadow: 110px 10px 10px red;*/
     /*-webkit-box-shadow: 10px 10px 10px red;*/
 }
-.ModalBox:before,.ModalBox:after {
+
+.ModalBox:before, .ModalBox:after {
     /*影子 主要用了伪类*/
     position: absolute;
     width: 35%;
     height: 10px;
-    content: ' ';/*空内容*/
+    content: ' '; /*空内容*/
     left: 12px;
     bottom: 19px;
     background: rgba(0, 0, 0, 0);
@@ -324,17 +357,18 @@ html {
     -o-transform: skew(-5deg) rotate(-5deg);
     transform: skew(-5deg) rotate(-4deg);
     -webkit-box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 6px 18px 12px rgba(0,0,0,0.6);
+    -moz-box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
     box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
     z-index: -1;
     max-width: 300px; /* 最大宽度*/
 }
-.Child_ModalBox :before,.Child_ModalBox :after {
+
+.Child_ModalBox :before, .Child_ModalBox :after {
     /*影子 主要用了伪类*/
     position: absolute;
     width: 35%;
     height: 10px;
-    content: ' ';/*空内容*/
+    content: ' '; /*空内容*/
     left: 12px;
     bottom: 19px;
     background: rgba(0, 0, 0, 0);
@@ -344,11 +378,12 @@ html {
     -o-transform: skew(-5deg) rotate(-5deg);
     transform: skew(-5deg) rotate(-4deg);
     -webkit-box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 6px 18px 12px rgba(0,0,0,0.6);
+    -moz-box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
     box-shadow: 6px 18px 12px rgba(0, 0, 0, 0.6);
     z-index: -1;
     max-width: 300px; /* 最大宽度*/
 }
+
 .ModalBox:after {
     left: auto; /*重新来个这段的目的 利用CSS优先级创建 右侧阴影，这段肯定是在 .boxshadow:before,.boxshadow:after 这段之后的~~*/
     right: 12px;
@@ -358,6 +393,7 @@ html {
     -o-transform: skew(5deg) rotate(4deg);
     transform: skew(5deg) rotate(4deg);
 }
+
 .Child_ModalBox :after {
     left: auto; /*重新来个这段的目的 利用CSS优先级创建 右侧阴影，这段肯定是在 .boxshadow:before,.boxshadow:after 这段之后的~~*/
     right: 12px;
@@ -381,6 +417,7 @@ html {
 .card {
     margin-left: 5rem;
 }
+
 .card-front, .card-back {
     position: absolute;
     /* width: 100%;
@@ -394,33 +431,39 @@ html {
     transition: 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
     backface-visibility: hidden;
     overflow: hidden;
-  }
-  .card-front:before, .card-front:after, .card-back:before, .card-back:after {
+}
+
+.card-front:before, .card-front:after, .card-back:before, .card-back:after {
     position: absolute;
-  }
-  
-  .card-front:after {
+}
+
+.card-front:after {
     color: #212f3c;
-  }
-  .card-back {
+}
+
+.card-back {
     /* background: linear-gradient(-45deg, #101010, #2c3e50); */
     transform: rotateX(-180deg);
-  }
-  .card-back:after {
+}
+
+.card-back:after {
     color: #11181f;
-  }
-  .card-flipped  .card-front {
+}
+
+.card-flipped .card-front {
     transform: rotateX(-180deg);
-  }
-  .card-flipped   .card-back {
+}
+
+.card-flipped .card-back {
     transform: rotateX(0deg);
-  }
- 
-  .amap-scale-edgeleft,.amap-scale-middle,.amap-scale-edgeright{
-    background-color: #fff!important;
-    }
-    .amap-scale-text{
-         color: #fff!important;
-    }
+}
+
+.amap-scale-edgeleft, .amap-scale-middle, .amap-scale-edgeright {
+    background-color: #fff !important;
+}
+
+.amap-scale-text {
+    color: #fff !important;
+}
 
   

@@ -25,17 +25,18 @@ var lists = null;
 function TyPeOnclick(num) {
     initRotate(lists, medians, num)
 }
-function RightBoxFun(median){
-    let newpara=`<div onclick="TyPeOnclick(0)"><span class="caise"></span>全部</div>
+
+function RightBoxFun(median) {
+    let newpara = `<div onclick="TyPeOnclick(0)"><span class="caise"></span>全部</div>
                                 <div onclick="TyPeOnclick(1)"><span style="background: #f36c6c"></span>>75%</div>
                                 <div  onclick="TyPeOnclick(2)"><span style="background-color:#e6cf4e"></span>>50%</div>
                                 <div  onclick="TyPeOnclick(3)"><span style="background-color:#20d180"></span>>25%</div>
                                 <div  onclick="TyPeOnclick(4)"> <span style="background-color:#0093ff"></span><25%</div>`
-    document.getElementById("TyPeOnclickId").innerHTML=newpara
+    document.getElementById("TyPeOnclickId").innerHTML = newpara
 }
+
 function initRotate(list, median, number) {
     RightBoxFun(median)
-    console.log(list, median, number)
     clearInterval(timeRotate)
     radius = 120;
     dtr = Math.PI / 180;
@@ -64,7 +65,7 @@ function initRotate(list, median, number) {
         case 0:
             list.forEach((item, index) => {
                 if (item.value > (median / 2) * 3) {
-                    para +=`<a  target="_blank" style="color:#f36c6c;font-family:宋体;font-size: 24px;font-weight: bold">${item.name}</a>`
+                    para += `<a  target="_blank" style="color:#f36c6c;font-family:宋体;font-size: 24px;font-weight: bold">${item.name}</a>`
                 } else if (item.value > median) {
                     para += `<a  target="_blank"  style="color: #e6cf4e;font-size: 18px;">${item.name}</a>`
                 } else if (item.value > median / 2) {
@@ -112,13 +113,12 @@ function initRotate(list, median, number) {
             })
             break;
     }
-    console.log(para.slice(9),'213123')
     document.getElementById("rotate").innerHTML = para.slice(9)
     list = document.querySelectorAll("#rotate a")
     for (let j = 0; j < list.length; j++) {
         list[j].onclick = function () {
             findbcschotslnglatNames(list[j].innerHTML)
-            document.getElementById("RightBannerNameId").innerText='热词【'+list[j].innerHTML+'】热力图'
+            document.getElementById("RightBannerNameId").innerText = '热词【' + list[j].innerHTML + '】热力图'
         }
     }
     var i = 0;

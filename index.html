@@ -2,694 +2,748 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="renderer" content="webkit" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title></title>
-  <meta http-equiv="Access-Control-Allow-Origin" content="*" />
-  <link rel="stylesheet" type="text/css" href="css/pubilic.css" />
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
-  <link rel="stylesheet" type="text/css" href="css/video.css" />
-  <link rel="stylesheet" type="text/css" href="css/command_system.css" />
-  <link rel="stylesheet" type="text/css" href="css/vital_signs.css" />
-  <link rel="stylesheet" type="text/css" href="css/weather.css" />
-  <link rel="stylesheet" type="text/css" href="css/rescus_dialog.css" />
-  <link rel="stylesheet" type="text/css" href="css/rest_dialog.css" />
+    <meta charset="UTF-8"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title></title>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <link rel="stylesheet" type="text/css" href="css/pubilic.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/video.css"/>
+    <link rel="stylesheet" type="text/css" href="css/command_system.css"/>
+    <link rel="stylesheet" type="text/css" href="css/vital_signs.css"/>
+    <link rel="stylesheet" type="text/css" href="css/weather.css"/>
+    <link rel="stylesheet" type="text/css" href="css/rescus_dialog.css"/>
+    <link rel="stylesheet" type="text/css" href="css/rest_dialog.css"/>
 
-  <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/command_system.js" type="text/javascript" charset="utf-8"></script>
-  <link rel="stylesheet" type="text/css" href="css/video.css" />
-  <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/command_system.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="css/video.css"/>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 
-  <script src="js/video.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/video.js" type="text/javascript" charset="utf-8"></script>
 
-  <script src="js/time.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/time.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/vital_signs.js" type="text/javascript" charset="utf-8"></script>
 
-  <script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
 
-  <script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/resource.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/rest-echarts.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/interval.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/rest-scroll.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/iframe.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/syncJs.js" type="text/javascript" charset="utf-8"></script>
-  <!--地图-->
-  <script
-    src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale">
-  </script>
-  <!-- 热力图 -->
-  <!-- <script src="//a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script> -->
-  <script src="js/map.js" type="text/javascript" charset="utf-8"></script>
-  <!-- <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script> -->
+    <script src="js/hls.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/hlsVideo.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/commonJs.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/resource.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/rest-echarts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/interval.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/rest-scroll.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/iframe.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/syncJs.js" type="text/javascript" charset="utf-8"></script>
+    <!--地图-->
+    <script
+            src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale">
+    </script>
+    <!-- 热力图 -->
+    <!-- <script src="//a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script> -->
+    <script src="js/map.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script> -->
 
-  <link rel="stylesheet" type="text/css" href="./css/banner.css" />
-  <!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
-  <script type="text/javascript" src="./js/banner.js"></script>
-  <!-- <script type="text/javascript" src="./Modal/Js/intercity-map.js"></script> -->
-  <script type="text/javascript">
-    setFont();
-  </script>
-  	
+    <link rel="stylesheet" type="text/css" href="./css/banner.css"/>
+    <!--<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
+    <script type="text/javascript" src="./js/banner.js"></script>
+    <!-- <script type="text/javascript" src="./Modal/Js/intercity-map.js"></script> -->
+    <script type="text/javascript">
+        setFont();
+    </script>
+
 </head>
 
 <body>
-  <div id="app">
+<div id="app">
     <div class="header">
-      <img src="images/head2.png" />
-      <div class="main-box left-box">
-        <div class="weather-icon left" style="width: 3.9rem; height: 3.9rem" id="weatherIcon">
-          <div></div>
+        <img src="images/head2.png"/>
+        <div class="main-box left-box">
+            <div class="weather-icon left" style="width: 3.9rem; height: 3.9rem" id="weatherIcon">
+                <div></div>
+            </div>
+            <div class="weather-text left" id="weatherText"></div>
+            <div class="temperature-text num-font left"></div>
+
+            <div id="warningBox"></div>
+            <!--<div class="early-warning-icon left" style="margin-left: 1rem"></div>-->
+            <!--<div class="early-warning-icon left" id="warning2"></div>
+                    <div class="early-warning-icon left" id="warning3"></div>-->
+            <div class="early-warning-text left"></div>
         </div>
-        <div class="weather-text left" id="weatherText"></div>
-        <div class="temperature-text num-font left"></div>
 
-        <div id="warningBox"></div>
-        <!--<div class="early-warning-icon left" style="margin-left: 1rem"></div>-->
-        <!--<div class="early-warning-icon left" id="warning2"></div>
-				<div class="early-warning-icon left" id="warning3"></div>-->
-        <div class="early-warning-text left"></div>
-      </div>
-
-      <div class="main-box left-box-2">
-        <p class="text-title">人民城市人民建</p>
-      </div>
-
-      <div class="main-box right-box">
-        <div class="right date-box">
-          <p></p>
-          <p class="num-font"></p>
+        <div class="main-box left-box-2">
+            <p class="text-title">人民城市人民建</p>
         </div>
-        <div class="right time-box num-font"></div>
-      </div>
-      <div class="main-box right-box-2">
-        <p class="text-title">人民城市为人民</p>
-      </div>
+
+        <div class="main-box right-box">
+            <div class="right date-box">
+                <p></p>
+                <p class="num-font"></p>
+            </div>
+            <div class="right time-box num-font"></div>
+        </div>
+        <div class="main-box right-box-2">
+            <p class="text-title">人民城市为人民</p>
+        </div>
     </div>
     <div class="main-warp" style="margin-top: -1%; height: 994px">
-      <div class="main-box main-box-min" style="margin-left: 0.9%">
-        <div class="main-title">
-          <div class="title-bg title-bg1"></div>
-          <div class="title-bg title-bg2"></div>
-          <div class="title-bg title-bg3"></div>
-          <div class="title-border"></div>
-          <h3>指挥体系</h3>
-        </div>
-        <div class="content-bg"></div>
-        <div class="content-box command-system">
-          <div class="core-warp">
-            <div class="core-title">
-              <div class="title-bg"></div>
-              <h3 style="cursor: pointer">
-                <img src="images/point1.png" style="
+        <div class="main-box main-box-min" style="margin-left: 0.9%">
+            <div class="main-title">
+                <div class="title-bg title-bg1"></div>
+                <div class="title-bg title-bg2"></div>
+                <div class="title-bg title-bg3"></div>
+                <div class="title-border"></div>
+                <h3>指挥体系</h3>
+            </div>
+            <div class="content-bg"></div>
+            <div class="content-box command-system">
+                <div class="core-warp">
+                    <div class="core-title">
+                        <div class="title-bg"></div>
+                        <h3 style="cursor: pointer">
+                            <img src="images/point1.png" style="
                       display: inline-block;
                       width: 1.7rem;
                       height: 1.7rem;
                       vertical-align: middle;
-                    " @click="httpShow=true" />
-                <span>区中心</span>
-              </h3>
-            </div>
-            <div class="core-box core-left">
-              <div class="lead-box">
-                <div class="arrow-box">
-                  <div class="arrow"></div>
-                  <div class="arrow"></div>
-                  <div class="arrow"></div>
-                  <div class="arrow"></div>
+                    " @click="httpShow=true"/>
+                            <span>区中心</span>
+                        </h3>
+                    </div>
+                    <div class="core-box core-left">
+                        <div class="lead-box">
+                            <div class="arrow-box">
+                                <div class="arrow"></div>
+                                <div class="arrow"></div>
+                                <div class="arrow"></div>
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="arc-warp">
+                                <div class="arc-box">
+                                    <div class="arc"></div>
+                                </div>
+                                <div class="arc-box">
+                                    <div class="arc"></div>
+                                </div>
+                            </div>
+                            <div class="bg-box"></div>
+                            <div class="bg-box bg-ac"></div>
+                            <div class="text-box text-centered">
+                                <p>带班区领导</p>
+                                <h3 id="name"></h3>
+                            </div>
+                        </div>
+                        <div class="working-places">
+                            <div class="bg"></div>
+                            <div class="num-font right">12</div>
+                            <h3>街镇城运分中心</h3>
+                        </div>
+                    </div>
+                    <div class="core-box core-right">
+                        <div class="lead-box">
+                            <div class="text-box text-centered left">
+                                <p>带班主任</p>
+                                <h3 id="name1"></h3>
+                            </div>
+                            <div class="text-box text-centered left">
+                                <p>指挥长</p>
+                                <h3 id="name2"></h3>
+                            </div>
+                            <div class="text-box text-centered left">
+                                <p>值班长</p>
+                                <h3 id="name3"></h3>
+                            </div>
+                            <div class="text-box text-centered left">
+                                <p>值班人员</p>
+                                <h3 id="name4"></h3>
+                            </div>
+                        </div>
+                        <div class="working-places">
+                            <div class="bg"></div>
+                            <div class="num-font right">355</div>
+                            <h3>城运工作站</h3>
+                        </div>
+                    </div>
                 </div>
-                <div class="arc-warp">
-                  <div class="arc-box">
-                    <div class="arc"></div>
-                  </div>
-                  <div class="arc-box">
-                    <div class="arc"></div>
-                  </div>
+                <div class="table-box core-table">
+                    <div class="table-list table-title">
+                        <p>分中心</p>
+                        <p>带班领导</p>
+                        <p>值班电话</p>
+                        <p>值班人员</p>
+                        <p>值班电话</p>
+                    </div>
+                    <div class="list-box"></div>
                 </div>
-                <div class="bg-box"></div>
-                <div class="bg-box bg-ac"></div>
-                <div class="text-box text-centered">
-                  <p>带班区领导</p>
-                  <h3 id="name"></h3>
-                </div>
-              </div>
-              <div class="working-places">
-                <div class="bg"></div>
-                <div class="num-font right">12</div>
-                <h3>街镇城运分中心</h3>
-              </div>
-            </div>
-            <div class="core-box core-right">
-              <div class="lead-box">
-                <div class="text-box text-centered left">
-                  <p>带班主任</p>
-                  <h3 id="name1"></h3>
-                </div>
-                <div class="text-box text-centered left">
-                  <p>指挥长</p>
-                  <h3 id="name2"></h3>
-                </div>
-                <div class="text-box text-centered left">
-                  <p>值班长</p>
-                  <h3 id="name3"></h3>
-                </div>
-                <div class="text-box text-centered left">
-                  <p>值班人员</p>
-                  <h3 id="name4"></h3>
-                </div>
-              </div>
-              <div class="working-places">
-                <div class="bg"></div>
-                <div class="num-font right">355</div>
-                <h3>城运工作站</h3>
-              </div>
-            </div>
-          </div>
-          <div class="table-box core-table">
-            <div class="table-list table-title">
-              <p>分中心</p>
-              <p>带班领导</p>
-              <p>值班电话</p>
-              <p>值班人员</p>
-              <p>值班电话</p>
-            </div>
-            <div class="list-box"></div>
-          </div>
 
-          <div class="table-box linkage-table">
-            <div class="table-list table-title">
-              <p>部门</p>
-              <p>带班领导</p>
-              <p>值班电话</p>
-              <p>值班人员</p>
-              <p>值班电话</p>
+                <div class="table-box linkage-table">
+                    <div class="table-list table-title">
+                        <p>部门</p>
+                        <p>带班领导</p>
+                        <p>值班电话</p>
+                        <p>值班人员</p>
+                        <p>值班电话</p>
+                    </div>
+                    <div class="list-warp">
+                        <div class="list-box"></div>
+                    </div>
+                </div>
             </div>
-            <div class="list-warp">
-              <div class="list-box"></div>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="main-box main-box-big">
-        <div class="main-title">
-          <div class="title-bg title-bg1"></div>
-          <div class="title-bg title-bg2"></div>
-          <div class="title-bg title-bg3"></div>
-          <div class="title-border"></div>
-          <h3>城市运行生命体征</h3>
+        <div class="main-box main-box-big">
+            <div class="main-title">
+                <div class="title-bg title-bg1"></div>
+                <div class="title-bg title-bg2"></div>
+                <div class="title-bg title-bg3"></div>
+                <div class="title-border"></div>
+                <h3 id="maincrtynammeid">城市运行生命体征</h3>
+            </div>
+            <div class="content-bg vital-signs-bg"></div>
+            <div class="content-box vital-signs">
+                <div class="top-box">
+                    <div class="title-box" style="margin-bottom: 0.5rem">
+                        <div class="title-border-box">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <h3>基本概况</h3>
+                        <div class="title-border-box title-border-right">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <ul class="card-front"></ul>
+                        <div class="card-back">
+                            <li>
+                                <div class="text-centered"><p>税收总计
+                                </p>
+                                    <div class="bottom-text" style="height:2rem"><span class="num-font"
+                                                                                       style="font-size:1.5rem;alignment: center">408.40</span>
+                                        <p>亿元</p>
+                                        </p></div>
+                                </div>
+                                <div class="border-box border-right"></div>
+                                <div class="border-box border-bottom"></div>
+                            </li>
+                            <li>
+                                <div class="text-centered"><p>引进外资
+                                </p>
+                                    <div class="bottom-text" style="height:2rem"><span class="num-font"
+                                                                                       style="font-size:1.5rem;alignment: center">16.75</span>
+                                        <p>亿美元</p>
+                                        </p></div>
+                                </div>
+                                <div class="border-box border-right"></div>
+                                <div class="border-box border-bottom"></div>
+                            </li>
+                            <li>
+                                <div class="text-centered"><p>财政总收入
+                                </p>
+                                    <div class="bottom-text" style="height:2rem"><span class="num-font"
+                                                                                       style="font-size:1.5rem;alignment: center">442.3</span>
+                                        <p>亿元</p>
+                                        </p></div>
+                                </div>
+                                <div class="border-box border-right"></div>
+                                <div class="border-box border-bottom"></div>
+                            </li>
+                            <li>
+                                <div class="text-centered"><p>固定资产投资
+                                </p>
+                                    <div class="bottom-text" style="height:2rem"><span class="num-font"
+                                                                                       style="font-size:1.5rem;alignment: center">237.6</span>
+                                        <p>亿元</p>
+                                        </p></div>
+                                </div>
+                                <div class="border-box border-right"></div>
+                                <div class="border-box border-bottom"></div>
+                            </li>
+                            <li>
+                                <div class="text-centered"><p>商品销售总额
+                                </p>
+                                    <div class="bottom-text" style="height:2rem"><span class="num-font"
+                                                                                       style="font-size:1.5rem;alignment: center">2523.7</span>
+                                        <p>亿元</p>
+                                        </p></div>
+                                </div>
+                                <div class="border-box border-right"></div>
+                                <div class="border-box border-bottom"></div>
+                            </li>
+                            <li>
+                                <div class="text-centered"><p>社会消费零售
+                                </p>
+                                    <div class="bottom-text" style="height:2rem"><span class="num-font"
+                                                                                       style="font-size:1.5rem;alignment: center">808.8</span>
+                                        <p>亿元</p>
+                                        </p></div>
+                                </div>
+                                <div class="border-box border-right"></div>
+                                <div class="border-box border-bottom"></div>
+                            </li>
+                        </div>
+                    </div>
+                    <!-- <ul></ul> -->
+                </div>
+                <div class="zygy-warp card-warp">
+                    <div class="title-box" style="margin-bottom: 0.5rem">
+                        <div class="title-border-box">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <h3>资源供应</h3>
+                        <div class="title-border-box title-border-right">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                    </div>
+                    <div class="list-box">
+                        <div class="card-box">
+                            <div class="card-title">
+                                <div class="text-centered">用电总量</div>
+                            </div>
+                            <div class="card-text">
+                                <p>
+                                    昨日<span class="num-font" style="font-size: 0.8rem; alignment: center">20</span>万/立方米
+                                </p>
+                                <p>
+                                    本周<span class="num-font" style="font-size: 0.8rem; alignment: center">189</span>万/立方米
+                                </p>
+                                <p>
+                                    当月<span class="num-font" style="font-size: 0.8rem; alignment: center">3482</span>万/立方米
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jtqk-warp card-warp">
+                    <div class="title-box" style="margin-bottom: 0.5rem">
+                        <div class="title-border-box">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <h3 onclick="BusModalBoxFun()">交通客流</h3>
+                        <div class="title-border-box title-border-right">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                    </div>
+                    <div class="list-box">
+                        <div class="card-box">
+                            <div class="card-title">
+                                <div class="text-centered">景区景点人流</div>
+                            </div>
+                            <div class="card-text">
+                                <p>
+                                    昨日<span class="num-font" style="font-size: 0.8rem; alignment: center">20</span>万/立方米
+                                </p>
+                                <p>
+                                    本周<span class="num-font" style="font-size: 0.8rem; alignment: center">189</span>万/立方米
+                                </p>
+                                <p>
+                                    当月<span class="num-font" style="font-size: 0.8rem; alignment: center">3482</span>万/立方米
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shbz-warp">
+                    <div class="title-box">
+                        <div class="title-border-box">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <h3>社会保障</h3>
+                        <div class="title-border-box title-border-right">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                    </div>
+                    <div class="list-box">
+                        <div class="list-bg">
+                            <div class="line-box">
+                                <div class="dividing-line">
+                                    <div class="dividing-box"></div>
+                                </div>
+                            </div>
+                            <div class="line-box">
+                                <div class="dividing-line">
+                                    <div class="dividing-box"></div>
+                                </div>
+                            </div>
+                            <div class="line-box">
+                                <div class="dividing-line">
+                                    <div class="dividing-box"></div>
+                                </div>
+                            </div>
+                            <div class="line-box">
+                                <div class="dividing-line">
+                                    <div class="dividing-box"></div>
+                                </div>
+                            </div>
+                            <div class="line-box">
+                                <div class="dividing-line">
+                                    <div class="dividing-box"></div>
+                                </div>
+                            </div>
+                            <div class="slant"></div>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-list">
+                                <p>城镇登记失业率</p>
+                                <p><span class="num-font"></span>%</p>
+                            </div>
+                            <div class="text-list">
+                                <p>社保综合参保率</p>
+                                <p><span class="num-font"></span>%</p>
+                            </div>
+                            <div class="text-list">
+                                <p>最低工资标准</p>
+                                <p><span class="num-font"></span>%</p>
+                            </div>
+                            <div class="text-list">
+                                <p>每千人医疗床位</p>
+                                <p><span class="num-font"></span>%</p>
+                            </div>
+                            <div class="text-list">
+                                <p>门诊就诊量</p>
+                                <p><span class="num-font"></span>%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hjbz-warp">
+                    <div class="title-box">
+                        <div class="title-border-box">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <h3>生态环境</h3>
+                        <div class="title-border-box title-border-right">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                    </div>
+                    <div class="list-box">
+                        <div class="list-bg">
+                            <div class="line-box">
+                                <div class="dividing-line">
+                                    <div class="dividing-box"></div>
+                                </div>
+                            </div>
+                            <div class="line-box">
+                                <div class="dividing-line">
+                                    <div class="dividing-box"></div>
+                                </div>
+                            </div>
+                            <div class="line-box">
+                                <div class="dividing-line">
+                                    <div class="dividing-box"></div>
+                                </div>
+                            </div>
+                            <div class="slant"></div>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-list" style="left: 10%; top: 0%">
+                                <p>城镇登记失业率</p>
+                                <p><span class="num-font"></span>%</p>
+                            </div>
+                            <div class="text-list" style="left: 5%; top: 50%">
+                                <p>社保综合参保率</p>
+                                <p><span class="num-font"></span>%</p>
+                            </div>
+                            <div class="text-list" style="left: 0%; top: 95%">
+                                <p>在线建设工程</p>
+                                <p><span class="num-font"></span>%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="roll-table command-system">
+                    <div class="title-box" style="margin-bottom: 0rem">
+                        <div class="title-border-box">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <h3 onclick="SuddenModelBoxBtn()">预警预判</h3>
+                        <div class="title-border-box title-border-right">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <div class="dividing-line">
+                            <div class="dividing-box"></div>
+                        </div>
+                    </div>
+                    <div class="Emergency" id="EmergencyId">
+
+                    </div>
+                    <!--                    <div class="table-box linkage-scroll-table">-->
+                    <!--                        <div class="table-list table-title table-scroll">-->
+                    <!--                            <p style="width: 8rem">日期</p>-->
+                    <!--                            <p style="width: 8rem">时间</p>-->
+                    <!--                            <p style="width: 10rem">街道</p>-->
+                    <!--                            <p style="width: 15rem">详细地址</p>-->
+                    <!--                            <p style="width: 8rem">事件类型</p>-->
+                    <!--                            <p style="width: 10rem">内容</p>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="list-warp">-->
+                    <!--                            <div class="list-box"></div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+
+                <div class="bottom-box">
+                    <div class="title-box" style="margin-bottom: 0rem">
+                        <div class="title-border-box">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <h3>案事件接报</h3>
+                        <div class="title-border-box title-border-right">
+                            <div class="top-border border-box"></div>
+                            <div class="center-border border-box"></div>
+                            <div class="bottom-border border-box"></div>
+                        </div>
+                        <div class="dividing-line">
+                            <div class="dividing-box"></div>
+                        </div>
+                    </div>
+
+                    <div class="bottom-main">
+                        <div class="main-list">
+                            <div class="main-left">
+                                <img src="images/manage.png"/>
+                                <div class="text-centered">
+                                    <p>110</p>
+                                </div>
+                            </div>
+                            <div class="main-right">
+                                <p>昨日<span class="num-font">20</span>起</p>
+                                <p>本周<span class="num-font">189</span>起</p>
+                                <p>当月<span class="num-font">3482</span>起</p>
+                            </div>
+                        </div>
+                        <div class="main-list">
+                            <div class="main-left">
+                                <img src="images/manage.png"/>
+                                <div class="text-centered">
+                                    <p>119</p>
+                                </div>
+                            </div>
+                            <div class="main-right">
+                                <p>昨日<span class="num-font">20</span>起</p>
+                                <p>本周<span class="num-font">189</span>起</p>
+                                <p>当月<span class="num-font">3482</span>起</p>
+                            </div>
+                        </div>
+                        <div class="main-list" @click="rescueShow=true">
+                            <div class="main-left">
+                                <img src="images/manage.png"/>
+                                <div class="text-centered">
+                                    <p>120</p>
+                                </div>
+                            </div>
+                            <div class="main-right">
+                                <p>昨日<span class="num-font">20</span>起</p>
+                                <p>本周<span class="num-font">189</span>起</p>
+                                <p>当月<span class="num-font">3482</span>起</p>
+                            </div>
+                        </div>
+                        <div class="main-list" onclick="ModalClick()">
+                            <!--   <div class="main-list">-->
+                            <div class="main-left">
+                                <img src="images/manage.png"/>
+                                <div class="text-centered">
+                                    <!--<p>12345</p>-->
+                                    <img src="images/12345.png" style="width:3rem;cursor: pointer"/>
+                                </div>
+                            </div>
+                            <div class="main-right">
+                                <p>今日<span class="num-font">20</span>起</p>
+                                <p>本周<span class="num-font">189</span>起</p>
+                                <p>当月<span class="num-font">3482</span>起</p>
+                            </div>
+                        </div>
+
+                        <div class="main-list" @click="gridShow=true">
+                            <div class="main-left">
+                                <img src="images/manage.png"/>
+                                <div class="text-centered">
+                                    <p>网格化</p>
+                                </div>
+                            </div>
+                            <div class="main-right">
+                                <p>今日<span class="num-font">20</span>起</p>
+                                <p>本周<span class="num-font">189</span>起</p>
+                                <p>当月<span class="num-font">3482</span>起</p>
+                            </div>
+                        </div>
+
+                        <div class="main-list">
+                            <div class="main-left">
+                                <img src="images/manage.png"/>
+                                <div class="text-centered">
+                                    <p>突发事件</p>
+                                </div>
+                            </div>
+                            <div class="main-right">
+                                <p>今日<span class="num-font">0</span>起</p>
+                                <p>本周<span class="num-font">0</span>起</p>
+                                <p>当月<span class="num-font">5</span>起</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content-bg vital-signs-bg"></div>
-        <div class="content-box vital-signs">
-          <div class="top-box">
-            <div class="title-box" style="margin-bottom: 0.5rem">
-              <div class="title-border-box">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <h3>基本概况</h3>
-              <div class="title-border-box title-border-right">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-            </div>
-            <div class="card">
-               <ul class="card-front"></ul>
-               <div class="card-back">
-                <li><div class="text-centered"><p>税收总计
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">408.40</span><p>亿元</p>
-                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>引进外资
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">16.75</span><p>亿美元</p>
-                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>财政总收入
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">442.3</span><p>亿元</p>
-                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>固定资产投资
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">237.6</span><p>亿元</p>
-                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>商品销售总额
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">2523.7</span><p>亿元</p>
-                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-                <li><div class="text-centered"><p>社会消费零售
-                </p><div class="bottom-text" style="height:2rem"><span class="num-font" style="font-size:1.5rem;alignment: center">808.8</span><p>亿元</p>
-                </p></div></div><div class="border-box border-right"></div><div class="border-box border-bottom"></div></li>
-               </div>
-            </div>
-            <!-- <ul></ul> -->
-          </div>
-          <div class="zygy-warp card-warp">
-            <div class="title-box" style="margin-bottom: 0.5rem">
-              <div class="title-border-box">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <h3>资源供应</h3>
-              <div class="title-border-box title-border-right">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-            </div>
-            <div class="list-box">
-              <div class="card-box">
-                <div class="card-title">
-                  <div class="text-centered">用电总量</div>
-                </div>
-                <div class="card-text">
-                  <p>
-                    昨日<span class="num-font" style="font-size: 0.8rem; alignment: center">20</span>万/立方米
-                  </p>
-                  <p>
-                    本周<span class="num-font" style="font-size: 0.8rem; alignment: center">189</span>万/立方米
-                  </p>
-                  <p>
-                    当月<span class="num-font" style="font-size: 0.8rem; alignment: center">3482</span>万/立方米
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="jtqk-warp card-warp">
-            <div class="title-box" style="margin-bottom: 0.5rem">
-              <div class="title-border-box">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <h3 onclick="BusModalBoxFun()">交通客流</h3>
-              <div class="title-border-box title-border-right">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-            </div>
-            <div class="list-box">
-              <div class="card-box">
-                <div class="card-title">
-                  <div class="text-centered">景区景点人流</div>
-                </div>
-                <div class="card-text">
-                  <p>
-                    昨日<span class="num-font" style="font-size: 0.8rem; alignment: center">20</span>万/立方米
-                  </p>
-                  <p>
-                    本周<span class="num-font" style="font-size: 0.8rem; alignment: center">189</span>万/立方米
-                  </p>
-                  <p>
-                    当月<span class="num-font" style="font-size: 0.8rem; alignment: center">3482</span>万/立方米
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="shbz-warp">
-            <div class="title-box">
-              <div class="title-border-box">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <h3>社会保障</h3>
-              <div class="title-border-box title-border-right">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-            </div>
-            <div class="list-box">
-              <div class="list-bg">
-                <div class="line-box">
-                  <div class="dividing-line">
-                    <div class="dividing-box"></div>
-                  </div>
-                </div>
-                <div class="line-box">
-                  <div class="dividing-line">
-                    <div class="dividing-box"></div>
-                  </div>
-                </div>
-                <div class="line-box">
-                  <div class="dividing-line">
-                    <div class="dividing-box"></div>
-                  </div>
-                </div>
-                <div class="line-box">
-                  <div class="dividing-line">
-                    <div class="dividing-box"></div>
-                  </div>
-                </div>
-                <div class="line-box">
-                  <div class="dividing-line">
-                    <div class="dividing-box"></div>
-                  </div>
-                </div>
-                <div class="slant"></div>
-              </div>
-              <div class="text-box">
-                <div class="text-list">
-                  <p>城镇登记失业率</p>
-                  <p><span class="num-font"></span>%</p>
-                </div>
-                <div class="text-list">
-                  <p>社保综合参保率</p>
-                  <p><span class="num-font"></span>%</p>
-                </div>
-                <div class="text-list">
-                  <p>最低工资标准</p>
-                  <p><span class="num-font"></span>%</p>
-                </div>
-                <div class="text-list">
-                  <p>每千人医疗床位</p>
-                  <p><span class="num-font"></span>%</p>
-                </div>
-                <div class="text-list">
-                  <p>门诊就诊量</p>
-                  <p><span class="num-font"></span>%</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="hjbz-warp">
-            <div class="title-box">
-              <div class="title-border-box">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <h3>生态环境</h3>
-              <div class="title-border-box title-border-right">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-            </div>
-            <div class="list-box">
-              <div class="list-bg">
-                <div class="line-box">
-                  <div class="dividing-line">
-                    <div class="dividing-box"></div>
-                  </div>
-                </div>
-                <div class="line-box">
-                  <div class="dividing-line">
-                    <div class="dividing-box"></div>
-                  </div>
-                </div>
-                <div class="line-box">
-                  <div class="dividing-line">
-                    <div class="dividing-box"></div>
-                  </div>
-                </div>
-                <div class="slant"></div>
-              </div>
-              <div class="text-box">
-                <div class="text-list" style="left: 10%; top: 0%">
-                  <p>城镇登记失业率</p>
-                  <p><span class="num-font"></span>%</p>
-                </div>
-                <div class="text-list" style="left: 5%; top: 50%">
-                  <p>社保综合参保率</p>
-                  <p><span class="num-font"></span>%</p>
-                </div>
-                <div class="text-list" style="left: 0%; top: 95%">
-                  <p>在线建设工程</p>
-                  <p><span class="num-font"></span>%</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="roll-table command-system">
-            <div class="title-box" style="margin-bottom: 0rem">
-              <div class="title-border-box">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <h3>突发事件</h3>
-              <div class="title-border-box title-border-right">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <div class="dividing-line">
-                <div class="dividing-box"></div>
-              </div>
-            </div>
 
-            <div class="table-box linkage-scroll-table">
-              <div class="table-list table-title table-scroll">
-                <p style="width: 8rem">日期</p>
-                <p style="width: 8rem">时间</p>
-                <p style="width: 10rem">街道</p>
-                <p style="width: 15rem">详细地址</p>
-                <p style="width: 8rem">事件类型</p>
-                <p style="width: 10rem">内容</p>
-              </div>
-              <div class="list-warp">
-                <div class="list-box"></div>
-              </div>
+        <div class="main-box main-box-big">
+            <div class="newsListP" id="newsListP"></div>
+            <div class="map-box" id="mapContainer"></div>
+            <div class="map-center" @click="mapCenter" title="回到行政区域中心">
+                <img src="images/refresh-left.png" alt=""/>
             </div>
-          </div>
-
-          <div class="bottom-box">
-            <div class="title-box" style="margin-bottom: 0rem">
-              <div class="title-border-box">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <h3>案事件接报</h3>
-              <div class="title-border-box title-border-right">
-                <div class="top-border border-box"></div>
-                <div class="center-border border-box"></div>
-                <div class="bottom-border border-box"></div>
-              </div>
-              <div class="dividing-line">
-                <div class="dividing-box"></div>
-              </div>
+            <div class="map-delete" @click="mapDeletePolyline" title="消除全部划线">
+                <img src="images/icon-delete.png" alt=""/>
             </div>
-
-            <div class="bottom-main">
-              <div class="main-list">
-                <div class="main-left">
-                  <img src="images/manage.png" />
-                  <div class="text-centered">
-                    <p>110</p>
-                  </div>
-                </div>
-                <div class="main-right">
-                  <p>昨日<span class="num-font">20</span>起</p>
-                  <p>本周<span class="num-font">189</span>起</p>
-                  <p>当月<span class="num-font">3482</span>起</p>
-                </div>
-              </div>
-              <div class="main-list">
-                <div class="main-left">
-                  <img src="images/manage.png" />
-                  <div class="text-centered">
-                    <p>119</p>
-                  </div>
-                </div>
-                <div class="main-right">
-                  <p>昨日<span class="num-font">20</span>起</p>
-                  <p>本周<span class="num-font">189</span>起</p>
-                  <p>当月<span class="num-font">3482</span>起</p>
-                </div>
-              </div>
-              <div class="main-list"  @click="rescueShow=true">
-                <div class="main-left">
-                  <img src="images/manage.png" />
-                  <div class="text-centered">
-                    <p>120</p>
-                  </div>
-                </div>
-                <div class="main-right">
-                  <p>昨日<span class="num-font">20</span>起</p>
-                  <p>本周<span class="num-font">189</span>起</p>
-                  <p>当月<span class="num-font">3482</span>起</p>
-                </div>
-              </div>
-              <div class="main-list" onclick="ModalClick()">
-              <!--   <div class="main-list">-->
-                <div class="main-left">
-                  <img src="images/manage.png" />
-                  <div class="text-centered">
-                  <!--<p>12345</p>-->
-                  <img src="images/12345.png" style="width:3rem;cursor: pointer"/>
-                  </div>
-                </div>
-                <div class="main-right">
-                  <p>今日<span class="num-font">20</span>起</p>
-                  <p>本周<span class="num-font">189</span>起</p>
-                  <p>当月<span class="num-font">3482</span>起</p>
-                </div>
-              </div>
-
-              <div class="main-list" @click="gridShow=true">
-                <div class="main-left">
-                  <img src="images/manage.png" />
-                  <div class="text-centered">
-                    <p>网格化</p>
-                  </div>
-                </div>
-                <div class="main-right">
-                  <p>今日<span class="num-font">20</span>起</p>
-                  <p>本周<span class="num-font">189</span>起</p>
-                  <p>当月<span class="num-font">3482</span>起</p>
-                </div>
-              </div>
-
-              <div class="main-list" >
-                <div class="main-left">
-                  <img src="images/manage.png" />
-                  <div class="text-centered">
-                    <p>突发事件</p>
-                  </div>
-                </div>
-                <div class="main-right">
-                  <p>今日<span class="num-font">0</span>起</p>
-                  <p>本周<span class="num-font">0</span>起</p>
-                  <p>当月<span class="num-font">5</span>起</p>
-                </div>
-              </div>
+            <div class="dialog-toggle" @click="showClick">
+                <span v-show="showDialog">折叠</span>
+                <span v-show="!showDialog">展开堵点信息</span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="main-box main-box-big">
-        <div class="map-box" id="mapContainer"></div>
-        <div class="map-center" @click="mapCenter" title="回到行政区域中心">
-          <img src="images/refresh-left.png" alt="" />
-        </div>
-        <div class="map-delete" @click="mapDeletePolyline" title="消除全部划线">
-          <img src="images/icon-delete.png" alt="" />
-        </div>
-        <div class="dialog-toggle" @click="showClick">
-          <span v-show="showDialog">折叠</span>
-          <span v-show="!showDialog">展开堵点信息</span>
-        </div>
-        <div class="dialog-box" v-show="showDialog">
-          <div class="dialog-con">
-            <div style="font-weight: bold">拥堵路段统计:</div>
-            <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick1">
-              <span class="bot1">500M-1000M</span><span>{{list1.length}} 段</span>
-            </div>
-            <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick2() ">
-              <span class="bot2">1000M-2000M</span><span>{{list2.length}} 段</span>
-            </div>
-            <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick3()">
-              <span class="bot3">2000M以上</span><span>{{list3.length}} 段</span>
-            </div>
-            <div v-show="visible1" class="dialog-box2">
-              <a class="dialog-close" @click="closeClick"> x</a>
-              <div class="dialog-con2">
-                <div style="font-weight: bold">500M-1000M拥堵路:</div>
-                <div v-if="list1.length>0">
-                  <div v-for="(item,index) in list1" style="margin: 0.4rem 0" @click="clickLocus1(item,index)">
+            <div class="dialog-box" v-show="showDialog">
+                <div class="dialog-con">
+                    <div style="font-weight: bold">拥堵路段统计:</div>
+                    <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick1">
+                        <span class="bot1">500M-1000M</span><span>{{list1.length}} 段</span>
+                    </div>
+                    <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick2() ">
+                        <span class="bot2">1000M-2000M</span><span>{{list2.length}} 段</span>
+                    </div>
+                    <div style="margin: 0.4rem 0; cursor: pointer" @click="visibleClick3()">
+                        <span class="bot3">2000M以上</span><span>{{list3.length}} 段</span>
+                    </div>
+                    <div v-show="visible1" class="dialog-box2">
+                        <a class="dialog-close" @click="closeClick"> x</a>
+                        <div class="dialog-con2">
+                            <div style="font-weight: bold">500M-1000M拥堵路:</div>
+                            <div v-if="list1.length>0">
+                                <div v-for="(item,index) in list1" style="margin: 0.4rem 0"
+                                     @click="clickLocus1(item,index)">
                     <span class="sub-bot1"
-                      :class="{ mapListActive: index == changeIndex1 }">{{item.roadName}}-{{item.direction}}</span>
-                  </div>
-                </div>
-                <div v-else style="margin: 0.4rem 0">
-                  <span class="sub-bot1">暂无</span>
-                </div>
-              </div>
-            </div>
-            <div v-show="visible2" class="dialog-box2">
-              <a class="dialog-close" @click="closeClick"> x</a>
-              <div class="dialog-con2">
-                <div style="font-weight: bold">1000M-2000M拥堵路:</div>
-                <div v-if="list2.length>0">
-                  <div v-for="(item, index) in list2" style="margin: 0.4rem 0" @click="clickLocus2(item, index)">
+                          :class="{ mapListActive: index == changeIndex1 }">{{item.roadName}}-{{item.direction}}</span>
+                                </div>
+                            </div>
+                            <div v-else style="margin: 0.4rem 0">
+                                <span class="sub-bot1">暂无</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-show="visible2" class="dialog-box2">
+                        <a class="dialog-close" @click="closeClick"> x</a>
+                        <div class="dialog-con2">
+                            <div style="font-weight: bold">1000M-2000M拥堵路:</div>
+                            <div v-if="list2.length>0">
+                                <div v-for="(item, index) in list2" style="margin: 0.4rem 0"
+                                     @click="clickLocus2(item, index)">
                     <span class="sub-bot2"
-                      :class="{ mapListActive: index == changeIndex2 }">{{item.roadName}}-{{item.direction}}</span>
-                  </div>
-                </div>
-                <div v-else style="margin: 0.4rem 0">
-                  <span class="sub-bot2">暂无</span>
-                </div>
-              </div>
-            </div>
-            <div v-show="visible3" class="dialog-box2">
-              <a class="dialog-close" @click="closeClick"> x</a>
-              <div class="dialog-con2">
-                <div style="font-weight: bold">2000M以上拥堵路:</div>
-                <div v-if="list3.length>0">
-                  <div v-for="(item, index) in list3" style="margin: 0.4rem 0" @click="clickLocus3(item, index)">
+                          :class="{ mapListActive: index == changeIndex2 }">{{item.roadName}}-{{item.direction}}</span>
+                                </div>
+                            </div>
+                            <div v-else style="margin: 0.4rem 0">
+                                <span class="sub-bot2">暂无</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-show="visible3" class="dialog-box2">
+                        <a class="dialog-close" @click="closeClick"> x</a>
+                        <div class="dialog-con2">
+                            <div style="font-weight: bold">2000M以上拥堵路:</div>
+                            <div v-if="list3.length>0">
+                                <div v-for="(item, index) in list3" style="margin: 0.4rem 0"
+                                     @click="clickLocus3(item, index)">
                     <span class="sub-bot3"
-                      :class="{ mapListActive: index == changeIndex3 }">{{item.roadName}}-{{item.direction}}</span>
-                  </div>
+                          :class="{ mapListActive: index == changeIndex3 }">{{item.roadName}}-{{item.direction}}</span>
+                                </div>
+                            </div>
+                            <div v-else style="margin: 0.4rem 0">
+                                <span class="sub-bot3">暂无</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div v-else style="margin: 0.4rem 0">
-                  <span class="sub-bot3">暂无</span>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="main-box main-box-min">
-        <div class="video-box">
-          <div class="main-title">
-            <div class="title-bg title-bg1"></div>
-            <div class="title-bg title-bg2"></div>
-            <div class="title-bg title-bg3"></div>
-            <div class="title-border"></div>
-            <h3>视频轮巡</h3>
-          </div>
-          <div class="content-bg"></div>
-          <div class="content-box">
-            <div class="jrwlzsj_box1">
-              <div class="slider" id="slider1"></div>
-            </div>
-            <hr style="
+        <div class="main-box main-box-min">
+            <div class="video-box">
+                <div class="main-title">
+                    <div class="title-bg title-bg1"></div>
+                    <div class="title-bg title-bg2"></div>
+                    <div class="title-bg title-bg3"></div>
+                    <div class="title-border"></div>
+                    <h3>视频轮巡</h3>
+                </div>
+                <div class="content-bg"></div>
+                <div class="content-box">
+                    <div class="jrwlzsj_box1">
+                        <div class="slider" id="slider1"></div>
+                    </div>
+                    <hr style="
                   width: 30.3rem;
                   margin-left: 0.9rem;
                   margin-top: 0.5rem;
                   border: 1px dashed #aaa;
-                " />
+                "/>
 
-            <div class="jrwlzsj_box1" style="margin-top: 0.2rem">
-              <div class="slider" id="slider2">
-                <!--<div style="width: 13.8rem;height:7.9rem;margin-top: 1.37rem;;margin-left: 1.6rem;background-color: aliceblue; float: left;">
-								</div>
-								<div style="width: 13.8rem;height:7.9rem;margin-top: 1.37rem;margin-left: 1.16rem;background-color: aliceblue; float: left;">
-								</div> -->
-              </div>
+                    <div class="jrwlzsj_box1" style="margin-top: 0.2rem">
+                        <div class="slider" id="slider2">
+                            <!--<div style="width: 13.8rem;height:7.9rem;margin-top: 1.37rem;;margin-left: 1.6rem;background-color: aliceblue; float: left;">
+                                            </div>
+                                            <div style="width: 13.8rem;height:7.9rem;margin-top: 1.37rem;margin-left: 1.16rem;background-color: aliceblue; float: left;">
+                                            </div> -->
+                        </div>
+                    </div>
+                    <div class="openVideo" id="slider3" style="display: none">
+                        <!-- <span style="left:0px;top:0px;font-size:1.5rem;position:absolute;color:#00fff6;z-index:10000">监控视频1</span>
+                                <span style="right:0px;top:0px;font-size:1.5rem;position:absolute;color:#999;z-index:10000" onclick="removeLargeVideo()">关闭</span>
+                                <div class="largeVideoDiv">
+                                   <video controls="" autoplay preload muted name="media" class="largeVideo"  muted="muted"></video>
+                                </div>-->
+                    </div>
+                </div>
             </div>
-            <div class="openVideo" id="slider3" style="display: none">
-              <!-- <span style="left:0px;top:0px;font-size:1.5rem;position:absolute;color:#00fff6;z-index:10000">监控视频1</span>
-                      <span style="right:0px;top:0px;font-size:1.5rem;position:absolute;color:#999;z-index:10000" onclick="removeLargeVideo()">关闭</span>
-                      <div class="largeVideoDiv">
-                         <video controls="" autoplay preload muted name="media" class="largeVideo"  muted="muted"></video>
-                      </div>-->
-            </div>
-          </div>
-        </div>
-        <div class="special-box">
-          <div class="main-title">
-            <div class="title-bg title-bg1"></div>
-            <div class="title-bg title-bg2"></div>
-            <div class="title-bg title-bg3"></div>
-            <div class="title-border"></div>
-            <h3>专项管理</h3>
-          </div>
-          <div class="content-bg"></div>
-          <div class="content-box">
-            <div style="height: 4rem; width: 33rem; margin-top: 0rem">
-              <div style="
+            <div class="special-box">
+                <div class="main-title">
+                    <div class="title-bg title-bg1"></div>
+                    <div class="title-bg title-bg2"></div>
+                    <div class="title-bg title-bg3"></div>
+                    <div class="title-border"></div>
+                    <h3>专项管理</h3>
+                </div>
+                <div class="content-bg"></div>
+                <div class="content-box">
+                    <div style="height: 4rem; width: 33rem; margin-top: 0rem">
+                        <div style="
                     float: left;
                     margin-left: 1.5rem;
                     height: 3.8rem;
@@ -698,28 +752,28 @@
                     color: white;
                     display: inline;
                   ">
-                <img style="height: 2rem; width: 4rem" src="images/zhihui.png" />
-              </div>
-              <div style="
+                            <img style="height: 2rem; width: 4rem" src="images/zhihui.png"/>
+                        </div>
+                        <div style="
                     height: 3.8rem;
                     width: 29rem;
                     display: inline;
                     margin-left: 0.5rem;
                     position: relative;
                   " id="zhihuiBox"></div>
-              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
-                onclick="moreZhihui()" id="zhihuiAdd">
-                ^
-              </div>
-            </div>
-            <div style="
+                        <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
+                             onclick="moreZhihui()" id="zhihuiAdd">
+                            ^
+                        </div>
+                    </div>
+                    <div style="
                   height: 4rem;
                   width: 33rem;
                   margin-top: 0.5rem;
                   font-size: 1.3rem;
                   color: white;
                 ">
-              <div style="
+                        <div style="
                     float: left;
                     margin-left: 1.5rem;
                     height: 3.8rem;
@@ -728,28 +782,28 @@
                     color: white;
                     display: inline;
                   ">
-                <img style="height: 2rem; width: 4rem" src="images/anquan.png" />
-              </div>
-              <div style="
+                            <img style="height: 2rem; width: 4rem" src="images/anquan.png"/>
+                        </div>
+                        <div style="
                     height: 3.8rem;
                     width: 29rem;
                     display: inline;
                     margin-left: 0.5rem;
                     position: relative;
                   " id="anquanBox"></div>
-              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
-                onclick="moreAnquan()" id="anquanAdd">
-                ^
-              </div>
-            </div>
-            <div style="
+                        <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
+                             onclick="moreAnquan()" id="anquanAdd">
+                            ^
+                        </div>
+                    </div>
+                    <div style="
                   height: 4rem;
                   width: 33rem;
                   margin-top: 0.5rem;
                   font-size: 1.3rem;
                   color: white;
                 ">
-              <div style="
+                        <div style="
                     float: left;
                     margin-left: 1.5rem;
                     height: 3.8rem;
@@ -758,400 +812,434 @@
                     color: white;
                     display: inline;
                   ">
-                <img style="height: 1.7rem; width: 3.9rem" src="images/gaoxiao.png" />
-              </div>
-              <div style="
+                            <img style="height: 1.7rem; width: 3.9rem" src="images/gaoxiao.png"/>
+                        </div>
+                        <div style="
                     height: 3.8rem;
                     width: 29rem;
                     display: inline;
                     margin-left: 0.5rem;
                     position: relative;
                   " id="gaoxiaoBox"></div>
-              <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
-                onclick="moreGaoxiao()" id="gaoxiaoAdd">
-                ^
-              </div>
+                        <div class="csyytz_txt text-centered" style="font-size: 1.5rem; width: 1.5rem; cursor: pointer"
+                             onclick="moreGaoxiao()" id="gaoxiaoAdd">
+                            ^
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="ModalBox" id="ModalBox" onclick="ModalClick()">
-        <object id="openiframe" data="Modal/12345Modal.html" width="100%" height="100%"></object>
-      </div>
-      <div class="ModalBox" id="GarBageModal">
-        <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%"
-          frameborder="0"></iframe>
-      </div> <div class="Child_ModalBox " id="BusModalBox">
-        <object id="openiframeBusModalBox" data="Modal/BusModalBox.html" width="100%" height="100%"
-         ></object>
-      </div>
-      <div class="rest-box" id="GridModal"  v-show="gridShow" >
-        <a class="rescue-close" @click="gridShow=false" >
-          x</a>
-        <iframe id="openiframeGridModal" src="Modal/GridModal.html" width="100%" height="100%" frameborder="0"></iframe>
-      </div>
-      <div class="rest-box" id="RestModal" style="display: none" v-show="restShow">
-        <a class="rescue-close" onclick="closeOldPeopleHome()" >
-          x</a>
-        <iframe id="openiframe3" src="Modal/RestModal.html" width="100%" height="100%" frameborder="0"></iframe>
-      </div>
-      <div class="rest-box" id="rescueModal"  v-show="rescueShow" >
-        <a class="rescue-close" @click="rescueShow=false" >
-          x</a>
-        <iframe id="openiframeRescueModal" src="Modal/RescueModal.html" width="100%" height="100%" frameborder="0"></iframe>
-      </div>
-      
-      <div v-show="httpShow" class="rest-www">
-        <div class="httpShow-close" @click="httpShow=false">x</div>
-        <div style="width: 140%; height: 140%">
-          <iframe id="openiframe1"
-            src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf"
-                  width="143%" height="143%" frameborder="0"  style="transform: scale(0.5);margin-left:-35.5%;margin-top:-10%">
-          </iframe>
+        <div class="ModalBox" id="ModalBox" onclick="ModalClick()">
+            <object id="openiframe" data="Modal/12345Modal.html" width="100%" height="100%"></object>
         </div>
-      </div>
+        <div class="ModalBox" id="GarBageModal">
+            <iframe id="openiframeGarBageModal" src="Modal/GarBageModal.html" width="100%" height="100%"
+                    frameborder="0"></iframe>
+        </div>
+        <div class="Child_ModalBox" id="SuddenModelBox">
+            <iframe id="openSuddenModelBox" src="Modal/SuddenModelBox.html" width="100%" height="100%"
+                    frameborder="0"></iframe>
+        </div>
+        <div class="Child_ModalBox " id="BusModalBox">
+            <object id="openiframeBusModalBox" data="Modal/BusModalBox.html" width="100%" height="100%"
+            ></object>
+        </div>
+        <div class="rest-box" id="GridModal" v-show="gridShow">
+            <a class="rescue-close" @click="gridShow=false">
+                x</a>
+            <iframe id="openiframeGridModal" src="Modal/GridModal.html" width="100%" height="100%"
+                    frameborder="0"></iframe>
+        </div>
+        <div class="rest-box" id="RestModal" style="display: none" v-show="restShow">
+            <a class="rescue-close" onclick="closeOldPeopleHome()">
+                x</a>
+            <iframe id="openiframe3" src="Modal/RestModal.html" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+        <div class="rest-box" id="rescueModal" v-show="rescueShow">
+            <a class="rescue-close" @click="rescueShow=false">
+                x</a>
+            <iframe id="openiframeRescueModal" src="Modal/RescueModal.html" width="100%" height="100%"
+                    frameborder="0"></iframe>
+        </div>
 
-      <div style="display: none" class="rest-www" id="publicIframe">
-        <div class="httpShow-close" onclick="closeIframe()">x</div>
-        <div style="width: 140%; height: 140%" id="iframeDiv">
-          <!--<iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" width="100%" height="100%" frameborder="0"></iframe>-->
-          <!-- <iframe src="https://www.baidu.com" width="100%" height="100%" frameborder="0"></iframe>-->
+        <div v-show="httpShow" class="rest-www">
+            <div class="httpShow-close" @click="httpShow=false">x</div>
+            <div style="width: 140%; height: 140%">
+                <iframe id="openiframe1"
+                        src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf"
+                        width="143%" height="143%" frameborder="0"
+                        style="transform: scale(0.5);margin-left:-35.5%;margin-top:-10%">
+                </iframe>
+            </div>
         </div>
-      </div>
+
+        <div style="display: none" class="rest-www" id="publicIframe">
+            <div class="httpShow-close" onclick="closeIframe()">x</div>
+            <div style="width: 140%; height: 140%" id="iframeDiv">
+                <!--<iframe id="openiframe1" src="http://10.81.71.38/chengyun/chengyun-fe/page1.html#/?code=LWSNkEMpV47i7ZdDaFl9pfKEw6X7eVkf" width="100%" height="100%" frameborder="0"></iframe>-->
+                <!-- <iframe src="https://www.baidu.com" width="100%" height="100%" frameborder="0"></iframe>-->
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 </body>
 <script src="Modal/Js/ajaxPromise.js"></script>
 <script type="text/javascript">
-  $(function () {
-    $("header img").ready(function () {
-      $(".main-warp").height($("html").height() - $(".header").height());
+    $(function () {
+        $("header img").ready(function () {
+            $(".main-warp").height($("html").height() - $(".header").height());
+        });
+
+        $(window).resize(function () {
+            setFont();
+            $(".main-warp").height($("html").height() - $(".header").height());
+        });
+        flip();
+        /*突发事件*/
+        getDutyList();
+        getDutyListReal();
     });
 
-    $(window).resize(function () {
-      setFont();
-      $(".main-warp").height($("html").height() - $(".header").height());
-    });
-    flip();
-  });
-  function flip() {
-    var timer = null;
-    var i = 0;
-    var j = 0;
-    var aFlip = $(".card");
+    function flip() {
+        var timer = null;
+        var i = 0;
+        var j = 0;
+        var aFlip = $(".card");
 
-    function flipFn(arg1, arg2) {
-      aFlip.eq(i).toggleClass("card-flipped");
-      i++;
-      if (i == 2) {
-        i = 0;
-      }
+        function flipFn(arg1, arg2) {
+            aFlip.eq(i).toggleClass("card-flipped");
+            i++;
+            if (i == 2) {
+                i = 0;
+            }
+        }
+
+        timer = setInterval(flipFn, 5000);
     }
-    timer = setInterval(flipFn, 5000);
-  }
-  // createVideoSlideOne();
-  // createVideoSlide();
-  //openVideo();
+
+    // createVideoSlideOne();
+    // createVideoSlide();
+    //openVideo();
 </script>
 
 <script>
-  function ModalClick() {
-    document.getElementById("ModalBox").style.display = "block";
-  }
-  //生活垃圾
-  function openGarbageClassification() {
-    document.getElementById("GarBageModal").style.display = "block";
-  }
-  /*公交车*/
-  function BusModalBoxFun(){
-    document.getElementById("BusModalBox").style.display = "block";
-  }
-  //网格化
-  function GridModalShow() {
-    $("#GridModal").show();
-  }
+    function ModalClick() {
+        document.getElementById("ModalBox").style.display = "block";
+    }
+
+    //生活垃圾
+    function openGarbageClassification() {
+        document.getElementById("GarBageModal").style.display = "block";
+    }
+
+    /*公交车*/
+    function BusModalBoxFun() {
+        document.getElementById("BusModalBox").style.display = "block";
+    }
+    /*紧急事件*/
+    function SuddenModelBoxBtn() {
+
+        document.getElementById("SuddenModelBox").style.display = "block";
+        document.getElementById("maincrtynammeid").style.display = "none";
+    }
+
+    //网格化
+    function GridModalShow() {
+        $("#GridModal").show();
+    }
 
 
-  var app = new Vue({
-    el: "#app",
-    data() {
-      return {
-        visible1: false,
-        visible2: false,
-        visible3: false,
-        list1: [],
-        list2: [],
-        list3: [],
-        showDialog: true,
-        gridShow: false,
-        restShow: false,
-        rescueShow: false,
-       
-        polylines1: new Map(),
-        polylines2: new Map(),
-        polylines3: new Map(),
-        isActive: true,
-        isUnactive: false,
-        httpShow: false,
-        changeIndex1: -1,
-        changeIndex2: -1,
-        changeIndex3: -1,
-      };
-    },
-    methods: {
-      visibleClick1() {
-        this.visible1 = true;
-        this.visible2 = false;
-        this.visible3 = false;
-        this.changeIndex1 = -1;
-      },
-      visibleClick2() {
-        this.visible1 = false;
-        this.visible2 = true;
-        this.visible3 = false;
-        this.changeIndex2 = -1;
-      },
-      visibleClick3() {
-        this.visible1 = false;
-        this.visible2 = false;
-        this.visible3 = true;
-        this.changeIndex3 = -1;
-      },
-      closeClick() {
-        this.visible1 = false;
-        this.visible2 = false;
-        this.visible3 = false;
-      },
-    
-      clickLocus1(item, index) {
-        let str = "";
-        if (this.list1[index].listLinkInfoState[0].lastPoint) {
-          str = this.list1[index].listLinkInfoState[0].lastPoint;
-        }
-        let lineArr1 = str.split(",");
-        map.setZoomAndCenter(15, lineArr1);
-        this.changeIndex1 = index
+    var app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                visible1: false,
+                visible2: false,
+                visible3: false,
+                list1: [],
+                list2: [],
+                list3: [],
+                showDialog: true,
+                gridShow: false,
+                restShow: false,
+                rescueShow: false,
 
-        this.list1[index].isShow = !this.list1[index].isShow;
-        if (this.list1[index].isShow) {
-          let lineArr = [];
-          let Arr = [];
-          let str = "";
-
-
-          var polylineList1=[]
-
-          for(var i=0;i<this.list1[index].listLinkInfoState.length;i++){
-            lineArr = [];
-            if(this.list1[index].listLinkInfoState[i].state<3)
-              continue;
-            if (this.list1[index].listLinkInfoState[i].lngLats) {
-              str = this.list1[index].listLinkInfoState[i].lngLats;
-            }
-            let arr = str.split(";");
-            arr.forEach((items) => {
-              let singleArr = items.split(",");
-            lineArr.push(singleArr);
-              console.log(lineArr, 'lineArr');
-          });
-            var polyline1 = new AMap.Polyline({
-              map: map,
-              path: lineArr,
-              showDir: true,
-              strokeColor: "red", //线颜色
-              strokeOpacity: 0.5,     //线透明度
-              strokeWeight: 12, //线宽
-              strokeStyle: "solid", //线样式
-            });
-           // this.polylines1.set(index, polyline1);
-            polylineList1[i]=polyline1
-
-          }
-          this.polylines1.set(index, polylineList1);
-        } else {
-          var curPolylineList=this.polylines1.get(index)
-          for(var j=0;j<curPolylineList.length;j++){
-            map.remove(curPolylineList[j]);
-          }
-          this.polylines1.delete(index);
-        }
-      },
-      clickLocus2(item, index) {
-        let str = "";
-        if (this.list2[index].listLinkInfoState[0].lastPoint) {
-          str = this.list2[index].listLinkInfoState[0].lastPoint;
-        }
-        let lineArr = str.split(",");
-        map.setZoomAndCenter(15, lineArr);
-        this.changeIndex2 = index
-
-        this.list2[index].isShow = !this.list2[index].isShow;
-        if (this.list2[index].isShow) {
-          let lineArr = [];
-          let Arr = [];
-          let str = "";
-          var polylineList2=[]
-          for(var i=0;i<this.list2[index].listLinkInfoState.length;i++){
-            lineArr = [];
-            if(this.list2[index].listLinkInfoState[i].state<3)
-              continue;
-            if (this.list2[index].listLinkInfoState[i].lngLats) {
-              str = this.list2[index].listLinkInfoState[i].lngLats;
-            }
-            let arr = str.split(";");
-            arr.forEach((items) => {
-              let singleArr = items.split(",");
-              lineArr.push(singleArr);
-
-            });
-            var polyline2 = new AMap.Polyline({
-              map: map,
-              path: lineArr,
-              showDir: true,
-              strokeColor: "red", //线颜色
-              strokeOpacity: 0.5,     //线透明度
-              strokeWeight: 12, //线宽
-              strokeStyle: "solid", //线样式
-            });
-            // this.polylines1.set(index, polyline1);
-            polylineList2[i]=polyline2
-          }
-          this.polylines2.set(index, polylineList2);
-        } else {
-          var curPolylineList=this.polylines2.get(index)
-      
-          for(var j=0;j<curPolylineList.length;j++){
-            map.remove(curPolylineList[j]);
-          }
-          // map.remove(this.polylines1.get(index));
-          this.polylines2.delete(index);
-        }
-      },
-      clickLocus3(item, index) {
-        let str = "";
-        if (this.list3[index].listLinkInfoState[0].lastPoint) {
-          str = this.list3[index].listLinkInfoState[0].lastPoint;
-        }
-        let arr = str.split(",");
-        map.setZoomAndCenter(15, arr);
-        this.changeIndex3 = index
-        this.list3[index].isShow = !this.list3[index].isShow;
-        if (this.list3[index].isShow) {
-          let lineArr = [];
-          let Arr = [];
-          let str = "";
-          var polylineList3=[]
-          for(var i=0;i<this.list3[index].listLinkInfoState.length;i++){
-            lineArr = [];
-            if(this.list3[index].listLinkInfoState[i].state<3)
-              continue;
-            if (this.list3[index].listLinkInfoState[i].lngLats) {
-              str = this.list3[index].listLinkInfoState[i].lngLats;
-            }
-            let arr = str.split(";");
-            arr.forEach((items) => {
-              let singleArr = items.split(",");
-              lineArr.push(singleArr);
-            });
-            var polyline3 = new AMap.Polyline({
-              map: map,
-              path: lineArr,
-              showDir: true,
-              strokeColor: "red", //线颜色
-              strokeOpacity: 0.5,     //线透明度
-              strokeWeight: 12, //线宽
-              strokeStyle: "solid", //线样式
-            });
-            polylineList3[i]=polyline3
-          }
-          this.polylines3.set(index, polylineList3);
-        } else {
-          var curPolylineList=this.polylines3.get(index)
-         // alert(curPolylineList.length)
-          for(var j=0;j<curPolylineList.length;j++){
-            map.remove(curPolylineList[j]);
-          }
-          this.polylines2.delete(index);
-        }
-      },
-      
-      showClick() {
-        this.showDialog = !this.showDialog;
-      },
-      mapCenter() {
-        map.setZoomAndCenter(12, [121.238825, 31.364284]);
-      },
-      mapDeletePolyline() {
-        this.polylines1.forEach((item) => {
-          map.remove(item);
-        });
-        this.polylines2.forEach((item) => {
-          map.remove(item);
-        });
-        this.polylines3.forEach((item) => {
-          map.remove(item);
-        });
-        this.polylines1.clear()
-        this.polylines2.clear()
-        this.polylines3.clear()
-
-        for(var i=0;i<this.list1.length;i++){
-          this.list1[i].isShow=false;
-        }
-        for(var i=0;i<this.list1.length;i++){
-          this.list2[i].isShow=false;
-        }
-        for(var i=0;i<this.list1.length;i++){
-          this.list3[i].isShow=false;
-        }
-
-      },
-      getHttp() {
-        //发送get请求
-        this.$http.get(
-            // "http://127.0.0.1:5500/map/mock_data.json"
-           //"http://127.0.0.1:5500/map/congrestion.json"
-             FIRE_URL+"/cityBrain/getSession"
-          ).then(
-            function (res) {
-              this.list1 = [];
-              this.list2 = [];
-              this.list3 = [];
-              res.data.forEach((item) => {
-                item.isShow = false;
-
-                if (item.distance <= 1000 && item.listLinkInfoState !== "") {
-                  return this.list1.push(item);
-                } else if (
-                  item.distance > 1000 &&
-                  item.distance <= 2000 &&
-                  item.listLinkInfoState !== ""
-                ) {
-                  return this.list2.push(item);
-                } else if (
-                  item.distance > 2000 &&
-                  item.listLinkInfoState !== ""
-                ) {
-                  return this.list3.push(item);
-                }
-              });
+                polylines1: new Map(),
+                polylines2: new Map(),
+                polylines3: new Map(),
+                isActive: true,
+                isUnactive: false,
+                httpShow: false,
+                changeIndex1: -1,
+                changeIndex2: -1,
+                changeIndex3: -1,
+                newsListtime: null
+            };
+        },
+        methods: {
+            visibleClick1() {
+                this.visible1 = true;
+                this.visible2 = false;
+                this.visible3 = false;
+                this.changeIndex1 = -1;
             },
-            function () {
-              console.log("请求失败处理");
-            }
-          );
-      },
-    },
-    created() {
-      this.getHttp();
-    },
-    mounted() {
-      this.timer = setInterval(this.getHttp, 1000 * 60 * 10);
-    },
-    beforeDestroy() {
-      clearInterval(this.timer);
-    },
-  });
+            visibleClick2() {
+                this.visible1 = false;
+                this.visible2 = true;
+                this.visible3 = false;
+                this.changeIndex2 = -1;
+            },
+            visibleClick3() {
+                this.visible1 = false;
+                this.visible2 = false;
+                this.visible3 = true;
+                this.changeIndex3 = -1;
+            },
+            closeClick() {
+                this.visible1 = false;
+                this.visible2 = false;
+                this.visible3 = false;
+            },
+
+            clickLocus1(item, index) {
+                let str = "";
+                if (this.list1[index].listLinkInfoState[0].lastPoint) {
+                    str = this.list1[index].listLinkInfoState[0].lastPoint;
+                }
+                let lineArr1 = str.split(",");
+                map.setZoomAndCenter(15, lineArr1);
+                this.changeIndex1 = index
+
+                this.list1[index].isShow = !this.list1[index].isShow;
+                if (this.list1[index].isShow) {
+                    let lineArr = [];
+                    let Arr = [];
+                    let str = "";
+
+
+                    var polylineList1 = []
+
+                    for (var i = 0; i < this.list1[index].listLinkInfoState.length; i++) {
+                        lineArr = [];
+                        if (this.list1[index].listLinkInfoState[i].state < 3)
+                            continue;
+                        if (this.list1[index].listLinkInfoState[i].lngLats) {
+                            str = this.list1[index].listLinkInfoState[i].lngLats;
+                        }
+                        let arr = str.split(";");
+                        arr.forEach((items) => {
+                            let singleArr = items.split(",");
+                            lineArr.push(singleArr);
+                            console.log(lineArr, 'lineArr');
+                        });
+                        var polyline1 = new AMap.Polyline({
+                            map: map,
+                            path: lineArr,
+                            showDir: true,
+                            strokeColor: "red", //线颜色
+                            strokeOpacity: 0.5,     //线透明度
+                            strokeWeight: 12, //线宽
+                            strokeStyle: "solid", //线样式
+                        });
+                        // this.polylines1.set(index, polyline1);
+                        polylineList1[i] = polyline1
+
+                    }
+                    this.polylines1.set(index, polylineList1);
+                } else {
+                    var curPolylineList = this.polylines1.get(index)
+                    for (var j = 0; j < curPolylineList.length; j++) {
+                        map.remove(curPolylineList[j]);
+                    }
+                    this.polylines1.delete(index);
+                }
+            },
+            clickLocus2(item, index) {
+                let str = "";
+                if (this.list2[index].listLinkInfoState[0].lastPoint) {
+                    str = this.list2[index].listLinkInfoState[0].lastPoint;
+                }
+                let lineArr = str.split(",");
+                map.setZoomAndCenter(15, lineArr);
+                this.changeIndex2 = index
+
+                this.list2[index].isShow = !this.list2[index].isShow;
+                if (this.list2[index].isShow) {
+                    let lineArr = [];
+                    let Arr = [];
+                    let str = "";
+                    var polylineList2 = []
+                    for (var i = 0; i < this.list2[index].listLinkInfoState.length; i++) {
+                        lineArr = [];
+                        if (this.list2[index].listLinkInfoState[i].state < 3)
+                            continue;
+                        if (this.list2[index].listLinkInfoState[i].lngLats) {
+                            str = this.list2[index].listLinkInfoState[i].lngLats;
+                        }
+                        let arr = str.split(";");
+                        arr.forEach((items) => {
+                            let singleArr = items.split(",");
+                            lineArr.push(singleArr);
+
+                        });
+                        var polyline2 = new AMap.Polyline({
+                            map: map,
+                            path: lineArr,
+                            showDir: true,
+                            strokeColor: "red", //线颜色
+                            strokeOpacity: 0.5,     //线透明度
+                            strokeWeight: 12, //线宽
+                            strokeStyle: "solid", //线样式
+                        });
+                        // this.polylines1.set(index, polyline1);
+                        polylineList2[i] = polyline2
+                    }
+                    this.polylines2.set(index, polylineList2);
+                } else {
+                    var curPolylineList = this.polylines2.get(index)
+
+                    for (var j = 0; j < curPolylineList.length; j++) {
+                        map.remove(curPolylineList[j]);
+                    }
+                    // map.remove(this.polylines1.get(index));
+                    this.polylines2.delete(index);
+                }
+            },
+            clickLocus3(item, index) {
+                let str = "";
+                if (this.list3[index].listLinkInfoState[0].lastPoint) {
+                    str = this.list3[index].listLinkInfoState[0].lastPoint;
+                }
+                let arr = str.split(",");
+                map.setZoomAndCenter(15, arr);
+                this.changeIndex3 = index
+                this.list3[index].isShow = !this.list3[index].isShow;
+                if (this.list3[index].isShow) {
+                    let lineArr = [];
+                    let Arr = [];
+                    let str = "";
+                    var polylineList3 = []
+                    for (var i = 0; i < this.list3[index].listLinkInfoState.length; i++) {
+                        lineArr = [];
+                        if (this.list3[index].listLinkInfoState[i].state < 3)
+                            continue;
+                        if (this.list3[index].listLinkInfoState[i].lngLats) {
+                            str = this.list3[index].listLinkInfoState[i].lngLats;
+                        }
+                        let arr = str.split(";");
+                        arr.forEach((items) => {
+                            let singleArr = items.split(",");
+                            lineArr.push(singleArr);
+                        });
+                        var polyline3 = new AMap.Polyline({
+                            map: map,
+                            path: lineArr,
+                            showDir: true,
+                            strokeColor: "red", //线颜色
+                            strokeOpacity: 0.5,     //线透明度
+                            strokeWeight: 12, //线宽
+                            strokeStyle: "solid", //线样式
+                        });
+                        polylineList3[i] = polyline3
+                    }
+                    this.polylines3.set(index, polylineList3);
+                } else {
+                    var curPolylineList = this.polylines3.get(index)
+                    // alert(curPolylineList.length)
+                    for (var j = 0; j < curPolylineList.length; j++) {
+                        map.remove(curPolylineList[j]);
+                    }
+                    this.polylines2.delete(index);
+                }
+            },
+
+            showClick() {
+                this.showDialog = !this.showDialog;
+            },
+            mapCenter() {
+                map.setZoomAndCenter(12, [121.238825, 31.364284]);
+            },
+            mapDeletePolyline() {
+                this.polylines1.forEach((item) => {
+                    map.remove(item);
+                });
+                this.polylines2.forEach((item) => {
+                    map.remove(item);
+                });
+                this.polylines3.forEach((item) => {
+                    map.remove(item);
+                });
+                /*this.polylines1.clear()
+                this.polylines2.clear()
+                this.polylines3.clear()*/
+
+                this.polylines1.length = 0;
+                this.polylines2.length = 0;
+                this.polylines3.length = 0;
+
+                for (var i = 0; i < this.list1.length; i++) {
+                    this.list1[i].isShow = false;
+                }
+                for (var i = 0; i < this.list1.length; i++) {
+                    this.list2[i].isShow = false;
+                }
+                for (var i = 0; i < this.list1.length; i++) {
+                    this.list3[i].isShow = false;
+                }
+
+            },
+            setIntervalclear() {
+                document.getElementById("newsListP").style.display = 'none'
+                clearInterval(this.newsListtime);
+            },
+            getHttp() {
+                //发送get请求
+                this.$http.get(
+                    // "http://127.0.0.1:5500/map/mock_data.json"
+                    //"http://127.0.0.1:5500/map/congrestion.json"
+                    FIRE_URL + "/cityBrain/getSession"
+                ).then(function (res) {
+                        this.list1 = [];
+                        this.list2 = [];
+                        this.list3 = [];
+                        res.data.forEach((item) => {
+                            item.isShow = false;
+                            if (item.distance <= 1000 && item.listLinkInfoState !== "") {
+                                return this.list1.push(item);
+                            } else if (
+                                item.distance > 1000 &&
+                                item.distance <= 2000 &&
+                                item.listLinkInfoState !== ""
+                            ) {
+                                return this.list2.push(item);
+                            } else if (
+                                item.distance > 2000 &&
+                                item.listLinkInfoState !== ""
+                            ) {
+                                return this.list3.push(item);
+                            }
+                        });
+                        document.getElementById("newsListP").style.display = 'block'
+                        document.getElementById("newsListP").innerHTML =
+                            `<span style="color:#40cda6">注意</span>地图点位已更新,目前拥堵路段总计${this.list1.length + this.list2.length + this.list3.length}段`
+                        this.newsListtime = setInterval(this.setIntervalclear, 6000)
+                    },
+                    function () {
+                        console.log("请求失败处理");
+                    }
+                );
+            },
+        },
+        created() {
+            this.getHttp();
+        },
+        mounted() {
+            this.timer = setInterval(this.getHttp, 1000 * 60 * 5);
+        },
+        beforeDestroy() {
+            clearInterval(this.timer);
+        },
+    });
 </script>
 
 </html>

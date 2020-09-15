@@ -25,7 +25,6 @@ function findAtlnglats(){
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res=>{
-        console.log(res,'21312321+++++++++++++++++++++==')
         ThermodynamicFun(res)
     })
 }
@@ -148,7 +147,6 @@ function TabsFun(num) {
     }
 
 }
-
 /*超期事件*/
 function OverDueFun(num) {
     let para = {
@@ -162,7 +160,13 @@ function OverDueFun(num) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        para = `  <ul class="work-older-list-ul">
+        if (res.length==0) {
+            para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">暂无工单</div>`
+            document.getElementById("GongDanTitleID").innerHTML=''
+            document.getElementById("GongDanID").innerHTML = para
+            document.getElementById("GongDanIDCopy").innerHTML = ""
+        }else {
+            para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
                                         <li>发生时间</li>
                                         <li>主责部门</li>
@@ -170,25 +174,25 @@ function OverDueFun(num) {
                                         <li>管理要点</li>
                                         <li>诉求内容</li>
                                     </ul>`
-        document.getElementById("GongDanTitleID").innerHTML = para
-        para = ''
-         findbcsclnglat=[]
-        for (let i = 0; i < res.length; i++) {
-            para += '<ul class="work-older-list-ul ul-line ">'
-                + '<li>' + res[i].attributes.TASKID + '</li>'
-                + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
-                + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
-                + '<li>' + res[i].attributes.LASTSOLVINGTIME + '</li>'
-                + '<li>' + res[i].attributes.ATNAME + '</li>'
-                + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
-                + '</ul>'
-
+            document.getElementById("GongDanTitleID").innerHTML = para
+            para = ''
+            findbcsclnglat = []
+            for (let i = 0; i < res.length; i++) {
+                para += '<ul class="work-older-list-ul ul-line ">'
+                    + '<li>' + res[i].attributes.TASKID + '</li>'
+                    + '<li>' + res[i].attributes.DISCOVERTIME + '</li>'
+                    + '<li>' + res[i].attributes.EXECUTEDEPTNAME + '</li>'
+                    + '<li>' + res[i].attributes.LASTSOLVINGTIME + '</li>'
+                    + '<li>' + res[i].attributes.ATNAME + '</li>'
+                    + '<li>' + res[i].attributes.DESCRIPTION + '</li>'
+                    + '</ul>'
+            }
+            document.getElementById("RightBannerNameId").innerText = '【超期工单】分布图'
+            document.getElementById("GongDanID").innerHTML = para
+            gongdanlist = res
+            onclickModelBoxFun()
+            findbcsclnglatNameFun(res)
         }
-        document.getElementById("RightBannerNameId").innerText='【超期工单】分布图'
-        document.getElementById("GongDanID").innerHTML = para
-        gongdanlist = res
-        onclickModelBoxFun()
-        findbcsclnglatNameFun(res)
     })
 }
 
@@ -207,11 +211,11 @@ function GongDan(num) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then((res) => {
-        if (res[0].count !== undefined && res[0].count == "0") {
-            para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
+        if (res.length==0) {
+            para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">暂无工单</div>`
+            document.getElementById("GongDanTitleID").innerHTML=''
             document.getElementById("GongDanID").innerHTML = para
             document.getElementById("GongDanIDCopy").innerHTML = ""
-
         } else {
             if (num==0) {
                 para = `  <ul class="work-older-list-ul">
@@ -284,12 +288,12 @@ function GongDantwo(num) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then((res) => {
-        if (res[0].count !== undefined && res[0].count == "0") {
-            para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">当日暂无数据</div>`
+        if (res.length==0) {
+            para = `<div style="text-align: center;font-size: 24px;color: white;margin-top: 20px">暂无工单</div>`
+            document.getElementById("GongDanTitleID").innerHTML=''
             document.getElementById("GongDanID").innerHTML = para
             document.getElementById("GongDanIDCopy").innerHTML = ""
-
-        } else {
+        }  else {
             if (num==0) {
                 para = `  <ul class="work-older-list-ul">
                                         <li>工单编号</li>
@@ -470,7 +474,6 @@ function findInfozcSortFun() {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        console.log(para)
     })
 }
 
@@ -555,7 +558,6 @@ function findbcNameType() {
     ajaxPromise(para).then(res => {
         let color = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff']
         para = ''
-        console.log(res)
         res.forEach((item, index) => {
             para += `
                  <ul class="BasicFunIditemul" style=" height: 2.5rem;width: 100%;display: flex;align-items: center">
@@ -615,7 +617,6 @@ function findbcsclnglatName(basicFunTime, name, scname) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        console.log(res)
         findbcsclnglatNameFun(res)
 
     })
@@ -632,7 +633,6 @@ function findbcsclnglatNames(basicFunTime, name, scname) {
         dataType: 'JSON',
     }
     ajaxPromise(para).then(res => {
-        console.log(res)
         ThermodynamicFun(res)
 
     })
@@ -761,7 +761,6 @@ function findTypeStreetName() {
         legend = ["满意度", "案件数量"]
         document.getElementById("SmallEChartscopy").style.display='none'
         document.getElementById("SmallECharts").style.display='flex'
-        console.log(xData,yData,zData,'9')
         MyEcharts.initChart(MyEcharts.EchartsOption.newbar(xData, yData, zData, "#F9392D", legend, "%"), "SmallECharts")
     })
 }
@@ -1000,7 +999,6 @@ function move() {
 }
 
 function findbcschotslnglatName(hots) {
-    console.log(basicFunTimeName)
     // if (basicFunTimeName==undefined){
     //     basicFunTimeName:''
     // }
@@ -1021,7 +1019,6 @@ function findbcschotslnglatName(hots) {
     })
 }
 function findbcschotslnglatNames(hots) {
-    console.log(basicFunTimeName)
     // if (basicFunTimeName==undefined){
     //     basicFunTimeName:''
     // }

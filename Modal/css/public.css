@@ -1,0 +1,22 @@
+.flex{
+    display: flex;
+}
+.flex_item_1{
+    flex: 1;
+}
+.flex_item_2{
+    flex: 2;
+}.flex_item_3{
+    flex: 3;
+}.flex_item_4{
+    flex: 4;
+}
+.flex-between{
+    justify-content: space-between;
+}
+.border-bg{
+    background-image: url(../images/12345icon.png) ;
+    background-position: center;
+    background-size: 100% 100%;
+
+}

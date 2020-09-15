@@ -6,28 +6,37 @@
     <link rel="stylesheet" type="text/css" href="css/public.css">
     <link rel="stylesheet" type="text/css" href="../css/pubilic.css">
     <style>
-        .headers {
+        #clearid {
+            position: fixed;
+            pointer-events: auto;
+            font-size: 2rem;
+            font-weight: bold;
+            z-index: 999;
+            cursor: pointer;
+            right: 0.833rem;
+            top: 0rem;
+            color: white;
 
+        }
+        .headers {
             align-items: center;
         }
-
         .headers span {
             padding: 0rem 2rem;
-            font-size: 3rem;
+            font-size: 2.4rem;
             color: white;
             font-weight: bold;
         }
 
         .line {
-            border-left: .4rem solid #31FFFE;
-            height: 3rem;
+            border-left: .2rem solid #31FFFE;
+            height: 1.8rem;
             position: relative;
         }
-
         .line:after {
             content: "";
             position: absolute;
-            border-left: .4rem solid #31FFFE;
+            border-left: .2rem solid #31FFFE;
             height: 0.833rem;
             top: -0.333rem;
             transform: rotate(45deg);
@@ -37,7 +46,7 @@
         .line:before {
             content: "";
             position: absolute;
-            border-left: .4rem solid #31FFFE;
+            border-left: .2rem solid #31FFFE;
             height: 0.667rem;
             bottom: -0.333rem;
             transform: rotate(-45deg);
@@ -45,15 +54,15 @@
         }
 
         .line1 {
-            border-left: .4rem solid #31FFFE;
-            height: 3rem;
+            border-left: .2rem solid #31FFFE;
+            height: 1.8rem;
             position: relative;
         }
 
         .line1:after {
             content: "";
             position: absolute;
-            border-left: .4rem solid #31FFFE;
+            border-left: .2rem solid #31FFFE;
             height: 0.667rem;
             top: -0.333rem;
             right: 0.167rem;
@@ -65,7 +74,7 @@
         .line1:before {
             content: "";
             position: absolute;
-            border-left: .4rem solid #31FFFE;
+            border-left: .2rem solid #31FFFE;
             height: 0.667rem;
             bottom: -0.333rem;
             right: 0.167rem;
@@ -83,18 +92,19 @@
             border: .2rem solid rgb(17, 102, 165);
             box-sizing: border-box;
             padding: 1rem 1.053rem 0rem 1.053rem;
+            position: relative;
         }
 
         .border-bg-height {
-            height: 50rem;
+            height: 24rem;
             box-sizing: border-box;
-            padding: 4rem 3rem;
+            padding: 3rem 3rem;
 
         }
 
         .warp-item {
             box-sizing: border-box;
-            padding: .2rem .5rem .2rem 0rem;
+            padding: .2rem .5rem .2rem .5rem;
         }
         .farstwarp{
 
@@ -104,7 +114,6 @@
             padding: .2rem .6rem;
             color: white;
         }
-
         .farstitem {
             background: url(images/Suddenchildbg.png);
             background-position: center;
@@ -120,7 +129,7 @@
             font-size: 0.737rem;
         }
         .farstitem .name{
-            line-height: 7.5rem;
+            line-height: 3.6rem;
             width: 100%;
             text-align: center;
             font-size: 2.4rem;
@@ -136,39 +145,39 @@
             background-image: url(images/buttom.png);
             background-position: center;
             background-size: 100% 100%;
-            height: 5rem;
-            font-size: 1.8rem;
-            line-height: 1.8rem;
-            padding-top: 1.6rem;
-            padding-left: 2rem;
-            padding-right: 2rem;
+            height: 3rem;
+            font-size: 2rem;
+            line-height: 3rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
     </style>
 </head>
 <body>
 <div class="warp">
     <div class="warp-child">
+        <div id="clearid">x</div>
         <div class="flex">
             <div class="flex_item_1">
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
-                        <span>突发事件概况</span>
+                        <span>基本概况</span>
                     </div>
                     <!--                <div>月份</div>-->
                 </div>
-                <div class="border-bg border-bg-height" style="padding: 7rem 3rem 4rem 3rem">
+                <div class="border-bg border-bg-height" style="padding:3rem 2rem 2rem 2rem;">
                     <div style="height: 100%;" class="flex">
                         <div class="flex_item_1 farstwarp">
                             <div class="farstitem">
                                 <div class="name">本年突发事件</div>
-                                <div class="lastname">同比去年</div>
+                                <div class="lastname">较去年同期</div>
                             </div>
                         </div>
                         <div class="flex_item_1 farstwarp">
                             <div class="farstitem">
                                 <div class="name">本月突发事件</div>
                                 <div class="lastname flex flex-between">
-                                    <div>同比上月</div>
+                                    <div>环比上月</div>
                                     <div><span style="font-size: 3.5rem;color: red;font-weight: bold;padding:0px .5rem">12</span><span style="padding-top: 0px">起</span></div>
                                 </div>
                             </div>
@@ -176,7 +185,7 @@
                         <div class="flex_item_1 farstwarp">
                             <div class="farstitem">
                                 <div class="name">今日突发事件</div>
-                                <div class="lastname">同比昨日</div>
+                                <div class="lastname">环比昨日</div>
                             </div>
                         </div>
                     </div>
@@ -186,7 +195,7 @@
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
                         <a class="line"></a>
-                        <span>突发事件数量统计</span>
+                        <span>事件类型统计</span>
                         <a class="line1"></a>
                     </div>
                     <!--                <div>月份</div>-->
@@ -199,7 +208,7 @@
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
                         <a class="line"></a>
-                        <span>突发事件发生街道分布</span>
+                        <span>事发地分布统计</span>
                         <a class="line1"></a>
                     </div>
                     <!--                <div>月份</div>-->
@@ -210,7 +219,7 @@
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
                         <a class="line"></a>
-                        <span> 经常发生突发事件路段统计</span>
+                        <span> 事发时间段统计</span>
                         <a class="line1"></a>
                     </div>
                     <!--                <div>月份</div>-->
@@ -231,7 +240,7 @@
                     </div>
                     <!--                <div>月份</div>-->
                 </div>
-                <div class="border-bg border-bg-height" style="height: 32rem;padding: 4rem 5rem">
+                <div class="border-bg border-bg-height" style="height: 20rem;padding: 4rem 5rem">
                     <div>
                         <ul class="flex" style="color: rgb(31,224,233);background: rgb(10,63,108);padding: 1rem 2rem">
                             <li class="flex_item_2">日期</li>
@@ -248,12 +257,14 @@
     </div>
 </div>
 <script>
+    document.getElementById("clearid").onclick = function () {
+        window.parent.document.getElementById("SuddenModelBox").style.display = "none";
+        window.parent.document.getElementById("maincrtynammeid").style.display = "block";
+        console.log(window.parent.document.getElementById("ModalBox"))
+    }
     window.onload = function () {
         lineFun()
-
-
     }
-
     function lineFun() {
         let para = ''
         let color = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff']
@@ -270,13 +281,13 @@
         ]
         res.forEach((item, index) => {
             para += `
-                 <ul class="BasicFunIditemul" style=" height: 4.5rem;width: 100%;display: flex;align-items: center">
-             <li class="BasicFunIditemtitle" style="display: inline-block;min-width:3rem;height: 3rem;background: #2cc78f;border-radius: 50%;color:white;text-align: center;line-height:3rem">${index + 1}</li>
-             <li class="BasicFunIditemname"  style="display: inline-block;color: white;text-align:center;min-width: 14rem">${item.name}</li>
-             <li  style="  cursor: pointer;display:inline-block;height: 2rem;border-radius: 1.667rem;width: 100%;background-color:#4e638b">
-             <div class="BasicFunIditem" style="height: 2rem;border-radius: 1.667rem;width: 100%;"></div>
+                 <ul class="BasicFunIditemul" style=" height: 2rem;width: 100%;display: flex;align-items: center">
+             <li class="BasicFunIditemtitle" style="display: inline-block;min-width:1.5rem;height: 1.5rem;background: #2cc78f;border-radius: 50%;color:white;text-align: center;line-height:1.5rem">${index + 1}</li>
+             <li class="BasicFunIditemname"  style="display: inline-block;color: white;text-align:center;min-width: 6rem">${item.name}</li>
+             <li  style="  cursor: pointer;display:inline-block;height: 1rem;border-radius: 1.667rem;width: 100%;background-color:#4e638b">
+             <div class="BasicFunIditem" style="height: 1rem;border-radius: 1.667rem;width: 100%;"></div>
 </li>
-                     <li  style="display: inline-block;color: white;text-align:center;min-width: 8rem">${item.value}件</li>
+                     <li  style="display: inline-block;color: white;text-align:center;min-width: 6rem">${item.value}件</li>
             </ul>
 
            `

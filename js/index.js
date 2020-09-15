@@ -9,7 +9,7 @@ $(document).ready(function(){
 	let imgs=''
 	let EmergencyList=['突发事件','台风','交通拥堵','下立交','紧急工单','智能烟感','空气质量','水质监测','景点人流','公交准点率']
 	let EmergencyListcopy=[
-		{name:'突发事件',imgs:'突发事件yellow'},
+		// {name:'突发事件',imgs:'突发事件yellow'},
 		{name:'台风',imgs:'台风'},
 		{name:'交通拥堵',imgs:'交通拥堵red'},
 		{name:'下立交',imgs:'下立交'},
@@ -18,7 +18,8 @@ $(document).ready(function(){
 		{name:'空气质量',imgs:'空气质量'},
 		{name:'水质监测',imgs:'水质监测'},
 		{name:'景点人流',imgs:'景点人流'},
-		{name:'公交准点率',imgs:'公交准点率'},
+		{name:'电弧',imgs:'公交准点率'},
+		// {name:'公交准点率',imgs:'公交准点率'},
 	]
 	for (let i = 0; i < EmergencyListcopy.length; i++) {
 		para +=	`<div class="Emergencyitem">

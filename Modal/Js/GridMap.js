@@ -65,7 +65,7 @@ function initMap() {
     addTraffic();           /*添加实时路况情况*/
     //addPoiMarker();         /*添加嘉定区主要监控点*/
      map.addControl(new AMap.Scale());
-     Sprinkle()
+     GDSprinkle()
 }
 
 /*设置地图风格*/
@@ -83,7 +83,7 @@ var mapFeatures = ["bg",       //背景
 ];
 
 function setMapFeatures() {
-    var features = [mapFeatures[0], mapFeatures[1], mapFeatures[2]];
+    var features = [mapFeatures[0]];
     map.setFeatures(features);
 }
 function init1 () {//区域遮盖
@@ -217,40 +217,79 @@ function addTraffic() {
     map.add(traffic); //通过add方法添加图层
 }
 
-function Sprinkle() {
-    
-    let lnglats = [
-        [121.195438, 31.342265],
-        [121.214011, 31.385809],
-        [121.203888, 31.347582],
-        [121.166171, 31.278715],
-        [121.202184, 31.400928],
-        [121.205338, 31.291744],
-      ];
+function GDSprinkle() {
+    // let lnglats = [
+    //     [121.195438, 31.342265],
+    //     [121.214011, 31.385809],
+    //     [121.203888, 31.347582],
+    //     [121.166171, 31.278715],
+    //     [121.202184, 31.400928],
+    //     [121.205338, 31.291744],
+    //   ];
+    // var points = [
+    //     {"lnglat":[121.195438, 31.342265]},
+    //      {"lnglat":[121.214011, 31.385809]},{"lnglat":[121.203888, 31.347582]},{"lnglat":[121.166171, 31.278715]},{"lnglat":[121.202184, 31.400928]},{"lnglat":[121.205338, 31.291744]},
+    // ]
+    let points = []
+      let lnglats =[]
+      var cluster
       let markers = [];
-      for (var i = 0; i < lnglats.length; i++) {
-        let lnglat = lnglats[i];
-        var icon = new AMap.Icon({
-          // 图标尺寸
-          size: new AMap.Size(32, 32),
-          // 图标的取图地址
-          image: "../../images/imgs/oldhome" + i +".png",
-          // 图标所用图片大小
-          imageSize: new AMap.Size(32, 32),
-          // 图标取图偏移量
-          // imageOffset: new AMap.Pixel(-9, -3)
+      $.get("http://10.237.115.83:8092/personGps/findNewGps",function(res){
+        points=res
+        lnglats=res
+
+        $.each(points, function(i, item) { //遍历每个点，我的业务要给每个点添加点击事件	
+            console.log(item, 'itemitem');
+            let point = points[i];
+            // let  lng=Number(point.longitude)
+            // let  lat=Number(point.latitude)
+            let  lng=point.longitude
+            let  lat=point.latitude
+            var marker = new AMap.Marker({
+                position: [lng, lat],
+                content: '<div style="background-color: hsla(180, 100%, 50%, 0.7); height: 24px; width: 24px; border: 1px solid hsl(180, 100%, 40%); border-radius: 12px; box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;"></div>',
+                offset: new AMap.Pixel(-15, -15)
+            })
+            var equiId = item.equipmentId; 
+            var equiName = item.equipmentName;
+            addClickHandler(equiId, equiName,marker); //给标记点添加点击事件
+            markers.push(marker);
         });
-        // 创建点实例
-        let marker = new AMap.Marker({
-          position: new AMap.LngLat(lnglat[0], lnglat[1]),
-          icon: icon,
-          extData: {
-            id: i + 1,
-          },
+        var count = markers.length;
+        var _renderClusterMarker = function (context) {
+            var factor = Math.pow(context.count / count, 1 / 18);
+            var div = document.createElement('div');
+            var Hue = 180 - factor * 180;
+            var bgColor = 'hsla(' + Hue + ',100%,50%,0.7)';
+            var fontColor = 'hsla(' + Hue + ',100%,20%,1)';
+            var borderColor = 'hsla(' + Hue + ',100%,40%,1)';
+            var shadowColor = 'hsla(' + Hue + ',100%,50%,1)';
+            div.style.backgroundColor = bgColor;
+            var size = Math.round(30 + Math.pow(context.count / count, 1 / 5) * 20);
+            div.style.width = div.style.height = size + 'px';
+            div.style.border = 'solid 1px ' + borderColor;
+            div.style.borderRadius = size / 2 + 'px';
+            div.style.boxShadow = '0 0 1px ' + shadowColor;
+            div.innerHTML = context.count;
+            div.style.lineHeight = size + 'px';
+            div.style.color = fontColor;
+            div.style.fontSize = '14px';
+            div.style.textAlign = 'center';
+            context.marker.setOffset(new AMap.Pixel(-size / 2, -size / 2));
+            context.marker.setContent(div)
+        };
+        cluster = new AMap.MarkerClusterer(map, markers, {
+            gridSize: 80,
+            renderClusterMarker: _renderClusterMarker
         });
-        AMap.event.addListener(marker, "click", function () {
-          infoWindow.open(map, marker.getPosition());
-        });
+
+        function addClickHandler(equiId,equiName,marker){
+            marker.on("click",function(e){
+            // openInfo(equiId,equiName,marker,e)
+            infoWindow.open(map, marker.getPosition());
+             } );
+        }
+    
         //实例化信息窗体
         var title =
             '<span style="color:#07ECEB;">景南山养老院</span>',
@@ -312,16 +351,7 @@ function Sprinkle() {
         function closeInfoWindow() {
           map.clearInfoWindow();
         }
-        markers.push(marker);
-      }
-
-      // 创建覆盖物群组，并将 marker 传给 OverlayGroup
-       overlayGroups = new AMap.OverlayGroup(markers);
-
-      // 添加覆盖物群组
-
-      map.add(overlayGroups);
-          // 移除覆盖物群组
-   
+ 
+    })  
 } 
 

@@ -107,7 +107,6 @@ var MyEcharts2 = {
          * @param attackSourcesColor : color
          */
         Ranking: function (name, attackSourcesName, attackSourcesData, attackSourcesColor) {
-            console.log(attackSourcesName,attackSourcesData,212121);
             function contains(arr, dst) {
                 var i = arr.length;
                 while (i -= 1) {
@@ -370,7 +369,6 @@ var MyEcharts2 = {
 
         },
         Ranking2: function (name, attackSourcesName, attackSourcesData, attackSourcesColor) {
-            console.log(attackSourcesName,attackSourcesData,212121);
             function contains(arr, dst) {
                 var i = arr.length;
                 while (i -= 1) {
@@ -634,7 +632,6 @@ var MyEcharts2 = {
         },
         // 雷达图
         radar: function (name, indicator, value) {
-            console.log(indicator,value,'indicatorindicatorindicator');
             var legendData = ['收入/万元','班次', '里程/万公里']; //图例
 
             var dataArr = [

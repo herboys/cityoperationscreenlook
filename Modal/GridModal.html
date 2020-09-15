@@ -5,13 +5,10 @@
   <meta charset="UTF-8" />
   <title>Title</title>
 </head>
-<!-- <link rel="stylesheet" type="text/css" href="../css/12345Modal.css" /> -->
 <link rel="stylesheet" type="text/css" href="../css/pubilic.css" />
 <link rel="stylesheet" type="text/css" href="css/gridModal.css" />
-<!-- <script src="../js/map3.js" type="text/javascript" charset="utf-8"></script> -->
-<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=dfaffd18975f1df62f36d3a189acbae2&plugin=AMap.DistrictSearch,AMap.Scale,AMap.MarkerClusterer"></script>
 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
-<!-- <script type="text/javascript" src="../js/map3.js"></script> -->
 
 <body>
   <div id="app2" class="Modal-warp">
@@ -327,7 +324,6 @@
 </body>
 <script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
-<!-- <script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script> -->
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="Js/echartsPackage.js"></script>
@@ -368,10 +364,6 @@
           $("#result").html("您选择了" + txt + "，值为：" + value);
         });
       });
-      // function  mapCenter() {
-      //   // createMenu();
-      //   //    
-      // };
     });
 
 

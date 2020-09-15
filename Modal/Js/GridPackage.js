@@ -155,15 +155,12 @@ function initJZdata(){
       //  初始进来默认  菊园新区管委会 处置率柱状图
     // http://10.237.115.83:8089/city-operation/tcasemsg/findSmallClassNumByStreet?disposeStreet=菊园新区管委会
   $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByStreet",{"disposeStreet":"菊园新区"},function(res){
-    console.log(res,'菊园新区管委会菊园新区管委会');
-     
    for (let index = 0; index < res.length; index++) {
      xAxisData.push(res[index].case_smallclass)  
      yAxisData.push(res[index].processNum)  
      yAxisData2.push(res[index].totalNum)  
      percentage.push(Math.round(res[index].processNum/res[index].totalNum * 10000) / 100.00)
    }
-   console.log(xAxisData,'xAxisDataxAxisDataxAxisData');
    MyEcharts2.initChart(
     MyEcharts2.EchartsOption.BarChart("name", xAxisData, yAxisData,yAxisData2,percentage),
     "ecBar111"
@@ -174,7 +171,6 @@ function initJZdata(){
  yAxisData2 =[]
  percentage=[]
   $.get("http://10.237.115.83:8092/tcasemsg/findScore",{"type":1},function(res){
-    console.log(res,'resresres11');
     for (let i = 0; i < res.length; i++) {
       attackSourcesName.push(res[i].street)
       attackSourcesData.push(res[i].score)
@@ -267,7 +263,6 @@ function initBMdata(){
    "ecRadar2"
    );
     BMPM.on("click", function (param) {
-      console.log(param,param.name,'paramparam22');
       // 柱状图
       $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByDepartment",{"disposeDepartment":param.name},function(res){
                 xAxisData =[]
@@ -372,8 +367,8 @@ function initWGdata(){
      "ecRadar3"
      );
      // 网格撒点
-     $.get("http://10.237.115.83:8092/tcasemsg/findMsgByGridCode",{"gridCode":param.name},function(res){
-       console.log(res, 'WGresWGresWGresWGres');
+     $.get("http://10.237.115.83:8092/shujiaocasemsg/findLngLat",{"name":param.name},function(res){
+       console.log(res, 'sprinkleressprinkleressprinkleress');
       sprinkle(res)
     })
     document.getElementById("RightBannerNameId").style.display= 'block'
@@ -388,7 +383,6 @@ function initWGdata(){
 
 function initQQdata (){
   $.get("http://10.237.115.83:8092/tcasemsg/findNumPerGrid",function(res){
-      console.log(res, 'qqres');
       heatMap(res)
 })
 document.getElementById("RightBannerNameId").innerText='【嘉定区】热力分布图'

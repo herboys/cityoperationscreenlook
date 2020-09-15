@@ -1194,6 +1194,45 @@ var MyEcharts = {
             return option
         },
         /**
+         * @name:OrdinaryBar 普通的柱状图
+         * **/
+        OrdinaryBar:function (name){
+            var option={
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        axisTick: {
+                            alignWithLabel: true
+                        }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+
+                    {
+                        name: '直接访问',
+                        type: 'bar',
+                        barWidth: '40%',
+                        data: [132, 324, 327, 452, 365, 145, 326]
+                    }
+                ]
+            }
+            return option
+        },
+
+
+        /**
          *wordCloud
          *@param color : 颜色 数据
          * */

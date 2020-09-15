@@ -3,9 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/12345Modal.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/pubilic.css"/>
     <link rel="stylesheet" type="text/css" href="css/public.css">
     <link rel="stylesheet" type="text/css" href="../css/pubilic.css">
     <style>
+
+        #dropdown {
+            font-size: 1.333rem;
+            z-index: 99999;
+            text-align: center;
+        }
+
+        #dropdown p {
+            border-radius: .1rem;
+            width: 6.667rem;
+            height: 2.667rem;
+            line-height: 2.667rem;
+            padding-left: 0.833rem;
+            padding-right: .833rem;
+            border: 0.083rem solid #a9c9e2;
+            /*background: inherit url('V') no-repeat right 0.333rem;*/
+            color: #ffffff;
+            cursor: pointer
+        }
+
+        #dropdown ul {
+            padding-left: 0.833rem;
+            padding-right: .833rem;
+            width: 6.667rem;
+            background-color: #061839;;
+            margin-top: 0.167rem;
+            border: 0.167rem solid #50657D;
+            position: absolute;
+            display: none
+        }
+
+        #dropdown ul li {
+            text-align: center;
+            height: 2rem;
+            line-height: 2rem;
+            /*text-indent: 0.833rem*/
+        }
+
+        #dropdown ul li a {
+            display: block;
+            height: 2rem;
+            color: #ffffff;
+            text-decoration: none
+        }
+        #dropdown ul li a:hover {
+            background: #c6dbfc;
+            color: #ffffff
+        }
+
+
         #clearid {
             position: fixed;
             pointer-events: auto;
@@ -161,9 +213,10 @@
             <div class="flex_item_1">
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
+                        <a class="line"></a>
                         <span>基本概况</span>
+                        <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
                 </div>
                 <div class="border-bg border-bg-height" style="padding:3rem 2rem 2rem 2rem;">
                     <div style="height: 100%;" class="flex">
@@ -198,9 +251,20 @@
                         <span>事件类型统计</span>
                         <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
+                                    <div>
+                                        <div id="dropdown">
+                                            <p style="border:1px solid #1DD6DF;color: #1DD6DF">请选择日期</p>
+                                            <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
+                                                <li><a href="#" rel="1"> 今日</a></li>
+                                                <li><a href="#" rel="2">本周</a></li>
+                                                <li><a href="#" rel="3">本年度</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                 </div>
-                <div class="border-bg border-bg-height">qwe</div>
+                <div class="border-bg border-bg-height">
+                    <div id="SmallECharts1" style="width: 100%;height: 100%"></div>
+                </div>
             </div>
         </div>
         <div class="flex">
@@ -211,9 +275,10 @@
                         <span>事发地分布统计</span>
                         <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
                 </div>
-                <div class="border-bg border-bg-height">qwe</div>
+                <div class="border-bg border-bg-height">
+                    <div id="SmallECharts2" style="width: 100%;height: 100%"></div>
+                </div>
             </div>
             <div class="flex_item_1">
                 <div class="flex flex-between warp-item">
@@ -222,7 +287,6 @@
                         <span> 事发时间段统计</span>
                         <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
                 </div>
                 <div class="border-bg border-bg-height">
                     <div id="BasicFunId"></div>
@@ -238,7 +302,6 @@
                         <span>突发事件列表</span>
                         <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
                 </div>
                 <div class="border-bg border-bg-height" style="height: 20rem;padding: 4rem 5rem">
                     <div>
@@ -250,21 +313,57 @@
                             <li class="flex_item_2">时间类型</li>
                             <li class="flex_item_4">内容</li>
                         </ul>
+                        <div id="GongDanIDBox" style="height: 12rem ;overflow: hidden">
+                            <div id="GongDanID"></div>
+                            <div id="GongDanIDCopy"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="../js/commonJs.js"></script>
+<script type="text/javascript" src="Js/ajaxPromise.js"></script>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
 <script>
+    $("#dropdown p").click(function () {
+        var ul = $("#dropdown ul");
+        if (ul.css("display") == "none") {
+            ul.slideDown("fast");
+        } else {
+            ul.slideUp("fast");
+        }
+        $("#dropdown ul li a").click(function () {
+            var txt = $(this).text();
+            $("#dropdown p").html(txt);
+            var value = $(this).attr("rel");
+            $("#dropdown ul").hide();
+            $("#result").html("您选择了" + txt + "，值为：" + value);
+        });
+    })
     document.getElementById("clearid").onclick = function () {
         window.parent.document.getElementById("SuddenModelBox").style.display = "none";
         window.parent.document.getElementById("maincrtynammeid").style.display = "block";
         console.log(window.parent.document.getElementById("ModalBox"))
     }
     window.onload = function () {
+
+        rollInit()
         lineFun()
+        barFun1()
+        barFun2()
+        Fun()
     }
+    function barFun1(){
+        MyEcharts.initChart(MyEcharts.EchartsOption.OrdinaryBar('name'), "SmallECharts1")
+    } function barFun2(){
+        MyEcharts.initChart(MyEcharts.EchartsOption.OrdinaryBar('name'), "SmallECharts2")
+    }
+
+
     function lineFun() {
         let para = ''
         let color = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff']
@@ -318,6 +417,74 @@
                     }
                 })
             }
+        }
+    }
+
+function Fun(){
+        var para=''
+    for (let i = 0; i < 10; i++) {
+        para +=`         <ul class="flex" style="color: white;padding: 1rem 2rem;height: 1.579rem;line-height: 1.579rem;border-bottom: 2px dashed  rgb(31,224,233)">
+                                <li class="flex_item_2 ellipsis">日期</li>
+                                <li class="flex_item_2 ellipsis">时间</li>
+                                <li class="flex_item_2 ellipsis">街道</li>
+                                <li class="flex_item_3 ellipsis">详细地址</li>
+                                <li class="flex_item_2 ellipsis">时间类型</li>
+                                <li class="flex_item_4 ellipsis">内容</li>
+                            </ul>`
+    }
+    document.getElementById('GongDanID').innerHTML=para
+}
+    /**轮播动画**/
+    function rollInit() {
+        let ul1 = document.getElementById("GongDanID");
+        let ul2 = document.getElementById("GongDanIDCopy");
+        let rollbox = document.getElementById("GongDanIDBox");
+        roll(50, ul1, ul2, rollbox)
+    }
+
+    function roll(t, ul1, ul2, rollbox) {
+        ul2.innerHTML = ul1.innerHTML;
+        rollbox.scrollTop = 0;
+        let lis = document.querySelectorAll("#GongDanID ul")
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+                let childLI = document.querySelectorAll(".work-older-list-ul .ul-line")
+                let para = `
+              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
+                                            <div style="padding: 1.667rem 3.333rem;color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+            `
+                document.getElementById("ModalsmallID").style.display = "block"
+                document.getElementById("ModalsmallRoomID").innerHTML = para
+            }
+        }
+        let liscopy = document.querySelectorAll("#GongDanIDCopy ul")
+        for (let i = 0; i < liscopy.length; i++) {
+            liscopy[i].onclick = function () {
+                let para = `
+       <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
+                          <div style="padding: 1.667rem 3.333rem;
+                          color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+            `
+                document.getElementById("ModalsmallID").style.display = "block"
+                document.getElementById("ModalsmallRoomID").innerHTML = para
+            }
+        }
+        let timer = setInterval(rollStart, t);
+        rollbox.onmouseover = function () {
+            clearInterval(timer);
+        }
+        rollbox.onmouseout = function () {
+            timer = setInterval(rollStart, t);
+        }
+    }
+
+    function rollStart() {
+        let ul1 = document.getElementById("GongDanID");
+        let rollbox = document.getElementById("GongDanIDBox");
+        if (rollbox.scrollTop >= ul1.scrollHeight) {
+            rollbox.scrollTop = 0;
+        } else {
+            rollbox.scrollTop++;
         }
     }
 </script>

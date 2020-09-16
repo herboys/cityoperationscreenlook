@@ -484,7 +484,7 @@
                             <div class="center-border border-box"></div>
                             <div class="bottom-border border-box"></div>
                         </div>
-                        <h3 onclick="SuddenModelBoxBtn()">预警预判</h3>
+                        <h3 onclick="SuddenModelBoxBtn()">智能预警</h3>
                         <div class="title-border-box title-border-right">
                             <div class="top-border border-box"></div>
                             <div class="center-border border-box"></div>
@@ -837,8 +837,8 @@
                     frameborder="0"></iframe>
         </div>
         <div class="Child_ModalBox" id="SuddenModelBox">
-            <iframe id="openSuddenModelBox" src="Modal/SuddenModelBox.html" width="100%" height="100%"
-                    frameborder="0"></iframe>
+            <object id="openSuddenModelBox" data="Modal/SuddenModelBox.html" width="100%" height="100%"
+                    frameborder="0"></object>
         </div>
         <div class="Child_ModalBox " id="BusModalBox">
             <object id="openiframeBusModalBox" data="Modal/BusModalBox.html" width="100%" height="100%"
@@ -916,7 +916,6 @@
 
         timer = setInterval(flipFn, 5000);
     }
-
     // createVideoSlideOne();
     // createVideoSlide();
     //openVideo();

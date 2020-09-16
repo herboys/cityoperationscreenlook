@@ -1194,6 +1194,73 @@ var MyEcharts = {
             return option
         },
         /**
+         * @name:OrdinaryBar 普通的柱状图
+         * **/
+        OrdinaryBar: function (name, xData, yData) {
+            var option = {
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: xData,
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        axisLabel: {
+                            color: '#fff'
+                        },
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        //坐标轴
+                        axisLine: {
+                            show: false
+                        },
+                        //坐标值标注
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff',
+                            }
+                        },
+                    }
+                ],
+                series: [
+
+                    {
+                        name: '直接访问',
+                        type: 'bar',
+                        barWidth: '40%',
+                        data: yData,
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                                    offset: 0,
+                                    color: "#0B4EC3" // 0% 处的颜色
+                                }, {
+                                    offset: 0.6,
+                                    color: "#138CEB" // 60% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: "#17AAFE" // 100% 处的颜色
+                                }], false)
+                            }
+                        },
+                    },
+                ]
+            }
+            return option
+        },
+
+
+        /**
          *wordCloud
          *@param color : 颜色 数据
          * */
@@ -1313,7 +1380,7 @@ var MyEcharts = {
                     }
                 }],
                 series: [{
-                   // name: legend[0],
+                    // name: legend[0],
                     name: '',
                     type: "bar",
                     stack: legend[0],
@@ -1321,12 +1388,12 @@ var MyEcharts = {
                     barWidth: "35%",
                     itemStyle: {
                         normal: {
-                            label:{
+                            label: {
                                 show: true, //开启显示
                                 position: 'top', //在上方显示
                                 textStyle: { //数值样式
                                     color: "#fff",
-                                    fontWeight:"bold",
+                                    fontWeight: "bold",
                                     fontSize: 12
                                 }
                             },
@@ -1353,7 +1420,7 @@ var MyEcharts = {
                             }
                         }
                     }
-                },{
+                }, {
                     type: "line",
                     yAxisIndex: 1,
                     smooth: false,
@@ -1383,695 +1450,739 @@ var MyEcharts = {
             };
             return option
         },
-            // 12345 委办局
-            newbar: function (xData, yData, zData, color, legend, yAxisname) {
-                console.log(xData, yData, zData)
-                var xData = xData,
-                    yData2 = yData,
-                    yData4 = zData,
-                    borderData = [],
-                    legend = legend,
-                    colorArr = [
-                        {
-                            start: "rgba(71, 173, 245,0.5)",
-                            end: "rgba(18, 58, 86,0.5)"
-                        },
-                        {
-                            color: "#ccc"
-                        }
-                    ];
-                var normalColor = "rgba(255,255,255,0.5)";
-                let seriesData = [];
-                var borderHeight = 4;
-                xData.forEach(element => {
-                    borderData.push(borderHeight);
-                });
-                [yData2,yData4].forEach((item, index) => {
-                    var obj1 = {};
-                    var obj2 = {};
-                    if (index < 1) {
-                        obj1 = {
-                            name: legend[index],
-                            type: "bar",
-                            stack: legend[index],
-                            data: item,
-                            barWidth: "35%",
-                            itemStyle: {
-                                normal: {
-                                    color: {
-                                        type: "linear",
-                                        x: 0,
-                                        y: 0,
-                                        x2: 0,
-                                        y2: 1,
-                                        colorStops: [{
-                                            offset: 0,
-                                            color: colorArr[index].start + "0.7)"
-                                        },
-                                            {
-                                                offset: 0.5,
-                                                color: colorArr[index].start + "0.3)"
-                                            },
-                                            {
-                                                offset: 1,
-                                                color: colorArr[index].end
-                                            }
-                                        ],
-                                        globalCoord: false
-                                    }
-                                }
-                            },
-                            label: {
-                                normal: {
-                                    show: true,
-                                    fontSize: 12,
-                                    fontWeight: 'bold',
-                                    color: '#fff',
-                                    position: 'top',
-                                }
-                            }
-
-                        };
-                        seriesData.push(obj1);
-                    } else {
-                        var obj3 = {
-                            //name: legend[index],
-                            name: legend[index],
-                            type: "line",
-                            yAxisIndex: 1,
-                            smooth: false,
-                            symbol: "none",
-                            symbolSize: 10,
-                            lineStyle: {
-                                normal: {
-                                    width: 2
-                                }
-                            },
-                            itemStyle: {
-                                normal: {
-                                    color: "rgba(225,225,225,0)",
-                                    borderColor: "#fff",
-                                    borderWidth: 1
-                                }
-                            },
-                            data: item,
-                            label: {
-                                normal: {
-                                    show: false
-                                }
-                            }
-                        };
-                        seriesData.push(obj3);
+        // 12345 委办局
+        newbar: function (xData, yData, zData, color, legend, yAxisname) {
+            console.log(xData, yData, zData)
+            var xData = xData,
+                yData2 = yData,
+                yData4 = zData,
+                borderData = [],
+                legend = legend,
+                colorArr = [
+                    {
+                        start: "rgba(71, 173, 245,0.5)",
+                        end: "rgba(18, 58, 86,0.5)"
+                    },
+                    {
+                        color: "#ccc"
                     }
-                });
-                console.log(seriesData, 'seriesDataseriesDataseriesData');
-                var option = {
-                    // backgroundColor: "#000",
-                    grid: {
-                        left: "3%",
-                        top: "16%",
-                        right: "0%",
-                        bottom: 0,
-                        containLabel: true
-                    },
-                    legend: {
-                        show: false,
-                        icon: "rect",
-                        itemWidth: 20,
-                        itemHeight: 3,
-                        right: "-20%",
-                        top: "0%",
-                        textStyle: {
-                            color: "#fff"
+                ];
+            var normalColor = "rgba(255,255,255,0.5)";
+            let seriesData = [];
+            var borderHeight = 4;
+            xData.forEach(element => {
+                borderData.push(borderHeight);
+            });
+            [yData2, yData4].forEach((item, index) => {
+                var obj1 = {};
+                var obj2 = {};
+                if (index < 1) {
+                    obj1 = {
+                        name: legend[index],
+                        type: "bar",
+                        stack: legend[index],
+                        data: item,
+                        barWidth: "35%",
+                        itemStyle: {
+                            normal: {
+                                color: {
+                                    type: "linear",
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0,
+                                        color: colorArr[index].start + "0.7)"
+                                    },
+                                        {
+                                            offset: 0.5,
+                                            color: colorArr[index].start + "0.3)"
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: colorArr[index].end
+                                        }
+                                    ],
+                                    globalCoord: false
+                                }
+                            }
                         },
-                        data: legend
+                        label: {
+                            normal: {
+                                show: true,
+                                fontSize: 12,
+                                fontWeight: 'bold',
+                                color: '#fff',
+                                position: 'top',
+                            }
+                        }
+
+                    };
+                    seriesData.push(obj1);
+                } else {
+                    var obj3 = {
+                        //name: legend[index],
+                        name: legend[index],
+                        type: "line",
+                        yAxisIndex: 1,
+                        smooth: false,
+                        symbol: "none",
+                        symbolSize: 10,
+                        lineStyle: {
+                            normal: {
+                                width: 2
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "rgba(225,225,225,0)",
+                                borderColor: "#fff",
+                                borderWidth: 1
+                            }
+                        },
+                        data: item,
+                        label: {
+                            normal: {
+                                show: false
+                            }
+                        }
+                    };
+                    seriesData.push(obj3);
+                }
+            });
+            console.log(seriesData, 'seriesDataseriesDataseriesData');
+            var option = {
+                // backgroundColor: "#000",
+                grid: {
+                    left: "3%",
+                    top: "16%",
+                    right: "0%",
+                    bottom: 0,
+                    containLabel: true
+                },
+                legend: {
+                    show: false,
+                    icon: "rect",
+                    itemWidth: 20,
+                    itemHeight: 3,
+                    right: "-20%",
+                    top: "0%",
+                    textStyle: {
+                        color: "#fff"
                     },
-                    tooltip: {
-                        trigger: "axis",
-                        formatter: function (params) {
-                            var str = `<div> ${params[0].name}</div>`
-                            console.log(params,'1231')
+                    data: legend
+                },
+                tooltip: {
+                    trigger: "axis",
+                    formatter: function (params) {
+                        var str = `<div> ${params[0].name}</div>`
+                        console.log(params, '1231')
 
 
-                                    str += `<div>${params[0].seriesName}:${params[0].value}%</div>
+                        str += `<div>${params[0].seriesName}:${params[0].value}%</div>
                                     <div>${params[1].seriesName}:${params[1].value}件</div>
                                 `
 
 
-                            return str;
-                        }
+                        return str;
+                    }
+                },
+                xAxis: [{
+                    type: "category",
+                    data: xData,
+                    axisPointer: {
+                        type: "shadow"
                     },
-                    xAxis: [{
-                        type: "category",
-                        data: xData,
-                        axisPointer: {
-                            type: "shadow"
-                        },
-                        axisLabel: {
-                            textStyle: {
-                                color: normalColor,
-                                fontSize: 12
-                            },
-                            rotate: 50,
-                        },
-                        axisLine: {
-                            lineStyle: {
-                                color: normalColor
-                            }
-                        },
-                        axisTick: {
-                            show: false
-                        },
-                        splitLine: {
-                            show: false
-                        }
-                    }],
-                    yAxis: [{
-                        type: "value",
-                        name: '',
-                        //name: yAxisname,
-                        nameTextStyle: {
-                            color: "rgba(225,225,225,0)",
+                    axisLabel: {
+                        textStyle: {
+                            color: normalColor,
                             fontSize: 12
                         },
-                        "min": 40,
-                        // "max": 50,
+                        rotate: 50,
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: normalColor
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                }],
+                yAxis: [{
+                    type: "value",
+                    name: '',
+                    //name: yAxisname,
+                    nameTextStyle: {
+                        color: "rgba(225,225,225,0)",
+                        fontSize: 12
+                    },
+                    "min": 40,
+                    // "max": 50,
+                    axisLabel: {
+                        formatter: "{value}",
+                        textStyle: {
+                            color: normalColor,
+                            fontSize: 12
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: normalColor
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false,
+                        lineStyle: {
+                            type: "dashed",
+                            color: normalColor
+                        }
+                    }
+                },
+                    {
+                        // type: "value",
+                        // name: "件",
+                        nameTextStyle: {
+                            color: normalColor,
+                            fontSize: 12
+                        },
+                        // min: 0,
+                        // max: 100,
                         axisLabel: {
                             formatter: "{value}",
                             textStyle: {
-                                color: normalColor,
+                                color: "rgba(225,225,225,0)",
                                 fontSize: 12
                             }
                         },
                         axisLine: {
                             lineStyle: {
-                                color: normalColor
+                                color: "rgba(225,225,225,0)",
                             }
                         },
                         axisTick: {
                             show: false
                         },
                         splitLine: {
-                            show: false,
-                            lineStyle: {
-                                type: "dashed",
-                                color: normalColor
-                            }
-                        }
-                    },
-                        {
-                            // type: "value",
-                            // name: "件",
-                            nameTextStyle: {
-                                color: normalColor,
-                                fontSize: 12
-                            },
-                            // min: 0,
-                            // max: 100,
-                            axisLabel: {
-                                formatter: "{value}",
-                                textStyle: {
-                                    color: "rgba(225,225,225,0)",
-                                    fontSize: 12
-                                }
-                            },
-                            axisLine: {
-                                lineStyle: {
-                                    color: "rgba(225,225,225,0)",
-                                }
-                            },
-                            axisTick: {
-                                show: false
-                            },
-                            splitLine: {
-                                show: true,
-                                lineStyle: {
-                                    type: "dashed",
-                                    color: "rgba(225,225,225,0)",
-                                }
-                            }
-                        }
-                        ],
-                    // dataZoom: [//滑动条
-                    //     {
-                    //         xAxisIndex: 0,//这里是从X轴的0刻度开始
-                    //         show: false,//是否显示滑动条，不影响使用
-                    //         type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-                    //         startValue: 0, // 从头开始。
-                    //         endValue: 9  // 一次性展示6个。
-                    //     }
-                    // ],
-                    series: seriesData
-                };
-                return option
-            },
-            newbar2: function (xData, yData, zData, color, legend, yAxisname) {
-                console.log(xData, yData, zData)
-                var xData = xData,
-                    yData2 = yData,
-                    yData4 = zData,
-                    borderData = [],
-                    legend = legend,
-                    colorArr = [
-                        {
-                            start: "rgba(71, 173, 245,0.5)",
-                            end: "rgba(18, 58, 86,0.5)"
-                        },
-                        {
-                            color: "#ccc"
-                        }
-                    ];
-                var normalColor = "rgba(255,255,255,0.5)";
-                let seriesData = [];
-                var borderHeight = 4;
-                xData.forEach(element => {
-                    borderData.push(borderHeight);
-                });
-                [yData2,yData4].forEach((item, index) => {
-                    var obj1 = {};
-                    var obj2 = {};
-                    if (index < 1) {
-                        obj1 = {
-                            name: legend[index],
-                            type: "bar",
-                            stack: legend[index],
-                            data: item,
-                            barWidth: "35%",
-                            itemStyle: {
-                                normal: {
-                                    color: {
-                                        type: "linear",
-                                        x: 0,
-                                        y: 0,
-                                        x2: 0,
-                                        y2: 1,
-                                        colorStops: [{
-                                            offset: 0,
-                                            color: colorArr[index].start + "0.7)"
-                                        },
-                                            {
-                                                offset: 0.5,
-                                                color: colorArr[index].start + "0.3)"
-                                            },
-                                            {
-                                                offset: 1,
-                                                color: colorArr[index].end
-                                            }
-                                        ],
-                                        globalCoord: false
-                                    }
-                                }
-                            },
-                            label: {
-                                normal: {
-                                    show: true,
-                                    fontSize: 12,
-                                    fontWeight: 'bold',
-                                    color: '#fff',
-                                    position: 'top',
-                                }
-                            }
-
-                        };
-                        seriesData.push(obj1);
-                    } else {
-                        var obj3 = {
-                            //name: legend[index],
-                            name: legend[index],
-                            type: "line",
-                            yAxisIndex: 1,
-                            smooth: false,
-                            symbol: "none",
-                            symbolSize: 10,
-                            lineStyle: {
-                                normal: {
-                                    width: 2
-                                }
-                            },
-                            itemStyle: {
-                                normal: {
-                                    color: "rgba(225,225,225,0)",
-                                    borderColor: "#fff",
-                                    borderWidth: 1
-                                }
-                            },
-                            data: item,
-                            label: {
-                                normal: {
-                                    show: false
-                                }
-                            }
-                        };
-                        seriesData.push(obj3);
-                    }
-                });
-                console.log(seriesData, 'seriesDataseriesDataseriesData');
-                var option = {
-                    // backgroundColor: "#000",
-                    grid: {
-                        left: "3%",
-                        top: "16%",
-                        right: "0%",
-                        bottom: 0,
-                        containLabel: true
-                    },
-                    legend: {
-                        show: true,
-                        icon: "rect",
-                        itemWidth: 20,
-                        itemHeight: 3,
-                        right: "-20%",
-                        top: "0%",
-                        textStyle: {
-                            color: "#fff"
-                        },
-                        show: false,
-                        data: legend
-                    },
-                    tooltip: {
-                        trigger: "axis",
-                        formatter: function (params) {
-                            var str = `<div> ${params[0].name}</div>`
-                            console.log(params,'1231')
-
-
-                                    str += `<div>${params[0].seriesName}:${params[0].value}%</div>
-                                    <div>${params[1].seriesName}:${params[1].value}件</div>
-                                `
-
-
-                            return str;
-                        }
-                    },
-
-                    dataZoom: [
-                        {
-
-                            "height": 12,
-                            type: 'slider',
                             show: true,
-                            xAxisIndex: [0],
-                            left: '10%',
-                            start: 0, //数据窗口范围的起始百分比
-                            end: 36,
-                            bottom:-5,
-                            borderColor:"rgba(225,225,225,0)",
-                            textStyle:{
-                                color:'rgba(225,225,225,0)'
-                            }
-                        },
-                        {
-                            type: 'inside',
-                            xAxisIndex: [0],
-                            start: 0,
-                            end: 36,
-                            show: false,
-                            textStyle:{
-                                color:'rgba(225,225,225,0)'
-                            }
-                        }
-                    ],
-                    xAxis: [{
-                        type: "category",
-                        data: xData,
-                        axisPointer: {
-                            type: "shadow"
-                        },
-                        axisLabel: {
-                            textStyle: {
-                                color: normalColor,
-                                fontSize: 12
-                            },
-                            rotate: 50,
-                        },
-                        axisLine: {
                             lineStyle: {
-                                color: normalColor
+                                type: "dashed",
+                                color: "rgba(225,225,225,0)",
+                            }
+                        }
+                    }
+                ],
+                // dataZoom: [//滑动条
+                //     {
+                //         xAxisIndex: 0,//这里是从X轴的0刻度开始
+                //         show: false,//是否显示滑动条，不影响使用
+                //         type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+                //         startValue: 0, // 从头开始。
+                //         endValue: 9  // 一次性展示6个。
+                //     }
+                // ],
+                series: seriesData
+            };
+            return option
+        },
+        newbar2: function (xData, yData, zData, color, legend, yAxisname) {
+            console.log(xData, yData, zData)
+            var xData = xData,
+                yData2 = yData,
+                yData4 = zData,
+                borderData = [],
+                legend = legend,
+                colorArr = [
+                    {
+                        start: "rgba(71, 173, 245,0.5)",
+                        end: "rgba(18, 58, 86,0.5)"
+                    },
+                    {
+                        color: "#ccc"
+                    }
+                ];
+            var normalColor = "rgba(255,255,255,0.5)";
+            let seriesData = [];
+            var borderHeight = 4;
+            xData.forEach(element => {
+                borderData.push(borderHeight);
+            });
+            [yData2, yData4].forEach((item, index) => {
+                var obj1 = {};
+                var obj2 = {};
+                if (index < 1) {
+                    obj1 = {
+                        name: legend[index],
+                        type: "bar",
+                        stack: legend[index],
+                        data: item,
+                        barWidth: "35%",
+                        itemStyle: {
+                            normal: {
+                                color: {
+                                    type: "linear",
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0,
+                                        color: colorArr[index].start + "0.7)"
+                                    },
+                                        {
+                                            offset: 0.5,
+                                            color: colorArr[index].start + "0.3)"
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: colorArr[index].end
+                                        }
+                                    ],
+                                    globalCoord: false
+                                }
                             }
                         },
-                        axisTick: {
-                            show: false
-                        },
-                        splitLine: {
-                            show: false
+                        label: {
+                            normal: {
+                                show: true,
+                                fontSize: 12,
+                                fontWeight: 'bold',
+                                color: '#fff',
+                                position: 'top',
+                            }
                         }
-                    }],
-                    yAxis: [{
-                        type: "value",
-                        name: '',
-                        //name: yAxisname,
-                        nameTextStyle: {
-                            color: "rgba(225,225,225,0)",
+
+                    };
+                    seriesData.push(obj1);
+                } else {
+                    var obj3 = {
+                        //name: legend[index],
+                        name: legend[index],
+                        type: "line",
+                        yAxisIndex: 1,
+                        smooth: false,
+                        symbol: "none",
+                        symbolSize: 10,
+                        lineStyle: {
+                            normal: {
+                                width: 2
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "rgba(225,225,225,0)",
+                                borderColor: "#fff",
+                                borderWidth: 1
+                            }
+                        },
+                        data: item,
+                        label: {
+                            normal: {
+                                show: false
+                            }
+                        }
+                    };
+                    seriesData.push(obj3);
+                }
+            });
+            console.log(seriesData, 'seriesDataseriesDataseriesData');
+            var option = {
+                // backgroundColor: "#000",
+                grid: {
+                    left: "3%",
+                    top: "16%",
+                    right: "0%",
+                    bottom: 0,
+                    containLabel: true
+                },
+                legend: {
+                    show: true,
+                    icon: "rect",
+                    itemWidth: 20,
+                    itemHeight: 3,
+                    right: "-20%",
+                    top: "0%",
+                    textStyle: {
+                        color: "#fff"
+                    },
+                    show: false,
+                    data: legend
+                },
+                tooltip: {
+                    trigger: "axis",
+                    formatter: function (params) {
+                        var str = `<div> ${params[0].name}</div>`
+                        console.log(params, '1231')
+
+
+                        str += `<div>${params[0].seriesName}:${params[0].value}%</div>
+                                    <div>${params[1].seriesName}:${params[1].value}件</div>
+                                `
+
+
+                        return str;
+                    }
+                },
+
+                dataZoom: [
+                    {
+
+                        "height": 12,
+                        type: 'slider',
+                        show: true,
+                        xAxisIndex: [0],
+                        left: '10%',
+                        start: 0, //数据窗口范围的起始百分比
+                        end: 36,
+                        bottom: -5,
+                        borderColor: "rgba(225,225,225,0)",
+                        textStyle: {
+                            color: 'rgba(225,225,225,0)'
+                        }
+                    },
+                    {
+                        type: 'inside',
+                        xAxisIndex: [0],
+                        start: 0,
+                        end: 36,
+                        show: false,
+                        textStyle: {
+                            color: 'rgba(225,225,225,0)'
+                        }
+                    }
+                ],
+                xAxis: [{
+                    type: "category",
+                    data: xData,
+                    axisPointer: {
+                        type: "shadow"
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: normalColor,
                             fontSize: 12
                         },
-                        "min": 40,
-                        // "max": 50,
+                        rotate: 50,
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: normalColor
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                }],
+                yAxis: [{
+                    type: "value",
+                    name: '',
+                    //name: yAxisname,
+                    nameTextStyle: {
+                        color: "rgba(225,225,225,0)",
+                        fontSize: 12
+                    },
+                    "min": 40,
+                    // "max": 50,
+                    axisLabel: {
+                        formatter: "{value}",
+                        textStyle: {
+                            color: normalColor,
+                            fontSize: 12
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: normalColor
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false,
+                        lineStyle: {
+                            type: "dashed",
+                            color: normalColor
+                        }
+                    }
+                },
+                    {
+                        // type: "value",
+                        // name: "件",
+                        nameTextStyle: {
+                            color: normalColor,
+                            fontSize: 12
+                        },
+                        // min: 0,
+                        // max: 100,
                         axisLabel: {
                             formatter: "{value}",
                             textStyle: {
-                                color: normalColor,
+                                color: "rgba(225,225,225,0)",
                                 fontSize: 12
                             }
                         },
                         axisLine: {
                             lineStyle: {
-                                color: normalColor
+                                color: "rgba(225,225,225,0)",
                             }
                         },
                         axisTick: {
                             show: false
                         },
                         splitLine: {
-                            show: false,
+                            show: true,
                             lineStyle: {
                                 type: "dashed",
-                                color: normalColor
+                                color: "rgba(225,225,225,0)",
                             }
                         }
-                    },
-                        {
-                            // type: "value",
-                            // name: "件",
-                            nameTextStyle: {
-                                color: normalColor,
-                                fontSize: 12
-                            },
-                            // min: 0,
-                            // max: 100,
-                            axisLabel: {
-                                formatter: "{value}",
-                                textStyle: {
-                                    color: "rgba(225,225,225,0)",
-                                    fontSize: 12
-                                }
-                            },
-                            axisLine: {
-                                lineStyle: {
-                                    color: "rgba(225,225,225,0)",
-                                }
-                            },
-                            axisTick: {
-                                show: false
-                            },
-                            splitLine: {
-                                show: true,
-                                lineStyle: {
-                                    type: "dashed",
-                                    color: "rgba(225,225,225,0)",
-                                }
-                            }
-                        }
-                        ],
-                    // dataZoom: [//滑动条
-                    //     {
-                    //         xAxisIndex: 0,//这里是从X轴的0刻度开始
-                    //         show: false,//是否显示滑动条，不影响使用
-                    //         type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-                    //         startValue: 0, // 从头开始。
-                    //         endValue: 9  // 一次性展示6个。
-                    //     }
-                    // ],
-                    series: seriesData
-                };
-                return option
-            }
+                    }
+                ],
+                // dataZoom: [//滑动条
+                //     {
+                //         xAxisIndex: 0,//这里是从X轴的0刻度开始
+                //         show: false,//是否显示滑动条，不影响使用
+                //         type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+                //         startValue: 0, // 从头开始。
+                //         endValue: 9  // 一次性展示6个。
+                //     }
+                // ],
+                series: seriesData
+            };
+            return option
+        }
         ,
-            goods: function (xData, yData, zData, color) {
-                // xdata
+        goods: function (xData, yData, zData, color) {
+            // xdata
 
 // ydata
 
 // pictorialData
-                let pictorialData = []
-                yData.map(v => {
-                    pictorialData.push({value: v, symbolPosition: 'end',})
-                })
+            let pictorialData = []
+            yData.map(v => {
+                pictorialData.push({value: v, symbolPosition: 'end',})
+            })
 
-                let option = {
-                    legend: {
-                        data: ['满意度', '总量'],
-                        x: 'center',
-                        top: 30,
-                        right: 0,
-                        textStyle: {
-                            fontSize: 12,
-                            color: '#ffffff'
-                        }
-                    },
-                    color: ['#2db7f5', '#FFF000'],
-
-                    // tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-                    dataZoom: [{
-                        type: 'slider',
-                        xAxisIndex: 0,
-                        zoomLock: true,
-                        width: 300,
-                        height: 10,
-                        handleSize: 0,
-                        showDetail: false,
-                        start: 0,
-                        left: "center",
-                        bottom: 20,
-                        end: 50,
-                        handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
-                        handleSize: '100%',
-                        handleStyle: {
-                            color: "#d3dee5",
-                        },
-                        borderColor: "#90979c"
-                    }, {
-                        type: 'inside',
-                        id: 'dataZoomX',
-                        xAxisIndex: 0,
-                        start: 0,
-                        end: 50,
-                        orient: 'vertical',
-                        zoomOnMouseWheel: false,
-                        moveOnMouseMove: true,
-                        moveOnMouseWheel: true
-                    }],
-                    xAxis: [{
-                        type: 'category',
-                        data: xData,
-
-                        // axisTick: { alignWithLabel: true },
-                        axisLabel: {
-                            textStyle: {fontSize: '90%', color: "#fff"},
-                            interval: 0,
-                            formatter: function (value) {
-
-                                var ret = "";//拼接加\n返回的类目项
-                                var maxLength = 4;//每项显示文字个数
-                                var valLength = value.length;//X轴类目项的文字个数
-                                var rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数
-                                if (rowN > 1)//如果类目项的文字大于3,
-                                {
-                                    for (var i = 0; i < rowN; i++) {
-                                        var temp = "";//每次截取的字符串
-                                        var start = i * maxLength;//开始截取的位置
-                                        var end = start + maxLength;//结束截取的位置
-                                        //这里也可以加一个是否是最后一行的判断，但是不加也没有影响，那就不加吧
-                                        temp = value.substring(start, end) + "\n";
-                                        ret += temp; //凭借最终的字符串
-                                    }
-                                    return ret;
-                                } else {
-                                    return value;
-                                }
-                            }
-
-                        },
-                        // axisLine: { show: false },
-                        axisTick: false
+            let option = {
+                legend: {
+                    data: ['满意度', '总量'],
+                    x: 'center',
+                    top: 30,
+                    right: 0,
+                    textStyle: {
+                        fontSize: 12,
+                        color: '#ffffff'
                     }
-                        , {
-                            "show": false,
-                            data: xData,
-                            inverse: true
-                        },
-                    ],
-                    yAxis: [{
-                        type: 'value',
-                        name: '单位',
-                        nameTextStyle: {color: '#fff', fontSize: '90%', padding: [0, 0, 0, -45]},
-                        splitLine: {lineStyle: {color: 'rgba(255,255,255, .1)'}},
-                        axisLabel: {textStyle: {fontSize: '90%', color: "#fff"}},
-                        axisLine: {show: false},
-                        axisTick: false
-                    }, {
-                        type: 'value',
-                        position: 'left',
-                        nameTextStyle: {
-                            color: '#00FFFF'
-                        },
-                        splitLine: {
-                            lineStyle: {
-                                type: 'dashed',
-                                color: 'rgba(135,140,147,0.8)'
-                            }
-                        },
-                        axisLine: {
-                            show: false
-                        },
-                        axisTick: {
-                            show: false
-                        },
-                        axisLabel: {
-                            formatter: '{value}',
-                            color: '#fff',
-                            fontSize: 14
-                        }
-                    },],
-                    series: [{
-                        name: '总量',
-                        type: 'bar',
-                        barWidth: 30,
-                        data: yData.sort(function (a, b) {
-                            return b - a
-                        }),
-                        itemStyle: {
-                            color: color
-                        },
+                },
+                color: ['#2db7f5', '#FFF000'],
 
-                    }, {
-                        name: '满意度',
-                        itemStyle: {
-                            normal: {
-                                color: "#FFF000",
-                                lineStyle: {
-                                    color: "#FFF000"
-                                }
-                            }
-                        },
-                        type: "line",
-                        data: zData.sort(function (a, b) {
-                            return b - a
-                        }),
+                // tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+                dataZoom: [{
+                    type: 'slider',
+                    xAxisIndex: 0,
+                    zoomLock: true,
+                    width: 300,
+                    height: 10,
+                    handleSize: 0,
+                    showDetail: false,
+                    start: 0,
+                    left: "center",
+                    bottom: 20,
+                    end: 50,
+                    handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                    handleSize: '100%',
+                    handleStyle: {
+                        color: "#d3dee5",
                     },
-                    ]
-                };
-                return option
+                    borderColor: "#90979c"
+                }, {
+                    type: 'inside',
+                    id: 'dataZoomX',
+                    xAxisIndex: 0,
+                    start: 0,
+                    end: 50,
+                    orient: 'vertical',
+                    zoomOnMouseWheel: false,
+                    moveOnMouseMove: true,
+                    moveOnMouseWheel: true
+                }],
+                xAxis: [{
+                    type: 'category',
+                    data: xData,
 
-            }
+                    // axisTick: { alignWithLabel: true },
+                    axisLabel: {
+                        textStyle: {fontSize: '90%', color: "#fff"},
+                        interval: 0,
+                        formatter: function (value) {
+
+                            var ret = "";//拼接加\n返回的类目项
+                            var maxLength = 4;//每项显示文字个数
+                            var valLength = value.length;//X轴类目项的文字个数
+                            var rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数
+                            if (rowN > 1)//如果类目项的文字大于3,
+                            {
+                                for (var i = 0; i < rowN; i++) {
+                                    var temp = "";//每次截取的字符串
+                                    var start = i * maxLength;//开始截取的位置
+                                    var end = start + maxLength;//结束截取的位置
+                                    //这里也可以加一个是否是最后一行的判断，但是不加也没有影响，那就不加吧
+                                    temp = value.substring(start, end) + "\n";
+                                    ret += temp; //凭借最终的字符串
+                                }
+                                return ret;
+                            } else {
+                                return value;
+                            }
+                        }
+
+                    },
+                    // axisLine: { show: false },
+                    axisTick: false
+                }
+                    , {
+                        "show": false,
+                        data: xData,
+                        inverse: true
+                    },
+                ],
+                yAxis: [{
+                    type: 'value',
+                    name: '单位',
+                    nameTextStyle: {color: '#fff', fontSize: '90%', padding: [0, 0, 0, -45]},
+                    splitLine: {lineStyle: {color: 'rgba(255,255,255, .1)'}},
+                    axisLabel: {textStyle: {fontSize: '90%', color: "#fff"}},
+                    axisLine: {show: false},
+                    axisTick: false
+                }, {
+                    type: 'value',
+                    position: 'left',
+                    nameTextStyle: {
+                        color: '#00FFFF'
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            type: 'dashed',
+                            color: 'rgba(135,140,147,0.8)'
+                        }
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        formatter: '{value}',
+                        color: '#fff',
+                        fontSize: 14
+                    }
+                },],
+                series: [{
+                    name: '总量',
+                    type: 'bar',
+                    barWidth: 30,
+                    data: yData.sort(function (a, b) {
+                        return b - a
+                    }),
+                    itemStyle: {
+                        color: color
+                    },
+
+                }, {
+                    name: '满意度',
+                    itemStyle: {
+                        normal: {
+                            color: "#FFF000",
+                            lineStyle: {
+                                color: "#FFF000"
+                            }
+                        }
+                    },
+                    type: "line",
+                    data: zData.sort(function (a, b) {
+                        return b - a
+                    }),
+                },
+                ]
+            };
+            return option
+
+        }
         ,
-            // 交通客流 仪表盘
-            JTKL2: function (name1, name2, name3, data1, data2, data3, data4) {
-                // ("当日完成班次","昨日班次执行率","昨日首末班车准确率",4954,99.81,99.44,)
-                option = {
-                    tooltip: {},
+        // 交通客流 仪表盘
+        JTKL2: function (name1, name2, name3, data1, data2, data3, data4) {
+            // ("当日完成班次","昨日班次执行率","昨日首末班车准确率",4954,99.81,99.44,)
+            option = {
+                tooltip: {},
 
-                    series: [{
-                        name: name1,
+                series: [{
+                    name: name1,
+                    type: 'gauge',
+                    z: 3,
+                    min: 0,
+                    max: data4,
+                    splitNumber: 10,
+                    radius: '60%',
+                    center: ['50%', '30%'],
+                    axisLine: {
+                        lineStyle: {
+                            width: 3
+                        }
+                    },
+                    axisTick: {
+                        length: 1,
+                        lineStyle: {
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {
+                        length: 10,
+                        lineStyle: {
+                            color: 'auto'
+                        }
+                    },
+                    axisLabel: {            // 刻度标签。
+                        show: false,
+                    },
+                    title: {
+                        fontWeight: 'bolder',
+                        fontSize: 15,
+                    },
+                    pointer: {
+                        width: 3
+                    },
+                    detail: {
+                        fontSize: 15,
+                    },
+                    data: [{
+                        value: data1,
+                        name: ''
+                    }]
+                },
+                    {
+                        name: name2,
                         type: 'gauge',
-                        z: 3,
+                        center: ['20%', '35%'],
+                        radius: '40%',
                         min: 0,
-                        max: data4,
-                        splitNumber: 10,
-                        radius: '60%',
-                        center: ['50%', '30%'],
+                        max: 100,
+                        endAngle: 45,
+                        splitNumber: 5,
                         axisLine: {
                             lineStyle: {
-                                width: 3
+                                width: 2
                             }
                         },
                         axisTick: {
@@ -2080,143 +2191,99 @@ var MyEcharts = {
                                 color: 'auto'
                             }
                         },
+                        axisLabel: {            // 刻度标签。
+                            show: false,
+                        },
                         splitLine: {
-                            length: 10,
+                            length: 8,
                             lineStyle: {
                                 color: 'auto'
+                            }
+                        },
+                        pointer: {
+                            width: 2
+                        },
+                        title: {
+                            fontSize: 15,
+                        },
+                        detail: {
+                            // fontWeight: 'bolder',
+                            fontSize: 15,
+                        },
+                        data: [{
+                            value: data2,
+                            name: '',
+
+                        }]
+                    },
+                    {
+                        name: name3,
+                        type: 'gauge',
+                        center: ['80%', '35%'],
+                        radius: '40%',
+                        min: 0,
+                        max: 100,
+                        startAngle: 135,
+                        endAngle: -45,
+                        splitNumber: 5,
+                        axisLine: {
+                            lineStyle: {
+                                width: 2
                             }
                         },
                         axisLabel: {            // 刻度标签。
                             show: false,
                         },
-                        title: {
-                            fontWeight: 'bolder',
-                            fontSize: 15,
+                        axisTick: {
+                            splitNumber: 1,
+                            length: 2,
+                            lineStyle: {
+                                color: 'auto'
+                            }
+                        },
+
+                        splitLine: {
+                            length: 8,
+                            lineStyle: {
+                                color: 'auto'
+                            }
                         },
                         pointer: {
-                            width: 3
+                            width: 2
+                        },
+                        title: {
+                            show: true,
+                            fontSize: 15,
+
                         },
                         detail: {
+                            show: true,
                             fontSize: 15,
                         },
                         data: [{
-                            value: data1,
-                            name: ''
+                            value: data3,
+                            name: '',
                         }]
-                    },
-                        {
-                            name: name2,
-                            type: 'gauge',
-                            center: ['20%', '35%'],
-                            radius: '40%',
-                            min: 0,
-                            max: 100,
-                            endAngle: 45,
-                            splitNumber: 5,
-                            axisLine: {
-                                lineStyle: {
-                                    width: 2
-                                }
-                            },
-                            axisTick: {
-                                length: 1,
-                                lineStyle: {
-                                    color: 'auto'
-                                }
-                            },
-                            axisLabel: {            // 刻度标签。
-                                show: false,
-                            },
-                            splitLine: {
-                                length: 8,
-                                lineStyle: {
-                                    color: 'auto'
-                                }
-                            },
-                            pointer: {
-                                width: 2
-                            },
-                            title: {
-                                fontSize: 15,
-                            },
-                            detail: {
-                                // fontWeight: 'bolder',
-                                fontSize: 15,
-                            },
-                            data: [{
-                                value: data2,
-                                name: '',
+                    }
+                ]
+            };
 
-                            }]
-                        },
-                        {
-                            name: name3,
-                            type: 'gauge',
-                            center: ['80%', '35%'],
-                            radius: '40%',
-                            min: 0,
-                            max: 100,
-                            startAngle: 135,
-                            endAngle: -45,
-                            splitNumber: 5,
-                            axisLine: {
-                                lineStyle: {
-                                    width: 2
-                                }
-                            },
-                            axisLabel: {            // 刻度标签。
-                                show: false,
-                            },
-                            axisTick: {
-                                splitNumber: 1,
-                                length: 2,
-                                lineStyle: {
-                                    color: 'auto'
-                                }
-                            },
+            return option
+        }
+    },
 
-                            splitLine: {
-                                length: 8,
-                                lineStyle: {
-                                    color: 'auto'
-                                }
-                            },
-                            pointer: {
-                                width: 2
-                            },
-                            title: {
-                                show: true,
-                                fontSize: 15,
+    /**
+     *添加Id
+     * @param option : option
+     * @param echartId : string 需要加引号
+     */
+    initChart: function (option, echartId) {
+        var container = eval("document.getElementById('" + echartId + "')");
+        var myChart = echarts.init(container);
 
-                            },
-                            detail: {
-                                show: true,
-                                fontSize: 15,
-                            },
-                            data: [{
-                                value: data3,
-                                name: '',
-                            }]
-                        }
-                    ]
-                };
-
-                return option
-            }
-        },
-
-            /**
-             *添加Id
-             * @param option : option
-             * @param echartId : string 需要加引号
-             */
-            initChart: function (option, echartId) {
-                var container = eval("document.getElementById('" + echartId + "')");
-                var myChart = echarts.init(container);
-
-                myChart.setOption(option, true);	// 为echarts对象加载数据
-                return myChart;
-            }
+        myChart.setOption(option, true);	// 为echarts对象加载数据
+        return myChart;
+    }
 
 
-        };
+};

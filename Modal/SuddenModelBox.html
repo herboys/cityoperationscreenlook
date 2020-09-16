@@ -3,31 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/12345Modal.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/pubilic.css"/>
     <link rel="stylesheet" type="text/css" href="css/public.css">
     <link rel="stylesheet" type="text/css" href="../css/pubilic.css">
     <style>
-        .headers {
 
+        #dropdown {
+            font-size: 1.333rem;
+            z-index: 99999;
+            text-align: center;
+        }
+
+        #dropdown p {
+            border-radius: .1rem;
+            width: 6.667rem;
+            height: 2.667rem;
+            line-height: 2.667rem;
+            padding-left: 0.833rem;
+            padding-right: .833rem;
+            border: 0.083rem solid #a9c9e2;
+            /*background: inherit url('V') no-repeat right 0.333rem;*/
+            color: #ffffff;
+            cursor: pointer
+        }
+
+        #dropdown ul {
+            padding-left: 0.833rem;
+            padding-right: .833rem;
+            width: 6.667rem;
+            background-color: #061839;;
+            margin-top: 0.167rem;
+            border: 0.167rem solid #50657D;
+            position: absolute;
+            display: none
+        }
+
+        #dropdown ul li {
+            text-align: center;
+            height: 2rem;
+            line-height: 2rem;
+            /*text-indent: 0.833rem*/
+        }
+
+        #dropdown ul li a {
+            display: block;
+            height: 2rem;
+            color: #ffffff;
+            text-decoration: none
+        }
+
+        #dropdown ul li a:hover {
+            background: #c6dbfc;
+            color: #ffffff
+        }
+
+
+        #clearid {
+            position: fixed;
+            pointer-events: auto;
+            font-size: 2rem;
+            font-weight: bold;
+            z-index: 999;
+            cursor: pointer;
+            right: 0.833rem;
+            top: 0rem;
+            color: white;
+
+        }
+
+        .headers {
             align-items: center;
         }
 
         .headers span {
             padding: 0rem 2rem;
-            font-size: 3rem;
+            font-size: 2.4rem;
             color: white;
             font-weight: bold;
         }
 
         .line {
-            border-left: .4rem solid #31FFFE;
-            height: 3rem;
+            border-left: .2rem solid #31FFFE;
+            height: 1.8rem;
             position: relative;
         }
 
         .line:after {
             content: "";
             position: absolute;
-            border-left: .4rem solid #31FFFE;
+            border-left: .2rem solid #31FFFE;
             height: 0.833rem;
             top: -0.333rem;
             transform: rotate(45deg);
@@ -37,7 +102,7 @@
         .line:before {
             content: "";
             position: absolute;
-            border-left: .4rem solid #31FFFE;
+            border-left: .2rem solid #31FFFE;
             height: 0.667rem;
             bottom: -0.333rem;
             transform: rotate(-45deg);
@@ -45,15 +110,15 @@
         }
 
         .line1 {
-            border-left: .4rem solid #31FFFE;
-            height: 3rem;
+            border-left: .2rem solid #31FFFE;
+            height: 1.8rem;
             position: relative;
         }
 
         .line1:after {
             content: "";
             position: absolute;
-            border-left: .4rem solid #31FFFE;
+            border-left: .2rem solid #31FFFE;
             height: 0.667rem;
             top: -0.333rem;
             right: 0.167rem;
@@ -65,7 +130,7 @@
         .line1:before {
             content: "";
             position: absolute;
-            border-left: .4rem solid #31FFFE;
+            border-left: .2rem solid #31FFFE;
             height: 0.667rem;
             bottom: -0.333rem;
             right: 0.167rem;
@@ -83,20 +148,22 @@
             border: .2rem solid rgb(17, 102, 165);
             box-sizing: border-box;
             padding: 1rem 1.053rem 0rem 1.053rem;
+            position: relative;
         }
 
         .border-bg-height {
-            height: 50rem;
+            height: 24rem;
             box-sizing: border-box;
-            padding: 4rem 3rem;
+            padding: 3rem 3rem;
 
         }
 
         .warp-item {
             box-sizing: border-box;
-            padding: .2rem .5rem .2rem 0rem;
+            padding: .2rem .5rem .2rem .5rem;
         }
-        .farstwarp{
+
+        .farstwarp {
 
             height: 100%;
             width: 100%;
@@ -116,16 +183,19 @@
             position: relative;
 
         }
-        .name{
+
+        .name {
             font-size: 0.737rem;
         }
-        .farstitem .name{
-            line-height: 7.5rem;
+
+        .farstitem .name {
+            line-height: 3.6rem;
             width: 100%;
             text-align: center;
             font-size: 2.4rem;
         }
-        .lastname{
+
+        .lastname {
             position: absolute;
             box-sizing: border-box;
             bottom: 3rem;
@@ -136,49 +206,61 @@
             background-image: url(images/buttom.png);
             background-position: center;
             background-size: 100% 100%;
-            height: 5rem;
-            font-size: 1.8rem;
-            line-height: 1.8rem;
-            padding-top: 1.6rem;
-            padding-left: 2rem;
-            padding-right: 2rem;
+            height: 3rem;
+            font-size: 2rem;
+            line-height: 3rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            display: flex;
+            justify-content: space-around;
+            align-content: center;
+        }
+
+        .lastname img {
+            margin-top: 0.5rem;
+            width: 1rem;
+            height: 2rem;
         }
     </style>
 </head>
 <body>
 <div class="warp">
     <div class="warp-child">
+        <div id="clearid">x</div>
         <div class="flex">
             <div class="flex_item_1">
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
-                        <span>突发事件概况</span>
+                        <a class="line"></a>
+                        <span>基本概况</span>
+                        <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
                 </div>
-                <div class="border-bg border-bg-height" style="padding: 7rem 3rem 4rem 3rem">
-                    <div style="height: 100%;" class="flex">
-                        <div class="flex_item_1 farstwarp">
-                            <div class="farstitem">
-                                <div class="name">本年突发事件</div>
-                                <div class="lastname">同比去年</div>
-                            </div>
-                        </div>
-                        <div class="flex_item_1 farstwarp">
-                            <div class="farstitem">
-                                <div class="name">本月突发事件</div>
-                                <div class="lastname flex flex-between">
-                                    <div>同比上月</div>
-                                    <div><span style="font-size: 3.5rem;color: red;font-weight: bold;padding:0px .5rem">12</span><span style="padding-top: 0px">起</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex_item_1 farstwarp">
-                            <div class="farstitem">
-                                <div class="name">今日突发事件</div>
-                                <div class="lastname">同比昨日</div>
-                            </div>
-                        </div>
+                <div class="border-bg border-bg-height" style="padding:3rem 2rem 2rem 2rem;">
+                    <div style="height: 100%;" class="flex" id="FindNumId">
+<!--                        <div class="flex_item_1 farstwarp">-->
+<!--                            <div class="farstitem">-->
+<!--                                <div class="name">本年突发事件</div>-->
+<!--                                <div>asdsad</div>-->
+<!--                                <div class="lastname">较去年同期<img src="images/箭头红.png"></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="flex_item_1 farstwarp">-->
+<!--                            <div class="farstitem">-->
+<!--                                <div class="name">本月突发事件</div>-->
+<!--                                <div class="lastname flex flex-between">-->
+<!--                                    <div>环比上月</div>-->
+<!--                                    <div><span style="font-size: 3.5rem;color: red;font-weight: bold;padding:0px .5rem">12</span><span-->
+<!--                                            style="padding-top: 0px">起</span></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="flex_item_1 farstwarp">-->
+<!--                            <div class="farstitem">-->
+<!--                                <div class="name">今日突发事件</div>-->
+<!--                                <div class="lastname">环比昨日</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -186,12 +268,23 @@
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
                         <a class="line"></a>
-                        <span>突发事件数量统计</span>
+                        <span>事件类型统计</span>
                         <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
+                    <div>
+                        <div id="dropdown">
+                            <p style="border:1px solid #1DD6DF;color: #1DD6DF">请选择日期</p>
+                            <ul style="border:1px solid #1DD6DF;color: #1DD6DF">
+                                <li><a href="#" rel="1"> 今日</a></li>
+                                <li><a href="#" rel="2">本周</a></li>
+                                <li><a href="#" rel="3">本年度</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="border-bg border-bg-height">qwe</div>
+                <div class="border-bg border-bg-height">
+                    <div id="SmallECharts1" style="width: 100%;height: 100%"></div>
+                </div>
             </div>
         </div>
         <div class="flex">
@@ -199,21 +292,21 @@
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
                         <a class="line"></a>
-                        <span>突发事件发生街道分布</span>
+                        <span>事发地分布统计</span>
                         <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
                 </div>
-                <div class="border-bg border-bg-height">qwe</div>
+                <div class="border-bg border-bg-height">
+                    <div id="SmallECharts2" style="width: 100%;height: 100%"></div>
+                </div>
             </div>
             <div class="flex_item_1">
                 <div class="flex flex-between warp-item">
                     <div class="headers flex">
                         <a class="line"></a>
-                        <span> 经常发生突发事件路段统计</span>
+                        <span> 事发时间段统计</span>
                         <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
                 </div>
                 <div class="border-bg border-bg-height">
                     <div id="BasicFunId"></div>
@@ -229,84 +322,277 @@
                         <span>突发事件列表</span>
                         <a class="line1"></a>
                     </div>
-                    <!--                <div>月份</div>-->
                 </div>
-                <div class="border-bg border-bg-height" style="height: 32rem;padding: 4rem 5rem">
+                <div class="border-bg border-bg-height" style="height: 20rem;padding: 4rem 5rem">
                     <div>
                         <ul class="flex" style="color: rgb(31,224,233);background: rgb(10,63,108);padding: 1rem 2rem">
                             <li class="flex_item_2">日期</li>
                             <li class="flex_item_2">时间</li>
                             <li class="flex_item_2">街道</li>
                             <li class="flex_item_3">详细地址</li>
-                            <li class="flex_item_2">时间类型</li>
-                            <li class="flex_item_4">内容</li>
+                            <li class="flex_item_2">事件类型</li>
+                            <li style="width: 40rem">内容</li>
                         </ul>
+                        <div id="GongDanIDBox" style="height: 12rem ;overflow: hidden">
+                            <div id="GongDanID"></div>
+                            <div id="GongDanIDCopy"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="../js/commonJs.js"></script>
+<script type="text/javascript" src="Js/ajaxPromise.js"></script>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/MyEcharts.js" type="text/javascript" charset="utf-8"></script>
 <script>
+    $("#dropdown p").click(function () {
+        var ul = $("#dropdown ul");
+        if (ul.css("display") == "none") {
+            ul.slideDown("fast");
+        } else {
+            ul.slideUp("fast");
+        }
+        $("#dropdown ul li a").click(function () {
+            var txt = $(this).text();
+            $("#dropdown p").html(txt);
+            var value = $(this).attr("rel");
+            $("#dropdown ul").hide();
+            $("#result").html("您选择了" + txt + "，值为：" + value);
+        });
+    })
+    document.getElementById("clearid").onclick = function () {
+        window.parent.document.getElementById("SuddenModelBox").style.display = "none";
+        window.parent.document.getElementById("maincrtynammeid").style.display = "block";
+        console.log(window.parent.document.getElementById("ModalBox"))
+    }
     window.onload = function () {
+
+        rollInit()
         lineFun()
+        barFun1()
+        barFun2()
+        Fun()
+        firstFun()
+    }
 
+    function firstFun() {
+        let para = {
+            url: FIRE_URL + '/jdcyEmergencyOld/findNum',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res => {
+            para = ''
+            res[0].name='本年突发事件'
+            res[0].bname='较去年同期'
+            res[1].name='本月突发事件'
+            res[1].bname='环比上月'
+            res[2].name='本周突发事件'
+            res[2].bname='环比上周'
+            console.log(res)
+            for (let i = 0; i < res.length; i++) {
+                para +=`
+                          <div class="flex_item_1 farstwarp">
+                            <div class="farstitem">
+                                <div class="name">${res[i].name}</div>
+                                <div style="color:rgb(176, 158, 56);text-align: center;font-weight:bold;margin-top:1.4rem"><span style="font-size: 7rem">${res[i].nownum}</span><span style="font-size:3rem">起</span></div>
+                                <div class="lastname">${res[i].bname}<img src="images/箭头红.png"></div>
+                            </div>
+                        </div>
+                `
+            }
+            document.getElementById("FindNumId").innerHTML = para
+        })
+    }
 
+    function barFun1() {
+        let para = {
+            url: FIRE_URL + '/jdcyEmergencyOld/findTypeStreetNum?type=3',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res => {
+            alert('12321')
+            console.log(res)
+            let xData = []
+            let yData = []
+            res.map(item => {
+                xData.push(item.happenedDate)
+                yData.push(item.countNum)
+            })
+
+            MyEcharts.initChart(MyEcharts.EchartsOption.OrdinaryBar('name', xData, yData), "SmallECharts1")
+        })
+    }
+
+    function barFun2() {
+        let para = {
+            url: FIRE_URL + '/jdcyEmergencyOld/findTypeStreetNum?type=2',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res => {
+            console.log(res)
+            let xData = []
+            let yData = []
+            res.map(item => {
+                xData.push(item.happenedDate)
+                yData.push(item.countNum)
+            })
+
+            MyEcharts.initChart(MyEcharts.EchartsOption.OrdinaryBar('name', xData, yData), "SmallECharts2")
+        })
     }
 
     function lineFun() {
-        let para = ''
-        let color = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff']
-        let res = [
-            {name: '某某某段路', value: 1000},
-            {name: '某某某段路', value: 800},
-            {name: '某某某段路', value: 700},
-            {name: '某某某段路', value: 600},
-            {name: '某某某段路', value: 500},
-            {name: '某某某段路', value: 400},
-            {name: '某某某段路', value: 300},
-            {name: '某某某段路', value: 200},
-            {name: '某某某段路', value: 100},
-        ]
-        res.forEach((item, index) => {
-            para += `
-                 <ul class="BasicFunIditemul" style=" height: 4.5rem;width: 100%;display: flex;align-items: center">
-             <li class="BasicFunIditemtitle" style="display: inline-block;min-width:3rem;height: 3rem;background: #2cc78f;border-radius: 50%;color:white;text-align: center;line-height:3rem">${index + 1}</li>
-             <li class="BasicFunIditemname"  style="display: inline-block;color: white;text-align:center;min-width: 14rem">${item.name}</li>
-             <li  style="  cursor: pointer;display:inline-block;height: 2rem;border-radius: 1.667rem;width: 100%;background-color:#4e638b">
-             <div class="BasicFunIditem" style="height: 2rem;border-radius: 1.667rem;width: 100%;"></div>
+        let para = {
+            url: FIRE_URL + '/jdcyEmergencyOld/findTypeStreetNum?type=1',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res => {
+            let list = []
+            let number = 0
+            res.map(item => {
+                list.push({name: item.happenedDate, value: item.countNum})
+                if (item.countNum > number) {
+                    number = item.countNum
+                }
+            })
+            para = ''
+            let color = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff', '#0093ff']
+            list.forEach((item, index) => {
+                para += `
+                 <ul class="BasicFunIditemul" style=" height: 2rem;width: 100%;display: flex;align-items: center">
+             <li class="BasicFunIditemtitle" style="display: inline-block;min-width:1.5rem;height: 1.5rem;background: #2cc78f;border-radius: 50%;color:white;text-align: center;line-height:1.5rem">${index + 1}</li>
+             <li class="BasicFunIditemname"  style="display: inline-block;color: white;text-align:center;min-width: 6rem">${item.name}月</li>
+             <li  style="  cursor: pointer;display:inline-block;height: 1rem;border-radius: 1.667rem;width: 100%;background-color:#4e638b">
+             <div class="BasicFunIditem" style="height: 1rem;border-radius: 1.667rem;width: 100%;"></div>
 </li>
-                     <li  style="display: inline-block;color: white;text-align:center;min-width: 8rem">${item.value}件</li>
+                     <li  style="display: inline-block;color: white;text-align:center;min-width: 6rem">${item.value}件</li>
             </ul>
 
            `
-        })
-        console.log('12312')
-        document.getElementById("BasicFunId").innerHTML = para
-        para = document.querySelectorAll("#BasicFunId .BasicFunIditem")
-        let para1 = document.querySelectorAll("#BasicFunId .BasicFunIditemtitle")
-        let para2 = document.querySelectorAll("#BasicFunId .BasicFunIditemname")
-        let paraul = document.querySelectorAll("#BasicFunId .BasicFunIditemul")
-        res.forEach((item, index) => {
-            para[index].style.width = ((item.value / res[0].value).toFixed(2)) * 100 + "%"
-            para[index].style.backgroundColor = color[index]
-            para1[index].style.backgroundColor = color[index]
+            })
+            console.log('12312')
+            document.getElementById("BasicFunId").innerHTML = para
+            para = document.querySelectorAll("#BasicFunId .BasicFunIditem")
+            let para1 = document.querySelectorAll("#BasicFunId .BasicFunIditemtitle")
+            let para2 = document.querySelectorAll("#BasicFunId .BasicFunIditemname")
+            let paraul = document.querySelectorAll("#BasicFunId .BasicFunIditemul")
+            list.forEach((item, index) => {
+                para[index].style.width = ((item.value / number).toFixed(2)) * 100 + "%"
+                para[index].style.backgroundColor = color[index]
+                para1[index].style.backgroundColor = color[index]
 
-        })
-        for (let i = 0; i < paraul.length; i++) {
-            paraul[i].onclick = function () {
-                para[i].style.boxShadow = `0rem 0rem 0.526rem 0.053rem ${color[i]}`
-                para1[i].style.boxShadow = `0rem 0rem 0.526rem 0.053rem ${color[i]}`
-                para2[i].style.textBackgroundColor = `0rem 0rem 0.526rem 0.053rem ${color[i]}`
-                para.forEach((item, index) => {
-                    if (i == index) {
-                    } else {
-                        para[index].style.boxShadow = ""
-                        para1[index].style.boxShadow = ""
-                        para2[index].style.boxShadow = ""
-                    }
-                })
+            })
+            for (let i = 0; i < paraul.length; i++) {
+                paraul[i].onclick = function () {
+                    para[i].style.boxShadow = `0rem 0rem 0.526rem 0.053rem ${color[i]}`
+                    para1[i].style.boxShadow = `0rem 0rem 0.526rem 0.053rem ${color[i]}`
+                    para2[i].style.textBackgroundColor = `0rem 0rem 0.526rem 0.053rem ${color[i]}`
+                    para.forEach((item, index) => {
+                        if (i == index) {
+                        } else {
+                            para[index].style.boxShadow = ""
+                            para1[index].style.boxShadow = ""
+                            para2[index].style.boxShadow = ""
+                        }
+                    })
+                }
             }
+        })
+    }
+
+    // <li class="flex_item_2 ellipsis">${res[i].happenedDate}</li>
+    // <li class="flex_item_2 ellipsis">${res[i].happenedTime}</li>
+    // <li class="flex_item_2 ellipsis">${res[i].happenedAddr}</li>
+    // <li class="flex_item_3 ellipsis">${res[i].happenedPlace}</li>
+    // <li class="flex_item_2 ellipsis">${res[i].caseType}</li>
+    // <li class="flex_item_4 ellipsis">${res[i].caseInfo}</li>
+    function Fun() {
+        let para = {
+            url: FIRE_URL + '/jdcyEmergencyOld/findTenMsg',
+            async: true,
+            type: 'get',
+            dataType: 'JSON',
+        }
+        ajaxPromise(para).then(res => {
+            console.log(res)
+            var para = ''
+            for (let i = 0; i < 10; i++) {
+                para += `         <ul class="flex" style="color: white;padding: 1rem 2rem;height: 1.579rem;line-height: 1.579rem;border-bottom: 2px dashed  rgb(31,224,233)">
+                                <li class="flex_item_2 ellipsis">${res[i].happenedDate}</li>
+                                 <li class="flex_item_2 ellipsis">${res[i].happenedTime}</li>
+                                  <li class="flex_item_2 ellipsis">${res[i].happenedAddr}</li>
+                                  <li class="flex_item_3 ellipsis">${res[i].happenedPlace}</li>
+<li class="flex_item_2 ellipsis">${res[i].caseType}</li>
+ <li class="ellipsis" style="width: 40rem">${res[i].caseInfo}</li>
+                            </ul>`
+            }
+            document.getElementById('GongDanID').innerHTML = para
+        })
+    }
+
+    /**轮播动画**/
+    function rollInit() {
+        let ul1 = document.getElementById("GongDanID");
+        let ul2 = document.getElementById("GongDanIDCopy");
+        let rollbox = document.getElementById("GongDanIDBox");
+        roll(50, ul1, ul2, rollbox)
+    }
+
+    function roll(t, ul1, ul2, rollbox) {
+        ul2.innerHTML = ul1.innerHTML;
+        rollbox.scrollTop = 0;
+        let lis = document.querySelectorAll("#GongDanID ul")
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+                let childLI = document.querySelectorAll(".work-older-list-ul .ul-line")
+                let para = `
+              <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
+                                            <div style="padding: 1.667rem 3.333rem;color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+            `
+                document.getElementById("ModalsmallID").style.display = "block"
+                document.getElementById("ModalsmallRoomID").innerHTML = para
+            }
+        }
+        let liscopy = document.querySelectorAll("#GongDanIDCopy ul")
+        for (let i = 0; i < liscopy.length; i++) {
+            liscopy[i].onclick = function () {
+                let para = `
+       <p style="font-size: 1.5rem;color: white;padding-left1.667rem:">诉求内容</p>
+                          <div style="padding: 1.667rem 3.333rem;
+                          color: #d0c7c7;line-height:2rem;height: 19.333rem ">${gongdanlist[i].DESCRIPTION}</div>
+            `
+                document.getElementById("ModalsmallID").style.display = "block"
+                document.getElementById("ModalsmallRoomID").innerHTML = para
+            }
+        }
+        let timer = setInterval(rollStart, t);
+        rollbox.onmouseover = function () {
+            clearInterval(timer);
+        }
+        rollbox.onmouseout = function () {
+            timer = setInterval(rollStart, t);
+        }
+    }
+
+    function rollStart() {
+        let ul1 = document.getElementById("GongDanID");
+        let rollbox = document.getElementById("GongDanIDBox");
+        if (rollbox.scrollTop >= ul1.scrollHeight) {
+            rollbox.scrollTop = 0;
+        } else {
+            rollbox.scrollTop++;
         }
     }
 </script>

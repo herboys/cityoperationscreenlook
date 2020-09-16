@@ -234,11 +234,11 @@ function GDSprinkle() {
       let lnglats =[]
       var cluster
       let markers = [];
-      $.get("http://10.237.115.83:8092/personGps/findNewGps",function(res){
+      $.get(Grid_URL+ "/personGps/findNewGps",function(res){
         points=res
         lnglats=res
 
-        $.each(points, function(i, item) { //遍历每个点，我的业务要给每个点添加点击事件	
+        $.each(points, function(i, item) { //遍历每个点
             console.log(item, 'itemitem');
             let point = points[i];
             // let  lng=Number(point.longitude)
@@ -250,9 +250,7 @@ function GDSprinkle() {
                 content: '<div style="background-color: hsla(180, 100%, 50%, 0.7); height: 24px; width: 24px; border: 1px solid hsl(180, 100%, 40%); border-radius: 12px; box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;"></div>',
                 offset: new AMap.Pixel(-15, -15)
             })
-            var equiId = item.equipmentId; 
-            var equiName = item.equipmentName;
-            addClickHandler(equiId, equiName,marker); //给标记点添加点击事件
+            addClickHandler(marker,item); //给标记点添加点击事件
             markers.push(marker);
         });
         var count = markers.length;
@@ -283,32 +281,32 @@ function GDSprinkle() {
             renderClusterMarker: _renderClusterMarker
         });
 
-        function addClickHandler(equiId,equiName,marker){
-            marker.on("click",function(e){
-            // openInfo(equiId,equiName,marker,e)
+        function addClickHandler(marker,item){
+            marker.on("click",function(){
+                console.log(item,item.ad, 'itemitemitem');
+                //实例化信息窗体
+                var title =
+                `<span style="color:#07ECEB;">设备PU号:${item.ad}</span>`,
+                content = [];
+                content.push( `组织、人员ID：${item.perid}` );
+                content.push( `组织、人员名称：${item.aa}` );
+                // content.push( `时间：${item.date}` );
+                //  content.push("电话：021-64733333");
+            var infoWindow = new AMap.InfoWindow({
+                isCustom: true, //使用自定义窗体
+                content: createInfoWindow(title, content.join("<br/>")),
+                offset: new AMap.Pixel(16, -45),
+            });
             infoWindow.open(map, marker.getPosition());
-             } );
+            
+            } );
         }
     
-        //实例化信息窗体
-        var title =
-            '<span style="color:#07ECEB;">景南山养老院</span>',
-          content = [];
-        content.push(
-          "地址：菊园新区翔方公路2368号",
-          "电话：021-64733333",
-          "员工人数：20",
-          "床位数：30"
-        );
-        content.push("电话：021-64733333");
-        var infoWindow = new AMap.InfoWindow({
-          isCustom: true, //使用自定义窗体
-          content: createInfoWindow(title, content.join("<br/>")),
-          offset: new AMap.Pixel(16, -45),
-        });
+   
 
         //构建自定义信息窗体
         function createInfoWindow(title, content) {
+            console.log(title, content, 'titlecontentq');
           var info = document.createElement("div");
           info.className = "custom-info input-card content-window-card";
 
@@ -320,7 +318,7 @@ function GDSprinkle() {
           var closeX = document.createElement("img");
           top.className = "info-top";
           titleD.innerHTML = title;
-          closeX.src = "https://webapi.amap.com/images/close2.gif";
+          closeX.src = "../../images/imgs/close.png";
           closeX.onclick = closeInfoWindow;
 
           top.appendChild(titleD);
@@ -330,7 +328,6 @@ function GDSprinkle() {
           // 定义中部内容
           var middle = document.createElement("div");
           middle.className = "info-middle";
-          middle.style.backgroundColor = "white";
           middle.innerHTML = content;
           info.appendChild(middle);
 
@@ -338,10 +335,10 @@ function GDSprinkle() {
           var bottom = document.createElement("div");
           bottom.className = "info-bottom";
           bottom.style.position = "relative";
-          bottom.style.top = "0px";
+          bottom.style.top = "1px";
           bottom.style.margin = "0 auto";
           var sharp = document.createElement("img");
-          sharp.src = "https://webapi.amap.com/images/sharp.png";
+          sharp.src = "../../images/imgs/sharp.png";
           bottom.appendChild(sharp);
           info.appendChild(bottom);
           return info;

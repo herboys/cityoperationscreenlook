@@ -154,7 +154,7 @@ var bridge1
 function initJZdata(){ 
       //  初始进来默认  菊园新区管委会 处置率柱状图
     // http://10.237.115.83:8089/city-operation/tcasemsg/findSmallClassNumByStreet?disposeStreet=菊园新区管委会
-  $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByStreet",{"disposeStreet":"菊园新区"},function(res){
+  $.get(Grid_URL+"/tcasemsg/findSmallClassNumByStreet",{"disposeStreet":"菊园新区"},function(res){
    for (let index = 0; index < res.length; index++) {
      xAxisData.push(res[index].case_smallclass)  
      yAxisData.push(res[index].processNum)  
@@ -170,7 +170,7 @@ function initJZdata(){
  yAxisData =[]
  yAxisData2 =[]
  percentage=[]
-  $.get("http://10.237.115.83:8092/tcasemsg/findScore",{"type":1},function(res){
+  $.get(Grid_URL+"/tcasemsg/findScore",{"type":1},function(res){
     for (let i = 0; i < res.length; i++) {
       attackSourcesName.push(res[i].street)
       attackSourcesData.push(res[i].score)
@@ -194,7 +194,7 @@ function initJZdata(){
  
  
   JZPM.on("click", function (param,index) {
-    $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByStreet",{"disposeStreet":param.name},function(res){
+    $.get(Grid_URL+"/tcasemsg/findSmallClassNumByStreet",{"disposeStreet":param.name},function(res){
             xAxisData =[]
             yAxisData =[]
             yAxisData2 =[]
@@ -230,7 +230,7 @@ function initJZdata(){
      );
 
       //  街镇城际热力图 http://10.237.115.83:8092/tcasemsg/findNumPerGridByStreet?street=安亭镇
-      $.get("http://10.237.115.83:8092/tcasemsg/findNumPerGridByStreet",{"street":param.name},function(res){
+      $.get(Grid_URL+"/tcasemsg/findNumPerGridByStreet",{"street":param.name},function(res){
         heatMap(res)
       })
       document.getElementById("GridmapContainer").style.display= 'none'
@@ -244,7 +244,7 @@ function initJZdata(){
 }
 
 function initBMdata(){
-  $.get("http://10.237.115.83:8092/tcasemsg/findScore",{"type":2},function(res2){
+  $.get(Grid_URL+"/tcasemsg/findScore",{"type":2},function(res2){
     for (let i = 0; i < res2.length; i++) {
       attackSourcesName2.push(res2[i].department)
       attackSourcesData2.push(res2[i].score)
@@ -264,7 +264,7 @@ function initBMdata(){
    );
     BMPM.on("click", function (param) {
       // 柱状图
-      $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByDepartment",{"disposeDepartment":param.name},function(res){
+      $.get(Grid_URL+"/tcasemsg/findSmallClassNumByDepartment",{"disposeDepartment":param.name},function(res){
                 xAxisData =[]
                 yAxisData =[]
                 yAxisData2 =[]
@@ -298,7 +298,7 @@ function initBMdata(){
        );
 
       //  部门城际热力图
-      $.get("http://10.237.115.83:8092/tcasemsg/findDeptmentGridMsg",{"department":param.name},function(res){
+      $.get(Grid_URL+"/tcasemsg/findDeptmentGridMsg",{"department":param.name},function(res){
         heatMap(res)
       })
       document.getElementById("RightBannerNameId").style.display= 'block'
@@ -310,7 +310,7 @@ function initBMdata(){
 }
 
 function initWGdata(){
-  $.get("http://10.237.115.83:8092/tcasemsg/findScore",{"type":3},function(res3){
+  $.get(Grid_URL+"/tcasemsg/findScore",{"type":3},function(res3){
     for (let i = 0; i < res3.length; i++) {
       attackSourcesName3.push(res3[i].gridname)
       attackSourcesData3.push(res3[i].score)
@@ -331,7 +331,7 @@ function initWGdata(){
   "ecRadar3"
   );
   WGPM.on("click", function (param) {
-    $.get("http://10.237.115.83:8092/tcasemsg/findSmallClassNumByGridCode",{"gridCode":param.name},function(res){
+    $.get(Grid_URL+"/tcasemsg/findSmallClassNumByGridCode",{"gridCode":param.name},function(res){
           xAxisData =[]
           yAxisData =[]
           yAxisData2 =[]
@@ -367,7 +367,7 @@ function initWGdata(){
      "ecRadar3"
      );
      // 网格撒点
-     $.get("http://10.237.115.83:8092/shujiaocasemsg/findLngLat",{"name":param.name},function(res){
+     $.get(Grid_URL+"/shujiaocasemsg/findLngLat",{"name":param.name},function(res){
        console.log(res, 'sprinkleressprinkleressprinkleress');
       sprinkle(res)
     })
@@ -382,7 +382,7 @@ function initWGdata(){
 
 
 function initQQdata (){
-  $.get("http://10.237.115.83:8092/tcasemsg/findNumPerGrid",function(res){
+  $.get(Grid_URL+"/tcasemsg/findNumPerGrid",function(res){
       heatMap(res)
 })
 document.getElementById("RightBannerNameId").innerText='【嘉定区】热力分布图'

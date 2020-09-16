@@ -65,6 +65,8 @@ function initMap() {
     addTraffic();           /*添加实时路况情况*/
     addPoiMarker();         /*添加嘉定区主要监控点*/
     map.addControl(new AMap.Scale());
+    playVideo1();
+    DustPoint();
 }
 
 /*设置地图风格*/
@@ -338,5 +340,138 @@ function playVideo(e) {
     })
 
 
+}
+
+
+function playVideo1(){
+    $.get(Grid_URL+ "/highwaycameras/findAll",function(res){
+        console.log(res,'playVideo1playVideo1' );
+       let  VideoMarker =res
+        for (var i = 0; i < VideoMarker.length; i++) {
+            // console.log(JSON.stringify(mapMarker[i]));
+            // 创建一个 Icon
+            var icon = new AMap.Icon({
+                // 图标尺寸
+                size: new AMap.Size(32, 32),
+                // 图标的取图地址
+                image: './images/imgs/camera.png',
+                // 图标所用图片大小
+                imageSize: new AMap.Size(32, 32),
+                // 图标取图偏移量
+                // imageOffset: new AMap.Pixel(-9, -3)
+            });
+    
+            // 将 icon 传入 marker
+            var marker = new AMap.Marker({
+                position: new AMap.LngLat(VideoMarker[i].longitude, VideoMarker[i].latitude),
+                icon: icon,
+                // offset: new AMap.Pixel(-13, -30)，
+                title: VideoMarker[i].roadSection,
+                // markId: VideoMarker[i].pointId
+            });
+            // marker.on('click', playVideo111)
+            map.add(marker);
+        }
+     })
+}
+
+
+function DustPoint(){
+    let markers = [];
+    $.get(Grid_URL+ "/constructionprojectposition/findAll",function(res){
+        console.log(res,'DustPoint' );
+       let  VideoMarker =res
+       $.each(VideoMarker, function(i, item) {
+            console.log(item, 'itemitem');
+            // 创建一个 Icon
+            var icon = new AMap.Icon({
+                // 图标尺寸
+                size: new AMap.Size(32, 32),
+                // 图标的取图地址
+                image: './images/imgs/DGD.png',
+                // 图标所用图片大小
+                imageSize: new AMap.Size(32, 32),
+                // 图标取图偏移量
+                // imageOffset: new AMap.Pixel(-9, -3)
+            });
+    
+            // 将 icon 传入 marker
+            let marker = new AMap.Marker({
+                position: new AMap.LngLat(VideoMarker[i].longitude, VideoMarker[i].latitude),
+                icon: icon,
+                extData: {
+                    id: i + 1,
+                  },
+        
+            });
+            addClickHandler(marker,item); //给标记点添加点击事件
+            map.add(marker);
+        });
+        function addClickHandler(marker,item){
+            marker.on("click",function(){
+                console.log(item,'itemitemitemclick');
+            //实例化信息窗体
+            var title =
+            `<span style="color:#07ECEB;">${item.name}</span>`,
+            content = [];
+            content.push( `地址：${item.address}` );
+            content.push( `建设单位：${item.constructionunit}` );
+            content.push( `运营商：${item.operatbusine}` );
+            // content.push( `地址：${item.date}` );
+            // content.push( `地址：${item.date}` );
+            var infoWindow = new AMap.InfoWindow({
+                isCustom: true, //使用自定义窗体
+                content: createInfoWindow(title, content.join("<br/>")),
+                offset: new AMap.Pixel(16, -45),
+            });
+            infoWindow.open(map, marker.getPosition());
+           });
+        }
+      function createInfoWindow(title, content) {
+        var info = document.createElement("div");
+        info.className = "custom-info input-card content-window-card";
+        //可以通过下面的方式修改自定义窗体的宽高
+        info.style.width = "400px";
+        // 定义顶部标题
+        var top = document.createElement("div");
+        var titleD = document.createElement("div");
+        var closeX = document.createElement("img");
+        top.className = "info-top";
+        titleD.innerHTML = title;
+        closeX.src = "../images/imgs/close.png";
+        closeX.onclick = closeInfoWindow;
+
+        top.appendChild(titleD);
+        top.appendChild(closeX);
+        info.appendChild(top);
+
+        // 定义中部内容
+        var middle = document.createElement("div");
+        middle.className = "info-middle";
+        middle.style.backgroundColor = "#14212D";
+        middle.innerHTML = content;
+        info.appendChild(middle);
+
+        // 定义底部内容
+        var bottom = document.createElement("div");
+        bottom.className = "info-bottom";
+        bottom.style.position = "relative";
+        bottom.style.top = "1px";
+        bottom.style.margin = "0 auto";
+        var sharp = document.createElement("img");
+        sharp.src = "../images/imgs/sharp.png";
+        bottom.appendChild(sharp);
+        info.appendChild(bottom);
+        return info;
+      }
+        //关闭信息窗体
+        function closeInfoWindow() {
+            map.clearInfoWindow();
+        }
+
+
+      
+   
+     })
 }
 

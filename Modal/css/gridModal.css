@@ -630,6 +630,17 @@ ul li {
     width: 20px;
     height: 20pz;
 }
+.gdmap-center{
+	position: absolute;
+    top: 1rem;
+    left: 1%;
+	color: #fff;
+	cursor: pointer;
+    padding:  0.3rem;
+    width: 20px;
+    height: 20pz;
+    z-index: 999;
+}
 
  /* 地图 标题 */
  /* .Modal-right-title {
@@ -677,14 +688,16 @@ ul li {
   }
 
 
-  /* 地图弹框 */
-.content-window-card {
+   /* 地图弹框 */
+   .content-window-card {
     position: relative;
     box-shadow: none;
     bottom: 0;
     left: 0;
     width: auto;
     padding: 0;
+    color: #fff;
+    background-color:#14212D;
   }
   
   .content-window-card p {
@@ -692,12 +705,12 @@ ul li {
   }
   
   .custom-info {
-    border: solid 1px silver;
+    border: solid 1px #CCC;
   }
   
   div.info-top {
     position: relative;
-    background: none repeat scroll 0 0 #F9F9F9;
+    /* background: none repeat scroll 0 0 #F9F9F9; */
     border-bottom: 1px solid #CCC;
     border-radius: 5px 5px 0 0;
   }
@@ -713,11 +726,11 @@ ul li {
   
   div.info-top img {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
     transition-duration: 0.25s;
-    width:10px;
-    height:10px;
+    width:20px;
+    height:20px;
   }
   
   div.info-top img:hover {
@@ -744,9 +757,9 @@ ul li {
     z-index: 104;
   }
   
-  span {
+  /* .info-top span {
     margin-left: 5px;
-  }
+  } */
   
   .info-middle img {
     float: left;

@@ -1210,12 +1210,18 @@ var MyEcharts = {
                         data: xData,
                         axisTick: {
                             alignWithLabel: true
-                        }
+                        },
+                        axisLabel: {
+                            color: '#fff'
+                        },
                     }
                 ],
                 yAxis: [
                     {
-                        type: 'value'
+                        type: 'value',
+                        axisLabel: {
+                            color: '#fff'
+                        },
                     }
                 ],
                 series: [
